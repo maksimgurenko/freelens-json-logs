@@ -1,0 +1,82 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: readable-logs-spike
+  labels:
+    app.kubernetes.io/part-of: freelens-json-logs-spike
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: single-json
+  namespace: readable-logs-spike
+  labels:
+    app: readable-logs-fixture
+    fixture: single-json
+  annotations:
+    kubectl.kubernetes.io/default-container: json
+spec:
+  automountServiceAccountToken: false
+  containers:
+    - name: json
+      image: busybox:1.37.0@sha256:bdf57e528e45e4433820e045b29b4597825a1c9e38353532d90a01445013f82e
+      imagePullPolicy: IfNotPresent
+      command: ["/bin/sh", "-c"]
+      args:
+        - |
+          printf '%s\n' '{"level":"info","message":"freelens-json-logs-spike","sequence":1,"fixture":true}'
+          exec sleep 2147483647
+      resources:
+        requests: {cpu: 5m, memory: 4Mi}
+        limits: {cpu: 50m, memory: 16Mi}
+    - name: empty
+      image: busybox:1.37.0@sha256:bdf57e528e45e4433820e045b29b4597825a1c9e38353532d90a01445013f82e
+      imagePullPolicy: IfNotPresent
+      command: ["sleep", "2147483647"]
+      resources:
+        requests: {cpu: 5m, memory: 4Mi}
+        limits: {cpu: 50m, memory: 16Mi}
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: changing-logs
+  namespace: readable-logs-spike
+  labels:
+    app: readable-logs-fixture
+    fixture: changing-logs
+  annotations:
+    kubectl.kubernetes.io/default-container: json
+spec:
+  automountServiceAccountToken: false
+  containers:
+    - name: json
+      image: busybox:1.37.0@sha256:bdf57e528e45e4433820e045b29b4597825a1c9e38353532d90a01445013f82e
+      imagePullPolicy: IfNotPresent
+      command: ["/bin/sh", "-c"]
+      args:
+        - |
+          sequence=1
+          while true; do
+            printf '{"level":"info","message":"changing JSON fixture","sequence":%s,"fixture":true}\n' "$sequence"
+            sequence=$((sequence + 1))
+            sleep 3
+          done
+      resources:
+        requests: {cpu: 5m, memory: 4Mi}
+        limits: {cpu: 50m, memory: 16Mi}
+    - name: plain
+      image: busybox:1.37.0@sha256:bdf57e528e45e4433820e045b29b4597825a1c9e38353532d90a01445013f82e
+      imagePullPolicy: IfNotPresent
+      command: ["/bin/sh", "-c"]
+      args:
+        - |
+          sequence=1
+          while true; do
+            printf 'plain text fixture sequence=%s\n' "$sequence"
+            sequence=$((sequence + 1))
+            sleep 3
+          done
+      resources:
+        requests: {cpu: 5m, memory: 4Mi}
+        limits: {cpu: 50m, memory: 16Mi}
