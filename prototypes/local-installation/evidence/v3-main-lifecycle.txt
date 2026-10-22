@@ -1,0 +1,18 @@
+[READABLE-LOGS-HOST-SPIKE] main activated {
+  marker: 'installation-upgrade-proof-2026-10-22',
+  packageVersion: '0.0.2'
+}
+[32minfo[39m:    [32m┏ [BASE-STORE]: saving /home/max/.config/Freelens/lens-extensions.json... +0ms
+[32minfo[39m:    [32m┗ [1] { timestamp: [32m'22/10/2026 16:33:17'[39m }
+[READABLE-LOGS-HOST-SPIKE] main deactivated
+[32minfo[39m:    [32m┏ [EXTENSION]: disabled freelens-readable-logs-host-spike@0.0.2 +0ms
+[32minfo[39m:    [32m┗ [1] { timestamp: [32m'22/10/2026 16:33:23'[39m }
+[33mwarn[39m:    [33m┏ [EXTENSION-DISCOVERY] extension freelens-readable-logs-host-spike not found, can't remove +8s
+[33mwarn[39m:    [33m┗ [1] { timestamp: [32m'22/10/2026 16:33:31'[39m }
+[32minfo[39m:    [32m┏ [EXTENSION-INSTALLER]: installing package for extension "/home/max/.freelens/extensions/freelens-readable-logs-host-spike" +302ms
+[READABLE-LOGS-HOST-SPIKE] main activated {
+  marker: 'installation-upgrade-proof-2026-10-22',
+  packageVersion: '0.0.2'
+}
+[32minfo[39m:    [32m┏ [BASE-STORE]: saving /home/max/.config/Freelens/lens-extensions.json... +0ms
+[32minfo[39m:    [32m┗ [1] { timestamp: [32m'22/10/2026 16:33:32'[39m }

@@ -1,0 +1,36 @@
+{
+  "contexts": [
+    {
+      "id": 1,
+      "origin": "https://renderer.freelens.app:44737",
+      "name": "",
+      "uniqueId": "-7611284066170951223.2484930756857246545",
+      "auxData": {
+        "isDefault": true,
+        "type": "default",
+        "frameId": "B10CF8D5A0D6798E3BF1096F45EF6ACA"
+      }
+    }
+  ],
+  "frames": {
+    "frameTree": {
+      "frame": {
+        "id": "B10CF8D5A0D6798E3BF1096F45EF6ACA",
+        "loaderId": "20D8C55774F115E6EEF8B11942F8EF6D",
+        "url": "https://renderer.freelens.app:44737/extensions",
+        "domainAndRegistry": "freelens.app",
+        "securityOrigin": "https://renderer.freelens.app:44737",
+        "securityOriginDetails": {
+          "isLocalhost": false
+        },
+        "mimeType": "text/html",
+        "adFrameStatus": {
+          "adFrameType": "none"
+        },
+        "secureContextType": "Secure",
+        "crossOriginIsolatedContextType": "NotIsolated",
+        "gatedAPIFeatures": []
+      }
+    }
+  }
+}

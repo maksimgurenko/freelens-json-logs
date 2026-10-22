@@ -10,10 +10,11 @@ extension. Do not merge it or open a PR. The original integration spike is in
 
 ## Proposed first-release procedure
 
-1. Fully quit Freelens, then reopen it. Stay in the main window and open
-   **Extensions** before opening any cluster. Returning to Extensions from an
-   already-open cluster does not establish this starting state: its frame can
-   remain loaded.
+1. Start from a fresh main window and open **Extensions** before opening any
+   cluster. If a cluster has already been opened in this session, fully quit and
+   reopen Freelens first. Returning to Extensions from an already-open cluster
+   does not establish this starting state: its frame can remain loaded. A host
+   just launched without opening a cluster already meets this requirement.
 2. For an update or same-version replacement, use the installed extension's
    menu → **Uninstall**, confirm, and wait until its row disappears and removal
    completes. Keep its saved extension settings. Do not install over the
@@ -22,17 +23,20 @@ extension. Do not merge it or open a PR. The original integration spike is in
    Wait for installation to complete; check the displayed version and Enabled
    status. Do not repeat the click while waiting. The tested explicit
    uninstall/install path did not need the overwrite confirmation.
-4. Fully quit and reopen Freelens again, then open the cluster and the Pod's
-   readable-log action. Verify the expected version, usable log view, and
-   retained settings. The host's Enabled label alone is insufficient evidence.
+4. Open the cluster and the Pod's readable-log action without another restart.
+   Verify the expected version, usable log view, and retained settings. The
+   host's Enabled label alone is insufficient evidence.
 5. Perform any enable/disable maintenance from the same fresh-launch main-window
    state. Live re-enabling with an already-loaded cluster was not tested.
 
-This procedure deliberately includes restarts before and after maintenance.
-Their inclusion is a proposed supported workflow, not proof that every restart
-is necessary. The decision is whether this maintenance cost is acceptable for
-the maintainer's first release. The experiment establishes neither a hot-update
-guarantee nor broad support for other versions or packages.
+This procedure requires at most one restart before maintenance, to establish
+the tested main-window-only state. The initial proposal also required a restart
+after installation; the maintainer challenged that requirement, and the focused
+0.0.2 → 0.0.3 test below demonstrated an upgrade without it. The second restart
+has been removed. The decision is whether this simpler maintenance sequence is
+acceptable for the maintainer's first release. The experiment establishes neither
+a hot-update guarantee with loaded cluster frames nor broad support for other
+versions or packages.
 
 ## Observed sequences
 
@@ -51,6 +55,7 @@ not pristine user data. Only the named experimental extension was changed.
 | Full restart → main window only → explicit Uninstall 0.0.1 → wait → Install 0.0.2 | One removal/deactivation and one installation/activation, with no cycling during either eight-second observation. | [Restart](evidence/before-explicit-upgrade-restart.json), [contexts](evidence/before-explicit-upgrade-contexts.json), [uninstall](evidence/explicit-upgrade-uninstall.json), [install](evidence/explicit-upgrade-install.json), [version/status](evidence/explicit-upgrade-install-ui.json) |
 | Still main window only → Disable → Enable 0.0.2 | Each action produced its one expected main transition; no cycling during either eight-second observation. | [Disable](evidence/root-only-disable.json), [Enable](evidence/root-only-enable.json) |
 | Full restart → open fixture cluster → Pod-header action | Running page visibly identifies 0.0.2, retains the marker from 0.0.1, and reads the known timestamped JSON record. One main activation and no deactivation at capture. | [Restart](evidence/after-explicit-upgrade-restart.json), [page](evidence/v2-after-restart-page.json), [screenshot](evidence/v2-after-restart.png), [store](evidence/marker-after-upgrade.json), [stability](evidence/v2-stability.json), [main excerpt](evidence/v2-main-lifecycle.txt) |
+| Follow-up: restart before maintenance → main window only → explicit Uninstall 0.0.2 → wait → Install 0.0.3 → open cluster **without restarting again** | New heading identifies 0.0.3, marker from 0.0.1 remains, and one timestamped fixture record is read. Main PID **1876290** is identical before installation and at the working-page capture. Only the expected old-version deactivation and new-version activation occurred. | [Pre-install restart](evidence/before-single-restart-upgrade-restart.json), [contexts](evidence/before-single-restart-upgrade-contexts.json), [uninstall](evidence/single-restart-upgrade-uninstall.json), [install](evidence/single-restart-upgrade-install.json), [same-process facts](evidence/v3-without-post-install-restart.json), [page](evidence/v3-without-post-install-restart-page.json), [screenshot](evidence/v3-without-post-install-restart.png), [main excerpt](evidence/v3-main-lifecycle.txt) |
 
 The single-click result rules out duplicate Install clicks as a necessary trigger
 in the tested state. It does not establish a synchronization race, a host defect,
@@ -82,8 +87,9 @@ hl.exec_cmd("/usr/bin/freelens --remote-debugging-address=127.0.0.1 --remote-deb
   {workspace="7 silent", no_initial_focus=true})
 ```
 
-The restart captures record the same active workspace **2** and focused window
-before and after each launch, and the new Freelens window on **7**. No persistent
+The restart captures preserve the active workspace (**2** in the original runs,
+**6** in the follow-up) and focused window before and after each launch, with
+the new Freelens window on **7**. No persistent
 Hyprland configuration was changed. CDP operates on the background Electron
 frames; it is an observation tool, not an extension dependency.
 
@@ -97,11 +103,13 @@ cd prototypes/host-integration
 npm run package
 cd ../local-installation
 node build-upgrade.mjs
+# Follow-up specimen for the single-restart upgrade:
+node build-upgrade.mjs 0.0.3
 ```
 
 `0.0.1` is rebuilt from the adjacent spike; npm also includes that directory's
-README. `0.0.2` changes only package version, activation diagnostics and the
-visible prototype heading. It retains the same experimental store name and
+README. `0.0.2` and `0.0.3` change only package version, activation diagnostics and
+the visible prototype heading. They retain the same experimental store name and
 format. Tarballs and generated package directories are ignored by Git.
 
 Follow the proposed UI procedure above. The optional local helper `cdp.mjs`
@@ -125,7 +133,7 @@ with SIGTERM. These are disposable experiment tools, not a release installer.
   The observed recovery was explicit removal, full restart and clean installation.
 - No host patch, source diagnosis, real application change, production extension,
   upstream issue or PR was made.
-- Pending the human verdict, only `freelens-readable-logs-host-spike@0.0.2` and
+- Pending the human verdict, only `freelens-readable-logs-host-spike@0.0.3` and
   its experimental marker remain installed. Its paused page is on workspace 7
   for review. After review, disable/uninstall that package through Extensions,
   verify its action disappears, and remove only

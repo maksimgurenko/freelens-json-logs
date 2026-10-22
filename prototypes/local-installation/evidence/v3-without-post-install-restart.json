@@ -1,0 +1,12 @@
+{
+  "at": 1792704827.6790571,
+  "mainPidBeforeInstallation": 1876290,
+  "mainPidAtCapture": 1876290,
+  "sameMainProcess": true,
+  "windowWorkspace": 7,
+  "mainActivations": 2,
+  "mainDeactivations": 1,
+  "loadedVersionVisible": "Disposable host integration spike 0.0.3",
+  "marker": "installation-upgrade-proof-2026-10-22",
+  "phase": "Paused; paused; 1 retained records"
+}
