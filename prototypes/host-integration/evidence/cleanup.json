@@ -1,0 +1,6 @@
+{
+  "installed_package_exists": false,
+  "cluster_retained_for_other_map_decisions": true,
+  "experimental_store_left_after_uninstall": true,
+  "experimental_store_removed_explicitly": true
+}

@@ -1,0 +1,4 @@
+info:    ┏ Starting v1.10.3 of Freelens... +1ms
+info:    ┏ Electron: 41.10.0, Chrome: 146.0.7680.216, Node: 24.18.0, Platform: linux, Architecture: x64 +0ms
+[READABLE-LOGS-HOST-SPIKE] main activated { marker: 'unset' }
+[READABLE-LOGS-HOST-SPIKE] main marker { marker: 'host-spike-2026-10-22-restart-proof' }

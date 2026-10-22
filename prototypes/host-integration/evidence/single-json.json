@@ -1,0 +1,19 @@
+{
+  "result": {
+    "type": "object",
+    "value": {
+      "url": "https://770814298afe692457d07d8b15d6b8d3.renderer.freelens.app:46155/extension/freelens-readable-logs-host-spike/readable-logs-host-spike?namespace=readable-logs-spike&pod=single-json&podUid=0035d4f0-23c6-4e7d-93b2-c1d13a41cb92",
+      "visible": "visible",
+      "fields": {
+        "target": "{\n  \"cluster\": \"770814298afe692457d07d8b15d6b8d3\",\n  \"namespace\": \"readable-logs-spike\",\n  \"pod\": \"single-json\",\n  \"podUid\": \"0035d4f0-23c6-4e7d-93b2-c1d13a41cb92\",\n  \"container\": \"json\",\n  \"fetchedPodUid\": \"0035d4f0-23c6-4e7d-93b2-c1d13a41cb92\"\n}",
+        "phase": "Snapshot accepted; automatic; 1 retained records",
+        "facts": "{\n  \"target\": {\n    \"cluster\": \"770814298afe692457d07d8b15d6b8d3\",\n    \"namespace\": \"readable-logs-spike\",\n    \"pod\": \"single-json\",\n    \"podUid\": \"0035d4f0-23c6-4e7d-93b2-c1d13a41cb92\",\n    \"container\": \"json\"\n  },\n  \"timestamps\": true,\n  \"receivedAt\": \"2026-10-22T03:37:18.931Z\",\n  \"returnedBytes\": 113,\n  \"returnedLines\": 1,\n  \"retainedBytes\": 113,\n  \"omittedLines\": 0,\n  \"jsonObjects\": 1\n}",
+        "raw": "2026-10-22T03:18:05.925898198Z {\"level\":\"info\",\"message\":\"freelens-json-logs-spike\",\"sequence\":1,\"fixture\":true}",
+        "records": "[\n  {\n    \"rawLine\": \"2026-10-22T03:18:05.925898198Z {\\\"level\\\":\\\"info\\\",\\\"message\\\":\\\"freelens-json-logs-spike\\\",\\\"sequence\\\":1,\\\"fixture\\\":true}\",\n    \"kubernetesTimestamp\": \"2026-10-22T03:18:05.925898198Z\",\n    \"applicationText\": \"{\\\"level\\\":\\\"info\\\",\\\"message\\\":\\\"freelens-json-logs-spike\\\",\\\"sequence\\\":1,\\\"fixture\\\":true}\",\n    \"parsed\": {\n      \"level\": \"info\",\n      \"message\": \"freelens-json-logs-spike\",\n      \"sequence\": 1,\n      \"fixture\": true\n    }\n  }\n]",
+        "diagnostics": "{\n  \"podUid\": \"0035d4f0-23c6-4e7d-93b2-c1d13a41cb92\",\n  \"requests\": 4,\n  \"ignored\": 0,\n  \"inflight\": 0,\n  \"events\": [\n    \"2026-10-22T03:37:09.880Z request single-json/json timestamps=true\",\n    \"2026-10-22T03:37:12.891Z request single-json/json timestamps=true\",\n    \"2026-10-22T03:37:15.902Z request single-json/json timestamps=true\",\n    \"2026-10-22T03:37:18.919Z request single-json/json timestamps=true\"\n  ]\n}",
+        "saved-marker": "Renderer marker: unset"
+      },
+      "marker": "unset"
+    }
+  }
+}

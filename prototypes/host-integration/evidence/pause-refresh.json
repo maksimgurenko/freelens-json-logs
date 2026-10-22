@@ -1,0 +1,95 @@
+{
+  "result": {
+    "type": "object",
+    "value": {
+      "before": {
+        "phase": "Paused; paused; 427 retained records",
+        "diagnostics": {
+          "podUid": "c8190dc0-0f37-4918-9918-53eba7c8ebc1",
+          "requests": 1,
+          "ignored": 0,
+          "inflight": 0,
+          "events": [
+            "2026-10-22T03:39:25.843Z request changing-logs/json timestamps=true",
+            "2026-10-22T03:39:27.855Z paused"
+          ]
+        },
+        "facts": {
+          "target": {
+            "cluster": "770814298afe692457d07d8b15d6b8d3",
+            "namespace": "readable-logs-spike",
+            "pod": "changing-logs",
+            "podUid": "c8190dc0-0f37-4918-9918-53eba7c8ebc1",
+            "container": "json"
+          },
+          "timestamps": true,
+          "receivedAt": "2026-10-22T03:39:25.861Z",
+          "returnedBytes": 47716,
+          "returnedLines": 427,
+          "retainedBytes": 47716,
+          "omittedLines": 0,
+          "jsonObjects": 427
+        }
+      },
+      "after": {
+        "phase": "Paused; paused; 427 retained records",
+        "diagnostics": {
+          "podUid": "c8190dc0-0f37-4918-9918-53eba7c8ebc1",
+          "requests": 1,
+          "ignored": 0,
+          "inflight": 0,
+          "events": [
+            "2026-10-22T03:39:25.843Z request changing-logs/json timestamps=true",
+            "2026-10-22T03:39:27.855Z paused"
+          ]
+        },
+        "facts": {
+          "target": {
+            "cluster": "770814298afe692457d07d8b15d6b8d3",
+            "namespace": "readable-logs-spike",
+            "pod": "changing-logs",
+            "podUid": "c8190dc0-0f37-4918-9918-53eba7c8ebc1",
+            "container": "json"
+          },
+          "timestamps": true,
+          "receivedAt": "2026-10-22T03:39:25.861Z",
+          "returnedBytes": 47716,
+          "returnedLines": 427,
+          "retainedBytes": 47716,
+          "omittedLines": 0,
+          "jsonObjects": 427
+        }
+      },
+      "refreshed": {
+        "phase": "Snapshot accepted; paused; 429 retained records",
+        "diagnostics": {
+          "podUid": "c8190dc0-0f37-4918-9918-53eba7c8ebc1",
+          "requests": 2,
+          "ignored": 0,
+          "inflight": 0,
+          "events": [
+            "2026-10-22T03:39:25.843Z request changing-logs/json timestamps=true",
+            "2026-10-22T03:39:27.855Z paused",
+            "2026-10-22T03:39:31.256Z request changing-logs/json timestamps=true"
+          ]
+        },
+        "facts": {
+          "target": {
+            "cluster": "770814298afe692457d07d8b15d6b8d3",
+            "namespace": "readable-logs-spike",
+            "pod": "changing-logs",
+            "podUid": "c8190dc0-0f37-4918-9918-53eba7c8ebc1",
+            "container": "json"
+          },
+          "timestamps": true,
+          "receivedAt": "2026-10-22T03:39:31.272Z",
+          "returnedBytes": 47940,
+          "returnedLines": 429,
+          "retainedBytes": 47940,
+          "omittedLines": 0,
+          "jsonObjects": 429
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "result": {
+    "type": "object",
+    "value": {
+      "type": "object",
+      "isError": false,
+      "keys": [
+        "error",
+        "messages",
+        "isUsedForNotification"
+      ],
+      "serialized": "{\"error\":{\"kind\":\"Status\",\"apiVersion\":\"v1\",\"metadata\":{},\"status\":\"Failure\",\"message\":\"container not-a-container is not valid for pod single-json\",\"reason\":\"BadRequest\",\"code\":400},\"messages\":[\"container not-a-container is not valid for pod single-json\"],\"isUsedForNotification\":false}"
+    }
+  }
+}

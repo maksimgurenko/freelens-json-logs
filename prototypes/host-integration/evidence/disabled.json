@@ -1,0 +1,11 @@
+{
+  "result": {
+    "type": "object",
+    "value": {
+      "url": "https://770814298afe692457d07d8b15d6b8d3.renderer.freelens.app:33615/pods?kube-details=%2Fapi%2Fv1%2Fnamespaces%2Freadable-logs-spike%2Fpods%2Fsingle-json",
+      "spikeActions": 0,
+      "spikePages": 0,
+      "podDetailsVisible": true
+    }
+  }
+}

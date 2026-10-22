@@ -1,0 +1,24 @@
+{
+  "result": {
+    "type": "object",
+    "value": {
+      "actions": [
+        {
+          "html": "<li tabindex=\"0\" data-spike=\"pod-action\" class=\"MenuItem\"><i class=\"Icon material interactive focusable\" tabindex=\"0\" id=\"tooltip_target_154\"><span class=\"icon\" data-icon-name=\"data_object\">data_object</span><div></div></i><span class=\"title\">Readable logs (host spike)</span></li>",
+          "rect": {
+            "x": 1679.27734375,
+            "y": 16.494140625,
+            "width": 20.99609375,
+            "height": 20.99609375,
+            "top": 16.494140625,
+            "right": 1700.2734375,
+            "bottom": 37.490234375,
+            "left": 1679.27734375
+          },
+          "parent": "Menu MenuActions flex KubeObjectMenu toolbar gaps right bottom"
+        }
+      ],
+      "header": []
+    }
+  }
+}

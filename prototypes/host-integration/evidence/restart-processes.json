@@ -1,0 +1,18 @@
+{
+  "before_main_pid": 1813423,
+  "before_host_family": [
+    1813423,
+    1813426,
+    1813427,
+    1813429,
+    1813511,
+    1813807,
+    1813901,
+    1814229
+  ],
+  "termination": "SIGTERM main, SIGTERM remaining children, SIGKILL only lingering children",
+  "forced_child_pids": [],
+  "all_original_processes_exited": true,
+  "after_main_pid": 1818974,
+  "fresh_main_pid": true
+}

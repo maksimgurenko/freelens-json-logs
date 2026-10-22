@@ -1,0 +1,15 @@
+{
+  "name": "freelens-readable-logs-host-spike",
+  "version": "0.0.1",
+  "private": true,
+  "description": "Disposable Freelens 1.10.3 integration experiment; do not ship",
+  "main": "out/main.js",
+  "renderer": "out/renderer.js",
+  "engines": { "freelens": "1.10.3", "node": ">=22" },
+  "files": ["out/**/*"],
+  "scripts": {
+    "check": "node --check src/store.js && node --check src/main.js && node --check src/renderer.js",
+    "build": "npm run check && node build.mjs",
+    "package": "npm run build && npm pack --ignore-scripts"
+  }
+}

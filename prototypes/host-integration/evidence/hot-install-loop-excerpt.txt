@@ -1,0 +1,18 @@
+info: [EXTENSION]: enabled freelens-readable-logs-host-spike@0.0.1
+info: [EXTENSIONS-LOADER] deleting extension instance /home/max/.config/Freelens/node_modules/freelens-readable-logs-host-spike/package.json
+info: [EXTENSION]: disabled freelens-readable-logs-host-spike@0.0.1
+info: [EXTENSION]: enabled freelens-readable-logs-host-spike@0.0.1
+info: [EXTENSIONS-LOADER] deleting extension instance /home/max/.config/Freelens/node_modules/freelens-readable-logs-host-spike/package.json
+info: [EXTENSION]: disabled freelens-readable-logs-host-spike@0.0.1
+info: [EXTENSION]: enabled freelens-readable-logs-host-spike@0.0.1
+info: [EXTENSIONS-LOADER] deleting extension instance /home/max/.config/Freelens/node_modules/freelens-readable-logs-host-spike/package.json
+info: [EXTENSION]: disabled freelens-readable-logs-host-spike@0.0.1
+info: [EXTENSION]: enabled freelens-readable-logs-host-spike@0.0.1
+info: [EXTENSIONS-LOADER] deleting extension instance /home/max/.config/Freelens/node_modules/freelens-readable-logs-host-spike/package.json
+info: [EXTENSION]: disabled freelens-readable-logs-host-spike@0.0.1
+info: [EXTENSION]: enabled freelens-readable-logs-host-spike@0.0.1
+info: [EXTENSIONS-LOADER] deleting extension instance /home/max/.config/Freelens/node_modules/freelens-readable-logs-host-spike/package.json
+info: [EXTENSION]: disabled freelens-readable-logs-host-spike@0.0.1
+info: [EXTENSION]: enabled freelens-readable-logs-host-spike@0.0.1
+info: [EXTENSIONS-LOADER] deleting extension instance /home/max/.config/Freelens/node_modules/freelens-readable-logs-host-spike/package.json
+info: [EXTENSION]: disabled freelens-readable-logs-host-spike@0.0.1
