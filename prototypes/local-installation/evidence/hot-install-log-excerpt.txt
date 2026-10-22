@@ -1,0 +1,77 @@
+[32minfo[39m:    [32m┏ [EXTENSION-INSTALLER]: installing package for extension "/home/max/.freelens/extensions/freelens-readable-logs-host-spike" +18s
+[32minfo[39m:    [32m┗ [1] { timestamp: [32m'22/10/2026 16:21:58'[39m }
+ WARN  using --force I sure hope you know what you are doing
+Already up to date
+
+optionalDependencies:
++ freelens-readable-logs-host-spike 0.0.1 <- ../../.freelens/extensions/freelens-readable-logs-host-spike
+
+devDependencies: skipped
+
+Done in 151ms using pnpm v10.34.4
+[32minfo[39m:    [32m┏ [EXTENSION-INSTALLER]: installed package for extension "/home/max/.freelens/extensions/freelens-readable-logs-host-spike" +236ms
+[32minfo[39m:    [32m┗ [1] { timestamp: [32m'22/10/2026 16:21:58'[39m }
+[32minfo[39m:    [32m┏ [EXTENSION-DISCOVERY] Added extension freelens-readable-logs-host-spike +0ms
+[32minfo[39m:    [32m┗ [1] { timestamp: [32m'22/10/2026 16:21:58'[39m }
+[32minfo[39m:    [32m┏ [BASE-STORE]: saving /home/max/.config/Freelens/lens-extensions.json... +1ms
+[32minfo[39m:    [32m┗ [1] { timestamp: [32m'22/10/2026 16:21:58'[39m }
+[32minfo[39m:    [32m┏ [HOST-SPIKE-MARKER]: LOADING ... +5ms
+[32minfo[39m:    [32m┗ [1] { timestamp: [32m'22/10/2026 16:21:58'[39m }
+[32minfo[39m:    [32m┏ [HOST-SPIKE-MARKER]: LOADED from /home/max/.config/Freelens/extension-store/freelens-readable-logs-host-spike/host-spike-marker.json +12ms
+[32minfo[39m:    [32m┗ [1] { timestamp: [32m'22/10/2026 16:21:58'[39m }
+[READABLE-LOGS-HOST-SPIKE] main activated { marker: 'unset' }
+[32minfo[39m:    [32m┏ [BASE-STORE]: saving /home/max/.config/Freelens/extension-store/freelens-readable-logs-host-spike/host-spike-marker.json... +0ms
+[32minfo[39m:    [32m┗ [1] { timestamp: [32m'22/10/2026 16:21:58'[39m }
+[32minfo[39m:    [32m┏ [BASE-STORE]: saving /home/max/.config/Freelens/lens-extensions.json... +3ms
+[32minfo[39m:    [32m┗ [1] { timestamp: [32m'22/10/2026 16:21:58'[39m }
+[32minfo[39m:    [32m┏ [EXTENSION]: enabled freelens-readable-logs-host-spike@0.0.1 +4ms
+[32minfo[39m:    [32m┗ [1] { timestamp: [32m'22/10/2026 16:21:58'[39m }
+[32minfo[39m:    [32m┏ [EXTENSIONS-LOADER] deleting extension instance /home/max/.config/Freelens/node_modules/freelens-readable-logs-host-spike/package.json +0ms
+[32minfo[39m:    [32m┗ [1] { timestamp: [32m'22/10/2026 16:21:58'[39m }
+[READABLE-LOGS-HOST-SPIKE] main deactivated
+[32minfo[39m:    [32m┏ [BASE-STORE]: saving /home/max/.config/Freelens/lens-extensions.json... +1ms
+[32minfo[39m:    [32m┗ [1] { timestamp: [32m'22/10/2026 16:21:58'[39m }
+[32minfo[39m:    [32m┏ [EXTENSION]: disabled freelens-readable-logs-host-spike@0.0.1 +3ms
+[32minfo[39m:    [32m┗ [1] { timestamp: [32m'22/10/2026 16:21:58'[39m }
+[32minfo[39m:    [32m┏ [HOST-SPIKE-MARKER]: LOADING ... +1ms
+[32minfo[39m:    [32m┗ [1] { timestamp: [32m'22/10/2026 16:21:58'[39m }
+[32minfo[39m:    [32m┏ [HOST-SPIKE-MARKER]: LOADED from /home/max/.config/Freelens/extension-store/freelens-readable-logs-host-spike/host-spike-marker.json +0ms
+[32minfo[39m:    [32m┗ [1] { timestamp: [32m'22/10/2026 16:21:58'[39m }
+[READABLE-LOGS-HOST-SPIKE] main activated { marker: 'unset' }
+[32minfo[39m:    [32m┏ [BASE-STORE]: saving /home/max/.config/Freelens/lens-extensions.json... +0ms
+[32minfo[39m:    [32m┗ [1] { timestamp: [32m'22/10/2026 16:21:58'[39m }
+[32minfo[39m:    [32m┏ [EXTENSION]: enabled freelens-readable-logs-host-spike@0.0.1 +3ms
+[32minfo[39m:    [32m┗ [1] { timestamp: [32m'22/10/2026 16:21:58'[39m }
+[32minfo[39m:    [32m┏ [EXTENSIONS-LOADER] deleting extension instance /home/max/.config/Freelens/node_modules/freelens-readable-logs-host-spike/package.json +1ms
+[32minfo[39m:    [32m┗ [1] { timestamp: [32m'22/10/2026 16:21:58'[39m }
+[READABLE-LOGS-HOST-SPIKE] main deactivated
+[32minfo[39m:    [32m┏ [BASE-STORE]: saving /home/max/.config/Freelens/lens-extensions.json... +0ms
+[32minfo[39m:    [32m┗ [1] { timestamp: [32m'22/10/2026 16:21:58'[39m }
+[32minfo[39m:    [32m┏ [EXTENSION]: disabled freelens-readable-logs-host-spike@0.0.1 +3ms
+[32minfo[39m:    [32m┗ [1] { timestamp: [32m'22/10/2026 16:21:58'[39m }
+[32minfo[39m:    [32m┏ [HOST-SPIKE-MARKER]: LOADING ... +1ms
+[32minfo[39m:    [32m┗ [1] { timestamp: [32m'22/10/2026 16:21:58'[39m }
+[32minfo[39m:    [32m┏ [HOST-SPIKE-MARKER]: LOADED from /home/max/.config/Freelens/extension-store/freelens-readable-logs-host-spike/host-spike-marker.json +0ms
+[32minfo[39m:    [32m┗ [1] { timestamp: [32m'22/10/2026 16:21:58'[39m }
+[READABLE-LOGS-HOST-SPIKE] main activated { marker: 'unset' }
+[32minfo[39m:    [32m┏ [BASE-STORE]: saving /home/max/.config/Freelens/lens-extensions.json... +0ms
+[32minfo[39m:    [32m┗ [1] { timestamp: [32m'22/10/2026 16:21:58'[39m }
+[32minfo[39m:    [32m┏ [EXTENSION]: enabled freelens-readable-logs-host-spike@0.0.1 +4ms
+[32minfo[39m:    [32m┗ [1] { timestamp: [32m'22/10/2026 16:21:58'[39m }
+[32minfo[39m:    [32m┏ [EXTENSIONS-LOADER] deleting extension instance /home/max/.config/Freelens/node_modules/freelens-readable-logs-host-spike/package.json +1ms
+[32minfo[39m:    [32m┗ [1] { timestamp: [32m'22/10/2026 16:21:58'[39m }
+[READABLE-LOGS-HOST-SPIKE] main deactivated
+[32minfo[39m:    [32m┏ [BASE-STORE]: saving /home/max/.config/Freelens/lens-extensions.json... +0ms
+[32minfo[39m:    [32m┗ [1] { timestamp: [32m'22/10/2026 16:21:58'[39m }
+[32minfo[39m:    [32m┏ [EXTENSION]: disabled freelens-readable-logs-host-spike@0.0.1 +3ms
+[32minfo[39m:    [32m┗ [1] { timestamp: [32m'22/10/2026 16:21:58'[39m }
+[32minfo[39m:    [32m┏ [HOST-SPIKE-MARKER]: LOADING ... +1ms
+[32minfo[39m:    [32m┗ [1] { timestamp: [32m'22/10/2026 16:21:58'[39m }
+[32minfo[39m:    [32m┏ [HOST-SPIKE-MARKER]: LOADED from /home/max/.config/Freelens/extension-store/freelens-readable-logs-host-spike/host-spike-marker.json +0ms
+[32minfo[39m:    [32m┗ [1] { timestamp: [32m'22/10/2026 16:21:58'[39m }
+[READABLE-LOGS-HOST-SPIKE] main activated { marker: 'unset' }
+[32minfo[39m:    [32m┏ [BASE-STORE]: saving /home/max/.config/Freelens/lens-extensions.json... +0ms
+[32minfo[39m:    [32m┗ [1] { timestamp: [32m'22/10/2026 16:21:58'[39m }
+[32minfo[39m:    [32m┏ [EXTENSION]: enabled freelens-readable-logs-host-spike@0.0.1 +4ms
+[32minfo[39m:    [32m┗ [1] { timestamp: [32m'22/10/2026 16:21:58'[39m }
+[32minfo[39m:    [32m┏ [EXTENSIONS-LOADER] deleting extension instance /home/max/.config

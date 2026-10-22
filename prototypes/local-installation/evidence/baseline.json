@@ -1,0 +1,21 @@
+{
+  "at": 1792704118.0224085,
+  "mainPid": 1818974,
+  "logOffset": 39479,
+  "extensionState": {
+    "__internal__": {
+      "migrations": {
+        "version": "1.0.0"
+      }
+    },
+    "extensions": [
+      [
+        "/home/max/.config/Freelens/node_modules/freelens-readable-logs-host-spike/package.json",
+        {
+          "enabled": false,
+          "name": "freelens-readable-logs-host-spike"
+        }
+      ]
+    ]
+  }
+}

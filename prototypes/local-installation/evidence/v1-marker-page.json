@@ -1,0 +1,14 @@
+{
+  "result": {
+    "type": "object",
+    "value": {
+      "at": "2026-10-22T21:28:38.501Z",
+      "heading": "Disposable host integration spike",
+      "target": "{\n  \"cluster\": \"770814298afe692457d07d8b15d6b8d3\",\n  \"namespace\": \"readable-logs-spike\",\n  \"pod\": \"single-json\",\n  \"podUid\": \"0035d4f0-23c6-4e7d-93b2-c1d13a41cb92\",\n  \"container\": \"json\",\n  \"fetchedPodUid\": \"0035d4f0-23c6-4e7d-93b2-c1d13a41cb92\"\n}",
+      "marker": "installation-upgrade-proof-2026-10-22",
+      "phase": "Paused; paused; 1 retained records",
+      "facts": "{\n  \"target\": {\n    \"cluster\": \"770814298afe692457d07d8b15d6b8d3\",\n    \"namespace\": \"readable-logs-spike\",\n    \"pod\": \"single-json\",\n    \"podUid\": \"0035d4f0-23c6-4e7d-93b2-c1d13a41cb92\",\n    \"container\": \"json\"\n  },\n  \"timestamps\": true,\n  \"receivedAt\": \"2026-10-22T21:28:38.440Z\",\n  \"returnedBytes\": 113,\n  \"returnedLines\": 1,\n  \"retainedBytes\": 113,\n  \"omittedLines\": 0,\n  \"jsonObjects\": 1\n}",
+      "raw": "2026-10-22T03:18:05.925898198Z {\"level\":\"info\",\"message\":\"freelens-json-logs-spike\",\"sequence\":1,\"fixture\":true}"
+    }
+  }
+}

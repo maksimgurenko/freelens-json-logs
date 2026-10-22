@@ -1,0 +1,18 @@
+{
+  "at": 1792704379.7353475,
+  "oldMainPid": 1845591,
+  "originalPids": [
+    "1845591",
+    "1845594",
+    "1845595",
+    "1845598",
+    "1845640",
+    "1845909",
+    "1846037"
+  ],
+  "remainingPids": [],
+  "quit": "Focus Freelens, then wtype Alt+F4 (File \u2192 Quit)",
+  "newLogOffset": 18419,
+  "newMainPid": 1857406,
+  "note": "Focused Alt+F4 was delivered after the separately recorded targeted-shortcut attempt. All original PIDs were confirmed absent before launch; this successful exit was not timed."
+}

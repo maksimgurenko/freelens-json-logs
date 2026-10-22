@@ -1,0 +1,1 @@
+[READABLE-LOGS-HOST-SPIKE] main activated { marker: 'installation-upgrade-proof-2026-10-22' }

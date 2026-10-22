@@ -1,0 +1,842 @@
+{
+  "result": {
+    "type": "object",
+    "value": {
+      "at": "2026-10-22T21:27:12.588Z",
+      "url": "https://770814298afe692457d07d8b15d6b8d3.renderer.freelens.app:40443/pods?kube-details=%2Fapi%2Fv1%2Fnamespaces%2Freadable-logs-spike%2Fpods%2Fsingle-json",
+      "body": "Pod: single-json\ncontent_copy\npageview\nsubject\nedit\ndelete\ndelete_forever\nclose\n1 hour\nCPU\nMemory\nNetwork\nFilesystem\ninfo\n Metrics not available at the moment\nCreated\n18h 8m ago (2026-10-21T22:18:02-05:00)\nName\nsingle-json\nNamespace\nreadable-logs-spike\nLabels\napp=readable-logs-fixture\nfixture=single-json\nAnnotations\nkubectl.kubernetes.io/default-container=json\nkubectl.kubernetes.io/last-applied-configuration={\"apiVersion\":\"v1\",\"kind\":\"Pod\",\"metadata\":{\"annotations\":{\"kubectl.kubernetes.io/default-container\":\"json\"},\"labels\":{\"app\":\"readable-logs-fixture\",\"fixture\":\"single-json\"},\"name\":\"single-json\",\"namespace\":\"readable-logs-spike\"},\"spec\":{\"automountServiceAccountToken\":false,\"containers\":[{\"args\":[\"printf '%s\\\\n' '{\\\"level\\\":\\\"info\\\",\\\"message\\\":\\\"freelens-json-logs-spike\\\",\\\"sequence\\\":1,\\\"fixture\\\":true}'\\nexec sleep 2147483647\\n\"],\"command\":[\"/bin/sh\",\"-c\"],\"image\":\"busybox:1.37.0@sha256:bdf57e528e45e4433820e045b29b4597825a1c9e38353532d90a01445013f82e\",\"imagePullPolicy\":\"IfNotPresent\",\"name\":\"json\",\"resources\":{\"limits\":{\"cpu\":\"50m\",\"memory\":\"16Mi\"},\"requests\":{\"cpu\":\"5m\",\"memory\":\"4Mi\"}}},{\"command\":[\"sleep\",\"2147483647\"],\"image\":\"busybox:1.37.0@sha256:bdf57e528e45e4433820e045b29b4597825a1c9e38353532d90a01445013f82e\",\"imagePullPolicy\":\"IfNotPresent\",\"name\":\"empty\",\"resources\":{\"limits\":{\"cpu\":\"50m\",\"memory\":\"16Mi\"},\"requests\":{\"cpu\":\"5m\",\"memory\":\"4Mi\"}}}]}}\nManaged Fields\nkubectl-client-side-apply: Update\nShow\narrow_drop_down\nkubelet: Update\nShow\narrow_drop_down\nStatus\nRunning\nNode\nfreelens-json-logs-spike-control-plane\nHost IPs\n172.20.0.2\nPod IPs\n10.244.0.5\nService Account\ndefault\nQoS Class\nBurstable\nTermination Grace Period\n30s\nTolerations\n2\nShow\narrow_drop_down\nConditions\nReady\nContainersReady\nPodReadyToStartContainers\nInitialized\nPodScheduled\nContainers\njson\n1 hour\nCPU\nMemory\nFilesystem\ninfo\n Metrics not available at the moment\nStatus\nrunning, ready\nImage\nbusybox:1.37.0@sha256:bdf57e528e45e4433820e045b29b4597825a1c9e38353532d90a01445013f82e\nEnvironment\nCommand\n/bin/sh -c\nArguments\nprintf '%s\\n' '{\"level\":\"info\",\"message\":\"freelens-json-logs-spike\",\"sequence\":1,\"fixture\":true}' exec sleep 2147483647\nRequests\ncpu=5m\nmemory=4Mi\nLimits\ncpu=50m\nmemory=16Mi\nempty\n1 hour\nCPU\nMemory\nFilesystem\ninfo\n Metrics not available at the moment\nStatus\nrunning, ready\nImage\nbusybox:1.37.0@sha256:bdf57e528e45e4433820e045b29b4597825a1c9e38353532d90a01445013f82e\nEnvironment\nCommand\nsleep 2147483647\nRequests\ncpu=5m\nmemory=4Mi\nLimits\ncpu=50m\nmemory=16Mi\nEvents\nContainer started\nSource\nkubelet freelens-json-logs-spike-control-plane\nCount\n1\nSub-object\nspec.containers{empty}\nLast seen\n18h ago (2026-10-21T22:18:06-05:00)\nSuccessfully pulled image \"busybox:1.37.0@sha256:bdf57e528e45e4433820e045b29b4597825a1c9e38353532d90a01445013f82e\" in 624ms (2.638s including waiting). Image size: 2222118 bytes.\nSource\nkubelet freelens-json-logs-spike-control-plane\nCount\n1\nSub-object\nspec.containers{json}\nLast seen\n18h ago (2026-10-21T22:18:05-05:00)\nContainer created\nSource\nkubelet freelens-json-logs-spike-control-plane\nCount\n1\nSub-object\nspec.containers{json}\nLast seen\n18h ago (2026-10-21T22:18:05-05:00)\nContainer started\nSource\nkubelet freelens-json-logs-spike-control-plane\nCount\n1\nSub-object\nspec.containers{json}\nLast seen\n18h ago (2026-10-21T22:18:05-05:00)\nContainer image \"busybox:1.37.0@sha256:bdf57e528e45e4433820e045b29b4597825a1c9e38353532d90a01445013f82e\" already present on machine and can be accessed by the pod\nSource\nkubelet freelens-json-logs-spike-control-plane\nCount\n1\nSub-object\nspec.containers{empty}\nLast seen\n18h ago (2026-10-21T22:18:05-05:00)\nContainer created\nSource\nkubelet freelens-json-logs-spike-control-plane\nCount\n1\nSub-object\nspec.containers{empty}\nLast seen\n18h ago (2026-10-21T22:18:05-05:00)\nPulling image \"busybox:1.37.0@sha256:bdf57e528e45e4433820e045b29b4597825a1c9e38353532d90a01445013f82e\"\nSource\nkubelet freelens-json-logs-spike-control-plane\nCount\n1\nSub-object\nspec.containers{json}\nLast seen\n18h ago (2026-10-21T22:18:03-05:00)\nSuccessfully assigned readable-logs-spike/single-json to freelens-json-logs-spike-control-plane\nSource\ndefault-scheduler\nCount\n1\nSub-object\nLast seen\n18h ago (2026-10-21T22:18:02-05:00)\nKFJ\nkind-freelens-json-logs-spike\narrow_drop_down\nstar\nFavorites\nkeyboard_arrow_down\nCluster\nNodes\nWorkloads\nkeyboard_arrow_up\nOverview\nPods\nDeployments\nDaemon Sets\nStateful Sets\nReplica Sets\nReplication Controllers\nJobs\nCron Jobs\nlist\nConfig\nkeyboard_arrow_down\ndevice_hub\nNetwork\nkeyboard_arrow_down\nstorage\nStorage\nkeyboard_arrow_down\nlayers\nNamespaces\naccess_time\nEvents\nHelm\nkeyboard_arrow_down\nsecurity\nAccess Control\nkeyboard_arrow_down\nextension\nCustom Resources\nkeyboard_arrow_down\nOverview\nPods\nDeployments\nDaemon Sets\nStateful Sets\nReplica Sets\nReplication Controllers\nJobs\nCron Jobs\nPods\n2 items\nNamespace: readable-logs-spike\nsearch\nlink_off\nName\narrow_drop_down\nwarning_amber\nNamespace\narrow_drop_down\nContainers\narrow_drop_down\nCPU\narrow_drop_down\nMemory\narrow_drop_down\nRestarts\narrow_drop_down\nControlled By\narrow_drop_down\nAge\narrow_drop_down\nStatus\narrow_drop_down\nsubject\nmore_vert\nchanging-logs\nreadable-logs-spike\nN/A\nN/A\n0\n18h\nRunning\nsubject\nmore_vert\nsingle-json\nreadable-logs-spike\nN/A\nN/A\n0\n18h\nRunning\nsubject\nmore_vert\nterminal\nTerminal\nclose\nsubject\nPod changing-logs\nclose\nsubject\nPod single-json\nclose\nadd\nfullscreen\nkeyboard_arrow_down\nNamespace\nreadable-logs-spike\nPod\nsingle-json\nContainer\njson\nsearch\nkeyboard_arrow_up\nkeyboard_arrow_down\n{\"level\":\"info\",\"message\":\"freelens-json-logs-spike\",\"sequence\":1,\"fixture\":true}\n\nLogs from 10/21/2026, 10:18:05 PM\nShow timestamps\nWord wrap\nShow previous terminated container\nDownload\narrow_drop_down",
+      "controls": [
+        {
+          "tag": "I",
+          "text": "content_copy",
+          "title": null,
+          "placeholder": null,
+          "html": "<i class=\"Icon material interactive focusable\" tabindex=\"0\" id=\"tooltip_target_143\"><span class=\"icon\" data-icon-name=\"content_copy\">content_copy</span><div></div></i>"
+        },
+        {
+          "tag": "LI",
+          "text": "pageview",
+          "title": null,
+          "placeholder": null,
+          "html": "<li tabindex=\"0\" class=\"MenuItem\"><i class=\"Icon material interactive focusable\" tabindex=\"0\" id=\"tooltip_target_144\"><span class=\"icon\" data-icon-name=\"pageview\">pageview</span><div></div></i><span class=\"title\">Attach to Pod</span><i class=\"Icon arrow material focusable\"><span class=\"icon\" data-icon-name=\"keyboard_arrow_right\">keyboard_arrow_right</span></i><ul class=\"Animate opacity Menu SubMenu\" style=\"--enter-duration: 100ms; --leave-duration: 100ms;\"><li tabindex=\"0\" class=\"MenuItem flex align-center\"><div class=\"StatusBrick running\"></div><span>json</span></li><li tabindex=\"0\" class=\"MenuItem flex align-center\"><div class=\"StatusBrick running\"></div><span>empty</span></li></ul></li>"
+        },
+        {
+          "tag": "I",
+          "text": "pageview",
+          "title": null,
+          "placeholder": null,
+          "html": "<i class=\"Icon material interactive focusable\" tabindex=\"0\" id=\"tooltip_target_144\"><span class=\"icon\" data-icon-name=\"pageview\">pageview</span><div></div></i>"
+        },
+        {
+          "tag": "I",
+          "text": "keyboard_arrow_right",
+          "title": null,
+          "placeholder": null,
+          "html": "<i class=\"Icon arrow material focusable\"><span class=\"icon\" data-icon-name=\"keyboard_arrow_right\">keyboard_arrow_right</span></i>"
+        },
+        {
+          "tag": "LI",
+          "text": "",
+          "title": null,
+          "placeholder": null,
+          "html": "<li tabindex=\"0\" class=\"MenuItem flex align-center\"><div class=\"StatusBrick running\"></div><span>json</span></li>"
+        },
+        {
+          "tag": "LI",
+          "text": "",
+          "title": null,
+          "placeholder": null,
+          "html": "<li tabindex=\"0\" class=\"MenuItem flex align-center\"><div class=\"StatusBrick running\"></div><span>empty</span></li>"
+        },
+        {
+          "tag": "LI",
+          "text": "",
+          "title": null,
+          "placeholder": null,
+          "html": "<li tabindex=\"0\" class=\"MenuItem\"><i class=\"Icon svg interactive focusable\" tabindex=\"0\" id=\"tooltip_target_146\"><span class=\"icon\"><svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\">\n  <title>ssh</title>\n  <path d=\"M19,3H5A2,2,0,0,0,3,5V19a2,2,0,0,0,2,2H19a2,2,0,0,0,2-2V5a2,2,0,0,0-2-2M10.2,13.3,6.7,16.8,5.3,15.4l3.5-3.5L5.2,8.3,6.6,6.9l3.5,3.5,1.4,1.4ZM19,17H12V15h7Z\" transform=\"translate(0 0)\" fill=\"#87909c\"></path>\n</svg>\n</span><div></div></i><span class=\"title\">Shell</span><i class=\"Icon arrow material focusable\"><span class=\"icon\" data-icon-name=\"keyboard_arrow_right\">keyboard_arrow_right</span></i><ul class=\"Animate opacity Menu SubMenu\" style=\"--enter-duration: 100ms; --leave-duration: 100ms;\"><li tabindex=\"0\" class=\"MenuItem flex align-center\"><div"
+        },
+        {
+          "tag": "I",
+          "text": "",
+          "title": null,
+          "placeholder": null,
+          "html": "<i class=\"Icon svg interactive focusable\" tabindex=\"0\" id=\"tooltip_target_146\"><span class=\"icon\"><svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\">\n  <title>ssh</title>\n  <path d=\"M19,3H5A2,2,0,0,0,3,5V19a2,2,0,0,0,2,2H19a2,2,0,0,0,2-2V5a2,2,0,0,0-2-2M10.2,13.3,6.7,16.8,5.3,15.4l3.5-3.5L5.2,8.3,6.6,6.9l3.5,3.5,1.4,1.4ZM19,17H12V15h7Z\" transform=\"translate(0 0)\" fill=\"#87909c\"></path>\n</svg>\n</span><div></div></i>"
+        },
+        {
+          "tag": "I",
+          "text": "keyboard_arrow_right",
+          "title": null,
+          "placeholder": null,
+          "html": "<i class=\"Icon arrow material focusable\"><span class=\"icon\" data-icon-name=\"keyboard_arrow_right\">keyboard_arrow_right</span></i>"
+        },
+        {
+          "tag": "LI",
+          "text": "",
+          "title": null,
+          "placeholder": null,
+          "html": "<li tabindex=\"0\" class=\"MenuItem flex align-center\"><div class=\"StatusBrick running\"></div><span>json</span></li>"
+        },
+        {
+          "tag": "LI",
+          "text": "",
+          "title": null,
+          "placeholder": null,
+          "html": "<li tabindex=\"0\" class=\"MenuItem flex align-center\"><div class=\"StatusBrick running\"></div><span>empty</span></li>"
+        },
+        {
+          "tag": "LI",
+          "text": "subject",
+          "title": null,
+          "placeholder": null,
+          "html": "<li tabindex=\"0\" class=\"MenuItem\"><i class=\"Icon material interactive focusable\" tabindex=\"0\" id=\"tooltip_target_148\"><span class=\"icon\" data-icon-name=\"subject\">subject</span><div></div></i><span class=\"title\">Logs</span><i class=\"Icon arrow material focusable\"><span class=\"icon\" data-icon-name=\"keyboard_arrow_right\">keyboard_arrow_right</span></i><ul class=\"Animate opacity Menu SubMenu\" style=\"--enter-duration: 100ms; --leave-duration: 100ms;\"><li tabindex=\"0\" class=\"MenuItem flex align-center\"><div class=\"StatusBrick running\"></div><span>json</span></li><li tabindex=\"0\" class=\"MenuItem flex align-center\"><div class=\"StatusBrick running\"></div><span>empty</span></li></ul></li>"
+        },
+        {
+          "tag": "I",
+          "text": "subject",
+          "title": null,
+          "placeholder": null,
+          "html": "<i class=\"Icon material interactive focusable\" tabindex=\"0\" id=\"tooltip_target_148\"><span class=\"icon\" data-icon-name=\"subject\">subject</span><div></div></i>"
+        },
+        {
+          "tag": "I",
+          "text": "keyboard_arrow_right",
+          "title": null,
+          "placeholder": null,
+          "html": "<i class=\"Icon arrow material focusable\"><span class=\"icon\" data-icon-name=\"keyboard_arrow_right\">keyboard_arrow_right</span></i>"
+        },
+        {
+          "tag": "LI",
+          "text": "",
+          "title": null,
+          "placeholder": null,
+          "html": "<li tabindex=\"0\" class=\"MenuItem flex align-center\"><div class=\"StatusBrick running\"></div><span>json</span></li>"
+        },
+        {
+          "tag": "LI",
+          "text": "",
+          "title": null,
+          "placeholder": null,
+          "html": "<li tabindex=\"0\" class=\"MenuItem flex align-center\"><div class=\"StatusBrick running\"></div><span>empty</span></li>"
+        },
+        {
+          "tag": "LI",
+          "text": "edit",
+          "title": null,
+          "placeholder": null,
+          "html": "<li tabindex=\"0\" data-testid=\"menu-action-edit-for-/api/v1/namespaces/readable-logs-spike/pods/single-json\" class=\"MenuItem\"><i class=\"Icon material interactive focusable\" tabindex=\"0\" id=\"tooltip_target_188\"><span class=\"icon\" data-icon-name=\"edit\">edit</span><div></div></i><span class=\"title\">Edit</span></li>"
+        },
+        {
+          "tag": "I",
+          "text": "edit",
+          "title": null,
+          "placeholder": null,
+          "html": "<i class=\"Icon material interactive focusable\" tabindex=\"0\" id=\"tooltip_target_188\"><span class=\"icon\" data-icon-name=\"edit\">edit</span><div></div></i>"
+        },
+        {
+          "tag": "LI",
+          "text": "delete",
+          "title": null,
+          "placeholder": null,
+          "html": "<li tabindex=\"0\" data-testid=\"menu-action-delete-for-/api/v1/namespaces/readable-logs-spike/pods/single-json\" class=\"MenuItem\"><i class=\"Icon material interactive focusable\" tabindex=\"0\" id=\"tooltip_target_189\"><span class=\"icon\" data-icon-name=\"delete\">delete</span><div></div></i><span class=\"title\">Delete</span></li>"
+        },
+        {
+          "tag": "I",
+          "text": "delete",
+          "title": null,
+          "placeholder": null,
+          "html": "<i class=\"Icon material interactive focusable\" tabindex=\"0\" id=\"tooltip_target_189\"><span class=\"icon\" data-icon-name=\"delete\">delete</span><div></div></i>"
+        },
+        {
+          "tag": "LI",
+          "text": "delete_forever",
+          "title": null,
+          "placeholder": null,
+          "html": "<li tabindex=\"0\" data-testid=\"menu-action-force-delete-for-/api/v1/namespaces/readable-logs-spike/pods/single-json\" class=\"MenuItem\"><i class=\"Icon material interactive focusable\" tabindex=\"0\" id=\"tooltip_target_190\"><span class=\"icon\" data-icon-name=\"delete_forever\">delete_forever</span><div></div></i><span class=\"title\">Force Delete</span></li>"
+        },
+        {
+          "tag": "I",
+          "text": "delete_forever",
+          "title": null,
+          "placeholder": null,
+          "html": "<i class=\"Icon material interactive focusable\" tabindex=\"0\" id=\"tooltip_target_190\"><span class=\"icon\" data-icon-name=\"delete_forever\">delete_forever</span><div></div></i>"
+        },
+        {
+          "tag": "I",
+          "text": "close",
+          "title": null,
+          "placeholder": null,
+          "html": "<i class=\"Icon material interactive focusable\" tabindex=\"0\" id=\"tooltip_target_142\"><span class=\"icon\" data-icon-name=\"close\">close</span><div></div></i>"
+        },
+        {
+          "tag": "INPUT",
+          "text": "",
+          "title": null,
+          "placeholder": null,
+          "disabled": false,
+          "html": "<input id=\"metrics-time-range-select\" tabindex=\"0\" inputmode=\"none\" aria-autocomplete=\"list\" aria-expanded=\"false\" aria-haspopup=\"true\" role=\"combobox\" aria-activedescendant=\"\" aria-readonly=\"true\" class=\"css-1hac4vs-dummyInput\" value=\"\">"
+        },
+        {
+          "tag": "INPUT",
+          "text": "",
+          "title": null,
+          "placeholder": null,
+          "disabled": false,
+          "html": "<input type=\"radio\" checked=\"\">"
+        },
+        {
+          "tag": "INPUT",
+          "text": "",
+          "title": null,
+          "placeholder": null,
+          "disabled": false,
+          "html": "<input type=\"radio\">"
+        },
+        {
+          "tag": "INPUT",
+          "text": "",
+          "title": null,
+          "placeholder": null,
+          "disabled": false,
+          "html": "<input type=\"radio\">"
+        },
+        {
+          "tag": "INPUT",
+          "text": "",
+          "title": null,
+          "placeholder": null,
+          "disabled": false,
+          "html": "<input type=\"radio\">"
+        },
+        {
+          "tag": "I",
+          "text": "info",
+          "title": null,
+          "placeholder": null,
+          "html": "<i class=\"Icon material focusable\"><span class=\"icon\" data-icon-name=\"info\">info</span></i>"
+        },
+        {
+          "tag": "I",
+          "text": "arrow_drop_down",
+          "title": null,
+          "placeholder": null,
+          "html": "<i class=\"Icon material focusable\"><span class=\"icon\" data-icon-name=\"arrow_drop_down\">arrow_drop_down</span></i>"
+        },
+        {
+          "tag": "I",
+          "text": "arrow_drop_down",
+          "title": null,
+          "placeholder": null,
+          "html": "<i class=\"Icon material focusable\"><span class=\"icon\" data-icon-name=\"arrow_drop_down\">arrow_drop_down</span></i>"
+        },
+        {
+          "tag": "I",
+          "text": "arrow_drop_down",
+          "title": null,
+          "placeholder": null,
+          "html": "<i class=\"Icon material focusable\"><span class=\"icon\" data-icon-name=\"arrow_drop_down\">arrow_drop_down</span></i>"
+        },
+        {
+          "tag": "INPUT",
+          "text": "",
+          "title": null,
+          "placeholder": null,
+          "disabled": false,
+          "html": "<input id=\"metrics-time-range-select\" tabindex=\"0\" inputmode=\"none\" aria-autocomplete=\"list\" aria-expanded=\"false\" aria-haspopup=\"true\" role=\"combobox\" aria-activedescendant=\"\" aria-readonly=\"true\" class=\"css-1hac4vs-dummyInput\" value=\"\">"
+        },
+        {
+          "tag": "INPUT",
+          "text": "",
+          "title": null,
+          "placeholder": null,
+          "disabled": false,
+          "html": "<input type=\"radio\" checked=\"\">"
+        },
+        {
+          "tag": "INPUT",
+          "text": "",
+          "title": null,
+          "placeholder": null,
+          "disabled": false,
+          "html": "<input type=\"radio\">"
+        },
+        {
+          "tag": "INPUT",
+          "text": "",
+          "title": null,
+          "placeholder": null,
+          "disabled": false,
+          "html": "<input type=\"radio\">"
+        },
+        {
+          "tag": "I",
+          "text": "info",
+          "title": null,
+          "placeholder": null,
+          "html": "<i class=\"Icon material focusable\"><span class=\"icon\" data-icon-name=\"info\">info</span></i>"
+        },
+        {
+          "tag": "INPUT",
+          "text": "",
+          "title": null,
+          "placeholder": null,
+          "disabled": false,
+          "html": "<input id=\"metrics-time-range-select\" tabindex=\"0\" inputmode=\"none\" aria-autocomplete=\"list\" aria-expanded=\"false\" aria-haspopup=\"true\" role=\"combobox\" aria-activedescendant=\"\" aria-readonly=\"true\" class=\"css-1hac4vs-dummyInput\" value=\"\">"
+        },
+        {
+          "tag": "INPUT",
+          "text": "",
+          "title": null,
+          "placeholder": null,
+          "disabled": false,
+          "html": "<input type=\"radio\" checked=\"\">"
+        },
+        {
+          "tag": "INPUT",
+          "text": "",
+          "title": null,
+          "placeholder": null,
+          "disabled": false,
+          "html": "<input type=\"radio\">"
+        },
+        {
+          "tag": "INPUT",
+          "text": "",
+          "title": null,
+          "placeholder": null,
+          "disabled": false,
+          "html": "<input type=\"radio\">"
+        },
+        {
+          "tag": "I",
+          "text": "info",
+          "title": null,
+          "placeholder": null,
+          "html": "<i class=\"Icon material focusable\"><span class=\"icon\" data-icon-name=\"info\">info</span></i>"
+        },
+        {
+          "tag": "I",
+          "text": "arrow_drop_down",
+          "title": null,
+          "placeholder": null,
+          "html": "<i class=\"Icon sidebar-cluster-module__dropdown--h8nPB material focusable\"><span class=\"icon\" data-icon-name=\"arrow_drop_down\">arrow_drop_down</span></i>"
+        },
+        {
+          "tag": "I",
+          "text": "star",
+          "title": null,
+          "placeholder": null,
+          "html": "<i class=\"Icon material focusable\"><span class=\"icon\" data-icon-name=\"star\">star</span></i>"
+        },
+        {
+          "tag": "I",
+          "text": "keyboard_arrow_down",
+          "title": null,
+          "placeholder": null,
+          "html": "<i class=\"Icon sidebar-items-module__expandIcon--daLxU material focusable\" data-testid=\"expand-icon-for-sidebar-item-favorites\"><span class=\"icon\" data-icon-name=\"keyboard_arrow_down\">keyboard_arrow_down</span></i>"
+        },
+        {
+          "tag": "I",
+          "text": "",
+          "title": null,
+          "placeholder": null,
+          "html": "<i class=\"Icon svg focusable\"><span class=\"icon\"><svg enable-background=\"new 0 0 24 24\" viewBox=\"0 0 24 24\" xmlns=\"http://www.w3.org/2000/svg\"><path d=\"m22.1 14.3c-.1 0-.1 0 0 0-.1 0-.1 0-.2 0s-.3 0-.4 0-.1 0-.2 0c-.4 0-.8-.1-1.1-.2-.1-.1-.2-.1-.2-.2l-.3-.1c.1-.9.1-1.9-.1-2.8-.3-1.1-.6-2-1.2-2.8l.2-.2c0-.1 0-.2.1-.3.3-.3.6-.4.9-.7.1 0 .1-.1.2-.1.1-.1.2-.1.3-.2 0 0 .1 0 .1-.1.3-.2.3-.6.1-.9-.1-.1-.3-.2-.5-.2s-.3.1-.4.2-.1.1-.1.1c-.1.1-.2.2-.3.3 0 0-.1.1-.1.1-.3.3-.5.5-.8.7 0 .1 0 .1-.1.1h-.1l-.2.2c-.3-.3-.5-.5-.8-.8-1.2-.9-2.7-1.5-4.2-1.7v-.3c-.1-.1-.1-.1-.2-.3 0-.3 0-.7.1-1.1 0-.1 0-.1 0-.2s0-.2.1-.4v-.1c0-.4-.3-.7-.6-.7-.2 0-.3.1-.4.2s-.2.3-.2.5v.1c0 .1 0 .3.1.4v.2c0 .4.1.8.1 1.1 0 .1-.1.2-.2.3v.3c-.4 0-.7.1-1.1.2-1.8.3-3.1 1.1-4.2 2.2l-.2-.2h-.1c-.1 0-.1 0-.2-.1-.3-.1-.6-.3-.8-.6s-.1-.1-"
+        },
+        {
+          "tag": "I",
+          "text": "",
+          "title": null,
+          "placeholder": null,
+          "html": "<i class=\"Icon svg focusable\"><span class=\"icon\"><svg enable-background=\"new 0 0 24 24\" viewBox=\"0 0 24 24\" xmlns=\"http://www.w3.org/2000/svg\"><path d=\"m8.7 4v16h6.7v-16zm3.3 13.3c-.3 0-.6-.3-.6-.6s.3-.6.6-.6.6.3.6.6-.3.6-.6.6zm2-6.8h-4v-1.2h4zm0-2.4h-4v-1.2h4z\"></path><path d=\"m16.6 5.1v13.8h6.2v-13.8zm2.9 11.2c-.3 0-.6-.3-.6-.6s.3-.6.6-.6.6.3.6.6-.1.6-.6.6zm1.7-4.9h-3.2v-1.3h3.2zm0-2.4h-3.2v-1.3h3.2z\"></path><path d=\"m1.2 5.1v13.8h6.2v-13.8zm3.3 11.2c-.3 0-.6-.3-.6-.6s.3-.7.6-.7.6.3.6.6-.3.7-.6.7zm1.5-4.9h-3.2v-1.3h3.2zm0-2.4h-3.2v-1.3h3.2z\"></path></svg></span></i>"
+        },
+        {
+          "tag": "I",
+          "text": "",
+          "title": null,
+          "placeholder": null,
+          "html": "<i class=\"Icon svg focusable\"><span class=\"icon\"><svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\">\n<path d=\"m12 7.47 4.25-2.47-4.25-2.44-4.25 2.44z\"></path><path d=\"m11.66 8.06-4.25-2.46v4.91l4.25 2.49z\"></path><path d=\"m12.34 8.06v4.94l4.25-2.45v-4.95z\"></path><path d=\"m16.93 15.94 4.26-2.45-4.26-2.49-4.25 2.45z\"></path><path d=\"m16.59 16.53-4.25-2.45v4.92l4.25 2.46z\"></path><path d=\"m17.26 16.53v4.91l4.26-2.44v-4.93z\"></path><path d=\"m7.07 15.94 4.25-2.45-4.25-2.49-4.25 2.49z\"></path><path d=\"m6.74 16.53-4.26-2.46v4.93l4.26 2.46z\"></path><path d=\"m7.41 16.53v4.91l4.25-2.44v-4.93z\"></path></svg></span></i>"
+        },
+        {
+          "tag": "I",
+          "text": "keyboard_arrow_up",
+          "title": null,
+          "placeholder": null,
+          "html": "<i class=\"Icon sidebar-items-module__expandIcon--daLxU material focusable\" data-testid=\"expand-icon-for-sidebar-item-workloads\"><span class=\"icon\" data-icon-name=\"keyboard_arrow_up\">keyboard_arrow_up</span></i>"
+        },
+        {
+          "tag": "I",
+          "text": "",
+          "title": null,
+          "placeholder": null,
+          "html": "<i class=\"Icon sidebar-items-module__pinIcon--Q4s8t svg interactive focusable\" tabindex=\"0\" data-testid=\"pin-icon-for-sidebar-item-workloads-overview\" style=\"--size: 16px;\"><span class=\"icon\"><svg enable-background=\"new 0 0 193.826 193.826\" viewBox=\"0 0 193.826 193.826\" xmlns=\"http://www.w3.org/2000/svg\"><path d=\"m191.495 55.511-54.046-54.046c-1.951-1.953-5.119-1.953-7.07 0l-.229.229c-3.314 3.313-5.14 7.72-5.14 12.406 0 3.019.767 5.916 2.192 8.485l-56.55 48.533c-4.328-3.868-9.852-5.985-15.703-5.985-6.305 0-12.232 2.455-16.689 6.913l-.339.339c-1.953 1.952-1.953 5.118 0 7.07l32.378 32.378-31.534 31.533c-.631.649-15.557 16.03-25.37 28.27-9.345 11.653-11.193 13.788-11.289 13.898-1.735 1.976-1.639 4.956.218 6.822.973.977 2.256 1.471 3.543 1.471 1.173 0 2.349-.41 3.295-1.237.083-.072 2.169-1.885"
+        },
+        {
+          "tag": "I",
+          "text": "",
+          "title": null,
+          "placeholder": null,
+          "html": "<i class=\"Icon sidebar-items-module__pinIcon--Q4s8t svg interactive focusable\" tabindex=\"0\" data-testid=\"pin-icon-for-sidebar-item-pods\" style=\"--size: 16px;\"><span class=\"icon\"><svg enable-background=\"new 0 0 193.826 193.826\" viewBox=\"0 0 193.826 193.826\" xmlns=\"http://www.w3.org/2000/svg\"><path d=\"m191.495 55.511-54.046-54.046c-1.951-1.953-5.119-1.953-7.07 0l-.229.229c-3.314 3.313-5.14 7.72-5.14 12.406 0 3.019.767 5.916 2.192 8.485l-56.55 48.533c-4.328-3.868-9.852-5.985-15.703-5.985-6.305 0-12.232 2.455-16.689 6.913l-.339.339c-1.953 1.952-1.953 5.118 0 7.07l32.378 32.378-31.534 31.533c-.631.649-15.557 16.03-25.37 28.27-9.345 11.653-11.193 13.788-11.289 13.898-1.735 1.976-1.639 4.956.218 6.822.973.977 2.256 1.471 3.543 1.471 1.173 0 2.349-.41 3.295-1.237.083-.072 2.169-1.885 13.898-11.289"
+        },
+        {
+          "tag": "I",
+          "text": "",
+          "title": null,
+          "placeholder": null,
+          "html": "<i class=\"Icon sidebar-items-module__pinIcon--Q4s8t svg interactive focusable\" tabindex=\"0\" data-testid=\"pin-icon-for-sidebar-item-deployments\" style=\"--size: 16px;\"><span class=\"icon\"><svg enable-background=\"new 0 0 193.826 193.826\" viewBox=\"0 0 193.826 193.826\" xmlns=\"http://www.w3.org/2000/svg\"><path d=\"m191.495 55.511-54.046-54.046c-1.951-1.953-5.119-1.953-7.07 0l-.229.229c-3.314 3.313-5.14 7.72-5.14 12.406 0 3.019.767 5.916 2.192 8.485l-56.55 48.533c-4.328-3.868-9.852-5.985-15.703-5.985-6.305 0-12.232 2.455-16.689 6.913l-.339.339c-1.953 1.952-1.953 5.118 0 7.07l32.378 32.378-31.534 31.533c-.631.649-15.557 16.03-25.37 28.27-9.345 11.653-11.193 13.788-11.289 13.898-1.735 1.976-1.639 4.956.218 6.822.973.977 2.256 1.471 3.543 1.471 1.173 0 2.349-.41 3.295-1.237.083-.072 2.169-1.885 13.898"
+        },
+        {
+          "tag": "I",
+          "text": "",
+          "title": null,
+          "placeholder": null,
+          "html": "<i class=\"Icon sidebar-items-module__pinIcon--Q4s8t svg interactive focusable\" tabindex=\"0\" data-testid=\"pin-icon-for-sidebar-item-daemon-sets\" style=\"--size: 16px;\"><span class=\"icon\"><svg enable-background=\"new 0 0 193.826 193.826\" viewBox=\"0 0 193.826 193.826\" xmlns=\"http://www.w3.org/2000/svg\"><path d=\"m191.495 55.511-54.046-54.046c-1.951-1.953-5.119-1.953-7.07 0l-.229.229c-3.314 3.313-5.14 7.72-5.14 12.406 0 3.019.767 5.916 2.192 8.485l-56.55 48.533c-4.328-3.868-9.852-5.985-15.703-5.985-6.305 0-12.232 2.455-16.689 6.913l-.339.339c-1.953 1.952-1.953 5.118 0 7.07l32.378 32.378-31.534 31.533c-.631.649-15.557 16.03-25.37 28.27-9.345 11.653-11.193 13.788-11.289 13.898-1.735 1.976-1.639 4.956.218 6.822.973.977 2.256 1.471 3.543 1.471 1.173 0 2.349-.41 3.295-1.237.083-.072 2.169-1.885 13.898"
+        },
+        {
+          "tag": "I",
+          "text": "",
+          "title": null,
+          "placeholder": null,
+          "html": "<i class=\"Icon sidebar-items-module__pinIcon--Q4s8t svg interactive focusable\" tabindex=\"0\" data-testid=\"pin-icon-for-sidebar-item-stateful-sets\" style=\"--size: 16px;\"><span class=\"icon\"><svg enable-background=\"new 0 0 193.826 193.826\" viewBox=\"0 0 193.826 193.826\" xmlns=\"http://www.w3.org/2000/svg\"><path d=\"m191.495 55.511-54.046-54.046c-1.951-1.953-5.119-1.953-7.07 0l-.229.229c-3.314 3.313-5.14 7.72-5.14 12.406 0 3.019.767 5.916 2.192 8.485l-56.55 48.533c-4.328-3.868-9.852-5.985-15.703-5.985-6.305 0-12.232 2.455-16.689 6.913l-.339.339c-1.953 1.952-1.953 5.118 0 7.07l32.378 32.378-31.534 31.533c-.631.649-15.557 16.03-25.37 28.27-9.345 11.653-11.193 13.788-11.289 13.898-1.735 1.976-1.639 4.956.218 6.822.973.977 2.256 1.471 3.543 1.471 1.173 0 2.349-.41 3.295-1.237.083-.072 2.169-1.885 13.8"
+        },
+        {
+          "tag": "I",
+          "text": "",
+          "title": null,
+          "placeholder": null,
+          "html": "<i class=\"Icon sidebar-items-module__pinIcon--Q4s8t svg interactive focusable\" tabindex=\"0\" data-testid=\"pin-icon-for-sidebar-item-replica-sets\" style=\"--size: 16px;\"><span class=\"icon\"><svg enable-background=\"new 0 0 193.826 193.826\" viewBox=\"0 0 193.826 193.826\" xmlns=\"http://www.w3.org/2000/svg\"><path d=\"m191.495 55.511-54.046-54.046c-1.951-1.953-5.119-1.953-7.07 0l-.229.229c-3.314 3.313-5.14 7.72-5.14 12.406 0 3.019.767 5.916 2.192 8.485l-56.55 48.533c-4.328-3.868-9.852-5.985-15.703-5.985-6.305 0-12.232 2.455-16.689 6.913l-.339.339c-1.953 1.952-1.953 5.118 0 7.07l32.378 32.378-31.534 31.533c-.631.649-15.557 16.03-25.37 28.27-9.345 11.653-11.193 13.788-11.289 13.898-1.735 1.976-1.639 4.956.218 6.822.973.977 2.256 1.471 3.543 1.471 1.173 0 2.349-.41 3.295-1.237.083-.072 2.169-1.885 13.89"
+        },
+        {
+          "tag": "I",
+          "text": "",
+          "title": null,
+          "placeholder": null,
+          "html": "<i class=\"Icon sidebar-items-module__pinIcon--Q4s8t svg interactive focusable\" tabindex=\"0\" data-testid=\"pin-icon-for-sidebar-item-replication-controller\" style=\"--size: 16px;\"><span class=\"icon\"><svg enable-background=\"new 0 0 193.826 193.826\" viewBox=\"0 0 193.826 193.826\" xmlns=\"http://www.w3.org/2000/svg\"><path d=\"m191.495 55.511-54.046-54.046c-1.951-1.953-5.119-1.953-7.07 0l-.229.229c-3.314 3.313-5.14 7.72-5.14 12.406 0 3.019.767 5.916 2.192 8.485l-56.55 48.533c-4.328-3.868-9.852-5.985-15.703-5.985-6.305 0-12.232 2.455-16.689 6.913l-.339.339c-1.953 1.952-1.953 5.118 0 7.07l32.378 32.378-31.534 31.533c-.631.649-15.557 16.03-25.37 28.27-9.345 11.653-11.193 13.788-11.289 13.898-1.735 1.976-1.639 4.956.218 6.822.973.977 2.256 1.471 3.543 1.471 1.173 0 2.349-.41 3.295-1.237.083-.072 2.169-1"
+        },
+        {
+          "tag": "I",
+          "text": "",
+          "title": null,
+          "placeholder": null,
+          "html": "<i class=\"Icon sidebar-items-module__pinIcon--Q4s8t svg interactive focusable\" tabindex=\"0\" data-testid=\"pin-icon-for-sidebar-item-jobs\" style=\"--size: 16px;\"><span class=\"icon\"><svg enable-background=\"new 0 0 193.826 193.826\" viewBox=\"0 0 193.826 193.826\" xmlns=\"http://www.w3.org/2000/svg\"><path d=\"m191.495 55.511-54.046-54.046c-1.951-1.953-5.119-1.953-7.07 0l-.229.229c-3.314 3.313-5.14 7.72-5.14 12.406 0 3.019.767 5.916 2.192 8.485l-56.55 48.533c-4.328-3.868-9.852-5.985-15.703-5.985-6.305 0-12.232 2.455-16.689 6.913l-.339.339c-1.953 1.952-1.953 5.118 0 7.07l32.378 32.378-31.534 31.533c-.631.649-15.557 16.03-25.37 28.27-9.345 11.653-11.193 13.788-11.289 13.898-1.735 1.976-1.639 4.956.218 6.822.973.977 2.256 1.471 3.543 1.471 1.173 0 2.349-.41 3.295-1.237.083-.072 2.169-1.885 13.898-11.289"
+        },
+        {
+          "tag": "I",
+          "text": "",
+          "title": null,
+          "placeholder": null,
+          "html": "<i class=\"Icon sidebar-items-module__pinIcon--Q4s8t svg interactive focusable\" tabindex=\"0\" data-testid=\"pin-icon-for-sidebar-item-cron-jobs\" style=\"--size: 16px;\"><span class=\"icon\"><svg enable-background=\"new 0 0 193.826 193.826\" viewBox=\"0 0 193.826 193.826\" xmlns=\"http://www.w3.org/2000/svg\"><path d=\"m191.495 55.511-54.046-54.046c-1.951-1.953-5.119-1.953-7.07 0l-.229.229c-3.314 3.313-5.14 7.72-5.14 12.406 0 3.019.767 5.916 2.192 8.485l-56.55 48.533c-4.328-3.868-9.852-5.985-15.703-5.985-6.305 0-12.232 2.455-16.689 6.913l-.339.339c-1.953 1.952-1.953 5.118 0 7.07l32.378 32.378-31.534 31.533c-.631.649-15.557 16.03-25.37 28.27-9.345 11.653-11.193 13.788-11.289 13.898-1.735 1.976-1.639 4.956.218 6.822.973.977 2.256 1.471 3.543 1.471 1.173 0 2.349-.41 3.295-1.237.083-.072 2.169-1.885 13.898-1"
+        },
+        {
+          "tag": "I",
+          "text": "list",
+          "title": null,
+          "placeholder": null,
+          "html": "<i class=\"Icon material focusable\"><span class=\"icon\" data-icon-name=\"list\">list</span></i>"
+        },
+        {
+          "tag": "I",
+          "text": "keyboard_arrow_down",
+          "title": null,
+          "placeholder": null,
+          "html": "<i class=\"Icon sidebar-items-module__expandIcon--daLxU material focusable\" data-testid=\"expand-icon-for-sidebar-item-config\"><span class=\"icon\" data-icon-name=\"keyboard_arrow_down\">keyboard_arrow_down</span></i>"
+        },
+        {
+          "tag": "I",
+          "text": "device_hub",
+          "title": null,
+          "placeholder": null,
+          "html": "<i class=\"Icon material focusable\"><span class=\"icon\" data-icon-name=\"device_hub\">device_hub</span></i>"
+        },
+        {
+          "tag": "I",
+          "text": "keyboard_arrow_down",
+          "title": null,
+          "placeholder": null,
+          "html": "<i class=\"Icon sidebar-items-module__expandIcon--daLxU material focusable\" data-testid=\"expand-icon-for-sidebar-item-network\"><span class=\"icon\" data-icon-name=\"keyboard_arrow_down\">keyboard_arrow_down</span></i>"
+        },
+        {
+          "tag": "I",
+          "text": "storage",
+          "title": null,
+          "placeholder": null,
+          "html": "<i class=\"Icon material focusable\"><span class=\"icon\" data-icon-name=\"storage\">storage</span></i>"
+        },
+        {
+          "tag": "I",
+          "text": "keyboard_arrow_down",
+          "title": null,
+          "placeholder": null,
+          "html": "<i class=\"Icon sidebar-items-module__expandIcon--daLxU material focusable\" data-testid=\"expand-icon-for-sidebar-item-storage\"><span class=\"icon\" data-icon-name=\"keyboard_arrow_down\">keyboard_arrow_down</span></i>"
+        },
+        {
+          "tag": "I",
+          "text": "layers",
+          "title": null,
+          "placeholder": null,
+          "html": "<i class=\"Icon material focusable\"><span class=\"icon\" data-icon-name=\"layers\">layers</span></i>"
+        },
+        {
+          "tag": "I",
+          "text": "access_time",
+          "title": null,
+          "placeholder": null,
+          "html": "<i class=\"Icon material focusable\"><span class=\"icon\" data-icon-name=\"access_time\">access_time</span></i>"
+        },
+        {
+          "tag": "I",
+          "text": "",
+          "title": null,
+          "placeholder": null,
+          "html": "<i class=\"Icon svg focusable\"><span class=\"icon\"><svg id=\"Layer_1\" data-name=\"Layer 1\" xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 500 500\"><defs><style>.cls-1{fill:#fff;}</style></defs><path class=\"cls-1\" d=\"M136.52938,121.13478c-.572-.54252-1.19462-1.12636-1.81-1.71761-12.61677-12.12115-22.38092-26.13637-28.279-42.702-1.65073-4.63637-2.89692-9.36515-2.67587-14.35871.021-.4739.01959-.94915.05226-1.42214.445-6.44594,4.75912-9.70322,11.05839-8.17669a27.325,27.325,0,0,1,5.73149,2.19653c6.89022,3.45538,12.5062,8.56359,17.67051,14.16571a112.52651,112.52651,0,0,1,21.722,33.42965,8.29635,8.29635,0,0,0,.38946.861c.07116.12855.22232.21282.55927.51883A176.357,176.357,0,0,1,241.968,79.06864c-.17651-.8761-.28195-1.54571-.44772-2.2a112.49436,112.49436,0,0,1-2.65292-36.95637,84.07478,84.07478,0,0,1"
+        },
+        {
+          "tag": "I",
+          "text": "keyboard_arrow_down",
+          "title": null,
+          "placeholder": null,
+          "html": "<i class=\"Icon sidebar-items-module__expandIcon--daLxU material focusable\" data-testid=\"expand-icon-for-sidebar-item-helm\"><span class=\"icon\" data-icon-name=\"keyboard_arrow_down\">keyboard_arrow_down</span></i>"
+        },
+        {
+          "tag": "I",
+          "text": "security",
+          "title": null,
+          "placeholder": null,
+          "html": "<i class=\"Icon material focusable\"><span class=\"icon\" data-icon-name=\"security\">security</span></i>"
+        },
+        {
+          "tag": "I",
+          "text": "keyboard_arrow_down",
+          "title": null,
+          "placeholder": null,
+          "html": "<i class=\"Icon sidebar-items-module__expandIcon--daLxU material focusable\" data-testid=\"expand-icon-for-sidebar-item-user-management\"><span class=\"icon\" data-icon-name=\"keyboard_arrow_down\">keyboard_arrow_down</span></i>"
+        },
+        {
+          "tag": "I",
+          "text": "extension",
+          "title": null,
+          "placeholder": null,
+          "html": "<i class=\"Icon material focusable\"><span class=\"icon\" data-icon-name=\"extension\">extension</span></i>"
+        },
+        {
+          "tag": "I",
+          "text": "keyboard_arrow_down",
+          "title": null,
+          "placeholder": null,
+          "html": "<i class=\"Icon sidebar-items-module__expandIcon--daLxU material focusable\" data-testid=\"expand-icon-for-sidebar-item-custom-resources\"><span class=\"icon\" data-icon-name=\"keyboard_arrow_down\">keyboard_arrow_down</span></i>"
+        },
+        {
+          "tag": "INPUT",
+          "text": "",
+          "title": null,
+          "placeholder": null,
+          "disabled": false,
+          "html": "<input class=\"Select__input\" autocapitalize=\"none\" autocomplete=\"off\" autocorrect=\"off\" id=\"kube-object-list-layout-namespace-select-input\" spellcheck=\"false\" tabindex=\"0\" type=\"text\" aria-autocomplete=\"list\" aria-expanded=\"false\" aria-haspopup=\"true\" role=\"combobox\" aria-activedescendant=\"\" aria-describedby=\"react-select-kube-object-list-layout-namespace-select-input-placeholder\" value=\"\" style=\"color: inherit; background: 0px center; opacity: 1; width: 100%; grid-area: 1 / 2; font: inherit; min-width: 2px; border: 0px; margin: 0px; outline: 0px; padding: 0px;\">"
+        },
+        {
+          "tag": "INPUT",
+          "text": "",
+          "title": null,
+          "placeholder": "Search Pods...",
+          "disabled": false,
+          "html": "<input placeholder=\"Search Pods...\" class=\"input box grow\" spellcheck=\"false\" value=\"\">"
+        },
+        {
+          "tag": "I",
+          "text": "search",
+          "title": null,
+          "placeholder": null,
+          "html": "<i class=\"Icon material focusable small\"><span class=\"icon\" data-icon-name=\"search\">search</span></i>"
+        },
+        {
+          "tag": "I",
+          "text": "link_off",
+          "title": null,
+          "placeholder": null,
+          "html": "<i class=\"Icon material interactive focusable small\" tabindex=\"0\" id=\"tooltip_target_69\"><span class=\"icon\" data-icon-name=\"link_off\">link_off</span><div></div></i>"
+        },
+        {
+          "tag": "INPUT",
+          "text": "",
+          "title": null,
+          "placeholder": null,
+          "disabled": false,
+          "html": "<input type=\"checkbox\">"
+        },
+        {
+          "tag": "I",
+          "text": "arrow_drop_down",
+          "title": null,
+          "placeholder": null,
+          "html": "<i class=\"Icon sortIcon material focusable\"><span class=\"icon\" data-icon-name=\"arrow_drop_down\">arrow_drop_down</span></i>"
+        },
+        {
+          "tag": "I",
+          "text": "warning_amber",
+          "title": null,
+          "placeholder": null,
+          "html": "<i class=\"Icon material focusable\"><span class=\"icon\" data-icon-name=\"warning_amber\">warning_amber</span></i>"
+        },
+        {
+          "tag": "I",
+          "text": "arrow_drop_down",
+          "title": null,
+          "placeholder": null,
+          "html": "<i class=\"Icon sortIcon material focusable\"><span class=\"icon\" data-icon-name=\"arrow_drop_down\">arrow_drop_down</span></i>"
+        },
+        {
+          "tag": "I",
+          "text": "arrow_drop_down",
+          "title": null,
+          "placeholder": null,
+          "html": "<i class=\"Icon sortIcon material focusable\"><span class=\"icon\" data-icon-name=\"arrow_drop_down\">arrow_drop_down</span></i>"
+        },
+        {
+          "tag": "I",
+          "text": "arrow_drop_down",
+          "title": null,
+          "placeholder": null,
+          "html": "<i class=\"Icon sortIcon material focusable\"><span class=\"icon\" data-icon-name=\"arrow_drop_down\">arrow_drop_down</span></i>"
+        },
+        {
+          "tag": "I",
+          "text": "arrow_drop_down",
+          "title": null,
+          "placeholder": null,
+          "html": "<i class=\"Icon sortIcon material focusable\"><span class=\"icon\" data-icon-name=\"arrow_drop_down\">arrow_drop_down</span></i>"
+        },
+        {
+          "tag": "I",
+          "text": "arrow_drop_down",
+          "title": null,
+          "placeholder": null,
+          "html": "<i class=\"Icon sortIcon material focusable\"><span class=\"icon\" data-icon-name=\"arrow_drop_down\">arrow_drop_down</span></i>"
+        },
+        {
+          "tag": "I",
+          "text": "arrow_drop_down",
+          "title": null,
+          "placeholder": null,
+          "html": "<i class=\"Icon sortIcon material focusable\"><span class=\"icon\" data-icon-name=\"arrow_drop_down\">arrow_drop_down</span></i>"
+        },
+        {
+          "tag": "I",
+          "text": "arrow_drop_down",
+          "title": null,
+          "placeholder": null,
+          "html": "<i class=\"Icon sortIcon material focusable\"><span class=\"icon\" data-icon-name=\"arrow_drop_down\">arrow_drop_down</span></i>"
+        },
+        {
+          "tag": "I",
+          "text": "arrow_drop_down",
+          "title": null,
+          "placeholder": null,
+          "html": "<i class=\"Icon sortIcon material focusable\"><span class=\"icon\" data-icon-name=\"arrow_drop_down\">arrow_drop_down</span></i>"
+        },
+        {
+          "tag": "I",
+          "text": "subject",
+          "title": null,
+          "placeholder": null,
+          "html": "<i class=\"Icon material focusable\"><span class=\"icon\" data-icon-name=\"subject\">subject</span></i>"
+        },
+        {
+          "tag": "I",
+          "text": "more_vert",
+          "title": null,
+          "placeholder": null,
+          "html": "<i class=\"Icon material interactive focusable\" tabindex=\"0\" id=\"menu-actions-for-item-object-list-content\"><span class=\"icon\" data-icon-name=\"more_vert\">more_vert</span></i>"
+        },
+        {
+          "tag": "INPUT",
+          "text": "",
+          "title": null,
+          "placeholder": null,
+          "disabled": false,
+          "html": "<input type=\"checkbox\">"
+        },
+        {
+          "tag": "I",
+          "text": "subject",
+          "title": null,
+          "placeholder": null,
+          "html": "<i class=\"Icon material interactive focusable\" tabindex=\"0\" id=\"tooltip_target_87\" style=\"cursor: pointer;\"><span class=\"icon\" data-icon-name=\"subject\">subject</span><div></div></i>"
+        },
+        {
+          "tag": "I",
+          "text": "more_vert",
+          "title": null,
+          "placeholder": null,
+          "html": "<i class=\"Icon material interactive focusable\" tabindex=\"0\" id=\"c8190dc0-0f37-4918-9918-53eba7c8ebc1\" data-testid=\"icon-for-menu-actions-for-kube-object-menu-for-c8190dc0-0f37-4918-9918-53eba7c8ebc1\"><span class=\"icon\" data-icon-name=\"more_vert\">more_vert</span></i>"
+        },
+        {
+          "tag": "INPUT",
+          "text": "",
+          "title": null,
+          "placeholder": null,
+          "disabled": false,
+          "html": "<input type=\"checkbox\">"
+        },
+        {
+          "tag": "I",
+          "text": "subject",
+          "title": null,
+          "placeholder": null,
+          "html": "<i class=\"Icon material interactive focusable\" tabindex=\"0\" id=\"tooltip_target_94\" style=\"cursor: pointer;\"><span class=\"icon\" data-icon-name=\"subject\">subject</span><div></div></i>"
+        },
+        {
+          "tag": "I",
+          "text": "more_vert",
+          "title": null,
+          "placeholder": null,
+          "html": "<i class=\"Icon material interactive focusable\" tabindex=\"0\" id=\"0035d4f0-23c6-4e7d-93b2-c1d13a41cb92\" data-testid=\"icon-for-menu-actions-for-kube-object-menu-for-0035d4f0-23c6-4e7d-93b2-c1d13a41cb92\"><span class=\"icon\" data-icon-name=\"more_vert\">more_vert</span></i>"
+        },
+        {
+          "tag": "I",
+          "text": "terminal",
+          "title": null,
+          "placeholder": null,
+          "html": "<i class=\"Icon material focusable\"><span class=\"icon\" data-icon-name=\"terminal\">terminal</span></i>"
+        },
+        {
+          "tag": "I",
+          "text": "close",
+          "title": null,
+          "placeholder": null,
+          "html": "<i class=\"Icon material interactive focusable small\" tabindex=\"0\" id=\"tooltip_target_31\" data-testid=\"dock-tab-close-for-terminal\"><span class=\"icon\" data-icon-name=\"close\">close</span><div></div></i>"
+        },
+        {
+          "tag": "I",
+          "text": "subject",
+          "title": null,
+          "placeholder": null,
+          "html": "<i class=\"Icon material focusable small\"><span class=\"icon\" data-icon-name=\"subject\">subject</span></i>"
+        },
+        {
+          "tag": "I",
+          "text": "close",
+          "title": null,
+          "placeholder": null,
+          "html": "<i class=\"Icon material interactive focusable small\" tabindex=\"0\" id=\"tooltip_target_33\" data-testid=\"dock-tab-close-for-log-tab-d34f2b4f-84ad-42e7-8642-d7a70844db27\"><span class=\"icon\" data-icon-name=\"close\">close</span><div></div></i>"
+        },
+        {
+          "tag": "I",
+          "text": "subject",
+          "title": null,
+          "placeholder": null,
+          "html": "<i class=\"Icon material focusable small\"><span class=\"icon\" data-icon-name=\"subject\">subject</span></i>"
+        },
+        {
+          "tag": "I",
+          "text": "close",
+          "title": null,
+          "placeholder": null,
+          "html": "<i class=\"Icon material interactive focusable small\" tabindex=\"0\" id=\"tooltip_target_35\" data-testid=\"dock-tab-close-for-log-tab-a1298e84-48c1-4d63-9fec-a4713ca389ee\"><span class=\"icon\" data-icon-name=\"close\">close</span><div></div></i>"
+        },
+        {
+          "tag": "I",
+          "text": "add",
+          "title": null,
+          "placeholder": null,
+          "html": "<i class=\"Icon new-dock-tab material interactive focusable\" tabindex=\"0\" id=\"menu-actions-for-dock\"><span class=\"icon\" data-icon-name=\"add\">add</span><div></div></i>"
+        },
+        {
+          "tag": "I",
+          "text": "fullscreen",
+          "title": null,
+          "placeholder": null,
+          "html": "<i class=\"Icon material interactive focusable\" tabindex=\"0\" id=\"tooltip_target_37\"><span class=\"icon\" data-icon-name=\"fullscreen\">fullscreen</span><div></div></i>"
+        },
+        {
+          "tag": "I",
+          "text": "keyboard_arrow_down",
+          "title": null,
+          "placeholder": null,
+          "html": "<i class=\"Icon material interactive focusable\" tabindex=\"0\" id=\"tooltip_target_38\"><span class=\"icon\" data-icon-name=\"keyboard_arrow_down\">keyboard_arrow_down</span><div></div></i>"
+        },
+        {
+          "tag": "INPUT",
+          "text": "",
+          "title": null,
+          "placeholder": null,
+          "disabled": false,
+          "html": "<input class=\"Select__input\" autocapitalize=\"none\" autocomplete=\"off\" autocorrect=\"off\" id=\"react-select-2-input\" spellcheck=\"false\" tabindex=\"0\" type=\"text\" aria-autocomplete=\"list\" aria-expanded=\"false\" aria-haspopup=\"true\" role=\"combobox\" aria-activedescendant=\"\" value=\"\" style=\"color: inherit; background: 0px center; opacity: 1; width: 100%; grid-area: 1 / 2; font: inherit; min-width: 2px; border: 0px; margin: 0px; outline: 0px; padding: 0px;\">"
+        },
+        {
+          "tag": "INPUT",
+          "text": "",
+          "title": null,
+          "placeholder": null,
+          "disabled": false,
+          "html": "<input class=\"Select__input\" autocapitalize=\"none\" autocomplete=\"off\" autocorrect=\"off\" id=\"container-selector-input\" spellcheck=\"false\" tabindex=\"0\" type=\"text\" aria-autocomplete=\"list\" aria-expanded=\"false\" aria-haspopup=\"true\" role=\"combobox\" aria-activedescendant=\"\" value=\"\" style=\"color: inherit; background: 0px center; opacity: 1; width: 100%; grid-area: 1 / 2; font: inherit; min-width: 2px; border: 0px; margin: 0px; outline: 0px; padding: 0px;\">"
+        },
+        {
+          "tag": "INPUT",
+          "text": "",
+          "title": null,
+          "placeholder": "Search...",
+          "disabled": false,
+          "html": "<input placeholder=\"Search...\" class=\"input box grow\" spellcheck=\"false\" value=\"\">"
+        },
+        {
+          "tag": "I",
+          "text": "search",
+          "title": null,
+          "placeholder": null,
+          "html": "<i class=\"Icon material focusable small\"><span class=\"icon\" data-icon-name=\"search\">search</span></i>"
+        },
+        {
+          "tag": "I",
+          "text": "keyboard_arrow_up",
+          "title": null,
+          "placeholder": null,
+          "html": "<i class=\"Icon material interactive disabled focusable\" id=\"tooltip_target_40\"><span class=\"icon\" data-icon-name=\"keyboard_arrow_up\">keyboard_arrow_up</span><div></div></i>"
+        },
+        {
+          "tag": "I",
+          "text": "keyboard_arrow_down",
+          "title": null,
+          "placeholder": null,
+          "html": "<i class=\"Icon material interactive disabled focusable\" id=\"tooltip_target_41\"><span class=\"icon\" data-icon-name=\"keyboard_arrow_down\">keyboard_arrow_down</span><div></div></i>"
+        },
+        {
+          "tag": "INPUT",
+          "text": "",
+          "title": null,
+          "placeholder": null,
+          "disabled": false,
+          "html": "<input type=\"checkbox\">"
+        },
+        {
+          "tag": "INPUT",
+          "text": "",
+          "title": null,
+          "placeholder": null,
+          "disabled": false,
+          "html": "<input type=\"checkbox\" checked=\"\">"
+        },
+        {
+          "tag": "INPUT",
+          "text": "",
+          "title": null,
+          "placeholder": null,
+          "disabled": false,
+          "html": "<input type=\"checkbox\">"
+        },
+        {
+          "tag": "BUTTON",
+          "text": "Download\narrow_drop_down",
+          "title": null,
+          "placeholder": null,
+          "disabled": false,
+          "html": "<button data-testid=\"download-logs-dropdown\" class=\"download-logs-dropdown-module__dropdown--v_Kyg\">Download<i class=\"Icon material focusable smallest\"><span class=\"icon\" data-icon-name=\"arrow_drop_down\">arrow_drop_down</span></i></button>"
+        },
+        {
+          "tag": "I",
+          "text": "arrow_drop_down",
+          "title": null,
+          "placeholder": null,
+          "html": "<i class=\"Icon material focusable smallest\"><span class=\"icon\" data-icon-name=\"arrow_drop_down\">arrow_drop_down</span></i>"
+        }
+      ]
+    }
+  }
+}

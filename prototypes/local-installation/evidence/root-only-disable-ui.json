@@ -1,0 +1,162 @@
+{
+  "result": {
+    "type": "object",
+    "value": {
+      "at": "2026-10-22T21:29:18.214Z",
+      "url": "https://renderer.freelens.app:34389/extensions",
+      "body": "home\narrow_back\narrow_forward\nExtensions\n\nAdd new features via Freelens Extensions.\n\nNAME OR FILE PATH OR URL TO AN EXTENSION PACKAGE (TAR, TGZ)\nfolder_open\nInstall\nPro-Tip: you can drag and drop a tarball file to this area\nInstalled extensions\nsearch\nName\narrow_drop_down\nVersion\narrow_drop_down\nStatus\narrow_drop_down\nfreelens-readable-logs-host-spike\nDisposable Freelens 1.10.3 integration experiment; do not ship\n0.0.2\nDisabled\nmore_vert\nclose\nESC\nhome\nsettings\nview_list\nsettings\narrow_left\n1\narrow_right\ninfo_outline\n\nExtension freelens-readable-logs-host-spike@0.0.2 successfully installed!\n\nclose",
+      "controls": [
+        {
+          "tag": "I",
+          "text": "home",
+          "title": null,
+          "placeholder": null,
+          "html": "<i class=\"Icon material interactive focusable\" data-testid=\"home-button\" tabindex=\"0\"><span class=\"icon\" data-icon-name=\"home\">home</span></i>"
+        },
+        {
+          "tag": "I",
+          "text": "arrow_back",
+          "title": null,
+          "placeholder": null,
+          "html": "<i class=\"Icon material interactive disabled focusable\" data-testid=\"history-back\"><span class=\"icon\" data-icon-name=\"arrow_back\">arrow_back</span></i>"
+        },
+        {
+          "tag": "I",
+          "text": "arrow_forward",
+          "title": null,
+          "placeholder": null,
+          "html": "<i class=\"Icon material interactive disabled focusable\" data-testid=\"history-forward\"><span class=\"icon\" data-icon-name=\"arrow_forward\">arrow_forward</span></i>"
+        },
+        {
+          "tag": "INPUT",
+          "text": "",
+          "title": null,
+          "placeholder": "Name or file path or URL",
+          "disabled": false,
+          "html": "<input placeholder=\"Name or file path or URL\" class=\"input box grow\" spellcheck=\"false\" value=\"/tmp/freelens-local-installation-worktree/prototypes/local-installation/freelens-readable-logs-host-spike-0.0.2.tgz\">"
+        },
+        {
+          "tag": "I",
+          "text": "folder_open",
+          "title": null,
+          "placeholder": null,
+          "html": "<i class=\"Icon install-module__icon--ftDAb material interactive focusable smallest\" tabindex=\"0\" id=\"tooltip_target_16\"><span class=\"icon\" data-icon-name=\"folder_open\">folder_open</span><div></div></i>"
+        },
+        {
+          "tag": "BUTTON",
+          "text": "Install",
+          "title": null,
+          "placeholder": null,
+          "disabled": false,
+          "html": "<button type=\"button\" class=\"Button install-module__button--SVZWE primary\" data-waiting=\"false\">Install</button>"
+        },
+        {
+          "tag": "INPUT",
+          "text": "",
+          "title": null,
+          "placeholder": "Search...",
+          "disabled": false,
+          "html": "<input placeholder=\"Search...\" class=\"input box grow\" spellcheck=\"false\" value=\"\">"
+        },
+        {
+          "tag": "I",
+          "text": "search",
+          "title": null,
+          "placeholder": null,
+          "html": "<i class=\"Icon material focusable small\"><span class=\"icon\" data-icon-name=\"search\">search</span></i>"
+        },
+        {
+          "tag": "I",
+          "text": "arrow_drop_down",
+          "title": null,
+          "placeholder": null,
+          "html": "<i class=\"Icon disabledArrow material focusable small\"><span class=\"icon\" data-icon-name=\"arrow_drop_down\">arrow_drop_down</span></i>"
+        },
+        {
+          "tag": "I",
+          "text": "arrow_drop_down",
+          "title": null,
+          "placeholder": null,
+          "html": "<i class=\"Icon disabledArrow material focusable small\"><span class=\"icon\" data-icon-name=\"arrow_drop_down\">arrow_drop_down</span></i>"
+        },
+        {
+          "tag": "I",
+          "text": "arrow_drop_down",
+          "title": null,
+          "placeholder": null,
+          "html": "<i class=\"Icon disabledArrow material focusable small\"><span class=\"icon\" data-icon-name=\"arrow_drop_down\">arrow_drop_down</span></i>"
+        },
+        {
+          "tag": "I",
+          "text": "more_vert",
+          "title": null,
+          "placeholder": null,
+          "html": "<i class=\"Icon material interactive focusable\" tabindex=\"0\" id=\"menu-actions-for-installed-extensions-for-/home/max/.config/Freelens/node_modules/freelens-readable-logs-host-spike/package.json\"><span class=\"icon\" data-icon-name=\"more_vert\">more_vert</span></i>"
+        },
+        {
+          "tag": "I",
+          "text": "close",
+          "title": null,
+          "placeholder": null,
+          "html": "<i class=\"Icon close-button-module__icon--ZeZo9 material focusable\"><span class=\"icon\" data-icon-name=\"close\">close</span></i>"
+        },
+        {
+          "tag": "I",
+          "text": "home",
+          "title": null,
+          "placeholder": null,
+          "html": "<i class=\"Icon material focusable\"><span class=\"icon\" data-icon-name=\"home\">home</span></i>"
+        },
+        {
+          "tag": "I",
+          "text": "settings",
+          "title": null,
+          "placeholder": null,
+          "html": "<i class=\"Icon hotbar-entity-icon-module__badge--BsuhV material focusable\"><span class=\"icon\" data-icon-name=\"settings\">settings</span></i>"
+        },
+        {
+          "tag": "I",
+          "text": "view_list",
+          "title": null,
+          "placeholder": null,
+          "html": "<i class=\"Icon material focusable\"><span class=\"icon\" data-icon-name=\"view_list\">view_list</span></i>"
+        },
+        {
+          "tag": "I",
+          "text": "settings",
+          "title": null,
+          "placeholder": null,
+          "html": "<i class=\"Icon hotbar-entity-icon-module__badge--BsuhV material focusable\"><span class=\"icon\" data-icon-name=\"settings\">settings</span></i>"
+        },
+        {
+          "tag": "I",
+          "text": "arrow_left",
+          "title": null,
+          "placeholder": null,
+          "html": "<i class=\"Icon hotbar-selector-module__Icon--fs7Aj material interactive focusable\" tabindex=\"0\"><span class=\"icon\" data-icon-name=\"arrow_left\">arrow_left</span></i>"
+        },
+        {
+          "tag": "I",
+          "text": "arrow_right",
+          "title": null,
+          "placeholder": null,
+          "html": "<i class=\"Icon hotbar-selector-module__Icon--fs7Aj material interactive focusable\" tabindex=\"0\"><span class=\"icon\" data-icon-name=\"arrow_right\">arrow_right</span></i>"
+        },
+        {
+          "tag": "I",
+          "text": "info_outline",
+          "title": null,
+          "placeholder": null,
+          "html": "<i class=\"Icon material focusable\"><span class=\"icon\" data-icon-name=\"info_outline\">info_outline</span></i>"
+        },
+        {
+          "tag": "I",
+          "text": "close",
+          "title": null,
+          "placeholder": null,
+          "html": "<i class=\"Icon close material interactive focusable\" tabindex=\"0\" data-testid=\"close-notification-for-notification_62\"><span class=\"icon\" data-icon-name=\"close\">close</span></i>"
+        }
+      ]
+    }
+  }
+}

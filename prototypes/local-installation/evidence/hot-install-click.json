@@ -1,0 +1,10 @@
+{
+  "result": {
+    "type": "object",
+    "value": {
+      "clickCount": 1,
+      "input": "/tmp/freelens-local-installation-worktree/prototypes/host-integration/freelens-readable-logs-host-spike-0.0.1.tgz",
+      "at": "2026-10-22T21:21:58.221Z"
+    }
+  }
+}

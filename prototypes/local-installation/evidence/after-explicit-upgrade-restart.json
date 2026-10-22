@@ -1,0 +1,23 @@
+{
+  "at": 1792704566.6194053,
+  "oldMainPid": 1864400,
+  "originalPids": [
+    "1864400",
+    "1864403",
+    "1864404",
+    "1864406",
+    "1864452",
+    "1864688",
+    "1864864"
+  ],
+  "remainingPids": [],
+  "quit": "SIGTERM main process",
+  "waitSeconds": 0.2,
+  "newLogOffset": 81256,
+  "activeWorkspaceBeforeLaunch": 2,
+  "activeWindowBeforeLaunch": "0x55baeff066d0",
+  "newMainPid": 1866814,
+  "newWindowWorkspace": 7,
+  "activeWorkspaceAfterLaunch": 2,
+  "activeWindowAfterLaunch": "0x55baeff066d0"
+}

@@ -1,0 +1,10 @@
+{
+  "at": 1792704135.6776407,
+  "pid": 1845591,
+  "argv": [
+    "/usr/bin/freelens",
+    "--remote-debugging-address=127.0.0.1",
+    "--remote-debugging-port=9235"
+  ],
+  "previousMainExited": true
+}

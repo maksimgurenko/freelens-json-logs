@@ -1,0 +1,8 @@
+{
+	"marker": "installation-upgrade-proof-2026-10-22",
+	"__internal__": {
+		"migrations": {
+			"version": "0.0.2"
+		}
+	}
+}

@@ -1,0 +1,70 @@
+{
+  "contexts": [
+    {
+      "id": 2,
+      "origin": "https://770814298afe692457d07d8b15d6b8d3.renderer.freelens.app:40443",
+      "name": "",
+      "uniqueId": "-1665988737267791514.-1638052821191407127",
+      "auxData": {
+        "isDefault": true,
+        "type": "default",
+        "frameId": "CC0210FEFD9DAFE313D2F98B95938050"
+      }
+    },
+    {
+      "id": 1,
+      "origin": "https://renderer.freelens.app:40443",
+      "name": "",
+      "uniqueId": "-5751439365714608146.-8307449600697956743",
+      "auxData": {
+        "isDefault": true,
+        "type": "default",
+        "frameId": "50AB9BDB307B8AB082EBFFEEA6E20082"
+      }
+    }
+  ],
+  "frames": {
+    "frameTree": {
+      "frame": {
+        "id": "50AB9BDB307B8AB082EBFFEEA6E20082",
+        "loaderId": "70CF417CABDAFA47E9DC5DDE763446C9",
+        "url": "https://renderer.freelens.app:40443/cluster/770814298afe692457d07d8b15d6b8d3",
+        "domainAndRegistry": "freelens.app",
+        "securityOrigin": "https://renderer.freelens.app:40443",
+        "securityOriginDetails": {
+          "isLocalhost": false
+        },
+        "mimeType": "text/html",
+        "adFrameStatus": {
+          "adFrameType": "none"
+        },
+        "secureContextType": "Secure",
+        "crossOriginIsolatedContextType": "NotIsolated",
+        "gatedAPIFeatures": []
+      },
+      "childFrames": [
+        {
+          "frame": {
+            "id": "CC0210FEFD9DAFE313D2F98B95938050",
+            "parentId": "50AB9BDB307B8AB082EBFFEEA6E20082",
+            "loaderId": "596A59548F3C2BC6A2CD67C6CBE4F597",
+            "name": "kind-freelens-json-logs-spike",
+            "url": "https://770814298afe692457d07d8b15d6b8d3.renderer.freelens.app:40443/",
+            "domainAndRegistry": "freelens.app",
+            "securityOrigin": "https://770814298afe692457d07d8b15d6b8d3.renderer.freelens.app:40443",
+            "securityOriginDetails": {
+              "isLocalhost": false
+            },
+            "mimeType": "text/html",
+            "adFrameStatus": {
+              "adFrameType": "none"
+            },
+            "secureContextType": "Secure",
+            "crossOriginIsolatedContextType": "NotIsolatedFeatureDisabled",
+            "gatedAPIFeatures": []
+          }
+        }
+      ]
+    }
+  }
+}
