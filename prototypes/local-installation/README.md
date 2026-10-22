@@ -4,11 +4,13 @@ Observed 2026-10-22 on the maintainer's installed **Freelens 1.10.3**
 (`freelens-bin 1.10.3-1`) for
 [Choose a reliable local installation and activation procedure](https://github.com/maksimgurenko/freelens-json-logs/issues/10).
 
-**Awaiting the maintainer's verdict.** This branch is evidence, not the production
+**Accepted by the maintainer on 2026-10-22: “ok fine”.** This verdict applies to
+the revised procedure with at most one restart before maintenance and none
+required after installation. This branch is evidence, not the production
 extension. Do not merge it or open a PR. The original integration spike is in
 [the adjacent directory](../host-integration/README.md).
 
-## Proposed first-release procedure
+## Accepted first-release procedure
 
 1. Start from a fresh main window and open **Extensions** before opening any
    cluster. If a cluster has already been opened in this session, fully quit and
@@ -33,8 +35,8 @@ This procedure requires at most one restart before maintenance, to establish
 the tested main-window-only state. The initial proposal also required a restart
 after installation; the maintainer challenged that requirement, and the focused
 0.0.2 → 0.0.3 test below demonstrated an upgrade without it. The second restart
-has been removed. The decision is whether this simpler maintenance sequence is
-acceptable for the maintainer's first release. The experiment establishes neither
+has been removed. The maintainer accepted this simpler maintenance sequence for
+the first release. The experiment establishes neither
 a hot-update guarantee with loaded cluster frames nor broad support for other
 versions or packages.
 
@@ -112,7 +114,7 @@ README. `0.0.2` and `0.0.3` change only package version, activation diagnostics 
 the visible prototype heading. They retain the same experimental store name and
 format. Tarballs and generated package directories are ignored by Git.
 
-Follow the proposed UI procedure above. The optional local helper `cdp.mjs`
+Follow the accepted UI procedure above. The optional local helper `cdp.mjs`
 targets Electron debugging port 9235; `contexts` lists the main/cluster contexts,
 `screenshot <file>` captures the current page, and `<context> <script-file>`
 evaluates a supplied DOM/public-SDK probe. Its action files target this specific
@@ -133,9 +135,11 @@ with SIGTERM. These are disposable experiment tools, not a release installer.
   The observed recovery was explicit removal, full restart and clean installation.
 - No host patch, source diagnosis, real application change, production extension,
   upstream issue or PR was made.
-- Pending the human verdict, only `freelens-readable-logs-host-spike@0.0.3` and
-  its experimental marker remain installed. Its paused page is on workspace 7
-  for review. After review, disable/uninstall that package through Extensions,
-  verify its action disappears, and remove only
-  `~/.config/Freelens/extension-store/freelens-readable-logs-host-spike/`.
-  Keep the shared fixture cluster and unrelated Freelens settings/extensions.
+- After acceptance, `freelens-readable-logs-host-spike@0.0.3` was disabled and
+  uninstalled through Extensions. The Pod details remained visible with zero
+  spike actions/pages, both package locations were absent, and only the
+  experimental marker store was removed. Freelens remains on workspace 7;
+  both fixture Pods remain Running. Unrelated host data and the shared fixture
+  cluster were preserved. See [disabled contributions](evidence/final-disabled-contributions.json),
+  [uninstall observation](evidence/final-uninstall.json) and
+  [final cleanup facts](evidence/final-cleanup.json).

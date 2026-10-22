@@ -1,0 +1,17 @@
+{
+  "at": 1792704971.968801,
+  "directories": {
+    "/home/max/.freelens/extensions": [
+      "freelens-readable-logs-host-spike"
+    ],
+    "/home/max/.config/Freelens/node_modules": [
+      ".modules.yaml",
+      ".pnpm",
+      ".pnpm-workspace-state-v1.json",
+      "freelens-readable-logs-host-spike"
+    ],
+    "/home/max/.config/Freelens/extension-store": [
+      "freelens-readable-logs-host-spike"
+    ]
+  }
+}

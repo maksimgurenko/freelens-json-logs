@@ -1,0 +1,38 @@
+{
+  "at": 1792705010.1915572,
+  "packagePresent": false,
+  "unpackedPackagePresent": false,
+  "markerStorePresent": false,
+  "removedStoreFiles": [
+    "host-spike-marker.json"
+  ],
+  "directories": {
+    "/home/max/.freelens/extensions": [],
+    "/home/max/.config/Freelens/node_modules": [
+      ".modules.yaml",
+      ".pnpm",
+      ".pnpm-workspace-state-v1.json"
+    ],
+    "/home/max/.config/Freelens/extension-store": []
+  },
+  "freelensWindows": [
+    {
+      "pid": 1876290,
+      "workspace": {
+        "id": 7,
+        "name": "7"
+      },
+      "class": "freelens"
+    }
+  ],
+  "fixturePods": [
+    {
+      "name": "changing-logs",
+      "phase": "Running"
+    },
+    {
+      "name": "single-json",
+      "phase": "Running"
+    }
+  ]
+}
