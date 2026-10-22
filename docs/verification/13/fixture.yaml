@@ -1,0 +1,27 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: readable-logs-ticket-13
+  labels:
+    purpose: readable-logs-ticket-13
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: lifecycle
+  namespace: readable-logs-ticket-13
+  annotations:
+    kubectl.kubernetes.io/default-container: app
+spec:
+  restartPolicy: Always
+  initContainers:
+    - name: setup
+      image: busybox:1.37.0@sha256:bdf57e528e45e4433820e045b29b4597825a1c9e38353532d90a01445013f82e
+      command: [sh, -c, 'echo "init output"']
+  containers:
+    - name: app
+      image: busybox:1.37.0@sha256:bdf57e528e45e4433820e045b29b4597825a1c9e38353532d90a01445013f82e
+      command: [sh, -c, 'i=0; while :; do echo "app current instance $i"; i=$((i+1)); if [ -f /tmp/restart ]; then exit 0; fi; sleep 1; done']
+    - name: sidecar
+      image: busybox:1.37.0@sha256:bdf57e528e45e4433820e045b29b4597825a1c9e38353532d90a01445013f82e
+      command: [sh, -c, 'i=0; while :; do echo "sidecar $i"; i=$((i+1)); sleep 1; done']

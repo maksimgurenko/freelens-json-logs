@@ -5,6 +5,7 @@ export interface PodDescription {
   init: string[];
   ephemeral: string[];
   defaultContainer?: string;
+  instances?: Record<string, { restarts: number; id?: string }>;
 }
 export interface LogTarget {
   clusterId: string;

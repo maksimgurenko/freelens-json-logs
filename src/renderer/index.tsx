@@ -11,7 +11,11 @@ export default class ReadableLogsRenderer extends Renderer.LensExtension {
   };
   clusterPages = [{
     id: PAGE_ID, params: { namespace: '', pod: '', podUid: '', clusterId: '' },
-    components: { Page: ({ params }: { params: PageParams }) => <Viewer target={pageTarget(params)} register={this.register} /> },
+    components: { Page: ({ params }: { params: PageParams }) => {
+      const target = pageTarget(params);
+      return <Viewer key={JSON.stringify([target.clusterId, target.namespace, target.podName, target.podUid])}
+        target={target} register={this.register} />;
+    } },
   }];
   kubeObjectMenuItems = [{
     kind: 'Pod', apiVersions: ['v1'], components: {

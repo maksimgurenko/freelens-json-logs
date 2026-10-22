@@ -1,4 +1,5 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
+import { bindVisibility } from '../adapter/visibility.ts';
 import { freelensPort, freelensRequests, PACKAGE_VERSION } from '../adapter/freelens.ts';
 import { SnapshotSession, type SnapshotState } from '../core/session.ts';
 import { displayTimestamp, formatDefault } from '../core/records.ts';
@@ -10,6 +11,7 @@ interface ViewerProps { target: LogTarget; register: (dispose: () => void) => ()
 // Extend the accepted native-like surface: target strip, compact time/level/message rows,
 // quiet footer and explicit snapshot refresh controls.
 export function Viewer({ target, register }: ViewerProps) {
+  const root = useRef<HTMLElement>(null);
   const [state, setState] = useState<SnapshotState>();
   const [session, setSession] = useState<SnapshotSession>();
   const [timestamps, setTimestamps] = useState(true);
@@ -19,12 +21,14 @@ export function Viewer({ target, register }: ViewerProps) {
     setSession(current);
     setTimestamps(true);
     setWrap(false);
-    const unregister = register(() => current.dispose());
+    const stopVisibility = bindVisibility(root.current!, active => current.setActive(active));
+    const dispose = () => { stopVisibility(); current.dispose(); };
+    const unregister = register(dispose);
     void current.open();
-    return () => { unregister(); current.dispose(); };
+    return () => { unregister(); dispose(); };
   }, [target.clusterId, target.namespace, target.podName, target.podUid, register]);
   const snapshot = state?.snapshot;
-  return <section className="readable-logs" aria-label="Readable logs" data-version={PACKAGE_VERSION}>
+  return <section ref={root} className="readable-logs" aria-label="Readable logs" data-version={PACKAGE_VERSION}>
     <style>{styles}</style>
     <header className="rl-heading">
       <h1>Readable logs</h1>
@@ -33,30 +37,31 @@ export function Viewer({ target, register }: ViewerProps) {
     <div className="rl-target">
       <strong title={`Pod UID: ${target.podUid}`}>{target.podName}</strong>
       <label>Container <select aria-label="Container" value={state?.container ?? ''}
-        disabled={!state?.containers.length || state.phase === 'closed'}
+        disabled={!state?.containers.length || state.gone || state.phase === 'closed'}
         onChange={event => { void session?.selectContainer(event.target.value); }}>
         {!state?.container && <option value="" disabled>Select a container</option>}
         {(['regular', 'init', 'ephemeral'] as const).map(kind => <optgroup key={kind} label={kind === 'regular' ? 'Containers' : `${kind} containers`}>
           {state?.containers.filter(container => container.kind === kind).map(container => <option key={container.name} value={container.name}>{container.name}</option>)}
         </optgroup>)}
       </select></label>
-      <span className="rl-profile">Profile <strong>Default</strong></span>
+      <span className="rl-profile">Profile Auto · <strong>Default</strong></span>
       <div className="rl-controls" role="group" aria-label="Log updates">
-        <button type="button" disabled={!state?.container || state.phase === 'closed'}
+        <button type="button" disabled={!state?.container || state.gone || state.phase === 'closed'}
           onClick={() => { if (state?.paused) void session?.resume(); else session?.pause(); }}>{state?.paused ? 'Resume' : 'Pause'}</button>
-        <button type="button" disabled={!state?.container || state.phase === 'closed' || state.refreshing || state.waiting}
+        <button type="button" disabled={!state?.container || state.gone || state.phase === 'closed' || state.refreshing || state.waiting}
           onClick={() => { void session?.refresh(); }}>Refresh</button>
         <span role="status">{state?.paused ? 'Paused' : state?.error ? 'Automatic updates stopped' : 'Automatic updates'}</span>
       </div>
     </div>
     <div className="rl-identity">Cluster {target.clusterId} · Pod UID {target.podUid}</div>
+    {state?.lifecycleNotice && <p className="rl-notice" role="status">{state.lifecycleNotice}{state.paused ? ' Paused; select Refresh or Resume to read the current instance.' : ''}</p>}
     {(!state || state.phase === 'loading-pod') && <p className="rl-notice" role="status">Loading Pod…</p>}
     {state?.refreshing && <p className="rl-notice" role="status">Reading log snapshot…</p>}
     {state?.waiting && <p className="rl-notice" role="status">Waiting for the earlier request to finish before fetching fresh logs…</p>}
     {state?.slow && <p className="rl-notice" role="status">The log request is taking longer than 15 seconds. You can pause or leave this view. Another request for this target must wait for it to finish.</p>}
     {state?.phase === 'choose-container' && <p className="rl-notice" role="status">This Pod has no regular container. Select an init or ephemeral container to read its logs.</p>}
     {state?.error && <div className="rl-notice rl-error" role="alert"><strong>{state.outdated ? 'Logs are outdated · automatic updates stopped' : 'Unable to read logs'}</strong><p>{state.error}</p>
-      <button type="button" disabled={state.refreshing || state.waiting} onClick={() => { void session?.retry(); }}>Retry</button>
+      {!state.gone && <button type="button" disabled={state.refreshing || state.waiting} onClick={() => { void session?.retry(); }}>Retry</button>}
     </div>}
     {state?.phase === 'closed' && <p className="rl-notice" role="status">Readable logs is disabled. Re-enable the extension and reopen this view.</p>}
     {snapshot?.omittedLines ? <p className="rl-notice" role="status">{snapshot.oversizedNewest

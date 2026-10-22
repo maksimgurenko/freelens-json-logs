@@ -1,8 +1,10 @@
 # Build and install Readable logs
 
 This production implementation includes bounded snapshots and explicit automatic
-refresh, Pause/Resume, Refresh and Retry (GitHub #11–12). Later lifecycle,
-inspection and profile tickets are not implemented yet. The
+refresh, Pause/Resume, Refresh and Retry (GitHub #11–12). Ticket #13 adds
+visibility and Pod/container lifecycle handling; its real-host acceptance remains
+pending after an installation-discovery failure. Inspection and saved-profile
+tickets are not implemented yet. The
 accepted requirements in GitHub #8 and its resolution links take precedence over
 the feasibility research in the root README and all disposable prototypes.
 
@@ -23,8 +25,8 @@ npm run typecheck
 npm test
 npm run package
 npm run check:package
-tar -tzf dist/freelens-readable-logs-0.1.2.tgz
-sha256sum dist/freelens-readable-logs-0.1.2.tgz
+tar -tzf dist/freelens-readable-logs-0.1.3.tgz
+sha256sum dist/freelens-readable-logs-0.1.3.tgz
 ```
 
 The locked esbuild platform package supplies its binary without install scripts.
@@ -34,7 +36,9 @@ and tiny host-global bindings. `check:package` inspects the actual tarball,
 asserts its allowlisted files and host-only dependencies, and loads its packed
 CommonJS default exports with stub host globals. This is a packaging test;
 real host verification is recorded separately under `docs/verification/11/` and
-`docs/verification/12/`.
+`docs/verification/12/`. Ticket 13
+records passing automated checks and the failed host installation separately under
+`docs/verification/13/`; it does not claim real-host lifecycle acceptance.
 Running the same build twice yields the same tarball bytes with this toolchain.
 
 Stable package identifier: **freelens-readable-logs**. Stable `storeName`:
@@ -68,7 +72,7 @@ Follow [the accepted procedure](https://github.com/maksimgurenko/freelens-json-l
 2. For an update, **Uninstall** the old package and wait for removal to finish,
    retaining its saved extension settings. Install the new tarball via the form
    **once** and wait. Do not use the overwrite/reinstallation prompt.
-3. Check version **0.1.2** and Enabled, then open the cluster. Open a Pod's details
+3. Check version **0.1.3** and Enabled, then open the cluster. Open a Pod's details
    header and click the **Readable logs** icon beside the native actions. Verify
    cluster, namespace, Pod UID, container and **Default** profile, and usable logs.
    Do not restart after installation as a substitute for passing this check.
@@ -111,7 +115,33 @@ Failures retain the last successful window, mark it outdated, explain the host
 error and stop automatic updates. Retry is explicit; successful Retry restores
 automatic mode unless paused. Failed Retry never starts a retry loop.
 
-Metadata UID is checked before the first read; this does not provide an atomic
-UID-bound log read. Leaving/disabling stops timers and invalidates pending results
-without cancelling the underlying request. Host visibility and ongoing
-Pod/container lifecycle observations are ticket 13 work.
+Metadata UID is checked before the first read. While displayed, supported
+`podsApi.get` observations run without overlap, three seconds after each metadata
+request settles, including while logs are paused. They update the regular/init/
+ephemeral choices and compare the selected container's restart count and known
+container ID. An observed restart clears old records, invalidates pending log
+results and preserves the refresh mode and temporary profile selection. Automatic
+mode requests the current instance; Pause waits for Refresh/Resume. A same-target
+outstanding log read must still settle first.
+
+An observed Pod 404 or different UID permanently stops that view. Retained records
+are marked outdated under the original UID; Retry and target controls cannot
+silently follow the replacement. Reopen from the current Pod to start a new view.
+A metadata denial or network error is an error, never evidence of deletion.
+These observations are not an atomic UID-bound log read or guaranteed restart
+notification. Changes can occur between observations and a name-addressed read.
+No previous-instance records are requested or merged.
+
+Document visibility handles hide/minimize; intersection handles a cached cluster
+frame hidden by the host. Losing keyboard focus alone does not suspend polling.
+Hidden views invalidate pending log/metadata observations and stop their timers;
+returning automatic views fetch fresh data, while Pause remains paused. A container
+change clears the old window, returns temporary selection to Auto and starts an
+automatic view when active. Close/leave/disable discards view state; reopening
+starts fresh. Saved-profile controls belong to later tickets; the current viewer
+always uses Auto with built-in Default. Lifecycle tests cover the temporary
+manual-selection state boundary without claiming saved-profile implementation.
+
+The above lifecycle behavior is implemented and deterministically tested. Actual
+packaged hide/minimize/restart/deletion/replacement observations remain required
+by ticket 13 after the failed installation recorded in its verification report.

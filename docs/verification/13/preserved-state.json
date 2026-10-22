@@ -1,0 +1,35 @@
+{
+  "mainPid": 2190984,
+  "mainStillRunning": true,
+  "sharedFixtures": [
+    {
+      "name": "changing-logs",
+      "uid": "c8190dc0-0f37-4918-9918-53eba7c8ebc1",
+      "restarts": [
+        0,
+        0
+      ]
+    },
+    {
+      "name": "single-json",
+      "uid": "0035d4f0-23c6-4e7d-93b2-c1d13a41cb92",
+      "restarts": [
+        0,
+        0
+      ]
+    }
+  ],
+  "ownedFixtures": [
+    {
+      "name": "lifecycle",
+      "uid": "06a97368-34c5-4301-aa50-723a701fd12a",
+      "restarts": [
+        0,
+        0
+      ]
+    }
+  ],
+  "activeWorkspace": 2,
+  "activeWindow": "0x55baeff066d0",
+  "note": "Host retained at Extensions with failed install. Owned namespace retained for retry."
+}
