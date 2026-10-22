@@ -1,0 +1,163 @@
+{
+  "mode": "slow",
+  "at": "2026-10-22T23:37:10.048Z",
+  "requests": [
+    {
+      "path": "/api-kube/api/v1/namespaces/readable-logs-spike/pods/changing-logs/log?container=json&tailLines=1000&timestamps=true&follow=false&previous=false",
+      "protocol": "https",
+      "closedPortFault": false,
+      "started": 1792712212967,
+      "status": 200,
+      "settled": 1792712229019
+    },
+    {
+      "path": "/api-kube/api/v1/namespaces/readable-logs-spike/pods/changing-logs/log?container=json&tailLines=1000&timestamps=true&follow=false&previous=false",
+      "protocol": "https",
+      "closedPortFault": false,
+      "started": 1792712229020,
+      "status": 200,
+      "settled": 1792712229026
+    }
+  ],
+  "states": [
+    {
+      "label": "start",
+      "at": 1792712212803,
+      "requests": 0,
+      "version": "0.1.2",
+      "buttons": [
+        {
+          "text": "Pause",
+          "disabled": false
+        },
+        {
+          "text": "Refresh",
+          "disabled": false
+        }
+      ],
+      "url": "https://770814298afe692457d07d8b15d6b8d3.renderer.freelens.app:39637/extension/freelens-readable-logs/readable-logs?clusterId=770814298afe692457d07d8b15d6b8d3&namespace=readable-logs-spike&pod=changing-logs&podUid=c8190dc0-0f37-4918-9918-53eba7c8ebc1",
+      "text": "Readable logs\n\nkind-freelens-json-logs-spike / readable-logs-spike / changing-logs\n\nchanging-logs\nContainer\njson\nplain\nProfile\nDefault\nPause\nRefresh\nAutomatic updates\nCluster 770814298afe692457d07d8b15d6b8d3 · Pod UID c8190dc0-0f37-4918-9918-53eba7c8ebc1\n10/22/2026, 17:46:49\nINFO\nchanging JSON fixture\n10/22/2026, 17:46:52\nINFO\nchanging JSON fixture\n10/22/2026, 17:46:55\nINFO\nchanging JSON fixture\n10/22/2026, 17:46:58\nINFO\nchanging JSON fixture\n10/22/2026, 17:47:01\nINFO\nchanging JSON fixture\n10/22/2026, 17:47:04",
+      "rowCount": 1000,
+      "firstRow": "10/22/2026, 17:46:49\nINFO\nchanging JSON fixture",
+      "lastRow": "10/22/2026, 18:36:46\nINFO\nchanging JSON fixture",
+      "rowsSha256": "da9cf7393d7dfc2ee8c57a5d87c8ccdc56046eef0370f5b9b4d360bbeca576b9"
+    },
+    {
+      "label": "slow",
+      "at": 1792712228183,
+      "requests": 1,
+      "version": "0.1.2",
+      "buttons": [
+        {
+          "text": "Pause",
+          "disabled": false
+        },
+        {
+          "text": "Refresh",
+          "disabled": true
+        }
+      ],
+      "url": "https://770814298afe692457d07d8b15d6b8d3.renderer.freelens.app:39637/extension/freelens-readable-logs/readable-logs?clusterId=770814298afe692457d07d8b15d6b8d3&namespace=readable-logs-spike&pod=changing-logs&podUid=c8190dc0-0f37-4918-9918-53eba7c8ebc1",
+      "text": "Readable logs\n\nkind-freelens-json-logs-spike / readable-logs-spike / changing-logs\n\nchanging-logs\nContainer\njson\nplain\nProfile\nDefault\nPause\nRefresh\nAutomatic updates\nCluster 770814298afe692457d07d8b15d6b8d3 · Pod UID c8190dc0-0f37-4918-9918-53eba7c8ebc1\n\nReading log snapshot…\n\nThe log request is taking longer than 15 seconds. You can pause or leave this view. Another request for this target must wait for it to finish.\n\n10/22/2026, 17:46:49\nINFO\nchanging JSON fixture\n10/22/2026, 17:46:52\nINFO\nchanging JSON fixture\n10/22/2026, 17:46:55\nINFO\nchanging JSON fixture\n10/22/2026, 17:46:58\nINFO",
+      "rowCount": 1000,
+      "firstRow": "10/22/2026, 17:46:49\nINFO\nchanging JSON fixture",
+      "lastRow": "10/22/2026, 18:36:46\nINFO\nchanging JSON fixture",
+      "rowsSha256": "da9cf7393d7dfc2ee8c57a5d87c8ccdc56046eef0370f5b9b4d360bbeca576b9"
+    },
+    {
+      "label": "paused-slow",
+      "at": 1792712228445,
+      "requests": 1,
+      "version": "0.1.2",
+      "buttons": [
+        {
+          "text": "Resume",
+          "disabled": false
+        },
+        {
+          "text": "Refresh",
+          "disabled": false
+        }
+      ],
+      "url": "https://770814298afe692457d07d8b15d6b8d3.renderer.freelens.app:39637/extension/freelens-readable-logs/readable-logs?clusterId=770814298afe692457d07d8b15d6b8d3&namespace=readable-logs-spike&pod=changing-logs&podUid=c8190dc0-0f37-4918-9918-53eba7c8ebc1",
+      "actionRoundTripMs": 45,
+      "text": "Readable logs\n\nkind-freelens-json-logs-spike / readable-logs-spike / changing-logs\n\nchanging-logs\nContainer\njson\nplain\nProfile\nDefault\nResume\nRefresh\nPaused\nCluster 770814298afe692457d07d8b15d6b8d3 · Pod UID c8190dc0-0f37-4918-9918-53eba7c8ebc1\n10/22/2026, 17:46:49\nINFO\nchanging JSON fixture\n10/22/2026, 17:46:52\nINFO\nchanging JSON fixture\n10/22/2026, 17:46:55\nINFO\nchanging JSON fixture\n10/22/2026, 17:46:58\nINFO\nchanging JSON fixture\n10/22/2026, 17:47:01\nINFO\nchanging JSON fixture\n10/22/2026, 17:47:04",
+      "rowCount": 1000,
+      "firstRow": "10/22/2026, 17:46:49\nINFO\nchanging JSON fixture",
+      "lastRow": "10/22/2026, 18:36:46\nINFO\nchanging JSON fixture",
+      "rowsSha256": "da9cf7393d7dfc2ee8c57a5d87c8ccdc56046eef0370f5b9b4d360bbeca576b9"
+    },
+    {
+      "label": "waiting-for-invalidated",
+      "at": 1792712228781,
+      "requests": 1,
+      "version": "0.1.2",
+      "buttons": [
+        {
+          "text": "Pause",
+          "disabled": false
+        },
+        {
+          "text": "Refresh",
+          "disabled": true
+        }
+      ],
+      "url": "https://770814298afe692457d07d8b15d6b8d3.renderer.freelens.app:39637/extension/freelens-readable-logs/readable-logs?clusterId=770814298afe692457d07d8b15d6b8d3&namespace=readable-logs-spike&pod=changing-logs&podUid=c8190dc0-0f37-4918-9918-53eba7c8ebc1",
+      "text": "Readable logs\n\nkind-freelens-json-logs-spike / readable-logs-spike / changing-logs\n\nchanging-logs\nContainer\njson\nplain\nProfile\nDefault\nPause\nRefresh\nAutomatic updates\nCluster 770814298afe692457d07d8b15d6b8d3 · Pod UID c8190dc0-0f37-4918-9918-53eba7c8ebc1\n\nWaiting for the earlier request to finish before fetching fresh logs…\n\nThe log request is taking longer than 15 seconds. You can pause or leave this view. Another request for this target must wait for it to finish.\n\n10/22/2026, 17:46:49\nINFO\nchanging JSON fixture\n10/22/2026, 17:46:52\nINFO\nchanging JSON fixture\n10/22/2026, 17:46:55\nINFO\nchanging JSON fixture\n10/22/2026, 17:46:58\nINFO",
+      "rowCount": 1000,
+      "firstRow": "10/22/2026, 17:46:49\nINFO\nchanging JSON fixture",
+      "lastRow": "10/22/2026, 18:36:46\nINFO\nchanging JSON fixture",
+      "rowsSha256": "da9cf7393d7dfc2ee8c57a5d87c8ccdc56046eef0370f5b9b4d360bbeca576b9"
+    },
+    {
+      "label": "departed-during-outstanding-read",
+      "at": 1792712228803,
+      "actionRoundTripMs": 22,
+      "viewerAbsent": true,
+      "pathname": "/pods"
+    },
+    {
+      "label": "reopened-waits-for-outstanding",
+      "at": 1792712229012,
+      "requests": 1,
+      "version": "0.1.2",
+      "buttons": [
+        {
+          "text": "Pause",
+          "disabled": false
+        },
+        {
+          "text": "Refresh",
+          "disabled": true
+        }
+      ],
+      "url": "https://770814298afe692457d07d8b15d6b8d3.renderer.freelens.app:39637/extension/freelens-readable-logs/readable-logs?clusterId=770814298afe692457d07d8b15d6b8d3&namespace=readable-logs-spike&pod=changing-logs&podUid=c8190dc0-0f37-4918-9918-53eba7c8ebc1",
+      "text": "Readable logs\n\nkind-freelens-json-logs-spike / readable-logs-spike / changing-logs\n\nchanging-logs\nContainer\njson\nplain\nProfile\nDefault\nPause\nRefresh\nAutomatic updates\nCluster 770814298afe692457d07d8b15d6b8d3 · Pod UID c8190dc0-0f37-4918-9918-53eba7c8ebc1\n\nWaiting for the earlier request to finish before fetching fresh logs…\n\nThe log request is taking longer than 15 seconds. You can pause or leave this view. Another request for this target must wait for it to finish.\n\nOne current-instance snapshot\nShow timestamps\nWord wrap\nv0.1.2",
+      "rowCount": 0,
+      "rowsSha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+    },
+    {
+      "label": "fresh-after-invalidated",
+      "at": 1792712230047,
+      "requests": 2,
+      "version": "0.1.2",
+      "buttons": [
+        {
+          "text": "Pause",
+          "disabled": false
+        },
+        {
+          "text": "Refresh",
+          "disabled": false
+        }
+      ],
+      "url": "https://770814298afe692457d07d8b15d6b8d3.renderer.freelens.app:39637/extension/freelens-readable-logs/readable-logs?clusterId=770814298afe692457d07d8b15d6b8d3&namespace=readable-logs-spike&pod=changing-logs&podUid=c8190dc0-0f37-4918-9918-53eba7c8ebc1",
+      "text": "Readable logs\n\nkind-freelens-json-logs-spike / readable-logs-spike / changing-logs\n\nchanging-logs\nContainer\njson\nplain\nProfile\nDefault\nPause\nRefresh\nAutomatic updates\nCluster 770814298afe692457d07d8b15d6b8d3 · Pod UID c8190dc0-0f37-4918-9918-53eba7c8ebc1\n10/22/2026, 17:47:10\nINFO\nchanging JSON fixture\n10/22/2026, 17:47:13\nINFO\nchanging JSON fixture\n10/22/2026, 17:47:16\nINFO\nchanging JSON fixture\n10/22/2026, 17:47:19\nINFO\nchanging JSON fixture\n10/22/2026, 17:47:22\nINFO\nchanging JSON fixture\n10/22/2026, 17:47:25",
+      "rowCount": 1000,
+      "firstRow": "10/22/2026, 17:47:10\nINFO\nchanging JSON fixture",
+      "lastRow": "10/22/2026, 18:37:07\nINFO\nchanging JSON fixture",
+      "rowsSha256": "1d0691d96320015b36eb23a7b2e73e9404f558551c05feba047698bf28cbc556"
+    }
+  ],
+  "restored": true
+}

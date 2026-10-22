@@ -1,0 +1,11 @@
+{
+  "at": "2026-10-22T23:30:36.711Z",
+  "result": {
+    "type": "object",
+    "value": {
+      "installed": true,
+      "transport": "Node http/https.request",
+      "note": "Real requests and responses; restores after validation"
+    }
+  }
+}

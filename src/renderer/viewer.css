@@ -13,6 +13,12 @@
 .readable-logs select:disabled { opacity: .6; }
 .readable-logs :focus-visible { outline: 2px solid var(--primary, #00a7a0); outline-offset: 2px; }
 .readable-logs .rl-profile { display: inline-flex; gap: 8px; }
+.readable-logs .rl-controls { display: flex; align-items: center; flex-wrap: wrap; gap: 8px; margin-inline-start: auto; }
+.readable-logs .rl-controls [role="status"] { font-size: 12px; color: var(--textColorSecondary, #a6adb5); }
+.readable-logs button { font: inherit; color: inherit; background: var(--contentColor, #262b2f); border: 1px solid var(--borderColor, #4c5053); padding: 5px 12px; border-radius: 3px; cursor: pointer; }
+.readable-logs button:hover:enabled { border-color: var(--textColorSecondary, #a6adb5); }
+.readable-logs button:disabled { opacity: .6; cursor: default; }
+.readable-logs .rl-error button { margin-top: 8px; }
 .readable-logs .rl-identity { padding: 8px 24px; overflow-wrap: anywhere; }
 .readable-logs .rl-notice { padding: 12px 24px; background: var(--contentColor, #262b2f); white-space: pre-wrap; overflow-wrap: anywhere; }
 .readable-logs .rl-error { color: var(--textColorAccent, #e3e5e8); border-block: 1px solid var(--colorSoftError, #e85555); }

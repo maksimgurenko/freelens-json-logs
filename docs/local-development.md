@@ -1,7 +1,8 @@
 # Build and install Readable logs
 
-This production implementation currently opens one bounded snapshot (GitHub #11).
-The later refresh, inspection and profile tickets are not implemented yet. The
+This production implementation includes bounded snapshots and explicit automatic
+refresh, Pause/Resume, Refresh and Retry (GitHub #11–12). Later lifecycle,
+inspection and profile tickets are not implemented yet. The
 accepted requirements in GitHub #8 and its resolution links take precedence over
 the feasibility research in the root README and all disposable prototypes.
 
@@ -22,8 +23,8 @@ npm run typecheck
 npm test
 npm run package
 npm run check:package
-tar -tzf dist/freelens-readable-logs-0.1.1.tgz
-sha256sum dist/freelens-readable-logs-0.1.1.tgz
+tar -tzf dist/freelens-readable-logs-0.1.2.tgz
+sha256sum dist/freelens-readable-logs-0.1.2.tgz
 ```
 
 The locked esbuild platform package supplies its binary without install scripts.
@@ -32,7 +33,8 @@ launched. Build metadata under `dist/build-meta.json` shows only project inputs
 and tiny host-global bindings. `check:package` inspects the actual tarball,
 asserts its allowlisted files and host-only dependencies, and loads its packed
 CommonJS default exports with stub host globals. This is a packaging test;
-real host verification is recorded separately under `docs/verification/11/`.
+real host verification is recorded separately under `docs/verification/11/` and
+`docs/verification/12/`.
 Running the same build twice yields the same tarball bytes with this toolchain.
 
 Stable package identifier: **freelens-readable-logs**. Stable `storeName`:
@@ -66,7 +68,7 @@ Follow [the accepted procedure](https://github.com/maksimgurenko/freelens-json-l
 2. For an update, **Uninstall** the old package and wait for removal to finish,
    retaining its saved extension settings. Install the new tarball via the form
    **once** and wait. Do not use the overwrite/reinstallation prompt.
-3. Check version **0.1.1** and Enabled, then open the cluster. Open a Pod's details
+3. Check version **0.1.2** and Enabled, then open the cluster. Open a Pod's details
    header and click the **Readable logs** icon beside the native actions. Verify
    cluster, namespace, Pod UID, container and **Default** profile, and usable logs.
    Do not restart after installation as a substitute for passing this check.
@@ -95,7 +97,21 @@ RFC 3339 with an explicit zone; display uses the computer's local timezone.
 Original precision, JSON whitespace and all parsed fields remain in core state.
 Raw inspection and clipboard controls are subsequent ticket work.
 
-The single-snapshot view does not poll or observe Pod lifecycle changes. Metadata
-UID is checked before the first read; this does not provide an atomic UID-bound
-log read. Leaving/disabling invalidates pending results without cancelling the
-underlying request. Reopen the header action to obtain another snapshot.
+An active selected target fetches immediately, then three seconds after each
+successful request settles. Snapshots replace the window, preserving repeated
+lines. Pause freezes the window and rejects pending results immediately. Refresh
+fetches once while paused; Resume fetches fresh data and restores automatic mode.
+A slow notice appears after 15 seconds without timing out or cancelling the read.
+Only one read per target may be outstanding, including invalidated reads from a
+departed view: a fresh same-target request waits for settlement. Different targets
+can proceed independently. Repeated Refresh actions coalesce rather than queue.
+
+A genuine empty success clears the window and continues automatic updates.
+Failures retain the last successful window, mark it outdated, explain the host
+error and stop automatic updates. Retry is explicit; successful Retry restores
+automatic mode unless paused. Failed Retry never starts a retry loop.
+
+Metadata UID is checked before the first read; this does not provide an atomic
+UID-bound log read. Leaving/disabling stops timers and invalidates pending results
+without cancelling the underlying request. Host visibility and ongoing
+Pod/container lifecycle observations are ticket 13 work.

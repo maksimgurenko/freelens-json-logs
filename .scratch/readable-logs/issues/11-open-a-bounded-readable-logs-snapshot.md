@@ -1,6 +1,6 @@
 # 11: Open a bounded Readable logs snapshot
 
-**Status:** ready-for-agent
+**Status:** done
 
 **Blocked by:** None (can start immediately).
 

@@ -1,0 +1,233 @@
+{
+  "mode": "controls",
+  "at": "2026-10-22T23:33:10.465Z",
+  "requests": [
+    {
+      "path": "/api-kube/api/v1/namespaces/readable-logs-spike/pods/changing-logs/log?container=json&tailLines=1000&timestamps=true&follow=false&previous=false",
+      "protocol": "https",
+      "closedPortFault": false,
+      "started": 1792711971420,
+      "status": 200,
+      "settled": 1792711971428
+    },
+    {
+      "path": "/api-kube/api/v1/namespaces/readable-logs-spike/pods/changing-logs/log?container=json&tailLines=1000&timestamps=true&follow=false&previous=false",
+      "protocol": "https",
+      "closedPortFault": false,
+      "started": 1792711974516,
+      "status": 200,
+      "settled": 1792711974524
+    },
+    {
+      "path": "/api-kube/api/v1/namespaces/readable-logs-spike/pods/changing-logs/log?container=json&tailLines=1000&timestamps=true&follow=false&previous=false",
+      "protocol": "https",
+      "closedPortFault": false,
+      "started": 1792711977613,
+      "status": 200,
+      "settled": 1792711977621
+    },
+    {
+      "path": "/api-kube/api/v1/namespaces/readable-logs-spike/pods/changing-logs/log?container=json&tailLines=1000&timestamps=true&follow=false&previous=false",
+      "protocol": "https",
+      "closedPortFault": false,
+      "started": 1792711981952,
+      "status": 200,
+      "settled": 1792711981960
+    },
+    {
+      "path": "/api-kube/api/v1/namespaces/readable-logs-spike/pods/changing-logs/log?container=json&tailLines=1000&timestamps=true&follow=false&previous=false",
+      "protocol": "https",
+      "closedPortFault": false,
+      "started": 1792711986214,
+      "status": 200,
+      "settled": 1792711986221
+    },
+    {
+      "path": "/api-kube/api/v1/namespaces/readable-logs-spike/pods/changing-logs/log?container=json&tailLines=1000&timestamps=true&follow=false&previous=false",
+      "protocol": "https",
+      "closedPortFault": false,
+      "started": 1792711989305,
+      "status": 200,
+      "settled": 1792711989313
+    }
+  ],
+  "states": [
+    {
+      "label": "start",
+      "at": 1792711971351,
+      "requests": 0,
+      "version": "0.1.2",
+      "buttons": [
+        {
+          "text": "Pause",
+          "disabled": false
+        },
+        {
+          "text": "Refresh",
+          "disabled": false
+        }
+      ],
+      "url": "https://770814298afe692457d07d8b15d6b8d3.renderer.freelens.app:39637/extension/freelens-readable-logs/readable-logs?clusterId=770814298afe692457d07d8b15d6b8d3&namespace=readable-logs-spike&pod=changing-logs&podUid=c8190dc0-0f37-4918-9918-53eba7c8ebc1",
+      "text": "Readable logs\n\nkind-freelens-json-logs-spike / readable-logs-spike / changing-logs\n\nchanging-logs\nContainer\njson\nplain\nProfile\nDefault\nPause\nRefresh\nAutomatic updates\nCluster 770814298afe692457d07d8b15d6b8d3 · Pod UID c8190dc0-0f37-4918-9918-53eba7c8ebc1\n10/22/2026, 17:42:49\nINFO\nchanging JSON fixture\n10/22/2026, 17:42:52\nINFO\nchanging JSON fixture\n10/22/2026, 17:42:55\nINFO\nchanging JSON fixture\n10/22/2026, 17:42:58\nINFO\nchanging JSON fixture\n10/22/2026, 17:43:01\nINFO\nchanging JSON fixture\n10/22/2026, 17:43:04",
+      "rowCount": 1000,
+      "firstRow": "10/22/2026, 17:42:49\nINFO\nchanging JSON fixture",
+      "lastRow": "10/22/2026, 18:32:46\nINFO\nchanging JSON fixture",
+      "rowsSha256": "545603684abc4f8ec166c708cc4c776dd79d12195e6a1726b1ebf06da35fdd69"
+    },
+    {
+      "label": "automatic-cadence",
+      "at": 1792711977874,
+      "requests": 3,
+      "version": "0.1.2",
+      "buttons": [
+        {
+          "text": "Pause",
+          "disabled": false
+        },
+        {
+          "text": "Refresh",
+          "disabled": false
+        }
+      ],
+      "url": "https://770814298afe692457d07d8b15d6b8d3.renderer.freelens.app:39637/extension/freelens-readable-logs/readable-logs?clusterId=770814298afe692457d07d8b15d6b8d3&namespace=readable-logs-spike&pod=changing-logs&podUid=c8190dc0-0f37-4918-9918-53eba7c8ebc1",
+      "text": "Readable logs\n\nkind-freelens-json-logs-spike / readable-logs-spike / changing-logs\n\nchanging-logs\nContainer\njson\nplain\nProfile\nDefault\nPause\nRefresh\nAutomatic updates\nCluster 770814298afe692457d07d8b15d6b8d3 · Pod UID c8190dc0-0f37-4918-9918-53eba7c8ebc1\n10/22/2026, 17:42:58\nINFO\nchanging JSON fixture\n10/22/2026, 17:43:01\nINFO\nchanging JSON fixture\n10/22/2026, 17:43:04\nINFO\nchanging JSON fixture\n10/22/2026, 17:43:07\nINFO\nchanging JSON fixture\n10/22/2026, 17:43:10\nINFO\nchanging JSON fixture\n10/22/2026, 17:43:13",
+      "rowCount": 1000,
+      "firstRow": "10/22/2026, 17:42:58\nINFO\nchanging JSON fixture",
+      "lastRow": "10/22/2026, 18:32:55\nINFO\nchanging JSON fixture",
+      "rowsSha256": "6867f8f53e5452e8eaa75b65e6f9e52f64a8bfc0d3dbc2146b080c12a0a0139e"
+    },
+    {
+      "label": "pause",
+      "at": 1792711977912,
+      "requests": 3,
+      "version": "0.1.2",
+      "buttons": [
+        {
+          "text": "Resume",
+          "disabled": false
+        },
+        {
+          "text": "Refresh",
+          "disabled": false
+        }
+      ],
+      "url": "https://770814298afe692457d07d8b15d6b8d3.renderer.freelens.app:39637/extension/freelens-readable-logs/readable-logs?clusterId=770814298afe692457d07d8b15d6b8d3&namespace=readable-logs-spike&pod=changing-logs&podUid=c8190dc0-0f37-4918-9918-53eba7c8ebc1",
+      "text": "Readable logs\n\nkind-freelens-json-logs-spike / readable-logs-spike / changing-logs\n\nchanging-logs\nContainer\njson\nplain\nProfile\nDefault\nResume\nRefresh\nPaused\nCluster 770814298afe692457d07d8b15d6b8d3 · Pod UID c8190dc0-0f37-4918-9918-53eba7c8ebc1\n10/22/2026, 17:42:58\nINFO\nchanging JSON fixture\n10/22/2026, 17:43:01\nINFO\nchanging JSON fixture\n10/22/2026, 17:43:04\nINFO\nchanging JSON fixture\n10/22/2026, 17:43:07\nINFO\nchanging JSON fixture\n10/22/2026, 17:43:10\nINFO\nchanging JSON fixture\n10/22/2026, 17:43:13",
+      "rowCount": 1000,
+      "firstRow": "10/22/2026, 17:42:58\nINFO\nchanging JSON fixture",
+      "lastRow": "10/22/2026, 18:32:55\nINFO\nchanging JSON fixture",
+      "rowsSha256": "6867f8f53e5452e8eaa75b65e6f9e52f64a8bfc0d3dbc2146b080c12a0a0139e"
+    },
+    {
+      "label": "still-paused",
+      "at": 1792711981923,
+      "requests": 3,
+      "version": "0.1.2",
+      "buttons": [
+        {
+          "text": "Resume",
+          "disabled": false
+        },
+        {
+          "text": "Refresh",
+          "disabled": false
+        }
+      ],
+      "url": "https://770814298afe692457d07d8b15d6b8d3.renderer.freelens.app:39637/extension/freelens-readable-logs/readable-logs?clusterId=770814298afe692457d07d8b15d6b8d3&namespace=readable-logs-spike&pod=changing-logs&podUid=c8190dc0-0f37-4918-9918-53eba7c8ebc1",
+      "text": "Readable logs\n\nkind-freelens-json-logs-spike / readable-logs-spike / changing-logs\n\nchanging-logs\nContainer\njson\nplain\nProfile\nDefault\nResume\nRefresh\nPaused\nCluster 770814298afe692457d07d8b15d6b8d3 · Pod UID c8190dc0-0f37-4918-9918-53eba7c8ebc1\n10/22/2026, 17:42:58\nINFO\nchanging JSON fixture\n10/22/2026, 17:43:01\nINFO\nchanging JSON fixture\n10/22/2026, 17:43:04\nINFO\nchanging JSON fixture\n10/22/2026, 17:43:07\nINFO\nchanging JSON fixture\n10/22/2026, 17:43:10\nINFO\nchanging JSON fixture\n10/22/2026, 17:43:13",
+      "rowCount": 1000,
+      "firstRow": "10/22/2026, 17:42:58\nINFO\nchanging JSON fixture",
+      "lastRow": "10/22/2026, 18:32:55\nINFO\nchanging JSON fixture",
+      "rowsSha256": "6867f8f53e5452e8eaa75b65e6f9e52f64a8bfc0d3dbc2146b080c12a0a0139e"
+    },
+    {
+      "label": "manual-refresh",
+      "at": 1792711982675,
+      "requests": 4,
+      "version": "0.1.2",
+      "buttons": [
+        {
+          "text": "Resume",
+          "disabled": false
+        },
+        {
+          "text": "Refresh",
+          "disabled": false
+        }
+      ],
+      "url": "https://770814298afe692457d07d8b15d6b8d3.renderer.freelens.app:39637/extension/freelens-readable-logs/readable-logs?clusterId=770814298afe692457d07d8b15d6b8d3&namespace=readable-logs-spike&pod=changing-logs&podUid=c8190dc0-0f37-4918-9918-53eba7c8ebc1",
+      "text": "Readable logs\n\nkind-freelens-json-logs-spike / readable-logs-spike / changing-logs\n\nchanging-logs\nContainer\njson\nplain\nProfile\nDefault\nResume\nRefresh\nPaused\nCluster 770814298afe692457d07d8b15d6b8d3 · Pod UID c8190dc0-0f37-4918-9918-53eba7c8ebc1\n10/22/2026, 17:43:04\nINFO\nchanging JSON fixture\n10/22/2026, 17:43:07\nINFO\nchanging JSON fixture\n10/22/2026, 17:43:10\nINFO\nchanging JSON fixture\n10/22/2026, 17:43:13\nINFO\nchanging JSON fixture\n10/22/2026, 17:43:16\nINFO\nchanging JSON fixture\n10/22/2026, 17:43:19",
+      "rowCount": 1000,
+      "firstRow": "10/22/2026, 17:43:04\nINFO\nchanging JSON fixture",
+      "lastRow": "10/22/2026, 18:33:01\nINFO\nchanging JSON fixture",
+      "rowsSha256": "810acbe95442ae3737784a0f0e365da09dece658dd9882e92b42399b3c4d09eb"
+    },
+    {
+      "label": "manual-remains-paused",
+      "at": 1792711986185,
+      "requests": 4,
+      "version": "0.1.2",
+      "buttons": [
+        {
+          "text": "Resume",
+          "disabled": false
+        },
+        {
+          "text": "Refresh",
+          "disabled": false
+        }
+      ],
+      "url": "https://770814298afe692457d07d8b15d6b8d3.renderer.freelens.app:39637/extension/freelens-readable-logs/readable-logs?clusterId=770814298afe692457d07d8b15d6b8d3&namespace=readable-logs-spike&pod=changing-logs&podUid=c8190dc0-0f37-4918-9918-53eba7c8ebc1",
+      "text": "Readable logs\n\nkind-freelens-json-logs-spike / readable-logs-spike / changing-logs\n\nchanging-logs\nContainer\njson\nplain\nProfile\nDefault\nResume\nRefresh\nPaused\nCluster 770814298afe692457d07d8b15d6b8d3 · Pod UID c8190dc0-0f37-4918-9918-53eba7c8ebc1\n10/22/2026, 17:43:04\nINFO\nchanging JSON fixture\n10/22/2026, 17:43:07\nINFO\nchanging JSON fixture\n10/22/2026, 17:43:10\nINFO\nchanging JSON fixture\n10/22/2026, 17:43:13\nINFO\nchanging JSON fixture\n10/22/2026, 17:43:16\nINFO\nchanging JSON fixture\n10/22/2026, 17:43:19",
+      "rowCount": 1000,
+      "firstRow": "10/22/2026, 17:43:04\nINFO\nchanging JSON fixture",
+      "lastRow": "10/22/2026, 18:33:01\nINFO\nchanging JSON fixture",
+      "rowsSha256": "810acbe95442ae3737784a0f0e365da09dece658dd9882e92b42399b3c4d09eb"
+    },
+    {
+      "label": "resumed",
+      "at": 1792711986936,
+      "requests": 5,
+      "version": "0.1.2",
+      "buttons": [
+        {
+          "text": "Pause",
+          "disabled": false
+        },
+        {
+          "text": "Refresh",
+          "disabled": false
+        }
+      ],
+      "url": "https://770814298afe692457d07d8b15d6b8d3.renderer.freelens.app:39637/extension/freelens-readable-logs/readable-logs?clusterId=770814298afe692457d07d8b15d6b8d3&namespace=readable-logs-spike&pod=changing-logs&podUid=c8190dc0-0f37-4918-9918-53eba7c8ebc1",
+      "text": "Readable logs\n\nkind-freelens-json-logs-spike / readable-logs-spike / changing-logs\n\nchanging-logs\nContainer\njson\nplain\nProfile\nDefault\nPause\nRefresh\nAutomatic updates\nCluster 770814298afe692457d07d8b15d6b8d3 · Pod UID c8190dc0-0f37-4918-9918-53eba7c8ebc1\n10/22/2026, 17:43:07\nINFO\nchanging JSON fixture\n10/22/2026, 17:43:10\nINFO\nchanging JSON fixture\n10/22/2026, 17:43:13\nINFO\nchanging JSON fixture\n10/22/2026, 17:43:16\nINFO\nchanging JSON fixture\n10/22/2026, 17:43:19\nINFO\nchanging JSON fixture\n10/22/2026, 17:43:22",
+      "rowCount": 1000,
+      "firstRow": "10/22/2026, 17:43:07\nINFO\nchanging JSON fixture",
+      "lastRow": "10/22/2026, 18:33:04\nINFO\nchanging JSON fixture",
+      "rowsSha256": "5ee967ee34050f6b43528a75b92d95b2ce112f2c55555e9c2801e1df09dc67a5"
+    },
+    {
+      "label": "automatic-after-resume",
+      "at": 1792711990462,
+      "requests": 6,
+      "version": "0.1.2",
+      "buttons": [
+        {
+          "text": "Pause",
+          "disabled": false
+        },
+        {
+          "text": "Refresh",
+          "disabled": false
+        }
+      ],
+      "url": "https://770814298afe692457d07d8b15d6b8d3.renderer.freelens.app:39637/extension/freelens-readable-logs/readable-logs?clusterId=770814298afe692457d07d8b15d6b8d3&namespace=readable-logs-spike&pod=changing-logs&podUid=c8190dc0-0f37-4918-9918-53eba7c8ebc1",
+      "text": "Readable logs\n\nkind-freelens-json-logs-spike / readable-logs-spike / changing-logs\n\nchanging-logs\nContainer\njson\nplain\nProfile\nDefault\nPause\nRefresh\nAutomatic updates\nCluster 770814298afe692457d07d8b15d6b8d3 · Pod UID c8190dc0-0f37-4918-9918-53eba7c8ebc1\n10/22/2026, 17:43:10\nINFO\nchanging JSON fixture\n10/22/2026, 17:43:13\nINFO\nchanging JSON fixture\n10/22/2026, 17:43:16\nINFO\nchanging JSON fixture\n10/22/2026, 17:43:19\nINFO\nchanging JSON fixture\n10/22/2026, 17:43:22\nINFO\nchanging JSON fixture\n10/22/2026, 17:43:25",
+      "rowCount": 1000,
+      "firstRow": "10/22/2026, 17:43:10\nINFO\nchanging JSON fixture",
+      "lastRow": "10/22/2026, 18:33:07\nINFO\nchanging JSON fixture",
+      "rowsSha256": "31e3f84c0082fc6404e36612dabf9b3d7174ad4fbf7709cf56a6fd7bdb1e52c6"
+    }
+  ],
+  "restored": true
+}

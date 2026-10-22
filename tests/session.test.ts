@@ -13,12 +13,13 @@ test('default container annotation applies only to regular containers; no regula
   assert.equal(initialContainer({ ...pod, regular: [] }), '');
 });
 
-test('open preserves target, chooses annotated container and accepts one real-shaped snapshot', async () => {
+test('open preserves target, chooses annotated container and accepts one real-shaped snapshot', async t => {
   const requests: unknown[] = [];
   const port: SnapshotPort = { loadPod: async () => pod, readLogs: async (identity, container) => {
     requests.push({ identity, container }); return '2026-10-21T12:00:00Z {"msg":"ready"}\n';
   } };
   const session = new SnapshotSession(target, port, () => {});
+  t.after(() => session.dispose());
   await session.open();
   assert.deepEqual(requests, [{ identity: target, container: 'second' }]);
   assert.equal(session.state.phase, 'ready');
@@ -26,9 +27,10 @@ test('open preserves target, chooses annotated container and accepts one real-sh
   assert.equal(session.state.target, target);
 });
 
-test('without regular containers no request is made until an explicit choice', async () => {
+test('without regular containers no request is made until an explicit choice', async t => {
   let requests = 0;
   const session = new SnapshotSession(target, { loadPod: async () => ({ ...pod, regular: [] }), readLogs: async () => { requests++; return ''; } }, () => {});
+  t.after(() => session.dispose());
   await session.open();
   assert.equal(session.state.phase, 'choose-container');
   assert.equal(requests, 0);
@@ -38,15 +40,17 @@ test('without regular containers no request is made until an explicit choice', a
   assert.equal(requests, 1);
 });
 
-test('initial failure is an error, empty success is ready, replacement UID is rejected before logs', async () => {
+test('initial failure is an error, empty success is ready, replacement UID is rejected before logs', async t => {
   const denied = { message: 'pods/log is forbidden: User cannot get resource' };
   const session = new SnapshotSession(target, { loadPod: async () => pod, readLogs: async () => { throw denied; } }, () => {});
+  t.after(() => session.dispose());
   await session.open();
   assert.equal(session.state.phase, 'error');
   assert.equal(session.state.error, denied.message);
   assert.equal(session.state.snapshot, undefined);
   let requests = 0;
   const replaced = new SnapshotSession(target, { loadPod: async () => ({ ...pod, uid: 'replacement' }), readLogs: async () => { requests++; return ''; } }, () => {});
+  t.after(() => replaced.dispose());
   await replaced.open();
   assert.equal(replaced.state.phase, 'error');
   assert.equal(requests, 0);
