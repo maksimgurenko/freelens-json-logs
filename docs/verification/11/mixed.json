@@ -1,0 +1,63 @@
+{
+  "at": "2026-10-22T23:15:49.709Z",
+  "result": {
+    "type": "object",
+    "value": {
+      "url": "https://770814298afe692457d07d8b15d6b8d3.renderer.freelens.app:42941/extension/freelens-readable-logs/readable-logs?clusterId=770814298afe692457d07d8b15d6b8d3&namespace=readable-logs-spike&pod=readable-logs-ticket-11-mixed&podUid=9c1b802b-fe4d-4fa2-bcff-cf08057474c6",
+      "viewer": "Readable logs\n\nkind-freelens-json-logs-spike / readable-logs-spike / readable-logs-ticket-11-mixed\n\nreadable-logs-ticket-11-mixed\nContainer\nmixed\nProfile\nDefault\nCluster 770814298afe692457d07d8b15d6b8d3 · Pod UID 9c1b802b-fe4d-4fa2-bcff-cf08057474c6\n10/21/2026, 07:00:00\nWARN\nmixed JSON α🙂\n10/22/2026, 18:15:29\n  plain text with spacing  \n10/22/2026, 18:15:29\n{broken\n10/22/2026, 18:15:29\n[1,2]\n10/22/2026, 18:15:29\n\"hello\"\n10/22/2026, 18:15:29\n42\n10/22/2026, 18:15:29\nnull\n10/22/2026, 18:15:29\n \n10/22/2026, 18:15:29\nError: failed\n10/22/2026, 18:15:29\n    at worker()\n10/22/2026, 18:15:29\n30\nfirst\nsecond\n10/22/2026, 18:15:29\nDEBUG\nliteral wins\n12 records · 0.7 KiB retained\nShow timestamps\nWord wrap\nv0.1.1",
+      "version": "0.1.1",
+      "selectedContainer": "mixed",
+      "records": [
+        {
+          "text": "10/21/2026, 07:00:00\nWARN\nmixed JSON α🙂",
+          "time": "2026-10-21T07:00:00-05:00"
+        },
+        {
+          "text": "10/22/2026, 18:15:29\n  plain text with spacing  ",
+          "time": "2026-10-22T23:15:29.265939474Z"
+        },
+        {
+          "text": "10/22/2026, 18:15:29\n{broken",
+          "time": "2026-10-22T23:15:29.265940414Z"
+        },
+        {
+          "text": "10/22/2026, 18:15:29\n[1,2]",
+          "time": "2026-10-22T23:15:29.265941054Z"
+        },
+        {
+          "text": "10/22/2026, 18:15:29\n\"hello\"",
+          "time": "2026-10-22T23:15:29.265941484Z"
+        },
+        {
+          "text": "10/22/2026, 18:15:29\n42",
+          "time": "2026-10-22T23:15:29.265941914Z"
+        },
+        {
+          "text": "10/22/2026, 18:15:29\nnull",
+          "time": "2026-10-22T23:15:29.265942354Z"
+        },
+        {
+          "text": "10/22/2026, 18:15:29\n ",
+          "time": "2026-10-22T23:15:29.265942764Z"
+        },
+        {
+          "text": "10/22/2026, 18:15:29\nError: failed",
+          "time": "2026-10-22T23:15:29.265943244Z"
+        },
+        {
+          "text": "10/22/2026, 18:15:29\n    at worker()",
+          "time": "2026-10-22T23:15:29.265943694Z"
+        },
+        {
+          "text": "10/22/2026, 18:15:29\n30\nfirst\nsecond",
+          "time": "2026-10-22T23:15:29.265944154Z"
+        },
+        {
+          "text": "10/22/2026, 18:15:29\nDEBUG\nliteral wins",
+          "time": "2026-10-22T23:15:29.265944624Z"
+        }
+      ],
+      "timeZone": "America/Cancun"
+    }
+  }
+}

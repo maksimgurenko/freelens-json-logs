@@ -1,3 +1,6 @@
+> Production implementation: see [Build and install Readable logs](docs/local-development.md).
+> The research below predates the accepted GitHub requirements and is retained as background.
+
 # Freelens extension for readable JSON logs
 
 Checked: **2026-10-20**. This is a feasibility investigation and proposed design; no extension was built or installed.

@@ -1,0 +1,40 @@
+
+> freelens-readable-logs@0.1.1 test
+> node --experimental-strip-types --test tests/*.test.ts
+
+(node:2127107) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///home/max/work/freelens-json-logs/tests/records.test.ts is not specified and it doesn't parse as CommonJS.
+Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+To eliminate this warning, add "type": "module" to /home/max/work/freelens-json-logs/package.json.
+(Use `node --trace-warnings ...` to show where the warning was created)
+✔ authoritative Default examples: message candidates, whitespace and non-object fallbacks (1.27652ms)
+✔ exact original strings, timestamp precision, complete objects and unused aliases survive extraction (0.604376ms)
+✔ time: ordered valid candidates, explicit timezone, no numeric inference, local display (8.221987ms)
+✔ level: canonical names, unknown/numeric precedence, exact literal and nested paths (0.168764ms)
+✔ split only a validated timestamp and one separator; retain CR, spaces, tabs, Unicode and prototype keys (0.210262ms)
+(node:2127108) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///home/max/work/freelens-json-logs/tests/session.test.ts is not specified and it doesn't parse as CommonJS.
+Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+To eliminate this warning, add "type": "module" to /home/max/work/freelens-json-logs/package.json.
+(Use `node --trace-warnings ...` to show where the warning was created)
+✔ default container annotation applies only to regular containers; no regular means explicit choice (0.389515ms)
+✔ open preserves target, chooses annotated container and accepts one real-shaped snapshot (1.220352ms)
+✔ without regular containers no request is made until an explicit choice (0.119035ms)
+✔ initial failure is an error, empty success is ready, replacement UID is rejected before logs (0.166044ms)
+✔ departure/disable rejects pending successes and failures without claiming cancellation (0.140324ms)
+✔ errors from the host preserve useful raw Status/wrapper messages (0.069578ms)
+(node:2127114) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///home/max/work/freelens-json-logs/tests/snapshot.test.ts is not specified and it doesn't parse as CommonJS.
+Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+To eliminate this warning, add "type": "module" to /home/max/work/freelens-json-logs/package.json.
+(Use `node --trace-warnings ...` to show where the warning was created)
+✔ blank-line/terminal separator examples and independent multiline records (1.081337ms)
+✔ latest 1,000-line boundary, over-tail input and repeated identical lines remain in order (3.705984ms)
+✔ UTF-8 exactly/near/over 5 MiB: retain newest complete-line suffix and exact originals (34.584382ms)
+✔ oversized newest record is distinct from empty success; never keep a non-suffix older record (16.082879ms)
+✔ timestamp prefixes count toward budget; parsed Unicode source and whitespace stay exact (0.344076ms)
+ℹ tests 16
+ℹ suites 0
+ℹ pass 16
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 111.789789

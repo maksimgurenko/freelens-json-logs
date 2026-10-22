@@ -1,0 +1,15 @@
+{
+  "at": "2026-10-22T23:14:43.240Z",
+  "result": {
+    "type": "object",
+    "value": {
+      "url": "https://770814298afe692457d07d8b15d6b8d3.renderer.freelens.app:42941/extension/freelens-readable-logs/readable-logs?clusterId=770814298afe692457d07d8b15d6b8d3&namespace=readable-logs-spike&pod=single-json&podUid=0035d4f0-23c6-4e7d-93b2-c1d13a41cb92",
+      "viewer": "Readable logs\n\nkind-freelens-json-logs-spike / readable-logs-spike / single-json\n\nsingle-json\nContainer\njson\nempty\nProfile\nDefault\nCluster 770814298afe692457d07d8b15d6b8d3 · Pod UID 0035d4f0-23c6-4e7d-93b2-c1d13a41cb92\n\nNo logs returned for empty.\n\n0 records · 0.0 KiB retained\nShow timestamps\nWord wrap\nv0.1.1",
+      "version": "0.1.1",
+      "selectedContainer": "empty",
+      "records": [],
+      "timeZone": "America/Cancun",
+      "requests": []
+    }
+  }
+}

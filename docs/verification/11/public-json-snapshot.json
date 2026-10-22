@@ -1,0 +1,22 @@
+{
+  "at": "2026-10-22T23:14:43.140Z",
+  "result": {
+    "type": "object",
+    "value": {
+      "purpose": "Independent public API preservation observation, alongside packaged viewer rendering; no mocked response",
+      "resource": {
+        "namespace": "readable-logs-spike",
+        "name": "single-json"
+      },
+      "query": {
+        "container": "json",
+        "tailLines": 1000,
+        "timestamps": true,
+        "follow": false,
+        "previous": false
+      },
+      "raw": "2026-10-22T03:18:05.925898198Z {\"level\":\"info\",\"message\":\"freelens-json-logs-spike\",\"sequence\":1,\"fixture\":true}\n",
+      "utf8Bytes": 113
+    }
+  }
+}
