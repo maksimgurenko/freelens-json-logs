@@ -20,7 +20,7 @@ Enter a separate Readable logs cluster page from a Pod action. Ordinary use shou
 
 ## Capabilities and Constraints
 
-One target at a time; bounded snapshot replacement; refresh/pause; saved formatting profiles; exact field selectors and matching. Previous-instance logs, streaming, and multi-Pod output are outside the first release. This browser prototype uses synthetic logs and memory-only settings. It cannot prove host integration, actual polling performance, or persistence across restart.
+One target at a time; bounded snapshot replacement; refresh/pause; saved formatting profiles; exact field selectors and matching. Previous-instance logs, streaming, and multi-Pod output are outside the first release. The maintainer chose all three inspection layouts as a global viewer preference saved across restarts, separate from formatting profiles; Side is the initial default. This browser prototype uses synthetic logs and memory-only formatting profiles, with its inspection preference stored in a clearly named prototype localStorage key. It cannot prove host integration, actual polling performance, or persistence across restart.
 
 ## Brand Commitments
 
