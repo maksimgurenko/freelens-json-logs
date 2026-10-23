@@ -1,0 +1,19 @@
+{
+  "at": "2026-10-23T02:54:17.718Z",
+  "result": {
+    "type": "object",
+    "value": {
+      "titles": [
+        "Attach to Pod",
+        "Shell",
+        "Logs",
+        "Edit",
+        "Delete",
+        "Force Delete"
+      ],
+      "extensionActionAbsent": true,
+      "nativeLogsPresent": true,
+      "url": "https://770814298afe692457d07d8b15d6b8d3.renderer.freelens.app:38827/overview?kube-details=%2Fapi%2Fv1%2Fnamespaces%2Freadable-logs-spike%2Fpods%2Fsingle-json"
+    }
+  }
+}

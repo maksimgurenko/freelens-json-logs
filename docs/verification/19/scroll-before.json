@@ -1,0 +1,39 @@
+{
+  "at": "2026-10-23T02:26:35.073Z",
+  "result": {
+    "type": "object",
+    "value": {}
+  },
+  "exceptionDetails": {
+    "exceptionId": 5,
+    "text": "Uncaught (in promise) Error: Scroll away did not stick",
+    "lineNumber": 3,
+    "columnNumber": 52,
+    "scriptId": "293",
+    "stackTrace": {
+      "callFrames": [
+        {
+          "functionName": "assert",
+          "scriptId": "293",
+          "url": "",
+          "lineNumber": 2,
+          "columnNumber": 51
+        },
+        {
+          "functionName": "",
+          "scriptId": "15402",
+          "url": "",
+          "lineNumber": 0,
+          "columnNumber": 823
+        }
+      ]
+    },
+    "exception": {
+      "type": "object",
+      "subtype": "error",
+      "className": "Error",
+      "description": "Error: Scroll away did not stick\n    at assert (<anonymous>:3:52)\n    at <anonymous>:1:824",
+      "objectId": "6559749710937754930.2.48"
+    }
+  }
+}

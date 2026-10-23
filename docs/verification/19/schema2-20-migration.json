@@ -1,0 +1,347 @@
+{
+  "at": "2026-10-23T02:53:16.212Z",
+  "result": {
+    "type": "object",
+    "value": {
+      "diskBefore": {
+        "__internal__": {
+          "migrations": {
+            "version": "0.1.20"
+          }
+        },
+        "schemaVersion": 2,
+        "viewer": {
+          "inspection": "bottom"
+        },
+        "profiles": [
+          {
+            "id": "c2e38193-2d40-4870-b286-e0cda60bef44",
+            "name": "Release19 broad",
+            "format": {
+              "messagePaths": [
+                "/message",
+                "/msg"
+              ],
+              "timestampPaths": [
+                "/timestamp",
+                "/time",
+                "/@timestamp"
+              ],
+              "levelPaths": [
+                "/level",
+                "/severity",
+                "/log.level",
+                "/log/level"
+              ],
+              "inlinePaths": [],
+              "hiddenPaths": [],
+              "numericTimestamp": "unset",
+              "severityMappings": []
+            }
+          },
+          {
+            "id": "d227bea6-eef0-4376-9ff3-00d99f67439e",
+            "name": "Release19 primary",
+            "format": {
+              "messagePaths": [
+                "/message",
+                "/msg"
+              ],
+              "timestampPaths": [
+                "/time",
+                "/timestamp"
+              ],
+              "levelPaths": [
+                "/level"
+              ],
+              "inlinePaths": [
+                "/nested",
+                "/x/0"
+              ],
+              "hiddenPaths": [
+                "/hidden"
+              ],
+              "numericTimestamp": "seconds",
+              "severityMappings": [
+                {
+                  "source": 30,
+                  "target": "INFO"
+                }
+              ]
+            }
+          },
+          {
+            "id": "5e84f500-71db-4796-ae64-d4536ce6d2e7",
+            "name": "Release19 fallback",
+            "format": {
+              "messagePaths": [
+                "/hidden",
+                "/msg"
+              ],
+              "timestampPaths": [
+                "/time",
+                "/timestamp"
+              ],
+              "levelPaths": [
+                "/level"
+              ],
+              "inlinePaths": [
+                "/nested",
+                "/x/0"
+              ],
+              "hiddenPaths": [
+                "/hidden"
+              ],
+              "numericTimestamp": "milliseconds",
+              "severityMappings": [
+                {
+                  "source": 30,
+                  "target": "INFO"
+                }
+              ]
+            }
+          }
+        ],
+        "globalDefault": "5e84f500-71db-4796-ae64-d4536ce6d2e7"
+      },
+      "migrated": {
+        "inspection": "bottom",
+        "configuration": {
+          "schemaVersion": 3,
+          "viewer": {
+            "inspection": "bottom"
+          },
+          "profiles": [
+            {
+              "id": "c2e38193-2d40-4870-b286-e0cda60bef44",
+              "name": "Release19 broad",
+              "format": {
+                "messagePaths": [
+                  "/message",
+                  "/msg"
+                ],
+                "timestampPaths": [
+                  "/timestamp",
+                  "/time",
+                  "/@timestamp"
+                ],
+                "levelPaths": [
+                  "/level",
+                  "/severity",
+                  "/log.level",
+                  "/log/level"
+                ],
+                "inlinePaths": [],
+                "hiddenPaths": [],
+                "numericTimestamp": "unset",
+                "severityMappings": []
+              },
+              "matching": {
+                "enabled": false,
+                "conditions": {
+                  "labels": []
+                }
+              }
+            },
+            {
+              "id": "d227bea6-eef0-4376-9ff3-00d99f67439e",
+              "name": "Release19 primary",
+              "format": {
+                "messagePaths": [
+                  "/message",
+                  "/msg"
+                ],
+                "timestampPaths": [
+                  "/time",
+                  "/timestamp"
+                ],
+                "levelPaths": [
+                  "/level"
+                ],
+                "inlinePaths": [
+                  "/nested",
+                  "/x/0"
+                ],
+                "hiddenPaths": [
+                  "/hidden"
+                ],
+                "numericTimestamp": "seconds",
+                "severityMappings": [
+                  {
+                    "source": 30,
+                    "target": "INFO"
+                  }
+                ]
+              },
+              "matching": {
+                "enabled": false,
+                "conditions": {
+                  "labels": []
+                }
+              }
+            },
+            {
+              "id": "5e84f500-71db-4796-ae64-d4536ce6d2e7",
+              "name": "Release19 fallback",
+              "format": {
+                "messagePaths": [
+                  "/hidden",
+                  "/msg"
+                ],
+                "timestampPaths": [
+                  "/time",
+                  "/timestamp"
+                ],
+                "levelPaths": [
+                  "/level"
+                ],
+                "inlinePaths": [
+                  "/nested",
+                  "/x/0"
+                ],
+                "hiddenPaths": [
+                  "/hidden"
+                ],
+                "numericTimestamp": "milliseconds",
+                "severityMappings": [
+                  {
+                    "source": 30,
+                    "target": "INFO"
+                  }
+                ]
+              },
+              "matching": {
+                "enabled": false,
+                "conditions": {
+                  "labels": []
+                }
+              }
+            }
+          ],
+          "globalDefault": "5e84f500-71db-4796-ae64-d4536ce6d2e7"
+        },
+        "settingsPath": "/home/max/.config/Freelens/extension-store/freelens-readable-logs/readable-logs.json"
+      },
+      "diskAfter": {
+        "__internal__": {
+          "migrations": {
+            "version": "0.1.20"
+          }
+        },
+        "schemaVersion": 3,
+        "viewer": {
+          "inspection": "inline"
+        },
+        "profiles": [
+          {
+            "id": "c2e38193-2d40-4870-b286-e0cda60bef44",
+            "name": "Release19 broad",
+            "format": {
+              "messagePaths": [
+                "/message",
+                "/msg"
+              ],
+              "timestampPaths": [
+                "/timestamp",
+                "/time",
+                "/@timestamp"
+              ],
+              "levelPaths": [
+                "/level",
+                "/severity",
+                "/log.level",
+                "/log/level"
+              ],
+              "inlinePaths": [],
+              "hiddenPaths": [],
+              "numericTimestamp": "unset",
+              "severityMappings": []
+            },
+            "matching": {
+              "enabled": false,
+              "conditions": {
+                "labels": []
+              }
+            }
+          },
+          {
+            "id": "d227bea6-eef0-4376-9ff3-00d99f67439e",
+            "name": "Release19 primary",
+            "format": {
+              "messagePaths": [
+                "/message",
+                "/msg"
+              ],
+              "timestampPaths": [
+                "/time",
+                "/timestamp"
+              ],
+              "levelPaths": [
+                "/level"
+              ],
+              "inlinePaths": [
+                "/nested",
+                "/x/0"
+              ],
+              "hiddenPaths": [
+                "/hidden"
+              ],
+              "numericTimestamp": "seconds",
+              "severityMappings": [
+                {
+                  "source": 30,
+                  "target": "INFO"
+                }
+              ]
+            },
+            "matching": {
+              "enabled": false,
+              "conditions": {
+                "labels": []
+              }
+            }
+          },
+          {
+            "id": "5e84f500-71db-4796-ae64-d4536ce6d2e7",
+            "name": "Release19 fallback",
+            "format": {
+              "messagePaths": [
+                "/hidden",
+                "/msg"
+              ],
+              "timestampPaths": [
+                "/time",
+                "/timestamp"
+              ],
+              "levelPaths": [
+                "/level"
+              ],
+              "inlinePaths": [
+                "/nested",
+                "/x/0"
+              ],
+              "hiddenPaths": [
+                "/hidden"
+              ],
+              "numericTimestamp": "milliseconds",
+              "severityMappings": [
+                {
+                  "source": 30,
+                  "target": "INFO"
+                }
+              ]
+            },
+            "matching": {
+              "enabled": false,
+              "conditions": {
+                "labels": []
+              }
+            }
+          }
+        ],
+        "globalDefault": "5e84f500-71db-4796-ae64-d4536ce6d2e7"
+      },
+      "text": "Readable logs\n\nkind-freelens-json-logs-spike / readable-logs-spike / single-json\n\nsingle-json\nContainer\njson\nempty\nProfile\nAuto · Release19 fallback\nDefault\nRelease19 broad\nRelease19 primary\nRelease19 fallback\nProfiles\nResume\nRefresh\nPaused\nFind\nEnter text to find\nPrevious\nNext\nCluster 770814298afe692457d07d8b15d6b8d3 · Pod UID 0035d4f0-23c6-4e7d-93b2-c1d13a41cb92 · Active profile Release19 fallback\nInspection\nInline expansion\nSide inspector\nBottom inspector\nReadable\nRaw\n10/21/2026, 22:18:05\nINFO\n{\"level\":\"info\",\"message\":\"freelens-json-logs-spike\",\"sequence\":1,\"fixture\":true}\n3 fields\n1 records · 0.1 KiB retained\nTo bottom\nFollowing output\nShow timestamps\nWord wrap\nv0.1.20"
+    }
+  }
+}

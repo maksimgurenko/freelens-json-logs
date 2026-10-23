@@ -1,0 +1,39 @@
+{
+  "at": "2026-10-23T02:18:40.180Z",
+  "result": {
+    "type": "object",
+    "value": {}
+  },
+  "exceptionDetails": {
+    "exceptionId": 1,
+    "text": "Uncaught (in promise) Error: Automatic return did not read fresh",
+    "lineNumber": 3,
+    "columnNumber": 52,
+    "scriptId": "293",
+    "stackTrace": {
+      "callFrames": [
+        {
+          "functionName": "assert",
+          "scriptId": "293",
+          "url": "",
+          "lineNumber": 2,
+          "columnNumber": 51
+        },
+        {
+          "functionName": "",
+          "scriptId": "521",
+          "url": "",
+          "lineNumber": 0,
+          "columnNumber": 254
+        }
+      ]
+    },
+    "exception": {
+      "type": "object",
+      "subtype": "error",
+      "className": "Error",
+      "description": "Error: Automatic return did not read fresh\n    at Object.assert (<anonymous>:3:52)\n    at <anonymous>:1:255",
+      "objectId": "6559749710937754930.2.41"
+    }
+  }
+}

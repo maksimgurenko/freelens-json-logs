@@ -1,0 +1,15 @@
+{
+  "at": "2026-10-23T02:25:57.786Z",
+  "result": {
+    "type": "object",
+    "value": {
+      "uid": "f97d1f53-8cbd-46de-98cb-562bfcc81482",
+      "namespace": "readable-logs-ticket-19",
+      "name": "lifecycle",
+      "containers": [
+        "app",
+        "sidecar"
+      ]
+    }
+  }
+}

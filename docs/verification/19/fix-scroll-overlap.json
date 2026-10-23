@@ -1,0 +1,21 @@
+{
+  "at": "2026-10-23T02:43:40.159Z",
+  "result": {
+    "type": "object",
+    "value": {
+      "before": {
+        "text": "row 0151",
+        "offset": -6.982421875,
+        "index": 150
+      },
+      "after": {
+        "text": "row 0151",
+        "offset": -6.787109375,
+        "index": 50
+      },
+      "hiddenFindCount": 1000,
+      "previousNextWrap": true,
+      "rows": 1000
+    }
+  }
+}

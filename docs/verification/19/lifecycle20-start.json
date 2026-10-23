@@ -1,0 +1,28 @@
+{
+  "label": "lifecycle20-start",
+  "oldMainPid": 2710018,
+  "oldPids": [
+    2710018,
+    2710021,
+    2710022,
+    2710024,
+    2710074,
+    2710316,
+    2710433,
+    2710498
+  ],
+  "workspaceBefore": 7,
+  "focusBefore": "0x55baefeec180",
+  "oldWindowAddress": "0x55baefeec180",
+  "remainingOldPids": [],
+  "controlledSettingsSource": "docs/verification/19/controlled-valid-20.json",
+  "controlledMode": "600",
+  "initialMappedWorkspace": 7,
+  "focusedHostReplacement": true,
+  "newMainPid": 2713240,
+  "newWorkspace": 7,
+  "workspaceAfter": 7,
+  "focusAfter": "0x55baf1168f80",
+  "launch": "env CHOKIDAR_USEPOLLING=1 CHOKIDAR_INTERVAL=100 TMPDIR=/home/max/.cache/freelens-readable-logs/tmp /usr/bin/freelens --remote-debugging-address=127.0.0.1 --remote-debugging-port=9235 >> /home/max/work/freelens-json-logs/.scratch/readable-logs/host.log 2>&1",
+  "quit": "native File > Quit Alt+F4"
+}

@@ -1,0 +1,97 @@
+{
+  "at": "2026-10-23T02:50:22.724Z",
+  "result": {
+    "type": "object",
+    "value": {
+      "at": 1792723822724,
+      "url": "https://770814298afe692457d07d8b15d6b8d3.renderer.freelens.app:38767/extension/freelens-readable-logs/readable-logs?clusterId=770814298afe692457d07d8b15d6b8d3&namespace=readable-logs-ticket-19&pod=lifecycle&podUid=dd2128b1-eed0-48ea-a33d-529a5ea4edb2",
+      "hidden": false,
+      "focused": true,
+      "version": "0.1.20",
+      "container": "app",
+      "choices": [
+        {
+          "kind": "Containers",
+          "names": [
+            "app",
+            "sidecar"
+          ]
+        },
+        {
+          "kind": "init containers",
+          "names": [
+            "setup"
+          ]
+        },
+        {
+          "kind": "ephemeral containers",
+          "names": [
+            "debug"
+          ]
+        }
+      ],
+      "header": [
+        "Readable logs",
+        "",
+        "kind-freelens-json-logs-spike / readable-logs-ticket-19 / lifecycle",
+        "",
+        "lifecycle",
+        "Container",
+        "app",
+        "sidecar",
+        "setup",
+        "debug",
+        "Profile",
+        "Auto · Release19 broad",
+        "Default",
+        "Release19 broad",
+        "Release19 primary",
+        "Release19 fallback",
+        "Profiles",
+        "Pause",
+        "Refresh",
+        "Automatic updates"
+      ],
+      "notice": [
+        "Container restart observed. Previous-instance logs were cleared."
+      ],
+      "buttons": [
+        {
+          "text": "Profiles",
+          "disabled": false
+        },
+        {
+          "text": "Pause",
+          "disabled": false
+        },
+        {
+          "text": "Refresh",
+          "disabled": false
+        },
+        {
+          "text": "Previous",
+          "disabled": true
+        },
+        {
+          "text": "Next",
+          "disabled": true
+        },
+        {
+          "text": "Readable",
+          "disabled": false
+        },
+        {
+          "text": "Raw",
+          "disabled": false
+        },
+        {
+          "text": "To bottom",
+          "disabled": false
+        }
+      ],
+      "rows": 47,
+      "first": "10/22/2026, 21:49:36\napp current instance 0",
+      "last": "10/22/2026, 21:50:22\napp current instance 46"
+    }
+  }
+}

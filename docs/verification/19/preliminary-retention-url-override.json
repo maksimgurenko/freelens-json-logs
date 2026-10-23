@@ -1,0 +1,39 @@
+{
+  "at": "2026-10-23T02:09:09.806Z",
+  "result": {
+    "type": "object",
+    "value": {}
+  },
+  "exceptionDetails": {
+    "exceptionId": 4,
+    "text": "Uncaught (in promise) Error: Real more-than-tail response",
+    "lineNumber": 3,
+    "columnNumber": 52,
+    "scriptId": "328",
+    "stackTrace": {
+      "callFrames": [
+        {
+          "functionName": "assert",
+          "scriptId": "328",
+          "url": "",
+          "lineNumber": 2,
+          "columnNumber": 51
+        },
+        {
+          "functionName": "",
+          "scriptId": "348",
+          "url": "",
+          "lineNumber": 17,
+          "columnNumber": 31
+        }
+      ]
+    },
+    "exception": {
+      "type": "object",
+      "subtype": "error",
+      "className": "Error",
+      "description": "Error: Real more-than-tail response\n    at assert (<anonymous>:3:52)\n    at <anonymous>:18:32",
+      "objectId": "4649453183194725383.2.27"
+    }
+  }
+}

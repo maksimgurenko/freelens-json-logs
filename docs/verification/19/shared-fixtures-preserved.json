@@ -1,0 +1,40 @@
+{
+  "baseline": "docs/verification/15/shared-fixtures-preserved.json",
+  "before": [
+    {
+      "name": "changing-logs",
+      "uid": "c8190dc0-0f37-4918-9918-53eba7c8ebc1",
+      "restarts": {
+        "json": 0,
+        "plain": 0
+      }
+    },
+    {
+      "name": "single-json",
+      "uid": "0035d4f0-23c6-4e7d-93b2-c1d13a41cb92",
+      "restarts": {
+        "empty": 0,
+        "json": 0
+      }
+    }
+  ],
+  "after": [
+    {
+      "name": "changing-logs",
+      "uid": "c8190dc0-0f37-4918-9918-53eba7c8ebc1",
+      "restarts": {
+        "json": 0,
+        "plain": 0
+      }
+    },
+    {
+      "name": "single-json",
+      "uid": "0035d4f0-23c6-4e7d-93b2-c1d13a41cb92",
+      "restarts": {
+        "empty": 0,
+        "json": 0
+      }
+    }
+  ],
+  "unchanged": true
+}

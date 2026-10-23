@@ -1,0 +1,1 @@
+(async()=>{const h=global.__rl19,p=global.__rl13;if(h.button('Pause'))await h.click('Pause');p.beforeGone=p.state();p.originalUid=new URL(location.href).searchParams.get('podUid');p.goneStart=p.records.length;return {originalUid:p.originalUid,before:p.beforeGone};})()

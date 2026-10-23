@@ -1,0 +1,76 @@
+{
+  "revision": "b9521a4041d216820fa5851ee2dea5b7256b1b60",
+  "method": "git archive HEAD into initially absent directory; only tracked production sources",
+  "directory": "/home/max/work/freelens-json-logs/.scratch/readable-logs/19/clean-0.1.20",
+  "commands": [
+    {
+      "check": "toolchain",
+      "command": [
+        "/home/max/work/freelens-json-logs/.scratch/readable-logs/toolchain/node_modules/node/bin/node",
+        "--version"
+      ],
+      "exitCode": 0
+    },
+    {
+      "check": "npm-version",
+      "command": [
+        "/home/max/work/freelens-json-logs/.scratch/readable-logs/toolchain/node_modules/node/bin/node",
+        "/home/max/work/freelens-json-logs/.scratch/readable-logs/toolchain/node_modules/npm/bin/npm-cli.js",
+        "--version"
+      ],
+      "exitCode": 0
+    },
+    {
+      "check": "locked-install",
+      "command": [
+        "/home/max/work/freelens-json-logs/.scratch/readable-logs/toolchain/node_modules/node/bin/node",
+        "/home/max/work/freelens-json-logs/.scratch/readable-logs/toolchain/node_modules/npm/bin/npm-cli.js",
+        "ci",
+        "--ignore-scripts",
+        "--no-audit",
+        "--no-fund"
+      ],
+      "exitCode": 0
+    },
+    {
+      "check": "typecheck",
+      "command": [
+        "/home/max/work/freelens-json-logs/.scratch/readable-logs/toolchain/node_modules/node/bin/node",
+        "/home/max/work/freelens-json-logs/.scratch/readable-logs/toolchain/node_modules/npm/bin/npm-cli.js",
+        "run",
+        "typecheck"
+      ],
+      "exitCode": 0
+    },
+    {
+      "check": "tests",
+      "command": [
+        "/home/max/work/freelens-json-logs/.scratch/readable-logs/toolchain/node_modules/node/bin/node",
+        "/home/max/work/freelens-json-logs/.scratch/readable-logs/toolchain/node_modules/npm/bin/npm-cli.js",
+        "test"
+      ],
+      "exitCode": 0
+    },
+    {
+      "check": "package",
+      "command": [
+        "/home/max/work/freelens-json-logs/.scratch/readable-logs/toolchain/node_modules/node/bin/node",
+        "/home/max/work/freelens-json-logs/.scratch/readable-logs/toolchain/node_modules/npm/bin/npm-cli.js",
+        "run",
+        "package"
+      ],
+      "exitCode": 0
+    },
+    {
+      "check": "package-check",
+      "command": [
+        "/home/max/work/freelens-json-logs/.scratch/readable-logs/toolchain/node_modules/node/bin/node",
+        "/home/max/work/freelens-json-logs/.scratch/readable-logs/toolchain/node_modules/npm/bin/npm-cli.js",
+        "run",
+        "check:package"
+      ],
+      "exitCode": 0
+    }
+  ],
+  "tarballSha256": "8dfd57b2489b87d8434144d83c7c7a44b7f67726f18f13fa0b637b77fa9c9de7"
+}

@@ -1,0 +1,16 @@
+{
+  "at": "2026-10-23T02:56:31.877Z",
+  "result": {
+    "type": "object",
+    "value": {
+      "version": "0.1.20",
+      "url": "https://770814298afe692457d07d8b15d6b8d3.renderer.freelens.app:35639/extension/freelens-readable-logs/readable-logs?clusterId=770814298afe692457d07d8b15d6b8d3&namespace=readable-logs-spike&pod=single-json&podUid=0035d4f0-23c6-4e7d-93b2-c1d13a41cb92",
+      "rows": 1,
+      "layout": "bottom",
+      "inspector": false,
+      "manual": "",
+      "identity": "Cluster 770814298afe692457d07d8b15d6b8d3 · Pod UID 0035d4f0-23c6-4e7d-93b2-c1d13a41cb92 · Active profile Release19 fallback",
+      "firstMessage": "{\"level\":\"info\",\"message\":\"freelens-json-logs-spike\",\"sequence\":1,\"fixture\":true}"
+    }
+  }
+}

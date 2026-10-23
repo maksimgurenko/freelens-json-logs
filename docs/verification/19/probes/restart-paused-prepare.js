@@ -1,0 +1,1 @@
+(async()=>{const h=global.__rl19,p=global.__rl13;if(h.button('Pause'))await h.click('Pause');p.stage='paused-restart';p.stageStart=p.records.length;p.beforeRestart=p.state();return {before:p.beforeRestart,manual:h.state().manualProfile};})()

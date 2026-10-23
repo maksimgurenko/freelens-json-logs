@@ -1,0 +1,39 @@
+{
+  "at": "2026-10-23T02:08:12.023Z",
+  "result": {
+    "type": "object",
+    "value": {}
+  },
+  "exceptionDetails": {
+    "exceptionId": 3,
+    "text": "Uncaught (in promise) Error: Installed viewer state not found",
+    "lineNumber": 23,
+    "columnNumber": 11,
+    "scriptId": "320",
+    "stackTrace": {
+      "callFrames": [
+        {
+          "functionName": "state",
+          "scriptId": "320",
+          "url": "",
+          "lineNumber": 22,
+          "columnNumber": 10
+        },
+        {
+          "functionName": "measure",
+          "scriptId": "317",
+          "url": "",
+          "lineNumber": 27,
+          "columnNumber": 33
+        }
+      ]
+    },
+    "exception": {
+      "type": "object",
+      "subtype": "error",
+      "className": "Error",
+      "description": "Error: Installed viewer state not found\n    at state (<anonymous>:23:11)\n    at measure (<anonymous>:28:34)\n    at async <anonymous>:34:18",
+      "objectId": "4649453183194725383.2.9"
+    }
+  }
+}

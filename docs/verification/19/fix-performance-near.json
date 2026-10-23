@@ -1,0 +1,97 @@
+{
+  "at": "2026-10-23T02:41:09.923Z",
+  "result": {
+    "type": "object",
+    "value": {
+      "host": "1.10.3",
+      "version": "0.1.20",
+      "visible": "visible",
+      "warmupExcluded": {
+        "container": "utf8-near",
+        "rows": 1000,
+        "responseBytes": 5148000,
+        "networkWaitMs": 34.800000071525574,
+        "responseToUsableDomMs": 452.2999999523163,
+        "responseThroughPaintOpportunityMs": 462.5,
+        "actionToResponseMs": 72.10000002384186,
+        "pauseDomMs": 37.699999928474426,
+        "pauseThroughPaintOpportunityMs": 45.5,
+        "navigationDomMs": 12,
+        "navigationThroughPaintOpportunityMs": 16.399999976158142
+      },
+      "runs": [
+        {
+          "container": "utf8-near",
+          "rows": 1000,
+          "responseBytes": 5148000,
+          "networkWaitMs": 34.10000002384186,
+          "responseToUsableDomMs": 185.19999992847443,
+          "responseThroughPaintOpportunityMs": 190.39999997615814,
+          "actionToResponseMs": 71.30000007152557,
+          "pauseDomMs": 36.5,
+          "pauseThroughPaintOpportunityMs": 43.60000002384186,
+          "navigationDomMs": 9.799999952316284,
+          "navigationThroughPaintOpportunityMs": 24.699999928474426
+        },
+        {
+          "container": "utf8-near",
+          "rows": 1000,
+          "responseBytes": 5148000,
+          "networkWaitMs": 33,
+          "responseToUsableDomMs": 181,
+          "responseThroughPaintOpportunityMs": 187.60000002384186,
+          "actionToResponseMs": 69.60000002384186,
+          "pauseDomMs": 36.799999952316284,
+          "pauseThroughPaintOpportunityMs": 46.09999990463257,
+          "navigationDomMs": 11.700000047683716,
+          "navigationThroughPaintOpportunityMs": 17.300000071525574
+        },
+        {
+          "container": "utf8-near",
+          "rows": 1000,
+          "responseBytes": 5148000,
+          "networkWaitMs": 32.699999928474426,
+          "responseToUsableDomMs": 186.40000009536743,
+          "responseThroughPaintOpportunityMs": 191.60000002384186,
+          "actionToResponseMs": 69.5,
+          "pauseDomMs": 35.60000002384186,
+          "pauseThroughPaintOpportunityMs": 42.700000047683716,
+          "navigationDomMs": 9.5,
+          "navigationThroughPaintOpportunityMs": 25.199999928474426
+        },
+        {
+          "container": "utf8-near",
+          "rows": 1000,
+          "responseBytes": 5148000,
+          "networkWaitMs": 32.09999990463257,
+          "responseToUsableDomMs": 182.10000002384186,
+          "responseThroughPaintOpportunityMs": 190,
+          "actionToResponseMs": 67.89999997615814,
+          "pauseDomMs": 35.700000047683716,
+          "pauseThroughPaintOpportunityMs": 44.60000002384186,
+          "navigationDomMs": 11.200000047683716,
+          "navigationThroughPaintOpportunityMs": 25.700000047683716
+        },
+        {
+          "container": "utf8-near",
+          "rows": 1000,
+          "responseBytes": 5148000,
+          "networkWaitMs": 38.5,
+          "responseToUsableDomMs": 93.19999992847443,
+          "responseThroughPaintOpportunityMs": 96.89999997615814,
+          "actionToResponseMs": 76.70000004768372,
+          "pauseDomMs": 36.199999928474426,
+          "pauseThroughPaintOpportunityMs": 45.10000002384186,
+          "navigationDomMs": 12,
+          "navigationThroughPaintOpportunityMs": 22.5
+        }
+      ],
+      "thresholds": {
+        "responseMs": 1000,
+        "pauseAndNavigationMs": 100
+      },
+      "allWithinTargets": true,
+      "method": "performance.now in actual renderer; prepended real Node response end before SDK completion; DOM geometry then two requestAnimationFrame opportunities; native focused workspace-7 window; no synthetic responses"
+    }
+  }
+}

@@ -1,0 +1,100 @@
+{
+  "at": "2026-10-23T02:23:56.657Z",
+  "result": {
+    "type": "object",
+    "value": {
+      "before": {
+        "at": 1792722236656,
+        "url": "https://770814298afe692457d07d8b15d6b8d3.renderer.freelens.app:40797/extension/freelens-readable-logs/readable-logs?clusterId=770814298afe692457d07d8b15d6b8d3&namespace=readable-logs-ticket-19&pod=lifecycle&podUid=68d5554d-265b-44d8-865a-7bdfdee7e41a",
+        "hidden": false,
+        "focused": true,
+        "version": "0.1.19",
+        "container": "app",
+        "choices": [
+          {
+            "kind": "Containers",
+            "names": [
+              "app",
+              "sidecar"
+            ]
+          },
+          {
+            "kind": "init containers",
+            "names": [
+              "setup"
+            ]
+          },
+          {
+            "kind": "ephemeral containers",
+            "names": [
+              "debug"
+            ]
+          }
+        ],
+        "header": [
+          "Readable logs",
+          "",
+          "kind-freelens-json-logs-spike / readable-logs-ticket-19 / lifecycle",
+          "",
+          "lifecycle",
+          "Container",
+          "app",
+          "sidecar",
+          "setup",
+          "debug",
+          "Profile",
+          "Auto · Release19 broad",
+          "Default",
+          "Release19 broad",
+          "Release19 primary",
+          "Release19 fallback",
+          "Profiles",
+          "Resume",
+          "Refresh",
+          "Paused"
+        ],
+        "notice": [
+          "Container restart observed. Previous-instance logs were cleared. Paused; select Refresh or Resume to read the current instance."
+        ],
+        "buttons": [
+          {
+            "text": "Profiles",
+            "disabled": false
+          },
+          {
+            "text": "Resume",
+            "disabled": false
+          },
+          {
+            "text": "Refresh",
+            "disabled": false
+          },
+          {
+            "text": "Previous",
+            "disabled": true
+          },
+          {
+            "text": "Next",
+            "disabled": true
+          },
+          {
+            "text": "Readable",
+            "disabled": false
+          },
+          {
+            "text": "Raw",
+            "disabled": false
+          },
+          {
+            "text": "To bottom",
+            "disabled": false
+          }
+        ],
+        "rows": 3,
+        "first": "10/22/2026, 21:23:53\napp current instance 0",
+        "last": "10/22/2026, 21:23:55\napp current instance 2"
+      },
+      "manual": "d227bea6-eef0-4376-9ff3-00d99f67439e"
+    }
+  }
+}

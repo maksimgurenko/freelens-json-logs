@@ -1,0 +1,20 @@
+{
+  "command": [
+    "kubectl",
+    "--context",
+    "kind-freelens-json-logs-spike",
+    "-n",
+    "readable-logs-ticket-19",
+    "exec",
+    "release",
+    "-c",
+    "bounded",
+    "--",
+    "sh",
+    "-c",
+    "awk 'BEGIN {for(i=1101;i<=2200;i++) printf \"{\\\"message\\\":\\\"row %04d\\\",\\\"level\\\":\\\"info\\\",\\\"hidden\\\":\\\"Private.Needle[0] α🙂\\\",\\\"nested\\\":{\\\"ok\\\":true}}\\n\",i}' > /proc/1/fd/1"
+  ],
+  "exitCode": 0,
+  "stdout": "",
+  "stderr": ""
+}
