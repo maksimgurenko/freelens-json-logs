@@ -1,6 +1,6 @@
 # 17: Select formatting profiles automatically
 
-**Status:** ready-for-agent
+**Status:** done
 
 **Blocked by:** [16: Create and save formatting profiles](16-create-and-save-formatting-profiles.md)
 

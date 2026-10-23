@@ -1,0 +1,26 @@
+{
+  "label": "migration2-start",
+  "oldMainPid": 2559318,
+  "oldPids": [
+    2559318,
+    2559321,
+    2559322,
+    2559324,
+    2559382,
+    2559619,
+    2559734,
+    2559800
+  ],
+  "workspaceBefore": 2,
+  "focusBefore": "0x55baeff066d0",
+  "remainingOldPids": [],
+  "controlledSettingsSource": ".scratch/readable-logs/18/schema2.json",
+  "controlledMode": "600",
+  "initialMappedWorkspace": 7,
+  "newMainPid": 2561232,
+  "newWorkspace": 7,
+  "workspaceAfter": 2,
+  "focusAfter": "0x55baeff066d0",
+  "launch": "env CHOKIDAR_USEPOLLING=1 CHOKIDAR_INTERVAL=100 TMPDIR=/home/max/.cache/freelens-readable-logs/tmp /usr/bin/freelens --remote-debugging-address=127.0.0.1 --remote-debugging-port=9235 >> /home/max/work/freelens-json-logs/.scratch/readable-logs/host.log 2>&1",
+  "quit": "native File > Quit Alt+F4"
+}

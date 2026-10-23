@@ -5,7 +5,7 @@ Pause/Resume, explicit recovery and Pod/container lifecycle handling (GitHub #11
 Ticket #14 adds complete-record inspection in Inline, Side and Bottom layouts,
 Raw presentation, exact original clipboard actions and a saved global Inspection
 preference. Ticket #15 adds bottom following, anchored scroll position and literal Find navigation.
-Ticket #16 adds staged formatting profiles, sample previews, manual selection and a saved global default. Ticket #17 adds exact target matching and saved precedence.
+Ticket #16 adds staged formatting profiles, sample previews, manual selection and a saved global default. Ticket #17 adds exact target matching and saved precedence. Ticket #18 adds preserved fallback and confirmed backed-up settings recovery.
 The accepted GitHub #8 contract and its linked resolutions govern implementation.
 
 Supported host: **Freelens 1.10.3 only**, currently tested on Arch Linux/Wayland.
@@ -25,8 +25,8 @@ npm run typecheck
 npm test
 npm run package
 npm run check:package
-tar -tzf dist/freelens-readable-logs-0.1.17.tgz
-sha256sum dist/freelens-readable-logs-0.1.17.tgz
+tar -tzf dist/freelens-readable-logs-0.1.18.tgz
+sha256sum dist/freelens-readable-logs-0.1.18.tgz
 ```
 
 The locked esbuild platform package supplies its binary without install scripts.
@@ -58,8 +58,11 @@ with no saved profiles and built-in Default selected. Valid schema 2 profiles
 migrate explicitly with matching disabled and no conditions, preserving IDs,
 order, rules and default. Unsupported versions or
 invalid data inhibit editing; the viewer reports the problem and uses built-in
-Default and Side. Full corrupt/newer-file recovery and backed-up reset remain
-ticket #18. Main owns durable writes through the matching renderer store.
+Default and Side. Before constructing either SDK store, the extension reads and validates saved
+configuration. Corrupt JSON, unreadable files, invalid configuration and unsupported
+schemas keep built-in Default and Side available, with a visible explanation. Neither
+SDK synchronization nor ordinary preference/profile editing starts in fallback; the
+original is preserved, including host-owned migration metadata. Main owns durable writes through the matching renderer store.
 
 Raw mode, selected record, content tab, timestamps and word wrap are temporary.
 New views start Readable, without selection, with timestamps on and wrap off.
@@ -72,8 +75,9 @@ JSON serialization of the received text.
 
 A normal full quit/reopen restores Inspection. Uninstall retains this extension's
 settings. To remove only its settings explicitly, quit Freelens and remove only
-`~/.config/Freelens/extension-store/freelens-readable-logs/`. This milestone has no
-reset control or backup files. Do not remove the shared `extension-store` directory.
+`~/.config/Freelens/extension-store/freelens-readable-logs/`. Backups are retained with the extension settings; the explicit directory removal
+also removes those backups. To keep them, move only this extension's `backups/` folder
+to your chosen location before removal. Do not remove the shared `extension-store` directory.
 
 ## Supported local maintenance
 
@@ -104,7 +108,7 @@ Follow [the accepted procedure](https://github.com/maksimgurenko/freelens-json-l
 2. For an update, **Uninstall** the old package and wait for removal to finish,
    retaining its saved extension settings. Install the new tarball via the form
    **once** and wait. Do not use the overwrite/reinstallation prompt.
-3. Check version **0.1.17** and Enabled, then open the cluster. Open a Pod's details
+3. Check version **0.1.18** and Enabled, then open the cluster. Open a Pod's details
    header and click the **Readable logs** icon beside the native actions. Verify
    cluster, namespace, Pod UID, container, the expected active profile and usable logs.
    Do not restart after installation as a substitute for passing this check.
@@ -267,3 +271,35 @@ manual choice; container restarts preserve it. Schema 3 persists each profile's
 key/value list); profile array order is the saved matching order. Main remains
 the durable writer. See `docs/verification/17/` for packaged-host and normal
 full-quit/reopen evidence.
+
+## Recovering unusable settings
+
+When saved settings cannot be used, the viewer shows **Settings recovery** with
+its error and exact settings path. Logs remain usable with built-in Default and
+Side inspection; saved profile and preference edits are unavailable. The stable
+settings identity is unchanged: package/store `freelens-readable-logs`, config
+`readable-logs`, schema 3. Host-owned `__internal__` migration metadata is allowed
+but never makes an unknown application schema migratable.
+
+1. Choose **Reset settings…** in the recovery notice. Review which settings will
+   be replaced. **Cancel reset** changes nothing and creates no backup.
+2. Choose **Back up and reset** to confirm. Main creates an exclusive backup in
+   `~/.config/Freelens/extension-store/freelens-readable-logs/backups/`, named
+   `readable-logs-<UTC timestamp>-<UUID>.json`. It verifies the original bytes
+   before replacing the configuration. Backup files are never automatically pruned.
+3. If backup creation/read/verification fails (including unreadable source data),
+   the original remains unchanged, saving stays inhibited, and the viewer reports
+   the failure. Correct the file/directory access or backup obstruction and retry
+   explicitly. The extension does not repair permissions or discard a failed backup.
+4. On success the notice shows the exact backup path. All saved profiles, order,
+   matching/default references and Inspection return to built-in defaults. Normal
+   saving resumes immediately, without a host restart. Existing log originals and
+   Pause are unaffected. Use Profiles or Inspection to save new settings normally.
+
+To restore a backup manually, fully quit Freelens, preserve the current file if
+needed, then copy the desired backup to this extension's `readable-logs.json` and
+reopen. An unusable backup will correctly return to fallback. For complete explicit
+settings removal, fully quit Freelens and remove only
+`~/.config/Freelens/extension-store/freelens-readable-logs/`, including its backups;
+keep every other extension's directory. Uninstall alone retains this directory.
+No crash durability or transactional disk guarantees are promised.

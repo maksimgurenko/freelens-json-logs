@@ -1,0 +1,25 @@
+{
+  "label": "corrupt-start",
+  "oldMainPid": 2535634,
+  "oldPids": [
+    2535634,
+    2535637,
+    2535638,
+    2535640,
+    2535740,
+    2535975,
+    2536112,
+    2540390
+  ],
+  "workspaceBefore": 2,
+  "focusBefore": "0x55baeff066d0",
+  "remainingOldPids": [],
+  "controlledSettingsSource": ".scratch/readable-logs/18/corrupt.json",
+  "controlledMode": "600",
+  "newMainPid": 2541384,
+  "newWorkspace": 7,
+  "workspaceAfter": 2,
+  "focusAfter": "0x55baeff066d0",
+  "launch": "env CHOKIDAR_USEPOLLING=1 CHOKIDAR_INTERVAL=100 TMPDIR=/home/max/.cache/freelens-readable-logs/tmp /usr/bin/freelens --remote-debugging-address=127.0.0.1 --remote-debugging-port=9235 >> /home/max/work/freelens-json-logs/.scratch/readable-logs/host.log 2>&1",
+  "quit": "native File > Quit Alt+F4"
+}

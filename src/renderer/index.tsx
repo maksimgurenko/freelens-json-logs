@@ -3,10 +3,14 @@ import { Renderer } from '@freelensapp/extensions';
 import { PAGE_ID, pageTarget, visibilityChannel, type PageParams } from '../adapter/freelens.ts';
 import { Viewer } from './viewer.tsx';
 import { configurationStore } from '../adapter/configuration-store.ts';
+import { SETTINGS_RESET, SETTINGS_RESET_COMPLETE } from '../adapter/configuration-ipc.ts';
+
+class ConfigurationIpc extends Renderer.Ipc {}
 
 export default class ReadableLogsRenderer extends Renderer.LensExtension {
   private visibility = visibilityChannel(this);
   private viewers = new Set<() => void>();
+  private stopRecovery?: () => void;
   private register = (dispose: () => void) => {
     this.viewers.add(dispose);
     return () => { this.viewers.delete(dispose); };
@@ -20,6 +24,12 @@ export default class ReadableLogsRenderer extends Renderer.LensExtension {
     } },
   }];
   onActivate() {
+    const ipc = ConfigurationIpc.createInstance(this);
+    this.stopRecovery = ipc.listen(SETTINGS_RESET_COMPLETE, (_event, backup: string) => {
+      configurationStore.loadExtension(this);
+      configurationStore.backedUp(backup);
+    });
+    configurationStore.bindReset(confirmed => ipc.invoke(SETTINGS_RESET, confirmed));
     try { configurationStore.loadExtension(this); }
     catch (error) { configurationStore.failed(error); }
   }
@@ -39,6 +49,7 @@ export default class ReadableLogsRenderer extends Renderer.LensExtension {
     },
   }];
   onDeactivate() {
+    this.stopRecovery?.();
     for (const dispose of this.viewers) dispose();
     this.viewers.clear();
   }

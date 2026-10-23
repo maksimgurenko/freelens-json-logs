@@ -13,6 +13,7 @@ import { LogViewport, type ViewportStatus } from './log-viewport.ts';
 import styles from './viewer.css';
 import { activeProfile, BUILTIN_PROFILE_ID, builtinProfile } from '../core/profiles.ts';
 import { ProfileEditor } from './profile-editor.tsx';
+import { SettingsRecovery } from './settings-recovery.tsx';
 
 interface ViewerProps { target: LogTarget; register: (dispose: () => void) => () => void; visibility: VisibilityChannel; preferences: ViewerPreferences }
 const EMPTY_RECORDS: readonly LogRecord[] = [];
@@ -154,7 +155,7 @@ export function Viewer({ target, register, visibility, preferences }: ViewerProp
         <button type="button" aria-pressed={inspection.raw} onClick={() => setInspection(previous => ({ ...previous, raw: true }))}>Raw</button>
       </div>
     </div>
-    {preference.problem && <p className="rl-notice rl-error" role="alert">{preference.problem} Using built-in Default and Side inspection without changing saved settings.</p>}
+    <SettingsRecovery preferences={preferences} saved={preference} />
     {state?.lifecycleNotice && <p className="rl-notice" role="status">{state.lifecycleNotice}{state.paused ? ' Paused; select Refresh or Resume to read the current instance.' : ''}</p>}
     {(!state || state.phase === 'loading-pod') && <p className="rl-notice" role="status">Loading Pod…</p>}
     {state?.refreshing && <p className="rl-notice" role="status">Reading log snapshot…</p>}

@@ -34,14 +34,15 @@ export function isInspectionLayout(value: unknown): value is InspectionLayout {
   return value === 'inline' || value === 'side' || value === 'bottom';
 }
 export function configurationProblem(value: unknown): string | undefined {
-  if (!value || typeof value !== 'object') return 'The saved configuration is not an object.';
+  if (!value || typeof value !== 'object' || Array.isArray(value)) return 'The saved configuration is not an object.';
   const data = value as Partial<Configuration>;
   if (data.schemaVersion !== SCHEMA_VERSION) return `Unsupported configuration schema ${String(data.schemaVersion)}. This version supports schema ${SCHEMA_VERSION}.`;
   if (!isInspectionLayout(data.viewer?.inspection)) return 'The saved Inspection preference is invalid.';
   return settingsProblem(data);
 }
 export interface ViewerPreferences {
-  read(): { inspection: InspectionLayout; configuration: Configuration; problem?: string };
+  read(): { inspection: InspectionLayout; configuration: Configuration; problem?: string; settingsPath?: string; backup?: string };
+  resetSettings(confirmed: boolean): Promise<{ backup?: string; error?: string }>;
   subscribe(changed: () => void): () => void;
   setInspection(layout: InspectionLayout): void;
   saveProfile(profile: Profile): void;

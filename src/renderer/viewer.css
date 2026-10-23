@@ -24,6 +24,9 @@
 .readable-logs .rl-notice { padding: 12px 24px; background: var(--contentColor, #262b2f); white-space: pre-wrap; overflow-wrap: anywhere; }
 .readable-logs .rl-error { color: var(--textColorAccent, #e3e5e8); border-block: 1px solid var(--colorSoftError, #e85555); }
 .readable-logs .rl-error p { margin-top: 6px; }
+.readable-logs .rl-recovery { max-height: 40%; overflow: auto; flex-shrink: 0; }
+.readable-logs .rl-recovery p { max-width: 75ch; line-height: 1.6; }
+.readable-logs .rl-recovery [role="group"] { margin-top: 12px; }
 .readable-logs .rl-empty { padding: 32px 24px; }
 .readable-logs .rl-work { display: flex; flex: 1; min-height: 0; overflow: hidden; }
 .readable-logs .rl-records { flex: 1; min-width: 0; min-height: 0; overflow: auto; overflow-anchor: none; padding: 8px 16px; font: 12px/1.65 var(--font-monospace, monospace); tab-size: 2; }
