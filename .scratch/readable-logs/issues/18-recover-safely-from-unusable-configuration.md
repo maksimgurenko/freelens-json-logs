@@ -1,6 +1,6 @@
 # 18: Recover safely from unusable configuration
 
-**Status:** ready-for-agent
+**Status:** done
 
 **Blocked by:** [16: Create and save formatting profiles](16-create-and-save-formatting-profiles.md)
 

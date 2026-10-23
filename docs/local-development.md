@@ -25,8 +25,8 @@ npm run typecheck
 npm test
 npm run package
 npm run check:package
-tar -tzf dist/freelens-readable-logs-0.1.18.tgz
-sha256sum dist/freelens-readable-logs-0.1.18.tgz
+tar -tzf dist/freelens-readable-logs-0.1.19.tgz
+sha256sum dist/freelens-readable-logs-0.1.19.tgz
 ```
 
 The locked esbuild platform package supplies its binary without install scripts.
@@ -39,6 +39,21 @@ real host verification is recorded separately under `docs/verification/11/` and
 `docs/verification/12/`. Ticket 13 records automated checks, earlier installation failures and the
 production lifecycle matrix separately under `docs/verification/13/`.
 Running the same build twice yields the same tarball bytes with this toolchain.
+
+On this development machine the existing toolchain is project-local. The scratch
+`.bin` directory alone does not select Node 24. Use the Node binary directory and
+invoke the matching npm CLI explicitly:
+
+```sh
+export PATH="$PWD/.scratch/readable-logs/toolchain/node_modules/node/bin:$PATH"
+node --version
+node .scratch/readable-logs/toolchain/node_modules/npm/bin/npm-cli.js --version
+node .scratch/readable-logs/toolchain/node_modules/npm/bin/npm-cli.js ci --ignore-scripts --no-audit --no-fund
+node .scratch/readable-logs/toolchain/node_modules/npm/bin/npm-cli.js run typecheck
+node .scratch/readable-logs/toolchain/node_modules/npm/bin/npm-cli.js test
+node .scratch/readable-logs/toolchain/node_modules/npm/bin/npm-cli.js run package
+node .scratch/readable-logs/toolchain/node_modules/npm/bin/npm-cli.js run check:package
+```
 
 Stable package identifier: **freelens-readable-logs**. Stable `storeName`:
 **freelens-readable-logs**. Page ID: **readable-logs**. These identifiers remain
@@ -108,7 +123,7 @@ Follow [the accepted procedure](https://github.com/maksimgurenko/freelens-json-l
 2. For an update, **Uninstall** the old package and wait for removal to finish,
    retaining its saved extension settings. Install the new tarball via the form
    **once** and wait. Do not use the overwrite/reinstallation prompt.
-3. Check version **0.1.18** and Enabled, then open the cluster. Open a Pod's details
+3. Check version **0.1.19** and Enabled, then open the cluster. Open a Pod's details
    header and click the **Readable logs** icon beside the native actions. Verify
    cluster, namespace, Pod UID, container, the expected active profile and usable logs.
    Do not restart after installation as a substitute for passing this check.
