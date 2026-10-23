@@ -4,9 +4,22 @@ import type { SnapshotPort } from '../core/session.ts';
 import type { LogTarget } from '../core/target.ts';
 import { LogRequests } from '../core/requests.ts';
 import { observe } from '../core/observe.ts';
+import { VISIBILITY_REQUEST, type VisibilityChannel } from './visibility.ts';
 
+class VisibilityIpc extends Renderer.Ipc {}
+export function visibilityChannel(extension: Renderer.LensExtension): VisibilityChannel {
+  const ipc = VisibilityIpc.createInstance(extension);
+  return {
+    listen: (channel, received) => ipc.listen(channel, (_event, selected: string | null) => received(selected)),
+    broadcast: (channel, ...args) => {
+      if (channel === VISIBILITY_REQUEST) {
+        void ipc.invoke(channel, ...args).catch(error => console.error('Unable to observe Readable logs window visibility', error));
+      } else ipc.broadcast(channel, ...args);
+    },
+  };
+}
 export const PAGE_ID = 'readable-logs';
-export const PACKAGE_VERSION = '0.1.3';
+export const PACKAGE_VERSION = '0.1.7';
 // Retain outstanding same-target guards across page unmount/reopen and disable.
 export const freelensRequests = new LogRequests();
 export type PageParams = { namespace: Renderer.Navigation.PageParam<string>; pod: Renderer.Navigation.PageParam<string>; podUid: Renderer.Navigation.PageParam<string>; clusterId: Renderer.Navigation.PageParam<string> };

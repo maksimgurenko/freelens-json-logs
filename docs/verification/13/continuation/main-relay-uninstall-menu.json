@@ -1,0 +1,9 @@
+{
+  "at": "2026-10-22T23:57:42.128Z",
+  "result": {
+    "type": "object",
+    "value": {
+      "body": "home\narrow_back\narrow_forward\nExtensions\n\nAdd new features via Freelens Extensions.\n\nNAME OR FILE PATH OR URL TO AN EXTENSION PACKAGE (TAR, TGZ)\nfolder_open\nInstall\nPro-Tip: you can drag and drop a tarball file to this area\nInstalled extensions\nsearch\nName\narrow_drop_down\nVersion\narrow_drop_down\nStatus\narrow_drop_down\nfreelens-readable-logs\nReadable bounded container log snapshots for Freelens 1.10.3\n0.1.4\nEnabled\nmore_vert\nclose\nESC\nhome\nsettings\nview_list\nsettings\narrow_left\n1\narrow_right\nunpublished\nDisable\ndelete\nUninstall"
+    }
+  }
+}

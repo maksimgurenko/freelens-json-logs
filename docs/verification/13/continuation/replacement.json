@@ -1,0 +1,239 @@
+{
+  "at": "2026-10-23T00:04:50.519Z",
+  "result": {
+    "type": "object",
+    "value": {
+      "originalUid": "06a97368-34c5-4301-aa50-723a701fd12a",
+      "beforeTargetChange": {
+        "at": 1792713853664,
+        "url": "https://770814298afe692457d07d8b15d6b8d3.renderer.freelens.app:40801/extension/freelens-readable-logs/readable-logs?clusterId=770814298afe692457d07d8b15d6b8d3&namespace=readable-logs-ticket-13&pod=lifecycle&podUid=06a97368-34c5-4301-aa50-723a701fd12a",
+        "hidden": false,
+        "focused": false,
+        "version": "0.1.7",
+        "container": "app",
+        "choices": [
+          {
+            "kind": "Containers",
+            "names": [
+              "app",
+              "sidecar"
+            ]
+          },
+          {
+            "kind": "init containers",
+            "names": [
+              "setup"
+            ]
+          },
+          {
+            "kind": "ephemeral containers",
+            "names": [
+              "debug"
+            ]
+          }
+        ],
+        "header": [
+          "Readable logs",
+          "",
+          "kind-freelens-json-logs-spike / readable-logs-ticket-13 / lifecycle",
+          "",
+          "lifecycle",
+          "Container",
+          "app",
+          "sidecar",
+          "setup",
+          "debug",
+          "Profile Auto ·",
+          "Default",
+          "Resume",
+          "Refresh",
+          "Paused",
+          "Cluster 770814298afe692457d07d8b15d6b8d3 · Pod UID 06a97368-34c5-4301-aa50-723a701fd12a",
+          "10/22/2026, 19:02:32",
+          "app current instance 0",
+          "10/22/2026, 19:02:33",
+          "app current instance 1"
+        ],
+        "notice": [],
+        "buttons": [
+          {
+            "text": "Resume",
+            "disabled": false
+          },
+          {
+            "text": "Refresh",
+            "disabled": false
+          }
+        ],
+        "rows": 99,
+        "first": "10/22/2026, 19:02:32\napp current instance 0",
+        "last": "10/22/2026, 19:04:10\napp current instance 98"
+      },
+      "before": {
+        "at": 1792713884018,
+        "url": "https://770814298afe692457d07d8b15d6b8d3.renderer.freelens.app:40801/extension/freelens-readable-logs/readable-logs?clusterId=770814298afe692457d07d8b15d6b8d3&namespace=readable-logs-ticket-13&pod=lifecycle&podUid=06a97368-34c5-4301-aa50-723a701fd12a",
+        "hidden": false,
+        "focused": false,
+        "version": "0.1.7",
+        "container": "app",
+        "choices": [
+          {
+            "kind": "Containers",
+            "names": [
+              "app",
+              "sidecar"
+            ]
+          },
+          {
+            "kind": "init containers",
+            "names": [
+              "setup"
+            ]
+          },
+          {
+            "kind": "ephemeral containers",
+            "names": [
+              "debug"
+            ]
+          }
+        ],
+        "header": [
+          "Readable logs",
+          "",
+          "kind-freelens-json-logs-spike / readable-logs-ticket-13 / lifecycle",
+          "",
+          "lifecycle",
+          "Container",
+          "app",
+          "sidecar",
+          "setup",
+          "debug",
+          "Profile Auto ·",
+          "Default",
+          "Resume",
+          "Refresh",
+          "Paused",
+          "Cluster 770814298afe692457d07d8b15d6b8d3 · Pod UID 06a97368-34c5-4301-aa50-723a701fd12a",
+          "Logs are outdated · automatic updates stopped",
+          "",
+          "The original Pod is gone or has been replaced. Reopen Readable logs from the current Pod.",
+          ""
+        ],
+        "error": "Logs are outdated · automatic updates stopped\n\nThe original Pod is gone or has been replaced. Reopen Readable logs from the current Pod.",
+        "notice": [
+          "Logs are outdated · automatic updates stopped\n\nThe original Pod is gone or has been replaced. Reopen Readable logs from the current Pod."
+        ],
+        "buttons": [
+          {
+            "text": "Resume",
+            "disabled": true
+          },
+          {
+            "text": "Refresh",
+            "disabled": true
+          }
+        ],
+        "rows": 99,
+        "first": "10/22/2026, 19:02:32\napp current instance 0",
+        "last": "10/22/2026, 19:04:10\napp current instance 98"
+      },
+      "after": {
+        "at": 1792713890518,
+        "url": "https://770814298afe692457d07d8b15d6b8d3.renderer.freelens.app:40801/extension/freelens-readable-logs/readable-logs?clusterId=770814298afe692457d07d8b15d6b8d3&namespace=readable-logs-ticket-13&pod=lifecycle&podUid=06a97368-34c5-4301-aa50-723a701fd12a",
+        "hidden": false,
+        "focused": false,
+        "version": "0.1.7",
+        "container": "app",
+        "choices": [
+          {
+            "kind": "Containers",
+            "names": [
+              "app",
+              "sidecar"
+            ]
+          },
+          {
+            "kind": "init containers",
+            "names": [
+              "setup"
+            ]
+          },
+          {
+            "kind": "ephemeral containers",
+            "names": [
+              "debug"
+            ]
+          }
+        ],
+        "header": [
+          "Readable logs",
+          "",
+          "kind-freelens-json-logs-spike / readable-logs-ticket-13 / lifecycle",
+          "",
+          "lifecycle",
+          "Container",
+          "app",
+          "sidecar",
+          "setup",
+          "debug",
+          "Profile Auto ·",
+          "Default",
+          "Resume",
+          "Refresh",
+          "Paused",
+          "Cluster 770814298afe692457d07d8b15d6b8d3 · Pod UID 06a97368-34c5-4301-aa50-723a701fd12a",
+          "Logs are outdated · automatic updates stopped",
+          "",
+          "The original Pod is gone or has been replaced. Reopen Readable logs from the current Pod.",
+          ""
+        ],
+        "error": "Logs are outdated · automatic updates stopped\n\nThe original Pod is gone or has been replaced. Reopen Readable logs from the current Pod.",
+        "notice": [
+          "Logs are outdated · automatic updates stopped\n\nThe original Pod is gone or has been replaced. Reopen Readable logs from the current Pod."
+        ],
+        "buttons": [
+          {
+            "text": "Resume",
+            "disabled": true
+          },
+          {
+            "text": "Refresh",
+            "disabled": true
+          }
+        ],
+        "rows": 99,
+        "first": "10/22/2026, 19:02:32\napp current instance 0",
+        "last": "10/22/2026, 19:04:10\napp current instance 98"
+      },
+      "observations": [
+        {
+          "kind": "metadata",
+          "path": "/api-kube/api/v1/namespaces/readable-logs-ticket-13/pods/lifecycle",
+          "started": 1792713883974,
+          "status": 200,
+          "settled": 1792713883984,
+          "bytes": 8799,
+          "uid": "240f7648-55ec-4fca-9b8f-b17dde7b0b2c",
+          "instances": [
+            {
+              "name": "app",
+              "restarts": 0,
+              "id": "containerd://8326073adeb9877c09f91d9371ebc07f3f3a5392e14986a72fce5e2fda5d1c40"
+            },
+            {
+              "name": "sidecar",
+              "restarts": 0,
+              "id": "containerd://dbd4f4de692c9febf810eee014a14ba9a75b76de3fe312611985803c4e3e9779"
+            },
+            {
+              "name": "setup",
+              "restarts": 0,
+              "id": "containerd://f29f22ce52ede529aba52fa6c0feef3004497a3510c99881f47b383fea7d2072"
+            }
+          ]
+        }
+      ],
+      "stoppedRequests": []
+    }
+  }
+}

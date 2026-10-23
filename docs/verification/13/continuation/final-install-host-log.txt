@@ -1,0 +1,7 @@
+info:    ┏ [EXTENSIONS-LOADER]: auto initializing extensions +1ms
+info:    ┏ [EXTENSION-DISCOVERY] loading extensions from /home/max/.config/Freelens +0ms
+info:    ┏ [EXTENSION-DISCOVERY] watching extension add/remove in /home/max/.freelens/extensions +1ms
+info:    ┏ [EXTENSION-INSTALLER]: installing package for extension "/home/max/.freelens/extensions/freelens-readable-logs" +967ms
+info:    ┏ [EXTENSION-INSTALLER]: installed package for extension "/home/max/.freelens/extensions/freelens-readable-logs" +227ms
+info:    ┏ [EXTENSION-DISCOVERY] Added extension freelens-readable-logs +0ms
+info:    ┏ [EXTENSION]: enabled freelens-readable-logs@0.1.7 +4ms

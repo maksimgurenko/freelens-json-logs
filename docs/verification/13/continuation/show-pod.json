@@ -1,0 +1,14 @@
+{
+  "at": "2026-10-22T23:50:19.367Z",
+  "result": {
+    "type": "object",
+    "value": {
+      "name": "lifecycle",
+      "uid": "06a97368-34c5-4301-aa50-723a701fd12a",
+      "containers": [
+        "app",
+        "sidecar"
+      ]
+    }
+  }
+}

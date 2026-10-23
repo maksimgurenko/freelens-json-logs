@@ -1,0 +1,16 @@
+{
+  "at": "2026-10-23T00:03:19.687Z",
+  "result": {
+    "type": "object",
+    "value": {
+      "before": {
+        "hidden": false,
+        "focused": true
+      },
+      "after": {
+        "hidden": true,
+        "focused": false
+      }
+    }
+  }
+}

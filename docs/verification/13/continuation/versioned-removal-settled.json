@@ -1,0 +1,16 @@
+{
+  "at": "2026-10-23T00:00:14.101Z",
+  "result": {
+    "type": "object",
+    "value": {
+      "at": 1792713614101,
+      "paths": [
+        "/home/max/.freelens/extensions/freelens-readable-logs",
+        "/home/max/.config/Freelens/node_modules/freelens-readable-logs"
+      ],
+      "absent": true,
+      "settledMs": 1002,
+      "frames": 0
+    }
+  }
+}

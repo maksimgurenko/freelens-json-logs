@@ -1,0 +1,17 @@
+{
+  "windows": [
+    {
+      "pid": 2274052,
+      "address": "0x55baf02a2ac0",
+      "workspace": {
+        "id": 7,
+        "name": "7"
+      },
+      "class": "freelens",
+      "mapped": true,
+      "hidden": false
+    }
+  ],
+  "activeWorkspace": 2,
+  "activeWindow": "0x55baeff066d0"
+}

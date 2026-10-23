@@ -1,9 +1,10 @@
 import React from 'react';
 import { Renderer } from '@freelensapp/extensions';
-import { PAGE_ID, pageTarget, type PageParams } from '../adapter/freelens.ts';
+import { PAGE_ID, pageTarget, visibilityChannel, type PageParams } from '../adapter/freelens.ts';
 import { Viewer } from './viewer.tsx';
 
 export default class ReadableLogsRenderer extends Renderer.LensExtension {
+  private visibility = visibilityChannel(this);
   private viewers = new Set<() => void>();
   private register = (dispose: () => void) => {
     this.viewers.add(dispose);
@@ -14,7 +15,7 @@ export default class ReadableLogsRenderer extends Renderer.LensExtension {
     components: { Page: ({ params }: { params: PageParams }) => {
       const target = pageTarget(params);
       return <Viewer key={JSON.stringify([target.clusterId, target.namespace, target.podName, target.podUid])}
-        target={target} register={this.register} />;
+        target={target} register={this.register} visibility={this.visibility} />;
     } },
   }];
   kubeObjectMenuItems = [{

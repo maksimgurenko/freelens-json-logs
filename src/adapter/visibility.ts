@@ -1,17 +1,23 @@
-/** Page visibility covers Electron hide/minimize. Intersection covers a cached
- * cluster iframe hidden by the host. Keyboard focus is deliberately irrelevant. */
-export function bindVisibility(element: HTMLElement, active: (value: boolean) => void) {
-  let displayed = element.getClientRects().length > 0;
-  const update = () => active(!element.ownerDocument.hidden && displayed);
-  const observer = new IntersectionObserver(entries => {
-    displayed = entries.some(entry => entry.isIntersecting);
-    update();
-  });
+export interface VisibilityChannel {
+  listen(channel: string, received: (clusterId: string | null) => void): () => void;
+  broadcast(channel: string, ...args: (string | null)[]): void;
+}
+export const VISIBILITY_REQUEST = 'viewer-visibility-request';
+export const VISIBILITY_STOP = 'viewer-visibility-stop';
+
+/** Wait for the owning native window's answer before fetching. A CSS-hidden
+ * cross-origin cluster frame retains its own document visibility in 1.10.3. */
+export function bindVisibility(element: HTMLElement, clusterId: string,
+  channel: VisibilityChannel, active: (value: boolean) => void) {
+  const reply = `viewer-visibility-${crypto.randomUUID()}`;
+  let parentVisible = false;
+  const update = () => active(parentVisible && !element.ownerDocument.hidden);
+  const stop = channel.listen(reply, selected => { parentVisible = selected === clusterId; update(); });
   element.ownerDocument.addEventListener('visibilitychange', update);
-  observer.observe(element);
   update();
+  channel.broadcast(VISIBILITY_REQUEST, clusterId, reply);
   return () => {
-    observer.disconnect();
+    stop(); channel.broadcast(VISIBILITY_STOP, reply);
     element.ownerDocument.removeEventListener('visibilitychange', update);
   };
 }

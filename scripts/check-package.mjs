@@ -3,12 +3,15 @@ import { readFileSync, mkdtempSync, rmSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
 import { execFileSync } from 'node:child_process';
+import Module from 'node:module';
 import { createHash } from 'node:crypto';
 
 const manifest = JSON.parse(readFileSync('package.json'));
 const tarball = `dist/${manifest.name}-${manifest.version}.tgz`;
 const contents = execFileSync('tar', ['-tzf', tarball], { encoding: 'utf8' }).trim().split('\n').sort();
-assert.deepEqual(contents, ['package/README.md', 'package/docs/local-development.md', 'package/out/main.js', 'package/out/renderer.js', 'package/package.json'].sort());
+assert.equal(manifest.main, `out/main-${manifest.version}.js`);
+assert.equal(manifest.renderer, `out/renderer-${manifest.version}.js`);
+assert.deepEqual(contents, ['package/README.md', 'package/docs/local-development.md', `package/${manifest.main}`, `package/${manifest.renderer}`, 'package/package.json'].sort());
 const metadata = JSON.parse(readFileSync('dist/build-meta.json'));
 const inputs = Object.keys(metadata.inputs);
 assert(inputs.every(path => path.startsWith('src/') || path.startsWith('host-global:')), `Unexpected bundled dependency: ${inputs}`);
@@ -21,15 +24,19 @@ try {
   assert(!packed.dependencies);
   // Test the actual packed CommonJS modules with host globals; do not execute host operations.
   const stub = class {};
-  global.LensExtensions = { Main: { LensExtension: stub }, Renderer: { LensExtension: stub } };
+  class IpcStub { static createInstance() { return { listen: () => () => {}, broadcast: () => {} }; } }
+  global.LensExtensions = { Main: { LensExtension: stub, Ipc: IpcStub }, Renderer: { LensExtension: stub, Ipc: IpcStub } };
   const { createRequire } = await import('node:module');
   const require = createRequire(import.meta.url);
   global.React = require('react');
   global.MobxReact = require('mobx-react');
+  const originalLoad = Module._load;
+  Module._load = function(id, ...args) { return id === 'electron' ? { BrowserWindow: {} } : originalLoad.call(this, id, ...args); };
   for (const entry of [packed.main, packed.renderer]) {
     const loaded = require(join(directory, 'package', entry));
     assert.equal(typeof loaded.default, 'function');
   }
+  Module._load = originalLoad;
   const Renderer = require(join(directory, 'package', packed.renderer)).default;
   // Freelens 1.10.3 wraps every registered Page with observer itself.
   const registration = new Renderer().clusterPages[0];

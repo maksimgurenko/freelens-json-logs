@@ -1,0 +1,23 @@
+{
+  "at": 1792714059.453013,
+  "oldMainPid": 2241143,
+  "originalPids": [
+    2241143,
+    2241146,
+    2241147,
+    2241149,
+    2241210,
+    2241438,
+    2241584,
+    2241849
+  ],
+  "reason": "Fresh main window before extension maintenance",
+  "activeWorkspaceBefore": 2,
+  "activeWindowBefore": "0x55baeff066d0",
+  "remainingOriginalPids": [],
+  "processLocalTMPDIR": "/home/max/.cache/freelens-readable-logs/tmp",
+  "newMainPid": 2262057,
+  "newWindowWorkspace": 7,
+  "activeWorkspaceAfter": 2,
+  "activeWindowAfter": "0x55baeff066d0"
+}

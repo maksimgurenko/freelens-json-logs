@@ -2,8 +2,7 @@
 
 This production implementation includes bounded snapshots and explicit automatic
 refresh, Pause/Resume, Refresh and Retry (GitHub #11–12). Ticket #13 adds
-visibility and Pod/container lifecycle handling; its real-host acceptance remains
-pending after an installation-discovery failure. Inspection and saved-profile
+visibility and Pod/container lifecycle handling; its verification is recorded under `docs/verification/13/`. Inspection and saved-profile
 tickets are not implemented yet. The
 accepted requirements in GitHub #8 and its resolution links take precedence over
 the feasibility research in the root README and all disposable prototypes.
@@ -25,8 +24,8 @@ npm run typecheck
 npm test
 npm run package
 npm run check:package
-tar -tzf dist/freelens-readable-logs-0.1.3.tgz
-sha256sum dist/freelens-readable-logs-0.1.3.tgz
+tar -tzf dist/freelens-readable-logs-0.1.7.tgz
+sha256sum dist/freelens-readable-logs-0.1.7.tgz
 ```
 
 The locked esbuild platform package supplies its binary without install scripts.
@@ -36,16 +35,15 @@ and tiny host-global bindings. `check:package` inspects the actual tarball,
 asserts its allowlisted files and host-only dependencies, and loads its packed
 CommonJS default exports with stub host globals. This is a packaging test;
 real host verification is recorded separately under `docs/verification/11/` and
-`docs/verification/12/`. Ticket 13
-records passing automated checks and the failed host installation separately under
-`docs/verification/13/`; it does not claim real-host lifecycle acceptance.
+`docs/verification/12/`. Ticket 13 records automated checks, earlier installation failures and the
+production lifecycle matrix separately under `docs/verification/13/`.
 Running the same build twice yields the same tarball bytes with this toolchain.
 
 Stable package identifier: **freelens-readable-logs**. Stable `storeName`:
 **freelens-readable-logs**. Page ID: **readable-logs**. These identifiers remain
 stable across updates. This milestone creates no configuration or store file;
-main and renderer entry points are present, but main has no durable writes yet.
-Do not infer profile persistence from an empty main entry point.
+main relays window visibility, but has no durable writes yet.
+Saved-profile persistence is not implemented in this milestone.
 
 ## Supported local maintenance
 
@@ -72,7 +70,7 @@ Follow [the accepted procedure](https://github.com/maksimgurenko/freelens-json-l
 2. For an update, **Uninstall** the old package and wait for removal to finish,
    retaining its saved extension settings. Install the new tarball via the form
    **once** and wait. Do not use the overwrite/reinstallation prompt.
-3. Check version **0.1.3** and Enabled, then open the cluster. Open a Pod's details
+3. Check version **0.1.7** and Enabled, then open the cluster. Open a Pod's details
    header and click the **Readable logs** icon beside the native actions. Verify
    cluster, namespace, Pod UID, container and **Default** profile, and usable logs.
    Do not restart after installation as a substitute for passing this check.
@@ -132,8 +130,10 @@ These observations are not an atomic UID-bound log read or guaranteed restart
 notification. Changes can occur between observations and a name-addressed read.
 No previous-instance records are requested or merged.
 
-Document visibility handles hide/minimize; intersection handles a cached cluster
-frame hidden by the host. Losing keyboard focus alone does not suspend polling.
+Document visibility handles native minimize. The main process observes the owning window's
+URL and native hide/minimize/restore events through Electron's public API, then
+relays visibility through extension-scoped IPC, since
+CSS-hidden cached cluster frames retain document visibility and intersection. Losing keyboard focus alone does not suspend polling.
 Hidden views invalidate pending log/metadata observations and stop their timers;
 returning automatic views fetch fresh data, while Pause remains paused. A container
 change clears the old window, returns temporary selection to Auto and starts an
@@ -142,6 +142,10 @@ starts fresh. Saved-profile controls belong to later tickets; the current viewer
 always uses Auto with built-in Default. Lifecycle tests cover the temporary
 manual-selection state boundary without claiming saved-profile implementation.
 
-The above lifecycle behavior is implemented and deterministically tested. Actual
-packaged hide/minimize/restart/deletion/replacement observations remain required
-by ticket 13 after the failed installation recorded in its verification report.
+Lifecycle checks and their observation limits are recorded against the installed
+production bundle hashes in the ticket 13 verification report.
+
+The entry filenames include the package version. Freelens 1.10.3 retains Node
+module cache during uninstall/install; unique version paths load the updated main
+and renderer code without clearing host caches or requiring a post-install restart.
+Electron is supplied by the host and stays external to both bundles.

@@ -1,0 +1,32 @@
+[
+  {
+    "name": "changing-logs",
+    "uid": "c8190dc0-0f37-4918-9918-53eba7c8ebc1",
+    "phase": "Running",
+    "restarts": [
+      {
+        "name": "json",
+        "count": 0
+      },
+      {
+        "name": "plain",
+        "count": 0
+      }
+    ]
+  },
+  {
+    "name": "single-json",
+    "uid": "0035d4f0-23c6-4e7d-93b2-c1d13a41cb92",
+    "phase": "Running",
+    "restarts": [
+      {
+        "name": "empty",
+        "count": 0
+      },
+      {
+        "name": "json",
+        "count": 0
+      }
+    ]
+  }
+]

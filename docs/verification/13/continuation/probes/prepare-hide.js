@@ -1,0 +1,1 @@
+(async()=>{const p=global.__rl13;p.hold=true;p.click('Refresh');for(let i=0;i<100 && !p.held.length;i++)await new Promise(r=>setTimeout(r,20));if(p.held.length!==1)throw Error('Held read missing');return {state:p.state(),request:p.records.at(-1)};})()

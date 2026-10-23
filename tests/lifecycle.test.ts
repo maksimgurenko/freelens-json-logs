@@ -2,8 +2,10 @@ import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { SnapshotSession, type SnapshotPort } from '../src/core/session.ts';
 import { LogRequests, type Clock } from '../src/core/requests.ts';
+import { EventEmitter } from 'node:events';
+import { watchWindowVisibility } from '../src/adapter/window-visibility.ts';
 import { observe } from '../src/core/observe.ts';
-import { bindVisibility } from '../src/adapter/visibility.ts';
+import { bindVisibility, type VisibilityChannel } from '../src/adapter/visibility.ts';
 import type { LogTarget, PodDescription } from '../src/core/target.ts';
 
 class FakeClock implements Clock {
@@ -152,29 +154,52 @@ for (const failure of [false, true]) {
   });
 }
 
-test('visibility ignores blur, combines hidden/minimized document and hidden cluster intersection, cleans up', () => {
-  const document = new EventTarget() as EventTarget & { hidden: boolean };
-  document.hidden = false;
-  let report!: (entries: { isIntersecting: boolean }[]) => void;
-  let disconnected = false;
-  const original = globalThis.IntersectionObserver;
-  globalThis.IntersectionObserver = class {
-    constructor(callback: typeof report) { report = callback; }
-    observe() {} disconnect() { disconnected = true; }
-  } as unknown as typeof IntersectionObserver;
-  try {
-    const states: boolean[] = [];
-    const element = { ownerDocument: document, getClientRects: () => [{}] } as unknown as HTMLElement;
-    const stop = bindVisibility(element, active => states.push(active));
-    document.dispatchEvent(new Event('blur')); assert.deepEqual(states, [true]);
-    document.hidden = true; document.dispatchEvent(new Event('visibilitychange'));
-    report([{ isIntersecting: true }]); assert.equal(states.at(-1), false);
-    document.hidden = false; document.dispatchEvent(new Event('visibilitychange')); assert.equal(states.at(-1), true);
-    report([{ isIntersecting: false }]); assert.equal(states.at(-1), false);
-    report([{ isIntersecting: true }]); assert.equal(states.at(-1), true);
-    stop(); const count = states.length; document.dispatchEvent(new Event('visibilitychange'));
-    assert(disconnected); assert.equal(states.length, count);
-  } finally { globalThis.IntersectionObserver = original; }
+test('native window and route relay stop CSS-hidden cluster polling; focus/blur are ignored', () => {
+  const child = Object.assign(new EventTarget(), { hidden: false }) as unknown as Document;
+  const listeners = new Map<string, (selected: string | null) => void>();
+  let reply = '';
+  const channel: VisibilityChannel = {
+    listen(name, received) { listeners.set(name, received); return () => { listeners.delete(name); }; },
+    broadcast(name, ...args) {
+      if (name === 'viewer-visibility-request') reply = args[1]!;
+      else listeners.get(name)?.(args[0]!);
+    },
+  };
+  const states: boolean[] = [];
+  const stop = bindVisibility({ ownerDocument: child } as HTMLElement, 'cluster', channel, value => states.push(value));
+  assert.deepEqual(states, [false]);
+  let path = '/cluster/cluster', hidden = false, minimized = false, destroyed = false;
+  const window = Object.assign(new EventEmitter(), {
+    isDestroyed: () => destroyed, isVisible: () => !hidden, isMinimized: () => minimized,
+    webContents: Object.assign(new EventEmitter(), { getURL: () => `https://renderer.freelens.app${path}` }),
+  });
+  const stopWindow = watchWindowVisibility(window, 'cluster', selected => channel.broadcast(reply, selected));
+  assert.deepEqual(states, [false, true]);
+  window.emit('blur'); child.dispatchEvent(new Event('blur')); assert.deepEqual(states, [false, true]);
+  // Freelens hides the iframe with visibility:hidden; child visibility is unchanged.
+  path = '/extensions'; window.webContents.emit('did-navigate-in-page');
+  assert.equal(child.hidden, false); assert.equal(states.at(-1), false);
+  path = '/cluster/another'; window.webContents.emit('did-navigate'); assert.equal(states.at(-1), false);
+  path = '/cluster/cluster'; window.webContents.emit('did-navigate-in-page'); assert.equal(states.at(-1), true);
+  hidden = true; window.emit('hide'); assert.equal(states.at(-1), false);
+  hidden = false; window.emit('show'); assert.equal(states.at(-1), true);
+  minimized = true; window.emit('minimize'); assert.equal(states.at(-1), false);
+  minimized = false; window.emit('restore'); assert.equal(states.at(-1), true);
+  Object.assign(child, { hidden: true }); child.dispatchEvent(new Event('visibilitychange'));
+  window.emit('show'); assert.equal(states.at(-1), false);
+  Object.assign(child, { hidden: false }); child.dispatchEvent(new Event('visibilitychange'));
+  assert.equal(states.at(-1), true);
+  destroyed = true; window.emit('closed'); assert.equal(states.at(-1), false);
+  stop(); stopWindow(); const count = states.length;
+  channel.broadcast(reply, 'cluster'); window.emit('show'); child.dispatchEvent(new Event('visibilitychange'));
+  assert.equal(states.length, count); assert.equal(window.eventNames().length, 0);
+  assert.equal(window.webContents.eventNames().length, 0);
+});
+
+test('view waits for visibility answer without fetching then opens automatically on first displayed answer', async t => {
+  const h = setup(); t.after(() => h.session.dispose());
+  h.session.setActive(false); await h.session.open(); assert.equal(h.reads.length, 0);
+  h.session.setActive(true); await flush(); assert.equal(h.reads.length, 1);
 });
 
 test('paused refresh after restart waits for the old outstanding read and fetches once', async t => {

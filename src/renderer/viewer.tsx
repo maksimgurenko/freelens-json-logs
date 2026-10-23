@@ -1,16 +1,16 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { bindVisibility } from '../adapter/visibility.ts';
+import { bindVisibility, type VisibilityChannel } from '../adapter/visibility.ts';
 import { freelensPort, freelensRequests, PACKAGE_VERSION } from '../adapter/freelens.ts';
 import { SnapshotSession, type SnapshotState } from '../core/session.ts';
 import { displayTimestamp, formatDefault } from '../core/records.ts';
 import type { LogTarget } from '../core/target.ts';
 import styles from './viewer.css';
 
-interface ViewerProps { target: LogTarget; register: (dispose: () => void) => () => void }
+interface ViewerProps { target: LogTarget; register: (dispose: () => void) => () => void; visibility: VisibilityChannel }
 
 // Extend the accepted native-like surface: target strip, compact time/level/message rows,
 // quiet footer and explicit snapshot refresh controls.
-export function Viewer({ target, register }: ViewerProps) {
+export function Viewer({ target, register, visibility }: ViewerProps) {
   const root = useRef<HTMLElement>(null);
   const [state, setState] = useState<SnapshotState>();
   const [session, setSession] = useState<SnapshotSession>();
@@ -21,12 +21,12 @@ export function Viewer({ target, register }: ViewerProps) {
     setSession(current);
     setTimestamps(true);
     setWrap(false);
-    const stopVisibility = bindVisibility(root.current!, active => current.setActive(active));
+    const stopVisibility = bindVisibility(root.current!, target.clusterId, visibility, active => current.setActive(active));
     const dispose = () => { stopVisibility(); current.dispose(); };
     const unregister = register(dispose);
     void current.open();
     return () => { unregister(); dispose(); };
-  }, [target.clusterId, target.namespace, target.podName, target.podUid, register]);
+  }, [target.clusterId, target.namespace, target.podName, target.podUid, register, visibility]);
   const snapshot = state?.snapshot;
   return <section ref={root} className="readable-logs" aria-label="Readable logs" data-version={PACKAGE_VERSION}>
     <style>{styles}</style>

@@ -1,0 +1,32 @@
+{
+  "at": "2026-10-23T00:01:27.066Z",
+  "result": {
+    "type": "object",
+    "value": {}
+  },
+  "exceptionDetails": {
+    "exceptionId": 1,
+    "text": "Uncaught (in promise) Error: Hidden view changed or polled",
+    "lineNumber": 1,
+    "columnNumber": 327,
+    "scriptId": "16318",
+    "stackTrace": {
+      "callFrames": [
+        {
+          "functionName": "",
+          "scriptId": "16318",
+          "url": "",
+          "lineNumber": 0,
+          "columnNumber": 326
+        }
+      ]
+    },
+    "exception": {
+      "type": "object",
+      "subtype": "error",
+      "className": "Error",
+      "description": "Error: Hidden view changed or polled\n    at <anonymous>:1:327",
+      "objectId": "5076549962193862695.2.2"
+    }
+  }
+}

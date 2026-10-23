@@ -1,4 +1,33 @@
 import { Main } from '@freelensapp/extensions';
+import { BrowserWindow } from 'electron';
+import { VISIBILITY_REQUEST, VISIBILITY_STOP } from './adapter/visibility.ts';
+import { watchWindowVisibility } from './adapter/window-visibility.ts';
 
-// No durable configuration exists in the single-snapshot milestone.
-export default class ReadableLogsMain extends Main.LensExtension {}
+class VisibilityIpc extends Main.Ipc {}
+
+// Durable configuration remains later-ticket work. Main observes native windows
+// even when the viewer is inside a CSS-hidden cross-origin cluster frame.
+export default class ReadableLogsMain extends Main.LensExtension {
+  private subscriptions = new Map<string, () => void>();
+  private listeners: (() => void)[] = [];
+  onActivate() {
+    const ipc = VisibilityIpc.createInstance(this);
+    // Broadcast callbacks in 1.10.3 have no sender. RPC preserves the requesting
+    // webContents, so each viewer observes its own window rather than focused state.
+    ipc.handle(VISIBILITY_REQUEST, (event, clusterId: string, reply: string) => {
+      if (typeof clusterId !== 'string' || typeof reply !== 'string' || !reply.startsWith('viewer-visibility-')) return;
+      this.subscriptions.get(reply)?.();
+      const window = BrowserWindow.fromWebContents(event.sender);
+      if (!window) { ipc.broadcast(reply, null); return; }
+      this.subscriptions.set(reply, watchWindowVisibility(window, clusterId, selected => ipc.broadcast(reply, selected)));
+    });
+    this.listeners.push(ipc.listen(VISIBILITY_STOP, (_event, reply: string) => {
+      this.subscriptions.get(reply)?.(); this.subscriptions.delete(reply);
+    }));
+  }
+  onDeactivate() {
+    for (const stop of this.subscriptions.values()) stop();
+    for (const stop of this.listeners) stop();
+    this.subscriptions.clear(); this.listeners = [];
+  }
+}

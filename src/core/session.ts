@@ -55,7 +55,7 @@ export class SnapshotSession {
     this.changed(this.state);
   }
   async open() {
-    if (this.state.phase === 'closed' || this.state.gone) return;
+    if (!this.active || this.state.phase === 'closed' || this.state.gone) return;
     const generation = this.invalidate();
     this.update({ phase: 'loading-pod', snapshot: undefined, error: undefined });
     try {
