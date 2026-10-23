@@ -1,0 +1,185 @@
+{
+  "at": "2026-10-23T01:28:01.972Z",
+  "result": {
+    "type": "object",
+    "value": {
+      "active": "Ticket17 second renamed",
+      "message": "Second api",
+      "text": "Readable logs\n\nkind-freelens-json-logs-spike / readable-logs-ticket-17-other / profiles\n\nprofiles\nContainer\napi\nworker\nProfile\nAuto · Ticket17 second renamed\nDefault\nTicket17 conditionless\nTicket17 second renamed\nTicket17 first\nTicket17 fallback\nProfiles\nResume\nRefresh\nPaused\nFind\nEnter text to find\nPrevious\nNext\nCluster 770814298afe692457d07d8b15d6b8d3 · Pod UID da7575cc-f5ef-4c72-b8eb-1d38142d2e2a · Active profile Ticket17 second renamed\nInspection\nInline expansion\nSide inspector\nBottom inspector\nReadable\nRaw\n10/22/2026, 20:23:45\nINFO\nSecond api\n4 fields\n\nSelect a record to inspect all fields or copy its exact original text. Automatic updates continue while inspecting; use Pause to keep the current window.\n\n1 records · 0.2 KiB retained\nTo bottom\nFollowing output\nShow timestamps\nWord wrap\nv0.1.16",
+      "configuration": {
+        "__internal__": {
+          "migrations": {
+            "version": "0.1.16"
+          }
+        },
+        "schemaVersion": 3,
+        "viewer": {
+          "inspection": "bottom"
+        },
+        "profiles": [
+          {
+            "id": "6a692ccb-9e1d-49ed-8125-da19d7d1d7c1",
+            "name": "Ticket17 conditionless",
+            "format": {
+              "messagePaths": [
+                "/message"
+              ],
+              "timestampPaths": [
+                "/timestamp",
+                "/time",
+                "/@timestamp"
+              ],
+              "levelPaths": [
+                "/level",
+                "/severity",
+                "/log.level",
+                "/log/level"
+              ],
+              "inlinePaths": [],
+              "hiddenPaths": [],
+              "numericTimestamp": "unset",
+              "severityMappings": []
+            },
+            "matching": {
+              "enabled": true,
+              "conditions": {
+                "labels": []
+              }
+            }
+          },
+          {
+            "id": "912ef967-09b3-4469-8ce1-7989466ebb51",
+            "name": "Ticket17 second renamed",
+            "format": {
+              "messagePaths": [
+                "/second"
+              ],
+              "timestampPaths": [
+                "/timestamp",
+                "/time",
+                "/@timestamp"
+              ],
+              "levelPaths": [
+                "/level",
+                "/severity",
+                "/log.level",
+                "/log/level"
+              ],
+              "inlinePaths": [],
+              "hiddenPaths": [],
+              "numericTimestamp": "unset",
+              "severityMappings": []
+            },
+            "matching": {
+              "enabled": true,
+              "conditions": {
+                "labels": [
+                  {
+                    "key": "app",
+                    "value": "payments"
+                  }
+                ],
+                "container": "api"
+              }
+            }
+          },
+          {
+            "id": "cb074582-9d94-4e9b-8776-f246039b87df",
+            "name": "Ticket17 first",
+            "format": {
+              "messagePaths": [
+                "/first"
+              ],
+              "timestampPaths": [
+                "/timestamp",
+                "/time",
+                "/@timestamp"
+              ],
+              "levelPaths": [
+                "/level",
+                "/severity",
+                "/log.level",
+                "/log/level"
+              ],
+              "inlinePaths": [],
+              "hiddenPaths": [],
+              "numericTimestamp": "unset",
+              "severityMappings": []
+            },
+            "matching": {
+              "enabled": true,
+              "conditions": {
+                "labels": [
+                  {
+                    "key": "app",
+                    "value": "payments"
+                  },
+                  {
+                    "key": "tier",
+                    "value": "backend"
+                  }
+                ],
+                "namespace": "readable-logs-ticket-17",
+                "container": "api"
+              }
+            }
+          },
+          {
+            "id": "82fe01d7-7420-4584-883f-7090dd8ee51c",
+            "name": "Ticket17 fallback",
+            "format": {
+              "messagePaths": [
+                "/fallback"
+              ],
+              "timestampPaths": [
+                "/timestamp",
+                "/time",
+                "/@timestamp"
+              ],
+              "levelPaths": [
+                "/level",
+                "/severity",
+                "/log.level",
+                "/log/level"
+              ],
+              "inlinePaths": [],
+              "hiddenPaths": [],
+              "numericTimestamp": "unset",
+              "severityMappings": []
+            },
+            "matching": {
+              "enabled": false,
+              "conditions": {
+                "labels": [],
+                "namespace": "readable-logs-ticket-17",
+                "container": "api"
+              }
+            }
+          }
+        ],
+        "globalDefault": "82fe01d7-7420-4584-883f-7090dd8ee51c"
+      },
+      "requests": [],
+      "allObservedRequests": [
+        {
+          "path": "/api-kube/api/v1/namespaces/readable-logs-ticket-17/pods/profiles/log?container=worker&tailLines=1000&timestamps=true&follow=false&previous=false",
+          "started": 1792718849053,
+          "status": 200,
+          "settled": 1792718849059
+        },
+        {
+          "path": "/api-kube/api/v1/namespaces/readable-logs-ticket-17/pods/profiles/log?container=api&tailLines=1000&timestamps=true&follow=false&previous=false",
+          "started": 1792718849302,
+          "status": 200,
+          "settled": 1792718849316
+        },
+        {
+          "path": "/api-kube/api/v1/namespaces/readable-logs-ticket-17-other/pods/profiles/log?container=api&tailLines=1000&timestamps=true&follow=false&previous=false",
+          "started": 1792718881323,
+          "status": 200,
+          "settled": 1792718881331
+        }
+      ]
+    }
+  }
+}

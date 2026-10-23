@@ -1,0 +1,102 @@
+{
+  "at": "2026-10-23T00:47:26.277Z",
+  "result": {
+    "type": "object",
+    "value": {
+      "before": {
+        "tabs": [
+          "tab-terminal",
+          "tab-log-tab-d34f2b4f-84ad-42e7-8642-d7a70844db27",
+          "tab-log-tab-a1298e84-48c1-4d63-9fec-a4713ca389ee"
+        ],
+        "active": "tab-log-tab-a1298e84-48c1-4d63-9fec-a4713ca389ee",
+        "created": [
+          "tab-log-tab-52950ec3-213b-46aa-8513-43a7f686ab6c"
+        ]
+      },
+      "body": "2\n2 fields\n10/22/2026, 19:46:33\nrow 2083\n2 fields\n10/22/2026, 19:46:33\nrow 2084\n2 fields\n10/22/2026, 19:46:33\nrow 2085\n2 fields\n10/22/2026, 19:46:33\nrow 2086\n2 fields\n10/22/2026, 19:46:33\nrow 2087\n2 fields\n10/22/2026, 19:46:33\nrow 2088\n2 fields\n10/22/2026, 19:46:33\nrow 2089\n2 fields\n10/22/2026, 19:46:33\nrow 2090\n2 fields\n10/22/2026, 19:46:33\nrow 2091\n2 fields\n10/22/2026, 19:46:33\nrow 2092\n2 fields\n10/22/2026, 19:46:33\nrow 2093\n2 fields\n10/22/2026, 19:46:33\nrow 2094\n2 fields\n10/22/2026, 19:46:33\nrow 2095\n2 fields\n10/22/2026, 19:46:33\nrow 2096\n2 fields\n10/22/2026, 19:46:33\nrow 2097\n2 fields\n10/22/2026, 19:46:33\nrow 2098\n2 fields\n10/22/2026, 19:46:33\nrow 2099\n2 fields\n10/22/2026, 19:46:33\nrow 2100\n2 fields\n10/22/2026, 19:46:33\nrow 2101\n2 fields\n10/22/2026, 19:46:33\nrow 2102\n2 fields\n10/22/2026, 19:46:33\nrow 2103\n2 fields\n10/22/2026, 19:46:33\nrow 2104\n2 fields\n10/22/2026, 19:46:33\nrow 2105\n2 fields\n10/22/2026, 19:46:33\nrow 2106\n2 fields\n10/22/2026, 19:46:33\nrow 2107\n2 fields\n10/22/2026, 19:46:33\nrow 2108\n2 fields\n10/22/2026, 19:46:33\nrow 2109\n2 fields\n10/22/2026, 19:46:33\nrow 2110\n2 fields\n10/22/2026, 19:46:33\nrow 2111\n2 fields\n10/22/2026, 19:46:33\nrow 2112\n2 fields\n10/22/2026, 19:46:33\nrow 2113\n2 fields\n10/22/2026, 19:46:33\nrow 2114\n2 fields\n10/22/2026, 19:46:33\nrow 2115\n2 fields\n10/22/2026, 19:46:33\nrow 2116\n2 fields\n10/22/2026, 19:46:33\nrow 2117\n2 fields\n10/22/2026, 19:46:33\nrow 2118\n2 fields\n10/22/2026, 19:46:33\nrow 2119\n2 fields\n10/22/2026, 19:46:33\nrow 2120\n2 fields\n10/22/2026, 19:46:33\nrow 2121\n2 fields\n10/22/2026, 19:46:33\nrow 2122\n2 fields\n10/22/2026, 19:46:33\nrow 2123\n2 fields\n10/22/2026, 19:46:33\nrow 2124\n2 fields\n10/22/2026, 19:46:33\nrow 2125\n2 fields\n10/22/2026, 19:46:33\nrow 2126\n2 fields\n10/22/2026, 19:46:33\nrow 2127\n2 fields\n10/22/2026, 19:46:33\nrow 2128\n2 fields\n10/22/2026, 19:46:33\nrow 2129\n2 fields\n10/22/2026, 19:46:33\nrow 2130\n2 fields\n10/22/2026, 19:46:33\nrow 2131\n2 fields\n10/22/2026, 19:46:33\nrow 2132\n2 fields\n10/22/2026, 19:46:33\nrow 2133\n2 fields\n10/22/2026, 19:46:33\nrow 2134\n2 fields\n10/22/2026, 19:46:33\nrow 2135\n2 fields\n10/22/2026, 19:46:33\nrow 2136\n2 fields\n10/22/2026, 19:46:33\nrow 2137\n2 fields\n10/22/2026, 19:46:33\nrow 2138\n2 fields\n10/22/2026, 19:46:33\nrow 2139\n2 fields\n10/22/2026, 19:46:33\nrow 2140\n2 fields\n10/22/2026, 19:46:33\nrow 2141\n2 fields\n10/22/2026, 19:46:33\nrow 2142\n2 fields\n10/22/2026, 19:46:33\nrow 2143\n2 fields\n10/22/2026, 19:46:33\nrow 2144\n2 fields\n10/22/2026, 19:46:33\nrow 2145\n2 fields\n\nSelect a record to inspect all fields or copy its exact original text. Automatic updates continue while inspecting; use Pause to keep the current window.\n\n1,000 records · 170.9 KiB retained\nTo bottom\nFollowing output\nShow timestamps\nWord wrap\nv0.1.12\nterminal\nTerminal\nclose\nsubject\nPod changing-logs\nclose\nsubject\nPod single-json\nclose\nsubject\nPod navigation\nclose\nadd\nfullscreen\nkeyboard_arrow_down\nNamespace\nreadable-logs-ticket-15\nPod\nnavigation\nContainer\nrecords\nsearch\nkeyboard_arrow_up\nkeyboard_arrow_down\n{\"message\":\"row 1646\", \"hidden\":\"Private.Needle[0]\", \"padding\":\"a long original field stays searchable while omitted from the compact message\"}\n\n{\"message\":\"row 1647\", \"hidden\":\"Private.Needle[0]\", \"padding\":\"a long original field stays searchable while omitted from the compact message\"}\n\n{\"message\":\"row 1648\", \"hidden\":\"Private.Needle[0]\", \"padding\":\"a long original field stays searchable while omitted from the compact message\"}\n\n{\"message\":\"row 1649\", \"hidden\":\"Private.Needle[0]\", \"padding\":\"a long original field stays searchable while omitted from the compact message\"}\n\n{\"message\":\"row 1650\", \"hidden\":\"Private.Needle[0]\", \"padding\":\"a long original field stays searchable while omitted from the compact message\"}\n\n{\"message\":\"row 1651\", \"hidden\":\"Private.Needle[0]\", \"padding\":\"a long original field stays searchable while omitted from the compact message\"}\n\n{\"message\":\"row 1652\", \"hidden\":\"Private.Needle[0]\", \"padding\":\"a long original field stays searchable while omitted from the compact message\"}\n\n{\"message\":\"row 1653\", \"hidden\":\"Private.Needle[0]\", \"padding\":\"a long original field stays searchable while omitted from the compact message\"}\n\n{\"message\":\"row 1654\", \"hidden\":\"Private.Needle[0]\", \"padding\":\"a long original field stays searchable while omitted from the compact message\"}\n\n{\"message\":\"row 1655\", \"hidden\":\"Private.Needle[0]\", \"padding\":\"a long original field stays searchable while omitted from the compact message\"}\n\n{\"message\":\"row 1656\", \"hidden\":\"Private.Needle[0]\", \"padding\":\"a long original field stays searchable while omitted from the compact message\"}\n\n{\"message\":\"row 1657\", \"hidden\":\"Private.Needle[0]\", \"padding\":\"a long original field stays searchable while omitted from the compact message\"}\n\n{\"message\":\"row 1658\", \"hidden\":\"Private.Needle[0]\", \"padding\":\"a long original field stays searchable while omitted from the compact message\"}\n\n{\"message\":\"row 1659\", \"hidden\":\"Private.Needle[0]\", \"padding\":\"a long original field stays searchable while omitted from the compact message\"}\n\n{\"message\":\"row 1660\", \"hidden\":\"Private.Needle[0]\", \"padding\":\"a long original field stays searchable while omitted from the compact message\"}\n\n{\"message\":\"row 1661\", \"hidden\":\"Private.Needle[0]\", \"padding\":\"a long original field stays searchable while omitted from the compact message\"}\n\n{\"message\":\"row 1662\", \"hidden\":\"Private.Needle[0]\", \"padding\":\"a long original field stays searchable while omitted from the compact message\"}\n\n{\"message\":\"row 1663\", \"hidden\":\"Private.Needle[0]\", \"padding\":\"a long original field stays searchable while omitted from the compact message\"}\n\n{\"message\":\"row 1664\", \"hidden\":\"Private.Needle[0]\", \"padding\":\"a long original field stays searchable while omitted from the compact message\"}\n\n{\"message\":\"row 1665\", \"hidden\":\"Private.Needle[0]\", \"padding\":\"a long original field stays searchable while omitted from the compact message\"}\n\nLogs from 10/22/2026, 7:46:33 PM\nShow timestamps\nWord wrap\nShow previous terminated container\nDownload\narrow_drop_down",
+      "logElements": [
+        {
+          "class": "LogRow wordWrap",
+          "tag": "DIV"
+        },
+        {
+          "class": "LogRow wordWrap",
+          "tag": "DIV"
+        },
+        {
+          "class": "LogRow wordWrap",
+          "tag": "DIV"
+        },
+        {
+          "class": "LogRow wordWrap",
+          "tag": "DIV"
+        },
+        {
+          "class": "LogRow wordWrap",
+          "tag": "DIV"
+        },
+        {
+          "class": "LogRow wordWrap",
+          "tag": "DIV"
+        },
+        {
+          "class": "LogRow wordWrap",
+          "tag": "DIV"
+        },
+        {
+          "class": "LogRow wordWrap",
+          "tag": "DIV"
+        },
+        {
+          "class": "LogRow wordWrap",
+          "tag": "DIV"
+        },
+        {
+          "class": "LogRow wordWrap",
+          "tag": "DIV"
+        },
+        {
+          "class": "LogRow wordWrap",
+          "tag": "DIV"
+        },
+        {
+          "class": "LogRow wordWrap",
+          "tag": "DIV"
+        },
+        {
+          "class": "LogRow wordWrap",
+          "tag": "DIV"
+        },
+        {
+          "class": "LogRow wordWrap",
+          "tag": "DIV"
+        },
+        {
+          "class": "LogRow wordWrap",
+          "tag": "DIV"
+        },
+        {
+          "class": "LogRow wordWrap",
+          "tag": "DIV"
+        },
+        {
+          "class": "LogRow wordWrap",
+          "tag": "DIV"
+        },
+        {
+          "class": "LogRow wordWrap",
+          "tag": "DIV"
+        },
+        {
+          "class": "LogRow wordWrap",
+          "tag": "DIV"
+        },
+        {
+          "class": "LogRow wordWrap",
+          "tag": "DIV"
+        }
+      ]
+    }
+  }
+}

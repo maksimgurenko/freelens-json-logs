@@ -1,0 +1,19 @@
+{
+  "at": "2026-10-23T00:33:48.829Z",
+  "result": {
+    "type": "object",
+    "value": {
+      "hostVersion": "1.10.3",
+      "package": {
+        "name": "freelens-readable-logs",
+        "version": "0.1.9",
+        "main": "out/main-0.1.9.js",
+        "renderer": "out/renderer-0.1.9.js",
+        "storeName": "freelens-readable-logs",
+        "sdk": "1.10.3"
+      },
+      "rootUrl": "https://renderer.freelens.app:42453/cluster/770814298afe692457d07d8b15d6b8d3",
+      "probePresent": false
+    }
+  }
+}

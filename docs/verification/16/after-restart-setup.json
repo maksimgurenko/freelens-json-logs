@@ -1,0 +1,99 @@
+{
+  "at": "2026-10-23T01:14:08.967Z",
+  "result": {
+    "type": "object",
+    "value": {
+      "version": "0.1.15",
+      "initialManual": "",
+      "text": "Readable logs\n\nkind-freelens-json-logs-spike / readable-logs-ticket-16 / profiles\n\nprofiles\nContainer\njson\nplain\nProfile\nAuto · Ticket 16 renamed\nDefault\nTicket 16 renamed\nTicket 16 alternate\nProfiles\nResume\nRefresh\nPaused\nCluster 770814298afe692457d07d8b15d6b8d3 · Pod UID bfada164-e078-4142-b92a-9a9b4a44db4c · Active profile Ticket 16 renamed\nFormatting profiles\nClose profiles\n\nEdit a draft and preview sample logs. Save applies valid rules to retained records. Samples and unfinished edits are temporary.\n\nSaved profile\nDefault\nTicket 16 renamed\nTicket 16 alternate\nDuplicate\nEdit\nDelete\nGlobal default\nDefault\nTicket 16 renamed\nTicket 16 alternate\nProfile name\n\nDefault is read-only. Duplicate it to create independent rules.\n\nOne exact slash path per line, in priority order. Use /log.level for a literal dot, /items/0/code for an array, ~1 for a slash and ~0 for a tilde in a key. Missing paths fall through; defaults are not appended.\n\nMessage paths\nEmpty uses unchanged application text.\nApplication timestamp paths\nEmpty uses the Kubernetes timestamp.\nLevel paths\nEmpty extracts no level.\nInline fields\nAdditional fields in display order. Extracted leaves are omitted.\nHidden fields\nTakes precedence over inline fields, including nested children. Originals and extracted roles stay available.\nNumeric timestamps\nUnset (use Kubernetes time)\nSeconds\nMilliseconds\nSeverity mappings\n\nExplicit mappings win over built-in levels. Text sources ignore case; numbers and text are distinct.\n\nAdd mapping\nSample logs\nPreview\n\nPaste sample logs to preview extraction and inline fields. Up to 20 lines are shown.",
+      "migratedConfiguration": {
+        "__internal__": {
+          "migrations": {
+            "version": "0.1.15"
+          }
+        },
+        "schemaVersion": 2,
+        "viewer": {
+          "inspection": "bottom"
+        },
+        "profiles": [
+          {
+            "id": "a51d49ad-4767-48ec-82c8-a2f03fb39ac3",
+            "name": "Ticket 16 renamed",
+            "format": {
+              "messagePaths": [
+                "/event/text",
+                "/message"
+              ],
+              "timestampPaths": [
+                "/event/time"
+              ],
+              "levelPaths": [
+                "/event/severity"
+              ],
+              "inlinePaths": [
+                "/event",
+                "/a~1b",
+                "/a~0b",
+                "/items/0/code"
+              ],
+              "hiddenPaths": [
+                "/event/internal"
+              ],
+              "numericTimestamp": "seconds",
+              "severityMappings": [
+                {
+                  "source": 30,
+                  "target": "INFO"
+                },
+                {
+                  "source": "30",
+                  "target": "WARN"
+                }
+              ]
+            }
+          },
+          {
+            "id": "fa86ff80-0037-47e9-8caf-5293817db8b9",
+            "name": "Ticket 16 alternate",
+            "format": {
+              "messagePaths": [
+                "/items/0/code"
+              ],
+              "timestampPaths": [
+                "/event/time"
+              ],
+              "levelPaths": [
+                "/event/severity"
+              ],
+              "inlinePaths": [
+                "/event",
+                "/a~1b",
+                "/a~0b",
+                "/items/0/code"
+              ],
+              "hiddenPaths": [
+                "/event/internal"
+              ],
+              "numericTimestamp": "milliseconds",
+              "severityMappings": [
+                {
+                  "source": 30,
+                  "target": "INFO"
+                },
+                {
+                  "source": "30",
+                  "target": "WARN"
+                }
+              ]
+            }
+          }
+        ],
+        "globalDefault": "a51d49ad-4767-48ec-82c8-a2f03fb39ac3"
+      },
+      "host": "1.10.3",
+      "node": "24.18.0",
+      "paused": true
+    }
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "at": "2026-10-23T00:49:47.964Z",
+  "result": {
+    "type": "object",
+    "value": {
+      "tabs": [
+        "tab-terminal",
+        "tab-log-tab-d34f2b4f-84ad-42e7-8642-d7a70844db27",
+        "tab-log-tab-a1298e84-48c1-4d63-9fec-a4713ca389ee"
+      ],
+      "active": "tab-log-tab-a1298e84-48c1-4d63-9fec-a4713ca389ee",
+      "before": {
+        "tabs": [
+          "tab-terminal",
+          "tab-log-tab-d34f2b4f-84ad-42e7-8642-d7a70844db27",
+          "tab-log-tab-a1298e84-48c1-4d63-9fec-a4713ca389ee"
+        ],
+        "active": "tab-log-tab-a1298e84-48c1-4d63-9fec-a4713ca389ee",
+        "created": [
+          "tab-log-tab-3a343734-2f25-46db-a4d8-f3b9ccaf7a9d"
+        ]
+      }
+    }
+  }
+}

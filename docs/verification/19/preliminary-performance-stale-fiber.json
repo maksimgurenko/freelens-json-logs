@@ -1,0 +1,39 @@
+{
+  "at": "2026-10-23T02:07:58.861Z",
+  "result": {
+    "type": "object",
+    "value": {}
+  },
+  "exceptionDetails": {
+    "exceptionId": 2,
+    "text": "Uncaught (in promise) Error: Pause not reflected",
+    "lineNumber": 3,
+    "columnNumber": 52,
+    "scriptId": "313",
+    "stackTrace": {
+      "callFrames": [
+        {
+          "functionName": "assert",
+          "scriptId": "313",
+          "url": "",
+          "lineNumber": 2,
+          "columnNumber": 51
+        },
+        {
+          "functionName": "measure",
+          "scriptId": "317",
+          "url": "",
+          "lineNumber": 15,
+          "columnNumber": 4
+        }
+      ]
+    },
+    "exception": {
+      "type": "object",
+      "subtype": "error",
+      "className": "Error",
+      "description": "Error: Pause not reflected\n    at assert (<anonymous>:3:52)\n    at measure (<anonymous>:16:5)\n    at async <anonymous>:34:18",
+      "objectId": "4649453183194725383.2.6"
+    }
+  }
+}

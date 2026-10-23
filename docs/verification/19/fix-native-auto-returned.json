@@ -1,0 +1,39 @@
+{
+  "at": "2026-10-23T02:38:30.237Z",
+  "result": {
+    "type": "object",
+    "value": {}
+  },
+  "exceptionDetails": {
+    "exceptionId": 5,
+    "text": "Uncaught (in promise) Error: Return mode/read behavior incorrect",
+    "lineNumber": 3,
+    "columnNumber": 52,
+    "scriptId": "292",
+    "stackTrace": {
+      "callFrames": [
+        {
+          "functionName": "assert",
+          "scriptId": "292",
+          "url": "",
+          "lineNumber": 2,
+          "columnNumber": 51
+        },
+        {
+          "functionName": "",
+          "scriptId": "339",
+          "url": "",
+          "lineNumber": 0,
+          "columnNumber": 281
+        }
+      ]
+    },
+    "exception": {
+      "type": "object",
+      "subtype": "error",
+      "className": "Error",
+      "description": "Error: Return mode/read behavior incorrect\n    at Object.assert (<anonymous>:3:52)\n    at <anonymous>:1:282",
+      "objectId": "-7717641564325817307.2.3"
+    }
+  }
+}

@@ -1,0 +1,524 @@
+{
+  "at": "2026-10-23T02:23:08.556Z",
+  "result": {
+    "type": "object",
+    "value": {
+      "state": {
+        "at": 1792722188555,
+        "url": "https://770814298afe692457d07d8b15d6b8d3.renderer.freelens.app:40797/extension/freelens-readable-logs/readable-logs?clusterId=770814298afe692457d07d8b15d6b8d3&namespace=readable-logs-ticket-19&pod=lifecycle&podUid=68d5554d-265b-44d8-865a-7bdfdee7e41a",
+        "hidden": false,
+        "focused": false,
+        "version": "0.1.19",
+        "container": "app",
+        "choices": [
+          {
+            "kind": "Containers",
+            "names": [
+              "app",
+              "sidecar"
+            ]
+          },
+          {
+            "kind": "init containers",
+            "names": [
+              "setup"
+            ]
+          },
+          {
+            "kind": "ephemeral containers",
+            "names": [
+              "debug"
+            ]
+          }
+        ],
+        "header": [
+          "Readable logs",
+          "",
+          "kind-freelens-json-logs-spike / readable-logs-ticket-19 / lifecycle",
+          "",
+          "lifecycle",
+          "Container",
+          "app",
+          "sidecar",
+          "setup",
+          "debug",
+          "Profile",
+          "Auto · Release19 broad",
+          "Default",
+          "Release19 broad",
+          "Release19 primary",
+          "Release19 fallback",
+          "Profiles",
+          "Pause",
+          "Refresh",
+          "Automatic updates"
+        ],
+        "notice": [],
+        "buttons": [
+          {
+            "text": "Profiles",
+            "disabled": false
+          },
+          {
+            "text": "Pause",
+            "disabled": false
+          },
+          {
+            "text": "Refresh",
+            "disabled": false
+          },
+          {
+            "text": "Previous",
+            "disabled": true
+          },
+          {
+            "text": "Next",
+            "disabled": true
+          },
+          {
+            "text": "Readable",
+            "disabled": false
+          },
+          {
+            "text": "Raw",
+            "disabled": false
+          },
+          {
+            "text": "Close",
+            "disabled": false
+          },
+          {
+            "text": "All fields",
+            "disabled": false
+          },
+          {
+            "text": "Application text",
+            "disabled": false
+          },
+          {
+            "text": "Transport line",
+            "disabled": false
+          },
+          {
+            "text": "Copy application text",
+            "disabled": false
+          },
+          {
+            "text": "Copy transport line",
+            "disabled": false
+          },
+          {
+            "text": "To bottom",
+            "disabled": false
+          }
+        ],
+        "rows": 384,
+        "first": "10/22/2026, 21:16:42\napp current instance 0",
+        "last": "10/22/2026, 21:23:05\napp current instance 383"
+      },
+      "events": [
+        {
+          "at": 1792721909952,
+          "event": "blur",
+          "hidden": false
+        },
+        {
+          "at": 1792721919015,
+          "event": "blur",
+          "hidden": false
+        },
+        {
+          "at": 1792721920862,
+          "event": "blur",
+          "hidden": false
+        },
+        {
+          "at": 1792721921926,
+          "event": "blur",
+          "hidden": false
+        },
+        {
+          "at": 1792721956120,
+          "event": "blur",
+          "hidden": false
+        },
+        {
+          "at": 1792722015979,
+          "event": "blur",
+          "hidden": false
+        },
+        {
+          "at": 1792722015986,
+          "event": "visibility",
+          "hidden": true
+        },
+        {
+          "at": 1792722098059,
+          "event": "visibility",
+          "hidden": false
+        },
+        {
+          "at": 1792722113268,
+          "event": "blur",
+          "hidden": false
+        },
+        {
+          "at": 1792722121140,
+          "event": "blur",
+          "hidden": false
+        },
+        {
+          "at": 1792722121156,
+          "event": "visibility",
+          "hidden": true
+        },
+        {
+          "at": 1792722121697,
+          "event": "visibility",
+          "hidden": false
+        },
+        {
+          "at": 1792722183247,
+          "event": "blur",
+          "hidden": false
+        },
+        {
+          "at": 1792722185586,
+          "event": "blur",
+          "hidden": false
+        },
+        {
+          "at": 1792722187702,
+          "event": "blur",
+          "hidden": false
+        }
+      ],
+      "requests": [
+        {
+          "kind": "metadata",
+          "path": "/api-kube/api/v1/namespaces/readable-logs-ticket-19/pods/lifecycle",
+          "started": 1792722166986,
+          "status": 200,
+          "settled": 1792722166991,
+          "bytes": 9944,
+          "uid": "68d5554d-265b-44d8-865a-7bdfdee7e41a",
+          "instances": [
+            {
+              "name": "app",
+              "restarts": 0,
+              "id": "containerd://fb2915abf0d209466974ea05f564c1e71311ab4e81d095f07457cc8d16131a59"
+            },
+            {
+              "name": "sidecar",
+              "restarts": 0,
+              "id": "containerd://fa456413d4763582a5eccd48b43734320c04ddb12dddf4ee9b394a0c25dc8b2b"
+            },
+            {
+              "name": "setup",
+              "restarts": 0,
+              "id": "containerd://3a88bcbaf0ed465dbea86f8e6e87f14bba03cc1cf83beb693798ff94ca142601"
+            },
+            {
+              "name": "debug",
+              "restarts": 0,
+              "id": "containerd://f4a5d6e8a5a8086ad49b1f1b42f0fdce3564fa1ccf519a739a40915c8600facc"
+            }
+          ]
+        },
+        {
+          "kind": "logs",
+          "path": "/api-kube/api/v1/namespaces/readable-logs-ticket-19/pods/lifecycle/log?container=app&tailLines=1000&timestamps=true&follow=false&previous=false",
+          "started": 1792722167813,
+          "status": 200,
+          "settled": 1792722167824,
+          "bytes": 20386,
+          "first": "2026-10-23T02:16:42.242354648Z app current instance 0\n2026-10-23T02:16:43.242898012Z app current instance 1\n2026-10-23T02:16:44.243566987Z app current instance 2\n2026-10-",
+          "last": "2\n2026-10-23T02:22:45.539168583Z app current instance 363\n2026-10-23T02:22:46.539755290Z app current instance 364\n2026-10-23T02:22:47.540293097Z app current instance 365\n"
+        },
+        {
+          "kind": "metadata",
+          "path": "/api-kube/api/v1/namespaces/readable-logs-ticket-19/pods/lifecycle",
+          "started": 1792722170004,
+          "status": 200,
+          "settled": 1792722170008,
+          "bytes": 9944,
+          "uid": "68d5554d-265b-44d8-865a-7bdfdee7e41a",
+          "instances": [
+            {
+              "name": "app",
+              "restarts": 0,
+              "id": "containerd://fb2915abf0d209466974ea05f564c1e71311ab4e81d095f07457cc8d16131a59"
+            },
+            {
+              "name": "sidecar",
+              "restarts": 0,
+              "id": "containerd://fa456413d4763582a5eccd48b43734320c04ddb12dddf4ee9b394a0c25dc8b2b"
+            },
+            {
+              "name": "setup",
+              "restarts": 0,
+              "id": "containerd://3a88bcbaf0ed465dbea86f8e6e87f14bba03cc1cf83beb693798ff94ca142601"
+            },
+            {
+              "name": "debug",
+              "restarts": 0,
+              "id": "containerd://f4a5d6e8a5a8086ad49b1f1b42f0fdce3564fa1ccf519a739a40915c8600facc"
+            }
+          ]
+        },
+        {
+          "kind": "logs",
+          "path": "/api-kube/api/v1/namespaces/readable-logs-ticket-19/pods/lifecycle/log?container=app&tailLines=1000&timestamps=true&follow=false&previous=false",
+          "started": 1792722170869,
+          "status": 200,
+          "settled": 1792722170878,
+          "bytes": 20554,
+          "first": "2026-10-23T02:16:42.242354648Z app current instance 0\n2026-10-23T02:16:43.242898012Z app current instance 1\n2026-10-23T02:16:44.243566987Z app current instance 2\n2026-10-",
+          "last": "5\n2026-10-23T02:22:48.540899435Z app current instance 366\n2026-10-23T02:22:49.541426744Z app current instance 367\n2026-10-23T02:22:50.541954883Z app current instance 368\n"
+        },
+        {
+          "kind": "metadata",
+          "path": "/api-kube/api/v1/namespaces/readable-logs-ticket-19/pods/lifecycle",
+          "started": 1792722173021,
+          "status": 200,
+          "settled": 1792722173026,
+          "bytes": 9944,
+          "uid": "68d5554d-265b-44d8-865a-7bdfdee7e41a",
+          "instances": [
+            {
+              "name": "app",
+              "restarts": 0,
+              "id": "containerd://fb2915abf0d209466974ea05f564c1e71311ab4e81d095f07457cc8d16131a59"
+            },
+            {
+              "name": "sidecar",
+              "restarts": 0,
+              "id": "containerd://fa456413d4763582a5eccd48b43734320c04ddb12dddf4ee9b394a0c25dc8b2b"
+            },
+            {
+              "name": "setup",
+              "restarts": 0,
+              "id": "containerd://3a88bcbaf0ed465dbea86f8e6e87f14bba03cc1cf83beb693798ff94ca142601"
+            },
+            {
+              "name": "debug",
+              "restarts": 0,
+              "id": "containerd://f4a5d6e8a5a8086ad49b1f1b42f0fdce3564fa1ccf519a739a40915c8600facc"
+            }
+          ]
+        },
+        {
+          "kind": "logs",
+          "path": "/api-kube/api/v1/namespaces/readable-logs-ticket-19/pods/lifecycle/log?container=app&tailLines=1000&timestamps=true&follow=false&previous=false",
+          "started": 1792722173923,
+          "status": 200,
+          "settled": 1792722173933,
+          "bytes": 20722,
+          "first": "2026-10-23T02:16:42.242354648Z app current instance 0\n2026-10-23T02:16:43.242898012Z app current instance 1\n2026-10-23T02:16:44.243566987Z app current instance 2\n2026-10-",
+          "last": "8\n2026-10-23T02:22:51.542674493Z app current instance 369\n2026-10-23T02:22:52.543436314Z app current instance 370\n2026-10-23T02:22:53.544020125Z app current instance 371\n"
+        },
+        {
+          "kind": "metadata",
+          "path": "/api-kube/api/v1/namespaces/readable-logs-ticket-19/pods/lifecycle",
+          "started": 1792722176038,
+          "status": 200,
+          "settled": 1792722176042,
+          "bytes": 9944,
+          "uid": "68d5554d-265b-44d8-865a-7bdfdee7e41a",
+          "instances": [
+            {
+              "name": "app",
+              "restarts": 0,
+              "id": "containerd://fb2915abf0d209466974ea05f564c1e71311ab4e81d095f07457cc8d16131a59"
+            },
+            {
+              "name": "sidecar",
+              "restarts": 0,
+              "id": "containerd://fa456413d4763582a5eccd48b43734320c04ddb12dddf4ee9b394a0c25dc8b2b"
+            },
+            {
+              "name": "setup",
+              "restarts": 0,
+              "id": "containerd://3a88bcbaf0ed465dbea86f8e6e87f14bba03cc1cf83beb693798ff94ca142601"
+            },
+            {
+              "name": "debug",
+              "restarts": 0,
+              "id": "containerd://f4a5d6e8a5a8086ad49b1f1b42f0fdce3564fa1ccf519a739a40915c8600facc"
+            }
+          ]
+        },
+        {
+          "kind": "logs",
+          "path": "/api-kube/api/v1/namespaces/readable-logs-ticket-19/pods/lifecycle/log?container=app&tailLines=1000&timestamps=true&follow=false&previous=false",
+          "started": 1792722176979,
+          "status": 200,
+          "settled": 1792722176991,
+          "bytes": 20890,
+          "first": "2026-10-23T02:16:42.242354648Z app current instance 0\n2026-10-23T02:16:43.242898012Z app current instance 1\n2026-10-23T02:16:44.243566987Z app current instance 2\n2026-10-",
+          "last": "1\n2026-10-23T02:22:54.544795418Z app current instance 372\n2026-10-23T02:22:55.545424621Z app current instance 373\n2026-10-23T02:22:56.546028325Z app current instance 374\n"
+        },
+        {
+          "kind": "metadata",
+          "path": "/api-kube/api/v1/namespaces/readable-logs-ticket-19/pods/lifecycle",
+          "started": 1792722179055,
+          "status": 200,
+          "settled": 1792722179061,
+          "bytes": 9944,
+          "uid": "68d5554d-265b-44d8-865a-7bdfdee7e41a",
+          "instances": [
+            {
+              "name": "app",
+              "restarts": 0,
+              "id": "containerd://fb2915abf0d209466974ea05f564c1e71311ab4e81d095f07457cc8d16131a59"
+            },
+            {
+              "name": "sidecar",
+              "restarts": 0,
+              "id": "containerd://fa456413d4763582a5eccd48b43734320c04ddb12dddf4ee9b394a0c25dc8b2b"
+            },
+            {
+              "name": "setup",
+              "restarts": 0,
+              "id": "containerd://3a88bcbaf0ed465dbea86f8e6e87f14bba03cc1cf83beb693798ff94ca142601"
+            },
+            {
+              "name": "debug",
+              "restarts": 0,
+              "id": "containerd://f4a5d6e8a5a8086ad49b1f1b42f0fdce3564fa1ccf519a739a40915c8600facc"
+            }
+          ]
+        },
+        {
+          "kind": "logs",
+          "path": "/api-kube/api/v1/namespaces/readable-logs-ticket-19/pods/lifecycle/log?container=app&tailLines=1000&timestamps=true&follow=false&previous=false",
+          "started": 1792722180038,
+          "status": 200,
+          "settled": 1792722180048,
+          "bytes": 21058,
+          "first": "2026-10-23T02:16:42.242354648Z app current instance 0\n2026-10-23T02:16:43.242898012Z app current instance 1\n2026-10-23T02:16:44.243566987Z app current instance 2\n2026-10-",
+          "last": "4\n2026-10-23T02:22:57.546932150Z app current instance 375\n2026-10-23T02:22:58.547600805Z app current instance 376\n2026-10-23T02:22:59.548201611Z app current instance 377\n"
+        },
+        {
+          "kind": "metadata",
+          "path": "/api-kube/api/v1/namespaces/readable-logs-ticket-19/pods/lifecycle",
+          "started": 1792722182073,
+          "status": 200,
+          "settled": 1792722182078,
+          "bytes": 9944,
+          "uid": "68d5554d-265b-44d8-865a-7bdfdee7e41a",
+          "instances": [
+            {
+              "name": "app",
+              "restarts": 0,
+              "id": "containerd://fb2915abf0d209466974ea05f564c1e71311ab4e81d095f07457cc8d16131a59"
+            },
+            {
+              "name": "sidecar",
+              "restarts": 0,
+              "id": "containerd://fa456413d4763582a5eccd48b43734320c04ddb12dddf4ee9b394a0c25dc8b2b"
+            },
+            {
+              "name": "setup",
+              "restarts": 0,
+              "id": "containerd://3a88bcbaf0ed465dbea86f8e6e87f14bba03cc1cf83beb693798ff94ca142601"
+            },
+            {
+              "name": "debug",
+              "restarts": 0,
+              "id": "containerd://f4a5d6e8a5a8086ad49b1f1b42f0fdce3564fa1ccf519a739a40915c8600facc"
+            }
+          ]
+        },
+        {
+          "kind": "logs",
+          "path": "/api-kube/api/v1/namespaces/readable-logs-ticket-19/pods/lifecycle/log?container=app&tailLines=1000&timestamps=true&follow=false&previous=false",
+          "started": 1792722183094,
+          "status": 200,
+          "settled": 1792722183104,
+          "bytes": 21226,
+          "first": "2026-10-23T02:16:42.242354648Z app current instance 0\n2026-10-23T02:16:43.242898012Z app current instance 1\n2026-10-23T02:16:44.243566987Z app current instance 2\n2026-10-",
+          "last": "7\n2026-10-23T02:23:00.549122998Z app current instance 378\n2026-10-23T02:23:01.549768685Z app current instance 379\n2026-10-23T02:23:02.550467573Z app current instance 380\n"
+        },
+        {
+          "kind": "metadata",
+          "path": "/api-kube/api/v1/namespaces/readable-logs-ticket-19/pods/lifecycle",
+          "started": 1792722185091,
+          "status": 200,
+          "settled": 1792722185095,
+          "bytes": 9944,
+          "uid": "68d5554d-265b-44d8-865a-7bdfdee7e41a",
+          "instances": [
+            {
+              "name": "app",
+              "restarts": 0,
+              "id": "containerd://fb2915abf0d209466974ea05f564c1e71311ab4e81d095f07457cc8d16131a59"
+            },
+            {
+              "name": "sidecar",
+              "restarts": 0,
+              "id": "containerd://fa456413d4763582a5eccd48b43734320c04ddb12dddf4ee9b394a0c25dc8b2b"
+            },
+            {
+              "name": "setup",
+              "restarts": 0,
+              "id": "containerd://3a88bcbaf0ed465dbea86f8e6e87f14bba03cc1cf83beb693798ff94ca142601"
+            },
+            {
+              "name": "debug",
+              "restarts": 0,
+              "id": "containerd://f4a5d6e8a5a8086ad49b1f1b42f0fdce3564fa1ccf519a739a40915c8600facc"
+            }
+          ]
+        },
+        {
+          "kind": "logs",
+          "path": "/api-kube/api/v1/namespaces/readable-logs-ticket-19/pods/lifecycle/log?container=app&tailLines=1000&timestamps=true&follow=false&previous=false",
+          "started": 1792722186152,
+          "status": 200,
+          "settled": 1792722186163,
+          "bytes": 21394,
+          "first": "2026-10-23T02:16:42.242354648Z app current instance 0\n2026-10-23T02:16:43.242898012Z app current instance 1\n2026-10-23T02:16:44.243566987Z app current instance 2\n2026-10-",
+          "last": "0\n2026-10-23T02:23:03.551400943Z app current instance 381\n2026-10-23T02:23:04.552100022Z app current instance 382\n2026-10-23T02:23:05.552764643Z app current instance 383\n"
+        },
+        {
+          "kind": "metadata",
+          "path": "/api-kube/api/v1/namespaces/readable-logs-ticket-19/pods/lifecycle",
+          "started": 1792722188108,
+          "status": 200,
+          "settled": 1792722188113,
+          "bytes": 9944,
+          "uid": "68d5554d-265b-44d8-865a-7bdfdee7e41a",
+          "instances": [
+            {
+              "name": "app",
+              "restarts": 0,
+              "id": "containerd://fb2915abf0d209466974ea05f564c1e71311ab4e81d095f07457cc8d16131a59"
+            },
+            {
+              "name": "sidecar",
+              "restarts": 0,
+              "id": "containerd://fa456413d4763582a5eccd48b43734320c04ddb12dddf4ee9b394a0c25dc8b2b"
+            },
+            {
+              "name": "setup",
+              "restarts": 0,
+              "id": "containerd://3a88bcbaf0ed465dbea86f8e6e87f14bba03cc1cf83beb693798ff94ca142601"
+            },
+            {
+              "name": "debug",
+              "restarts": 0,
+              "id": "containerd://f4a5d6e8a5a8086ad49b1f1b42f0fdce3564fa1ccf519a739a40915c8600facc"
+            }
+          ]
+        }
+      ],
+      "snapshot": {
+        "paused": false,
+        "refreshing": false,
+        "waiting": false,
+        "rows": 384
+      }
+    }
+  }
+}

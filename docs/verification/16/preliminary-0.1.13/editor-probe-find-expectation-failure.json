@@ -1,0 +1,39 @@
+{
+  "at": "2026-10-23T01:03:23.755Z",
+  "result": {
+    "type": "object",
+    "value": {}
+  },
+  "exceptionDetails": {
+    "exceptionId": 5,
+    "text": "Uncaught (in promise) Error: Profile change did not recompute Find",
+    "lineNumber": 2,
+    "columnNumber": 66,
+    "scriptId": "296",
+    "stackTrace": {
+      "callFrames": [
+        {
+          "functionName": "assert",
+          "scriptId": "296",
+          "url": "",
+          "lineNumber": 1,
+          "columnNumber": 65
+        },
+        {
+          "functionName": "",
+          "scriptId": "294",
+          "url": "",
+          "lineNumber": 48,
+          "columnNumber": 2
+        }
+      ]
+    },
+    "exception": {
+      "type": "object",
+      "subtype": "error",
+      "className": "Error",
+      "description": "Error: Profile change did not recompute Find\n    at assert (<anonymous>:2:66)\n    at <anonymous>:49:3",
+      "objectId": "-922732765791114473.2.2"
+    }
+  }
+}

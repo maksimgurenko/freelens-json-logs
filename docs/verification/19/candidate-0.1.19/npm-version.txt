@@ -1,0 +1,2 @@
+$ /home/max/work/freelens-json-logs/.scratch/readable-logs/toolchain/node_modules/node/bin/node /home/max/work/freelens-json-logs/.scratch/readable-logs/toolchain/node_modules/npm/bin/npm-cli.js --version
+11.16.0

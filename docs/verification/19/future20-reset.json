@@ -1,0 +1,70 @@
+{
+  "at": "2026-10-23T02:47:17.952Z",
+  "result": {
+    "type": "object",
+    "value": {
+      "exactBackup": "/home/max/.config/Freelens/extension-store/freelens-readable-logs/backups/readable-logs-2026-10-23T02-47-17-137Z-60cbf7d1-3fc8-4c58-841c-bc0373a07cfb.json",
+      "originalSha256": "a7e2d0df755a0426f3565b5bb30a5595c867aa6ccae9fd6149b1fbf66cd9437e",
+      "configurationImmediatelyAfterReset": {
+        "schemaVersion": 3,
+        "viewer": {
+          "inspection": "side"
+        },
+        "profiles": [],
+        "globalDefault": "default",
+        "__internal__": {
+          "migrations": {
+            "version": "0.1.20"
+          }
+        }
+      },
+      "normalSavingRestored": {
+        "schemaVersion": 3,
+        "viewer": {
+          "inspection": "inline"
+        },
+        "profiles": [
+          {
+            "id": "9c137f66-d3d7-4dbd-8b2b-ed2e02af9515",
+            "name": "After reset",
+            "format": {
+              "messagePaths": [
+                "/message",
+                "/msg"
+              ],
+              "timestampPaths": [
+                "/timestamp",
+                "/time",
+                "/@timestamp"
+              ],
+              "levelPaths": [
+                "/level",
+                "/severity",
+                "/log.level",
+                "/log/level"
+              ],
+              "inlinePaths": [],
+              "hiddenPaths": [],
+              "numericTimestamp": "unset",
+              "severityMappings": []
+            },
+            "matching": {
+              "enabled": false,
+              "conditions": {
+                "labels": []
+              }
+            }
+          }
+        ],
+        "globalDefault": "9c137f66-d3d7-4dbd-8b2b-ed2e02af9515",
+        "__internal__": {
+          "migrations": {
+            "version": "0.1.20"
+          }
+        }
+      },
+      "paused": true,
+      "text": "Readable logs\n\nkind-freelens-json-logs-spike / readable-logs-spike / single-json\n\nsingle-json\nContainer\njson\nempty\nProfile\nAuto · After reset\nDefault\nAfter reset\nProfiles\nResume\nRefresh\nPaused\nFind\nEnter text to find\nPrevious\nNext\nCluster 770814298afe692457d07d8b15d6b8d3 · Pod UID 0035d4f0-23c6-4e7d-93b2-c1d13a41cb92 · Active profile After reset\nInspection\nInline expansion\nSide inspector\nBottom inspector\nReadable\nRaw\n\nSettings reset. Normal saving is available. Original settings backup: /home/max/.config/Freelens/extension-store/freelens-readable-logs/backups/readable-logs-2026-10-23T02-47-17-137Z-60cbf7d1-3fc8-4c58-841c-bc0373a07cfb.json\n\n10/21/2026, 22:18:05\nINFO\nfreelens-json-logs-spike\n2 fields\n1 records · 0.1 KiB retained\nTo bottom\nFollowing output\nShow timestamps\nWord wrap\nv0.1.20"
+    }
+  }
+}

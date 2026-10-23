@@ -1,0 +1,1 @@
+(()=>({state:global.__rl13.state(),events:global.__rl13.events.slice(-15),requests:global.__rl13.records.slice(-15),snapshot:((s)=>({paused:s.paused,refreshing:s.refreshing,waiting:s.waiting,rows:s.snapshot?.records.length}))(global.__rl19.state())}))()

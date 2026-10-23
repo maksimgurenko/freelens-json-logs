@@ -1,0 +1,60 @@
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: readable-logs-ticket-17
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: profiles
+  namespace: readable-logs-ticket-17
+  labels:
+    app: payments
+    tier: backend
+spec:
+  containers:
+    - name: api
+      image: busybox:1.37.0
+      command: [sh, -c]
+      args:
+        - |
+          printf '%s\n' ' { "message":"Default api", "first":"First α🙂\napi", "second":"Second api", "fallback":"Fallback api", "level":"info", "secret":"keep" } '
+          sleep 86400
+    - name: worker
+      image: busybox:1.37.0
+      command: [sh, -c]
+      args:
+        - |
+          printf '%s\n' ' { "message":"Default worker", "first":"First α🙂\nworker", "second":"Second worker", "fallback":"Fallback worker", "level":"info", "secret":"keep" } '
+          sleep 86400
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: readable-logs-ticket-17-other
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: profiles
+  namespace: readable-logs-ticket-17-other
+  labels:
+    app: payments
+    tier: backend
+spec:
+  containers:
+    - name: api
+      image: busybox:1.37.0
+      command: [sh, -c]
+      args:
+        - |
+          printf '%s\n' ' { "message":"Default api", "first":"First α🙂\napi", "second":"Second api", "fallback":"Fallback api", "level":"info", "secret":"keep" } '
+          sleep 86400
+    - name: worker
+      image: busybox:1.37.0
+      command: [sh, -c]
+      args:
+        - |
+          printf '%s\n' ' { "message":"Default worker", "first":"First α🙂\nworker", "second":"Second worker", "fallback":"Fallback worker", "level":"info", "secret":"keep" } '
+          sleep 86400

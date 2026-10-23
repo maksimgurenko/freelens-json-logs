@@ -1,0 +1,32 @@
+{
+  "at": "2026-10-23T01:01:57.036Z",
+  "result": {
+    "type": "object",
+    "value": {}
+  },
+  "exceptionDetails": {
+    "exceptionId": 2,
+    "text": "Uncaught (in promise) Error: No Readable logs Pod header action",
+    "lineNumber": 1,
+    "columnNumber": 337,
+    "scriptId": "287",
+    "stackTrace": {
+      "callFrames": [
+        {
+          "functionName": "",
+          "scriptId": "287",
+          "url": "",
+          "lineNumber": 0,
+          "columnNumber": 336
+        }
+      ]
+    },
+    "exception": {
+      "type": "object",
+      "subtype": "error",
+      "className": "Error",
+      "description": "Error: No Readable logs Pod header action\n    at <anonymous>:1:337",
+      "objectId": "-922732765791114473.2.1"
+    }
+  }
+}

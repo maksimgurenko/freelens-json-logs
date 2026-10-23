@@ -1,0 +1,11 @@
+{
+  "at": "2026-10-23T02:09:51.307Z",
+  "result": {
+    "type": "object",
+    "value": {
+      "container": "utf8-near",
+      "rows": 1000,
+      "bytes": 5148000
+    }
+  }
+}

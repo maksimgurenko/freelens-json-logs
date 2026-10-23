@@ -1,0 +1,24 @@
+ok
+{
+  "at": 1792714820.779184,
+  "oldMainPid": 2292730,
+  "originalPids": [
+    2292730,
+    2292733,
+    2292734,
+    2292736,
+    2292785,
+    2293021,
+    2293216
+  ],
+  "reason": "Fresh main window before extension maintenance",
+  "activeWorkspaceBefore": 2,
+  "activeWindowBefore": "0x55baeff066d0",
+  "remainingOriginalPids": [],
+  "quarantinedFailedPackage": "/home/max/work/freelens-json-logs/.scratch/readable-logs/failed-install-1792714820",
+  "processLocalTMPDIR": "/home/max/.cache/freelens-readable-logs/tmp",
+  "newMainPid": 2294766,
+  "newWindowWorkspace": 7,
+  "activeWorkspaceAfter": 2,
+  "activeWindowAfter": "0x55baeff066d0"
+}

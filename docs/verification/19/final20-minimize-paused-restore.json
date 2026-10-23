@@ -1,0 +1,21 @@
+{
+  "at": "2026-10-23T02:40:58.267Z",
+  "result": {
+    "type": "object",
+    "value": {
+      "before": {
+        "hidden": false,
+        "focused": true
+      },
+      "maximized": {
+        "hidden": false,
+        "focused": true
+      },
+      "restored": {
+        "hidden": false,
+        "focused": true
+      },
+      "method": "Two native toggle-maximize actions; no host modification"
+    }
+  }
+}

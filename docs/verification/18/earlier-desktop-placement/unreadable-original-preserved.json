@@ -1,0 +1,6 @@
+{
+  "bytesEqualToControlledFuture": true,
+  "sha256": "b7b87e22ddfd9c1e662560f2a5d327e42225c57b79be854cd7f43037be12d928",
+  "testRestoredSourceMode": "0600",
+  "reason": "Explicit correction of controlled mode-000 fixture, before retrying reset"
+}

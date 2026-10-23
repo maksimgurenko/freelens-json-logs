@@ -1,0 +1,5 @@
+{
+  "at": 1792710676.9729261,
+  "action": "Move only the failed package out and back, one second apart, as a filesystem-discovery diagnostic. Not accepted installation evidence.",
+  "packageBytesChanged": false
+}

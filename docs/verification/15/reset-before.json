@@ -1,0 +1,24 @@
+{
+  "at": "2026-10-23T00:47:03.517Z",
+  "result": {
+    "type": "object",
+    "value": {
+      "query": "row 2145",
+      "timestamps": false,
+      "wrap": true,
+      "raw": true,
+      "config": {
+        "__internal__": {
+          "migrations": {
+            "version": "0.1.12"
+          }
+        },
+        "schemaVersion": 1,
+        "viewer": {
+          "inspection": "bottom"
+        }
+      },
+      "localLogRequests": 0
+    }
+  }
+}

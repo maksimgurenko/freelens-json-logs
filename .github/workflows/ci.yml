@@ -1,0 +1,106 @@
+name: CI
+
+on:
+  push:
+    branches: ['**']
+    tags: ['v*']
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: ${{ !startsWith(github.ref, 'refs/tags/') }}
+
+jobs:
+  verify:
+    name: Typecheck, test and package
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+      - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
+        with:
+          node-version-file: .nvmrc
+          package-manager-cache: false
+      - name: Select the supported npm version
+        run: npm install --global npm@11.16.0 --ignore-scripts --no-audit --no-fund
+      - name: Check toolchain and release metadata
+        id: package
+        run: |
+          node --input-type=module <<'JS'
+          import assert from 'node:assert/strict';
+          import { readFileSync, appendFileSync } from 'node:fs';
+          import { execFileSync } from 'node:child_process';
+          const pkg = JSON.parse(readFileSync('package.json', 'utf8'));
+          assert.equal(process.versions.node, readFileSync('.nvmrc', 'utf8').trim());
+          assert.equal(`npm@${execFileSync('npm', ['--version'], { encoding: 'utf8' }).trim()}`, pkg.packageManager);
+          if (process.env.GITHUB_REF_TYPE === 'tag') {
+            assert.equal(process.env.GITHUB_REF_NAME, `v${pkg.version}`, 'Tag must match package.json');
+            assert(readFileSync(`docs/releases/v${pkg.version}.md`, 'utf8').trim(), 'Release notes are required');
+          }
+          appendFileSync(process.env.GITHUB_OUTPUT, `file=${pkg.name.replace(/^@/, '').replace('/', '-')}-${pkg.version}.tgz\n`);
+          JS
+          if [[ "$GITHUB_REF_TYPE" == tag ]]; then
+            git merge-base --is-ancestor HEAD origin/main
+          fi
+      - name: Install locked dependencies without lifecycle scripts
+        run: npm ci --ignore-scripts --no-audit --no-fund
+      - name: Typecheck
+        run: npm run typecheck
+      - name: Test
+        run: npm test
+      - name: Build and inspect the installable package
+        run: |
+          npm run package
+          npm run check:package
+      - name: Verify reproducible package bytes
+        env:
+          PACKAGE_FILE: ${{ steps.package.outputs.file }}
+        run: |
+          (cd dist && sha256sum "$PACKAGE_FILE" > SHA256SUMS)
+          npm run package
+          (cd dist && sha256sum --check SHA256SUMS)
+      - name: Save verified release assets
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        with:
+          name: release-assets
+          path: |
+            dist/${{ steps.package.outputs.file }}
+            dist/SHA256SUMS
+          if-no-files-found: error
+          retention-days: 14
+
+  release:
+    name: Publish GitHub release
+    if: startsWith(github.ref, 'refs/tags/v')
+    needs: verify
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - uses: actions/download-artifact@9000827ccba6bdab643e8b6fd33ac0654aef8333 # v8.0.2
+        with:
+          name: release-assets
+          path: dist
+      - name: Publish the checked tarball and checksum
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+          RELEASE_TAG: ${{ github.ref_name }}
+        run: |
+          (cd dist && sha256sum --check SHA256SUMS)
+          gh release create "$RELEASE_TAG" dist/*.tgz dist/SHA256SUMS \
+            --verify-tag \
+            --title "Readable logs $RELEASE_TAG" \
+            --notes-file "docs/releases/$RELEASE_TAG.md"

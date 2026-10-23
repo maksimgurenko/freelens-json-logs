@@ -1,0 +1,17 @@
+{
+  "at": "2026-10-23T01:01:51.882Z",
+  "result": {
+    "type": "string",
+    "value": "certificate has not been set"
+  },
+  "exceptionDetails": {
+    "exceptionId": 1,
+    "text": "Uncaught (in promise)",
+    "lineNumber": 0,
+    "columnNumber": 0,
+    "exception": {
+      "type": "string",
+      "value": "certificate has not been set"
+    }
+  }
+}

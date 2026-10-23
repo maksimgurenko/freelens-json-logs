@@ -1,0 +1,11 @@
+{
+  "at": "2026-10-23T02:56:37.785Z",
+  "result": {
+    "type": "object",
+    "value": {
+      "viewerAbsent": true,
+      "url": "https://770814298afe692457d07d8b15d6b8d3.renderer.freelens.app:41719/overview",
+      "body": "KFJ\nkind-freelens-json-logs-spike\narrow_drop_down\nstar\nFavorites\nkeyboard_arrow_down\nCluster\nNodes\nWorkloads\nkeyboard_arrow_up\nOverview\nPods\nDeployments\nDaemon Sets\nStateful Sets\nReplica Sets\nReplication Controllers\nJobs\nCron Jobs\nlist\nConfig\nkeyboard_arrow_down\ndevice_hub\nNetwork\nkeyboard_arrow_down\nstorage\nStorage\nkeyboard_arrow_down\nlayers\nNamespaces\naccess_time\nEvents\nHelm\nkeyboard_arrow_down\nsecurity\nAccess Control\nkeyboard_arrow_down\nextension\nCustom Resources\nkeyboard_arrow_down\nMaster\nWorker\n1 hour\nCPU\nMemory\ninfo\n\nMetrics are not available due to missing or invalid Prometheus configuration.\n\nOpen cluster settings\n\ninfo\n\nMetrics are not available due to missing or invalid Prometheus configuration.\n\nOpen cluster settings\n\ncheck\n\nNo issues found\n\nEverything is fine in the Cluster\n\nterminal\nTerminal\nclose\nsubject\nPod changing-logs\nclose\nsubject\nPod single-json\nclose\nadd\nfullscreen\nkeyboard_arrow_up"
+    }
+  }
+}

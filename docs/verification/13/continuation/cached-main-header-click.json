@@ -1,0 +1,20 @@
+{
+  "at": "2026-10-22T23:58:57.367Z",
+  "result": {
+    "type": "object",
+    "value": {
+      "html": "<li tabindex=\"0\" class=\"MenuItem\"><i class=\"Icon material interactive focusable\" tabindex=\"0\" id=\"tooltip_target_73\"><span class=\"icon\" data-icon-name=\"data_object\">data_object</span><div></div></i><span class=\"title\">Readable logs</span></li>",
+      "parent": "Menu MenuActions flex KubeObjectMenu toolbar gaps right bottom",
+      "rect": {
+        "x": 1319.3524169921875,
+        "y": 16.494140625,
+        "width": 20.99609375,
+        "height": 20.99609375,
+        "top": 16.494140625,
+        "right": 1340.3485107421875,
+        "bottom": 37.490234375,
+        "left": 1319.3524169921875
+      }
+    }
+  }
+}

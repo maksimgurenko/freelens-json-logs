@@ -1,0 +1,87 @@
+{
+  "at": "2026-10-23T02:42:43.574Z",
+  "result": {
+    "type": "object",
+    "value": {
+      "mode": "denied",
+      "version": "0.1.20",
+      "failure": {
+        "error": "pods \"release\" is forbidden: User \"freelens-readable-logs-ticket-19-denied\" cannot get resource \"pods/log\" in API group \"\" in the namespace \"readable-logs-ticket-19\"",
+        "request": {
+          "originalPath": "https://127.0.0.1:33069/api-kube/api/v1/namespaces/readable-logs-ticket-19/pods/release/log?container=bounded&tailLines=1000&timestamps=true&follow=false&previous=false",
+          "transmittedPath": "/api-kube/api/v1/namespaces/readable-logs-ticket-19/pods/release/log?container=bounded&tailLines=1000&timestamps=true&follow=false&previous=false",
+          "started": 579851.6000000238,
+          "denied": true,
+          "offline": false,
+          "status": 403,
+          "responseCompleted": 579858.6000000238,
+          "bytes": 332,
+          "sha256": "165e8667b29f36e7c1acb6c15b0ea9177e447ac32ed8005f976a628659a8a8b5"
+        },
+        "body": "{\"kind\":\"Status\",\"apiVersion\":\"v1\",\"metadata\":{},\"status\":\"Failure\",\"message\":\"pods \\\"release\\\" is forbidden: User \\\"freelens-readable-logs-ticket-19-denied\\\" cannot get resource \\\"pods/log\\\" in API group \\\"\\\" in the namespace \\\"readable-logs-ticket-19\\\"\",\"reason\":\"Forbidden\",\"details\":{\"name\":\"release\",\"kind\":\"pods\"},\"code\":403}\n",
+        "digest": "acca3c80e1a8723129bd88677e7f4d4f0a1e5281ac86511c796f3ac8e7fb376b"
+      },
+      "recovery": {
+        "originalPath": "https://127.0.0.1:33069/api-kube/api/v1/namespaces/readable-logs-ticket-19/pods/release/log?container=bounded&tailLines=1000&timestamps=true&follow=false&previous=false",
+        "transmittedPath": "/api-kube/api/v1/namespaces/readable-logs-ticket-19/pods/release/log?container=bounded&tailLines=1000&timestamps=true&follow=false&previous=false",
+        "started": 586698.7000000477,
+        "denied": false,
+        "offline": false,
+        "status": 200,
+        "responseCompleted": 586710.2999999523,
+        "bytes": 126000,
+        "sha256": "53992e555a8bf296f553480c8becf911b7aa5c11e8a31a55c6556587c5b7f086"
+      },
+      "retainedOriginalSha256": "acca3c80e1a8723129bd88677e7f4d4f0a1e5281ac86511c796f3ac8e7fb376b",
+      "noAutomaticFailureLoop": true,
+      "failedExplicitRetryOnce": true,
+      "successfulExplicitRetryResumes": true,
+      "requests": [
+        {
+          "originalPath": "https://127.0.0.1:33069/api-kube/api/v1/namespaces/readable-logs-ticket-19/pods/release/log?container=bounded&tailLines=1000&timestamps=true&follow=false&previous=false",
+          "transmittedPath": "/api-kube/api/v1/namespaces/readable-logs-ticket-19/pods/release/log?container=bounded&tailLines=1000&timestamps=true&follow=false&previous=false",
+          "started": 579851.6000000238,
+          "denied": true,
+          "offline": false,
+          "status": 403,
+          "responseCompleted": 579858.6000000238,
+          "bytes": 332,
+          "sha256": "165e8667b29f36e7c1acb6c15b0ea9177e447ac32ed8005f976a628659a8a8b5"
+        },
+        {
+          "originalPath": "https://127.0.0.1:33069/api-kube/api/v1/namespaces/readable-logs-ticket-19/pods/release/log?container=bounded&tailLines=1000&timestamps=true&follow=false&previous=false",
+          "transmittedPath": "/api-kube/api/v1/namespaces/readable-logs-ticket-19/pods/release/log?container=bounded&tailLines=1000&timestamps=true&follow=false&previous=false",
+          "started": 583281.8999999762,
+          "denied": true,
+          "offline": false,
+          "status": 403,
+          "responseCompleted": 583290.2999999523,
+          "bytes": 332,
+          "sha256": "165e8667b29f36e7c1acb6c15b0ea9177e447ac32ed8005f976a628659a8a8b5"
+        },
+        {
+          "originalPath": "https://127.0.0.1:33069/api-kube/api/v1/namespaces/readable-logs-ticket-19/pods/release/log?container=bounded&tailLines=1000&timestamps=true&follow=false&previous=false",
+          "transmittedPath": "/api-kube/api/v1/namespaces/readable-logs-ticket-19/pods/release/log?container=bounded&tailLines=1000&timestamps=true&follow=false&previous=false",
+          "started": 586698.7000000477,
+          "denied": false,
+          "offline": false,
+          "status": 200,
+          "responseCompleted": 586710.2999999523,
+          "bytes": 126000,
+          "sha256": "53992e555a8bf296f553480c8becf911b7aa5c11e8a31a55c6556587c5b7f086"
+        },
+        {
+          "originalPath": "https://127.0.0.1:33069/api-kube/api/v1/namespaces/readable-logs-ticket-19/pods/release/log?container=bounded&tailLines=1000&timestamps=true&follow=false&previous=false",
+          "transmittedPath": "/api-kube/api/v1/namespaces/readable-logs-ticket-19/pods/release/log?container=bounded&tailLines=1000&timestamps=true&follow=false&previous=false",
+          "started": 589824.8999999762,
+          "denied": false,
+          "offline": false,
+          "status": 200,
+          "responseCompleted": 589836.6000000238,
+          "bytes": 126000,
+          "sha256": "53992e555a8bf296f553480c8becf911b7aa5c11e8a31a55c6556587c5b7f086"
+        }
+      ]
+    }
+  }
+}

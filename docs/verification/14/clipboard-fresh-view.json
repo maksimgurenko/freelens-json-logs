@@ -1,0 +1,10 @@
+{
+  "at": "2026-10-23T00:31:02.874Z",
+  "result": {
+    "type": "object",
+    "value": {
+      "url": "https://770814298afe692457d07d8b15d6b8d3.renderer.freelens.app:42453/extension/freelens-readable-logs/readable-logs?clusterId=770814298afe692457d07d8b15d6b8d3&namespace=readable-logs-ticket-14&pod=inspection&podUid=5edccbd8-026b-4d56-aeee-b3e159aaa3b6",
+      "rows": 7
+    }
+  }
+}

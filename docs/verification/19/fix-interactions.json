@@ -1,0 +1,160 @@
+{
+  "at": "2026-10-23T02:41:13.083Z",
+  "result": {
+    "type": "object",
+    "value": {
+      "version": "0.1.20",
+      "layouts": [
+        {
+          "layout": "inline",
+          "selected": 8,
+          "complete": true
+        },
+        {
+          "layout": "side",
+          "selected": 8,
+          "complete": true
+        },
+        {
+          "layout": "bottom",
+          "selected": 8,
+          "complete": true
+        }
+      ],
+      "copies": [
+        {
+          "index": 0,
+          "kind": "application",
+          "expected": "{broken",
+          "actual": "{broken"
+        },
+        {
+          "index": 0,
+          "kind": "transport",
+          "expected": "2026-10-23T02:04:52.071315024Z {broken",
+          "actual": "2026-10-23T02:04:52.071315024Z {broken"
+        },
+        {
+          "index": 1,
+          "kind": "application",
+          "expected": "[1,2]",
+          "actual": "[1,2]"
+        },
+        {
+          "index": 1,
+          "kind": "transport",
+          "expected": "2026-10-23T02:04:52.071327914Z [1,2]",
+          "actual": "2026-10-23T02:04:52.071327914Z [1,2]"
+        },
+        {
+          "index": 2,
+          "kind": "application",
+          "expected": "\"hello\"",
+          "actual": "\"hello\""
+        },
+        {
+          "index": 2,
+          "kind": "transport",
+          "expected": "2026-10-23T02:04:52.071328844Z \"hello\"",
+          "actual": "2026-10-23T02:04:52.071328844Z \"hello\""
+        },
+        {
+          "index": 3,
+          "kind": "application",
+          "expected": "42",
+          "actual": "42"
+        },
+        {
+          "index": 3,
+          "kind": "transport",
+          "expected": "2026-10-23T02:04:52.071329494Z 42",
+          "actual": "2026-10-23T02:04:52.071329494Z 42"
+        },
+        {
+          "index": 4,
+          "kind": "application",
+          "expected": "null",
+          "actual": "null"
+        },
+        {
+          "index": 4,
+          "kind": "transport",
+          "expected": "2026-10-23T02:04:52.071329964Z null",
+          "actual": "2026-10-23T02:04:52.071329964Z null"
+        },
+        {
+          "index": 5,
+          "kind": "application",
+          "expected": "    at worker()",
+          "actual": "    at worker()"
+        },
+        {
+          "index": 5,
+          "kind": "transport",
+          "expected": "2026-10-23T02:04:52.071330424Z     at worker()",
+          "actual": "2026-10-23T02:04:52.071330424Z     at worker()"
+        },
+        {
+          "index": 6,
+          "kind": "application",
+          "expected": "",
+          "actual": ""
+        },
+        {
+          "index": 6,
+          "kind": "transport",
+          "expected": "2026-10-23T02:04:52.071330844Z ",
+          "actual": "2026-10-23T02:04:52.071330844Z "
+        },
+        {
+          "index": 7,
+          "kind": "application",
+          "expected": "  ",
+          "actual": "  "
+        },
+        {
+          "index": 7,
+          "kind": "transport",
+          "expected": "2026-10-23T02:04:52.071331334Z   ",
+          "actual": "2026-10-23T02:04:52.071331334Z   "
+        },
+        {
+          "index": 8,
+          "kind": "application",
+          "expected": "{ \"msg\" : \"decoded \\u03b1\\nline\", \"hidden\" : \"Private.Needle[0]\", \"x\" : [1,null] }",
+          "actual": "{ \"msg\" : \"decoded \\u03b1\\nline\", \"hidden\" : \"Private.Needle[0]\", \"x\" : [1,null] }"
+        },
+        {
+          "index": 8,
+          "kind": "transport",
+          "expected": "2026-10-23T02:04:52.071332064Z { \"msg\" : \"decoded \\u03b1\\nline\", \"hidden\" : \"Private.Needle[0]\", \"x\" : [1,null] }",
+          "actual": "2026-10-23T02:04:52.071332064Z { \"msg\" : \"decoded \\u03b1\\nline\", \"hidden\" : \"Private.Needle[0]\", \"x\" : [1,null] }"
+        }
+      ],
+      "clipboardFormats": [
+        "image/png"
+      ],
+      "clipboardRestored": true,
+      "searches": [
+        {
+          "query": "PRIVATE.NEEDLE[0]",
+          "counter": "1 of 1 matching records"
+        },
+        {
+          "query": "decoded α",
+          "counter": "1 of 1 matching records"
+        },
+        {
+          "query": ".*",
+          "counter": "0 of 0 matching records"
+        },
+        {
+          "query": "2026-10-23T02:04:52.071332064Z",
+          "counter": "0 of 0 matching records"
+        }
+      ],
+      "zeroLogRequests": true,
+      "retainedRows": 9
+    }
+  }
+}

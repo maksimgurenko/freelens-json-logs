@@ -1,0 +1,1 @@
+(async()=>{for(let i=0;i<100;i++){const r=document.querySelector('.readable-logs');if(r?.querySelectorAll('.rl-row').length===7&&!r.querySelector('.rl-error'))return {url:location.href,rows:7};await new Promise(r=>setTimeout(r,100));}throw Error(document.querySelector('.readable-logs')?.innerText);})()

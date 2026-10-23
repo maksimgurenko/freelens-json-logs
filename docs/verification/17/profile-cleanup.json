@@ -1,0 +1,33 @@
+{
+  "at": "2026-10-23T01:35:27.611Z",
+  "result": {
+    "type": "object",
+    "value": {
+      "manualDeleted": {
+        "active": "Ticket17 second renamed",
+        "manual": ""
+      },
+      "globalDeleted": {
+        "active": "Ticket17 second renamed",
+        "globalDefault": "default"
+      },
+      "configuration": {
+        "__internal__": {
+          "migrations": {
+            "version": "0.1.17"
+          }
+        },
+        "schemaVersion": 3,
+        "viewer": {
+          "inspection": "bottom"
+        },
+        "profiles": [],
+        "globalDefault": "default"
+      },
+      "active": "Default",
+      "message": "Default api",
+      "requests": [],
+      "transportRestored": true
+    }
+  }
+}

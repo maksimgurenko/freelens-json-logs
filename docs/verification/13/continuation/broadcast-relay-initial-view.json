@@ -1,0 +1,68 @@
+{
+  "at": "2026-10-22T23:58:01.070Z",
+  "result": {
+    "type": "object",
+    "value": {
+      "state": {
+        "at": 1792713481069,
+        "url": "https://770814298afe692457d07d8b15d6b8d3.renderer.freelens.app:45739/extension/freelens-readable-logs/readable-logs?clusterId=770814298afe692457d07d8b15d6b8d3&namespace=readable-logs-ticket-13&pod=lifecycle&podUid=06a97368-34c5-4301-aa50-723a701fd12a",
+        "hidden": false,
+        "focused": false,
+        "version": "0.1.5",
+        "container": "",
+        "choices": [
+          {
+            "kind": "Containers",
+            "names": []
+          },
+          {
+            "kind": "init containers",
+            "names": []
+          },
+          {
+            "kind": "ephemeral containers",
+            "names": []
+          }
+        ],
+        "header": [
+          "Readable logs",
+          "",
+          "kind-freelens-json-logs-spike / readable-logs-ticket-13 / lifecycle",
+          "",
+          "lifecycle",
+          "Container",
+          "Select a container",
+          "Profile Auto ·",
+          "Default",
+          "Pause",
+          "Refresh",
+          "Automatic updates",
+          "Cluster 770814298afe692457d07d8b15d6b8d3 · Pod UID 06a97368-34c5-4301-aa50-723a701fd12a",
+          "",
+          "Loading Pod…",
+          "",
+          "One current-instance snapshot",
+          "Show timestamps",
+          "Word wrap",
+          "v0.1.5"
+        ],
+        "notice": [
+          "Loading Pod…"
+        ],
+        "buttons": [
+          {
+            "text": "Pause",
+            "disabled": true
+          },
+          {
+            "text": "Refresh",
+            "disabled": true
+          }
+        ],
+        "rows": 0
+      },
+      "requests": [],
+      "events": []
+    }
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "at": "2026-10-23T01:05:43.830Z",
+  "result": {
+    "type": "object",
+    "value": [
+      {
+        "class": "rl-findbar",
+        "display": "none",
+        "height": 0
+      },
+      {
+        "class": "rl-formatbar",
+        "display": "none",
+        "height": 0
+      },
+      {
+        "class": "rl-work rl-layout-bottom",
+        "display": "none",
+        "height": 0
+      },
+      {
+        "class": "rl-footer",
+        "display": "none",
+        "height": 0
+      }
+    ]
+  }
+}

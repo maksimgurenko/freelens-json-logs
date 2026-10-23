@@ -1,0 +1,458 @@
+{
+  "at": "2026-10-23T02:52:30.472Z",
+  "result": {
+    "type": "object",
+    "value": {
+      "originalUid": "ec1dcf8f-e45d-41f8-9f6a-c6c8b5666d2e",
+      "before": {
+        "at": 1792723914096,
+        "url": "https://770814298afe692457d07d8b15d6b8d3.renderer.freelens.app:38767/extension/freelens-readable-logs/readable-logs?clusterId=770814298afe692457d07d8b15d6b8d3&namespace=readable-logs-ticket-19&pod=lifecycle&podUid=ec1dcf8f-e45d-41f8-9f6a-c6c8b5666d2e",
+        "hidden": false,
+        "focused": true,
+        "version": "0.1.20",
+        "container": "app",
+        "choices": [
+          {
+            "kind": "Containers",
+            "names": [
+              "app",
+              "sidecar"
+            ]
+          },
+          {
+            "kind": "init containers",
+            "names": [
+              "setup"
+            ]
+          },
+          {
+            "kind": "ephemeral containers",
+            "names": []
+          }
+        ],
+        "header": [
+          "Readable logs",
+          "",
+          "kind-freelens-json-logs-spike / readable-logs-ticket-19 / lifecycle",
+          "",
+          "lifecycle",
+          "Container",
+          "app",
+          "sidecar",
+          "setup",
+          "Profile",
+          "Auto · Release19 broad",
+          "Default",
+          "Release19 broad",
+          "Release19 primary",
+          "Release19 fallback",
+          "Profiles",
+          "Resume",
+          "Refresh",
+          "Paused",
+          "Find"
+        ],
+        "notice": [],
+        "buttons": [
+          {
+            "text": "Profiles",
+            "disabled": false
+          },
+          {
+            "text": "Resume",
+            "disabled": false
+          },
+          {
+            "text": "Refresh",
+            "disabled": false
+          },
+          {
+            "text": "Previous",
+            "disabled": true
+          },
+          {
+            "text": "Next",
+            "disabled": true
+          },
+          {
+            "text": "Readable",
+            "disabled": false
+          },
+          {
+            "text": "Raw",
+            "disabled": false
+          },
+          {
+            "text": "To bottom",
+            "disabled": false
+          }
+        ],
+        "rows": 4,
+        "first": "10/22/2026, 21:51:50\napp current instance 0",
+        "last": "10/22/2026, 21:51:53\napp current instance 3"
+      },
+      "after": {
+        "at": 1792723950471,
+        "url": "https://770814298afe692457d07d8b15d6b8d3.renderer.freelens.app:38767/extension/freelens-readable-logs/readable-logs?clusterId=770814298afe692457d07d8b15d6b8d3&namespace=readable-logs-ticket-19&pod=lifecycle&podUid=ec1dcf8f-e45d-41f8-9f6a-c6c8b5666d2e",
+        "hidden": false,
+        "focused": true,
+        "version": "0.1.20",
+        "container": "app",
+        "choices": [
+          {
+            "kind": "Containers",
+            "names": [
+              "app",
+              "sidecar"
+            ]
+          },
+          {
+            "kind": "init containers",
+            "names": [
+              "setup"
+            ]
+          },
+          {
+            "kind": "ephemeral containers",
+            "names": []
+          }
+        ],
+        "header": [
+          "Readable logs",
+          "",
+          "kind-freelens-json-logs-spike / readable-logs-ticket-19 / lifecycle",
+          "",
+          "lifecycle",
+          "Container",
+          "app",
+          "sidecar",
+          "setup",
+          "Profile",
+          "Auto · Release19 broad",
+          "Default",
+          "Release19 broad",
+          "Release19 primary",
+          "Release19 fallback",
+          "Profiles",
+          "Resume",
+          "Refresh",
+          "Paused",
+          "Find"
+        ],
+        "error": "Logs are outdated · automatic updates stopped\n\nThe original Pod is gone or has been replaced. Reopen Readable logs from the current Pod.",
+        "notice": [
+          "Logs are outdated · automatic updates stopped\n\nThe original Pod is gone or has been replaced. Reopen Readable logs from the current Pod."
+        ],
+        "buttons": [
+          {
+            "text": "Profiles",
+            "disabled": false
+          },
+          {
+            "text": "Resume",
+            "disabled": true
+          },
+          {
+            "text": "Refresh",
+            "disabled": true
+          },
+          {
+            "text": "Previous",
+            "disabled": true
+          },
+          {
+            "text": "Next",
+            "disabled": true
+          },
+          {
+            "text": "Readable",
+            "disabled": false
+          },
+          {
+            "text": "Raw",
+            "disabled": false
+          },
+          {
+            "text": "To bottom",
+            "disabled": false
+          }
+        ],
+        "rows": 4,
+        "first": "10/22/2026, 21:51:50\napp current instance 0",
+        "last": "10/22/2026, 21:51:53\napp current instance 3"
+      },
+      "observations": [
+        {
+          "kind": "metadata",
+          "path": "/api-kube/api/v1/namespaces/readable-logs-ticket-19/pods/lifecycle",
+          "started": 1792723917020,
+          "status": 200,
+          "settled": 1792723917024,
+          "bytes": 8751,
+          "uid": "ec1dcf8f-e45d-41f8-9f6a-c6c8b5666d2e",
+          "instances": [
+            {
+              "name": "app",
+              "restarts": 0,
+              "id": "containerd://ba9d13d6c63af758c915f1b51d367ebcbd6e2ad3865498589ed514d4a9a687b5"
+            },
+            {
+              "name": "sidecar",
+              "restarts": 0,
+              "id": "containerd://453fde8638e3065b01fdc38beb9ea0bf4dcfdba4a8b7feb0e7578855f35d9216"
+            },
+            {
+              "name": "setup",
+              "restarts": 0,
+              "id": "containerd://5f24c89e508b25742ea3979759cff1d539e3fb3006b204300649bcac94f38514"
+            }
+          ]
+        },
+        {
+          "kind": "metadata",
+          "path": "/api-kube/api/v1/namespaces/readable-logs-ticket-19/pods/lifecycle",
+          "started": 1792723920026,
+          "status": 200,
+          "settled": 1792723920034,
+          "bytes": 8751,
+          "uid": "ec1dcf8f-e45d-41f8-9f6a-c6c8b5666d2e",
+          "instances": [
+            {
+              "name": "app",
+              "restarts": 0,
+              "id": "containerd://ba9d13d6c63af758c915f1b51d367ebcbd6e2ad3865498589ed514d4a9a687b5"
+            },
+            {
+              "name": "sidecar",
+              "restarts": 0,
+              "id": "containerd://453fde8638e3065b01fdc38beb9ea0bf4dcfdba4a8b7feb0e7578855f35d9216"
+            },
+            {
+              "name": "setup",
+              "restarts": 0,
+              "id": "containerd://5f24c89e508b25742ea3979759cff1d539e3fb3006b204300649bcac94f38514"
+            }
+          ]
+        },
+        {
+          "kind": "metadata",
+          "path": "/api-kube/api/v1/namespaces/readable-logs-ticket-19/pods/lifecycle",
+          "started": 1792723923036,
+          "status": 200,
+          "settled": 1792723923041,
+          "bytes": 8751,
+          "uid": "ec1dcf8f-e45d-41f8-9f6a-c6c8b5666d2e",
+          "instances": [
+            {
+              "name": "app",
+              "restarts": 0,
+              "id": "containerd://ba9d13d6c63af758c915f1b51d367ebcbd6e2ad3865498589ed514d4a9a687b5"
+            },
+            {
+              "name": "sidecar",
+              "restarts": 0,
+              "id": "containerd://453fde8638e3065b01fdc38beb9ea0bf4dcfdba4a8b7feb0e7578855f35d9216"
+            },
+            {
+              "name": "setup",
+              "restarts": 0,
+              "id": "containerd://5f24c89e508b25742ea3979759cff1d539e3fb3006b204300649bcac94f38514"
+            }
+          ]
+        },
+        {
+          "kind": "metadata",
+          "path": "/api-kube/api/v1/namespaces/readable-logs-ticket-19/pods/lifecycle",
+          "started": 1792723926043,
+          "status": 200,
+          "settled": 1792723926047,
+          "bytes": 8751,
+          "uid": "ec1dcf8f-e45d-41f8-9f6a-c6c8b5666d2e",
+          "instances": [
+            {
+              "name": "app",
+              "restarts": 0,
+              "id": "containerd://ba9d13d6c63af758c915f1b51d367ebcbd6e2ad3865498589ed514d4a9a687b5"
+            },
+            {
+              "name": "sidecar",
+              "restarts": 0,
+              "id": "containerd://453fde8638e3065b01fdc38beb9ea0bf4dcfdba4a8b7feb0e7578855f35d9216"
+            },
+            {
+              "name": "setup",
+              "restarts": 0,
+              "id": "containerd://5f24c89e508b25742ea3979759cff1d539e3fb3006b204300649bcac94f38514"
+            }
+          ]
+        },
+        {
+          "kind": "metadata",
+          "path": "/api-kube/api/v1/namespaces/readable-logs-ticket-19/pods/lifecycle",
+          "started": 1792723929049,
+          "status": 200,
+          "settled": 1792723929054,
+          "bytes": 8751,
+          "uid": "ec1dcf8f-e45d-41f8-9f6a-c6c8b5666d2e",
+          "instances": [
+            {
+              "name": "app",
+              "restarts": 0,
+              "id": "containerd://ba9d13d6c63af758c915f1b51d367ebcbd6e2ad3865498589ed514d4a9a687b5"
+            },
+            {
+              "name": "sidecar",
+              "restarts": 0,
+              "id": "containerd://453fde8638e3065b01fdc38beb9ea0bf4dcfdba4a8b7feb0e7578855f35d9216"
+            },
+            {
+              "name": "setup",
+              "restarts": 0,
+              "id": "containerd://5f24c89e508b25742ea3979759cff1d539e3fb3006b204300649bcac94f38514"
+            }
+          ]
+        },
+        {
+          "kind": "metadata",
+          "path": "/api-kube/api/v1/namespaces/readable-logs-ticket-19/pods/lifecycle",
+          "started": 1792723932056,
+          "status": 200,
+          "settled": 1792723932061,
+          "bytes": 8751,
+          "uid": "ec1dcf8f-e45d-41f8-9f6a-c6c8b5666d2e",
+          "instances": [
+            {
+              "name": "app",
+              "restarts": 0,
+              "id": "containerd://ba9d13d6c63af758c915f1b51d367ebcbd6e2ad3865498589ed514d4a9a687b5"
+            },
+            {
+              "name": "sidecar",
+              "restarts": 0,
+              "id": "containerd://453fde8638e3065b01fdc38beb9ea0bf4dcfdba4a8b7feb0e7578855f35d9216"
+            },
+            {
+              "name": "setup",
+              "restarts": 0,
+              "id": "containerd://5f24c89e508b25742ea3979759cff1d539e3fb3006b204300649bcac94f38514"
+            }
+          ]
+        },
+        {
+          "kind": "metadata",
+          "path": "/api-kube/api/v1/namespaces/readable-logs-ticket-19/pods/lifecycle",
+          "started": 1792723935063,
+          "status": 200,
+          "settled": 1792723935067,
+          "bytes": 8751,
+          "uid": "ec1dcf8f-e45d-41f8-9f6a-c6c8b5666d2e",
+          "instances": [
+            {
+              "name": "app",
+              "restarts": 0,
+              "id": "containerd://ba9d13d6c63af758c915f1b51d367ebcbd6e2ad3865498589ed514d4a9a687b5"
+            },
+            {
+              "name": "sidecar",
+              "restarts": 0,
+              "id": "containerd://453fde8638e3065b01fdc38beb9ea0bf4dcfdba4a8b7feb0e7578855f35d9216"
+            },
+            {
+              "name": "setup",
+              "restarts": 0,
+              "id": "containerd://5f24c89e508b25742ea3979759cff1d539e3fb3006b204300649bcac94f38514"
+            }
+          ]
+        },
+        {
+          "kind": "metadata",
+          "path": "/api-kube/api/v1/namespaces/readable-logs-ticket-19/pods/lifecycle",
+          "started": 1792723938069,
+          "status": 200,
+          "settled": 1792723938073,
+          "bytes": 8751,
+          "uid": "ec1dcf8f-e45d-41f8-9f6a-c6c8b5666d2e",
+          "instances": [
+            {
+              "name": "app",
+              "restarts": 0,
+              "id": "containerd://ba9d13d6c63af758c915f1b51d367ebcbd6e2ad3865498589ed514d4a9a687b5"
+            },
+            {
+              "name": "sidecar",
+              "restarts": 0,
+              "id": "containerd://453fde8638e3065b01fdc38beb9ea0bf4dcfdba4a8b7feb0e7578855f35d9216"
+            },
+            {
+              "name": "setup",
+              "restarts": 0,
+              "id": "containerd://5f24c89e508b25742ea3979759cff1d539e3fb3006b204300649bcac94f38514"
+            }
+          ]
+        },
+        {
+          "kind": "metadata",
+          "path": "/api-kube/api/v1/namespaces/readable-logs-ticket-19/pods/lifecycle",
+          "started": 1792723941075,
+          "status": 200,
+          "settled": 1792723941079,
+          "bytes": 8751,
+          "uid": "ec1dcf8f-e45d-41f8-9f6a-c6c8b5666d2e",
+          "instances": [
+            {
+              "name": "app",
+              "restarts": 0,
+              "id": "containerd://ba9d13d6c63af758c915f1b51d367ebcbd6e2ad3865498589ed514d4a9a687b5"
+            },
+            {
+              "name": "sidecar",
+              "restarts": 0,
+              "id": "containerd://453fde8638e3065b01fdc38beb9ea0bf4dcfdba4a8b7feb0e7578855f35d9216"
+            },
+            {
+              "name": "setup",
+              "restarts": 0,
+              "id": "containerd://5f24c89e508b25742ea3979759cff1d539e3fb3006b204300649bcac94f38514"
+            }
+          ]
+        },
+        {
+          "kind": "metadata",
+          "path": "/api-kube/api/v1/namespaces/readable-logs-ticket-19/pods/lifecycle",
+          "started": 1792723944081,
+          "status": 200,
+          "settled": 1792723944085,
+          "bytes": 8751,
+          "uid": "ec1dcf8f-e45d-41f8-9f6a-c6c8b5666d2e",
+          "instances": [
+            {
+              "name": "app",
+              "restarts": 0,
+              "id": "containerd://ba9d13d6c63af758c915f1b51d367ebcbd6e2ad3865498589ed514d4a9a687b5"
+            },
+            {
+              "name": "sidecar",
+              "restarts": 0,
+              "id": "containerd://453fde8638e3065b01fdc38beb9ea0bf4dcfdba4a8b7feb0e7578855f35d9216"
+            },
+            {
+              "name": "setup",
+              "restarts": 0,
+              "id": "containerd://5f24c89e508b25742ea3979759cff1d539e3fb3006b204300649bcac94f38514"
+            }
+          ]
+        },
+        {
+          "kind": "metadata",
+          "path": "/api-kube/api/v1/namespaces/readable-logs-ticket-19/pods/lifecycle",
+          "started": 1792723947087,
+          "status": 404,
+          "settled": 1792723947091,
+          "bytes": 186,
+          "instances": []
+        }
+      ],
+      "stoppedRequests": []
+    }
+  }
+}

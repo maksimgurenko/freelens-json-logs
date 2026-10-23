@@ -1,0 +1,229 @@
+{
+  "at": "2026-10-23T02:19:26.382Z",
+  "result": {
+    "type": "object",
+    "value": {
+      "before": {
+        "at": 1792721963049,
+        "url": "https://770814298afe692457d07d8b15d6b8d3.renderer.freelens.app:40797/extension/freelens-readable-logs/readable-logs?clusterId=770814298afe692457d07d8b15d6b8d3&namespace=readable-logs-ticket-19&pod=lifecycle&podUid=68d5554d-265b-44d8-865a-7bdfdee7e41a",
+        "hidden": false,
+        "focused": false,
+        "version": "0.1.19",
+        "container": "app",
+        "choices": [
+          {
+            "kind": "Containers",
+            "names": [
+              "app",
+              "sidecar"
+            ]
+          },
+          {
+            "kind": "init containers",
+            "names": [
+              "setup"
+            ]
+          },
+          {
+            "kind": "ephemeral containers",
+            "names": [
+              "debug"
+            ]
+          }
+        ],
+        "header": [
+          "Readable logs",
+          "",
+          "kind-freelens-json-logs-spike / readable-logs-ticket-19 / lifecycle",
+          "",
+          "lifecycle",
+          "Container",
+          "app",
+          "sidecar",
+          "setup",
+          "debug",
+          "Profile",
+          "Auto · Release19 broad",
+          "Default",
+          "Release19 broad",
+          "Release19 primary",
+          "Release19 fallback",
+          "Profiles",
+          "Pause",
+          "Refresh",
+          "Automatic updates"
+        ],
+        "notice": [],
+        "buttons": [
+          {
+            "text": "Profiles",
+            "disabled": false
+          },
+          {
+            "text": "Pause",
+            "disabled": false
+          },
+          {
+            "text": "Refresh",
+            "disabled": false
+          },
+          {
+            "text": "Previous",
+            "disabled": true
+          },
+          {
+            "text": "Next",
+            "disabled": true
+          },
+          {
+            "text": "Readable",
+            "disabled": false
+          },
+          {
+            "text": "Raw",
+            "disabled": false
+          },
+          {
+            "text": "To bottom",
+            "disabled": false
+          }
+        ],
+        "rows": 161,
+        "first": "10/22/2026, 21:16:42\napp current instance 0",
+        "last": "10/22/2026, 21:19:22\napp current instance 160"
+      },
+      "after": {
+        "at": 1792721966349,
+        "url": "https://770814298afe692457d07d8b15d6b8d3.renderer.freelens.app:40797/extension/freelens-readable-logs/readable-logs?clusterId=770814298afe692457d07d8b15d6b8d3&namespace=readable-logs-ticket-19&pod=lifecycle&podUid=68d5554d-265b-44d8-865a-7bdfdee7e41a",
+        "hidden": false,
+        "focused": false,
+        "version": "0.1.19",
+        "container": "app",
+        "choices": [
+          {
+            "kind": "Containers",
+            "names": [
+              "app",
+              "sidecar"
+            ]
+          },
+          {
+            "kind": "init containers",
+            "names": [
+              "setup"
+            ]
+          },
+          {
+            "kind": "ephemeral containers",
+            "names": [
+              "debug"
+            ]
+          }
+        ],
+        "header": [
+          "Readable logs",
+          "",
+          "kind-freelens-json-logs-spike / readable-logs-ticket-19 / lifecycle",
+          "",
+          "lifecycle",
+          "Container",
+          "app",
+          "sidecar",
+          "setup",
+          "debug",
+          "Profile",
+          "Auto · Release19 broad",
+          "Default",
+          "Release19 broad",
+          "Release19 primary",
+          "Release19 fallback",
+          "Profiles",
+          "Pause",
+          "Refresh",
+          "Automatic updates"
+        ],
+        "notice": [],
+        "buttons": [
+          {
+            "text": "Profiles",
+            "disabled": false
+          },
+          {
+            "text": "Pause",
+            "disabled": false
+          },
+          {
+            "text": "Refresh",
+            "disabled": false
+          },
+          {
+            "text": "Previous",
+            "disabled": true
+          },
+          {
+            "text": "Next",
+            "disabled": true
+          },
+          {
+            "text": "Readable",
+            "disabled": false
+          },
+          {
+            "text": "Raw",
+            "disabled": false
+          },
+          {
+            "text": "To bottom",
+            "disabled": false
+          }
+        ],
+        "rows": 164,
+        "first": "10/22/2026, 21:16:42\napp current instance 0",
+        "last": "10/22/2026, 21:19:25\napp current instance 163"
+      },
+      "requests": [
+        {
+          "kind": "metadata",
+          "path": "/api-kube/api/v1/namespaces/readable-logs-ticket-19/pods/lifecycle",
+          "started": 1792721966023,
+          "status": 200,
+          "settled": 1792721966027,
+          "bytes": 9944,
+          "uid": "68d5554d-265b-44d8-865a-7bdfdee7e41a",
+          "instances": [
+            {
+              "name": "app",
+              "restarts": 0,
+              "id": "containerd://fb2915abf0d209466974ea05f564c1e71311ab4e81d095f07457cc8d16131a59"
+            },
+            {
+              "name": "sidecar",
+              "restarts": 0,
+              "id": "containerd://fa456413d4763582a5eccd48b43734320c04ddb12dddf4ee9b394a0c25dc8b2b"
+            },
+            {
+              "name": "setup",
+              "restarts": 0,
+              "id": "containerd://3a88bcbaf0ed465dbea86f8e6e87f14bba03cc1cf83beb693798ff94ca142601"
+            },
+            {
+              "name": "debug",
+              "restarts": 0,
+              "id": "containerd://f4a5d6e8a5a8086ad49b1f1b42f0fdce3564fa1ccf519a739a40915c8600facc"
+            }
+          ]
+        },
+        {
+          "kind": "logs",
+          "path": "/api-kube/api/v1/namespaces/readable-logs-ticket-19/pods/lifecycle/log?container=app&tailLines=1000&timestamps=true&follow=false&previous=false",
+          "started": 1792721966044,
+          "status": 200,
+          "settled": 1792721966049,
+          "bytes": 9074,
+          "first": "2026-10-23T02:16:42.242354648Z app current instance 0\n2026-10-23T02:16:43.242898012Z app current instance 1\n2026-10-23T02:16:44.243566987Z app current instance 2\n2026-10-",
+          "last": "0\n2026-10-23T02:19:23.377709614Z app current instance 161\n2026-10-23T02:19:24.378374606Z app current instance 162\n2026-10-23T02:19:25.379027399Z app current instance 163\n"
+        }
+      ]
+    }
+  }
+}

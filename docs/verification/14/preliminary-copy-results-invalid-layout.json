@@ -1,0 +1,191 @@
+{
+  "at": "2026-10-23T00:22:33.555Z",
+  "result": {
+    "type": "object",
+    "value": {
+      "host": {
+        "node": "24.18.0",
+        "acorn": "8.16.0",
+        "ada": "3.4.4",
+        "amaro": "1.1.9",
+        "ares": "1.34.6",
+        "brotli": "1.0.9",
+        "cldr": "47.0",
+        "icu": "77.1",
+        "llhttp": "9.4.2",
+        "merve": "1.2.2",
+        "modules": "145",
+        "napi": "10",
+        "nbytes": "0.1.4",
+        "ncrypto": "0.0.1",
+        "nghttp2": "1.69.0",
+        "nghttp3": "",
+        "ngtcp2": "",
+        "openssl": "0.0.0",
+        "simdjson": "4.6.4",
+        "simdutf": "7.7.0",
+        "sqlite": "3.53.1",
+        "tz": "2025b",
+        "undici": "7.28.0",
+        "unicode": "16.0",
+        "uv": "1.52.1",
+        "uvwasi": "0.0.23",
+        "v8": "14.6.202.34-electron.0",
+        "zlib": "1.3.1",
+        "zstd": "1.6.0",
+        "electron": "41.10.0",
+        "chrome": "146.0.7680.216"
+      },
+      "version": "0.1.8",
+      "clipboardFormats": [],
+      "layouts": [
+        {
+          "layout": "inline",
+          "selected": 0,
+          "completeObject": true,
+          "automatic": true
+        },
+        {
+          "layout": "side",
+          "selected": 0,
+          "completeObject": true,
+          "automatic": true
+        },
+        {
+          "layout": "bottom",
+          "selected": 0,
+          "completeObject": true,
+          "automatic": true
+        }
+      ],
+      "copies": [
+        {
+          "index": 0,
+          "kind": "application",
+          "expected": "  { \"message\" : \"α🙂 first\\nsecond\\t\\u03b1\", \"msg\" : \"unused alias\", \"time\":\"2026-10-21T07:00:00-05:00\", \"log\":{\"level\":\"warning\",\"code\":\"E1\"}, \"secret\":\"retained\", \"nested\":{\"a/b\":[1,null,true]} }  ",
+          "actual": "  { \"message\" : \"α🙂 first\\nsecond\\t\\u03b1\", \"msg\" : \"unused alias\", \"time\":\"2026-10-21T07:00:00-05:00\", \"log\":{\"level\":\"warning\",\"code\":\"E1\"}, \"secret\":\"retained\", \"nested\":{\"a/b\":[1,null,true]} }  ",
+          "pass": true
+        },
+        {
+          "index": 0,
+          "kind": "transport",
+          "expected": "2026-10-23T00:21:30.848373614Z   { \"message\" : \"α🙂 first\\nsecond\\t\\u03b1\", \"msg\" : \"unused alias\", \"time\":\"2026-10-21T07:00:00-05:00\", \"log\":{\"level\":\"warning\",\"code\":\"E1\"}, \"secret\":\"retained\", \"nested\":{\"a/b\":[1,null,true]} }  ",
+          "actual": "2026-10-23T00:21:30.848373614Z   { \"message\" : \"α🙂 first\\nsecond\\t\\u03b1\", \"msg\" : \"unused alias\", \"time\":\"2026-10-21T07:00:00-05:00\", \"log\":{\"level\":\"warning\",\"code\":\"E1\"}, \"secret\":\"retained\", \"nested\":{\"a/b\":[1,null,true]} }  ",
+          "pass": true
+        },
+        {
+          "index": 1,
+          "kind": "application",
+          "expected": "",
+          "actual": "",
+          "pass": true
+        },
+        {
+          "index": 1,
+          "kind": "transport",
+          "expected": "2026-10-23T00:21:30.848385514Z ",
+          "actual": "2026-10-23T00:21:30.848385514Z ",
+          "pass": true
+        },
+        {
+          "index": 2,
+          "kind": "application",
+          "expected": "   ",
+          "actual": "   ",
+          "pass": true
+        },
+        {
+          "index": 2,
+          "kind": "transport",
+          "expected": "2026-10-23T00:21:30.848386684Z    ",
+          "actual": "2026-10-23T00:21:30.848386684Z    ",
+          "pass": true
+        },
+        {
+          "index": 3,
+          "kind": "application",
+          "expected": "    at worker()  ",
+          "actual": "    at worker()  ",
+          "pass": true
+        },
+        {
+          "index": 3,
+          "kind": "transport",
+          "expected": "2026-10-23T00:21:30.848387404Z     at worker()  ",
+          "actual": "2026-10-23T00:21:30.848387404Z     at worker()  ",
+          "pass": true
+        },
+        {
+          "index": 4,
+          "kind": "application",
+          "expected": "{broken",
+          "actual": "{broken",
+          "pass": true
+        },
+        {
+          "index": 4,
+          "kind": "transport",
+          "expected": "2026-10-23T00:21:30.848387854Z {broken",
+          "actual": "2026-10-23T00:21:30.848387854Z {broken",
+          "pass": true
+        },
+        {
+          "index": 5,
+          "kind": "application",
+          "expected": "[1,2]",
+          "actual": "[1,2]",
+          "pass": true
+        },
+        {
+          "index": 5,
+          "kind": "transport",
+          "expected": "2026-10-23T00:21:30.848388294Z [1,2]",
+          "actual": "2026-10-23T00:21:30.848388294Z [1,2]",
+          "pass": true
+        },
+        {
+          "index": 6,
+          "kind": "application",
+          "expected": "{\"message\":\"<img src=x onerror=alert(1)>\",\"__proto__\":{\"kept\":true}}",
+          "actual": "{\"message\":\"<img src=x onerror=alert(1)>\",\"__proto__\":{\"kept\":true}}",
+          "pass": true
+        },
+        {
+          "index": 6,
+          "kind": "transport",
+          "expected": "2026-10-23T00:21:30.848388744Z {\"message\":\"<img src=x onerror=alert(1)>\",\"__proto__\":{\"kept\":true}}",
+          "actual": "2026-10-23T00:21:30.848388744Z {\"message\":\"<img src=x onerror=alert(1)>\",\"__proto__\":{\"kept\":true}}",
+          "pass": true
+        }
+      ],
+      "originalFields": {
+        "message": "α🙂 first\nsecond\tα",
+        "msg": "unused alias",
+        "time": "2026-10-21T07:00:00-05:00",
+        "log": {
+          "level": "warning",
+          "code": "E1"
+        },
+        "secret": "retained",
+        "nested": {
+          "a/b": [
+            1,
+            null,
+            true
+          ]
+        }
+      },
+      "raw": {
+        "exactTransport": true,
+        "exactApplication": true
+      },
+      "copyRequestCount": 0,
+      "state": {
+        "layout": "side",
+        "selected": 0,
+        "paused": true,
+        "raw": false
+      }
+    }
+  }
+}

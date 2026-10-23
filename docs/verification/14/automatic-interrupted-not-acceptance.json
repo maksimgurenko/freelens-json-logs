@@ -1,0 +1,32 @@
+{
+  "at": "2026-10-23T00:30:42.895Z",
+  "result": {
+    "type": "object",
+    "value": {}
+  },
+  "exceptionDetails": {
+    "exceptionId": 4,
+    "text": "Uncaught (in promise) Error: Automatic updates did not continue",
+    "lineNumber": 29,
+    "columnNumber": 97,
+    "scriptId": "452",
+    "stackTrace": {
+      "callFrames": [
+        {
+          "functionName": "",
+          "scriptId": "452",
+          "url": "",
+          "lineNumber": 28,
+          "columnNumber": 96
+        }
+      ]
+    },
+    "exception": {
+      "type": "object",
+      "subtype": "error",
+      "className": "Error",
+      "description": "Error: Automatic updates did not continue\n    at <anonymous>:29:97",
+      "objectId": "4855529148076495910.2.6"
+    }
+  }
+}

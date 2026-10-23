@@ -1,0 +1,20 @@
+(async()=>{
+ const h=global.__rl19,{assert,input,click,tick,requests,root}=h,fs=require('fs'),path=require('path'),settings=path.join(require('os').homedir(),'.config/Freelens/extension-store/freelens-readable-logs/readable-logs.json');
+ const config=()=>JSON.parse(fs.readFileSync(settings,'utf8'));const before=requests.length;
+ await click('Profiles');assert(h.button('Edit').disabled&&h.button('Delete').disabled,'Default editable');
+ await click('Duplicate');await input('Profile name','Default');assert(h.button('Save profile').disabled,'Reserved name accepted');await input('Profile name','Release19 primary');await input('Message paths','bad');assert(h.button('Save profile').disabled,'Bad path accepted');
+ await input('Message paths','/message\n/msg');await input('Application timestamp paths','/time\n/timestamp');await input('Level paths','/level');await input('Inline fields','/nested\n/x/0');await input('Hidden fields','/hidden');await input('Numeric timestamps','seconds');
+ await click('Add mapping');await input('Mapping 1 source type','number');await input('Mapping 1 source','30');await input('Mapping 1 target','INFO');
+ root().querySelector('[aria-label="Enabled for matching"]').click();await tick();await input('Match namespace','readable-logs-ticket-19');await input('Match container name','bounded');await click('Add label condition');await input('Match label 1 key','app');await input('Match label 1 value','readable-logs-release');
+ await input('Sample logs','{"message":"Preview α🙂","level":30,"nested":{"ok":true},"hidden":"secret"}');assert(root().querySelector('[aria-label="Profile preview"]').innerText.includes('Preview α🙂'),'Preview unavailable');await click('Save profile');
+ await tick(100);const first=config().profiles.find(p=>p.name==='Release19 primary');assert(first,'First not durable');
+ await click('Edit');await input('Profile name','Discarded release name');await input('Message paths','/never');await click('Cancel');assert(config().profiles[0].name===first.name,'Cancel persisted');
+ await click('Duplicate');await input('Profile name','Release19 fallback');await input('Message paths','/hidden\n/msg');await input('Numeric timestamps','milliseconds');root().querySelector('[aria-label="Enabled for matching"]').click();await tick();await click('Save profile');await tick(100);const fallback=config().profiles.find(p=>p.name==='Release19 fallback');
+ await input('Saved profile','default');await click('Duplicate');await input('Profile name','Release19 broad');await input('Message paths','/message\n/msg');root().querySelector('[aria-label="Enabled for matching"]').click();await tick();await input('Match namespace','readable-logs-ticket-19');await click('Save profile');await tick(100);const broad=config().profiles.find(p=>p.name==='Release19 broad');
+ root().querySelector('[aria-label="Move Release19 broad up"]').click();await tick();root().querySelector('[aria-label="Move Release19 broad up"]').click();await tick();await input('Global default',fallback.id);await click('Close profiles');await input('Inspection','side');await input('Profile',first.id);
+ await input('Find in logs','Private.Needle');await click('Raw');for(const label of ['Show timestamps','Word wrap']){const checkbox=[...root().querySelectorAll('label')].find(l=>l.textContent===label).querySelector('input');checkbox.click();await tick();}
+ root().querySelector('.rl-row').click();await tick();
+ const saved=config();assert(saved.profiles.length===3&&saved.profiles[0].id===broad.id&&saved.globalDefault===fallback.id&&saved.viewer.inspection==='side','Full config incomplete');assert(requests.length===before,'Profile edits fetched logs');assert(!JSON.stringify(saved).includes('Preview')&&!JSON.stringify(saved).includes('Discarded'),'Draft/sample persisted');
+ await click('Profiles');await input('Saved profile',first.id);await click('Edit');await input('Match namespace','Unsaved release draft');
+ h.releaseConfig=saved;return {configuration:saved,manual:first.id,raw:true,wrap:true,timestamps:false,find:'Private.Needle',unsavedDraft:'Unsaved release draft',zeroLogRequests:true};
+})()

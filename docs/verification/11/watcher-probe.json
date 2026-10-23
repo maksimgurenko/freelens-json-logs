@@ -1,0 +1,33 @@
+{
+  "events": [
+    {
+      "event": "addDir",
+      "path": "/tmp/readable-watch-CIHAKP/extensions/freelens-readable-logs"
+    },
+    {
+      "event": "unlinkDir",
+      "path": "/tmp/readable-watch-CIHAKP/extensions/freelens-readable-logs"
+    },
+    {
+      "event": "addDir",
+      "path": "/tmp/readable-watch-CIHAKP/extensions/freelens-readable-logs/docs"
+    },
+    {
+      "event": "addDir",
+      "path": "/tmp/readable-watch-CIHAKP/extensions/freelens-readable-logs/out"
+    },
+    {
+      "event": "addDir",
+      "path": "/tmp/readable-watch-CIHAKP/extensions/freelens-readable-logs"
+    },
+    {
+      "event": "add",
+      "path": "/tmp/readable-watch-CIHAKP/extensions/freelens-readable-logs/README.md"
+    },
+    {
+      "event": "add",
+      "path": "/tmp/readable-watch-CIHAKP/extensions/freelens-readable-logs/package.json"
+    }
+  ],
+  "detected": true
+}

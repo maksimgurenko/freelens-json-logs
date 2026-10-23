@@ -1,0 +1,11 @@
+{
+  "at": "2026-10-23T01:49:13.966Z",
+  "result": {
+    "type": "object",
+    "value": {
+      "uid": "0035d4f0-23c6-4e7d-93b2-c1d13a41cb92",
+      "namespace": "readable-logs-spike",
+      "name": "single-json"
+    }
+  }
+}

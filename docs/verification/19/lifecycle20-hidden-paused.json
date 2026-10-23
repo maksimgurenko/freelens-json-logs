@@ -1,0 +1,209 @@
+{
+  "at": "2026-10-23T02:50:19.221Z",
+  "result": {
+    "type": "object",
+    "value": {
+      "before": {
+        "at": 1792723812719,
+        "url": "https://770814298afe692457d07d8b15d6b8d3.renderer.freelens.app:38767/extension/freelens-readable-logs/readable-logs?clusterId=770814298afe692457d07d8b15d6b8d3&namespace=readable-logs-ticket-19&pod=lifecycle&podUid=dd2128b1-eed0-48ea-a33d-529a5ea4edb2",
+        "hidden": false,
+        "focused": false,
+        "version": "0.1.20",
+        "container": "app",
+        "choices": [
+          {
+            "kind": "Containers",
+            "names": [
+              "app",
+              "sidecar"
+            ]
+          },
+          {
+            "kind": "init containers",
+            "names": [
+              "setup"
+            ]
+          },
+          {
+            "kind": "ephemeral containers",
+            "names": [
+              "debug"
+            ]
+          }
+        ],
+        "header": [
+          "Readable logs",
+          "",
+          "kind-freelens-json-logs-spike / readable-logs-ticket-19 / lifecycle",
+          "",
+          "lifecycle",
+          "Container",
+          "app",
+          "sidecar",
+          "setup",
+          "debug",
+          "Profile",
+          "Auto · Release19 broad",
+          "Default",
+          "Release19 broad",
+          "Release19 primary",
+          "Release19 fallback",
+          "Profiles",
+          "Resume",
+          "Refresh",
+          "Paused"
+        ],
+        "notice": [
+          "Container restart observed. Previous-instance logs were cleared. Paused; select Refresh or Resume to read the current instance."
+        ],
+        "buttons": [
+          {
+            "text": "Profiles",
+            "disabled": false
+          },
+          {
+            "text": "Resume",
+            "disabled": false
+          },
+          {
+            "text": "Refresh",
+            "disabled": false
+          },
+          {
+            "text": "Previous",
+            "disabled": true
+          },
+          {
+            "text": "Next",
+            "disabled": true
+          },
+          {
+            "text": "Readable",
+            "disabled": false
+          },
+          {
+            "text": "Raw",
+            "disabled": false
+          },
+          {
+            "text": "To bottom",
+            "disabled": false
+          }
+        ],
+        "rows": 4,
+        "first": "10/22/2026, 21:49:36\napp current instance 0",
+        "last": "10/22/2026, 21:49:39\napp current instance 3"
+      },
+      "after": {
+        "at": 1792723819220,
+        "url": "https://770814298afe692457d07d8b15d6b8d3.renderer.freelens.app:38767/extension/freelens-readable-logs/readable-logs?clusterId=770814298afe692457d07d8b15d6b8d3&namespace=readable-logs-ticket-19&pod=lifecycle&podUid=dd2128b1-eed0-48ea-a33d-529a5ea4edb2",
+        "hidden": false,
+        "focused": false,
+        "version": "0.1.20",
+        "container": "app",
+        "choices": [
+          {
+            "kind": "Containers",
+            "names": [
+              "app",
+              "sidecar"
+            ]
+          },
+          {
+            "kind": "init containers",
+            "names": [
+              "setup"
+            ]
+          },
+          {
+            "kind": "ephemeral containers",
+            "names": [
+              "debug"
+            ]
+          }
+        ],
+        "header": [
+          "Readable logs",
+          "",
+          "kind-freelens-json-logs-spike / readable-logs-ticket-19 / lifecycle",
+          "",
+          "lifecycle",
+          "Container",
+          "app",
+          "sidecar",
+          "setup",
+          "debug",
+          "Profile",
+          "Auto · Release19 broad",
+          "Default",
+          "Release19 broad",
+          "Release19 primary",
+          "Release19 fallback",
+          "Profiles",
+          "Resume",
+          "Refresh",
+          "Paused"
+        ],
+        "notice": [
+          "Container restart observed. Previous-instance logs were cleared. Paused; select Refresh or Resume to read the current instance."
+        ],
+        "buttons": [
+          {
+            "text": "Profiles",
+            "disabled": false
+          },
+          {
+            "text": "Resume",
+            "disabled": false
+          },
+          {
+            "text": "Refresh",
+            "disabled": false
+          },
+          {
+            "text": "Previous",
+            "disabled": true
+          },
+          {
+            "text": "Next",
+            "disabled": true
+          },
+          {
+            "text": "Readable",
+            "disabled": false
+          },
+          {
+            "text": "Raw",
+            "disabled": false
+          },
+          {
+            "text": "To bottom",
+            "disabled": false
+          }
+        ],
+        "rows": 4,
+        "first": "10/22/2026, 21:49:36\napp current instance 0",
+        "last": "10/22/2026, 21:49:39\napp current instance 3"
+      },
+      "requests": [],
+      "events": [
+        {
+          "at": 1792723812409,
+          "event": "blur",
+          "hidden": false
+        }
+      ],
+      "late": {
+        "kind": "logs",
+        "path": "/api-kube/api/v1/namespaces/readable-logs-ticket-19/pods/lifecycle/log?container=app&tailLines=1000&timestamps=true&follow=false&previous=false",
+        "started": 1792723812324,
+        "held": true,
+        "status": 200,
+        "settled": 1792723812725,
+        "bytes": 2025,
+        "first": "2026-10-23T02:49:36.551323683Z app current instance 0\n2026-10-23T02:49:37.551894550Z app current instance 1\n2026-10-23T02:49:38.552901691Z app current instance 2\n2026-10-",
+        "last": "e 33\n2026-10-23T02:50:10.580056262Z app current instance 34\n2026-10-23T02:50:11.580701896Z app current instance 35\n2026-10-23T02:50:12.581383287Z app current instance 36\n"
+      }
+    }
+  }
+}

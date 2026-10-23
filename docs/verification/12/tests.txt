@@ -1,0 +1,62 @@
+
+> freelens-readable-logs@0.1.2 test
+> node --experimental-strip-types --test tests/*.test.ts
+
+(node:2168088) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///home/max/work/freelens-json-logs/tests/records.test.ts is not specified and it doesn't parse as CommonJS.
+Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+To eliminate this warning, add "type": "module" to /home/max/work/freelens-json-logs/package.json.
+(Use `node --trace-warnings ...` to show where the warning was created)
+✔ authoritative Default examples: message candidates, whitespace and non-object fallbacks (1.085075ms)
+✔ exact original strings, timestamp precision, complete objects and unused aliases survive extraction (0.628001ms)
+✔ time: ordered valid candidates, explicit timezone, no numeric inference, local display (8.185153ms)
+✔ level: canonical names, unknown/numeric precedence, exact literal and nested paths (0.177127ms)
+✔ split only a validated timestamp and one separator; retain CR, spaces, tabs, Unicode and prototype keys (0.175997ms)
+(node:2168089) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///home/max/work/freelens-json-logs/tests/refresh.test.ts is not specified and it doesn't parse as CommonJS.
+Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+To eliminate this warning, add "type": "module" to /home/max/work/freelens-json-logs/package.json.
+(Use `node --trace-warnings ...` to show where the warning was created)
+✔ immediate fetch, then 3 seconds after settlement; replace window preserving repeated lines (2.09886ms)
+✔ repeated Refresh coalesces, slow/hung reads never time out or overlap (0.321175ms)
+✔ Pause freezes originals and local formatting remains available; paused Refresh fetches once (0.538192ms)
+✔ Resume waits for invalidated success and requests fresh data; no queued Refresh pile (0.286496ms)
+✔ Resume waits for invalidated failure and requests fresh data; no queued Refresh pile (0.290376ms)
+✔ paused Refresh waits for invalidated read and remains paused; pausing again invalidates queued intent (0.281216ms)
+✔ target changes proceed independently and discard old data even after switching back (0.282256ms)
+✔ target changes proceed independently and discard old errors even after switching back (0.290636ms)
+✔ different Pod/cluster/UID is independent; departed same target waits across sessions and reopens fresh (0.376064ms)
+✔ inactive clears timers and rejects late success (0.264596ms)
+✔ inactive clears timers and rejects late failure (0.111648ms)
+✔ dispose clears timers and rejects late success (0.068869ms)
+✔ dispose clears timers and rejects late failure (0.157618ms)
+✔ inactive automatic view refreshes on return; inactive paused view keeps Pause (0.137938ms)
+✔ genuine empty success replaces window and continues automatic mode (0.127979ms)
+✔ failure retains outdated window; failed Retry stops; successful Retry restores automatic mode (0.252557ms)
+✔ failure retains outdated window; failed Retry stops; successful Retry keeps Pause (0.114928ms)
+✔ initial error has no empty success; Retry recovers metadata errors as well as log errors (0.256476ms)
+(node:2168095) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///home/max/work/freelens-json-logs/tests/session.test.ts is not specified and it doesn't parse as CommonJS.
+Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+To eliminate this warning, add "type": "module" to /home/max/work/freelens-json-logs/package.json.
+(Use `node --trace-warnings ...` to show where the warning was created)
+✔ default container annotation applies only to regular containers; no regular means explicit choice (0.807389ms)
+✔ open preserves target, chooses annotated container and accepts one real-shaped snapshot (1.216693ms)
+✔ without regular containers no request is made until an explicit choice (0.291466ms)
+✔ initial failure is an error, empty success is ready, replacement UID is rejected before logs (0.505743ms)
+✔ departure/disable rejects pending successes and failures without claiming cancellation (0.243636ms)
+✔ errors from the host preserve useful raw Status/wrapper messages (0.096318ms)
+(node:2168096) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///home/max/work/freelens-json-logs/tests/snapshot.test.ts is not specified and it doesn't parse as CommonJS.
+Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+To eliminate this warning, add "type": "module" to /home/max/work/freelens-json-logs/package.json.
+(Use `node --trace-warnings ...` to show where the warning was created)
+✔ blank-line/terminal separator examples and independent multiline records (1.033535ms)
+✔ latest 1,000-line boundary, over-tail input and repeated identical lines remain in order (3.665038ms)
+✔ UTF-8 exactly/near/over 5 MiB: retain newest complete-line suffix and exact originals (34.451271ms)
+✔ oversized newest record is distinct from empty success; never keep a non-suffix older record (16.390698ms)
+✔ timestamp prefixes count toward budget; parsed Unicode source and whitespace stay exact (0.359485ms)
+ℹ tests 34
+ℹ suites 0
+ℹ pass 34
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 110.460191

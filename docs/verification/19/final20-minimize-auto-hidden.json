@@ -1,0 +1,274 @@
+{
+  "at": "2026-10-23T02:40:44.688Z",
+  "result": {
+    "type": "object",
+    "value": {
+      "before": {
+        "at": 1792723237686,
+        "url": "https://770814298afe692457d07d8b15d6b8d3.renderer.freelens.app:33069/extension/freelens-readable-logs/readable-logs?clusterId=770814298afe692457d07d8b15d6b8d3&namespace=readable-logs-ticket-19&pod=release&podUid=dbc2388c-0939-4911-987c-01eb6d08765f",
+        "hidden": true,
+        "focused": false,
+        "version": "0.1.20",
+        "container": "repeated",
+        "choices": [
+          {
+            "kind": "Containers",
+            "names": [
+              "bounded",
+              "over-tail",
+              "utf8-near",
+              "utf8-over",
+              "oversized",
+              "repeated",
+              "malformed",
+              "empty"
+            ]
+          },
+          {
+            "kind": "init containers",
+            "names": []
+          },
+          {
+            "kind": "ephemeral containers",
+            "names": []
+          }
+        ],
+        "header": [
+          "Readable logs",
+          "",
+          "kind-freelens-json-logs-spike / readable-logs-ticket-19 / release",
+          "",
+          "release",
+          "Container",
+          "bounded",
+          "over-tail",
+          "utf8-near",
+          "utf8-over",
+          "oversized",
+          "repeated",
+          "malformed",
+          "empty",
+          "Profile",
+          "Auto · Release19 broad",
+          "Default",
+          "Release19 broad",
+          "Release19 primary",
+          "Release19 fallback"
+        ],
+        "notice": [],
+        "buttons": [
+          {
+            "text": "Profiles",
+            "disabled": false
+          },
+          {
+            "text": "Pause",
+            "disabled": false
+          },
+          {
+            "text": "Refresh",
+            "disabled": false
+          },
+          {
+            "text": "Previous",
+            "disabled": true
+          },
+          {
+            "text": "Next",
+            "disabled": true
+          },
+          {
+            "text": "Readable",
+            "disabled": false
+          },
+          {
+            "text": "Raw",
+            "disabled": false
+          },
+          {
+            "text": "To bottom",
+            "disabled": false
+          }
+        ],
+        "rows": 1000,
+        "first": "10/22/2026, 21:04:52\n30\nrepeated α🙂",
+        "last": "10/22/2026, 21:04:52\n30\nrepeated α🙂"
+      },
+      "after": {
+        "at": 1792723244686,
+        "url": "https://770814298afe692457d07d8b15d6b8d3.renderer.freelens.app:33069/extension/freelens-readable-logs/readable-logs?clusterId=770814298afe692457d07d8b15d6b8d3&namespace=readable-logs-ticket-19&pod=release&podUid=dbc2388c-0939-4911-987c-01eb6d08765f",
+        "hidden": true,
+        "focused": false,
+        "version": "0.1.20",
+        "container": "repeated",
+        "choices": [
+          {
+            "kind": "Containers",
+            "names": [
+              "bounded",
+              "over-tail",
+              "utf8-near",
+              "utf8-over",
+              "oversized",
+              "repeated",
+              "malformed",
+              "empty"
+            ]
+          },
+          {
+            "kind": "init containers",
+            "names": []
+          },
+          {
+            "kind": "ephemeral containers",
+            "names": []
+          }
+        ],
+        "header": [
+          "Readable logs",
+          "",
+          "kind-freelens-json-logs-spike / readable-logs-ticket-19 / release",
+          "",
+          "release",
+          "Container",
+          "bounded",
+          "over-tail",
+          "utf8-near",
+          "utf8-over",
+          "oversized",
+          "repeated",
+          "malformed",
+          "empty",
+          "Profile",
+          "Auto · Release19 broad",
+          "Default",
+          "Release19 broad",
+          "Release19 primary",
+          "Release19 fallback"
+        ],
+        "notice": [],
+        "buttons": [
+          {
+            "text": "Profiles",
+            "disabled": false
+          },
+          {
+            "text": "Pause",
+            "disabled": false
+          },
+          {
+            "text": "Refresh",
+            "disabled": false
+          },
+          {
+            "text": "Previous",
+            "disabled": true
+          },
+          {
+            "text": "Next",
+            "disabled": true
+          },
+          {
+            "text": "Readable",
+            "disabled": false
+          },
+          {
+            "text": "Raw",
+            "disabled": false
+          },
+          {
+            "text": "To bottom",
+            "disabled": false
+          }
+        ],
+        "rows": 1000,
+        "first": "10/22/2026, 21:04:52\n30\nrepeated α🙂",
+        "last": "10/22/2026, 21:04:52\n30\nrepeated α🙂"
+      },
+      "requests": [],
+      "events": [
+        {
+          "at": 1792722881639,
+          "event": "blur",
+          "hidden": false
+        },
+        {
+          "at": 1792722881677,
+          "event": "visibility",
+          "hidden": true
+        },
+        {
+          "at": 1792722882696,
+          "event": "visibility",
+          "hidden": false
+        },
+        {
+          "at": 1792723097740,
+          "event": "blur",
+          "hidden": false
+        },
+        {
+          "at": 1792723097771,
+          "event": "visibility",
+          "hidden": true
+        },
+        {
+          "at": 1792723106696,
+          "event": "visibility",
+          "hidden": false
+        },
+        {
+          "at": 1792723110561,
+          "event": "blur",
+          "hidden": false
+        },
+        {
+          "at": 1792723110594,
+          "event": "visibility",
+          "hidden": true
+        },
+        {
+          "at": 1792723119696,
+          "event": "visibility",
+          "hidden": false
+        },
+        {
+          "at": 1792723163936,
+          "event": "blur",
+          "hidden": false
+        },
+        {
+          "at": 1792723163976,
+          "event": "visibility",
+          "hidden": true
+        },
+        {
+          "at": 1792723172697,
+          "event": "visibility",
+          "hidden": false
+        },
+        {
+          "at": 1792723235913,
+          "event": "blur",
+          "hidden": false
+        },
+        {
+          "at": 1792723235952,
+          "event": "visibility",
+          "hidden": true
+        }
+      ],
+      "late": {
+        "kind": "logs",
+        "path": "/api-kube/api/v1/namespaces/readable-logs-ticket-19/pods/release/log?container=repeated&tailLines=1000&timestamps=true&follow=false&previous=false",
+        "started": 1792723235587,
+        "held": true,
+        "status": 200,
+        "settled": 1792723237694,
+        "bytes": 72010,
+        "first": "2026-10-23T02:04:52.018869567Z {\"message\":\"repeated α🙂\",\"level\":30}\n2026-10-23T02:04:52.018884777Z {\"message\":\"repeated α🙂\",\"level\":30}\n2026-10-23T02:04:52.018885967Z {",
+        "last": "age\":\"repeated α🙂\",\"level\":30}\n2026-10-23T02:04:52.019369148Z {\"message\":\"repeated α🙂\",\"level\":30}\n2026-10-23T02:04:52.019369578Z {\"message\":\"repeated α🙂\",\"level\":30}\n"
+      }
+    }
+  }
+}

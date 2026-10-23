@@ -1,0 +1,25 @@
+{
+  "label": "unreadable-start",
+  "oldMainPid": 2543746,
+  "oldPids": [
+    2543746,
+    2543749,
+    2543750,
+    2543752,
+    2543800,
+    2544039,
+    2544174,
+    2544226
+  ],
+  "workspaceBefore": 2,
+  "focusBefore": "0x55baeff066d0",
+  "remainingOldPids": [],
+  "controlledSettingsSource": ".scratch/readable-logs/18/future.json",
+  "controlledMode": "000",
+  "newMainPid": 2546402,
+  "newWorkspace": 2,
+  "workspaceAfter": 2,
+  "focusAfter": "0x55baeff76550",
+  "launch": "env CHOKIDAR_USEPOLLING=1 CHOKIDAR_INTERVAL=100 TMPDIR=/home/max/.cache/freelens-readable-logs/tmp /usr/bin/freelens --remote-debugging-address=127.0.0.1 --remote-debugging-port=9235 >> /home/max/work/freelens-json-logs/.scratch/readable-logs/host.log 2>&1",
+  "quit": "native File > Quit Alt+F4"
+}

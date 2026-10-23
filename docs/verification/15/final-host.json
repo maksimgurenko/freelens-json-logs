@@ -1,0 +1,19 @@
+{
+  "at": "2026-10-23T00:50:40.529Z",
+  "result": {
+    "type": "object",
+    "value": {
+      "host": "1.10.3",
+      "package": {
+        "name": "freelens-readable-logs",
+        "version": "0.1.12",
+        "main": "out/main-0.1.12.js",
+        "renderer": "out/renderer-0.1.12.js",
+        "storeName": "freelens-readable-logs"
+      },
+      "probePresent": false,
+      "body": "Readable logs\n\nkind-freelens-json-logs-spike / readable-logs-spike / single-json\n\nsingle-json\nContainer\njson\nempty\nProfile Auto ·\nDefault\nResume\nRefresh\nPaused\nFind\nEnter text to find\nPrevious\nNext\nCluster 770814298afe692457d07d8b15d6b8d3 · Pod UID 0035d4f0-23c6-4e7d-93b2-c1d13a41cb92\nInspection\nInline expansion\nSide inspector\nBottom inspector\nReadable\nRaw\n10/21/2026, 22:18:05\nINFO\nfreelens-json-logs-spike\n2 fields\n\nSelect a record to inspect all fields or copy its exact original text. Automatic updates continue while inspecting; use Pause to keep the current window.\n\n1 records · 0.1 KiB retained\nTo bottom\nFollowing output\nShow timestamps\nWord wrap\nv0.1.12",
+      "url": "https://770814298afe692457d07d8b15d6b8d3.renderer.freelens.app:34951/extension/freelens-readable-logs/readable-logs?clusterId=770814298afe692457d07d8b15d6b8d3&namespace=readable-logs-spike&pod=single-json&podUid=0035d4f0-23c6-4e7d-93b2-c1d13a41cb92"
+    }
+  }
+}

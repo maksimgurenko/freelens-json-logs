@@ -1,0 +1,25 @@
+{
+  "files": [
+    {
+      "path": "out/main-0.1.12.js",
+      "builtSHA256": "f1aaf6dbe4a3249ec8da62f2069a4f2de83cc639d639b359fdf84cea7f3999e7",
+      "installedSHA256": "f1aaf6dbe4a3249ec8da62f2069a4f2de83cc639d639b359fdf84cea7f3999e7",
+      "match": true
+    },
+    {
+      "path": "out/renderer-0.1.12.js",
+      "builtSHA256": "cc95d62fc1ff34cb185e82825f94a66d04ad2ddc8d0763f3154edd10f425a07a",
+      "installedSHA256": "cc95d62fc1ff34cb185e82825f94a66d04ad2ddc8d0763f3154edd10f425a07a",
+      "match": true
+    },
+    {
+      "path": "docs/local-development.md",
+      "builtSHA256": "5a52d52472f0c5e88e2c7ce2172fd42c77dac511163b0617af6645968b22bc74",
+      "installedSHA256": "5a52d52472f0c5e88e2c7ce2172fd42c77dac511163b0617af6645968b22bc74",
+      "match": true
+    }
+  ],
+  "installedMainPid": 2365693,
+  "maintenanceMainPid": 2365693,
+  "noPostInstallRestart": true
+}

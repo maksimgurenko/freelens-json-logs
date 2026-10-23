@@ -1,0 +1,1 @@
+(()=>{const h=global.__rl19,p=global.__rl13,s=h.state();return {hidden:document.hidden,focused:document.hasFocus(),state:{paused:s.paused,phase:s.phase,refreshing:s.refreshing,waiting:s.waiting,error:s.error,rows:s.snapshot?.records.length},events:p.events.slice(-10),requests:p.records.slice(-10),toolbar:h.root().querySelector('.rl-controls').textContent};})()

@@ -1,0 +1,76 @@
+{
+  "at": "2026-10-23T00:01:58.301Z",
+  "result": {
+    "type": "object",
+    "value": {
+      "before": {
+        "at": 1792713718294,
+        "url": "https://770814298afe692457d07d8b15d6b8d3.renderer.freelens.app:40801/extension/freelens-readable-logs/readable-logs?clusterId=770814298afe692457d07d8b15d6b8d3&namespace=readable-logs-ticket-13&pod=lifecycle&podUid=06a97368-34c5-4301-aa50-723a701fd12a",
+        "hidden": false,
+        "focused": false,
+        "version": "0.1.7",
+        "container": "app",
+        "choices": [
+          {
+            "kind": "Containers",
+            "names": [
+              "app",
+              "sidecar"
+            ]
+          },
+          {
+            "kind": "init containers",
+            "names": [
+              "setup"
+            ]
+          },
+          {
+            "kind": "ephemeral containers",
+            "names": [
+              "debug"
+            ]
+          }
+        ],
+        "header": [
+          "Readable logs",
+          "",
+          "kind-freelens-json-logs-spike / readable-logs-ticket-13 / lifecycle",
+          "",
+          "lifecycle",
+          "Container",
+          "app",
+          "sidecar",
+          "setup",
+          "debug",
+          "Profile Auto ·",
+          "Default",
+          "Pause",
+          "Refresh",
+          "Automatic updates",
+          "Cluster 770814298afe692457d07d8b15d6b8d3 · Pod UID 06a97368-34c5-4301-aa50-723a701fd12a",
+          "",
+          "Reading log snapshot…",
+          "",
+          "10/22/2026, 18:44:39"
+        ],
+        "notice": [
+          "Reading log snapshot…"
+        ],
+        "buttons": [
+          {
+            "text": "Pause",
+            "disabled": false
+          },
+          {
+            "text": "Refresh",
+            "disabled": true
+          }
+        ],
+        "rows": 1000,
+        "first": "10/22/2026, 18:44:39\napp current instance 94",
+        "last": "10/22/2026, 19:01:18\napp current instance 1093"
+      },
+      "requestIndex": 46
+    }
+  }
+}

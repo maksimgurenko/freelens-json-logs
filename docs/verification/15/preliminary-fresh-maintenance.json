@@ -1,0 +1,28 @@
+{
+  "at": 1792716023.471077,
+  "oldMainPid": 2312234,
+  "originalPids": [
+    2312234,
+    2312237,
+    2312238,
+    2312240,
+    2312357,
+    2312585,
+    2312725,
+    2313273
+  ],
+  "reason": "Fresh main window before ticket 15 maintenance",
+  "activeWorkspaceBefore": 2,
+  "activeWindowBefore": "0x55baeff066d0",
+  "quit": "Native File > Quit accelerator Alt+F4 sent to Freelens window",
+  "remainingOriginalPids": [],
+  "processLocalPolling": {
+    "CHOKIDAR_USEPOLLING": "1",
+    "CHOKIDAR_INTERVAL": "100"
+  },
+  "processLocalTMPDIR": "/home/max/.cache/freelens-readable-logs/tmp",
+  "newMainPid": 2346376,
+  "newWindowWorkspace": 7,
+  "activeWorkspaceAfter": 2,
+  "activeWindowAfter": "0x55baeff066d0"
+}

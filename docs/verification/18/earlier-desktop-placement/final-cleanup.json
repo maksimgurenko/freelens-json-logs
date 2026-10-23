@@ -1,0 +1,15 @@
+{
+  "restoredOriginalApplicationConfiguration": true,
+  "configuration": {
+    "schemaVersion": 3,
+    "viewer": {
+      "inspection": "bottom"
+    },
+    "profiles": [],
+    "globalDefault": "default"
+  },
+  "originalExtensionFileInventoryRestored": true,
+  "mode": "0o666",
+  "noClusterResourcesChanged": true,
+  "instrumentation": "Only extension-component store inspection; no HTTP/response/SDK patches or probes left active"
+}

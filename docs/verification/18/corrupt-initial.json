@@ -1,0 +1,29 @@
+{
+  "at": "2026-10-23T01:49:14.207Z",
+  "result": {
+    "type": "object",
+    "value": {
+      "version": "0.1.18",
+      "host": "1.10.3",
+      "node": "24.18.0",
+      "saved": {
+        "inspection": "side",
+        "configuration": {
+          "schemaVersion": 3,
+          "viewer": {
+            "inspection": "side"
+          },
+          "profiles": [],
+          "globalDefault": "default"
+        },
+        "problem": "Readable logs settings contain invalid JSON: SyntaxError: Unexpected non-whitespace character after JSON at position 1328 (line 77 column 1)",
+        "settingsPath": "/home/max/.config/Freelens/extension-store/freelens-readable-logs/readable-logs.json"
+      },
+      "paused": true,
+      "text": "Readable logs\n\nkind-freelens-json-logs-spike / readable-logs-spike / single-json\n\nsingle-json\nContainer\njson\nempty\nProfile\nAuto · Default\nDefault\nProfiles\nResume\nRefresh\nPaused\nFind\nEnter text to find\nPrevious\nNext\nCluster 770814298afe692457d07d8b15d6b8d3 · Pod UID 0035d4f0-23c6-4e7d-93b2-c1d13a41cb92 · Active profile Default\nInspection\nInline expansion\nSide inspector\nBottom inspector\nReadable\nRaw\n\nReadable logs settings contain invalid JSON: SyntaxError: Unexpected non-whitespace character after JSON at position 1328 (line 77 column 1) Using built-in Default and Side inspection. Saved settings are preserved; saving is unavailable.\n\nSettings: /home/max/.config/Freelens/extension-store/freelens-readable-logs/readable-logs.json\n\nReset settings…\n10/21/2026, 22:18:05\nINFO\nfreelens-json-logs-spike\n2 fields\n\nSelect a record to inspect all fields or copy its exact original text. Automatic updates continue while inspecting; use Pause to keep the current window.\n\n1 records · 0.1 KiB retained\nTo bottom\nFollowing output\nShow timestamps\nWord wrap\nv0.1.18",
+      "entries": [
+        "/home/max/.freelens/extensions/freelens-readable-logs/out/renderer-0.1.18.js"
+      ]
+    }
+  }
+}

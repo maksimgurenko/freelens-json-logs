@@ -1,0 +1,71 @@
+{
+  "at": "2026-10-23T02:03:33.383Z",
+  "contexts": [
+    {
+      "id": 2,
+      "origin": "https://770814298afe692457d07d8b15d6b8d3.renderer.freelens.app:33257",
+      "name": "",
+      "uniqueId": "8283340414893336938.-8411530567963454122",
+      "auxData": {
+        "isDefault": true,
+        "type": "default",
+        "frameId": "39FD93D84341E0AB7DB907A4559516B4"
+      }
+    },
+    {
+      "id": 1,
+      "origin": "https://renderer.freelens.app:33257",
+      "name": "",
+      "uniqueId": "8336009157828652276.6900455877320153891",
+      "auxData": {
+        "isDefault": true,
+        "type": "default",
+        "frameId": "F241E96FD8F5D1A4F3570FD7FBEEEA73"
+      }
+    }
+  ],
+  "frames": {
+    "frameTree": {
+      "frame": {
+        "id": "F241E96FD8F5D1A4F3570FD7FBEEEA73",
+        "loaderId": "D392D432F367439750E35C4F19CE24B7",
+        "url": "https://renderer.freelens.app:33257/cluster/770814298afe692457d07d8b15d6b8d3",
+        "domainAndRegistry": "freelens.app",
+        "securityOrigin": "https://renderer.freelens.app:33257",
+        "securityOriginDetails": {
+          "isLocalhost": false
+        },
+        "mimeType": "text/html",
+        "adFrameStatus": {
+          "adFrameType": "none"
+        },
+        "secureContextType": "Secure",
+        "crossOriginIsolatedContextType": "NotIsolated",
+        "gatedAPIFeatures": []
+      },
+      "childFrames": [
+        {
+          "frame": {
+            "id": "39FD93D84341E0AB7DB907A4559516B4",
+            "parentId": "F241E96FD8F5D1A4F3570FD7FBEEEA73",
+            "loaderId": "0928BA1FF08DCBDEDD709EBA18536810",
+            "name": "kind-freelens-json-logs-spike",
+            "url": "https://770814298afe692457d07d8b15d6b8d3.renderer.freelens.app:33257/extension/freelens-readable-logs/readable-logs?clusterId=770814298afe692457d07d8b15d6b8d3&namespace=readable-logs-spike&pod=single-json&podUid=0035d4f0-23c6-4e7d-93b2-c1d13a41cb92",
+            "domainAndRegistry": "freelens.app",
+            "securityOrigin": "https://770814298afe692457d07d8b15d6b8d3.renderer.freelens.app:33257",
+            "securityOriginDetails": {
+              "isLocalhost": false
+            },
+            "mimeType": "text/html",
+            "adFrameStatus": {
+              "adFrameType": "none"
+            },
+            "secureContextType": "Secure",
+            "crossOriginIsolatedContextType": "NotIsolatedFeatureDisabled",
+            "gatedAPIFeatures": []
+          }
+        }
+      ]
+    }
+  }
+}

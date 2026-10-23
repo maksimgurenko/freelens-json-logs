@@ -1,0 +1,128 @@
+{
+  "at": "2026-10-22T23:18:06.298Z",
+  "result": {
+    "type": "object",
+    "value": {
+      "cluster": {
+        "id": "770814298afe692457d07d8b15d6b8d3",
+        "name": "kind-freelens-json-logs-spike",
+        "kubeConfigPath": "/home/max/.kube/config",
+        "contextName": "kind-freelens-json-logs-spike",
+        "status": "connected",
+        "labels": {
+          "file": "~/.kube/config"
+        },
+        "isActive": true,
+        "metadata": {
+          "distribution": "kind",
+          "kubernetesVersion": "v1.37.0"
+        }
+      },
+      "viewport": {
+        "width": 2317,
+        "height": 1252
+      },
+      "toolbarClass": "Menu MenuActions flex KubeObjectMenu toolbar gaps right bottom",
+      "entries": [
+        {
+          "title": "Attach to Pod",
+          "rect": {
+            "x": 2073.544921875,
+            "y": 16.494140625,
+            "width": 20.99609375,
+            "height": 20.99609375,
+            "top": 16.494140625,
+            "right": 2094.541015625,
+            "bottom": 37.490234375,
+            "left": 2073.544921875
+          },
+          "html": "<li tabindex=\"0\" class=\"MenuItem\"><i class=\"Icon material interactive focusable\" tabindex=\"0\" id=\"tooltip_target_510\"><span class=\"icon\" data-icon-name=\"pageview\">pageview</span><div></div></i><span class=\"title\">Attach to Pod</span><i class=\"Icon arrow material focusable\"><span class=\"icon\" data-icon-name=\"keyboard_arrow_right\">keyboard_arrow_right</span></i><ul class=\"Animate opacity Menu SubMenu enter\" style=\"--enter-duration: 100ms; --leave-duration: 100ms;\"><li tabindex=\"0\" class=\"MenuItem flex align-center\"><div class=\"StatusBrick running\"></div><span>json</span></li><li tabindex=\"0\" class=\"MenuItem flex align-center\"><div class=\"StatusBrick running\"></div><span>empty</span></li></ul></li>"
+        },
+        {
+          "title": "Shell",
+          "rect": {
+            "x": 2102.5390625,
+            "y": 16.494140625,
+            "width": 20.99609375,
+            "height": 20.99609375,
+            "top": 16.494140625,
+            "right": 2123.53515625,
+            "bottom": 37.490234375,
+            "left": 2102.5390625
+          },
+          "html": "<li tabindex=\"0\" class=\"MenuItem\"><i class=\"Icon svg interactive focusable\" tabindex=\"0\" id=\"tooltip_target_512\"><span class=\"icon\"><svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\">\n  <title>ssh</title>\n  <path d=\"M19,3H5A2,2,0,0,0,3,5V19a2,2,0,0,0,2,2H19a2,2,0,0,0,2-2V5a2,2,0,0,0-2-2M10.2,13.3,6.7,16.8,5.3,15.4l3.5-3.5L5.2,8.3,6.6,6.9l3.5,3.5,1.4,1.4ZM19,17H12V15h7Z\" transform=\"translate(0 0)\" fill=\"#87909c\"></path>\n</svg>\n</span><div></div></i><span class=\"title\">Shell</span><i class=\"Icon arrow material focusable\"><span class=\"icon\" data-icon-name=\"keyboard_arrow_right\">keyboard_arrow_right</span></i><ul class=\"Animate opacity Menu SubMenu enter\" style=\"--enter-duration: 100ms; --leave-duration: 100ms;\"><li tabindex=\"0\" class=\"MenuItem flex align-center\"><div class=\"StatusBrick running\"></div><span>json</span></li><li tabindex=\"0\" class=\"MenuItem flex align-center\"><div class=\"StatusBrick running\"></div><span>empty</span></li></ul></li>"
+        },
+        {
+          "title": "Logs",
+          "rect": {
+            "x": 2131.533203125,
+            "y": 16.494140625,
+            "width": 20.99609375,
+            "height": 20.99609375,
+            "top": 16.494140625,
+            "right": 2152.529296875,
+            "bottom": 37.490234375,
+            "left": 2131.533203125
+          },
+          "html": "<li tabindex=\"0\" class=\"MenuItem\"><i class=\"Icon material interactive focusable\" tabindex=\"0\" id=\"tooltip_target_514\"><span class=\"icon\" data-icon-name=\"subject\">subject</span><div></div></i><span class=\"title\">Logs</span><i class=\"Icon arrow material focusable\"><span class=\"icon\" data-icon-name=\"keyboard_arrow_right\">keyboard_arrow_right</span></i><ul class=\"Animate opacity Menu SubMenu enter\" style=\"--enter-duration: 100ms; --leave-duration: 100ms;\"><li tabindex=\"0\" class=\"MenuItem flex align-center\"><div class=\"StatusBrick running\"></div><span>json</span></li><li tabindex=\"0\" class=\"MenuItem flex align-center\"><div class=\"StatusBrick running\"></div><span>empty</span></li></ul></li>"
+        },
+        {
+          "title": "Readable logs",
+          "rect": {
+            "x": 2160.52734375,
+            "y": 16.494140625,
+            "width": 20.99609375,
+            "height": 20.99609375,
+            "top": 16.494140625,
+            "right": 2181.5234375,
+            "bottom": 37.490234375,
+            "left": 2160.52734375
+          },
+          "html": "<li tabindex=\"0\" class=\"MenuItem\"><i class=\"Icon material interactive focusable\" tabindex=\"0\" id=\"tooltip_target_516\"><span class=\"icon\" data-icon-name=\"data_object\">data_object</span><div></div></i><span class=\"title\">Readable logs</span></li>"
+        },
+        {
+          "title": "Edit",
+          "rect": {
+            "x": 2189.521484375,
+            "y": 16.494140625,
+            "width": 20.99609375,
+            "height": 20.99609375,
+            "top": 16.494140625,
+            "right": 2210.517578125,
+            "bottom": 37.490234375,
+            "left": 2189.521484375
+          },
+          "html": "<li tabindex=\"0\" data-testid=\"menu-action-edit-for-/api/v1/namespaces/readable-logs-spike/pods/single-json\" class=\"MenuItem\"><i class=\"Icon material interactive focusable\" tabindex=\"0\" id=\"tooltip_target_556\"><span class=\"icon\" data-icon-name=\"edit\">edit</span><div></div></i><span class=\"title\">Edit</span></li>"
+        },
+        {
+          "title": "Delete",
+          "rect": {
+            "x": 2218.515625,
+            "y": 16.494140625,
+            "width": 20.99609375,
+            "height": 20.99609375,
+            "top": 16.494140625,
+            "right": 2239.51171875,
+            "bottom": 37.490234375,
+            "left": 2218.515625
+          },
+          "html": "<li tabindex=\"0\" data-testid=\"menu-action-delete-for-/api/v1/namespaces/readable-logs-spike/pods/single-json\" class=\"MenuItem\"><i class=\"Icon material interactive focusable\" tabindex=\"0\" id=\"tooltip_target_557\"><span class=\"icon\" data-icon-name=\"delete\">delete</span><div></div></i><span class=\"title\">Delete</span></li>"
+        },
+        {
+          "title": "Force Delete",
+          "rect": {
+            "x": 2247.509765625,
+            "y": 16.494140625,
+            "width": 20.99609375,
+            "height": 20.99609375,
+            "top": 16.494140625,
+            "right": 2268.505859375,
+            "bottom": 37.490234375,
+            "left": 2247.509765625
+          },
+          "html": "<li tabindex=\"0\" data-testid=\"menu-action-force-delete-for-/api/v1/namespaces/readable-logs-spike/pods/single-json\" class=\"MenuItem\"><i class=\"Icon material interactive focusable\" tabindex=\"0\" id=\"tooltip_target_558\"><span class=\"icon\" data-icon-name=\"delete_forever\">delete_forever</span><div></div></i><span class=\"title\">Force Delete</span></li>"
+        }
+      ]
+    }
+  }
+}

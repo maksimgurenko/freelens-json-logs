@@ -1,0 +1,1 @@
+(()=>{const p=global.__rl13;if(p.state().buttons[0].text==='Resume')p.click('Resume');p.stage='auto-restart';p.stageStart=p.records.length;p.beforeRestart=p.state();return {before:p.beforeRestart,requestIndex:p.stageStart};})()

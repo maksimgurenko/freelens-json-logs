@@ -1,0 +1,4 @@
+pod "navigation" deleted from readable-logs-ticket-15 namespace
+namespace/readable-logs-ticket-15 unchanged
+pod/navigation created
+pod/navigation condition met

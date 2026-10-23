@@ -1,0 +1,11 @@
+{
+	"__internal__": {
+		"migrations": {
+			"version": "0.1.12"
+		}
+	},
+	"schemaVersion": 1,
+	"viewer": {
+		"inspection": "bottom"
+	}
+}

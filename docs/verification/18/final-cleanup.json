@@ -1,0 +1,15 @@
+{
+  "restoredOriginalApplicationConfiguration": true,
+  "configuration": {
+    "schemaVersion": 3,
+    "viewer": {
+      "inspection": "bottom"
+    },
+    "profiles": [],
+    "globalDefault": "default"
+  },
+  "originalExtensionFileInventoryRestored": true,
+  "originalModeRestored": "0o666",
+  "noClusterResourcesChanged": true,
+  "instrumentation": "No HTTP, response or SDK patches; temporary extension helper removed"
+}

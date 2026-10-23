@@ -1,0 +1,46 @@
+$ /home/max/work/freelens-json-logs/.scratch/readable-logs/toolchain/node_modules/node/bin/node /home/max/work/freelens-json-logs/.scratch/readable-logs/toolchain/node_modules/npm/bin/npm-cli.js run check:package
+
+> freelens-readable-logs@0.1.19 check:package
+> node scripts/check-package.mjs
+
+{
+  "tarball": "dist/freelens-readable-logs-0.1.19.tgz",
+  "sha256": "1dc62a9d151643086ee1d28e4409ef2f6739d60f3bdfc566d4925413165545c4",
+  "contents": [
+    "package/README.md",
+    "package/docs/local-development.md",
+    "package/out/main-0.1.19.js",
+    "package/out/renderer-0.1.19.js",
+    "package/package.json"
+  ],
+  "bundledInputs": [
+    "host-global:@freelensapp/extensions",
+    "src/adapter/visibility.ts",
+    "src/adapter/window-visibility.ts",
+    "host-global:mobx",
+    "src/core/profiles.ts",
+    "src/core/configuration.ts",
+    "src/adapter/configuration-file.ts",
+    "src/adapter/configuration-store.ts",
+    "src/adapter/configuration-ipc.ts",
+    "src/main.ts",
+    "host-global:react",
+    "src/core/records.ts",
+    "src/core/snapshot.ts",
+    "src/core/requests.ts",
+    "src/core/observe.ts",
+    "src/adapter/freelens.ts",
+    "src/core/target.ts",
+    "src/core/session.ts",
+    "src/core/inspection.ts",
+    "src/adapter/clipboard.ts",
+    "src/core/navigation.ts",
+    "src/renderer/log-viewport.ts",
+    "src/renderer/viewer.css",
+    "src/renderer/profile-editor.tsx",
+    "src/renderer/settings-recovery.tsx",
+    "src/renderer/viewer.tsx",
+    "src/renderer/index.tsx"
+  ],
+  "entryPoints": "CommonJS default exports load with host globals; no runtime dependencies bundled"
+}

@@ -1,0 +1,37 @@
+[32minfo[39m:    [32m┏ [EXTENSION-INSTALLER]: installed package for extension "/home/max/.freelens/extensions/freelens-readable-logs" +255ms
+[32minfo[39m:    [32m┏ [EXTENSION-DISCOVERY] Added extension freelens-readable-logs +0ms
+[32minfo[39m:    [32m┏ [EXTENSION-INSTALLER]: installed package for extension "/home/max/.freelens/extensions/freelens-readable-logs" +245ms
+[32minfo[39m:    [32m┏ [EXTENSION-DISCOVERY] Added extension freelens-readable-logs +0ms
+[32minfo[39m:    [32m┏ [EXTENSION-INSTALLER]: installed package for extension "/home/max/.freelens/extensions/freelens-readable-logs" +244ms
+[32minfo[39m:    [32m┏ [EXTENSION-DISCOVERY] Added extension freelens-readable-logs +0ms
+[32minfo[39m:    [32m┏ [EXTENSION-INSTALLER]: installed package for extension "/home/max/.freelens/extensions/freelens-readable-logs" +297ms
+[32minfo[39m:    [32m┏ [EXTENSION-DISCOVERY] Added extension freelens-readable-logs +0ms
+[32minfo[39m:    [32m┏ [EXTENSION-INSTALLER]: installed package for extension "/home/max/.freelens/extensions/freelens-readable-logs" +231ms
+[32minfo[39m:    [32m┏ [EXTENSION-DISCOVERY] Added extension freelens-readable-logs +0ms
+[32minfo[39m:    [32m┏ [EXTENSION-INSTALLER]: installed package for extension "/home/max/.freelens/extensions/freelens-readable-logs" +295ms
+[32minfo[39m:    [32m┏ [EXTENSION-DISCOVERY] Added extension freelens-readable-logs +0ms
+[32minfo[39m:    [32m┏ [EXTENSION-INSTALLER]: installed package for extension "/home/max/.freelens/extensions/freelens-readable-logs" +229ms
+[32minfo[39m:    [32m┏ [EXTENSION-DISCOVERY] Added extension freelens-readable-logs +0ms
+[32minfo[39m:    [32m┏ [EXTENSION-INSTALLER]: installed package for extension "/home/max/.freelens/extensions/freelens-readable-logs" +228ms
+[32minfo[39m:    [32m┏ [EXTENSION-DISCOVERY] Added extension freelens-readable-logs +0ms
+[32minfo[39m:    [32m┏ [EXTENSION-INSTALLER]: installed package for extension "/home/max/.freelens/extensions/freelens-readable-logs" +223ms
+[32minfo[39m:    [32m┏ [EXTENSION-DISCOVERY] Added extension freelens-readable-logs +0ms
+[32minfo[39m:    [32m┏ [EXTENSION-INSTALLER]: installed package for extension "/home/max/.freelens/extensions/freelens-readable-logs" +230ms
+[32minfo[39m:    [32m┏ [EXTENSION-DISCOVERY] Added extension freelens-readable-logs +0ms
+[32minfo[39m:    [32m┏ [EXTENSION-INSTALLER]: installed package for extension "/home/max/.freelens/extensions/freelens-readable-logs" +227ms
+[32minfo[39m:    [32m┏ [EXTENSION-DISCOVERY] Added extension freelens-readable-logs +0ms
+[32minfo[39m:    [32m┏ [EXTENSION-INSTALLER]: installed package for extension "/home/max/.freelens/extensions/freelens-readable-logs" +228ms
+[32minfo[39m:    [32m┏ [EXTENSION-DISCOVERY] Added extension freelens-readable-logs +1ms
+[32minfo[39m:    [32m┏ [READABLE-LOGS]: LOADING ... +1ms
+[32minfo[39m:    [32m┏ [READABLE-LOGS]: LOADED from /home/max/.config/Freelens/extension-store/freelens-readable-logs/readable-logs.json +4ms
+[32minfo[39m:    [32m┏ [READABLE-LOGS]: LOADING ... +2ms
+[32minfo[39m:    [32m┏ [READABLE-LOGS]: LOADED from /home/max/.config/Freelens/extension-store/freelens-readable-logs/readable-logs.json +0ms
+[32minfo[39m:    [32m┏ [EXTENSION-INSTALLER]: installed package for extension "/home/max/.freelens/extensions/freelens-readable-logs" +229ms
+[32minfo[39m:    [32m┏ [EXTENSION-DISCOVERY] Added extension freelens-readable-logs +1ms
+[32minfo[39m:    [32m┏ [READABLE-LOGS]: LOADING ... +1ms
+[32minfo[39m:    [32m┏ [READABLE-LOGS]: LOADED from /home/max/.config/Freelens/extension-store/freelens-readable-logs/readable-logs.json +3ms
+[32minfo[39m:    [32m┏ [EXTENSION]: enabled freelens-readable-logs@0.1.9 +4ms
+[31merror[39m:   [31m┏ [EXTENSION]: disabling freelens-readable-logs@0.1.9 threw an error: TypeError: Object has been destroyed +0ms
+[32minfo[39m:    [32m┏ [READABLE-LOGS]: LOADING ... +1ms
+[32minfo[39m:    [32m┏ [READABLE-LOGS]: LOADED from /home/max/.config/Freelens/extension-store/freelens-readable-logs/readable-logs.json +0ms
+[32minfo[39m:    [32m┏ [EXTENSION]: enabled freelens-readable-logs@0.1.9 +5ms

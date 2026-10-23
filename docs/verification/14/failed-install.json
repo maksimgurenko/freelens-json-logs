@@ -1,0 +1,32 @@
+{
+  "at": "2026-10-23T00:20:09.032Z",
+  "result": {
+    "type": "object",
+    "value": {}
+  },
+  "exceptionDetails": {
+    "exceptionId": 1,
+    "text": "Uncaught (in promise) Error: home\narrow_back\narrow_forward\nExtensions\n\nAdd new features via Freelens Extensions.\n\nNAME OR FILE PATH OR URL TO AN EXTENSION PACKAGE (TAR, TGZ)\nfolder_open\nInstall\nPro-Tip: you can drag and drop a tarball file to this area\nextension\nThere are no extensions installed.\n\nPlease use the form above to install or drag a tarball file here.\n\nclose\nESC\nhome\nsettings\nview_list\nsettings\narrow_left\n1\narrow_right\ninfo_outline\n\nInstalling extension freelens-readable-logs@0.1.8 has failed: There was an error during the installation\n\nclose",
+    "lineNumber": 4,
+    "columnNumber": 44,
+    "scriptId": "242",
+    "stackTrace": {
+      "callFrames": [
+        {
+          "functionName": "",
+          "scriptId": "242",
+          "url": "",
+          "lineNumber": 3,
+          "columnNumber": 43
+        }
+      ]
+    },
+    "exception": {
+      "type": "object",
+      "subtype": "error",
+      "className": "Error",
+      "description": "Error: home\narrow_back\narrow_forward\nExtensions\n\nAdd new features via Freelens Extensions.\n\nNAME OR FILE PATH OR URL TO AN EXTENSION PACKAGE (TAR, TGZ)\nfolder_open\nInstall\nPro-Tip: you can drag and drop a tarball file to this area\nextension\nThere are no extensions installed.\n\nPlease use the form above to install or drag a tarball file here.\n\nclose\nESC\nhome\nsettings\nview_list\nsettings\narrow_left\n1\narrow_right\ninfo_outline\n\nInstalling extension freelens-readable-logs@0.1.8 has failed: There was an error during the installation\n\nclose\n    at <anonymous>:4:44",
+      "objectId": "1624865547129022746.1.3"
+    }
+  }
+}
