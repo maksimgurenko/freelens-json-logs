@@ -1,6 +1,6 @@
 # 19: Complete and verify the supported local release workflow
 
-**Status:** ready-for-agent
+**Status:** done
 
 **Blocked by:** [13: Handle container and Pod lifecycle changes](13-handle-container-and-pod-lifecycle-changes.md), [14: Inspect and copy complete records](14-inspect-and-copy-complete-records.md), [15: Navigate changing logs with scrolling and Find](15-navigate-changing-logs-with-scrolling-and-find.md), [17: Select formatting profiles automatically](17-select-formatting-profiles-automatically.md), [18: Recover safely from unusable configuration](18-recover-safely-from-unusable-configuration.md)
 
