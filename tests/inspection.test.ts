@@ -46,9 +46,9 @@ test('snapshot replacement preserves a surviving exact record and never substitu
 
 test('saved schema starts Side and separates profiles from temporary inspection state', () => {
   const saved = defaultConfiguration();
-  assert.deepEqual(saved, { schemaVersion: 2, viewer: { inspection: 'side' }, profiles: [], globalDefault: 'default' });
+  assert.deepEqual(saved, { schemaVersion: 3, viewer: { inspection: 'side' }, profiles: [], globalDefault: 'default' });
   for (const inspection of ['inline', 'side', 'bottom']) assert.equal(configurationProblem({ ...saved, viewer: { inspection } }), undefined);
-  assert.match(configurationProblem({ schemaVersion: 3 })!, /Unsupported configuration schema 3/);
+  assert.match(configurationProblem({ schemaVersion: 4 })!, /Unsupported configuration schema 4/);
   assert.match(configurationProblem({ ...saved, viewer: { inspection: 'unknown' } })!, /invalid/);
   assert.match(configurationProblem(null)!, /not an object/);
   const first = initialInspection();
@@ -63,7 +63,7 @@ test('host migration metadata alone is a first-use file, not an unsupported user
   const metadata = { migrations: { version: '0.1.8' } };
   assert.deepEqual(configurationData({ __internal__: metadata }), defaultConfiguration());
   assert.deepEqual(configurationData({ ...defaultConfiguration(), __internal__: metadata }), defaultConfiguration());
-  const newer = configurationData({ schemaVersion: 3, unknown: 'preserve', __internal__: metadata });
+  const newer = configurationData({ schemaVersion: 4, unknown: 'preserve', __internal__: metadata });
   assert.equal(newer.unknown, 'preserve');
-  assert.match(configurationProblem(newer)!, /Unsupported configuration schema 3/);
+  assert.match(configurationProblem(newer)!, /Unsupported configuration schema 4/);
 });

@@ -95,6 +95,15 @@
 .readable-logs .rl-editor-save { border-top: 1px solid var(--borderFaintColor, #373a3e); padding-top: 12px; }
 .readable-logs .rl-editor-save ul { margin: 0 0 12px; padding-inline-start: 20px; color: var(--textColorAccent, #e3e5e8); }
 .readable-logs .rl-editor-save p { margin-bottom: 8px; }
+.readable-logs .rl-matching-order h3 { margin-top: 0; }
+.readable-logs .rl-matching-order ol { margin: 8px 0 0; padding-inline-start: 24px; }
+.readable-logs .rl-matching-order li { padding-block: 6px; }
+.readable-logs .rl-matching-order li > * { margin-inline-end: 8px; }
+.readable-logs .rl-order-name { display: inline-block; min-width: 14ch; overflow-wrap: anywhere; }
+.readable-logs .rl-matching { display: flex; flex-direction: column; align-items: start; gap: 10px; border: 0; border-block: 1px solid var(--borderFaintColor, #373a3e); padding: 12px 0; min-width: 0; }
+.readable-logs .rl-label-condition { display: flex; flex-wrap: wrap; align-items: end; gap: 8px; width: 100%; }
+.readable-logs .rl-label-condition label { flex: 1; min-width: 120px; flex-direction: column; align-items: stretch; gap: 4px; }
+.readable-logs .rl-matching > label:not(:first-of-type) { flex-wrap: wrap; }
 @media (max-width: 1000px) {
   .readable-logs .rl-editor-columns { grid-template-columns: minmax(0, 1fr); gap: 18px; }
   .readable-logs .rl-profile-management > label:last-child { margin-inline-start: 0; }

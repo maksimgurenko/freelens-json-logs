@@ -26,6 +26,7 @@ export interface SnapshotState {
   outdated: boolean;
   gone: boolean;
   manualProfile?: string;
+  podLabels?: Readonly<Record<string, string>>;
   lifecycleNotice?: string;
 }
 export class SnapshotSession {
@@ -64,7 +65,7 @@ export class SnapshotSession {
       if (!pod || pod.uid !== this.state.target.podUid) { this.observePod(pod); return; }
       this.pod = pod;
       const container = initialContainer(pod);
-      this.update({ containers: containerChoices(pod), container, phase: container ? 'loading-logs' : 'choose-container' });
+      this.update({ containers: containerChoices(pod), podLabels: { ...pod.labels }, container, phase: container ? 'loading-logs' : 'choose-container' });
       this.watch();
       if (container) await this.selectContainer(container);
     } catch (error) {
@@ -140,7 +141,7 @@ export class SnapshotSession {
         lifecycleNotice: 'Container restart observed. Previous-instance logs were cleared.' });
       if (!this.state.paused) void this.refresh();
     }
-    this.update({ containers: containerChoices(pod) });
+    this.update({ containers: containerChoices(pod), podLabels: { ...pod.labels } });
   }
   pause() {
     if (this.state.phase === 'closed' || this.state.gone) return;

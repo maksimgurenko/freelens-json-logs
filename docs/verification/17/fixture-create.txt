@@ -1,0 +1,6 @@
+namespace/readable-logs-ticket-17 created
+pod/profiles created
+namespace/readable-logs-ticket-17-other created
+pod/profiles created
+pod/profiles condition met
+pod/profiles condition met

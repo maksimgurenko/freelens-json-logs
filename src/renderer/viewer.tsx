@@ -55,7 +55,9 @@ export function Viewer({ target, register, visibility, preferences }: ViewerProp
   }, [target.clusterId, target.namespace, target.podName, target.podUid, register, visibility]);
   const snapshot = state?.snapshot;
   const records = snapshot?.records ?? EMPTY_RECORDS;
-  const profile = useMemo(() => activeProfile(preference.configuration, state?.manualProfile), [preference.configuration, state?.manualProfile]);
+  const profileContext = useMemo(() => ({ namespace: target.namespace, container: state?.container ?? '', labels: state?.podLabels ?? {} }),
+    [target.namespace, state?.container, state?.podLabels]);
+  const profile = useMemo(() => activeProfile(preference.configuration, state?.manualProfile, profileContext), [preference.configuration, state?.manualProfile, profileContext]);
   useEffect(() => {
     if (state?.manualProfile && state.manualProfile !== BUILTIN_PROFILE_ID &&
       !preference.configuration.profiles.some(profile => profile.id === state.manualProfile)) session?.selectProfile();
@@ -119,7 +121,7 @@ export function Viewer({ target, register, visibility, preferences }: ViewerProp
       </select></label>
       <label className="rl-profile">Profile <select aria-label="Profile" value={state?.manualProfile ?? ''}
         disabled={!session || state?.phase === 'closed'} onChange={event => session?.selectProfile(event.target.value || undefined)}>
-        <option value="">Auto · {activeProfile(preference.configuration).name}</option>
+        <option value="">Auto · {activeProfile(preference.configuration, undefined, profileContext).name}</option>
         {[builtinProfile(), ...preference.configuration.profiles].map(profile => <option key={profile.id} value={profile.id}>{profile.name}</option>)}
       </select></label>
       <button ref={profilesButton} type="button" onClick={() => setEditingProfiles(value => !value)} aria-expanded={editingProfiles}>Profiles</button>

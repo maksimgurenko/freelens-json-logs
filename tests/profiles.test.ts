@@ -121,11 +121,11 @@ test('stable IDs preserve rename references/order; delete returns global and man
   assert.equal(activeProfile({ ...settings, globalDefault: two.id }, one.id).id, two.id);
 });
 
-test('schema 1 migrates valid Inspection explicitly; saved profiles share schema 2 without transient state', () => {
+test('schema 1 migrates valid Inspection explicitly; saved profiles share schema 3 without transient state', () => {
   for (const inspection of ['side', 'inline', 'bottom']) {
     const source = { schemaVersion: 1, viewer: { inspection } }, before = structuredClone(source);
     const migrated = configurationData(source);
-    assert.equal(configurationProblem(migrated), undefined); assert.equal(migrated.schemaVersion, 2);
+    assert.equal(configurationProblem(migrated), undefined); assert.equal(migrated.schemaVersion, 3);
     assert.deepEqual(migrated.viewer, source.viewer); assert.deepEqual(source, before);
   }
   for (const source of [{ schemaVersion: 1, viewer: { inspection: 'bad' } }, { schemaVersion: 99, extra: 'preserve' }]) {

@@ -1,0 +1,24 @@
+Independent impeccable finish review of the existing Freelens editor extension.
+disposition: ship
+
+persistence: Scoped incumbent review; standalone PRODUCT.md, DESIGN.md, concept
+seed and comp exempt under SCOPED_EXISTING_ALLOWED. Ticket 17 and accepted GitHub
+resolutions preserve product requirements. All captures valid, including the
+intentionally scrolled matching.png. PNG 3828x2101; CSS viewport 2317x1252.
+
+fidelity: Host typography, flat surfaces, dark ground (#1e2124/#262b2f), native
+controls and existing editor columns retained. Matching order before editor
+columns is a warranted adaptation. Exact conjunction, case-sensitive and
+conditionless explanations visible. Move up/down controls name their profile
+and have boundary disabled states. Auto and identity strip show active result.
+Labeled fields, fieldset/legend, contextual button names and inherited visible
+focus are present. Host assertions cover precedence, reordering, rename,
+disabled selection, Cancel, validation and zero additional log requests.
+
+ceiling: Reached for the scoped native host extension. Added ornament, display
+typography or motion would conflict with the incumbent surface.
+
+material_fixes: None.
+
+keep: Native controls, explicit matching explanations, readable Auto result,
+staged Save/Cancel behavior.

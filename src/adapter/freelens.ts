@@ -50,7 +50,7 @@ export const freelensPort: SnapshotPort = {
     }
     assertCluster(target);
     if (!pod?.metadata.uid) return null;
-    return { uid: pod.metadata.uid,
+    return { uid: pod.metadata.uid, labels: Object.fromEntries(Object.entries(pod.metadata.labels ?? {}).filter((entry): entry is [string, string] => typeof entry[1] === 'string')),
       regular: (pod.spec.containers ?? []).map(container => container.name),
       init: (pod.spec.initContainers ?? []).map(container => container.name),
       ephemeral: (pod.spec.ephemeralContainers ?? []).map(container => container.name),

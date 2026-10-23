@@ -1,0 +1,15 @@
+{
+  "at": "2026-10-23T01:33:22.359Z",
+  "result": {
+    "type": "object",
+    "value": {
+      "uid": "da7575cc-f5ef-4c72-b8eb-1d38142d2e2a",
+      "namespace": "readable-logs-ticket-17-other",
+      "name": "profiles",
+      "labels": {
+        "app": "payments",
+        "tier": "backend"
+      }
+    }
+  }
+}

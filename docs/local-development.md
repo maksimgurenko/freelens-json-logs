@@ -5,7 +5,7 @@ Pause/Resume, explicit recovery and Pod/container lifecycle handling (GitHub #11
 Ticket #14 adds complete-record inspection in Inline, Side and Bottom layouts,
 Raw presentation, exact original clipboard actions and a saved global Inspection
 preference. Ticket #15 adds bottom following, anchored scroll position and literal Find navigation.
-Ticket #16 adds staged formatting profiles, sample previews, manual selection and a saved global default. Automatic target matching remains ticket #17.
+Ticket #16 adds staged formatting profiles, sample previews, manual selection and a saved global default. Ticket #17 adds exact target matching and saved precedence.
 The accepted GitHub #8 contract and its linked resolutions govern implementation.
 
 Supported host: **Freelens 1.10.3 only**, currently tested on Arch Linux/Wayland.
@@ -25,8 +25,8 @@ npm run typecheck
 npm test
 npm run package
 npm run check:package
-tar -tzf dist/freelens-readable-logs-0.1.15.tgz
-sha256sum dist/freelens-readable-logs-0.1.15.tgz
+tar -tzf dist/freelens-readable-logs-0.1.17.tgz
+sha256sum dist/freelens-readable-logs-0.1.17.tgz
 ```
 
 The locked esbuild platform package supplies its binary without install scripts.
@@ -51,10 +51,12 @@ The matching main/renderer `Common.Store.ExtensionStore` uses config name
 **readable-logs**, under the stable package/store name above. On this host its file
 is `~/.config/Freelens/extension-store/freelens-readable-logs/readable-logs.json`.
 Main owns durable writes; renderer changes synchronize through the host store.
-Schema **2** stores `schemaVersion: 2`, `viewer.inspection` (initially `"side"`),
+Schema **3** stores `schemaVersion: 3`, `viewer.inspection` (initially `"side"`),
 `profiles` (independent named rules with stable IDs), and `globalDefault` (initially
-`"default"`). Valid schema 1 Inspection settings migrate explicitly to schema 2
-with no saved profiles and built-in Default selected. Unsupported versions or
+`"default"`). Valid schema 1 Inspection settings migrate explicitly to schema 3
+with no saved profiles and built-in Default selected. Valid schema 2 profiles
+migrate explicitly with matching disabled and no conditions, preserving IDs,
+order, rules and default. Unsupported versions or
 invalid data inhibit editing; the viewer reports the problem and uses built-in
 Default and Side. Full corrupt/newer-file recovery and backed-up reset remain
 ticket #18. Main owns durable writes through the matching renderer store.
@@ -102,9 +104,9 @@ Follow [the accepted procedure](https://github.com/maksimgurenko/freelens-json-l
 2. For an update, **Uninstall** the old package and wait for removal to finish,
    retaining its saved extension settings. Install the new tarball via the form
    **once** and wait. Do not use the overwrite/reinstallation prompt.
-3. Check version **0.1.15** and Enabled, then open the cluster. Open a Pod's details
+3. Check version **0.1.17** and Enabled, then open the cluster. Open a Pod's details
    header and click the **Readable logs** icon beside the native actions. Verify
-   cluster, namespace, Pod UID, container and **Default** profile, and usable logs.
+   cluster, namespace, Pod UID, container, the expected active profile and usable logs.
    Do not restart after installation as a substitute for passing this check.
 4. Enable/disable/uninstall maintenance also uses the fresh-main-window state.
    A failed or cycling install is a failure: stop and retain diagnostic evidence.
@@ -170,9 +172,9 @@ Hidden views invalidate pending log/metadata observations and stop their timers;
 returning automatic views fetch fresh data, while Pause remains paused. A container
 change clears the old window, returns temporary selection to Auto and starts an
 automatic view when active. Close/leave/disable discards view state; reopening
-starts fresh. Saved-profile controls belong to later tickets; the current viewer
-always uses Auto with built-in Default. Lifecycle tests cover the temporary
-manual-selection state boundary without claiming saved-profile implementation.
+starts fresh. The current viewer uses the saved matching and default rules in
+Auto. Lifecycle tests cover the temporary manual-selection state boundary;
+saved-profile and matching evidence is recorded in tickets 16 and 17.
 
 Lifecycle checks and their observation limits are recorded against the installed
 production bundle hashes in the ticket 13 verification report.
@@ -229,8 +231,7 @@ block Save. Preview samples and drafts never persist. Editing or reformatting
 retained logs makes no log request and Find recomputes using the active message.
 
 The viewer's **Profile** selector offers **Auto** and explicit manual choices.
-For this milestone Auto uses the saved global default; exact target matching is
-ticket #17. Manual choice belongs to the current cluster/Pod UID/container view
+Auto uses the first enabled matching profile in saved order, then the global default. Manual choice belongs to the current cluster/Pod UID/container view
 and clears on Auto, container/target change, close or full restart. Selecting a
 profile does not pause updates. Global default is saved in **Profiles**. Deleting
 a manually selected profile returns that view to Auto; deleting the global
@@ -238,3 +239,31 @@ default restores built-in Default. Rename retains ID, references and order.
 Uninstall retains profiles and Inspection. See `docs/verification/16/` for actual
 packaged editor, request-observation and full normal-quit/reopen evidence.
 Import/export, custom templates and executable user code are excluded.
+
+## Automatic profile selection
+
+In **Profiles**, Edit a saved profile to configure **Enabled for matching**,
+**Match namespace**, **Match container name** and ordinary **Add label condition**
+key/value inputs. Save applies the draft; Cancel discards it. Empty namespace or
+container omits that restriction. Label values may be empty; required keys must
+exist. Every configured condition compares exactly and case-sensitively. There
+is no regex, wildcard, Pod-name or cluster matching. A conditionless profile
+never auto-matches. Disabling matching leaves manual/global-default use available.
+
+**Matching order** lists saved profiles in precedence order. **Move up/down**
+saves immediately; the first enabled profile with all conditions matching wins
+in Auto, otherwise the global default applies. Manual choice always wins. The
+selector's Auto label and Active profile show the result. Global-default status
+does not rearrange order; stable IDs preserve rename references. Deleting a
+manual profile returns to Auto; deleting the global default restores built-in
+Default, with matching still taking precedence.
+
+Current Pod labels come from the existing UID-checked metadata observations,
+including while paused. Observed label changes, saved rules, order, enabled state
+and Auto/manual changes reformat retained records without a log read. Metadata
+observations are not instantaneous notifications. Target/container changes clear
+manual choice; container restarts preserve it. Schema 3 persists each profile's
+`matching.enabled` and `matching.conditions` (`namespace?`, `container?`, `labels`
+key/value list); profile array order is the saved matching order. Main remains
+the durable writer. See `docs/verification/17/` for packaged-host and normal
+full-quit/reopen evidence.

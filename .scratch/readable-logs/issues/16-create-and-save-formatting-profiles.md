@@ -1,6 +1,6 @@
 # 16: Create and save formatting profiles
 
-**Status:** ready-for-agent
+**Status:** done
 
 **Blocked by:** [11: Open a bounded Readable logs snapshot](11-open-a-bounded-readable-logs-snapshot.md)
 

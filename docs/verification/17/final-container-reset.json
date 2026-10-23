@@ -1,0 +1,191 @@
+{
+  "at": "2026-10-23T01:33:22.206Z",
+  "result": {
+    "type": "object",
+    "value": {
+      "worker": {
+        "active": "Ticket17 second renamed",
+        "message": "Second worker",
+        "manual": ""
+      },
+      "api": {
+        "active": "Ticket17 first",
+        "message": "First α🙂\napi"
+      },
+      "requests": [
+        {
+          "path": "/api-kube/api/v1/namespaces/readable-logs-ticket-17/pods/profiles/log?container=worker&tailLines=1000&timestamps=true&follow=false&previous=false",
+          "started": 1792719200355,
+          "status": 200,
+          "settled": 1792719200361
+        },
+        {
+          "path": "/api-kube/api/v1/namespaces/readable-logs-ticket-17/pods/profiles/log?container=api&tailLines=1000&timestamps=true&follow=false&previous=false",
+          "started": 1792719200598,
+          "status": 200,
+          "settled": 1792719200603
+        }
+      ],
+      "configuration": {
+        "__internal__": {
+          "migrations": {
+            "version": "0.1.17"
+          }
+        },
+        "schemaVersion": 3,
+        "viewer": {
+          "inspection": "bottom"
+        },
+        "profiles": [
+          {
+            "id": "698067ec-a333-4a6a-9288-8cec68748f91",
+            "name": "Ticket17 conditionless",
+            "format": {
+              "messagePaths": [
+                "/message"
+              ],
+              "timestampPaths": [
+                "/timestamp",
+                "/time",
+                "/@timestamp"
+              ],
+              "levelPaths": [
+                "/level",
+                "/severity",
+                "/log.level",
+                "/log/level"
+              ],
+              "inlinePaths": [],
+              "hiddenPaths": [],
+              "numericTimestamp": "unset",
+              "severityMappings": []
+            },
+            "matching": {
+              "enabled": true,
+              "conditions": {
+                "labels": []
+              }
+            }
+          },
+          {
+            "id": "669e4299-7c15-4d72-a0c5-e4360a75560d",
+            "name": "Ticket17 second renamed",
+            "format": {
+              "messagePaths": [
+                "/second"
+              ],
+              "timestampPaths": [
+                "/timestamp",
+                "/time",
+                "/@timestamp"
+              ],
+              "levelPaths": [
+                "/level",
+                "/severity",
+                "/log.level",
+                "/log/level"
+              ],
+              "inlinePaths": [],
+              "hiddenPaths": [],
+              "numericTimestamp": "unset",
+              "severityMappings": []
+            },
+            "matching": {
+              "enabled": false,
+              "conditions": {
+                "labels": [
+                  {
+                    "key": "app",
+                    "value": "payments"
+                  }
+                ],
+                "container": "api"
+              }
+            }
+          },
+          {
+            "id": "e9fcecf5-f1a0-45c7-b855-4b3eee00771a",
+            "name": "Ticket17 first",
+            "format": {
+              "messagePaths": [
+                "/first"
+              ],
+              "timestampPaths": [
+                "/timestamp",
+                "/time",
+                "/@timestamp"
+              ],
+              "levelPaths": [
+                "/level",
+                "/severity",
+                "/log.level",
+                "/log/level"
+              ],
+              "inlinePaths": [],
+              "hiddenPaths": [],
+              "numericTimestamp": "unset",
+              "severityMappings": []
+            },
+            "matching": {
+              "enabled": true,
+              "conditions": {
+                "labels": [
+                  {
+                    "key": "app",
+                    "value": "payments"
+                  },
+                  {
+                    "key": "tier",
+                    "value": "backend"
+                  }
+                ],
+                "namespace": "readable-logs-ticket-17",
+                "container": "api"
+              }
+            }
+          },
+          {
+            "id": "6a44fb3f-43b4-496d-b1fa-c82995915b47",
+            "name": "Ticket17 fallback",
+            "format": {
+              "messagePaths": [
+                "/fallback"
+              ],
+              "timestampPaths": [
+                "/timestamp",
+                "/time",
+                "/@timestamp"
+              ],
+              "levelPaths": [
+                "/level",
+                "/severity",
+                "/log.level",
+                "/log/level"
+              ],
+              "inlinePaths": [],
+              "hiddenPaths": [],
+              "numericTimestamp": "unset",
+              "severityMappings": []
+            },
+            "matching": {
+              "enabled": false,
+              "conditions": {
+                "labels": [],
+                "namespace": "readable-logs-ticket-17",
+                "container": "api"
+              }
+            }
+          }
+        ],
+        "globalDefault": "6a44fb3f-43b4-496d-b1fa-c82995915b47"
+      },
+      "assertions": [
+        "container clears manual",
+        "fresh automatic target",
+        "disabled global allowed",
+        "matching wins over global",
+        "two real reads"
+      ]
+    }
+  }
+}

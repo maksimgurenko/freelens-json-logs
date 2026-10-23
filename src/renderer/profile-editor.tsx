@@ -64,11 +64,43 @@ export function ProfileEditor({ preferences, onClose }: { preferences: ViewerPre
     {confirmDelete && <div className="rl-notice" role="alert">Delete {profile.name}? Affected manual selections return to Auto; a deleted global default returns to Default.
       <div className="rl-editor-actions"><button type="button" onClick={() => { preferences.deleteProfile(profile.id); setSelected(BUILTIN_PROFILE_ID); setConfirmDelete(false); setNotice('Profile deleted.'); }}>Confirm delete</button>
         <button type="button" onClick={() => setConfirmDelete(false)}>Keep profile</button></div></div>}
+    <section className="rl-matching-order" aria-label="Matching order">
+      <h3>Matching order</h3>
+      <p className="rl-editor-help">Auto uses the first enabled profile whose conditions all match, then the global default. Manual selection takes priority. Moving a profile saves its order immediately.</p>
+      {!saved.configuration.profiles.length ? <p className="rl-editor-help">Duplicate a profile to add matching rules. Default remains available as the fallback.</p> :
+        <ol>{saved.configuration.profiles.map((item, index) => <li key={item.id}>
+          <span className="rl-order-name">{item.name}</span>
+          <span className="rl-editor-help">{!item.matching.enabled ? 'Matching disabled' : !item.matching.conditions.namespace && !item.matching.conditions.container && !item.matching.conditions.labels.length ? 'No conditions · never matches' : 'Matching enabled'}</span>
+          <button type="button" aria-label={`Move ${item.name} up`} disabled={!!draft || !!saved.problem || index === 0}
+            onClick={() => preferences.moveProfile(item.id, -1)}>Move up</button>
+          <button type="button" aria-label={`Move ${item.name} down`} disabled={!!draft || !!saved.problem || index === saved.configuration.profiles.length - 1}
+            onClick={() => preferences.moveProfile(item.id, 1)}>Move down</button>
+        </li>)}</ol>}
+    </section>
     <div className="rl-editor-columns">
       <div className="rl-editor-fields">
         <label>Profile name <input aria-label="Profile name" value={current.name} disabled={!draft}
           onChange={event => setDraft(previous => previous && ({ ...previous, name: event.target.value }))} /></label>
         {!draft && <p className="rl-editor-help">{profile.id === BUILTIN_PROFILE_ID ? 'Default is read-only. Duplicate it to create independent rules.' : 'Choose Edit to change or rename this profile.'}</p>}
+        <fieldset className="rl-matching"><legend>Automatic matching</legend>
+          <p className="rl-editor-help">Every condition must match exactly, including case. Empty namespace or container means no restriction. No conditions means no automatic match. Disabling matching keeps manual and global-default choices available.</p>
+          <label><input type="checkbox" aria-label="Enabled for matching" checked={current.matching.enabled} disabled={!draft}
+            onChange={event => { const enabled = event.target.checked; setDraft(previous => previous && ({ ...previous, matching: { ...previous.matching, enabled } })); }} />Enabled for matching</label>
+          {([['namespace', 'Match namespace'], ['container', 'Match container name']] as const).map(([key, label]) =>
+            <label key={key}>{label}<input aria-label={label} value={current.matching.conditions[key] ?? ''} disabled={!draft}
+              onChange={event => { const value = event.target.value; setDraft(previous => previous && ({ ...previous,
+                matching: { ...previous.matching, conditions: { ...previous.matching.conditions, [key]: value || undefined } } })); }} /></label>)}
+          <p className="rl-editor-help">Pod labels: all key/value pairs are required. An empty value matches only an explicitly empty label.</p>
+          {current.matching.conditions.labels.map((condition, index) => <div className="rl-label-condition" key={index}>
+            {(['key', 'value'] as const).map(key => <label key={key}>Label {key}<input aria-label={`Match label ${index + 1} ${key}`} value={condition[key]} disabled={!draft}
+              onChange={event => { const value = event.target.value; setDraft(previous => previous && ({ ...previous, matching: { ...previous.matching,
+                conditions: { ...previous.matching.conditions, labels: previous.matching.conditions.labels.map((item, i) => i === index ? { ...item, [key]: value } : item) } } })); }} /></label>)}
+            <button type="button" aria-label={`Remove label condition ${index + 1}`} disabled={!draft} onClick={() => setDraft(previous => previous && ({ ...previous,
+              matching: { ...previous.matching, conditions: { ...previous.matching.conditions, labels: previous.matching.conditions.labels.filter((_, i) => i !== index) } } }))}>Remove</button>
+          </div>)}
+          <button type="button" disabled={!draft} onClick={() => setDraft(previous => previous && ({ ...previous,
+            matching: { ...previous.matching, conditions: { ...previous.matching.conditions, labels: [...previous.matching.conditions.labels, { key: '', value: '' }] } } }))}>Add label condition</button>
+        </fieldset>
         <p className="rl-editor-help">One exact slash path per line, in priority order. Use /log.level for a literal dot, /items/0/code for an array, ~1 for a slash and ~0 for a tilde in a key. Missing paths fall through; defaults are not appended.</p>
         {([['messagePaths', 'Message paths', 'Empty uses unchanged application text.'], ['timestampPaths', 'Application timestamp paths', 'Empty uses the Kubernetes timestamp.'],
           ['levelPaths', 'Level paths', 'Empty extracts no level.'], ['inlinePaths', 'Inline fields', 'Additional fields in display order. Extracted leaves are omitted.'],

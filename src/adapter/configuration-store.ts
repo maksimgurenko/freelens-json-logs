@@ -2,7 +2,7 @@ import { Common } from '@freelensapp/extensions';
 import { action, makeObservable, observable, reaction } from 'mobx';
 import { CONFIG_NAME, configurationData, configurationProblem, defaultConfiguration, isInspectionLayout,
   type Configuration, type InspectionLayout, type ViewerPreferences } from '../core/configuration.ts';
-import { builtinProfile, deleteProfile, saveProfile, type Profile } from '../core/profiles.ts';
+import { builtinProfile, deleteProfile, moveProfile, saveProfile, type Profile } from '../core/profiles.ts';
 
 /** Identical schema/store name in both processes; only main persists SDK updates. */
 export class ConfigurationStore extends Common.Store.ExtensionStore<Record<string, unknown>> implements ViewerPreferences {
@@ -11,7 +11,7 @@ export class ConfigurationStore extends Common.Store.ExtensionStore<Record<strin
   constructor() {
     super({ configName: CONFIG_NAME, clearInvalidConfig: false, syncOptions: { fireImmediately: false } });
     makeObservable(this, { data: observable.ref, problem: observable, fromStore: action, setInspection: action, failed: action,
-      saveProfile: action, deleteProfile: action, setGlobalDefault: action });
+      saveProfile: action, deleteProfile: action, setGlobalDefault: action, moveProfile: action });
   }
   fromStore(data: Record<string, unknown>) {
     // An absent first-version file loads as {}. Later schema migrations belong
@@ -41,6 +41,10 @@ export class ConfigurationStore extends Common.Store.ExtensionStore<Record<strin
   setGlobalDefault(id: string) {
     if (this.problem || ![builtinProfile(), ...this.read().configuration.profiles].some(profile => profile.id === id)) return;
     this.data = { ...this.data, globalDefault: id };
+  }
+  moveProfile(id: string, direction: 1 | -1) {
+    if (this.problem) return;
+    this.data = { ...this.data, ...moveProfile(this.read().configuration, id, direction) };
   }
 }
 export const configurationStore = ConfigurationStore.getInstanceOrCreate<ConfigurationStore>();

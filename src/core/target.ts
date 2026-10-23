@@ -1,6 +1,7 @@
 export interface Container { name: string; kind: 'regular' | 'init' | 'ephemeral' }
 export interface PodDescription {
   uid: string;
+  labels?: Record<string, string>;
   regular: string[];
   init: string[];
   ephemeral: string[];

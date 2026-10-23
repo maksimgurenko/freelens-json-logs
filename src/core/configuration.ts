@@ -1,10 +1,10 @@
-import { BUILTIN_PROFILE_ID, settingsProblem, type ProfileSettings, type Profile } from './profiles.ts';
+import { BUILTIN_PROFILE_ID, defaultMatching, settingsProblem, type ProfileSettings, type Profile } from './profiles.ts';
 
 export const CONFIG_NAME = 'readable-logs';
-export const SCHEMA_VERSION = 2;
+export const SCHEMA_VERSION = 3;
 export type InspectionLayout = 'inline' | 'side' | 'bottom';
 export interface Configuration extends ProfileSettings {
-  schemaVersion: 2;
+  schemaVersion: 3;
   viewer: { inspection: InspectionLayout };
 }
 export function defaultConfiguration(): Configuration {
@@ -19,6 +19,14 @@ export function configurationData(stored: Record<string, unknown>): Record<strin
   if (data.schemaVersion === 1 && data.viewer && typeof data.viewer === 'object' &&
     isInspectionLayout((data.viewer as { inspection?: unknown }).inspection)) {
     return { ...data, schemaVersion: SCHEMA_VERSION, profiles: [], globalDefault: BUILTIN_PROFILE_ID };
+  }
+  // Schema 2 profiles had no matching settings. Preserve IDs, order, rules and
+  // preferences, with matching disabled until the user configures it explicitly.
+  if (data.schemaVersion === 2 && Array.isArray(data.profiles)) {
+    const migrated = { ...data, schemaVersion: SCHEMA_VERSION,
+      profiles: data.profiles.map(profile => profile && typeof profile === 'object'
+        ? { ...profile, matching: defaultMatching() } : profile) };
+    if (!configurationProblem(migrated)) return migrated;
   }
   return data;
 }
@@ -39,4 +47,5 @@ export interface ViewerPreferences {
   saveProfile(profile: Profile): void;
   deleteProfile(id: string): void;
   setGlobalDefault(id: string): void;
+  moveProfile(id: string, direction: 1 | -1): void;
 }
