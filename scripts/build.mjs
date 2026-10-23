@@ -17,6 +17,7 @@ const result = await build({
   entryPoints: { main: 'src/main.ts', renderer: 'src/renderer/index.tsx' },
   outdir: 'out', entryNames: `[name]-${manifest.version}`, bundle: true, platform: 'node',
   external: ['electron'], format: 'cjs', target: 'node24', metafile: true, loader: { '.css': 'text' },
+  define: { READABLE_LOGS_VERSION: JSON.stringify(manifest.version) },
   plugins: [{
     name: 'freelens-host-globals',
     setup(build) {

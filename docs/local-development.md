@@ -4,7 +4,8 @@ This production implementation includes bounded snapshots, automatic refresh,
 Pause/Resume, explicit recovery and Pod/container lifecycle handling (GitHub #11–13).
 Ticket #14 adds complete-record inspection in Inline, Side and Bottom layouts,
 Raw presentation, exact original clipboard actions and a saved global Inspection
-preference. Saved formatting profiles and scroll/Find remain later tickets.
+preference. Ticket #15 adds bottom following, anchored scroll position and literal Find navigation.
+Saved formatting profiles remain later tickets.
 The accepted GitHub #8 contract and its linked resolutions govern implementation.
 
 Supported host: **Freelens 1.10.3 only**, currently tested on Arch Linux/Wayland.
@@ -24,8 +25,8 @@ npm run typecheck
 npm test
 npm run package
 npm run check:package
-tar -tzf dist/freelens-readable-logs-0.1.9.tgz
-sha256sum dist/freelens-readable-logs-0.1.9.tgz
+tar -tzf dist/freelens-readable-logs-0.1.12.tgz
+sha256sum dist/freelens-readable-logs-0.1.12.tgz
 ```
 
 The locked esbuild platform package supplies its binary without install scripts.
@@ -100,7 +101,7 @@ Follow [the accepted procedure](https://github.com/maksimgurenko/freelens-json-l
 2. For an update, **Uninstall** the old package and wait for removal to finish,
    retaining its saved extension settings. Install the new tarball via the form
    **once** and wait. Do not use the overwrite/reinstallation prompt.
-3. Check version **0.1.9** and Enabled, then open the cluster. Open a Pod's details
+3. Check version **0.1.12** and Enabled, then open the cluster. Open a Pod's details
    header and click the **Readable logs** icon beside the native actions. Verify
    cluster, namespace, Pod UID, container and **Default** profile, and usable logs.
    Do not restart after installation as a substitute for passing this check.
@@ -179,3 +180,26 @@ The entry filenames include the package version. Freelens 1.10.3 retains Node
 module cache during uninstall/install; unique version paths load the updated main
 and renderer code without clearing host caches or requiring a post-install restart.
 Electron is supplied by the host and stays external to both bundles.
+
+## Scroll position and Find
+
+New views follow output at the bottom. Scrolling away preserves the first visible
+record and its pixel offset across the observed ordered overlap between snapshots,
+including repeated exact transport lines. A visible notice reports when that
+anchor leaves the recent window; **To bottom** resumes following. No history is
+merged. Equal repeated whole windows cannot reveal unseen additions of identical
+lines without a server cursor; the longest observed suffix/prefix overlap is used.
+
+Find searches the exact application text or the active extracted message using
+case-insensitive literal substrings. The counter and Previous/Next use the same
+record list, once per record, and wrap without filtering rows. Enter moves next;
+Shift+Enter moves previous. The outlined row is the current result, independently
+of inspection selection. Hidden original fields and decoded message escapes are
+searchable; the Kubernetes timestamp prefix is excluded even in Raw mode. When
+a current match leaves the window the counter shows 0 of the new total until
+navigation selects another result. Empty queries have no results.
+
+Find, timestamps and word wrap stay local to the view and reset on reopening.
+They do not fetch logs or change Pause. Refresh while paused updates once and
+recomputes both matches and scroll position. Formatting changes use the same
+formatted record array as Find, without changing retained originals.

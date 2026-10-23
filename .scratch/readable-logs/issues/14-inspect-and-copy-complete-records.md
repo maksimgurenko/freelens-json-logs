@@ -1,6 +1,6 @@
 # 14: Inspect and copy complete records
 
-**Status:** ready-for-agent
+**Status:** done
 
 **Blocked by:** [11: Open a bounded Readable logs snapshot](11-open-a-bounded-readable-logs-snapshot.md)
 

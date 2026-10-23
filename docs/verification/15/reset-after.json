@@ -1,0 +1,23 @@
+{
+  "at": "2026-10-23T00:47:04.029Z",
+  "result": {
+    "type": "object",
+    "value": {
+      "version": "0.1.12",
+      "query": "",
+      "counter": "Enter text to find",
+      "timestamps": true,
+      "wrap": false,
+      "raw": "false",
+      "geometry": {
+        "top": 23423.125,
+        "height": 372,
+        "total": 23795,
+        "bottom": -0.125,
+        "following": "Following output"
+      },
+      "selected": false,
+      "automatic": true
+    }
+  }
+}

@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useLayoutEffect, useMemo, useRef, useState } from 'react';
 import { bindVisibility, type VisibilityChannel } from '../adapter/visibility.ts';
 import { freelensPort, freelensRequests, PACKAGE_VERSION } from '../adapter/freelens.ts';
 import { SnapshotSession, type SnapshotState } from '../core/session.ts';
@@ -8,14 +8,23 @@ import { initialInspection, originalText, selectRecord, selectedIndex, type Reco
 import type { ViewerPreferences } from '../core/configuration.ts';
 import { copyOriginal } from '../adapter/clipboard.ts';
 import type { LogTarget } from '../core/target.ts';
+import { findMatches, moveMatch, retainedIndex } from '../core/navigation.ts';
+import { LogViewport, type ViewportStatus } from './log-viewport.ts';
 import styles from './viewer.css';
 
 interface ViewerProps { target: LogTarget; register: (dispose: () => void) => () => void; visibility: VisibilityChannel; preferences: ViewerPreferences }
+const EMPTY_RECORDS: readonly LogRecord[] = [];
 
 // Extend the accepted native-like surface: target strip, compact time/level/message rows,
 // quiet footer and explicit snapshot refresh controls.
 export function Viewer({ target, register, visibility, preferences }: ViewerProps) {
   const root = useRef<HTMLElement>(null);
+  const scroller = useRef<HTMLDivElement>(null);
+  const viewport = useRef<LogViewport>();
+  const requestedMatch = useRef<number>();
+  const [scroll, setScroll] = useState<ViewportStatus>({ following: true, lost: false });
+  const [query, setQuery] = useState('');
+  const [cursor, setCursor] = useState<{ records: readonly LogRecord[]; index: number }>({ records: EMPTY_RECORDS, index: -1 });
   const [state, setState] = useState<SnapshotState>();
   const [session, setSession] = useState<SnapshotSession>();
   const [timestamps, setTimestamps] = useState(true);
@@ -41,7 +50,39 @@ export function Viewer({ target, register, visibility, preferences }: ViewerProp
     return () => { unregister(); dispose(); };
   }, [target.clusterId, target.namespace, target.podName, target.podUid, register, visibility]);
   const snapshot = state?.snapshot;
-  const records = snapshot?.records ?? [];
+  const records = snapshot?.records ?? EMPTY_RECORDS;
+  // A future profile formatter replaces this one dependency, for rows and Find alike.
+  const formattedRecords = useMemo(() => records.map(formatDefault), [records]);
+  const messages = useMemo(() => formattedRecords.map(record => record.message), [formattedRecords]);
+  const matches = useMemo(() => findMatches(records, messages, query), [records, messages, query]);
+  const mappedCursor = retainedIndex(cursor.records, records, cursor.index);
+  const currentMatch = matches.includes(mappedCursor) ? mappedCursor : -1;
+  useEffect(() => {
+    setCursor(previous => previous.records === records && previous.index === currentMatch ? previous : { records, index: currentMatch });
+  }, [records, currentMatch]);
+  useLayoutEffect(() => {
+    const current = new LogViewport(scroller.current!, setScroll);
+    viewport.current = current;
+    return () => { current.dispose(); viewport.current = undefined; };
+  }, []);
+  useLayoutEffect(() => {
+    viewport.current?.update(records);
+    if (requestedMatch.current !== undefined) {
+      viewport.current?.show(requestedMatch.current);
+      requestedMatch.current = undefined;
+    }
+  });
+  const navigateMatch = (direction: 1 | -1) => {
+    const next = moveMatch(matches, currentMatch, direction);
+    setCursor({ records, index: next });
+    requestedMatch.current = next;
+  };
+  const changeQuery = (value: string) => {
+    const first = findMatches(records, messages, value)[0] ?? -1;
+    setQuery(value);
+    setCursor({ records, index: first });
+    requestedMatch.current = first;
+  };
   const index = selectedIndex(records, inspection.selected);
   const selected = records[index];
   useEffect(() => {
@@ -75,6 +116,15 @@ export function Viewer({ target, register, visibility, preferences }: ViewerProp
         <span role="status">{state?.paused ? 'Paused' : state?.error ? 'Automatic updates stopped' : 'Automatic updates'}</span>
       </div>
     </div>
+    <div className="rl-findbar" role="search" aria-label="Find in logs">
+      <label htmlFor="rl-find">Find</label>
+      <input id="rl-find" type="search" aria-label="Find in logs" placeholder="Find in application text or message"
+        value={query} onChange={event => changeQuery(event.target.value)}
+        onKeyDown={event => { if (event.key === 'Enter') { event.preventDefault(); navigateMatch(event.shiftKey ? -1 : 1); } }} />
+      <span className="rl-find-count" role="status" aria-live="polite">{query ? `${currentMatch < 0 ? 0 : matches.indexOf(currentMatch) + 1} of ${matches.length} matching records` : 'Enter text to find'}</span>
+      <button type="button" disabled={!matches.length} onClick={() => navigateMatch(-1)}>Previous</button>
+      <button type="button" disabled={!matches.length} onClick={() => navigateMatch(1)}>Next</button>
+    </div>
     <div className="rl-identity">Cluster {target.clusterId} · Pod UID {target.podUid}</div>
     <div className="rl-formatbar">
       <label>Inspection <select aria-label="Inspection" title="Saved globally, separately from formatting profiles"
@@ -102,13 +152,14 @@ export function Viewer({ target, register, visibility, preferences }: ViewerProp
       ? 'The newest record exceeds the 5 MiB original-text budget. No complete suffix fits.'
       : `${snapshot.omittedLines.toLocaleString()} older record(s) omitted to keep the latest 1,000 lines within the 5 MiB original-text budget.`}</p> : null}
     {snapshot && snapshot.returnedLines === 0 && <p className="rl-empty" role="status">No logs returned for {state?.container}.</p>}
+    {scroll.lost && <p className="rl-notice" role="status">Your scroll position left the recent log window. Use To bottom to follow new output.</p>}
     <div className={`rl-work rl-layout-${preference.inspection}`}>
-    <div className={`rl-records${wrap ? ' rl-wrap' : ''}`} tabIndex={0} aria-label="Container log records">
+    <div ref={scroller} className={`rl-records${wrap ? ' rl-wrap' : ''}`} tabIndex={0} aria-label="Container log records">
       {records.map((record, recordIndex) => {
-        const formatted = formatDefault(record);
+        const formatted = formattedRecords[recordIndex];
         const isSelected = recordIndex === index;
         const fields = Object.keys(formatted.additionalFields ?? {}).length;
-        return <div className={`rl-record${isSelected ? ' rl-selected' : ''}`} key={recordIndex} data-record-index={recordIndex}>
+        return <div className={`rl-record${isSelected ? ' rl-selected' : ''}${recordIndex === currentMatch ? ' rl-find-current' : ''}`} key={recordIndex} data-record-index={recordIndex}>
           <div className="rl-row" role="button" tabIndex={0} aria-pressed={isSelected}
             aria-label={`Inspect record ${recordIndex + 1}: ${formatted.message.slice(0, 100) || 'blank line'}`}
             onClick={() => setInspection(previous => ({ ...previous, selected: selectRecord(records, recordIndex) }))}
@@ -130,6 +181,8 @@ export function Viewer({ target, register, visibility, preferences }: ViewerProp
     </div>
     <footer className="rl-footer">
       <span role="status">{snapshot ? `${snapshot.records.length.toLocaleString()} records · ${(snapshot.retainedBytes / 1024).toFixed(1)} KiB retained` : 'One current-instance snapshot'}</span>
+      <button type="button" onClick={() => viewport.current?.toBottom()}>To bottom</button>
+      <span className="rl-follow-status" role="status">{scroll.following ? 'Following output' : 'Scrolled away'}</span>
       <label><input type="checkbox" checked={timestamps} onChange={event => setTimestamps(event.target.checked)} />Show timestamps</label>
       <label><input type="checkbox" checked={wrap} onChange={event => setWrap(event.target.checked)} />Word wrap</label>
       <span className="rl-version">v{PACKAGE_VERSION}</span>

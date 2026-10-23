@@ -1,0 +1,51 @@
+{
+  "at": "2026-10-23T00:49:25.732Z",
+  "result": {
+    "type": "object",
+    "value": {
+      "search": "<div class=\"LogSearch flex box grow justify-flex-end gaps align-center\"><div class=\"Input SearchInput dirty\"><label class=\"input-area flex gaps align-center\" id=\"\"><input placeholder=\"Search...\" class=\"input box grow\" spellcheck=\"false\" value=\"row 214\"><i class=\"Icon material interactive focusable small\" tabindex=\"0\"><span class=\"icon\" data-icon-name=\"close\">close</span></i><div class=\"find-count\">1 / 6</div></label><div class=\"input-info flex gaps\"></div></div><i class=\"Icon material interactive focusable\" id=\"tooltip_target_40\" tabindex=\"0\"><span class=\"icon\" data-icon-name=\"keyboard_arrow_up\">keyboard_arrow_up</span><div></div></i><i class=\"Icon material interactive focusable\" id=\"tooltip_target_41\" tabindex=\"0\"><span class=\"icon\" data-icon-name=\"keyboard_arrow_down\">keyboard_arrow_down</span><div></div></i></div>",
+      "list": [
+        {
+          "text": "{\"message\":\"row 2136\", \"hidden\":\"Private.Needle[0]\", \"padding\":\"a long original field stays searchable while omitted from the compact message\"}",
+          "class": "LogRow wordWrap"
+        },
+        {
+          "text": "{\"message\":\"row 2137\", \"hidden\":\"Private.Needle[0]\", \"padding\":\"a long original field stays searchable while omitted from the compact message\"}",
+          "class": "LogRow wordWrap"
+        },
+        {
+          "text": "{\"message\":\"row 2138\", \"hidden\":\"Private.Needle[0]\", \"padding\":\"a long original field stays searchable while omitted from the compact message\"}",
+          "class": "LogRow wordWrap"
+        },
+        {
+          "text": "{\"message\":\"row 2139\", \"hidden\":\"Private.Needle[0]\", \"padding\":\"a long original field stays searchable while omitted from the compact message\"}",
+          "class": "LogRow wordWrap"
+        },
+        {
+          "text": "{\"message\":\"row 2140\", \"hidden\":\"Private.Needle[0]\", \"padding\":\"a long original field stays searchable while omitted from the compact message\"}",
+          "class": "LogRow wordWrap"
+        },
+        {
+          "text": "{\"message\":\"row 2141\", \"hidden\":\"Private.Needle[0]\", \"padding\":\"a long original field stays searchable while omitted from the compact message\"}",
+          "class": "LogRow wordWrap"
+        },
+        {
+          "text": "{\"message\":\"row 2142\", \"hidden\":\"Private.Needle[0]\", \"padding\":\"a long original field stays searchable while omitted from the compact message\"}",
+          "class": "LogRow wordWrap"
+        },
+        {
+          "text": "{\"message\":\"row 2143\", \"hidden\":\"Private.Needle[0]\", \"padding\":\"a long original field stays searchable while omitted from the compact message\"}",
+          "class": "LogRow wordWrap"
+        },
+        {
+          "text": "{\"message\":\"row 2144\", \"hidden\":\"Private.Needle[0]\", \"padding\":\"a long original field stays searchable while omitted from the compact message\"}",
+          "class": "LogRow wordWrap"
+        },
+        {
+          "text": "{\"message\":\"row 2145\", \"hidden\":\"Private.Needle[0]\", \"padding\":\"a long original field stays searchable while omitted from the compact message\"}",
+          "class": "LogRow wordWrap"
+        }
+      ]
+    }
+  }
+}

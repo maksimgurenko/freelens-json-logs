@@ -1,0 +1,24 @@
+{
+  "at": "2026-10-23T00:42:33.461Z",
+  "result": {
+    "type": "object",
+    "value": {
+      "initial": {
+        "version": "0.1.11",
+        "geometry": {
+          "top": 3944.375,
+          "height": 372,
+          "total": 4316,
+          "bottom": -0.375,
+          "following": "Following output"
+        },
+        "query": "",
+        "timestamps": true,
+        "wrap": false
+      },
+      "paused": true,
+      "node": "24.18.0",
+      "host": "1.10.3"
+    }
+  }
+}

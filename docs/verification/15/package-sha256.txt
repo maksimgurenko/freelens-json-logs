@@ -1,0 +1,1 @@
+915ad8041753829218e3177abd074cb30b4741d95e2b059787b612fbaacfe9bd  dist/freelens-readable-logs-0.1.12.tgz
