@@ -1,0 +1,80 @@
+{
+  "at": "2026-10-23T02:29:33.850Z",
+  "result": {
+    "type": "object",
+    "value": {
+      "version": "0.1.19",
+      "host": "1.10.3",
+      "container": "bounded",
+      "bannerSamples": 0,
+      "topRange": 0,
+      "heightRange": 0,
+      "samples": [
+        {
+          "ms": 1.399999976158142,
+          "top": 269.21875,
+          "height": 900.166015625,
+          "recordsHeight": 558.10546875,
+          "notices": [],
+          "rows": 1000
+        },
+        {
+          "ms": 40.199999928474426,
+          "top": 269.21875,
+          "height": 900.166015625,
+          "recordsHeight": 558.10546875,
+          "notices": [],
+          "rows": 1000
+        },
+        {
+          "ms": 124.19999992847443,
+          "top": 269.21875,
+          "height": 900.166015625,
+          "recordsHeight": 558.10546875,
+          "notices": [],
+          "rows": 1000
+        },
+        {
+          "ms": 3163.6999999284744,
+          "top": 269.21875,
+          "height": 900.166015625,
+          "recordsHeight": 558.10546875,
+          "notices": [],
+          "rows": 1000
+        },
+        {
+          "ms": 3242.399999976158,
+          "top": 269.21875,
+          "height": 900.166015625,
+          "recordsHeight": 558.10546875,
+          "notices": [],
+          "rows": 1000
+        },
+        {
+          "ms": 6283.5,
+          "top": 269.21875,
+          "height": 900.166015625,
+          "recordsHeight": 558.10546875,
+          "notices": [],
+          "rows": 1000
+        },
+        {
+          "ms": 6365.199999928474,
+          "top": 269.21875,
+          "height": 900.166015625,
+          "recordsHeight": 558.10546875,
+          "notices": [],
+          "rows": 1000
+        },
+        {
+          "ms": 6666.099999904633,
+          "top": 269.21875,
+          "height": 900.166015625,
+          "recordsHeight": 558.10546875,
+          "notices": [],
+          "rows": 1000
+        }
+      ]
+    }
+  }
+}

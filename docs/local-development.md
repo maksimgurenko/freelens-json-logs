@@ -25,8 +25,8 @@ npm run typecheck
 npm test
 npm run package
 npm run check:package
-tar -tzf dist/freelens-readable-logs-0.1.19.tgz
-sha256sum dist/freelens-readable-logs-0.1.19.tgz
+tar -tzf dist/freelens-readable-logs-0.1.20.tgz
+sha256sum dist/freelens-readable-logs-0.1.20.tgz
 ```
 
 The locked esbuild platform package supplies its binary without install scripts.
@@ -81,7 +81,9 @@ original is preserved, including host-owned migration metadata. Main owns durabl
 
 Raw mode, selected record, content tab, timestamps and word wrap are temporary.
 New views start Readable, without selection, with timestamps on and wrap off.
-Selecting a row never pauses automatic updates. If the selected exact record
+Bottom Inspection opens when a record is selected and occupies no space when
+selection is cleared or leaves the recent window; the saved Bottom preference
+remains selected. Side retains its empty selection guidance. Selecting a row never pauses automatic updates. If the selected exact record
 leaves the recent window, selection clears; Pause keeps the current window for
 inspection. All fields includes extracted/hidden fields. Copy application text
 and Copy transport line use retained originals, including their original spacing,
@@ -123,7 +125,7 @@ Follow [the accepted procedure](https://github.com/maksimgurenko/freelens-json-l
 2. For an update, **Uninstall** the old package and wait for removal to finish,
    retaining its saved extension settings. Install the new tarball via the form
    **once** and wait. Do not use the overwrite/reinstallation prompt.
-3. Check version **0.1.19** and Enabled, then open the cluster. Open a Pod's details
+3. Check version **0.1.20** and Enabled, then open the cluster. Open a Pod's details
    header and click the **Readable logs** icon beside the native actions. Verify
    cluster, namespace, Pod UID, container, the expected active profile and usable logs.
    Do not restart after installation as a substitute for passing this check.
@@ -151,6 +153,11 @@ do not imply seconds or milliseconds. Application timestamp candidates require
 RFC 3339 with an explicit zone; display uses the computer's local timezone.
 Original precision, JSON whitespace and all parsed fields remain in core state.
 Raw inspection and clipboard controls are subsequent ticket work.
+
+Routine loading/waiting feedback uses the fixed update-status area beside
+Pause/Refresh, without inserting a banner above the log window on every read.
+The records region exposes its busy state to accessibility tools; slow requests
+and failures retain their explicit notices.
 
 An active selected target fetches immediately, then three seconds after each
 successful request settles. Snapshots replace the window, preserving repeated

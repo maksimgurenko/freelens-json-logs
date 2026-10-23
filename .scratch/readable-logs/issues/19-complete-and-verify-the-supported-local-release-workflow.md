@@ -54,3 +54,20 @@ retains the production runtime source and stable identities, with new versioned
 entry paths and an exact project-local toolchain invocation in the packaged guide.
 Release-level installation and final validation are still in progress; no
 unchecked acceptance criterion is claimed complete by this checkpoint.
+
+### Operator feedback: refresh flicker and empty Bottom inspector
+
+The user reported a brief box containing “snapshot” above the log area and
+clarified that Bottom Inspection must occupy no space without a selected record.
+The supplied screenshot `/tmp/codex-clipboard-DRvxxX.png` was inspected.
+On installed 0.1.19, `refresh-flicker.js` captured three automatic-refresh banner
+insertions and a 44.99 px change in log-area top/height; rows stayed at 1,000.
+A temporary extension-only style hiding only transient notices reduced both
+changes to zero, isolating the in-flow loading banner. `bottom-inspector.js`
+also fails on the existing empty Bottom placeholder. These red-capable actual
+host probes are retained under `docs/verification/19/`.
+The 0.1.20 candidate moves routine loading/waiting feedback to a fixed-width
+existing update-status slot, marks the records region busy for accessibility,
+and renders Bottom Inspection only for a valid selected record. Side, saved
+Bottom preference, selection/copy behavior, error and slow notices remain.
+Actual packaged fix validation is still required before completion.

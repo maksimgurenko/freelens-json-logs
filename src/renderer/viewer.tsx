@@ -55,6 +55,10 @@ export function Viewer({ target, register, visibility, preferences }: ViewerProp
     return () => { unregister(); dispose(); };
   }, [target.clusterId, target.namespace, target.podName, target.podUid, register, visibility]);
   const snapshot = state?.snapshot;
+  const updateStatus = !state || state.phase === 'loading-pod' ? 'Loading Pod…'
+    : state.waiting ? 'Waiting for earlier request…'
+    : state.refreshing ? state.paused ? 'Paused · reading snapshot…' : 'Reading snapshot…'
+    : state.paused ? 'Paused' : state.error ? 'Automatic updates stopped' : 'Automatic updates';
   const records = snapshot?.records ?? EMPTY_RECORDS;
   const profileContext = useMemo(() => ({ namespace: target.namespace, container: state?.container ?? '', labels: state?.podLabels ?? {} }),
     [target.namespace, state?.container, state?.podLabels]);
@@ -131,7 +135,7 @@ export function Viewer({ target, register, visibility, preferences }: ViewerProp
           onClick={() => { if (state?.paused) void session?.resume(); else session?.pause(); }}>{state?.paused ? 'Resume' : 'Pause'}</button>
         <button type="button" disabled={!state?.container || state.gone || state.phase === 'closed' || state.refreshing || state.waiting}
           onClick={() => { void session?.refresh(); }}>Refresh</button>
-        <span role="status">{state?.paused ? 'Paused' : state?.error ? 'Automatic updates stopped' : 'Automatic updates'}</span>
+        <span role="status">{updateStatus}</span>
       </div>
     </div>
     <div className="rl-findbar" role="search" aria-label="Find in logs" hidden={editingProfiles}>
@@ -157,9 +161,6 @@ export function Viewer({ target, register, visibility, preferences }: ViewerProp
     </div>
     <SettingsRecovery preferences={preferences} saved={preference} />
     {state?.lifecycleNotice && <p className="rl-notice" role="status">{state.lifecycleNotice}{state.paused ? ' Paused; select Refresh or Resume to read the current instance.' : ''}</p>}
-    {(!state || state.phase === 'loading-pod') && <p className="rl-notice" role="status">Loading Pod…</p>}
-    {state?.refreshing && <p className="rl-notice" role="status">Reading log snapshot…</p>}
-    {state?.waiting && <p className="rl-notice" role="status">Waiting for the earlier request to finish before fetching fresh logs…</p>}
     {state?.slow && <p className="rl-notice" role="status">The log request is taking longer than 15 seconds. You can pause or leave this view. Another request for this target must wait for it to finish.</p>}
     {state?.phase === 'choose-container' && <p className="rl-notice" role="status">This Pod has no regular container. Select an init or ephemeral container to read its logs.</p>}
     {state?.error && <div className="rl-notice rl-error" role="alert"><strong>{state.outdated ? 'Logs are outdated · automatic updates stopped' : 'Unable to read logs'}</strong><p>{state.error}</p>
@@ -173,7 +174,8 @@ export function Viewer({ target, register, visibility, preferences }: ViewerProp
     {scroll.lost && <p className="rl-notice" role="status">Your scroll position left the recent log window. Use To bottom to follow new output.</p>}
     {editingProfiles && <ProfileEditor preferences={preferences} onClose={() => { setEditingProfiles(false); profilesButton.current?.focus(); }} />}
     <div className={`rl-work rl-layout-${preference.inspection}`} hidden={editingProfiles}>
-    <div ref={scroller} className={`rl-records${wrap ? ' rl-wrap' : ''}`} tabIndex={0} aria-label="Container log records">
+    <div ref={scroller} className={`rl-records${wrap ? ' rl-wrap' : ''}`} tabIndex={0} aria-label="Container log records"
+      aria-busy={!state || state.phase === 'loading-pod' || state.refreshing || state.waiting}>
       {records.map((record, recordIndex) => {
         const formatted = formattedRecords[recordIndex];
         const isSelected = recordIndex === index;
@@ -195,7 +197,7 @@ export function Viewer({ target, register, visibility, preferences }: ViewerProp
         </div>;
       })}
     </div>
-    {preference.inspection !== 'inline' && <aside className="rl-inspector" aria-label="Record inspector">
+    {preference.inspection !== 'inline' && (preference.inspection !== 'bottom' || selected) && <aside className="rl-inspector" aria-label="Record inspector">
       {inspector || <p className="rl-inspector-empty">Select a record to inspect all fields or copy its exact original text. Automatic updates continue while inspecting; use Pause to keep the current window.</p>}
     </aside>}
     </div>
