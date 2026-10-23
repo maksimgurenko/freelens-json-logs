@@ -19,7 +19,7 @@ export function visibilityChannel(extension: Renderer.LensExtension): Visibility
   };
 }
 export const PAGE_ID = 'readable-logs';
-export const PACKAGE_VERSION = '0.1.7';
+export const PACKAGE_VERSION = '0.1.9';
 // Retain outstanding same-target guards across page unmount/reopen and disable.
 export const freelensRequests = new LogRequests();
 export type PageParams = { namespace: Renderer.Navigation.PageParam<string>; pod: Renderer.Navigation.PageParam<string>; podUid: Renderer.Navigation.PageParam<string>; clusterId: Renderer.Navigation.PageParam<string> };

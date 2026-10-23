@@ -2,15 +2,17 @@ import { Main } from '@freelensapp/extensions';
 import { BrowserWindow } from 'electron';
 import { VISIBILITY_REQUEST, VISIBILITY_STOP } from './adapter/visibility.ts';
 import { watchWindowVisibility } from './adapter/window-visibility.ts';
+import { configurationStore } from './adapter/configuration-store.ts';
 
 class VisibilityIpc extends Main.Ipc {}
 
-// Durable configuration remains later-ticket work. Main observes native windows
-// even when the viewer is inside a CSS-hidden cross-origin cluster frame.
+// Main owns durable settings and observes native windows, including CSS-hidden frames.
 export default class ReadableLogsMain extends Main.LensExtension {
   private subscriptions = new Map<string, () => void>();
   private listeners: (() => void)[] = [];
   onActivate() {
+    try { configurationStore.loadExtension(this); }
+    catch (error) { configurationStore.failed(error); }
     const ipc = VisibilityIpc.createInstance(this);
     // Broadcast callbacks in 1.10.3 have no sender. RPC preserves the requesting
     // webContents, so each viewer observes its own window rather than focused state.

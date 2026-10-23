@@ -25,11 +25,13 @@ try {
   // Test the actual packed CommonJS modules with host globals; do not execute host operations.
   const stub = class {};
   class IpcStub { static createInstance() { return { listen: () => () => {}, broadcast: () => {} }; } }
-  global.LensExtensions = { Main: { LensExtension: stub, Ipc: IpcStub }, Renderer: { LensExtension: stub, Ipc: IpcStub } };
+  class StoreStub { static getInstanceOrCreate() { return new this(); } }
+  global.LensExtensions = { Common: { Store: { ExtensionStore: StoreStub } }, Main: { LensExtension: stub, Ipc: IpcStub }, Renderer: { LensExtension: stub, Ipc: IpcStub } };
   const { createRequire } = await import('node:module');
   const require = createRequire(import.meta.url);
   global.React = require('react');
   global.MobxReact = require('mobx-react');
+  global.Mobx = require('mobx');
   const originalLoad = Module._load;
   Module._load = function(id, ...args) { return id === 'electron' ? { BrowserWindow: {} } : originalLoad.call(this, id, ...args); };
   for (const entry of [packed.main, packed.renderer]) {

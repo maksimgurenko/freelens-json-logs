@@ -1,0 +1,18 @@
+{
+  "at": "2026-10-23T00:29:47.065Z",
+  "result": {
+    "type": "object",
+    "value": {
+      "sameObject": true,
+      "sameMethod": false,
+      "globalMethod": false,
+      "descriptor": {
+        "value": {},
+        "writable": true,
+        "enumerable": true,
+        "configurable": true
+      },
+      "root": "Readable logs\n\nkind-freelens-json-logs-spike / readable-logs-spike / single-json\n\nsingle-json\nContainer\njson\nempty\nProfile Auto ·\nDefault\nPause\nRefresh\nAutomatic updates\nCluster 770814298afe692457d07d8b15d6b8d3 · Pod UID 0035d4f0-23c6-4e7d-93b2-c1d13a41cb92\nInspection\nInline expansion\nSide inspector\nBottom inspector\nReadable\nRaw\n10/21/2026, 22:18:05\nINFO\nfreelens-json-logs-spike\n2 fields\nRecord\nClose\nAll fields\nApplication text\nTransport line\n\nCo"
+    }
+  }
+}

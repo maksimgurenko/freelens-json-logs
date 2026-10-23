@@ -1,0 +1,14 @@
+{
+  "at": "2026-10-23T00:25:33.515Z",
+  "result": {
+    "type": "object",
+    "value": {
+      "version": "0.1.9",
+      "layout": "bottom",
+      "raw": "true",
+      "selected": true,
+      "wrap": true,
+      "probe": false
+    }
+  }
+}

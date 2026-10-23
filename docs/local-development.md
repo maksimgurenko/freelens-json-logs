@@ -1,11 +1,11 @@
 # Build and install Readable logs
 
-This production implementation includes bounded snapshots and explicit automatic
-refresh, Pause/Resume, Refresh and Retry (GitHub #11–12). Ticket #13 adds
-visibility and Pod/container lifecycle handling; its verification is recorded under `docs/verification/13/`. Inspection and saved-profile
-tickets are not implemented yet. The
-accepted requirements in GitHub #8 and its resolution links take precedence over
-the feasibility research in the root README and all disposable prototypes.
+This production implementation includes bounded snapshots, automatic refresh,
+Pause/Resume, explicit recovery and Pod/container lifecycle handling (GitHub #11–13).
+Ticket #14 adds complete-record inspection in Inline, Side and Bottom layouts,
+Raw presentation, exact original clipboard actions and a saved global Inspection
+preference. Saved formatting profiles and scroll/Find remain later tickets.
+The accepted GitHub #8 contract and its linked resolutions govern implementation.
 
 Supported host: **Freelens 1.10.3 only**, currently tested on Arch Linux/Wayland.
 Build toolchain: **Node 24.18.0, npm 11.16.0, TypeScript 5.9.3, esbuild 0.28.2**.
@@ -24,8 +24,8 @@ npm run typecheck
 npm test
 npm run package
 npm run check:package
-tar -tzf dist/freelens-readable-logs-0.1.7.tgz
-sha256sum dist/freelens-readable-logs-0.1.7.tgz
+tar -tzf dist/freelens-readable-logs-0.1.9.tgz
+sha256sum dist/freelens-readable-logs-0.1.9.tgz
 ```
 
 The locked esbuild platform package supplies its binary without install scripts.
@@ -41,9 +41,35 @@ Running the same build twice yields the same tarball bytes with this toolchain.
 
 Stable package identifier: **freelens-readable-logs**. Stable `storeName`:
 **freelens-readable-logs**. Page ID: **readable-logs**. These identifiers remain
-stable across updates. This milestone creates no configuration or store file;
-main relays window visibility, but has no durable writes yet.
-Saved-profile persistence is not implemented in this milestone.
+stable across updates. Versioned CommonJS entry paths prevent host module-cache
+reuse when updating a different package version.
+
+## Configuration and temporary state
+
+The matching main/renderer `Common.Store.ExtensionStore` uses config name
+**readable-logs**, under the stable package/store name above. On this host its file
+is `~/.config/Freelens/extension-store/freelens-readable-logs/readable-logs.json`.
+Main owns durable writes; renderer changes synchronize through the host store.
+Schema **1** currently stores `schemaVersion: 1` and
+`viewer.inspection: "inline" | "side" | "bottom"`, initially `"side"`. This is a
+global viewer preference, separate from future formatting-profile configuration.
+There are no historical schemas to migrate yet. Unknown versions/invalid layouts
+are rejected for editing; the viewer reports the problem and uses Side. Full
+corrupt/newer-file recovery and backed-up reset remain ticket #18.
+
+Raw mode, selected record, content tab, timestamps and word wrap are temporary.
+New views start Readable, without selection, with timestamps on and wrap off.
+Selecting a row never pauses automatic updates. If the selected exact record
+leaves the recent window, selection clears; Pause keeps the current window for
+inspection. All fields includes extracted/hidden fields. Copy application text
+and Copy transport line use retained originals, including their original spacing,
+JSON escapes and timestamp precision; the pretty All fields view is not an exact
+JSON serialization of the received text.
+
+A normal full quit/reopen restores Inspection. Uninstall retains this extension's
+settings. To remove only its settings explicitly, quit Freelens and remove only
+`~/.config/Freelens/extension-store/freelens-readable-logs/`. This milestone has no
+reset control or backup files. Do not remove the shared `extension-store` directory.
 
 ## Supported local maintenance
 
@@ -52,10 +78,14 @@ filesystem as `~/.freelens/extensions`:
 
 ```sh
 mkdir -p "$HOME/.cache/freelens-readable-logs/tmp"
-TMPDIR="$HOME/.cache/freelens-readable-logs/tmp" /usr/bin/freelens
+CHOKIDAR_USEPOLLING=1 CHOKIDAR_INTERVAL=100 \
+  TMPDIR="$HOME/.cache/freelens-readable-logs/tmp" /usr/bin/freelens
 ```
 
-This changes only this host process's temporary-directory environment. It does
+These variables apply only to this host process. Filesystem polling is required
+by the observed validation launch: two event-watcher installs failed discovery,
+then the polling launch discovered and installed the package. The underlying
+event-watcher failure remains unestablished. It does
 not change Freelens code or global configuration. Earlier install attempts on
 this machine timed out after extraction without discovery; filesystem probes
 alone did not establish their cause. Keep a failed install distinct from a
@@ -70,7 +100,7 @@ Follow [the accepted procedure](https://github.com/maksimgurenko/freelens-json-l
 2. For an update, **Uninstall** the old package and wait for removal to finish,
    retaining its saved extension settings. Install the new tarball via the form
    **once** and wait. Do not use the overwrite/reinstallation prompt.
-3. Check version **0.1.7** and Enabled, then open the cluster. Open a Pod's details
+3. Check version **0.1.9** and Enabled, then open the cluster. Open a Pod's details
    header and click the **Readable logs** icon beside the native actions. Verify
    cluster, namespace, Pod UID, container and **Default** profile, and usable logs.
    Do not restart after installation as a substitute for passing this check.

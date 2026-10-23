@@ -1,6 +1,6 @@
 # 13: Handle container and Pod lifecycle changes
 
-**Status:** ready-for-agent
+**Status:** done
 
 **Blocked by:** [12: Refresh, pause, and recover from request failures](12-refresh-pause-and-recover-from-request-failures.md)
 

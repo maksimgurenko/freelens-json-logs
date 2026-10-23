@@ -1,0 +1,14 @@
+{
+  "at": "2026-10-23T00:24:46.730Z",
+  "result": {
+    "type": "object",
+    "value": {
+      "before": {
+        "layout": "bottom",
+        "raw": "true",
+        "selected": "0"
+      },
+      "probeRemoved": true
+    }
+  }
+}

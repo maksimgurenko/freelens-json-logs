@@ -24,8 +24,13 @@
 .readable-logs .rl-error { color: var(--textColorAccent, #e3e5e8); border-block: 1px solid var(--colorSoftError, #e85555); }
 .readable-logs .rl-error p { margin-top: 6px; }
 .readable-logs .rl-empty { padding: 32px 24px; }
-.readable-logs .rl-records { flex: 1; min-height: 0; overflow: auto; padding: 8px 16px; font: 12px/1.65 var(--font-monospace, monospace); tab-size: 2; }
+.readable-logs .rl-work { display: flex; flex: 1; min-height: 0; overflow: hidden; }
+.readable-logs .rl-records { flex: 1; min-width: 0; min-height: 0; overflow: auto; padding: 8px 16px; font: 12px/1.65 var(--font-monospace, monospace); tab-size: 2; }
 .readable-logs .rl-row { display: flex; gap: 12px; min-height: 1.65em; width: max-content; min-width: 100%; }
+.readable-logs .rl-row[role="button"] { cursor: pointer; padding: 2px 4px; }
+.readable-logs .rl-row:focus-visible { outline-offset: -2px; }
+.readable-logs .rl-selected > .rl-row { background: var(--tableBgcSelected, #263737); }
+.readable-logs .rl-fields { color: var(--textColorSecondary, #a6adb5); white-space: nowrap; font: 11px/1.8 var(--font-main, sans-serif); }
 .readable-logs .rl-row:hover { background: var(--tableBgcStripe, #2a2d33); }
 .readable-logs time { color: var(--textColorSecondary, #a6adb5); flex: none; white-space: pre; font-variant-numeric: tabular-nums; }
 .readable-logs .rl-level { flex: none; min-width: 5ch; white-space: pre; }
@@ -39,3 +44,24 @@
 .readable-logs input { accent-color: var(--primary, #00a7a0); }
 .readable-logs .rl-version { margin-left: auto; }
 .readable-logs ::selection { background: var(--primary, #00a7a0); color: var(--mainBackground, #1e2124); }
+.readable-logs .rl-formatbar { display: flex; align-items: center; flex-wrap: wrap; gap: 16px; padding: 7px 24px; border-bottom: 1px solid var(--borderFaintColor, #373a3e); }
+.readable-logs .rl-modes { display: flex; margin-inline-start: auto; gap: 4px; }
+.readable-logs button[aria-pressed="true"] { background: var(--tableBgcSelected, #263737); border-color: var(--textColorSecondary, #a6adb5); }
+.readable-logs .rl-inspector { flex: 0 0 38%; min-width: 260px; max-width: 43%; overflow: auto; border-inline-start: 1px solid var(--borderFaintColor, #373a3e); background: var(--contentColor, #262b2f); }
+.readable-logs .rl-inspector-empty { padding: 24px 18px; color: var(--textColorSecondary, #a6adb5); line-height: 1.7; }
+.readable-logs .rl-layout-bottom { flex-direction: column; }
+.readable-logs .rl-layout-bottom .rl-inspector { min-width: 0; max-width: none; border-inline-start: 0; border-top: 1px solid var(--borderFaintColor, #373a3e); }
+.readable-logs .rl-detail { display: flex; flex-direction: column; min-width: 0; height: 100%; font: 13px/1.6 var(--font-main, sans-serif); background: var(--contentColor, #262b2f); }
+.readable-logs .rl-layout-inline .rl-detail { height: auto; max-height: 380px; border-block: 1px solid var(--borderFaintColor, #373a3e); }
+.readable-logs .rl-detail-head { display: flex; align-items: center; justify-content: space-between; padding: 10px 14px; gap: 12px; }
+.readable-logs .rl-detail-tabs { display: flex; flex-wrap: wrap; gap: 4px; padding: 0 14px 8px; border-bottom: 1px solid var(--borderFaintColor, #373a3e); }
+.readable-logs .rl-detail-tabs button, .readable-logs .rl-copy button { padding: 4px 8px; font-size: 12px; }
+.readable-logs .rl-detail-body { padding: 12px 16px; flex: 1; min-height: 40px; overflow: auto; }
+.readable-logs .rl-detail-body p { color: var(--textColorSecondary, #a6adb5); font-size: 12px; margin-bottom: 10px; }
+.readable-logs .rl-detail pre { white-space: pre-wrap; overflow-wrap: anywhere; tab-size: 2; margin: 0; font: 12px/1.65 var(--font-monospace, monospace); }
+.readable-logs .rl-copy { display: flex; flex-wrap: wrap; gap: 8px; padding: 10px 14px; border-top: 1px solid var(--borderFaintColor, #373a3e); }
+.readable-logs .rl-copy [role="status"] { flex-basis: 100%; color: var(--textColorSecondary, #a6adb5); font-size: 12px; }
+@media (max-width: 800px) {
+  .readable-logs .rl-layout-side { flex-direction: column; }
+  .readable-logs .rl-layout-side .rl-inspector { min-width: 0; max-width: none; border-inline-start: 0; border-top: 1px solid var(--borderFaintColor, #373a3e); }
+}

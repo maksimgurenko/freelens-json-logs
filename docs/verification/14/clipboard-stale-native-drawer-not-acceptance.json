@@ -1,0 +1,95 @@
+{
+  "at": "2026-10-23T00:30:38.158Z",
+  "result": {
+    "type": "object",
+    "value": {}
+  },
+  "exceptionDetails": {
+    "exceptionId": 3,
+    "text": "Uncaught (in promise) TypeError: Cannot read properties of undefined (reading 'click')",
+    "lineNumber": 25,
+    "columnNumber": 75,
+    "scriptId": "454",
+    "stackTrace": {
+      "callFrames": [
+        {
+          "functionName": "select",
+          "scriptId": "454",
+          "url": "",
+          "lineNumber": 24,
+          "columnNumber": 74
+        },
+        {
+          "functionName": "",
+          "scriptId": "454",
+          "url": "",
+          "lineNumber": 25,
+          "columnNumber": 8
+        },
+        {
+          "functionName": "",
+          "scriptId": "126",
+          "url": "node:electron/js2c/renderer_init",
+          "lineNumber": 1,
+          "columnNumber": 3672
+        },
+        {
+          "functionName": "onDestroy",
+          "scriptId": "108",
+          "url": "node:internal/streams/destroy",
+          "lineNumber": 117,
+          "columnNumber": 14
+        },
+        {
+          "functionName": "Readable._destroy",
+          "scriptId": "111",
+          "url": "node:internal/streams/readable",
+          "lineNumber": 368,
+          "columnNumber": 2
+        },
+        {
+          "functionName": "_destroy",
+          "scriptId": "108",
+          "url": "node:internal/streams/destroy",
+          "lineNumber": 121,
+          "columnNumber": 9
+        },
+        {
+          "functionName": "destroy",
+          "scriptId": "108",
+          "url": "node:internal/streams/destroy",
+          "lineNumber": 83,
+          "columnNumber": 4
+        },
+        {
+          "functionName": "Writable.destroy",
+          "scriptId": "115",
+          "url": "node:internal/streams/writable",
+          "lineNumber": 1119,
+          "columnNumber": 10
+        },
+        {
+          "functionName": "finish",
+          "scriptId": "115",
+          "url": "node:internal/streams/writable",
+          "lineNumber": 965,
+          "columnNumber": 13
+        },
+        {
+          "functionName": "processTicksAndRejections",
+          "scriptId": "33",
+          "url": "node:internal/process/task_queues",
+          "lineNumber": 89,
+          "columnNumber": 20
+        }
+      ]
+    },
+    "exception": {
+      "type": "object",
+      "subtype": "error",
+      "className": "TypeError",
+      "description": "TypeError: Cannot read properties of undefined (reading 'click')\n    at select (<anonymous>:25:75)\n    at <anonymous>:26:9\n    at process.nextTick (node:electron/js2c/renderer_init:2:3673)\n    at onDestroy (node:internal/streams/destroy:118:15)\n    at Readable._destroy (node:internal/streams/readable:369:3)\n    at _destroy (node:internal/streams/destroy:122:10)\n    at PassThrough.destroy (node:internal/streams/destroy:84:5)\n    at Writable.destroy (node:internal/streams/writable:1120:11)\n    at finish (node:internal/streams/writable:966:14)\n    at process.processTicksAndRejections (node:internal/process/task_queues:90:21)",
+      "objectId": "4855529148076495910.2.6"
+    }
+  }
+}
