@@ -2,6 +2,7 @@
   display: flex; flex-direction: column; height: 100%; min-height: 0;
   color: var(--textColorAccent, #e3e5e8); background: var(--mainBackground, #1e2124);
 }
+.readable-logs [hidden] { display: none; }
 .readable-logs .rl-heading { padding: 20px 24px 14px; }
 .readable-logs h1 { margin: 0 0 6px; font-size: 20px; font-weight: 500; }
 .readable-logs p { margin: 0; }
@@ -39,6 +40,7 @@
 .readable-logs .rl-severity-error, .readable-logs .rl-severity-fatal { color: #ff8d88; }
 .readable-logs .rl-severity-info { color: #6bdbd4; }
 .readable-logs .rl-message { white-space: pre; }
+.readable-logs .rl-inline-field { color: var(--textColorSecondary, #a6adb5); white-space: pre; max-width: 45ch; overflow: hidden; text-overflow: ellipsis; }
 .readable-logs .rl-wrap .rl-row { width: auto; }
 .readable-logs .rl-wrap .rl-message { white-space: pre-wrap; overflow-wrap: anywhere; min-width: 0; }
 .readable-logs .rl-footer { display: flex; align-items: center; flex-wrap: wrap; gap: 16px; padding: 10px 16px; border-top: 1px solid var(--borderFaintColor, #373a3e); }
@@ -69,4 +71,31 @@
 @media (max-width: 800px) {
   .readable-logs .rl-layout-side { flex-direction: column; }
   .readable-logs .rl-layout-side .rl-inspector { min-width: 0; max-width: none; border-inline-start: 0; border-top: 1px solid var(--borderFaintColor, #373a3e); }
+}
+.readable-logs .rl-profile-editor { display: flex; flex-direction: column; flex: 1; min-height: 0; overflow: auto; padding: 16px 24px; gap: 14px; }
+.readable-logs .rl-editor-head { display: flex; justify-content: space-between; align-items: center; gap: 16px; }
+.readable-logs h2 { font-size: 18px; font-weight: 500; margin: 0; }
+.readable-logs h3 { font-size: 14px; font-weight: 500; margin: 16px 0 8px; }
+.readable-logs .rl-editor-help, .readable-logs .rl-path-field > span { color: var(--textColorSecondary, #a6adb5); font-size: 12px; line-height: 1.6; max-width: 75ch; }
+.readable-logs .rl-profile-management, .readable-logs .rl-editor-actions { display: flex; align-items: center; flex-wrap: wrap; gap: 8px; }
+.readable-logs .rl-profile-management { padding-block: 10px; border-block: 1px solid var(--borderFaintColor, #373a3e); }
+.readable-logs .rl-profile-management > label:last-child { margin-inline-start: auto; }
+.readable-logs .rl-editor-columns { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 28px; align-items: start; }
+.readable-logs .rl-editor-fields { display: flex; flex-direction: column; gap: 14px; }
+.readable-logs .rl-path-field { display: flex; flex-direction: column; align-items: stretch; gap: 5px; }
+.readable-logs .rl-profile-editor input, .readable-logs .rl-profile-editor textarea { font: inherit; color: inherit; background: var(--contentColor, #262b2f); border: 1px solid var(--borderColor, #4c5053); border-radius: 3px; padding: 6px 8px; min-width: 0; caret-color: var(--primary, #00a7a0); }
+.readable-logs .rl-profile-editor textarea { font: 12px/1.5 var(--font-monospace, monospace); resize: vertical; width: 100%; box-sizing: border-box; }
+.readable-logs .rl-profile-editor :is(input, textarea):disabled { opacity: .65; }
+.readable-logs .rl-profile-editor textarea::placeholder { color: var(--textColorSecondary, #a6adb5); opacity: 1; }
+.readable-logs .rl-mapping { border: 0; border-top: 1px solid var(--borderFaintColor, #373a3e); padding: 12px 0 0; min-width: 0; }
+.readable-logs .rl-mapping-row { display: flex; flex-wrap: wrap; gap: 6px; margin-block: 10px; }
+.readable-logs .rl-mapping-row input { flex: 1; width: 10ch; }
+.readable-logs .rl-preview-record { border-bottom: 1px solid var(--borderFaintColor, #373a3e); padding-block: 8px; }
+.readable-logs .rl-preview-record pre { margin: 4px 0; font: 12px/1.6 var(--font-monospace, monospace); white-space: pre-wrap; overflow-wrap: anywhere; }
+.readable-logs .rl-editor-save { border-top: 1px solid var(--borderFaintColor, #373a3e); padding-top: 12px; }
+.readable-logs .rl-editor-save ul { margin: 0 0 12px; padding-inline-start: 20px; color: var(--textColorAccent, #e3e5e8); }
+.readable-logs .rl-editor-save p { margin-bottom: 8px; }
+@media (max-width: 1000px) {
+  .readable-logs .rl-editor-columns { grid-template-columns: minmax(0, 1fr); gap: 18px; }
+  .readable-logs .rl-profile-management > label:last-child { margin-inline-start: 0; }
 }

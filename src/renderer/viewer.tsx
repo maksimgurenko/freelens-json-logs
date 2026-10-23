@@ -2,7 +2,7 @@ import React, { useEffect, useLayoutEffect, useMemo, useRef, useState } from 're
 import { bindVisibility, type VisibilityChannel } from '../adapter/visibility.ts';
 import { freelensPort, freelensRequests, PACKAGE_VERSION } from '../adapter/freelens.ts';
 import { SnapshotSession, type SnapshotState } from '../core/session.ts';
-import { displayTimestamp, formatDefault } from '../core/records.ts';
+import { displayTimestamp, recordFormatter } from '../core/records.ts';
 import type { LogRecord } from '../core/records.ts';
 import { initialInspection, originalText, selectRecord, selectedIndex, type RecordContent } from '../core/inspection.ts';
 import type { ViewerPreferences } from '../core/configuration.ts';
@@ -11,6 +11,8 @@ import type { LogTarget } from '../core/target.ts';
 import { findMatches, moveMatch, retainedIndex } from '../core/navigation.ts';
 import { LogViewport, type ViewportStatus } from './log-viewport.ts';
 import styles from './viewer.css';
+import { activeProfile, BUILTIN_PROFILE_ID, builtinProfile } from '../core/profiles.ts';
+import { ProfileEditor } from './profile-editor.tsx';
 
 interface ViewerProps { target: LogTarget; register: (dispose: () => void) => () => void; visibility: VisibilityChannel; preferences: ViewerPreferences }
 const EMPTY_RECORDS: readonly LogRecord[] = [];
@@ -31,6 +33,8 @@ export function Viewer({ target, register, visibility, preferences }: ViewerProp
   const [wrap, setWrap] = useState(false);
   const [inspection, setInspection] = useState(initialInspection);
   const [preference, setPreference] = useState(() => preferences.read());
+  const [editingProfiles, setEditingProfiles] = useState(false);
+  const profilesButton = useRef<HTMLButtonElement>(null);
   useEffect(() => {
     const changed = () => setPreference(preferences.read());
     const stop = preferences.subscribe(changed);
@@ -51,8 +55,13 @@ export function Viewer({ target, register, visibility, preferences }: ViewerProp
   }, [target.clusterId, target.namespace, target.podName, target.podUid, register, visibility]);
   const snapshot = state?.snapshot;
   const records = snapshot?.records ?? EMPTY_RECORDS;
-  // A future profile formatter replaces this one dependency, for rows and Find alike.
-  const formattedRecords = useMemo(() => records.map(formatDefault), [records]);
+  const profile = useMemo(() => activeProfile(preference.configuration, state?.manualProfile), [preference.configuration, state?.manualProfile]);
+  useEffect(() => {
+    if (state?.manualProfile && state.manualProfile !== BUILTIN_PROFILE_ID &&
+      !preference.configuration.profiles.some(profile => profile.id === state.manualProfile)) session?.selectProfile();
+  }, [state?.manualProfile, preference.configuration, session]);
+  useEffect(() => setEditingProfiles(false), [state?.container]);
+  const formattedRecords = useMemo(() => records.map(recordFormatter(profile.format)), [records, profile.format]);
   const messages = useMemo(() => formattedRecords.map(record => record.message), [formattedRecords]);
   const matches = useMemo(() => findMatches(records, messages, query), [records, messages, query]);
   const mappedCursor = retainedIndex(cursor.records, records, cursor.index);
@@ -66,6 +75,7 @@ export function Viewer({ target, register, visibility, preferences }: ViewerProp
     return () => { current.dispose(); viewport.current = undefined; };
   }, []);
   useLayoutEffect(() => {
+    if (editingProfiles) return;
     viewport.current?.update(records);
     if (requestedMatch.current !== undefined) {
       viewport.current?.show(requestedMatch.current);
@@ -107,7 +117,12 @@ export function Viewer({ target, register, visibility, preferences }: ViewerProp
           {state?.containers.filter(container => container.kind === kind).map(container => <option key={container.name} value={container.name}>{container.name}</option>)}
         </optgroup>)}
       </select></label>
-      <span className="rl-profile">Profile Auto · <strong>Default</strong></span>
+      <label className="rl-profile">Profile <select aria-label="Profile" value={state?.manualProfile ?? ''}
+        disabled={!session || state?.phase === 'closed'} onChange={event => session?.selectProfile(event.target.value || undefined)}>
+        <option value="">Auto · {activeProfile(preference.configuration).name}</option>
+        {[builtinProfile(), ...preference.configuration.profiles].map(profile => <option key={profile.id} value={profile.id}>{profile.name}</option>)}
+      </select></label>
+      <button ref={profilesButton} type="button" onClick={() => setEditingProfiles(value => !value)} aria-expanded={editingProfiles}>Profiles</button>
       <div className="rl-controls" role="group" aria-label="Log updates">
         <button type="button" disabled={!state?.container || state.gone || state.phase === 'closed'}
           onClick={() => { if (state?.paused) void session?.resume(); else session?.pause(); }}>{state?.paused ? 'Resume' : 'Pause'}</button>
@@ -116,7 +131,7 @@ export function Viewer({ target, register, visibility, preferences }: ViewerProp
         <span role="status">{state?.paused ? 'Paused' : state?.error ? 'Automatic updates stopped' : 'Automatic updates'}</span>
       </div>
     </div>
-    <div className="rl-findbar" role="search" aria-label="Find in logs">
+    <div className="rl-findbar" role="search" aria-label="Find in logs" hidden={editingProfiles}>
       <label htmlFor="rl-find">Find</label>
       <input id="rl-find" type="search" aria-label="Find in logs" placeholder="Find in application text or message"
         value={query} onChange={event => changeQuery(event.target.value)}
@@ -125,8 +140,8 @@ export function Viewer({ target, register, visibility, preferences }: ViewerProp
       <button type="button" disabled={!matches.length} onClick={() => navigateMatch(-1)}>Previous</button>
       <button type="button" disabled={!matches.length} onClick={() => navigateMatch(1)}>Next</button>
     </div>
-    <div className="rl-identity">Cluster {target.clusterId} · Pod UID {target.podUid}</div>
-    <div className="rl-formatbar">
+    <div className="rl-identity">Cluster {target.clusterId} · Pod UID {target.podUid} · Active profile {profile.name}</div>
+    <div className="rl-formatbar" hidden={editingProfiles}>
       <label>Inspection <select aria-label="Inspection" title="Saved globally, separately from formatting profiles"
         value={preference.inspection} disabled={!!preference.problem}
         onChange={event => preferences.setInspection(event.target.value as 'inline' | 'side' | 'bottom')}>
@@ -137,7 +152,7 @@ export function Viewer({ target, register, visibility, preferences }: ViewerProp
         <button type="button" aria-pressed={inspection.raw} onClick={() => setInspection(previous => ({ ...previous, raw: true }))}>Raw</button>
       </div>
     </div>
-    {preference.problem && <p className="rl-notice rl-error" role="alert">{preference.problem} Using Side inspection without changing saved settings.</p>}
+    {preference.problem && <p className="rl-notice rl-error" role="alert">{preference.problem} Using built-in Default and Side inspection without changing saved settings.</p>}
     {state?.lifecycleNotice && <p className="rl-notice" role="status">{state.lifecycleNotice}{state.paused ? ' Paused; select Refresh or Resume to read the current instance.' : ''}</p>}
     {(!state || state.phase === 'loading-pod') && <p className="rl-notice" role="status">Loading Pod…</p>}
     {state?.refreshing && <p className="rl-notice" role="status">Reading log snapshot…</p>}
@@ -153,7 +168,8 @@ export function Viewer({ target, register, visibility, preferences }: ViewerProp
       : `${snapshot.omittedLines.toLocaleString()} older record(s) omitted to keep the latest 1,000 lines within the 5 MiB original-text budget.`}</p> : null}
     {snapshot && snapshot.returnedLines === 0 && <p className="rl-empty" role="status">No logs returned for {state?.container}.</p>}
     {scroll.lost && <p className="rl-notice" role="status">Your scroll position left the recent log window. Use To bottom to follow new output.</p>}
-    <div className={`rl-work rl-layout-${preference.inspection}`}>
+    {editingProfiles && <ProfileEditor preferences={preferences} onClose={() => { setEditingProfiles(false); profilesButton.current?.focus(); }} />}
+    <div className={`rl-work rl-layout-${preference.inspection}`} hidden={editingProfiles}>
     <div ref={scroller} className={`rl-records${wrap ? ' rl-wrap' : ''}`} tabIndex={0} aria-label="Container log records">
       {records.map((record, recordIndex) => {
         const formatted = formattedRecords[recordIndex];
@@ -168,6 +184,7 @@ export function Viewer({ target, register, visibility, preferences }: ViewerProp
           {timestamps && <time dateTime={formatted.timestamp} title={formatted.timestampSource ? `${formatted.timestampSource}: ${formatted.timestamp}` : undefined}>{displayTimestamp(formatted.timestamp)}</time>}
           <span className={`rl-level${formatted.canonicalLevel ? ` rl-severity-${formatted.canonicalLevel.toLowerCase()}` : ''}`}>{formatted.level}</span>
           <span className="rl-message">{formatted.message || '\u00a0'}</span>
+          {formatted.inlineFields?.map(field => <span className="rl-inline-field" key={field.path}>{field.path}={JSON.stringify(field.value)}</span>)}
           {!!fields && <span className="rl-fields">{fields} {fields === 1 ? 'field' : 'fields'}</span>}
           </>}
           </div>
@@ -179,7 +196,7 @@ export function Viewer({ target, register, visibility, preferences }: ViewerProp
       {inspector || <p className="rl-inspector-empty">Select a record to inspect all fields or copy its exact original text. Automatic updates continue while inspecting; use Pause to keep the current window.</p>}
     </aside>}
     </div>
-    <footer className="rl-footer">
+    <footer className="rl-footer" hidden={editingProfiles}>
       <span role="status">{snapshot ? `${snapshot.records.length.toLocaleString()} records · ${(snapshot.retainedBytes / 1024).toFixed(1)} KiB retained` : 'One current-instance snapshot'}</span>
       <button type="button" onClick={() => viewport.current?.toBottom()}>To bottom</button>
       <span className="rl-follow-status" role="status">{scroll.following ? 'Following output' : 'Scrolled away'}</span>

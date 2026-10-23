@@ -1,0 +1,33 @@
+{
+  "at": "2026-10-23T01:05:19.793Z",
+  "result": {
+    "type": "object",
+    "value": {
+      "plain": {
+        "choice": "",
+        "automatic": true,
+        "message": "Other container"
+      },
+      "returningToJSON": {
+        "choice": "",
+        "active": "Ticket 16 renamed",
+        "paused": true
+      },
+      "requests": [
+        {
+          "path": "/api-kube/api/v1/namespaces/readable-logs-ticket-16/pods/profiles/log?container=plain&tailLines=1000&timestamps=true&follow=false&previous=false",
+          "started": 1792717519292,
+          "status": 200,
+          "settled": 1792717519297
+        },
+        {
+          "path": "/api-kube/api/v1/namespaces/readable-logs-ticket-16/pods/profiles/log?container=json&tailLines=1000&timestamps=true&follow=false&previous=false",
+          "started": 1792717519453,
+          "status": 200,
+          "settled": 1792717519458
+        }
+      ],
+      "departedWithManual": "e7def69c-9542-44ef-b229-0c1f5dfc4e68"
+    }
+  }
+}

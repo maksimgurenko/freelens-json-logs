@@ -5,7 +5,7 @@ Pause/Resume, explicit recovery and Pod/container lifecycle handling (GitHub #11
 Ticket #14 adds complete-record inspection in Inline, Side and Bottom layouts,
 Raw presentation, exact original clipboard actions and a saved global Inspection
 preference. Ticket #15 adds bottom following, anchored scroll position and literal Find navigation.
-Saved formatting profiles remain later tickets.
+Ticket #16 adds staged formatting profiles, sample previews, manual selection and a saved global default. Automatic target matching remains ticket #17.
 The accepted GitHub #8 contract and its linked resolutions govern implementation.
 
 Supported host: **Freelens 1.10.3 only**, currently tested on Arch Linux/Wayland.
@@ -25,8 +25,8 @@ npm run typecheck
 npm test
 npm run package
 npm run check:package
-tar -tzf dist/freelens-readable-logs-0.1.12.tgz
-sha256sum dist/freelens-readable-logs-0.1.12.tgz
+tar -tzf dist/freelens-readable-logs-0.1.15.tgz
+sha256sum dist/freelens-readable-logs-0.1.15.tgz
 ```
 
 The locked esbuild platform package supplies its binary without install scripts.
@@ -51,12 +51,13 @@ The matching main/renderer `Common.Store.ExtensionStore` uses config name
 **readable-logs**, under the stable package/store name above. On this host its file
 is `~/.config/Freelens/extension-store/freelens-readable-logs/readable-logs.json`.
 Main owns durable writes; renderer changes synchronize through the host store.
-Schema **1** currently stores `schemaVersion: 1` and
-`viewer.inspection: "inline" | "side" | "bottom"`, initially `"side"`. This is a
-global viewer preference, separate from future formatting-profile configuration.
-There are no historical schemas to migrate yet. Unknown versions/invalid layouts
-are rejected for editing; the viewer reports the problem and uses Side. Full
-corrupt/newer-file recovery and backed-up reset remain ticket #18.
+Schema **2** stores `schemaVersion: 2`, `viewer.inspection` (initially `"side"`),
+`profiles` (independent named rules with stable IDs), and `globalDefault` (initially
+`"default"`). Valid schema 1 Inspection settings migrate explicitly to schema 2
+with no saved profiles and built-in Default selected. Unsupported versions or
+invalid data inhibit editing; the viewer reports the problem and uses built-in
+Default and Side. Full corrupt/newer-file recovery and backed-up reset remain
+ticket #18. Main owns durable writes through the matching renderer store.
 
 Raw mode, selected record, content tab, timestamps and word wrap are temporary.
 New views start Readable, without selection, with timestamps on and wrap off.
@@ -101,7 +102,7 @@ Follow [the accepted procedure](https://github.com/maksimgurenko/freelens-json-l
 2. For an update, **Uninstall** the old package and wait for removal to finish,
    retaining its saved extension settings. Install the new tarball via the form
    **once** and wait. Do not use the overwrite/reinstallation prompt.
-3. Check version **0.1.12** and Enabled, then open the cluster. Open a Pod's details
+3. Check version **0.1.15** and Enabled, then open the cluster. Open a Pod's details
    header and click the **Readable logs** icon beside the native actions. Verify
    cluster, namespace, Pod UID, container and **Default** profile, and usable logs.
    Do not restart after installation as a substitute for passing this check.
@@ -203,3 +204,37 @@ Find, timestamps and word wrap stay local to the view and reset on reopening.
 They do not fetch logs or change Pause. Refresh while paused updates once and
 recomputes both matches and scroll position. Formatting changes use the same
 formatted record array as Find, without changing retained originals.
+
+
+## Formatting profiles
+
+Use **Profiles**, select a saved profile and choose **Edit**, or **Duplicate** any
+profile (including read-only **Default**) to make independent rules. Rename in
+the staged name field. Enter one exact slash path per line, in priority order.
+Dots are literal; `~1` escapes a slash, `~0` a tilde; `/items/0/code` selects the
+first array element. There is no recursive or wildcard search. Configured lists
+replace defaults. Empty message/time/level lists mean exact application text,
+Kubernetes time and no extracted level respectively. Missing paths are valid.
+
+Inline fields display in configured order; hidden fields win, including hidden
+children of inline objects. Extracted leaves are omitted from additional data;
+All fields and both exact originals remain complete. Numeric timestamps need an
+explicit seconds/milliseconds choice; numeric strings remain invalid timestamps.
+Severity mappings distinguish numbers from text, compare text ignoring case,
+and precede built-in normalization. No numeric meaning is inferred.
+
+Paste sample logs for a preview of up to 20 lines. **Save profile** applies a valid
+draft; **Cancel** or **Close profiles** discards unfinished edits. Specific errors
+block Save. Preview samples and drafts never persist. Editing or reformatting
+retained logs makes no log request and Find recomputes using the active message.
+
+The viewer's **Profile** selector offers **Auto** and explicit manual choices.
+For this milestone Auto uses the saved global default; exact target matching is
+ticket #17. Manual choice belongs to the current cluster/Pod UID/container view
+and clears on Auto, container/target change, close or full restart. Selecting a
+profile does not pause updates. Global default is saved in **Profiles**. Deleting
+a manually selected profile returns that view to Auto; deleting the global
+default restores built-in Default. Rename retains ID, references and order.
+Uninstall retains profiles and Inspection. See `docs/verification/16/` for actual
+packaged editor, request-observation and full normal-quit/reopen evidence.
+Import/export, custom templates and executable user code are excluded.

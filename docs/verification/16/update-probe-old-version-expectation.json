@@ -1,0 +1,49 @@
+{
+  "at": "2026-10-23T01:11:43.937Z",
+  "result": {
+    "type": "object",
+    "subtype": "error",
+    "className": "Error",
+    "description": "Error: Wrong actual package\n    at Object.assert (<anonymous>:2:66)\n    at <anonymous>:1:350\n    at <anonymous>:1:574",
+    "objectId": "7246526064444090900.2.2"
+  },
+  "exceptionDetails": {
+    "exceptionId": 1,
+    "text": "Uncaught",
+    "lineNumber": 1,
+    "columnNumber": 59,
+    "scriptId": "291",
+    "stackTrace": {
+      "callFrames": [
+        {
+          "functionName": "assert",
+          "scriptId": "291",
+          "url": "",
+          "lineNumber": 1,
+          "columnNumber": 65
+        },
+        {
+          "functionName": "",
+          "scriptId": "292",
+          "url": "",
+          "lineNumber": 0,
+          "columnNumber": 349
+        },
+        {
+          "functionName": "",
+          "scriptId": "292",
+          "url": "",
+          "lineNumber": 0,
+          "columnNumber": 573
+        }
+      ]
+    },
+    "exception": {
+      "type": "object",
+      "subtype": "error",
+      "className": "Error",
+      "description": "Error: Wrong actual package\n    at Object.assert (<anonymous>:2:66)\n    at <anonymous>:1:350\n    at <anonymous>:1:574",
+      "objectId": "7246526064444090900.2.3"
+    }
+  }
+}

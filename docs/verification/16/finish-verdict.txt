@@ -1,0 +1,7 @@
+verdict
+1. Resolved — validation.png visibly shows the error in the host's bright foreground. validation-contrast.json records rgb(255,255,255) against rgb(30,33,36), 16.18:1, exceeding the 4.5:1 requirement. All three recaptured screenshot paths are valid native desktop captures of installed 0.1.15. No regression directly introduced by the foreground change is visible.
+
+remaining
+Clear for the scored contrast fix. This ship verdict covers the scored fix only; it does not replace the original full review or the parent's final quit/reopen functional acceptance.
+
+disposition: ship

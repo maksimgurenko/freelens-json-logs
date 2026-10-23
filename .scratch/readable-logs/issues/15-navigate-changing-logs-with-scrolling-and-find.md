@@ -1,6 +1,6 @@
 # 15: Navigate changing logs with scrolling and Find
 
-**Status:** ready-for-agent
+**Status:** done
 
 **Blocked by:** [12: Refresh, pause, and recover from request failures](12-refresh-pause-and-recover-from-request-failures.md)
 

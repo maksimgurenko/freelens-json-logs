@@ -1,0 +1,99 @@
+{
+  "at": "2026-10-23T01:11:43.881Z",
+  "result": {
+    "type": "object",
+    "value": {
+      "version": "0.1.15",
+      "initialManual": "",
+      "text": "Readable logs\n\nkind-freelens-json-logs-spike / readable-logs-ticket-16 / profiles\n\nprofiles\nContainer\njson\nplain\nProfile\nAuto · Ticket 16 renamed\nDefault\nTicket 16 renamed\nTicket 16 alternate\nProfiles\nResume\nRefresh\nPaused\nFind\nEnter text to find\nPrevious\nNext\nCluster 770814298afe692457d07d8b15d6b8d3 · Pod UID bfada164-e078-4142-b92a-9a9b4a44db4c · Active profile Ticket 16 renamed\nInspection\nInline expansion\nSide inspector\nBottom inspector\nReadable\nRaw\n12/31/1969, 18:16:40\nINFO\nNested α🙂\nmessage\n/event={\"code\":\"E1\"}\n/a~1b=\"slash\"\n/a~0b=\"tilde\"\n/items/0/code=\"first\"\n6 fields\n12/31/1969, 18:33:20\nWARN\nOther\n/event={\"code\":\"E2\"}\n2 fields\n\nSelect a record to inspect all fields or copy its exact original text. Automatic updates continue while inspecting; use Pause to keep the current window.\n\n2 records · 0.4 KiB retained\nTo bottom\nFollowing output\nShow timestamps\nWord wrap\nv0.1.15",
+      "migratedConfiguration": {
+        "__internal__": {
+          "migrations": {
+            "version": "0.1.15"
+          }
+        },
+        "schemaVersion": 2,
+        "viewer": {
+          "inspection": "bottom"
+        },
+        "profiles": [
+          {
+            "id": "2220e13d-3e5f-4415-bf37-4edfdd124f24",
+            "name": "Ticket 16 renamed",
+            "format": {
+              "messagePaths": [
+                "/event/text",
+                "/message"
+              ],
+              "timestampPaths": [
+                "/event/time"
+              ],
+              "levelPaths": [
+                "/event/severity"
+              ],
+              "inlinePaths": [
+                "/event",
+                "/a~1b",
+                "/a~0b",
+                "/items/0/code"
+              ],
+              "hiddenPaths": [
+                "/event/internal"
+              ],
+              "numericTimestamp": "seconds",
+              "severityMappings": [
+                {
+                  "source": 30,
+                  "target": "INFO"
+                },
+                {
+                  "source": "30",
+                  "target": "WARN"
+                }
+              ]
+            }
+          },
+          {
+            "id": "7ff73c94-ed02-4ac6-acca-fe491cc9d5a2",
+            "name": "Ticket 16 alternate",
+            "format": {
+              "messagePaths": [
+                "/items/0/code"
+              ],
+              "timestampPaths": [
+                "/event/time"
+              ],
+              "levelPaths": [
+                "/event/severity"
+              ],
+              "inlinePaths": [
+                "/event",
+                "/a~1b",
+                "/a~0b",
+                "/items/0/code"
+              ],
+              "hiddenPaths": [
+                "/event/internal"
+              ],
+              "numericTimestamp": "milliseconds",
+              "severityMappings": [
+                {
+                  "source": 30,
+                  "target": "INFO"
+                },
+                {
+                  "source": "30",
+                  "target": "WARN"
+                }
+              ]
+            }
+          }
+        ],
+        "globalDefault": "2220e13d-3e5f-4415-bf37-4edfdd124f24"
+      },
+      "host": "1.10.3",
+      "node": "24.18.0",
+      "paused": true
+    }
+  }
+}

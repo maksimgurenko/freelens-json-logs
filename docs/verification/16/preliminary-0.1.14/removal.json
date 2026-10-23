@@ -1,0 +1,13 @@
+{
+  "at": "2026-10-23T01:06:49.458Z",
+  "result": {
+    "type": "object",
+    "value": {
+      "removed": [
+        "/home/max/.freelens/extensions/freelens-readable-logs",
+        "/home/max/.config/Freelens/node_modules/freelens-readable-logs"
+      ],
+      "settingsRetained": true
+    }
+  }
+}

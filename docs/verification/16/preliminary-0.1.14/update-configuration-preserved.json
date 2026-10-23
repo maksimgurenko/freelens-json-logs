@@ -1,0 +1,95 @@
+{
+  "at": "2026-10-23T01:07:26.516Z",
+  "result": {
+    "type": "object",
+    "value": {
+      "configuration": {
+        "__internal__": {
+          "migrations": {
+            "version": "0.1.14"
+          }
+        },
+        "schemaVersion": 2,
+        "viewer": {
+          "inspection": "bottom"
+        },
+        "profiles": [
+          {
+            "id": "fe731e3b-a254-42a2-8060-614ee91736e6",
+            "name": "Ticket 16 renamed",
+            "format": {
+              "messagePaths": [
+                "/event/text",
+                "/message"
+              ],
+              "timestampPaths": [
+                "/event/time"
+              ],
+              "levelPaths": [
+                "/event/severity"
+              ],
+              "inlinePaths": [
+                "/event",
+                "/a~1b",
+                "/a~0b",
+                "/items/0/code"
+              ],
+              "hiddenPaths": [
+                "/event/internal"
+              ],
+              "numericTimestamp": "seconds",
+              "severityMappings": [
+                {
+                  "source": 30,
+                  "target": "INFO"
+                },
+                {
+                  "source": "30",
+                  "target": "WARN"
+                }
+              ]
+            }
+          },
+          {
+            "id": "e7def69c-9542-44ef-b229-0c1f5dfc4e68",
+            "name": "Ticket 16 alternate",
+            "format": {
+              "messagePaths": [
+                "/items/0/code"
+              ],
+              "timestampPaths": [
+                "/event/time"
+              ],
+              "levelPaths": [
+                "/event/severity"
+              ],
+              "inlinePaths": [
+                "/event",
+                "/a~1b",
+                "/a~0b",
+                "/items/0/code"
+              ],
+              "hiddenPaths": [
+                "/event/internal"
+              ],
+              "numericTimestamp": "milliseconds",
+              "severityMappings": [
+                {
+                  "source": 30,
+                  "target": "INFO"
+                },
+                {
+                  "source": "30",
+                  "target": "WARN"
+                }
+              ]
+            }
+          }
+        ],
+        "globalDefault": "fe731e3b-a254-42a2-8060-614ee91736e6"
+      },
+      "fullConfigurationPreserved": true,
+      "manual": ""
+    }
+  }
+}

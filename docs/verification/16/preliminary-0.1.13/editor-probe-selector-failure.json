@@ -1,0 +1,39 @@
+{
+  "at": "2026-10-23T01:02:55.688Z",
+  "result": {
+    "type": "object",
+    "value": {}
+  },
+  "exceptionDetails": {
+    "exceptionId": 4,
+    "text": "Uncaught (in promise) TypeError: Illegal invocation",
+    "lineNumber": 13,
+    "columnNumber": 61,
+    "scriptId": "291",
+    "stackTrace": {
+      "callFrames": [
+        {
+          "functionName": "input",
+          "scriptId": "291",
+          "url": "",
+          "lineNumber": 12,
+          "columnNumber": 60
+        },
+        {
+          "functionName": "",
+          "scriptId": "294",
+          "url": "",
+          "lineNumber": 44,
+          "columnNumber": 8
+        }
+      ]
+    },
+    "exception": {
+      "type": "object",
+      "subtype": "error",
+      "className": "TypeError",
+      "description": "TypeError: Illegal invocation\n    at input (<anonymous>:13:61)\n    at <anonymous>:45:9",
+      "objectId": "-922732765791114473.2.2"
+    }
+  }
+}
