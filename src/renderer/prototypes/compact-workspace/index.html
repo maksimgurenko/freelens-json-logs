@@ -1,0 +1,30 @@
+<!doctype html>
+<!-- Throwaway: three compact versions of the existing Readable logs surface. -->
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Readable logs · layout prototypes</title>
+  <link rel="stylesheet" href="../../viewer.css">
+  <link rel="stylesheet" href="prototype.css">
+  <script src="prototype.js" defer></script>
+</head>
+<body>
+  <main id="app" class="readable-logs" aria-label="Readable logs prototype"></main>
+  <nav class="prototype-switcher" aria-label="Prototype variants">
+    <button data-action="previous-variant" aria-label="Previous variant"></button>
+    <div class="prototype-choice">
+      <select id="variant" aria-label="Layout variant">
+        <option value="a">A · Compact bands</option>
+        <option value="b">B · Single toolbar</option>
+        <option value="c">C · Vertical rail</option>
+      </select>
+      <span id="variant-summary"></span>
+    </div>
+    <button data-action="next-variant" aria-label="Next variant"></button>
+    <span class="prototype-divider"></span>
+    <button data-action="about" class="prototype-info" aria-label="About this prototype">Prototype</button>
+  </nav>
+  <div id="announcer" class="sr-only" role="status" aria-live="polite"></div>
+</body>
+</html>
