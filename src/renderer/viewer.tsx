@@ -14,6 +14,7 @@ import styles from './viewer.css';
 import { activeProfile, BUILTIN_PROFILE_ID, builtinProfile } from '../core/profiles.ts';
 import { ProfileEditor } from './profile-editor.tsx';
 import { SettingsRecovery } from './settings-recovery.tsx';
+import { bindLocalEscape, focusLocal, LocalDismissal } from './local-dismissal.ts';
 
 interface ViewerProps { target: LogTarget; register: (dispose: () => void) => () => void; visibility: VisibilityChannel; preferences: ViewerPreferences }
 const EMPTY_RECORDS: readonly LogRecord[] = [];
@@ -58,6 +59,8 @@ export function Viewer({ target, register, visibility, preferences }: ViewerProp
   const [preference, setPreference] = useState(() => preferences.read());
   const [editingProfiles, setEditingProfiles] = useState(false);
   const profilesButton = useRef<HTMLButtonElement>(null);
+  const dismissal = useRef(new LocalDismissal()).current;
+  const inspectorFocused = useRef(false);
   useEffect(() => {
     const changed = () => setPreference(preferences.read());
     const stop = preferences.subscribe(changed);
@@ -70,8 +73,10 @@ export function Viewer({ target, register, visibility, preferences }: ViewerProp
     setTimestamps(true);
     setWrap(false);
     setInspection(initialInspection());
-    const stopVisibility = bindVisibility(root.current!, target.clusterId, visibility, active => current.setActive(active));
-    const dispose = () => { stopVisibility(); current.dispose(); };
+    let visible = false;
+    const stopVisibility = bindVisibility(root.current!, target.clusterId, visibility, active => { visible = active; current.setActive(active); });
+    const stopEscape = bindLocalEscape(root.current!, () => visible && current.state.phase !== 'closed', dismissal);
+    const dispose = () => { stopEscape(); stopVisibility(); current.dispose(); };
     const unregister = register(dispose);
     void current.open();
     return () => { unregister(); dispose(); };
@@ -113,7 +118,7 @@ export function Viewer({ target, register, visibility, preferences }: ViewerProp
   });
   useLayoutEffect(() => {
     if (findOpen && !editingProfiles) findInput.current?.focus();
-  }, [findOpen, editingProfiles]);
+  }, [findOpen]);
   const navigateMatch = (direction: 1 | -1) => {
     const next = moveMatch(matches, currentMatch, direction);
     setCursor({ records, index: next });
@@ -128,12 +133,24 @@ export function Viewer({ target, register, visibility, preferences }: ViewerProp
   const index = selectedIndex(records, inspection.selected);
   const selected = records[index];
   useEffect(() => {
-    if (index < 0) setInspection(previous => previous.selected ? { ...previous, selected: undefined } : previous);
+    if (index < 0) {
+      const element = root.current!;
+      if (inspectorFocused.current && element.ownerDocument.hasFocus() &&
+        (element.ownerDocument.activeElement === element.ownerDocument.body || element.contains(element.ownerDocument.activeElement))) focusLocal(element);
+      setInspection(previous => previous.selected ? { ...previous, selected: undefined } : previous);
+    }
   }, [snapshot, index]);
-  const close = () => setInspection(previous => ({ ...previous, selected: undefined }));
+  const close = () => {
+    focusLocal(root.current!, root.current?.querySelector<HTMLElement>(`.rl-record[data-record-index="${index}"] > .rl-row`));
+    setInspection(previous => ({ ...previous, selected: undefined }));
+  };
+  const closeFind = () => { setFindOpen(false); focusLocal(root.current!, findButton.current); };
+  const backToLogs = () => { setEditingProfiles(false); focusLocal(root.current!, profilesButton.current); };
+  useLayoutEffect(() => dismissal.add(0, () => editingProfiles ? backToLogs : findOpen ? closeFind : selected ? close : undefined));
   const inspector = selected && <RecordInspector record={selected} content={inspection.content}
     onContent={content => setInspection(previous => ({ ...previous, content }))} onClose={close} />;
-  return <section ref={root} className="readable-logs" aria-label="Readable logs" data-version={PACKAGE_VERSION}>
+  return <section ref={root} className="readable-logs" aria-label="Readable logs" data-version={PACKAGE_VERSION}
+    onFocusCapture={event => { inspectorFocused.current = !!(event.target as Element).closest('.rl-detail'); }}>
     <style>{styles}</style>
     <header className="rl-toolbar" aria-label="Log controls">
       <details className="rl-target-context">
@@ -163,7 +180,10 @@ export function Viewer({ target, register, visibility, preferences }: ViewerProp
           <option value="">Auto · {activeProfile(preference.configuration, undefined, profileContext).name}</option>
           {[builtinProfile(), ...preference.configuration.profiles].map(profile => <option key={profile.id} value={profile.id}>{profile.name}</option>)}
         </select></label>
-        <button ref={profilesButton} type="button" className="rl-edit-profiles" onClick={() => setEditingProfiles(value => !value)} aria-expanded={editingProfiles}>
+        <button ref={profilesButton} type="button" className="rl-edit-profiles" onClick={() => {
+          if (editingProfiles) backToLogs();
+          else { root.current?.querySelectorAll('details[open]').forEach(node => { (node as HTMLDetailsElement).open = false; }); setEditingProfiles(true); }
+        }} aria-expanded={editingProfiles}>
           <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true" focusable="false"><path d="m15 5 4 4M4 20l4-1L20 7a2.8 2.8 0 0 0-4-4L4 15z" /></svg>
           Edit profiles
         </button>
@@ -203,9 +223,9 @@ export function Viewer({ target, register, visibility, preferences }: ViewerProp
       <span className="rl-find-count" role="status" aria-live="polite">{query ? `${currentMatch < 0 ? 0 : matches.indexOf(currentMatch) + 1} of ${matches.length} matching records` : 'Enter text to find'}</span>
       <button type="button" disabled={!matches.length} onClick={() => navigateMatch(-1)}>Previous</button>
       <button type="button" disabled={!matches.length} onClick={() => navigateMatch(1)}>Next</button>
-      <button type="button" aria-label="Close Find" onClick={() => { setFindOpen(false); findButton.current?.focus(); }}>Close</button>
+      <button type="button" aria-label="Close Find" onClick={closeFind}>Close</button>
     </div>
-    <SettingsRecovery preferences={preferences} saved={preference} />
+    <SettingsRecovery preferences={preferences} saved={preference} dismissal={dismissal} />
     {state?.lifecycleNotice && <p className="rl-notice" role="status">{state.lifecycleNotice}{state.paused ? ' Paused; select Refresh or Resume to read the current instance.' : ''}</p>}
     {state?.slow && <p className="rl-notice" role="status">The log request is taking longer than 15 seconds. You can pause or leave this view. Another request for this target must wait for it to finish.</p>}
     {state?.phase === 'choose-container' && <p className="rl-notice" role="status">This Pod has no regular container. Select an init or ephemeral container to read its logs.</p>}
@@ -217,7 +237,7 @@ export function Viewer({ target, register, visibility, preferences }: ViewerProp
       ? 'The newest record exceeds the 5 MiB original-text budget. No complete suffix fits.'
       : `${snapshot.omittedLines.toLocaleString()} older record(s) omitted to keep the latest 1,000 lines within the 5 MiB original-text budget.`}</p> : null}
     {scroll.lost && <p className="rl-notice" role="status">Your scroll position left the recent log window. Use To bottom to follow new output.</p>}
-    {editingProfiles && <ProfileEditor preferences={preferences} onClose={() => { setEditingProfiles(false); profilesButton.current?.focus(); }} />}
+    {editingProfiles && <ProfileEditor preferences={preferences} onClose={backToLogs} dismissal={dismissal} />}
     <div className={`rl-work rl-layout-${preference.inspection}`} hidden={editingProfiles}>
     <div ref={scroller} className={`rl-records${wrap ? ' rl-wrap' : ''}`} tabIndex={0} aria-label="Container log records"
       onPointerDownCapture={event => {

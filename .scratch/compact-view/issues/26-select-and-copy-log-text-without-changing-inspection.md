@@ -1,6 +1,6 @@
 # 26: Select and copy log text without changing inspection
 
-**Status:** blocked
+**Status:** done
 
 **Blocked by:** None (can start immediately).
 

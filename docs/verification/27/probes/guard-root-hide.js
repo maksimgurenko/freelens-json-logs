@@ -1,0 +1,1 @@
+(()=>{const frame=[...document.querySelectorAll('iframe')].find(e=>e.src.includes('770814'));const nav=global.LensExtensions.Renderer.Navigation;nav.navigate('/catalog');return {url:location.href,frameCached:!!frame?.isConnected};})()

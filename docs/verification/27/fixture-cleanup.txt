@@ -1,0 +1,1 @@
+namespace "readable-logs-ticket-27" deleted

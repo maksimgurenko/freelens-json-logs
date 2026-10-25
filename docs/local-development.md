@@ -25,8 +25,8 @@ npm run typecheck
 npm test
 npm run package
 npm run check:package
-tar -tzf dist/freelens-readable-logs-0.1.24.tgz
-sha256sum dist/freelens-readable-logs-0.1.24.tgz
+tar -tzf dist/freelens-readable-logs-0.1.26.tgz
+sha256sum dist/freelens-readable-logs-0.1.26.tgz
 ```
 
 The locked esbuild platform package supplies its binary without install scripts.
@@ -125,7 +125,7 @@ Follow [the accepted procedure](https://github.com/maksimgurenko/freelens-json-l
 2. For an update, **Uninstall** the old package and wait for removal to finish,
    retaining its saved extension settings. Install the new tarball via the form
    **once** and wait. Do not use the overwrite/reinstallation prompt.
-3. Check version **0.1.24** and Enabled, then open the cluster. Open a Pod's details
+3. Check version **0.1.26** and Enabled, then open the cluster. Open a Pod's details
    header and click the **Readable logs** icon beside the native actions. Verify
    cluster, namespace, Pod UID, container, the expected active profile and usable logs.
    Do not restart after installation as a substitute for passing this check.
@@ -276,7 +276,7 @@ Severity mappings distinguish numbers from text, compare text ignoring case,
 and precede built-in normalization. No numeric meaning is inferred.
 
 Paste sample logs for a preview of up to 20 lines. **Save profile** applies a valid
-draft; **Cancel** or **Close profiles** discards unfinished edits. Specific errors
+draft; **Cancel draft** or **Back to logs** discards unfinished edits. Specific errors
 block Save. Preview samples and drafts never persist. Editing or reformatting
 retained logs makes no log request and Find recomputes using the active message.
 
@@ -349,3 +349,20 @@ settings removal, fully quit Freelens and remove only
 `~/.config/Freelens/extension-store/freelens-readable-logs/`, including its backups;
 keep every other extension's directory. Uninstall alone retains this directory.
 No crash durability or transactional disk guarantees are promised.
+
+
+## Local return and dismissal
+
+**Back to logs** leaves Profiles and discards its unfinished draft. **Cancel draft**
+stays in Profiles; **Save profile** applies valid changes explicitly. Saved profile,
+global-default and matching-order changes survive returning to logs.
+
+Escape dismisses one layer: an open menu/disclosure, then a delete/reset
+confirmation, then Profiles. In logs it hides Find (retaining the query), then
+closes inspection on the next press. Bare logs have no local Escape navigation.
+Native selects, menus and composition keep their input ownership; holding Escape
+does not dismiss additional layers. Reset already in progress continues and cannot
+be canceled by dismissal. Closing controls follow the same focus transitions:
+Find and Profiles restore their opener, inspection restores its retained row or a
+surviving log control. Local panels add no host page-history entries and do not
+pause automatic updates. Mouse Back and the new shortcut set are separate work.

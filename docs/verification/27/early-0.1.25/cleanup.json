@@ -1,0 +1,38 @@
+{
+  "at": "2026-10-25T18:47:14.616Z",
+  "result": {
+    "type": "object",
+    "value": {
+      "configuration": {
+        "schemaVersion": 3,
+        "viewer": {
+          "inspection": "inline"
+        },
+        "profiles": [],
+        "globalDefault": "default",
+        "__internal__": {
+          "migrations": {
+            "version": "0.1.25"
+          }
+        }
+      },
+      "originalApplicationSettingsRestored": true,
+      "ownedDraftDiscarded": true,
+      "requestEvidence": [
+        {
+          "originalPath": "https://127.0.0.1:40483/api-kube/api/v1/namespaces/readable-logs-ticket-27/pods/local-navigation/log?container=selection&tailLines=1000&timestamps=true&follow=false&previous=false",
+          "transmittedPath": "/api-kube/api/v1/namespaces/readable-logs-ticket-27/pods/local-navigation/log?container=selection&tailLines=1000&timestamps=true&follow=false&previous=false",
+          "started": 25217.700000001118,
+          "denied": false,
+          "offline": false,
+          "status": 200,
+          "responseCompleted": 25228.700000001118,
+          "bytes": 114000,
+          "sha256": "bf58b467bc67d8a84d8733edbc8afd4a102aed291dc0be3d0445ec466f9c6b0f"
+        }
+      ],
+      "noTestTransport": true,
+      "backupsAbsent": true
+    }
+  }
+}

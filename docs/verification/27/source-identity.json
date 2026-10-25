@@ -1,0 +1,9 @@
+{
+  "package.json": "041284fbda265d5c3128d5b82442014d062c6a6fca3e5d5336fa5166601b7978",
+  "package-lock.json": "0af79725039f93695936206cdd780abc86ad7b4a4cdcb0a90f0bccc248605acc",
+  "src/renderer/viewer.tsx": "25d68825b4f835770ac86bed123e8ac6ca4b367d2ab3c7512d0fe9d9f7dcef4d",
+  "src/renderer/profile-editor.tsx": "9cfabeea809277054a75192b2f4008455439989915ea9aabb5b2dd15666197b1",
+  "src/renderer/settings-recovery.tsx": "85b9d3510de61fd9c7d0d181760431a56711773ee59b0bbc97b4cc8a216b86bc",
+  "src/renderer/local-dismissal.ts": "4e403cf110e3bb425104ce339744747591bde43e193e9f93edfb75ba4eb3ecc5",
+  "docs/local-development.md": "eacd335e0a3bb23b3ffab8662797771535d9d9ccfebc35993540824c8f687866"
+}

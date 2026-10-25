@@ -1,0 +1,13 @@
+{
+  "at": "2026-10-25T18:54:05.283Z",
+  "result": {
+    "type": "object",
+    "value": {
+      "profiles": true,
+      "documentHidden": false,
+      "documentFocused": false,
+      "rootClientRects": 1,
+      "provenance": "Supplemental DOM delivery into a genuinely cached inactive cluster frame, not physical input"
+    }
+  }
+}

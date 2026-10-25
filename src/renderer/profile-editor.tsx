@@ -1,11 +1,12 @@
-import React, { useEffect, useMemo, useRef, useState } from 'react';
+import React, { useEffect, useLayoutEffect, useMemo, useRef, useState } from 'react';
 import { builtinProfile, BUILTIN_PROFILE_ID, duplicateProfile, LEVELS, profileProblems,
   type Formatting, type Profile, type SeverityMapping } from '../core/profiles.ts';
 import type { ViewerPreferences } from '../core/configuration.ts';
 import { displayTimestamp, parseTransportLine, recordFormatter } from '../core/records.ts';
+import type { LocalDismissal } from './local-dismissal.ts';
 
 /** Staged local state lives only while this panel is mounted. No log IO or storage of samples. */
-export function ProfileEditor({ preferences, onClose }: { preferences: ViewerPreferences; onClose: () => void }) {
+export function ProfileEditor({ preferences, onClose, dismissal }: { preferences: ViewerPreferences; onClose: () => void; dismissal: LocalDismissal }) {
   const [saved, setSaved] = useState(() => preferences.read());
   const [selected, setSelected] = useState(BUILTIN_PROFILE_ID);
   const [draft, setDraft] = useState<Profile>();
@@ -13,6 +14,11 @@ export function ProfileEditor({ preferences, onClose }: { preferences: ViewerPre
   const [notice, setNotice] = useState('');
   const [confirmDelete, setConfirmDelete] = useState(false);
   const heading = useRef<HTMLHeadingElement>(null);
+  const deleteButton = useRef<HTMLButtonElement>(null);
+  const keepButton = useRef<HTMLButtonElement>(null);
+  const cancelDelete = () => { setConfirmDelete(false); deleteButton.current?.focus({ preventScroll: true }); };
+  useLayoutEffect(() => dismissal.add(100, () => confirmDelete ? cancelDelete : undefined), [dismissal, confirmDelete]);
+  useEffect(() => { if (confirmDelete) keepButton.current?.focus(); }, [confirmDelete]);
   useEffect(() => {
     heading.current?.focus();
     return preferences.subscribe(() => setSaved(preferences.read()));
@@ -43,7 +49,7 @@ export function ProfileEditor({ preferences, onClose }: { preferences: ViewerPre
   };
   return <section className="rl-profile-editor" aria-label="Formatting profiles">
     <header className="rl-editor-head"><h2 ref={heading} tabIndex={-1}>Formatting profiles</h2>
-      <button type="button" onClick={onClose}>Close profiles</button></header>
+      <button type="button" onClick={onClose}>Back to logs</button></header>
     <p className="rl-editor-help">Edit a draft and preview sample logs. Save applies valid rules to retained records. Samples and unfinished edits are temporary.</p>
     {saved.problem && <p className="rl-notice rl-error" role="alert">{saved.problem} Saved settings are preserved; profile changes are unavailable.</p>}
     <div className="rl-profile-management">
@@ -54,7 +60,7 @@ export function ProfileEditor({ preferences, onClose }: { preferences: ViewerPre
       <button type="button" disabled={!!draft || !!saved.problem} onClick={duplicate}>Duplicate</button>
       <button type="button" disabled={!!draft || !!saved.problem || profile.id === BUILTIN_PROFILE_ID}
         onClick={() => { setDraft(structuredClone(profile)); setNotice(''); setConfirmDelete(false); }}>Edit</button>
-      <button type="button" disabled={!!draft || !!saved.problem || profile.id === BUILTIN_PROFILE_ID}
+      <button ref={deleteButton} type="button" disabled={!!draft || !!saved.problem || profile.id === BUILTIN_PROFILE_ID}
         onClick={() => setConfirmDelete(true)}>Delete</button>
       <label>Global default <select aria-label="Global default" value={saved.configuration.globalDefault} disabled={!!draft || !!saved.problem}
         onChange={event => preferences.setGlobalDefault(event.target.value)}>
@@ -62,8 +68,8 @@ export function ProfileEditor({ preferences, onClose }: { preferences: ViewerPre
       </select></label>
     </div>
     {confirmDelete && <div className="rl-notice" role="alert">Delete {profile.name}? Affected manual selections return to Auto; a deleted global default returns to Default.
-      <div className="rl-editor-actions"><button type="button" onClick={() => { preferences.deleteProfile(profile.id); setSelected(BUILTIN_PROFILE_ID); setConfirmDelete(false); setNotice('Profile deleted.'); }}>Confirm delete</button>
-        <button type="button" onClick={() => setConfirmDelete(false)}>Keep profile</button></div></div>}
+      <div className="rl-editor-actions"><button type="button" onClick={() => { preferences.deleteProfile(profile.id); setSelected(BUILTIN_PROFILE_ID); setConfirmDelete(false); setNotice('Profile deleted.'); heading.current?.focus({ preventScroll: true }); }}>Confirm delete</button>
+        <button ref={keepButton} type="button" onClick={cancelDelete}>Keep profile</button></div></div>}
     <section className="rl-matching-order" aria-label="Matching order">
       <h3>Matching order</h3>
       <p className="rl-editor-help">Auto uses the first enabled profile whose conditions all match, then the global default. Manual selection takes priority. Moving a profile saves its order immediately.</p>
@@ -146,7 +152,7 @@ export function ProfileEditor({ preferences, onClose }: { preferences: ViewerPre
       {!!errors.length && <ul role="alert">{errors.map((error, i) => <li key={i}>{error}</li>)}</ul>}
       {notice && <p role="status">{notice}</p>}
       {draft && <div className="rl-editor-actions"><button type="button" disabled={!!errors.length || !!saved.problem} onClick={save}>Save profile</button>
-        <button type="button" onClick={() => { setDraft(undefined); setNotice('Draft discarded. Saved rules are unchanged.'); }}>Cancel</button></div>}
+        <button type="button" onClick={() => { setDraft(undefined); setNotice('Draft discarded. Saved rules are unchanged.'); heading.current?.focus({ preventScroll: true }); }}>Cancel draft</button></div>}
     </footer>
   </section>;
 }

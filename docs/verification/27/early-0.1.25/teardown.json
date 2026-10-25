@@ -1,0 +1,14 @@
+{
+  "package": "0.1.25",
+  "before": {
+    "connected": true,
+    "keydown": 1,
+    "composition": 1
+  },
+  "after": {
+    "connected": false,
+    "keydown": 0,
+    "composition": 0
+  },
+  "passed": true
+}
