@@ -15,6 +15,7 @@ import { activeProfile, BUILTIN_PROFILE_ID, builtinProfile } from '../core/profi
 import { ProfileEditor } from './profile-editor.tsx';
 import { SettingsRecovery } from './settings-recovery.tsx';
 import { bindLocalEscape, focusLocal, LocalDismissal } from './local-dismissal.ts';
+import { bindLocalBack } from './local-back.ts';
 
 interface ViewerProps { target: LogTarget; register: (dispose: () => void) => () => void; visibility: VisibilityChannel; preferences: ViewerPreferences }
 const EMPTY_RECORDS: readonly LogRecord[] = [];
@@ -58,6 +59,8 @@ export function Viewer({ target, register, visibility, preferences }: ViewerProp
   const [inspection, setInspection] = useState(initialInspection);
   const [preference, setPreference] = useState(() => preferences.read());
   const [editingProfiles, setEditingProfiles] = useState(false);
+  const profilesActive = useRef(false);
+  profilesActive.current = editingProfiles;
   const profilesButton = useRef<HTMLButtonElement>(null);
   const dismissal = useRef(new LocalDismissal()).current;
   const inspectorFocused = useRef(false);
@@ -76,7 +79,9 @@ export function Viewer({ target, register, visibility, preferences }: ViewerProp
     let visible = false;
     const stopVisibility = bindVisibility(root.current!, target.clusterId, visibility, active => { visible = active; current.setActive(active); });
     const stopEscape = bindLocalEscape(root.current!, () => visible && current.state.phase !== 'closed', dismissal);
-    const dispose = () => { stopEscape(); stopVisibility(); current.dispose(); };
+    const stopBack = bindLocalBack(root.current!, () => visible && current.state.phase !== 'closed',
+      () => profilesActive.current, dismissal);
+    const dispose = () => { stopBack(); stopEscape(); stopVisibility(); current.dispose(); };
     const unregister = register(dispose);
     void current.open();
     return () => { unregister(); dispose(); };

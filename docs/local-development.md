@@ -25,8 +25,8 @@ npm run typecheck
 npm test
 npm run package
 npm run check:package
-tar -tzf dist/freelens-readable-logs-0.1.26.tgz
-sha256sum dist/freelens-readable-logs-0.1.26.tgz
+tar -tzf dist/freelens-readable-logs-0.1.28.tgz
+sha256sum dist/freelens-readable-logs-0.1.28.tgz
 ```
 
 The locked esbuild platform package supplies its binary without install scripts.
@@ -125,7 +125,7 @@ Follow [the accepted procedure](https://github.com/maksimgurenko/freelens-json-l
 2. For an update, **Uninstall** the old package and wait for removal to finish,
    retaining its saved extension settings. Install the new tarball via the form
    **once** and wait. Do not use the overwrite/reinstallation prompt.
-3. Check version **0.1.26** and Enabled, then open the cluster. Open a Pod's details
+3. Check version **0.1.28** and Enabled, then open the cluster. Open a Pod's details
    header and click the **Readable logs** icon beside the native actions. Verify
    cluster, namespace, Pod UID, container, the expected active profile and usable logs.
    Do not restart after installation as a substitute for passing this check.
@@ -365,4 +365,12 @@ does not dismiss additional layers. Reset already in progress continues and cann
 be canceled by dismissal. Closing controls follow the same focus transitions:
 Find and Profiles restore their opener, inspection restores its retained row or a
 surviving log control. Local panels add no host page-history entries and do not
-pause automatic updates. Mouse Back and the new shortcut set are separate work.
+pause automatic updates. Mouse Back in Profiles uses the same local dismissal actions. A nested confirmation
+or open disclosure takes priority; returning discards only the unfinished draft.
+The handler owns only an active, focused extension region and the pointer gesture
+begun there. In logs, and over host/dock areas, Back keeps host history ownership.
+Native keyboard/menu/top-bar Back and Forward remain host-owned. Local panels do
+not create history entries; host Forward never restores an unfinished local draft.
+Physical delivery/cancellation evidence is platform-specific under
+`docs/verification/28/`; Windows and macOS remain unverified. The additional
+shortcut set is separate work.

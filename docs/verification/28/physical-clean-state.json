@@ -1,0 +1,59 @@
+{
+  "history": {
+    "currentIndex": 4,
+    "entries": [
+      {
+        "id": 5,
+        "url": "https://renderer.freelens.app:46645/welcome",
+        "userTypedURL": "https://renderer.freelens.app:46645/",
+        "title": "",
+        "transitionType": "typed"
+      },
+      {
+        "id": 7,
+        "url": "https://renderer.freelens.app:46645/extensions",
+        "userTypedURL": "https://renderer.freelens.app:46645/",
+        "title": "",
+        "transitionType": "link"
+      },
+      {
+        "id": 8,
+        "url": "https://renderer.freelens.app:46645/cluster/770814298afe692457d07d8b15d6b8d3",
+        "userTypedURL": "https://renderer.freelens.app:46645/",
+        "title": "",
+        "transitionType": "link"
+      },
+      {
+        "id": 9,
+        "url": "https://renderer.freelens.app:46645/cluster/770814298afe692457d07d8b15d6b8d3",
+        "userTypedURL": "https://renderer.freelens.app:46645/",
+        "title": "",
+        "transitionType": "link"
+      },
+      {
+        "id": 10,
+        "url": "https://renderer.freelens.app:46645/cluster/770814298afe692457d07d8b15d6b8d3",
+        "userTypedURL": "https://renderer.freelens.app:46645/",
+        "title": "",
+        "transitionType": "link"
+      }
+    ]
+  },
+  "url": "https://770814298afe692457d07d8b15d6b8d3.renderer.freelens.app:46645/extension/freelens-readable-logs/readable-logs?clusterId=770814298afe692457d07d8b15d6b8d3&namespace=readable-logs-spike&pod=single-json&podUid=0035d4f0-23c6-4e7d-93b2-c1d13a41cb92",
+  "paused": true,
+  "configuration": {
+    "schemaVersion": 3,
+    "viewer": {
+      "inspection": "inline"
+    },
+    "profiles": [],
+    "globalDefault": "default"
+  },
+  "kind": "clean",
+  "ownedIds": [],
+  "point": {
+    "x": 373.4716796875,
+    "y": 113.49609375
+  },
+  "focus": "H2"
+}

@@ -1,6 +1,6 @@
 # 27: Return from local contexts with predictable Escape and focus
 
-**Status:** ready-for-agent
+**Status:** done
 
 **Blocked by:** [25: Deliver the compact black log workspace](25-deliver-the-compact-black-log-workspace.md)
 
