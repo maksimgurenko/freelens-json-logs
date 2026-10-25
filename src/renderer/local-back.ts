@@ -10,8 +10,13 @@ export function bindLocalBack(root: HTMLElement, active: () => boolean,
   let gesture: { action?: () => void; owned: boolean; handled: boolean } | undefined;
   const outside = (selector: string) => Array.from(document.querySelectorAll<HTMLElement>(selector))
     .some(node => !root.contains(node) && !!node.getClientRects().length && getComputedStyle(node).visibility !== 'hidden');
+  // Chromium moves focus to BODY when Back is pressed on non-focusable panel
+  // space. That is still the pointer's local context, not a foreign focused
+  // control. Requiring a focused descendant again at release loses the latch
+  // before mouseup can cancel native history traversal.
+  const localFocus = () => root.contains(document.activeElement) || document.activeElement === document.body;
   const eligible = (event: MouseEvent) => active() && !document.hidden && document.hasFocus() &&
-    !!root.getClientRects().length && root.contains(event.target as Node) && root.contains(document.activeElement) &&
+    !!root.getClientRects().length && root.contains(event.target as Node) && localFocus() &&
     !event.ctrlKey && !event.metaKey && !event.altKey && !event.shiftKey;
   const down = (event: PointerEvent) => {
     if (event.button !== 3) return;

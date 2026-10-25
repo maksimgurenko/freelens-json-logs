@@ -1,0 +1,327 @@
+{
+  "complete": true,
+  "results": [
+    {
+      "case": "dirty",
+      "package": "0.1.33",
+      "passed": true,
+      "physicalUsbPressRelease": true,
+      "localReleaseCanceled": true,
+      "nativeHistorySteps": 0,
+      "owner": {
+        "at": "2026-10-25T20:51:02.591Z",
+        "pid": 622295,
+        "windowId": 2,
+        "webContentsId": 2,
+        "focusedWindowId": 2,
+        "focused": true,
+        "rootUrl": "https://renderer.freelens.app:39437/cluster/770814298afe692457d07d8b15d6b8d3",
+        "focusedFrame": {
+          "url": "https://770814298afe692457d07d8b15d6b8d3.renderer.freelens.app:39437/extension/freelens-readable-logs/readable-logs?clusterId=770814298afe692457d07d8b15d6b8d3&namespace=readable-logs-spike&pod=single-json&podUid=0035d4f0-23c6-4e7d-93b2-c1d13a41cb92",
+          "processId": 5,
+          "routingId": 4
+        },
+        "historyIndex": 4,
+        "historyLength": 5,
+        "listeners": 4,
+        "cancellation": false
+      },
+      "desktopRestored": true,
+      "physicalMotionDuringRestoration": {
+        "devices": [
+          {
+            "device": "event5",
+            "name": "Logitech G305",
+            "relativeMotion": []
+          },
+          {
+            "device": "event6",
+            "name": "Kinesis Kinesis Adv360",
+            "relativeMotion": []
+          }
+        ],
+        "observedPhysicalMotion": false,
+        "scope": "Known readable physical USB relative devices during restoration only; absence is not proof about all input sources."
+      },
+      "evidenceStem": "physical-dirty-02"
+    },
+    {
+      "case": "clean",
+      "package": "0.1.33",
+      "passed": true,
+      "physicalUsbPressRelease": true,
+      "localReleaseCanceled": true,
+      "nativeHistorySteps": 0,
+      "owner": {
+        "at": "2026-10-25T20:52:45.270Z",
+        "pid": 622295,
+        "windowId": 2,
+        "webContentsId": 2,
+        "focusedWindowId": 2,
+        "focused": true,
+        "rootUrl": "https://renderer.freelens.app:39437/cluster/770814298afe692457d07d8b15d6b8d3",
+        "focusedFrame": {
+          "url": "https://770814298afe692457d07d8b15d6b8d3.renderer.freelens.app:39437/extension/freelens-readable-logs/readable-logs?clusterId=770814298afe692457d07d8b15d6b8d3&namespace=readable-logs-spike&pod=single-json&podUid=0035d4f0-23c6-4e7d-93b2-c1d13a41cb92",
+          "processId": 5,
+          "routingId": 4
+        },
+        "historyIndex": 4,
+        "historyLength": 5,
+        "listeners": 4,
+        "cancellation": false
+      },
+      "desktopRestored": true,
+      "physicalMotionDuringRestoration": {
+        "devices": [
+          {
+            "device": "event5",
+            "name": "Logitech G305",
+            "relativeMotion": []
+          },
+          {
+            "device": "event6",
+            "name": "Kinesis Kinesis Adv360",
+            "relativeMotion": []
+          }
+        ],
+        "observedPhysicalMotion": false,
+        "scope": "Known readable physical USB relative devices during restoration only; absence is not proof about all input sources."
+      },
+      "evidenceStem": "physical-clean-01"
+    },
+    {
+      "case": "confirmation",
+      "package": "0.1.33",
+      "passed": true,
+      "physicalUsbPressRelease": true,
+      "localReleaseCanceled": true,
+      "nativeHistorySteps": 0,
+      "owner": {
+        "at": "2026-10-25T20:53:11.112Z",
+        "pid": 622295,
+        "windowId": 2,
+        "webContentsId": 2,
+        "focusedWindowId": 2,
+        "focused": true,
+        "rootUrl": "https://renderer.freelens.app:39437/cluster/770814298afe692457d07d8b15d6b8d3",
+        "focusedFrame": {
+          "url": "https://770814298afe692457d07d8b15d6b8d3.renderer.freelens.app:39437/extension/freelens-readable-logs/readable-logs?clusterId=770814298afe692457d07d8b15d6b8d3&namespace=readable-logs-spike&pod=single-json&podUid=0035d4f0-23c6-4e7d-93b2-c1d13a41cb92",
+          "processId": 5,
+          "routingId": 4
+        },
+        "historyIndex": 4,
+        "historyLength": 5,
+        "listeners": 4,
+        "cancellation": false
+      },
+      "desktopRestored": true,
+      "physicalMotionDuringRestoration": {
+        "devices": [
+          {
+            "device": "event5",
+            "name": "Logitech G305",
+            "relativeMotion": []
+          },
+          {
+            "device": "event6",
+            "name": "Kinesis Kinesis Adv360",
+            "relativeMotion": []
+          }
+        ],
+        "observedPhysicalMotion": false,
+        "scope": "Known readable physical USB relative devices during restoration only; absence is not proof about all input sources."
+      },
+      "evidenceStem": "physical-confirmation-01"
+    },
+    {
+      "case": "disclosure",
+      "package": "0.1.33",
+      "passed": true,
+      "physicalUsbPressRelease": true,
+      "localReleaseCanceled": true,
+      "nativeHistorySteps": 0,
+      "owner": {
+        "at": "2026-10-25T20:53:30.253Z",
+        "pid": 622295,
+        "windowId": 2,
+        "webContentsId": 2,
+        "focusedWindowId": 2,
+        "focused": true,
+        "rootUrl": "https://renderer.freelens.app:39437/cluster/770814298afe692457d07d8b15d6b8d3",
+        "focusedFrame": {
+          "url": "https://770814298afe692457d07d8b15d6b8d3.renderer.freelens.app:39437/extension/freelens-readable-logs/readable-logs?clusterId=770814298afe692457d07d8b15d6b8d3&namespace=readable-logs-spike&pod=single-json&podUid=0035d4f0-23c6-4e7d-93b2-c1d13a41cb92",
+          "processId": 5,
+          "routingId": 4
+        },
+        "historyIndex": 4,
+        "historyLength": 5,
+        "listeners": 4,
+        "cancellation": false
+      },
+      "desktopRestored": true,
+      "physicalMotionDuringRestoration": {
+        "devices": [
+          {
+            "device": "event5",
+            "name": "Logitech G305",
+            "relativeMotion": []
+          },
+          {
+            "device": "event6",
+            "name": "Kinesis Kinesis Adv360",
+            "relativeMotion": []
+          }
+        ],
+        "observedPhysicalMotion": false,
+        "scope": "Known readable physical USB relative devices during restoration only; absence is not proof about all input sources."
+      },
+      "evidenceStem": "physical-disclosure-01"
+    },
+    {
+      "case": "logs",
+      "package": "0.1.33",
+      "passed": true,
+      "physicalUsbPressRelease": true,
+      "localReleaseCanceled": false,
+      "nativeHistorySteps": 1,
+      "owner": {
+        "at": "2026-10-25T20:53:58.218Z",
+        "pid": 622295,
+        "windowId": 2,
+        "webContentsId": 2,
+        "focusedWindowId": 2,
+        "focused": true,
+        "rootUrl": "https://renderer.freelens.app:39437/cluster/770814298afe692457d07d8b15d6b8d3",
+        "focusedFrame": {
+          "url": "https://770814298afe692457d07d8b15d6b8d3.renderer.freelens.app:39437/extension/freelens-readable-logs/readable-logs?clusterId=770814298afe692457d07d8b15d6b8d3&namespace=readable-logs-spike&pod=single-json&podUid=0035d4f0-23c6-4e7d-93b2-c1d13a41cb92",
+          "processId": 5,
+          "routingId": 4
+        },
+        "historyIndex": 4,
+        "historyLength": 5,
+        "listeners": 4,
+        "cancellation": false
+      },
+      "desktopRestored": true,
+      "physicalMotionDuringRestoration": {
+        "devices": [
+          {
+            "device": "event5",
+            "name": "Logitech G305",
+            "relativeMotion": []
+          },
+          {
+            "device": "event6",
+            "name": "Kinesis Kinesis Adv360",
+            "relativeMotion": []
+          }
+        ],
+        "observedPhysicalMotion": false,
+        "scope": "Known readable physical USB relative devices during restoration only; absence is not proof about all input sources."
+      },
+      "evidenceStem": "physical-logs-01"
+    },
+    {
+      "case": "dock",
+      "package": "0.1.33",
+      "passed": true,
+      "physicalUsbPressRelease": true,
+      "localReleaseCanceled": false,
+      "nativeHistorySteps": 1,
+      "owner": {
+        "at": "2026-10-25T20:54:19.581Z",
+        "pid": 622295,
+        "windowId": 2,
+        "webContentsId": 2,
+        "focusedWindowId": 2,
+        "focused": true,
+        "rootUrl": "https://renderer.freelens.app:39437/cluster/770814298afe692457d07d8b15d6b8d3",
+        "focusedFrame": {
+          "url": "https://770814298afe692457d07d8b15d6b8d3.renderer.freelens.app:39437/extension/freelens-readable-logs/readable-logs?clusterId=770814298afe692457d07d8b15d6b8d3&namespace=readable-logs-spike&pod=single-json&podUid=0035d4f0-23c6-4e7d-93b2-c1d13a41cb92",
+          "processId": 5,
+          "routingId": 4
+        },
+        "historyIndex": 4,
+        "historyLength": 5,
+        "listeners": 4,
+        "cancellation": false
+      },
+      "desktopRestored": true,
+      "physicalMotionDuringRestoration": {
+        "devices": [
+          {
+            "device": "event5",
+            "name": "Logitech G305",
+            "relativeMotion": []
+          },
+          {
+            "device": "event6",
+            "name": "Kinesis Kinesis Adv360",
+            "relativeMotion": []
+          }
+        ],
+        "observedPhysicalMotion": false,
+        "scope": "Known readable physical USB relative devices during restoration only; absence is not proof about all input sources."
+      },
+      "evidenceStem": "physical-dock-01"
+    },
+    {
+      "case": "host",
+      "package": "0.1.33",
+      "passed": true,
+      "physicalUsbPressRelease": true,
+      "localReleaseCanceled": false,
+      "nativeHistorySteps": 1,
+      "owner": {
+        "at": "2026-10-25T20:55:06.515Z",
+        "pid": 622295,
+        "windowId": 2,
+        "webContentsId": 2,
+        "focusedWindowId": 2,
+        "focused": true,
+        "rootUrl": "https://renderer.freelens.app:39437/cluster/770814298afe692457d07d8b15d6b8d3",
+        "focusedFrame": {
+          "url": "https://renderer.freelens.app:39437/cluster/770814298afe692457d07d8b15d6b8d3",
+          "processId": 5,
+          "routingId": 1
+        },
+        "historyIndex": 4,
+        "historyLength": 5,
+        "listeners": 4,
+        "cancellation": false
+      },
+      "desktopRestored": true,
+      "physicalMotionDuringRestoration": {
+        "devices": [
+          {
+            "device": "event5",
+            "name": "Logitech G305",
+            "relativeMotion": [
+              {
+                "seconds": 1792961710,
+                "microseconds": 722921,
+                "axis": "y",
+                "delta": 1
+              },
+              {
+                "seconds": 1792961710,
+                "microseconds": 729917,
+                "axis": "y",
+                "delta": 1
+              }
+            ]
+          },
+          {
+            "device": "event6",
+            "name": "Kinesis Kinesis Adv360",
+            "relativeMotion": []
+          }
+        ],
+        "observedPhysicalMotion": true,
+        "scope": "Known readable physical USB relative devices during restoration only; absence is not proof about all input sources."
+      },
+      "evidenceStem": "physical-host-01"
+    }
+  ],
+  "older32Dirty01": "failed; excluded from final passes"
+}

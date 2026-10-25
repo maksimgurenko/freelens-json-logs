@@ -1,0 +1,1 @@
+(async()=>{const pod=await global.LensExtensions.Renderer.K8sApi.podsApi.get({namespace:'readable-logs-ticket-30',name:'release'});global.LensExtensions.Renderer.Navigation.showDetails(pod.selfLink);return {uid:pod.metadata.uid,namespace:pod.getNs(),name:pod.getName()};})()

@@ -1,0 +1,11 @@
+{
+  "at": "2026-10-25T20:31:00.018Z",
+  "result": {
+    "type": "object",
+    "value": {
+      "empty": "No logs returned for empty.",
+      "noPane": true,
+      "canvas": "rgb(0, 0, 0)"
+    }
+  }
+}

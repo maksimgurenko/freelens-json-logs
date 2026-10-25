@@ -1,0 +1,5 @@
+wl_seat 9
+zwp_text_input_manager_v1 1
+zwp_text_input_manager_v3 1
+zwp_input_method_manager_v2 1
+hyprland_input_capture_manager_v1 1

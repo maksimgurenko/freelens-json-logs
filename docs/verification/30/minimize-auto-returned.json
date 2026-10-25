@@ -1,0 +1,277 @@
+{
+  "at": "2026-10-25T21:10:05.350Z",
+  "result": {
+    "type": "object",
+    "value": {
+      "before": {
+        "at": 1792962601981,
+        "url": "https://770814298afe692457d07d8b15d6b8d3.renderer.freelens.app:33765/extension/freelens-readable-logs/readable-logs?clusterId=770814298afe692457d07d8b15d6b8d3&namespace=readable-logs-ticket-30&pod=release&podUid=6d4edf7f-20f6-44ed-8bce-dfa5e05df2b2",
+        "hidden": false,
+        "focused": true,
+        "version": "0.1.33",
+        "container": "bounded",
+        "choices": [
+          {
+            "kind": "Containers",
+            "names": [
+              "bounded",
+              "over-tail",
+              "utf8-near",
+              "utf8-over",
+              "oversized",
+              "repeated",
+              "malformed",
+              "empty"
+            ]
+          },
+          {
+            "kind": "init containers",
+            "names": []
+          },
+          {
+            "kind": "ephemeral containers",
+            "names": []
+          }
+        ],
+        "header": [
+          "readable-logs-ticket-30",
+          "/",
+          "release",
+          "Container",
+          "bounded",
+          "over-tail",
+          "utf8-near",
+          "utf8-over",
+          "oversized",
+          "repeated",
+          "malformed",
+          "empty",
+          "Profile",
+          "Auto · Default",
+          "Default",
+          "Edit profiles",
+          "Pause",
+          "Refresh",
+          "Find",
+          "Display options"
+        ],
+        "notice": [],
+        "buttons": [
+          {
+            "text": "Edit profiles",
+            "disabled": false
+          },
+          {
+            "text": "Pause",
+            "disabled": false
+          },
+          {
+            "text": "Refresh",
+            "disabled": false
+          },
+          {
+            "text": "Find",
+            "disabled": false
+          },
+          {
+            "text": "Readable",
+            "disabled": false
+          },
+          {
+            "text": "Raw",
+            "disabled": false
+          },
+          {
+            "text": "Shortcuts",
+            "disabled": false
+          },
+          {
+            "text": "Previous",
+            "disabled": true
+          },
+          {
+            "text": "Next",
+            "disabled": true
+          },
+          {
+            "text": "Close",
+            "disabled": false
+          },
+          {
+            "text": "To bottom",
+            "disabled": false
+          }
+        ],
+        "rows": 1000,
+        "first": "10/25/2026, 15:57:53\nINFO\nrow 0001",
+        "last": "10/25/2026, 15:57:53\nINFO\nrow 1000"
+      },
+      "after": {
+        "at": 1792962605282,
+        "url": "https://770814298afe692457d07d8b15d6b8d3.renderer.freelens.app:33765/extension/freelens-readable-logs/readable-logs?clusterId=770814298afe692457d07d8b15d6b8d3&namespace=readable-logs-ticket-30&pod=release&podUid=6d4edf7f-20f6-44ed-8bce-dfa5e05df2b2",
+        "hidden": false,
+        "focused": true,
+        "version": "0.1.33",
+        "container": "bounded",
+        "choices": [
+          {
+            "kind": "Containers",
+            "names": [
+              "bounded",
+              "over-tail",
+              "utf8-near",
+              "utf8-over",
+              "oversized",
+              "repeated",
+              "malformed",
+              "empty"
+            ]
+          },
+          {
+            "kind": "init containers",
+            "names": []
+          },
+          {
+            "kind": "ephemeral containers",
+            "names": []
+          }
+        ],
+        "header": [
+          "readable-logs-ticket-30",
+          "/",
+          "release",
+          "Container",
+          "bounded",
+          "over-tail",
+          "utf8-near",
+          "utf8-over",
+          "oversized",
+          "repeated",
+          "malformed",
+          "empty",
+          "Profile",
+          "Auto · Default",
+          "Default",
+          "Edit profiles",
+          "Pause",
+          "Refresh",
+          "Find",
+          "Display options"
+        ],
+        "notice": [],
+        "buttons": [
+          {
+            "text": "Edit profiles",
+            "disabled": false
+          },
+          {
+            "text": "Pause",
+            "disabled": false
+          },
+          {
+            "text": "Refresh",
+            "disabled": false
+          },
+          {
+            "text": "Find",
+            "disabled": false
+          },
+          {
+            "text": "Readable",
+            "disabled": false
+          },
+          {
+            "text": "Raw",
+            "disabled": false
+          },
+          {
+            "text": "Shortcuts",
+            "disabled": false
+          },
+          {
+            "text": "Previous",
+            "disabled": true
+          },
+          {
+            "text": "Next",
+            "disabled": true
+          },
+          {
+            "text": "Close",
+            "disabled": false
+          },
+          {
+            "text": "To bottom",
+            "disabled": false
+          }
+        ],
+        "rows": 1000,
+        "first": "10/25/2026, 15:57:53\nINFO\nrow 0001",
+        "last": "10/25/2026, 15:57:53\nINFO\nrow 1000"
+      },
+      "requests": [
+        {
+          "kind": "metadata",
+          "path": "/api-kube/api/v1/namespaces/readable-logs-ticket-30/pods/release",
+          "started": 1792962604472,
+          "status": 200,
+          "settled": 1792962604487,
+          "bytes": 16565,
+          "uid": "6d4edf7f-20f6-44ed-8bce-dfa5e05df2b2",
+          "instances": [
+            {
+              "name": "bounded",
+              "restarts": 0,
+              "id": "containerd://284a8ced61b3edfac133ab95845973ec0e39ea2a1afcdec57387785b18f201e6"
+            },
+            {
+              "name": "empty",
+              "restarts": 0,
+              "id": "containerd://8b156e77db816fb95599f92a7b1bfae5d86270b60a643b433578532b090295be"
+            },
+            {
+              "name": "malformed",
+              "restarts": 0,
+              "id": "containerd://0f3bb3af4c193b7af2c5ed97b11c82f4c19d533c9d8e822c667695c1b4248cee"
+            },
+            {
+              "name": "over-tail",
+              "restarts": 0,
+              "id": "containerd://ac6b4ab033a131b74d46a1776d5b2ad10979c78cdd287887df9e4f0e27e9c3b5"
+            },
+            {
+              "name": "oversized",
+              "restarts": 0,
+              "id": "containerd://9a97003c3539b50d6ea57c3bebdfada81e417c3ec9b8eee64f5decfa2dfc055a"
+            },
+            {
+              "name": "repeated",
+              "restarts": 0,
+              "id": "containerd://b92bcaeb30a1eeebeae3e9c71479b6c101db8925724eb3849b1f45006a0807c1"
+            },
+            {
+              "name": "utf8-near",
+              "restarts": 0,
+              "id": "containerd://2a317c89840cf4e923b05d0d9ce57d24359071e0d2f99f7996c59e5782cc3ec0"
+            },
+            {
+              "name": "utf8-over",
+              "restarts": 0,
+              "id": "containerd://a3ed2aa2b38c687559e1efa0e75165517aaade2619247d3b324b077a16f8b207"
+            }
+          ]
+        },
+        {
+          "kind": "logs",
+          "path": "/api-kube/api/v1/namespaces/readable-logs-ticket-30/pods/release/log?container=bounded&tailLines=1000&timestamps=true&follow=false&previous=false",
+          "started": 1792962604591,
+          "status": 200,
+          "settled": 1792962604602,
+          "bytes": 126000,
+          "first": "2026-10-25T20:57:53.245333580Z {\"message\":\"row 0001\",\"level\":\"info\",\"hidden\":\"Private.Needle[0] α🙂\",\"nested\":{\"ok\":true}}\n2026-10-25T20:57:53.245345040Z {\"message\":\"row ",
+          "last": ":\"Private.Needle[0] α🙂\",\"nested\":{\"ok\":true}}\n2026-10-25T20:57:53.245896647Z {\"message\":\"row 1000\",\"level\":\"info\",\"hidden\":\"Private.Needle[0] α🙂\",\"nested\":{\"ok\":true}}\n"
+        }
+      ]
+    }
+  }
+}

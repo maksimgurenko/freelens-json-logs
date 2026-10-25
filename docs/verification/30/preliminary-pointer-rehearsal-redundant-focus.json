@@ -1,0 +1,63 @@
+{
+  "results": [
+    {
+      "index": 0,
+      "workspaceBefore": 1,
+      "focusBefore": "0x5600c57ceaf0",
+      "cursorBefore": {
+        "x": 1183,
+        "y": 769
+      },
+      "armed": false,
+      "BackInjected": false,
+      "pointerRestoration": {
+        "commanded": {
+          "x": 1183,
+          "y": 769
+        },
+        "helperReplies": [
+          {
+            "ready": true,
+            "device": "readable-logs-ticket-30-key-verification"
+          },
+          {
+            "ok": true,
+            "result": {
+              "x": 1183,
+              "y": 768
+            }
+          }
+        ],
+        "observed": {
+          "x": 1183,
+          "y": 768
+        }
+      },
+      "physicalMotionDuringRestoration": {
+        "devices": [
+          {
+            "device": "event5",
+            "name": "Logitech G305",
+            "relativeMotion": []
+          },
+          {
+            "device": "event6",
+            "name": "Kinesis Kinesis Adv360",
+            "relativeMotion": []
+          }
+        ],
+        "observedPhysicalMotion": false,
+        "scope": "Known readable physical USB relative devices during restoration only; absence is not proof about all input sources."
+      },
+      "workspaceAfter": 1,
+      "focusAfter": "0x5600c57ceaf0",
+      "cursorAfter": {
+        "x": 1200,
+        "y": 689
+      },
+      "passed": false
+    }
+  ],
+  "armed": false,
+  "noBackInput": true
+}

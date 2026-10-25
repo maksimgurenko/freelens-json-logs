@@ -1,0 +1,15 @@
+{
+  "at": "2026-10-25T21:09:38.058Z",
+  "result": {
+    "type": "object",
+    "value": {
+      "busy": true,
+      "slowNotice": true,
+      "held": 1,
+      "readingSlot": true,
+      "windowTopBeforeSlow": 44.873046875,
+      "pausedAfterSlow": true,
+      "discardedHeldResult": true
+    }
+  }
+}

@@ -1,0 +1,63 @@
+{
+  "actualPointerTarget": "ResizingAnchor vertical leading; resizing at release, wasDragging during auxclick",
+  "priorFocus": "active native dock tab; pointer did not hit that tab",
+  "beforePreparedTabPoint": {
+    "x": 677.6025390625,
+    "y": 969.8828125
+  },
+  "afterSameTabPoint": {
+    "x": 677.6025390625,
+    "y": 969.8828125
+  },
+  "sameVerticalReference": true,
+  "currentDock": {
+    "dock": {
+      "rect": {
+        "x": 200,
+        "y": 919.2578125,
+        "width": 2117.5,
+        "height": 332.6171875
+      },
+      "class": "Dock isOpen",
+      "height": 300,
+      "minHeight": 100,
+      "maxHeight": 1130,
+      "isOpen": true,
+      "fullSize": false,
+      "contentFlexBasis": "300px"
+    },
+    "anchor": {
+      "class": "ResizingAnchor vertical leading",
+      "rect": {
+        "x": 200,
+        "y": 919.2578125,
+        "width": 2117.5,
+        "height": 11.9921875
+      },
+      "bodyResizing": false
+    },
+    "tabs": [
+      {
+        "id": "tab-terminal",
+        "label": "terminalTerminalclose",
+        "active": false
+      },
+      {
+        "id": "tab-log-tab-d34f2b4f-84ad-42e7-8642-d7a70844db27",
+        "label": "subjectPod changing-logsclose",
+        "active": false
+      },
+      {
+        "id": "tab-log-tab-a1298e84-48c1-4d63-9fec-a4713ca389ee",
+        "label": "subjectPod single-jsonclose",
+        "active": true
+      }
+    ]
+  },
+  "observedPressReleaseY": [
+    930.80078125,
+    930.80078125
+  ],
+  "interpretation": "No owned geometry change observed: prepared/current vertical reference agrees, current persisted content height is 300 px, transient resizing classes are cleared, same selected dock tab and tab identities remain. Initial numerical persisted dock height was not separately snapshotted; no stronger historical storage equality is claimed. No dock state was rewritten.",
+  "sourceBoundary": "Pinned v1.10.3 ResizingAnchor permits any button unless onlyButtons is set; Dock supplies none. wasDragging alone is not proof of a changed extent. Source inference is separate from measured coordinates/state."
+}

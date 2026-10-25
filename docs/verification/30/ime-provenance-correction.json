@@ -1,0 +1,8 @@
+{
+  "earlierResults": [
+    "preliminary-ime-end-trust-flag-ime.json",
+    "pre-isolation-ime.json",
+    "prior-mixed-escape-path-ime.json"
+  ],
+  "correction": "Earlier Ctrl+S used OS uinput, but Escape used h.key with CV26_PLAYWRIGHT=1, hence trusted Playwright/CDP input. Their shared OS-uinput Escape description was inaccurate. Final ime.mjs now invokes nativeKeyboard.press(Escape); both commands use the owned OS uinput device. Earlier observations are retained, not relabeled as OS Escape. The compositionend isTrusted=false boundary remains separate."
+}

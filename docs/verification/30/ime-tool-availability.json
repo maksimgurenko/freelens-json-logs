@@ -1,0 +1,15 @@
+{
+  "commands": {
+    "wayland-scanner": "/usr/bin/wayland-scanner",
+    "cc": "/usr/bin/cc",
+    "pkg-config": "/usr/bin/pkg-config",
+    "wtype": "/usr/bin/wtype",
+    "fcitx5": null,
+    "ibus-daemon": null
+  },
+  "waylandClient": "1.26.0",
+  "textInputProtocols": [
+    "/usr/share/qt6/wayland/extensions/qt-text-input-method-unstable-v1.xml",
+    "/usr/share/wayland-protocols/unstable/input-method/input-method-unstable-v1.xml"
+  ]
+}

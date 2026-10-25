@@ -1,0 +1,17 @@
+{
+  "package": "0.1.33",
+  "input": "DOM guard checks; not OS input evidence",
+  "unfocused": {
+    "documentFocus": false,
+    "canceled": false,
+    "findOpen": false
+  },
+  "cached": {
+    "documentHidden": false,
+    "documentFocus": false,
+    "rects": 1,
+    "canceled": false,
+    "findOpen": false
+  },
+  "passed": true
+}

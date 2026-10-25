@@ -1,0 +1,38 @@
+{
+  "package": "0.1.33",
+  "checks": [
+    {
+      "name": "Profiles stays active and automatic real reads continue without implicit Pause",
+      "result": true
+    },
+    {
+      "name": "Return retains surviving original record and automatic mode",
+      "result": true
+    }
+  ],
+  "requests": [
+    {
+      "originalPath": "https://127.0.0.1:41551/api-kube/api/v1/namespaces/readable-logs-ticket-30/pods/selection-copy/log?container=selection&tailLines=1000&timestamps=true&follow=false&previous=false",
+      "transmittedPath": "/api-kube/api/v1/namespaces/readable-logs-ticket-30/pods/selection-copy/log?container=selection&tailLines=1000&timestamps=true&follow=false&previous=false",
+      "started": 71183.19999999925,
+      "denied": false,
+      "offline": false,
+      "status": 200,
+      "responseCompleted": 71196.39999999851,
+      "bytes": 188284,
+      "sha256": "d234181d84d4fbc7909edcaaa1d979a73c3915c2cd7d50918691b1cbacb02cbd"
+    },
+    {
+      "originalPath": "https://127.0.0.1:41551/api-kube/api/v1/namespaces/readable-logs-ticket-30/pods/selection-copy/log?container=selection&tailLines=1000&timestamps=true&follow=false&previous=false",
+      "transmittedPath": "/api-kube/api/v1/namespaces/readable-logs-ticket-30/pods/selection-copy/log?container=selection&tailLines=1000&timestamps=true&follow=false&previous=false",
+      "started": 74299,
+      "denied": false,
+      "offline": false,
+      "status": 200,
+      "responseCompleted": 74309.39999999851,
+      "bytes": 188284,
+      "sha256": "d234181d84d4fbc7909edcaaa1d979a73c3915c2cd7d50918691b1cbacb02cbd"
+    }
+  ],
+  "passed": true
+}

@@ -1,0 +1,21 @@
+{
+  "ready": false,
+  "armed": false,
+  "supervisorOnly": true,
+  "package": "0.1.33",
+  "tarballSha256": "185d22ff0f4e83c527c2c7b6d7f23773bc0ddb876e684495d23da2e0cf78dfa2",
+  "runtimeHandoff": ".ralph/physical-back-ready.md",
+  "fiveUnarmedRestorationRehearsalsPass": true,
+  "supplementalPackagedBodyFocusRegressionPass": true,
+  "physical32Dirty01": "failed, retained separately",
+  "freshLabels": [
+    "physical-dirty-02",
+    "physical-clean-01",
+    "physical-confirmation-01",
+    "physical-disclosure-01",
+    "physical-logs-01",
+    "physical-dock-01",
+    "physical-host-01"
+  ],
+  "complete": true
+}

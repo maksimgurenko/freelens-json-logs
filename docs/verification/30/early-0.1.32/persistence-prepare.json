@@ -1,0 +1,92 @@
+{
+  "at": "2026-10-25T20:35:14.652Z",
+  "result": {
+    "type": "object",
+    "value": {
+      "configuration": {
+        "schemaVersion": 3,
+        "viewer": {
+          "inspection": "bottom"
+        },
+        "profiles": [
+          {
+            "id": "11390fd7-d461-47bd-8846-0ccdf58a9965",
+            "name": "CV30 durable saved profile",
+            "format": {
+              "messagePaths": [
+                "/level"
+              ],
+              "timestampPaths": [
+                "/timestamp",
+                "/time",
+                "/@timestamp"
+              ],
+              "levelPaths": [
+                "/level",
+                "/severity",
+                "/log.level",
+                "/log/level"
+              ],
+              "inlinePaths": [],
+              "hiddenPaths": [],
+              "numericTimestamp": "unset",
+              "severityMappings": []
+            },
+            "matching": {
+              "enabled": false,
+              "conditions": {
+                "labels": []
+              }
+            }
+          }
+        ],
+        "globalDefault": "11390fd7-d461-47bd-8846-0ccdf58a9965"
+      },
+      "settings": {
+        "schemaVersion": 3,
+        "viewer": {
+          "inspection": "bottom"
+        },
+        "profiles": [
+          {
+            "id": "11390fd7-d461-47bd-8846-0ccdf58a9965",
+            "name": "CV30 durable saved profile",
+            "format": {
+              "messagePaths": [
+                "/level"
+              ],
+              "timestampPaths": [
+                "/timestamp",
+                "/time",
+                "/@timestamp"
+              ],
+              "levelPaths": [
+                "/level",
+                "/severity",
+                "/log.level",
+                "/log/level"
+              ],
+              "inlinePaths": [],
+              "hiddenPaths": [],
+              "numericTimestamp": "unset",
+              "severityMappings": []
+            },
+            "matching": {
+              "enabled": false,
+              "conditions": {
+                "labels": []
+              }
+            }
+          }
+        ],
+        "globalDefault": "11390fd7-d461-47bd-8846-0ccdf58a9965",
+        "__internal__": {
+          "migrations": {
+            "version": "0.1.32"
+          }
+        }
+      },
+      "paused": true
+    }
+  }
+}

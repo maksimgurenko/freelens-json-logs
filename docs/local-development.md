@@ -25,8 +25,8 @@ npm run typecheck
 npm test
 npm run package
 npm run check:package
-tar -tzf dist/freelens-readable-logs-0.1.31.tgz
-sha256sum dist/freelens-readable-logs-0.1.31.tgz
+tar -tzf dist/freelens-readable-logs-0.1.33.tgz
+sha256sum dist/freelens-readable-logs-0.1.33.tgz
 ```
 
 The locked esbuild platform package supplies its binary without install scripts.
@@ -125,7 +125,7 @@ Follow [the accepted procedure](https://github.com/maksimgurenko/freelens-json-l
 2. For an update, **Uninstall** the old package and wait for removal to finish,
    retaining its saved extension settings. Install the new tarball via the form
    **once** and wait. Do not use the overwrite/reinstallation prompt.
-3. Check version **0.1.31** and Enabled, then open the cluster. Open a Pod's details
+3. Check version **0.1.33** and Enabled, then open the cluster. Open a Pod's details
    header and click the **Readable logs** icon beside the native actions. Verify
    cluster, namespace, Pod UID, container, the expected active profile and usable logs.
    Do not restart after installation as a substitute for passing this check.
@@ -372,8 +372,7 @@ begun there. In logs, and over host/dock areas, Back keeps host history ownershi
 Native keyboard/menu/top-bar Back and Forward remain host-owned. Local panels do
 not create history entries; host Forward never restores an unfinished local draft.
 Physical delivery/cancellation evidence is platform-specific under
-`docs/verification/28/`; Windows and macOS remain unverified. The additional
-shortcut set is separate work.
+`docs/verification/28/`; Windows and macOS remain unverified. The shortcut reference and bindings below use the same local ownership rules.
 
 
 ## Local keyboard shortcuts
@@ -391,3 +390,18 @@ Display options → Shortcuts opens a temporary reference; Close or Escape dismi
 it and restores Display options focus. Control tooltips show relevant bindings.
 Host Back/Forward, reload and command palette retain their host meanings. Platform
 verification and native input boundaries are recorded under `docs/verification/29/`.
+
+
+## Compact-view release verification
+
+The combined layout, selection, local return, mouse Back and shortcut workflow is
+verified against one exact installed package under `docs/verification/30/`. Read
+that report for the current completion state and package hash; earlier ticket
+reports describe their own package versions. Physical mouse evidence from an
+earlier package does not establish the final package gate.
+
+Linux checks use Freelens 1.10.3 on Hyprland/Wayland. Windows and macOS remain
+unverified. Linux OS IME/AltGraph coverage is also unverified; composition and
+modifier guard tests alone do not establish native input behavior. The local
+workflow adds no global shortcuts or settings and retains the existing bounded
+single-Pod/container, schema 3 and explicit recovery contracts.

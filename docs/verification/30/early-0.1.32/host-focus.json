@@ -1,0 +1,15 @@
+{
+  "package": "0.1.32",
+  "input": "OS uinput Ctrl+F with actual parent-frame ownership",
+  "owner": {
+    "url": "https://renderer.freelens.app:41039/extensions",
+    "focused": true,
+    "focus": "<input placeholder=\"Search...\" class=\"input box grow\" spellcheck=\"false\" value=\"\">"
+  },
+  "after": {
+    "findOpen": false,
+    "documentFocus": false,
+    "rootRects": 1
+  },
+  "passed": true
+}

@@ -1,0 +1,129 @@
+{
+  "originalApplicationConfigurationRestored": true,
+  "hostMigrationMetadata": {
+    "migrations": {
+      "version": "0.1.33"
+    }
+  },
+  "ownedNamespaceAbsent": true,
+  "sharedPodsUnchanged": true,
+  "dockTabsUnchanged": true,
+  "dockGeometry": {
+    "dock": {
+      "rect": {
+        "x": 200,
+        "y": 919.2578125,
+        "width": 2117.5,
+        "height": 332.6171875
+      },
+      "class": "Dock isOpen",
+      "height": 300,
+      "minHeight": 100,
+      "maxHeight": 1130,
+      "isOpen": true,
+      "fullSize": false,
+      "contentFlexBasis": "300px"
+    },
+    "anchor": {
+      "class": "ResizingAnchor vertical leading",
+      "rect": {
+        "x": 200,
+        "y": 919.2578125,
+        "width": 2117.5,
+        "height": 11.9921875
+      },
+      "bodyResizing": false
+    },
+    "tabs": [
+      {
+        "id": "tab-terminal",
+        "label": "terminalTerminalclose",
+        "active": false
+      },
+      {
+        "id": "tab-log-tab-d34f2b4f-84ad-42e7-8642-d7a70844db27",
+        "label": "subjectPod changing-logsclose",
+        "active": false
+      },
+      {
+        "id": "tab-log-tab-a1298e84-48c1-4d63-9fec-a4713ca389ee",
+        "label": "subjectPod single-jsonclose",
+        "active": true
+      }
+    ]
+  },
+  "physicalSummaryComplete": true,
+  "physicalRecorderUnarmed": true,
+  "ownedInputDevicesAbsent": true,
+  "ownedImeProcessAbsent": true,
+  "perGestureClipboardRestored": {
+    "gesture-readable-inline": {
+      "formats": true,
+      "buffers": true,
+      "pixels": true,
+      "restoredBuffers": {}
+    },
+    "gesture-readable-side": {
+      "formats": true,
+      "buffers": true,
+      "pixels": true,
+      "restoredBuffers": {}
+    },
+    "gesture-readable-bottom": {
+      "formats": true,
+      "buffers": true,
+      "pixels": true,
+      "restoredBuffers": {}
+    },
+    "gesture-raw-inline": {
+      "formats": true,
+      "buffers": true,
+      "pixels": true,
+      "restoredBuffers": {}
+    },
+    "gesture-raw-side": {
+      "formats": true,
+      "buffers": true,
+      "pixels": true,
+      "restoredBuffers": {}
+    },
+    "gesture-raw-bottom": {
+      "formats": true,
+      "buffers": true,
+      "pixels": true,
+      "restoredBuffers": {}
+    }
+  },
+  "editingPerProbeClipboardBuffersIdentical": true,
+  "taskClipboardBaselineDiffers": true,
+  "clipboardPolicy": "Immediate per-probe snapshots restored only while ownership is established; newer unknown content is preserved, never rewound to task baseline.",
+  "finalView": {
+    "url": "https://770814298afe692457d07d8b15d6b8d3.renderer.freelens.app:46235/extension/freelens-readable-logs/readable-logs?clusterId=770814298afe692457d07d8b15d6b8d3&namespace=readable-logs-spike&pod=single-json&podUid=0035d4f0-23c6-4e7d-93b2-c1d13a41cb92",
+    "historyLength": 9,
+    "version": "0.1.33",
+    "rows": 1,
+    "profiles": false,
+    "findOpen": false,
+    "query": "",
+    "scrollTop": 0,
+    "selected": null,
+    "paused": true,
+    "documentFocus": false,
+    "focus": "BUTTON",
+    "dockTabs": [
+      {
+        "id": "tab-terminal",
+        "label": "terminalTerminalclose"
+      },
+      {
+        "id": "tab-log-tab-d34f2b4f-84ad-42e7-8642-d7a70844db27",
+        "label": "subjectPod changing-logsclose"
+      },
+      {
+        "id": "tab-log-tab-a1298e84-48c1-4d63-9fec-a4713ca389ee",
+        "label": "subjectPod single-jsonclose"
+      }
+    ],
+    "existingTestHelpers": []
+  }
+}

@@ -1,0 +1,267 @@
+{
+  "at": "2026-10-25T20:32:41.290Z",
+  "result": {
+    "type": "object",
+    "value": {
+      "before": {
+        "at": 1792960357985,
+        "url": "https://770814298afe692457d07d8b15d6b8d3.renderer.freelens.app:41039/extension/freelens-readable-logs/readable-logs?clusterId=770814298afe692457d07d8b15d6b8d3&namespace=readable-logs-ticket-30&pod=release&podUid=ea47bdfd-7649-4910-8d8a-de59b51a1a9d",
+        "hidden": false,
+        "focused": true,
+        "version": "0.1.32",
+        "container": "bounded",
+        "choices": [
+          {
+            "kind": "Containers",
+            "names": [
+              "bounded",
+              "over-tail",
+              "utf8-near",
+              "utf8-over",
+              "oversized",
+              "repeated",
+              "malformed",
+              "empty"
+            ]
+          },
+          {
+            "kind": "init containers",
+            "names": []
+          },
+          {
+            "kind": "ephemeral containers",
+            "names": []
+          }
+        ],
+        "header": [
+          "readable-logs-ticket-30",
+          "/",
+          "release",
+          "Container",
+          "bounded",
+          "over-tail",
+          "utf8-near",
+          "utf8-over",
+          "oversized",
+          "repeated",
+          "malformed",
+          "empty",
+          "Profile",
+          "Auto · Default",
+          "Default",
+          "Edit profiles",
+          "Resume",
+          "Refresh",
+          "Find",
+          "Display options"
+        ],
+        "notice": [],
+        "buttons": [
+          {
+            "text": "Edit profiles",
+            "disabled": false
+          },
+          {
+            "text": "Resume",
+            "disabled": false
+          },
+          {
+            "text": "Refresh",
+            "disabled": false
+          },
+          {
+            "text": "Find",
+            "disabled": false
+          },
+          {
+            "text": "Readable",
+            "disabled": false
+          },
+          {
+            "text": "Raw",
+            "disabled": false
+          },
+          {
+            "text": "Shortcuts",
+            "disabled": false
+          },
+          {
+            "text": "Previous",
+            "disabled": true
+          },
+          {
+            "text": "Next",
+            "disabled": true
+          },
+          {
+            "text": "Close",
+            "disabled": false
+          },
+          {
+            "text": "To bottom",
+            "disabled": false
+          }
+        ],
+        "rows": 1000,
+        "first": "10/25/2026, 15:28:06\nINFO\nrow 0001",
+        "last": "10/25/2026, 15:28:06\nINFO\nrow 1000"
+      },
+      "after": {
+        "at": 1792960361287,
+        "url": "https://770814298afe692457d07d8b15d6b8d3.renderer.freelens.app:41039/extension/freelens-readable-logs/readable-logs?clusterId=770814298afe692457d07d8b15d6b8d3&namespace=readable-logs-ticket-30&pod=release&podUid=ea47bdfd-7649-4910-8d8a-de59b51a1a9d",
+        "hidden": false,
+        "focused": true,
+        "version": "0.1.32",
+        "container": "bounded",
+        "choices": [
+          {
+            "kind": "Containers",
+            "names": [
+              "bounded",
+              "over-tail",
+              "utf8-near",
+              "utf8-over",
+              "oversized",
+              "repeated",
+              "malformed",
+              "empty"
+            ]
+          },
+          {
+            "kind": "init containers",
+            "names": []
+          },
+          {
+            "kind": "ephemeral containers",
+            "names": []
+          }
+        ],
+        "header": [
+          "readable-logs-ticket-30",
+          "/",
+          "release",
+          "Container",
+          "bounded",
+          "over-tail",
+          "utf8-near",
+          "utf8-over",
+          "oversized",
+          "repeated",
+          "malformed",
+          "empty",
+          "Profile",
+          "Auto · Default",
+          "Default",
+          "Edit profiles",
+          "Resume",
+          "Refresh",
+          "Find",
+          "Display options"
+        ],
+        "notice": [],
+        "buttons": [
+          {
+            "text": "Edit profiles",
+            "disabled": false
+          },
+          {
+            "text": "Resume",
+            "disabled": false
+          },
+          {
+            "text": "Refresh",
+            "disabled": false
+          },
+          {
+            "text": "Find",
+            "disabled": false
+          },
+          {
+            "text": "Readable",
+            "disabled": false
+          },
+          {
+            "text": "Raw",
+            "disabled": false
+          },
+          {
+            "text": "Shortcuts",
+            "disabled": false
+          },
+          {
+            "text": "Previous",
+            "disabled": true
+          },
+          {
+            "text": "Next",
+            "disabled": true
+          },
+          {
+            "text": "Close",
+            "disabled": false
+          },
+          {
+            "text": "To bottom",
+            "disabled": false
+          }
+        ],
+        "rows": 1000,
+        "first": "10/25/2026, 15:28:06\nINFO\nrow 0001",
+        "last": "10/25/2026, 15:28:06\nINFO\nrow 1000"
+      },
+      "requests": [
+        {
+          "kind": "metadata",
+          "path": "/api-kube/api/v1/namespaces/readable-logs-ticket-30/pods/release",
+          "started": 1792960360429,
+          "status": 200,
+          "settled": 1792960360434,
+          "bytes": 16565,
+          "uid": "ea47bdfd-7649-4910-8d8a-de59b51a1a9d",
+          "instances": [
+            {
+              "name": "bounded",
+              "restarts": 0,
+              "id": "containerd://bf0be62491a4707f8546e22ca05ec08e6d61f700353360826d0752ab8aadd878"
+            },
+            {
+              "name": "empty",
+              "restarts": 0,
+              "id": "containerd://42cfc1b5038e74c468633a4ce829dcab6ff61a2a3d201075e5e28b71261969a8"
+            },
+            {
+              "name": "malformed",
+              "restarts": 0,
+              "id": "containerd://7e863159838d42b7126761d0bfdbbfa16f8ce01b3e83255bcee88040fb847633"
+            },
+            {
+              "name": "over-tail",
+              "restarts": 0,
+              "id": "containerd://23f5240ad8a0c4a1fa0add6ed5aa1c351cb417eff8f88f58c3507258bd31957e"
+            },
+            {
+              "name": "oversized",
+              "restarts": 0,
+              "id": "containerd://592987997867196f4499b7c6441788af8a54b3db7add55cc1ae84d06752e8a52"
+            },
+            {
+              "name": "repeated",
+              "restarts": 0,
+              "id": "containerd://a7a2b2d8e6b04778409261ebcd3ff8f15e941e5ca0d6a01a4a77a0fe2af2924d"
+            },
+            {
+              "name": "utf8-near",
+              "restarts": 0,
+              "id": "containerd://1f58fabec868d2bc036e981c37bad45f367aab9a182df22d82813a4e536a6d22"
+            },
+            {
+              "name": "utf8-over",
+              "restarts": 0,
+              "id": "containerd://7cb1319ae6f48e8a86d811c7fe38e9caac135fb63b1af78edd7500ec363e8f4a"
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

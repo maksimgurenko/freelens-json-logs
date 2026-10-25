@@ -1,0 +1,31 @@
+{
+  "at": "2026-10-25T21:05:39.271Z",
+  "result": {
+    "type": "object",
+    "value": {
+      "version": "0.1.33",
+      "rows": 1000,
+      "preferences": "ConfigurationStore",
+      "api": [
+        "Renderer",
+        "Common"
+      ],
+      "components": [
+        "Dialog",
+        "KubeObjectMenu",
+        "Menu",
+        "MenuActions",
+        "MenuContext",
+        "MenuItem",
+        "NamespaceSelect",
+        "NamespaceSelectBadge",
+        "NamespaceSelectBadgeNonInjected",
+        "NamespaceSelectFilter",
+        "Select",
+        "SubMenu",
+        "onMultiSelectFor",
+        "ConfirmDialog"
+      ]
+    }
+  }
+}
