@@ -1,0 +1,1537 @@
+{
+  "host": "Freelens 1.10.3",
+  "version": "0.1.32",
+  "mode": "Raw",
+  "layout": "bottom",
+  "input": "Playwright 1.64.1 trusted Chromium mouse/keyboard input in installed Electron; actual selection engine and actual clipboard; no hardware provenance claim",
+  "drags": [
+    {
+      "open": false,
+      "across": false,
+      "inspected": null,
+      "selectedText": "5T20:28:06.825563771Z {\"message\":\"row 0007 fields selection test text\",\"level\":\"info\",\"fields\":\"original fields\",\"extra\":7,\"nested\":{\"fields\":\"value fields\"",
+      "clipboardExact": true,
+      "actualBytes": 156,
+      "actualSha256": "fe46a303002089a9ae18172582b5db23349b0f1f11b15a5791c424e164cd5881"
+    },
+    {
+      "open": false,
+      "across": true,
+      "inspected": null,
+      "selectedText": "5T20:28:06.825563771Z {\"message\":\"row 0007 fields selection test text\",\"level\":\"info\",\"fields\":\"original fields\",\"extra\":7,\"nested\":{\"fields\":\"value fields\"},\"unicode\":\"α🙂\"}\n2026-10-25T20:28:06.825564781Z {\"message\":\"row 0008 fields selection test text\",\"level\":\"info\",\"fields\":\"original fields\",\"extra\":8,\"nested\":{\"fields\":\"value fields\"},\"unicode\":\"α🙂\"}\n2026-10-25T20:28:06.825565231Z {\"message\":\"row 0009 fields selection test text\",\"level\":\"info\",\"fields\":\"original fields\",\"extra\":9,\"nested\":{\"fields\":\"value fields\"",
+      "clipboardExact": true,
+      "actualBytes": 530,
+      "actualSha256": "7807f0e3a1584e5c01220199d9cb5186a4ce97bb092481d0dca025e034e425be"
+    },
+    {
+      "open": true,
+      "across": false,
+      "inspected": "14",
+      "selectedText": "5T20:28:06.825563771Z {\"message\":\"row 0007 fields selection test text\",\"level\":\"info\",\"fields\":\"original fields\",\"extra\":7,\"nested\":{\"fields\":\"value fields\"",
+      "clipboardExact": true,
+      "actualBytes": 156,
+      "actualSha256": "fe46a303002089a9ae18172582b5db23349b0f1f11b15a5791c424e164cd5881"
+    },
+    {
+      "open": true,
+      "across": true,
+      "inspected": "14",
+      "selectedText": "5T20:28:06.825563771Z {\"message\":\"row 0007 fields selection test text\",\"level\":\"info\",\"fields\":\"original fields\",\"extra\":7,\"nested\":{\"fields\":\"value fields\"},\"unicode\":\"α🙂\"}\n2026-10-25T20:28:06.825564781Z {\"message\":\"row 0008 fields selection test text\",\"level\":\"info\",\"fields\":\"original fields\",\"extra\":8,\"nested\":{\"fields\":\"value fields\"},\"unicode\":\"α🙂\"}\n2026-10-25T20:28:06.825565231Z {\"message\":\"row 0009 fields selection test text\",\"level\":\"info\",\"fields\":\"original fields\",\"extra\":9,\"nested\":{\"fields\":\"value fields\"",
+      "clipboardExact": true,
+      "actualBytes": 530,
+      "actualSha256": "7807f0e3a1584e5c01220199d9cb5186a4ce97bb092481d0dca025e034e425be"
+    }
+  ],
+  "badges": [],
+  "activation": [
+    {
+      "kind": "plain-click",
+      "selected": "6",
+      "observedWithinMs": 79.85546299999987
+    },
+    {
+      "kind": "Enter",
+      "selected": "7"
+    },
+    {
+      "kind": "Space",
+      "selected": "8"
+    },
+    {
+      "kind": "double-click",
+      "firstInspected": "6",
+      "selectedText": "info",
+      "clipboardExact": true,
+      "actualBytes": 4,
+      "actualSha256": "06271baf49532c879aa3c58b48671884bcc858f09197412d682750496c33e1e1"
+    },
+    {
+      "kind": "triple-click",
+      "firstInspected": "6",
+      "selectedText": "2026-10-25T20:28:06.825563771Z {\"message\":\"row 0007 fields selection test text\",\"level\":\"info\",\"fields\":\"original fields\",\"extra\":7,\"nested\":{\"fields\":\"value fields\"},\"unicode\":\"α🙂\"}",
+      "clipboardExact": true,
+      "actualBytes": 186,
+      "actualSha256": "f4a83d2b1258714f5f34f056a47bb9912f3e3c74e381c08d998769fc71609514"
+    }
+  ],
+  "originals": [
+    {
+      "record": 0,
+      "kind": "application",
+      "bytes": 152,
+      "sha256": "903be04a808fd8076cfd00b4ec350a55c66b57dc946f0e438e77b1ba0f864750",
+      "exact": true,
+      "delayedExact": true
+    },
+    {
+      "record": 0,
+      "kind": "transport",
+      "bytes": 183,
+      "sha256": "da061e574907559ca7eaddf649508a11a64b3af6da559015be62cb65ff0608c2",
+      "exact": true,
+      "delayedExact": true
+    },
+    {
+      "record": 1,
+      "kind": "application",
+      "bytes": 75,
+      "sha256": "5e3d83811185765bd9c2f36d2e54f8e571a3fd36d79cb1abb0bea1d213877153",
+      "exact": true,
+      "delayedExact": true
+    },
+    {
+      "record": 1,
+      "kind": "transport",
+      "bytes": 106,
+      "sha256": "7201c0e68367240fa8fcc97f6aabb1af38275b3e1b9c197b3069f90c360622f8",
+      "exact": true,
+      "delayedExact": true
+    },
+    {
+      "record": 2,
+      "kind": "application",
+      "bytes": 21,
+      "sha256": "de9d775718bb0ac218a2919cf29cafcba9a5157f7e970c5cd6489ce3a2c8537c",
+      "exact": true,
+      "delayedExact": true
+    },
+    {
+      "record": 2,
+      "kind": "transport",
+      "bytes": 52,
+      "sha256": "9a2dbdef87b8ae1bb47d8eeb81fab32eabba4a779746fa7ec7cc8629c2073668",
+      "exact": true,
+      "delayedExact": true
+    },
+    {
+      "record": 3,
+      "kind": "application",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "exact": true,
+      "delayedExact": true
+    },
+    {
+      "record": 3,
+      "kind": "transport",
+      "bytes": 31,
+      "sha256": "d74947df69f6f20b61fe38a6cfcf4ad838fe51f1e2faf0922a595419e2e509ba",
+      "exact": true,
+      "delayedExact": true
+    },
+    {
+      "record": 4,
+      "kind": "application",
+      "bytes": 2,
+      "sha256": "6c179f21e6f62b629055d8ab40f454ed02e48b68563913473b857d3638e23b28",
+      "exact": true,
+      "delayedExact": true
+    },
+    {
+      "record": 4,
+      "kind": "transport",
+      "bytes": 33,
+      "sha256": "a26ad923a24a2668a04c4cdaff436a80e7e1aaa7707fd98b02f75513cd701a9b",
+      "exact": true,
+      "delayedExact": true
+    },
+    {
+      "record": 5,
+      "kind": "application",
+      "bytes": 71,
+      "sha256": "90cc840c417da13469431a58fe4137d8fa8d31203d602d3b3ac5ddf5c908f821",
+      "exact": true,
+      "delayedExact": true
+    },
+    {
+      "record": 5,
+      "kind": "transport",
+      "bytes": 102,
+      "sha256": "9f69e5f0d524e90cb4ae08d08776f31be1362fe6300a97baa595ae00918d9586",
+      "exact": true,
+      "delayedExact": true
+    }
+  ],
+  "inputReset": {
+    "cancelDragging": true,
+    "cdpLeftReleased": true,
+    "nativeLeftReleased": false
+  },
+  "selectionBeforeCopy": "26-10-25T20:28:06.825249240Z   { \"message\" : \"row 0001 fields α🙂\\ntext\", \"level\":\"info\", \"fields\":\"fields\", \"extra\":1, \"nested\":{\"fields\":\"value fields\"}, \"unicode\":\"漢字\" }  \n2026-10-25T20:28:06.825262570Z {\"message\":\"row 0002 fields single badge\",\"level\":\"info\",\"fields\":\"fields\"",
+  "lastSelection": {
+    "selectedText": "5T20:28:06.825563771Z {\"message\":\"row 0007 fields selection test text\",\"level\":\"info\",\"fields\":\"original fields\",\"extra\":7,\"nested\":{\"fields\":\"value fields\"},\"unicode\":\"α🙂\"}\n2026-10-25T20:28:06.825564781Z {\"message\":\"row 0008 fields selection test text\",\"level\":\"info\",\"fields\":\"original fields\",\"extra\":8,\"nested\":{\"fields\":\"value fields\"},\"unicode\":\"α🙂\"}\n2026-10-25T20:28:06.825565231Z {\"message\":\"row 0009 fields selection test text\",\"level\":\"info\",\"fields\":\"original fields\",\"extra\":9,\"nested\":{\"fields\":\"value fields\"",
+    "clipboardExact": true,
+    "actualBytes": 530,
+    "actualSha256": "7807f0e3a1584e5c01220199d9cb5186a4ce97bb092481d0dca025e034e425be"
+  },
+  "rawOriginalFields": {
+    "selectedText": "26-10-25T20:28:06.825249240Z   { \"message\" : \"row 0001 fields α🙂\\ntext\", \"level\":\"info\", \"fields\":\"fields\", \"extra\":1, \"nested\":{\"fields\":\"value fields\"}, \"unicode\":\"漢字\" }  \n2026-10-25T20:28:06.825262570Z {\"message\":\"row 0002 fields single badge\",\"level\":\"info\",\"fields\":\"fields\"",
+    "clipboardExact": true,
+    "actualBytes": 287,
+    "actualSha256": "cfcea21d1f66116635a7c5e47b21dfb36e60a04f3a67cdac2916c86ab5853ebc"
+  },
+  "lastOriginalAttempt": {
+    "record": 5,
+    "kind": "transport",
+    "actual": {
+      "bytes": 102,
+      "sha256": "9f69e5f0d524e90cb4ae08d08776f31be1362fe6300a97baa595ae00918d9586"
+    },
+    "expected": {
+      "bytes": 102,
+      "sha256": "9f69e5f0d524e90cb4ae08d08776f31be1362fe6300a97baa595ae00918d9586"
+    }
+  },
+  "events": [
+    {
+      "type": "pointerdown",
+      "trusted": true,
+      "detail": 0,
+      "button": 0,
+      "buttons": 1,
+      "row": null
+    },
+    {
+      "type": "pointerup",
+      "trusted": true,
+      "detail": 0,
+      "button": 0,
+      "buttons": 0,
+      "row": null
+    },
+    {
+      "type": "click",
+      "trusted": true,
+      "detail": 1,
+      "button": 0,
+      "buttons": 0,
+      "row": null
+    },
+    {
+      "type": "pointerdown",
+      "trusted": true,
+      "detail": 0,
+      "button": 0,
+      "buttons": 1,
+      "row": "6"
+    },
+    {
+      "type": "pointerup",
+      "trusted": true,
+      "detail": 0,
+      "button": 0,
+      "buttons": 0,
+      "row": "6"
+    },
+    {
+      "type": "click",
+      "trusted": true,
+      "detail": 1,
+      "button": 0,
+      "buttons": 0,
+      "row": "6"
+    },
+    {
+      "type": "keydown",
+      "trusted": true,
+      "detail": 0,
+      "key": "Control",
+      "row": "6"
+    },
+    {
+      "type": "keydown",
+      "trusted": true,
+      "detail": 0,
+      "key": "c",
+      "row": "6"
+    },
+    {
+      "type": "copy",
+      "trusted": true,
+      "row": "6"
+    },
+    {
+      "type": "pointerdown",
+      "trusted": true,
+      "detail": 0,
+      "button": 0,
+      "buttons": 1,
+      "row": null
+    },
+    {
+      "type": "pointerup",
+      "trusted": true,
+      "detail": 0,
+      "button": 0,
+      "buttons": 0,
+      "row": null
+    },
+    {
+      "type": "click",
+      "trusted": true,
+      "detail": 1,
+      "button": 0,
+      "buttons": 0,
+      "row": null
+    },
+    {
+      "type": "pointerdown",
+      "trusted": true,
+      "detail": 0,
+      "button": 0,
+      "buttons": 1,
+      "row": "6"
+    },
+    {
+      "type": "pointerup",
+      "trusted": true,
+      "detail": 0,
+      "button": 0,
+      "buttons": 0,
+      "row": "8"
+    },
+    {
+      "type": "click",
+      "trusted": true,
+      "detail": 1,
+      "button": 0,
+      "buttons": 0,
+      "row": null
+    },
+    {
+      "type": "keydown",
+      "trusted": true,
+      "detail": 0,
+      "key": "Control",
+      "row": "6"
+    },
+    {
+      "type": "keydown",
+      "trusted": true,
+      "detail": 0,
+      "key": "c",
+      "row": "6"
+    },
+    {
+      "type": "copy",
+      "trusted": true,
+      "row": "6"
+    },
+    {
+      "type": "click",
+      "trusted": false,
+      "detail": 0,
+      "button": 0,
+      "buttons": 0,
+      "row": "14"
+    },
+    {
+      "type": "pointerdown",
+      "trusted": true,
+      "detail": 0,
+      "button": 0,
+      "buttons": 1,
+      "row": null
+    },
+    {
+      "type": "pointerup",
+      "trusted": true,
+      "detail": 0,
+      "button": 0,
+      "buttons": 0,
+      "row": null
+    },
+    {
+      "type": "click",
+      "trusted": true,
+      "detail": 1,
+      "button": 0,
+      "buttons": 0,
+      "row": null
+    },
+    {
+      "type": "pointerdown",
+      "trusted": true,
+      "detail": 0,
+      "button": 0,
+      "buttons": 1,
+      "row": "6"
+    },
+    {
+      "type": "pointerup",
+      "trusted": true,
+      "detail": 0,
+      "button": 0,
+      "buttons": 0,
+      "row": "6"
+    },
+    {
+      "type": "click",
+      "trusted": true,
+      "detail": 1,
+      "button": 0,
+      "buttons": 0,
+      "row": "6"
+    },
+    {
+      "type": "keydown",
+      "trusted": true,
+      "detail": 0,
+      "key": "Control",
+      "row": "6"
+    },
+    {
+      "type": "keydown",
+      "trusted": true,
+      "detail": 0,
+      "key": "c",
+      "row": "6"
+    },
+    {
+      "type": "copy",
+      "trusted": true,
+      "row": "6"
+    },
+    {
+      "type": "pointerdown",
+      "trusted": true,
+      "detail": 0,
+      "button": 0,
+      "buttons": 1,
+      "row": null
+    },
+    {
+      "type": "pointerup",
+      "trusted": true,
+      "detail": 0,
+      "button": 0,
+      "buttons": 0,
+      "row": null
+    },
+    {
+      "type": "click",
+      "trusted": true,
+      "detail": 1,
+      "button": 0,
+      "buttons": 0,
+      "row": null
+    },
+    {
+      "type": "pointerdown",
+      "trusted": true,
+      "detail": 0,
+      "button": 0,
+      "buttons": 1,
+      "row": "6"
+    },
+    {
+      "type": "pointerup",
+      "trusted": true,
+      "detail": 0,
+      "button": 0,
+      "buttons": 0,
+      "row": "8"
+    },
+    {
+      "type": "click",
+      "trusted": true,
+      "detail": 1,
+      "button": 0,
+      "buttons": 0,
+      "row": null
+    },
+    {
+      "type": "keydown",
+      "trusted": true,
+      "detail": 0,
+      "key": "Control",
+      "row": "6"
+    },
+    {
+      "type": "keydown",
+      "trusted": true,
+      "detail": 0,
+      "key": "c",
+      "row": "6"
+    },
+    {
+      "type": "copy",
+      "trusted": true,
+      "row": "6"
+    },
+    {
+      "type": "click",
+      "trusted": false,
+      "detail": 0,
+      "button": 0,
+      "buttons": 0,
+      "row": null
+    },
+    {
+      "type": "pointerdown",
+      "trusted": true,
+      "detail": 0,
+      "button": 0,
+      "buttons": 1,
+      "row": "6"
+    },
+    {
+      "type": "pointerup",
+      "trusted": true,
+      "detail": 0,
+      "button": 0,
+      "buttons": 0,
+      "row": "6"
+    },
+    {
+      "type": "click",
+      "trusted": true,
+      "detail": 1,
+      "button": 0,
+      "buttons": 0,
+      "row": "6"
+    },
+    {
+      "type": "click",
+      "trusted": false,
+      "detail": 0,
+      "button": 0,
+      "buttons": 0,
+      "row": null
+    },
+    {
+      "type": "keydown",
+      "trusted": true,
+      "detail": 0,
+      "key": "Enter",
+      "row": "7"
+    },
+    {
+      "type": "click",
+      "trusted": false,
+      "detail": 0,
+      "button": 0,
+      "buttons": 0,
+      "row": null
+    },
+    {
+      "type": "keydown",
+      "trusted": true,
+      "detail": 0,
+      "key": " ",
+      "row": "8"
+    },
+    {
+      "type": "click",
+      "trusted": false,
+      "detail": 0,
+      "button": 0,
+      "buttons": 0,
+      "row": null
+    },
+    {
+      "type": "pointerdown",
+      "trusted": true,
+      "detail": 0,
+      "button": 0,
+      "buttons": 1,
+      "row": "6"
+    },
+    {
+      "type": "pointerup",
+      "trusted": true,
+      "detail": 0,
+      "button": 0,
+      "buttons": 0,
+      "row": "6"
+    },
+    {
+      "type": "click",
+      "trusted": true,
+      "detail": 1,
+      "button": 0,
+      "buttons": 0,
+      "row": "6"
+    },
+    {
+      "type": "pointerdown",
+      "trusted": true,
+      "detail": 0,
+      "button": 0,
+      "buttons": 1,
+      "row": "6"
+    },
+    {
+      "type": "pointerup",
+      "trusted": true,
+      "detail": 0,
+      "button": 0,
+      "buttons": 0,
+      "row": "6"
+    },
+    {
+      "type": "click",
+      "trusted": true,
+      "detail": 2,
+      "button": 0,
+      "buttons": 0,
+      "row": "6"
+    },
+    {
+      "type": "dblclick",
+      "trusted": true,
+      "detail": 2,
+      "button": 0,
+      "buttons": 0,
+      "row": "6"
+    },
+    {
+      "type": "keydown",
+      "trusted": true,
+      "detail": 0,
+      "key": "Control",
+      "row": "6"
+    },
+    {
+      "type": "keydown",
+      "trusted": true,
+      "detail": 0,
+      "key": "c",
+      "row": "6"
+    },
+    {
+      "type": "copy",
+      "trusted": true,
+      "row": "6"
+    },
+    {
+      "type": "click",
+      "trusted": false,
+      "detail": 0,
+      "button": 0,
+      "buttons": 0,
+      "row": null
+    },
+    {
+      "type": "pointerdown",
+      "trusted": true,
+      "detail": 0,
+      "button": 0,
+      "buttons": 1,
+      "row": "6"
+    },
+    {
+      "type": "pointerup",
+      "trusted": true,
+      "detail": 0,
+      "button": 0,
+      "buttons": 0,
+      "row": "6"
+    },
+    {
+      "type": "click",
+      "trusted": true,
+      "detail": 1,
+      "button": 0,
+      "buttons": 0,
+      "row": "6"
+    },
+    {
+      "type": "pointerdown",
+      "trusted": true,
+      "detail": 0,
+      "button": 0,
+      "buttons": 1,
+      "row": "6"
+    },
+    {
+      "type": "pointerup",
+      "trusted": true,
+      "detail": 0,
+      "button": 0,
+      "buttons": 0,
+      "row": "6"
+    },
+    {
+      "type": "click",
+      "trusted": true,
+      "detail": 2,
+      "button": 0,
+      "buttons": 0,
+      "row": "6"
+    },
+    {
+      "type": "dblclick",
+      "trusted": true,
+      "detail": 2,
+      "button": 0,
+      "buttons": 0,
+      "row": "6"
+    },
+    {
+      "type": "pointerdown",
+      "trusted": true,
+      "detail": 0,
+      "button": 0,
+      "buttons": 1,
+      "row": "6"
+    },
+    {
+      "type": "pointerup",
+      "trusted": true,
+      "detail": 0,
+      "button": 0,
+      "buttons": 0,
+      "row": "6"
+    },
+    {
+      "type": "click",
+      "trusted": true,
+      "detail": 3,
+      "button": 0,
+      "buttons": 0,
+      "row": "6"
+    },
+    {
+      "type": "keydown",
+      "trusted": true,
+      "detail": 0,
+      "key": "Control",
+      "row": "6"
+    },
+    {
+      "type": "keydown",
+      "trusted": true,
+      "detail": 0,
+      "key": "c",
+      "row": "6"
+    },
+    {
+      "type": "copy",
+      "trusted": true,
+      "row": "6"
+    },
+    {
+      "type": "click",
+      "trusted": false,
+      "detail": 0,
+      "button": 0,
+      "buttons": 0,
+      "row": null
+    },
+    {
+      "type": "pointerdown",
+      "trusted": true,
+      "detail": 0,
+      "button": 0,
+      "buttons": 1,
+      "row": null
+    },
+    {
+      "type": "pointerup",
+      "trusted": true,
+      "detail": 0,
+      "button": 0,
+      "buttons": 0,
+      "row": null
+    },
+    {
+      "type": "click",
+      "trusted": true,
+      "detail": 1,
+      "button": 0,
+      "buttons": 0,
+      "row": null
+    },
+    {
+      "type": "pointerdown",
+      "trusted": true,
+      "detail": 0,
+      "button": 0,
+      "buttons": 1,
+      "row": "0"
+    },
+    {
+      "type": "pointerup",
+      "trusted": true,
+      "detail": 0,
+      "button": 0,
+      "buttons": 0,
+      "row": "1"
+    },
+    {
+      "type": "click",
+      "trusted": true,
+      "detail": 1,
+      "button": 0,
+      "buttons": 0,
+      "row": null
+    },
+    {
+      "type": "keydown",
+      "trusted": true,
+      "detail": 0,
+      "key": "Control",
+      "row": "0"
+    },
+    {
+      "type": "keydown",
+      "trusted": true,
+      "detail": 0,
+      "key": "c",
+      "row": "0"
+    },
+    {
+      "type": "copy",
+      "trusted": true,
+      "row": "0"
+    },
+    {
+      "type": "pointerdown",
+      "trusted": true,
+      "detail": 0,
+      "button": 0,
+      "buttons": 1,
+      "row": "0"
+    },
+    {
+      "type": "pointerup",
+      "trusted": true,
+      "detail": 0,
+      "button": 0,
+      "buttons": 0,
+      "row": "0"
+    },
+    {
+      "type": "click",
+      "trusted": true,
+      "detail": 1,
+      "button": 0,
+      "buttons": 0,
+      "row": "0"
+    },
+    {
+      "type": "pointerdown",
+      "trusted": true,
+      "detail": 0,
+      "button": 0,
+      "buttons": 1,
+      "row": null
+    },
+    {
+      "type": "pointerup",
+      "trusted": true,
+      "detail": 0,
+      "button": 0,
+      "buttons": 0,
+      "row": null
+    },
+    {
+      "type": "click",
+      "trusted": true,
+      "detail": 1,
+      "button": 0,
+      "buttons": 0,
+      "row": null
+    },
+    {
+      "type": "pointerdown",
+      "trusted": true,
+      "detail": 0,
+      "button": 0,
+      "buttons": 1,
+      "row": null
+    },
+    {
+      "type": "pointerup",
+      "trusted": true,
+      "detail": 0,
+      "button": 0,
+      "buttons": 0,
+      "row": null
+    },
+    {
+      "type": "click",
+      "trusted": true,
+      "detail": 1,
+      "button": 0,
+      "buttons": 0,
+      "row": null
+    },
+    {
+      "type": "pointerdown",
+      "trusted": true,
+      "detail": 0,
+      "button": 0,
+      "buttons": 1,
+      "row": null
+    },
+    {
+      "type": "pointerup",
+      "trusted": true,
+      "detail": 0,
+      "button": 0,
+      "buttons": 0,
+      "row": null
+    },
+    {
+      "type": "click",
+      "trusted": true,
+      "detail": 1,
+      "button": 0,
+      "buttons": 0,
+      "row": null
+    },
+    {
+      "type": "pointerdown",
+      "trusted": true,
+      "detail": 0,
+      "button": 0,
+      "buttons": 1,
+      "row": null
+    },
+    {
+      "type": "pointerup",
+      "trusted": true,
+      "detail": 0,
+      "button": 0,
+      "buttons": 0,
+      "row": null
+    },
+    {
+      "type": "click",
+      "trusted": true,
+      "detail": 1,
+      "button": 0,
+      "buttons": 0,
+      "row": null
+    },
+    {
+      "type": "pointerdown",
+      "trusted": true,
+      "detail": 0,
+      "button": 0,
+      "buttons": 1,
+      "row": "1"
+    },
+    {
+      "type": "pointerup",
+      "trusted": true,
+      "detail": 0,
+      "button": 0,
+      "buttons": 0,
+      "row": "1"
+    },
+    {
+      "type": "click",
+      "trusted": true,
+      "detail": 1,
+      "button": 0,
+      "buttons": 0,
+      "row": "1"
+    },
+    {
+      "type": "pointerdown",
+      "trusted": true,
+      "detail": 0,
+      "button": 0,
+      "buttons": 1,
+      "row": null
+    },
+    {
+      "type": "pointerup",
+      "trusted": true,
+      "detail": 0,
+      "button": 0,
+      "buttons": 0,
+      "row": null
+    },
+    {
+      "type": "click",
+      "trusted": true,
+      "detail": 1,
+      "button": 0,
+      "buttons": 0,
+      "row": null
+    },
+    {
+      "type": "pointerdown",
+      "trusted": true,
+      "detail": 0,
+      "button": 0,
+      "buttons": 1,
+      "row": null
+    },
+    {
+      "type": "pointerup",
+      "trusted": true,
+      "detail": 0,
+      "button": 0,
+      "buttons": 0,
+      "row": null
+    },
+    {
+      "type": "click",
+      "trusted": true,
+      "detail": 1,
+      "button": 0,
+      "buttons": 0,
+      "row": null
+    },
+    {
+      "type": "pointerdown",
+      "trusted": true,
+      "detail": 0,
+      "button": 0,
+      "buttons": 1,
+      "row": null
+    },
+    {
+      "type": "pointerup",
+      "trusted": true,
+      "detail": 0,
+      "button": 0,
+      "buttons": 0,
+      "row": null
+    },
+    {
+      "type": "click",
+      "trusted": true,
+      "detail": 1,
+      "button": 0,
+      "buttons": 0,
+      "row": null
+    },
+    {
+      "type": "pointerdown",
+      "trusted": true,
+      "detail": 0,
+      "button": 0,
+      "buttons": 1,
+      "row": null
+    },
+    {
+      "type": "pointerup",
+      "trusted": true,
+      "detail": 0,
+      "button": 0,
+      "buttons": 0,
+      "row": null
+    },
+    {
+      "type": "click",
+      "trusted": true,
+      "detail": 1,
+      "button": 0,
+      "buttons": 0,
+      "row": null
+    },
+    {
+      "type": "pointerdown",
+      "trusted": true,
+      "detail": 0,
+      "button": 0,
+      "buttons": 1,
+      "row": "2"
+    },
+    {
+      "type": "pointerup",
+      "trusted": true,
+      "detail": 0,
+      "button": 0,
+      "buttons": 0,
+      "row": "2"
+    },
+    {
+      "type": "click",
+      "trusted": true,
+      "detail": 1,
+      "button": 0,
+      "buttons": 0,
+      "row": "2"
+    },
+    {
+      "type": "pointerdown",
+      "trusted": true,
+      "detail": 0,
+      "button": 0,
+      "buttons": 1,
+      "row": null
+    },
+    {
+      "type": "pointerup",
+      "trusted": true,
+      "detail": 0,
+      "button": 0,
+      "buttons": 0,
+      "row": null
+    },
+    {
+      "type": "click",
+      "trusted": true,
+      "detail": 1,
+      "button": 0,
+      "buttons": 0,
+      "row": null
+    },
+    {
+      "type": "pointerdown",
+      "trusted": true,
+      "detail": 0,
+      "button": 0,
+      "buttons": 1,
+      "row": null
+    },
+    {
+      "type": "pointerup",
+      "trusted": true,
+      "detail": 0,
+      "button": 0,
+      "buttons": 0,
+      "row": null
+    },
+    {
+      "type": "click",
+      "trusted": true,
+      "detail": 1,
+      "button": 0,
+      "buttons": 0,
+      "row": null
+    },
+    {
+      "type": "pointerdown",
+      "trusted": true,
+      "detail": 0,
+      "button": 0,
+      "buttons": 1,
+      "row": null
+    },
+    {
+      "type": "pointerup",
+      "trusted": true,
+      "detail": 0,
+      "button": 0,
+      "buttons": 0,
+      "row": null
+    },
+    {
+      "type": "click",
+      "trusted": true,
+      "detail": 1,
+      "button": 0,
+      "buttons": 0,
+      "row": null
+    },
+    {
+      "type": "pointerdown",
+      "trusted": true,
+      "detail": 0,
+      "button": 0,
+      "buttons": 1,
+      "row": null
+    },
+    {
+      "type": "pointerup",
+      "trusted": true,
+      "detail": 0,
+      "button": 0,
+      "buttons": 0,
+      "row": null
+    },
+    {
+      "type": "click",
+      "trusted": true,
+      "detail": 1,
+      "button": 0,
+      "buttons": 0,
+      "row": null
+    },
+    {
+      "type": "pointerdown",
+      "trusted": true,
+      "detail": 0,
+      "button": 0,
+      "buttons": 1,
+      "row": "3"
+    },
+    {
+      "type": "pointerup",
+      "trusted": true,
+      "detail": 0,
+      "button": 0,
+      "buttons": 0,
+      "row": "3"
+    },
+    {
+      "type": "click",
+      "trusted": true,
+      "detail": 1,
+      "button": 0,
+      "buttons": 0,
+      "row": "3"
+    },
+    {
+      "type": "pointerdown",
+      "trusted": true,
+      "detail": 0,
+      "button": 0,
+      "buttons": 1,
+      "row": null
+    },
+    {
+      "type": "pointerup",
+      "trusted": true,
+      "detail": 0,
+      "button": 0,
+      "buttons": 0,
+      "row": null
+    },
+    {
+      "type": "click",
+      "trusted": true,
+      "detail": 1,
+      "button": 0,
+      "buttons": 0,
+      "row": null
+    },
+    {
+      "type": "pointerdown",
+      "trusted": true,
+      "detail": 0,
+      "button": 0,
+      "buttons": 1,
+      "row": null
+    },
+    {
+      "type": "pointerup",
+      "trusted": true,
+      "detail": 0,
+      "button": 0,
+      "buttons": 0,
+      "row": null
+    },
+    {
+      "type": "click",
+      "trusted": true,
+      "detail": 1,
+      "button": 0,
+      "buttons": 0,
+      "row": null
+    },
+    {
+      "type": "pointerdown",
+      "trusted": true,
+      "detail": 0,
+      "button": 0,
+      "buttons": 1,
+      "row": null
+    },
+    {
+      "type": "pointerup",
+      "trusted": true,
+      "detail": 0,
+      "button": 0,
+      "buttons": 0,
+      "row": null
+    },
+    {
+      "type": "click",
+      "trusted": true,
+      "detail": 1,
+      "button": 0,
+      "buttons": 0,
+      "row": null
+    },
+    {
+      "type": "pointerdown",
+      "trusted": true,
+      "detail": 0,
+      "button": 0,
+      "buttons": 1,
+      "row": null
+    },
+    {
+      "type": "pointerup",
+      "trusted": true,
+      "detail": 0,
+      "button": 0,
+      "buttons": 0,
+      "row": null
+    },
+    {
+      "type": "click",
+      "trusted": true,
+      "detail": 1,
+      "button": 0,
+      "buttons": 0,
+      "row": null
+    },
+    {
+      "type": "pointerdown",
+      "trusted": true,
+      "detail": 0,
+      "button": 0,
+      "buttons": 1,
+      "row": "4"
+    },
+    {
+      "type": "pointerup",
+      "trusted": true,
+      "detail": 0,
+      "button": 0,
+      "buttons": 0,
+      "row": "4"
+    },
+    {
+      "type": "click",
+      "trusted": true,
+      "detail": 1,
+      "button": 0,
+      "buttons": 0,
+      "row": "4"
+    },
+    {
+      "type": "pointerdown",
+      "trusted": true,
+      "detail": 0,
+      "button": 0,
+      "buttons": 1,
+      "row": null
+    },
+    {
+      "type": "pointerup",
+      "trusted": true,
+      "detail": 0,
+      "button": 0,
+      "buttons": 0,
+      "row": null
+    },
+    {
+      "type": "click",
+      "trusted": true,
+      "detail": 1,
+      "button": 0,
+      "buttons": 0,
+      "row": null
+    },
+    {
+      "type": "pointerdown",
+      "trusted": true,
+      "detail": 0,
+      "button": 0,
+      "buttons": 1,
+      "row": null
+    },
+    {
+      "type": "pointerup",
+      "trusted": true,
+      "detail": 0,
+      "button": 0,
+      "buttons": 0,
+      "row": null
+    },
+    {
+      "type": "click",
+      "trusted": true,
+      "detail": 1,
+      "button": 0,
+      "buttons": 0,
+      "row": null
+    },
+    {
+      "type": "pointerdown",
+      "trusted": true,
+      "detail": 0,
+      "button": 0,
+      "buttons": 1,
+      "row": null
+    },
+    {
+      "type": "pointerup",
+      "trusted": true,
+      "detail": 0,
+      "button": 0,
+      "buttons": 0,
+      "row": null
+    },
+    {
+      "type": "click",
+      "trusted": true,
+      "detail": 1,
+      "button": 0,
+      "buttons": 0,
+      "row": null
+    },
+    {
+      "type": "pointerdown",
+      "trusted": true,
+      "detail": 0,
+      "button": 0,
+      "buttons": 1,
+      "row": null
+    },
+    {
+      "type": "pointerup",
+      "trusted": true,
+      "detail": 0,
+      "button": 0,
+      "buttons": 0,
+      "row": null
+    },
+    {
+      "type": "click",
+      "trusted": true,
+      "detail": 1,
+      "button": 0,
+      "buttons": 0,
+      "row": null
+    },
+    {
+      "type": "pointerdown",
+      "trusted": true,
+      "detail": 0,
+      "button": 0,
+      "buttons": 1,
+      "row": "5"
+    },
+    {
+      "type": "pointerup",
+      "trusted": true,
+      "detail": 0,
+      "button": 0,
+      "buttons": 0,
+      "row": "5"
+    },
+    {
+      "type": "click",
+      "trusted": true,
+      "detail": 1,
+      "button": 0,
+      "buttons": 0,
+      "row": "5"
+    },
+    {
+      "type": "pointerdown",
+      "trusted": true,
+      "detail": 0,
+      "button": 0,
+      "buttons": 1,
+      "row": null
+    },
+    {
+      "type": "pointerup",
+      "trusted": true,
+      "detail": 0,
+      "button": 0,
+      "buttons": 0,
+      "row": null
+    },
+    {
+      "type": "click",
+      "trusted": true,
+      "detail": 1,
+      "button": 0,
+      "buttons": 0,
+      "row": null
+    },
+    {
+      "type": "pointerdown",
+      "trusted": true,
+      "detail": 0,
+      "button": 0,
+      "buttons": 1,
+      "row": null
+    },
+    {
+      "type": "pointerup",
+      "trusted": true,
+      "detail": 0,
+      "button": 0,
+      "buttons": 0,
+      "row": null
+    },
+    {
+      "type": "click",
+      "trusted": true,
+      "detail": 1,
+      "button": 0,
+      "buttons": 0,
+      "row": null
+    },
+    {
+      "type": "pointerdown",
+      "trusted": true,
+      "detail": 0,
+      "button": 0,
+      "buttons": 1,
+      "row": null
+    },
+    {
+      "type": "pointerup",
+      "trusted": true,
+      "detail": 0,
+      "button": 0,
+      "buttons": 0,
+      "row": null
+    },
+    {
+      "type": "click",
+      "trusted": true,
+      "detail": 1,
+      "button": 0,
+      "buttons": 0,
+      "row": null
+    },
+    {
+      "type": "pointerdown",
+      "trusted": true,
+      "detail": 0,
+      "button": 0,
+      "buttons": 1,
+      "row": null
+    },
+    {
+      "type": "pointerup",
+      "trusted": true,
+      "detail": 0,
+      "button": 0,
+      "buttons": 0,
+      "row": null
+    },
+    {
+      "type": "click",
+      "trusted": true,
+      "detail": 1,
+      "button": 0,
+      "buttons": 0,
+      "row": null
+    }
+  ],
+  "passed": true,
+  "clipboardRestored": {
+    "formats": true,
+    "buffers": true,
+    "pixels": true,
+    "restoredBuffers": {}
+  }
+}

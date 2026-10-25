@@ -1,0 +1,19 @@
+{
+  "protocol": "https://raw.githubusercontent.com/swaywm/wlroots/master/protocol/input-method-unstable-v2.xml",
+  "protocolSha256": "99414dbad9458e71aa1fa01bc45f94ca6685787bfcb4d98948f72c1b45b60703",
+  "compile": [
+    "cc",
+    "-Wall",
+    "-Wextra",
+    "-I.scratch/compact-view/30",
+    "docs/verification/30/ime-driver.c",
+    ".scratch/compact-view/30/input-method-code.c",
+    "-o",
+    ".scratch/compact-view/30/ime-driver",
+    "-lwayland-client",
+    "-lm"
+  ],
+  "stderr": "",
+  "productionDependencyAdded": false,
+  "keyboardGrabUsed": false
+}

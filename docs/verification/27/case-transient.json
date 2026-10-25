@@ -1,0 +1,98 @@
+{
+  "host": "Freelens 1.10.3",
+  "package": "0.1.26",
+  "case": "transient",
+  "input": "Playwright trusted Chromium input in actual Electron; no physical hardware claim",
+  "checks": [
+    {
+      "name": "Earlier real host capture closes Menu, same Escape does not leave Profiles",
+      "result": true
+    },
+    {
+      "name": "Next Escape returns after host menu is gone",
+      "result": true
+    },
+    {
+      "name": "Display disclosure closes before Find/inspection",
+      "result": true
+    },
+    {
+      "name": "Target disclosure closes before Find",
+      "result": true
+    },
+    {
+      "name": "Native select Escape closes only popup",
+      "result": true
+    },
+    {
+      "name": "Next Escape from closed select returns",
+      "result": true
+    },
+    {
+      "name": "All local transitions preserve host URL/history",
+      "result": true
+    }
+  ],
+  "menuBefore": {
+    "menus": [
+      "terminalTerminal sessioncreateCreate resource"
+    ],
+    "focus": "I",
+    "local": true
+  },
+  "nativeSelectOpen": true,
+  "nativeSelectEscapeEvents": [],
+  "passed": true,
+  "final": {
+    "profiles": false,
+    "find": false,
+    "query": "fields",
+    "focus": "Edit profiles",
+    "paused": true,
+    "url": "https://770814298afe692457d07d8b15d6b8d3.renderer.freelens.app:36813/extension/freelens-readable-logs/readable-logs?clusterId=770814298afe692457d07d8b15d6b8d3&namespace=readable-logs-ticket-27&pod=local-navigation&podUid=ec618786-cfb9-4027-866a-7a7441a9ee98",
+    "history": 5,
+    "top": 406.875
+  },
+  "events": [
+    {
+      "key": "Escape",
+      "code": "Escape",
+      "repeat": false,
+      "composing": false,
+      "trusted": true,
+      "target": "H2"
+    },
+    {
+      "key": "Escape",
+      "code": "Escape",
+      "repeat": false,
+      "composing": false,
+      "trusted": true,
+      "target": "H2"
+    },
+    {
+      "key": "Escape",
+      "code": "Escape",
+      "repeat": false,
+      "composing": false,
+      "trusted": true,
+      "target": "SUMMARY"
+    },
+    {
+      "key": "Escape",
+      "code": "Escape",
+      "repeat": false,
+      "composing": false,
+      "trusted": true,
+      "target": "SUMMARY"
+    },
+    {
+      "key": "Escape",
+      "code": "Escape",
+      "repeat": false,
+      "composing": false,
+      "trusted": true,
+      "target": "SELECT"
+    }
+  ]
+}

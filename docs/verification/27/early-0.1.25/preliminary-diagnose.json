@@ -1,0 +1,32 @@
+{
+  "at": "2026-10-25T18:41:25.266Z",
+  "result": {
+    "type": "object",
+    "value": {
+      "before": {
+        "profiles": false,
+        "find": false,
+        "query": "fields",
+        "selected": "20",
+        "focus": "kfjkind-freelens-json-logs-spikearrow_dr",
+        "paused": true,
+        "url": "https://770814298afe692457d07d8b15d6b8d3.renderer.freelens.app:35055/extension/freelens-readable-logs/readable-logs?clusterId=770814298afe692457d07d8b15d6b8d3&namespace=readable-logs-ticket-27&pod=local-navigation&podUid=3df67f26-8a2e-4496-ba22-7370acf076e6",
+        "history": 7,
+        "top": 406.875
+      },
+      "summary": {
+        "profiles": false,
+        "find": false,
+        "query": "fields",
+        "selected": "20",
+        "focus": "Edit profiles",
+        "paused": true,
+        "url": "https://770814298afe692457d07d8b15d6b8d3.renderer.freelens.app:35055/extension/freelens-readable-logs/readable-logs?clusterId=770814298afe692457d07d8b15d6b8d3&namespace=readable-logs-ticket-27&pod=local-navigation&podUid=3df67f26-8a2e-4496-ba22-7370acf076e6",
+        "history": 7,
+        "top": 406.875
+      },
+      "findButton": "<button type=\"button\" aria-expanded=\"false\" aria-controls=\"rl-findbar\">Find</button>",
+      "rootHit": "<button type=\"button\" aria-expanded=\"false\" aria-controls=\"rl-findbar\">Find</button>"
+    }
+  }
+}

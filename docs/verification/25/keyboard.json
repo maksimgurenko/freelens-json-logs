@@ -1,0 +1,46 @@
+{
+  "host": "Freelens 1.10.3",
+  "version": "0.1.22",
+  "input": "Trusted Chromium CDP dispatch, not physical OS input",
+  "find": {
+    "focused": "rl-find",
+    "outline": "1.875px"
+  },
+  "tab": "Previous",
+  "shiftTab": "rl-find",
+  "options": true,
+  "inspected": true,
+  "closed": true,
+  "keys": [
+    {
+      "key": "Enter",
+      "trusted": true,
+      "target": "BUTTON"
+    },
+    {
+      "key": "Tab",
+      "trusted": true,
+      "target": "INPUT"
+    },
+    {
+      "key": "Tab",
+      "trusted": true,
+      "target": "BUTTON"
+    },
+    {
+      "key": "Enter",
+      "trusted": true,
+      "target": "SUMMARY"
+    },
+    {
+      "key": "Enter",
+      "trusted": true,
+      "target": "DIV"
+    },
+    {
+      "key": "Enter",
+      "trusted": true,
+      "target": "BUTTON"
+    }
+  ]
+}

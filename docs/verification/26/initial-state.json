@@ -1,0 +1,37 @@
+{
+  "at": "2026-10-25T03:40:33.194Z",
+  "result": {
+    "type": "object",
+    "value": {
+      "state": {
+        "target": {
+          "clusterId": "770814298afe692457d07d8b15d6b8d3",
+          "clusterName": "kind-freelens-json-logs-spike",
+          "namespace": "readable-logs-ticket-26",
+          "podName": "selection-copy",
+          "podUid": "72cc9e79-a352-48aa-817f-7b1fd6ac7960"
+        },
+        "containers": [
+          {
+            "name": "selection",
+            "kind": "regular"
+          }
+        ],
+        "container": "selection",
+        "phase": "loading-logs",
+        "paused": true,
+        "refreshing": false,
+        "waiting": false,
+        "slow": false,
+        "outdated": false,
+        "gone": false,
+        "podLabels": {
+          "app": "readable-logs-selection-verification"
+        },
+        "lifecycleNotice": "Container restart observed. Previous-instance logs were cleared."
+      },
+      "text": "readable-logs-ticket-26\n/\nselection-copy\nContainer\nselection\nProfile\nAuto · Default\nDefault\nEdit profiles\nResume\nRefresh\nFind\nDisplay options\n\nContainer restart observed. Previous-instance logs were cleared. Paused; select Refresh or Resume to read the current instance.\n\nOne current-instance snapshot\nTo bottom\nFollowing output\nPaused\nv0.1.23",
+      "requests": []
+    }
+  }
+}

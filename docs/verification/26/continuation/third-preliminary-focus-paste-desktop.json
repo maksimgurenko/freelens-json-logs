@@ -1,0 +1,18 @@
+{
+  "action": "script",
+  "workspaceBefore": 1,
+  "focusBefore": "0x5600c57ceaf0",
+  "cursorBefore": {
+    "x": 642,
+    "y": 1207
+  },
+  "exitCode": 1,
+  "cursorAfter": {
+    "x": 1200,
+    "y": 689
+  },
+  "workspaceAfter": 1,
+  "focusAfter": "0x5600c57ceaf0",
+  "hostWorkspace": 7,
+  "mainPid": 383756
+}

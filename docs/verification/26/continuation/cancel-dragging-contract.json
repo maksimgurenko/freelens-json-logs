@@ -1,0 +1,10 @@
+{
+  "endpoint": "http://127.0.0.1:9235/json/protocol",
+  "domain": "Input",
+  "command": {
+    "name": "cancelDragging",
+    "description": "Cancels any active dragging in the page."
+  },
+  "experiment": "early-0.1.23/fourth-native-gesture-readable-side.json",
+  "result": "Cancel plus explicit CDP/native left-button releases did not fix the exploratory native selection case. Hypothesis not established."
+}

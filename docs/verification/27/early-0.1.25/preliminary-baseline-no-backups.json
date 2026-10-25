@@ -1,0 +1,56 @@
+{
+  "at": "2026-10-25T18:38:25.122Z",
+  "result": {
+    "type": "object",
+    "subtype": "error",
+    "className": "Error",
+    "description": "Error: ENOENT: no such file or directory, scandir '/home/max/.config/Freelens/extension-store/freelens-readable-logs/backups'\n    at Object.readdirSync (node:fs:1570:26)\n    at t.readdirSync (node:electron/js2c/node_init:2:16063)\n    at <anonymous>:1:499\n    at <anonymous>:1:549",
+    "objectId": "6188884504910064518.2.5"
+  },
+  "exceptionDetails": {
+    "exceptionId": 2,
+    "text": "Uncaught",
+    "lineNumber": 1569,
+    "columnNumber": 25,
+    "scriptId": "50",
+    "stackTrace": {
+      "callFrames": [
+        {
+          "functionName": "readdirSync",
+          "scriptId": "50",
+          "url": "node:fs",
+          "lineNumber": 1569,
+          "columnNumber": 25
+        },
+        {
+          "functionName": "t.readdirSync",
+          "scriptId": "85",
+          "url": "node:electron/js2c/node_init",
+          "lineNumber": 1,
+          "columnNumber": 16062
+        },
+        {
+          "functionName": "",
+          "scriptId": "419",
+          "url": "",
+          "lineNumber": 0,
+          "columnNumber": 498
+        },
+        {
+          "functionName": "",
+          "scriptId": "419",
+          "url": "",
+          "lineNumber": 0,
+          "columnNumber": 548
+        }
+      ]
+    },
+    "exception": {
+      "type": "object",
+      "subtype": "error",
+      "className": "Error",
+      "description": "Error: ENOENT: no such file or directory, scandir '/home/max/.config/Freelens/extension-store/freelens-readable-logs/backups'\n    at Object.readdirSync (node:fs:1570:26)\n    at t.readdirSync (node:electron/js2c/node_init:2:16063)\n    at <anonymous>:1:499\n    at <anonymous>:1:549",
+      "objectId": "6188884504910064518.2.6"
+    }
+  }
+}

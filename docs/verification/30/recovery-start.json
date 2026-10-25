@@ -1,0 +1,19 @@
+{
+  "oldMainPid": 653799,
+  "oldFamily": [
+    653799,
+    653802,
+    653803,
+    653805,
+    653844,
+    653852,
+    654061,
+    654201
+  ],
+  "remainingOldPids": [],
+  "workspaceBefore": 1,
+  "focusBefore": "0x5600c57ceaf0",
+  "workspaceAfter": 1,
+  "focusAfter": "0x5600c57ceaf0",
+  "controlledSettingsSource": "docs/verification/30/controlled-corrupt.txt"
+}

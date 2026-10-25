@@ -1,0 +1,10 @@
+{
+  "at": "2026-10-25T21:05:58.681Z",
+  "result": {
+    "type": "object",
+    "value": {
+      "originalApplicationSettingsRestored": true,
+      "noTestTransport": true
+    }
+  }
+}

@@ -1,0 +1,1 @@
+(async()=>{const p=global.__cv27;await p.close();await p.click('Edit profiles');p.guardBefore=p.root().querySelector('.rl-profile-editor')?.textContent;p.oldRoot=p.root();p.oldRoot.querySelector('h2').focus();return {localOpen:!!p.guardBefore};})()

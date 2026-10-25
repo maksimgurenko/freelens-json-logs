@@ -1,0 +1,55 @@
+{
+  "workspaceBefore": 1,
+  "focusBefore": "0x5600c57ceaf0",
+  "cursorBefore": {
+    "x": 1347,
+    "y": 860
+  },
+  "mainPid": 444436,
+  "timeoutSeconds": 30,
+  "physicalInputInjected": false,
+  "hardware": {
+    "at": "2026-10-25T19:12:13Z",
+    "device": "/dev/input/event5",
+    "name": "Logitech G305",
+    "physicalUsb": true,
+    "grabs": false,
+    "injection": false,
+    "durationSeconds": 30.0,
+    "events": [
+      {
+        "seconds": 1792955548,
+        "microseconds": 213773,
+        "code": 275,
+        "name": "BTN_SIDE",
+        "value": 1
+      },
+      {
+        "seconds": 1792955548,
+        "microseconds": 318760,
+        "code": 275,
+        "name": "BTN_SIDE",
+        "value": 0
+      }
+    ],
+    "backForwardCapabilities": [
+      "KEY_BACK",
+      "KEY_FORWARD",
+      "BTN_SIDE",
+      "BTN_EXTRA",
+      "BTN_FORWARD",
+      "BTN_BACK"
+    ],
+    "physicalGestureObserved": true,
+    "completePressRelease": true,
+    "acceptance": "unverified: correlate complete press/release with packaged-host trace"
+  },
+  "workspaceAfter": 1,
+  "focusAfter": "0x5600c57ceaf0",
+  "cursorAfter": {
+    "x": 1346,
+    "y": 859
+  },
+  "hostWorkspace": 7,
+  "viewRestoreExitCode": 0
+}

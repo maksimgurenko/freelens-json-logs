@@ -1,0 +1,70 @@
+{
+  "HEAD": {
+    "identical": [
+      "src/adapter/clipboard.ts",
+      "src/adapter/configuration-file.ts",
+      "src/adapter/configuration-ipc.ts",
+      "src/adapter/configuration-store.ts",
+      "src/adapter/freelens.ts",
+      "src/adapter/visibility.ts",
+      "src/adapter/window-visibility.ts",
+      "src/core/configuration.ts",
+      "src/core/inspection.ts",
+      "src/core/navigation.ts",
+      "src/core/observe.ts",
+      "src/core/profiles.ts",
+      "src/core/records.ts",
+      "src/core/requests.ts",
+      "src/core/session.ts",
+      "src/core/snapshot.ts",
+      "src/core/target.ts",
+      "src/main.ts",
+      "src/renderer/index.tsx",
+      "src/renderer/local-dismissal.ts",
+      "src/renderer/local-shortcuts.ts",
+      "src/renderer/log-viewport.ts",
+      "src/renderer/profile-editor.tsx",
+      "src/renderer/settings-recovery.tsx",
+      "src/renderer/styles.d.ts",
+      "src/renderer/viewer.css",
+      "src/renderer/viewer.tsx"
+    ],
+    "changedOrAdded": [
+      "src/renderer/local-back.ts"
+    ]
+  },
+  "95873916ebbd7afc0b5d2e97b61435cdf795c9cb": {
+    "identical": [
+      "src/adapter/clipboard.ts",
+      "src/adapter/configuration-file.ts",
+      "src/adapter/configuration-ipc.ts",
+      "src/adapter/configuration-store.ts",
+      "src/adapter/freelens.ts",
+      "src/adapter/visibility.ts",
+      "src/adapter/window-visibility.ts",
+      "src/core/configuration.ts",
+      "src/core/inspection.ts",
+      "src/core/navigation.ts",
+      "src/core/observe.ts",
+      "src/core/profiles.ts",
+      "src/core/records.ts",
+      "src/core/requests.ts",
+      "src/core/session.ts",
+      "src/core/snapshot.ts",
+      "src/core/target.ts",
+      "src/main.ts",
+      "src/renderer/log-viewport.ts",
+      "src/renderer/styles.d.ts"
+    ],
+    "changedOrAdded": [
+      "src/renderer/index.tsx",
+      "src/renderer/local-back.ts",
+      "src/renderer/local-dismissal.ts",
+      "src/renderer/local-shortcuts.ts",
+      "src/renderer/profile-editor.tsx",
+      "src/renderer/settings-recovery.tsx",
+      "src/renderer/viewer.css",
+      "src/renderer/viewer.tsx"
+    ]
+  }
+}

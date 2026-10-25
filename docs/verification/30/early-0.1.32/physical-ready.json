@@ -1,0 +1,20 @@
+{
+  "ready": true,
+  "armed": false,
+  "supervisorOnly": true,
+  "package": "0.1.32",
+  "tarballSha256": "fc021483552b91291ba3dd9ae4cf8c48e8b15458949187a4b487f8039f1f3d22",
+  "device": "/dev/input/by-id/usb-Logitech_USB_Receiver-if02-event-mouse",
+  "physicalUsbDeviceReadable": true,
+  "contexts": [
+    "dirty",
+    "clean",
+    "confirmation",
+    "disclosure",
+    "logs",
+    "dock",
+    "host"
+  ],
+  "runtimeHandoff": ".ralph/physical-back-ready.md",
+  "restoration": "actual previous workspace/focused window/pointer, then local configuration/view; no Back injection"
+}

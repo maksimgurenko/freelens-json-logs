@@ -1,0 +1,451 @@
+{
+  "host": "Freelens 1.10.3",
+  "version": "0.1.23",
+  "input": "Trusted Chromium CDP pointer/keyboard dispatch; NOT physical mouse/OS acceptance",
+  "drags": [
+    {
+      "mode": "Readable",
+      "layout": "inline",
+      "open": false,
+      "across": false,
+      "inspected": null,
+      "selectedText": "w 0007 fields selection test ",
+      "clipboardExact": true
+    },
+    {
+      "mode": "Readable",
+      "layout": "inline",
+      "open": false,
+      "across": true,
+      "inspected": null,
+      "selectedText": "w 0007 fields selection test text\n10/24/2026, 22:40:48\nINFO\nrow 0008 fields selection test text\n10/24/2026, 22:40:48\nINFO\nrow 0009 fields selection test ",
+      "clipboardExact": true
+    },
+    {
+      "mode": "Readable",
+      "layout": "inline",
+      "open": true,
+      "across": false,
+      "inspected": "14",
+      "selectedText": "w 0007 fields selection test ",
+      "clipboardExact": true
+    },
+    {
+      "mode": "Readable",
+      "layout": "inline",
+      "open": true,
+      "across": true,
+      "inspected": "14",
+      "selectedText": "w 0007 fields selection test text\n10/24/2026, 22:40:48\nINFO\nrow 0008 fields selection test text\n10/24/2026, 22:40:48\nINFO\nrow 0009 fields selection test ",
+      "clipboardExact": true
+    },
+    {
+      "mode": "Readable",
+      "layout": "side",
+      "open": false,
+      "across": false,
+      "inspected": null,
+      "selectedText": "w 0007 fields selection test ",
+      "clipboardExact": true
+    },
+    {
+      "mode": "Readable",
+      "layout": "side",
+      "open": false,
+      "across": true,
+      "inspected": null,
+      "selectedText": "w 0007 fields selection test text\n10/24/2026, 22:40:48\nINFO\nrow 0008 fields selection test text\n10/24/2026, 22:40:48\nINFO\nrow 0009 fields selection test ",
+      "clipboardExact": true
+    },
+    {
+      "mode": "Readable",
+      "layout": "side",
+      "open": true,
+      "across": false,
+      "inspected": "14",
+      "selectedText": "w 0007 fields selection test ",
+      "clipboardExact": true
+    },
+    {
+      "mode": "Readable",
+      "layout": "side",
+      "open": true,
+      "across": true,
+      "inspected": "14",
+      "selectedText": "w 0007 fields selection test text\n10/24/2026, 22:40:48\nINFO\nrow 0008 fields selection test text\n10/24/2026, 22:40:48\nINFO\nrow 0009 fields selection test ",
+      "clipboardExact": true
+    },
+    {
+      "mode": "Readable",
+      "layout": "bottom",
+      "open": false,
+      "across": false,
+      "inspected": null,
+      "selectedText": "w 0007 fields selection test ",
+      "clipboardExact": true
+    },
+    {
+      "mode": "Readable",
+      "layout": "bottom",
+      "open": false,
+      "across": true,
+      "inspected": null,
+      "selectedText": "w 0007 fields selection test text\n10/24/2026, 22:40:48\nINFO\nrow 0008 fields selection test text\n10/24/2026, 22:40:48\nINFO\nrow 0009 fields selection test ",
+      "clipboardExact": true
+    },
+    {
+      "mode": "Readable",
+      "layout": "bottom",
+      "open": true,
+      "across": false,
+      "inspected": "14",
+      "selectedText": "w 0007 fields selection test ",
+      "clipboardExact": true
+    },
+    {
+      "mode": "Readable",
+      "layout": "bottom",
+      "open": true,
+      "across": true,
+      "inspected": "14",
+      "selectedText": "w 0007 fields selection test text\n10/24/2026, 22:40:48\nINFO\nrow 0008 fields selection test text\n10/24/2026, 22:40:48\nINFO\nrow 0009 fields selection test ",
+      "clipboardExact": true
+    },
+    {
+      "mode": "Raw",
+      "layout": "inline",
+      "open": false,
+      "across": false,
+      "inspected": null,
+      "selectedText": "5T03:40:48.046056358Z {\"message\":\"row 0007 fields selection test text\",\"level\":\"info\",\"fields\":\"original fields\",\"extra\":7,\"nested\":{\"fields\":\"value fields\"",
+      "clipboardExact": true
+    },
+    {
+      "mode": "Raw",
+      "layout": "inline",
+      "open": false,
+      "across": true,
+      "inspected": null,
+      "selectedText": "5T03:40:48.046056358Z {\"message\":\"row 0007 fields selection test text\",\"level\":\"info\",\"fields\":\"original fields\",\"extra\":7,\"nested\":{\"fields\":\"value fields\"},\"unicode\":\"α🙂\"}\n2026-10-25T03:40:48.046057318Z {\"message\":\"row 0008 fields selection test text\",\"level\":\"info\",\"fields\":\"original fields\",\"extra\":8,\"nested\":{\"fields\":\"value fields\"},\"unicode\":\"α🙂\"}\n2026-10-25T03:40:48.046058168Z {\"message\":\"row 0009 fields selection test text\",\"level\":\"info\",\"fields\":\"original fields\",\"extra\":9,\"nested\":{\"fields\":\"value fields\"",
+      "clipboardExact": true
+    },
+    {
+      "mode": "Raw",
+      "layout": "inline",
+      "open": true,
+      "across": false,
+      "inspected": "14",
+      "selectedText": "5T03:40:48.046056358Z {\"message\":\"row 0007 fields selection test text\",\"level\":\"info\",\"fields\":\"original fields\",\"extra\":7,\"nested\":{\"fields\":\"value fields\"",
+      "clipboardExact": true
+    },
+    {
+      "mode": "Raw",
+      "layout": "inline",
+      "open": true,
+      "across": true,
+      "inspected": "14",
+      "selectedText": "5T03:40:48.046056358Z {\"message\":\"row 0007 fields selection test text\",\"level\":\"info\",\"fields\":\"original fields\",\"extra\":7,\"nested\":{\"fields\":\"value fields\"},\"unicode\":\"α🙂\"}\n2026-10-25T03:40:48.046057318Z {\"message\":\"row 0008 fields selection test text\",\"level\":\"info\",\"fields\":\"original fields\",\"extra\":8,\"nested\":{\"fields\":\"value fields\"},\"unicode\":\"α🙂\"}\n2026-10-25T03:40:48.046058168Z {\"message\":\"row 0009 fields selection test text\",\"level\":\"info\",\"fields\":\"original fields\",\"extra\":9,\"nested\":{\"fields\":\"value fields\"",
+      "clipboardExact": true
+    },
+    {
+      "mode": "Raw",
+      "layout": "side",
+      "open": false,
+      "across": false,
+      "inspected": null,
+      "selectedText": "5T03:40:48.046056358Z {\"message\":\"row 0007 fields selection test text\",\"level\":\"info\",\"fields\":\"original fields\",\"extra\":7,\"nested\":{\"fields\":\"value fields\"",
+      "clipboardExact": true
+    },
+    {
+      "mode": "Raw",
+      "layout": "side",
+      "open": false,
+      "across": true,
+      "inspected": null,
+      "selectedText": "5T03:40:48.046056358Z {\"message\":\"row 0007 fields selection test text\",\"level\":\"info\",\"fields\":\"original fields\",\"extra\":7,\"nested\":{\"fields\":\"value fields\"},\"unicode\":\"α🙂\"}\n2026-10-25T03:40:48.046057318Z {\"message\":\"row 0008 fields selection test text\",\"level\":\"info\",\"fields\":\"original fields\",\"extra\":8,\"nested\":{\"fields\":\"value fields\"},\"unicode\":\"α🙂\"}\n2026-10-25T03:40:48.046058168Z {\"message\":\"row 0009 fields selection test text\",\"level\":\"info\",\"fields\":\"original fields\",\"extra\":9,\"nested\":{\"fields\":\"value fields\"",
+      "clipboardExact": true
+    },
+    {
+      "mode": "Raw",
+      "layout": "side",
+      "open": true,
+      "across": false,
+      "inspected": "14",
+      "selectedText": "5T03:40:48.046056358Z {\"message\":\"row 0007 fields selection test text\",\"level\":\"info\",\"fields\":\"original fields\",\"extra\":7,\"nested\":{\"fields\":\"value fields\"",
+      "clipboardExact": true
+    },
+    {
+      "mode": "Raw",
+      "layout": "side",
+      "open": true,
+      "across": true,
+      "inspected": "14",
+      "selectedText": "5T03:40:48.046056358Z {\"message\":\"row 0007 fields selection test text\",\"level\":\"info\",\"fields\":\"original fields\",\"extra\":7,\"nested\":{\"fields\":\"value fields\"},\"unicode\":\"α🙂\"}\n2026-10-25T03:40:48.046057318Z {\"message\":\"row 0008 fields selection test text\",\"level\":\"info\",\"fields\":\"original fields\",\"extra\":8,\"nested\":{\"fields\":\"value fields\"},\"unicode\":\"α🙂\"}\n2026-10-25T03:40:48.046058168Z {\"message\":\"row 0009 fields selection test text\",\"level\":\"info\",\"fields\":\"original fields\",\"extra\":9,\"nested\":{\"fields\":\"value fields\"",
+      "clipboardExact": true
+    },
+    {
+      "mode": "Raw",
+      "layout": "bottom",
+      "open": false,
+      "across": false,
+      "inspected": null,
+      "selectedText": "5T03:40:48.046056358Z {\"message\":\"row 0007 fields selection test text\",\"level\":\"info\",\"fields\":\"original fields\",\"extra\":7,\"nested\":{\"fields\":\"value fields\"",
+      "clipboardExact": true
+    },
+    {
+      "mode": "Raw",
+      "layout": "bottom",
+      "open": false,
+      "across": true,
+      "inspected": null,
+      "selectedText": "5T03:40:48.046056358Z {\"message\":\"row 0007 fields selection test text\",\"level\":\"info\",\"fields\":\"original fields\",\"extra\":7,\"nested\":{\"fields\":\"value fields\"},\"unicode\":\"α🙂\"}\n2026-10-25T03:40:48.046057318Z {\"message\":\"row 0008 fields selection test text\",\"level\":\"info\",\"fields\":\"original fields\",\"extra\":8,\"nested\":{\"fields\":\"value fields\"},\"unicode\":\"α🙂\"}\n2026-10-25T03:40:48.046058168Z {\"message\":\"row 0009 fields selection test text\",\"level\":\"info\",\"fields\":\"original fields\",\"extra\":9,\"nested\":{\"fields\":\"value fields\"",
+      "clipboardExact": true
+    },
+    {
+      "mode": "Raw",
+      "layout": "bottom",
+      "open": true,
+      "across": false,
+      "inspected": "14",
+      "selectedText": "5T03:40:48.046056358Z {\"message\":\"row 0007 fields selection test text\",\"level\":\"info\",\"fields\":\"original fields\",\"extra\":7,\"nested\":{\"fields\":\"value fields\"",
+      "clipboardExact": true
+    },
+    {
+      "mode": "Raw",
+      "layout": "bottom",
+      "open": true,
+      "across": true,
+      "inspected": "14",
+      "selectedText": "5T03:40:48.046056358Z {\"message\":\"row 0007 fields selection test text\",\"level\":\"info\",\"fields\":\"original fields\",\"extra\":7,\"nested\":{\"fields\":\"value fields\"},\"unicode\":\"α🙂\"}\n2026-10-25T03:40:48.046057318Z {\"message\":\"row 0008 fields selection test text\",\"level\":\"info\",\"fields\":\"original fields\",\"extra\":8,\"nested\":{\"fields\":\"value fields\"},\"unicode\":\"α🙂\"}\n2026-10-25T03:40:48.046058168Z {\"message\":\"row 0009 fields selection test text\",\"level\":\"info\",\"fields\":\"original fields\",\"extra\":9,\"nested\":{\"fields\":\"value fields\"",
+      "clipboardExact": true
+    }
+  ],
+  "clicks": [
+    {
+      "mode": "Readable",
+      "layout": "inline",
+      "index": 6,
+      "observedWithinMs": 156.4509350000003
+    },
+    {
+      "mode": "Readable",
+      "layout": "side",
+      "index": 6,
+      "observedWithinMs": 142.72546899999907
+    },
+    {
+      "mode": "Readable",
+      "layout": "bottom",
+      "index": 6,
+      "observedWithinMs": 136.85435899999902
+    },
+    {
+      "mode": "Raw",
+      "layout": "inline",
+      "index": 6,
+      "observedWithinMs": 110.86932099999831
+    },
+    {
+      "mode": "Raw",
+      "layout": "side",
+      "index": 6,
+      "observedWithinMs": 108.12522499999977
+    },
+    {
+      "mode": "Raw",
+      "layout": "bottom",
+      "index": 6,
+      "observedWithinMs": 109.22369400000025
+    }
+  ],
+  "multiClicks": [
+    {
+      "mode": "Readable",
+      "layout": "inline",
+      "count": 2,
+      "firstInspected": "6",
+      "selection": "selection"
+    },
+    {
+      "mode": "Readable",
+      "layout": "inline",
+      "count": 3,
+      "firstInspected": "6",
+      "selection": "row 0007 fields selection test text"
+    },
+    {
+      "mode": "Readable",
+      "layout": "side",
+      "count": 2,
+      "firstInspected": "6",
+      "selection": "selection"
+    },
+    {
+      "mode": "Readable",
+      "layout": "side",
+      "count": 3,
+      "firstInspected": "6",
+      "selection": "row 0007 fields selection test text"
+    },
+    {
+      "mode": "Readable",
+      "layout": "bottom",
+      "count": 2,
+      "firstInspected": "6",
+      "selection": "selection"
+    },
+    {
+      "mode": "Readable",
+      "layout": "bottom",
+      "count": 3,
+      "firstInspected": "6",
+      "selection": "row 0007 fields selection test text"
+    },
+    {
+      "mode": "Raw",
+      "layout": "inline",
+      "count": 2,
+      "firstInspected": "6",
+      "selection": "info"
+    },
+    {
+      "mode": "Raw",
+      "layout": "inline",
+      "count": 3,
+      "firstInspected": "6",
+      "selection": "2026-10-25T03:40:48.046056358Z {\"message\":\"row 0007 fields selection test text\",\"level\":\"info\",\"fields\":\"original fields\",\"extra\":7,\"nested\":{\"fields\":\"value fields\"},\"unicode\":\"α🙂\"}"
+    },
+    {
+      "mode": "Raw",
+      "layout": "side",
+      "count": 2,
+      "firstInspected": "6",
+      "selection": "info"
+    },
+    {
+      "mode": "Raw",
+      "layout": "side",
+      "count": 3,
+      "firstInspected": "6",
+      "selection": "2026-10-25T03:40:48.046056358Z {\"message\":\"row 0007 fields selection test text\",\"level\":\"info\",\"fields\":\"original fields\",\"extra\":7,\"nested\":{\"fields\":\"value fields\"},\"unicode\":\"α🙂\"}"
+    },
+    {
+      "mode": "Raw",
+      "layout": "bottom",
+      "count": 2,
+      "firstInspected": "6",
+      "selection": "info"
+    },
+    {
+      "mode": "Raw",
+      "layout": "bottom",
+      "count": 3,
+      "firstInspected": "6",
+      "selection": "2026-10-25T03:40:48.046056358Z {\"message\":\"row 0007 fields selection test text\",\"level\":\"info\",\"fields\":\"original fields\",\"extra\":7,\"nested\":{\"fields\":\"value fields\"},\"unicode\":\"α🙂\"}"
+    }
+  ],
+  "rawOriginalFields": {
+    "copied": "2026-10-25T03:40:48.045697459Z   { \"message\" : \"row 0001 fields α🙂\\ntext\", \"level\":\"info\", \"fields\":\"fields\", \"extra\":1, \"nested\":{\"fields\":\"value fields\"}, \"unicode\":\"漢字\" }  \n2026-10-25T03:40:48.045712189Z {\"message\":\"row 0002 fields single badge\",\"level\":\"info\",\"fields\":\"fields\"}",
+    "keysAndValuesIntact": true
+  },
+  "badgeCopies": [
+    {
+      "row": 0,
+      "layout": "inline",
+      "open": false,
+      "text": "ow 0001 fields α🙂\ntext\n",
+      "clipboardExact": true,
+      "badgeExcluded": true
+    },
+    {
+      "row": 1,
+      "layout": "inline",
+      "open": false,
+      "text": "ow 0002 fields single badge\n",
+      "clipboardExact": true,
+      "badgeExcluded": true
+    },
+    {
+      "row": 0,
+      "layout": "inline",
+      "open": true,
+      "text": "ow 0001 fields α🙂\ntext\n",
+      "clipboardExact": true,
+      "badgeExcluded": true
+    },
+    {
+      "row": 1,
+      "layout": "inline",
+      "open": true,
+      "text": "ow 0002 fields single badge\n",
+      "clipboardExact": true,
+      "badgeExcluded": true
+    },
+    {
+      "row": 0,
+      "layout": "side",
+      "open": false,
+      "text": "ow 0001 fields α🙂\ntext\n",
+      "clipboardExact": true,
+      "badgeExcluded": true
+    },
+    {
+      "row": 1,
+      "layout": "side",
+      "open": false,
+      "text": "ow 0002 fields single badge\n",
+      "clipboardExact": true,
+      "badgeExcluded": true
+    },
+    {
+      "row": 0,
+      "layout": "side",
+      "open": true,
+      "text": "ow 0001 fields α🙂\ntext\n",
+      "clipboardExact": true,
+      "badgeExcluded": true
+    },
+    {
+      "row": 1,
+      "layout": "side",
+      "open": true,
+      "text": "ow 0002 fields single badge\n",
+      "clipboardExact": true,
+      "badgeExcluded": true
+    },
+    {
+      "row": 0,
+      "layout": "bottom",
+      "open": false,
+      "text": "ow 0001 fields α🙂\ntext\n",
+      "clipboardExact": true,
+      "badgeExcluded": true
+    },
+    {
+      "row": 1,
+      "layout": "bottom",
+      "open": false,
+      "text": "ow 0002 fields single badge\n",
+      "clipboardExact": true,
+      "badgeExcluded": true
+    },
+    {
+      "row": 0,
+      "layout": "bottom",
+      "open": true,
+      "text": "ow 0001 fields α🙂\ntext\n",
+      "clipboardExact": true,
+      "badgeExcluded": true
+    },
+    {
+      "row": 1,
+      "layout": "bottom",
+      "open": true,
+      "text": "ow 0002 fields single badge\n",
+      "clipboardExact": true,
+      "badgeExcluded": true
+    }
+  ],
+  "source": "fourth-preliminary-input-failure.json: passing stages BEFORE the later copy assertion failure",
+  "notTicketAcceptance": "CDP dispatch is synthetic; physical device gate remains open"
+}

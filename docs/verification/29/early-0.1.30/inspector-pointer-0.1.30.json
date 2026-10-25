@@ -1,0 +1,37 @@
+{
+  "checks": [
+    {
+      "layout": "inline",
+      "before": {
+        "focus": "DIV",
+        "class": "rl-records"
+      },
+      "after": {
+        "focus": "rl-find",
+        "findOpen": true
+      }
+    },
+    {
+      "layout": "side",
+      "before": {
+        "focus": "BODY",
+        "class": ""
+      },
+      "after": {
+        "focus": "input box grow",
+        "findOpen": false
+      }
+    },
+    {
+      "layout": "bottom",
+      "before": {
+        "focus": "BODY",
+        "class": ""
+      },
+      "after": {
+        "focus": "input box grow",
+        "findOpen": false
+      }
+    }
+  ]
+}

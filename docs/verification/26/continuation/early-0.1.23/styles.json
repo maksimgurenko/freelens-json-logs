@@ -1,0 +1,976 @@
+{
+  "at": "2026-10-25T04:10:02.634Z",
+  "result": {
+    "type": "object",
+    "value": {
+      "data": [
+        {
+          "i": 0,
+          "html": "<time datetime=\"2026-10-25T03:57:01.626611230Z\" title=\"kubernetes: 2026-10-25T03:57:01.626611230Z\">10/24/2026, 22:57:01</time><span class=\"rl-level rl-severity-info\">INFO</span><span class=\"rl-message\">row 0001 fields α🙂\ntext</span><span class=\"rl-fields\" data-label=\"4 fields\" aria-label=\"4 additional fields\"></span>",
+          "nodes": [
+            {
+              "tag": "SPAN",
+              "class": "rl-message",
+              "userSelect": "auto",
+              "appRegion": "none",
+              "draggable": false,
+              "rect": {
+                "x": 419.84375,
+                "y": 54.86328125,
+                "width": 137.294921875,
+                "height": 39.58984375,
+                "top": 54.86328125,
+                "right": 557.138671875,
+                "bottom": 94.453125,
+                "left": 419.84375
+              }
+            },
+            {
+              "tag": "DIV",
+              "class": "rl-row",
+              "userSelect": "auto",
+              "appRegion": "none",
+              "draggable": false,
+              "rect": {
+                "x": 211.9921875,
+                "y": 52.87109375,
+                "width": 2077.890625,
+                "height": 43.57421875,
+                "top": 52.87109375,
+                "right": 2289.8828125,
+                "bottom": 96.4453125,
+                "left": 211.9921875
+              }
+            },
+            {
+              "tag": "DIV",
+              "class": "rl-record",
+              "userSelect": "auto",
+              "appRegion": "none",
+              "draggable": false,
+              "rect": {
+                "x": 211.9921875,
+                "y": 52.87109375,
+                "width": 2077.890625,
+                "height": 43.57421875,
+                "top": 52.87109375,
+                "right": 2289.8828125,
+                "bottom": 96.4453125,
+                "left": 211.9921875
+              }
+            },
+            {
+              "tag": "DIV",
+              "class": "rl-records",
+              "userSelect": "auto",
+              "appRegion": "none",
+              "draggable": false,
+              "rect": {
+                "x": 200,
+                "y": 44.873046875,
+                "width": 2117.5,
+                "height": 1136.5234375,
+                "top": 44.873046875,
+                "right": 2317.5,
+                "bottom": 1181.396484375,
+                "left": 200
+              }
+            },
+            {
+              "tag": "DIV",
+              "class": "rl-work rl-layout-side",
+              "userSelect": "auto",
+              "appRegion": "none",
+              "draggable": false,
+              "rect": {
+                "x": 200,
+                "y": 44.873046875,
+                "width": 2117.5,
+                "height": 1136.5234375,
+                "top": 44.873046875,
+                "right": 2317.5,
+                "bottom": 1181.396484375,
+                "left": 200
+              }
+            },
+            {
+              "tag": "SECTION",
+              "class": "readable-logs",
+              "userSelect": "auto",
+              "appRegion": "none",
+              "draggable": false,
+              "rect": {
+                "x": 200,
+                "y": 0,
+                "width": 2117.5,
+                "height": 1219.2578125,
+                "top": 0,
+                "right": 2317.5,
+                "bottom": 1219.2578125,
+                "left": 200
+              }
+            },
+            {
+              "tag": "DIV",
+              "class": "main-layout-module__contents--Rh6XI",
+              "userSelect": "auto",
+              "appRegion": "none",
+              "draggable": false,
+              "rect": {
+                "x": 200,
+                "y": 0,
+                "width": 2117.5,
+                "height": 1219.2578125,
+                "top": 0,
+                "right": 2317.5,
+                "bottom": 1219.2578125,
+                "left": 200
+              }
+            },
+            {
+              "tag": "DIV",
+              "class": "main-layout-module__mainLayout--LIGm3",
+              "userSelect": "auto",
+              "appRegion": "none",
+              "draggable": false,
+              "rect": {
+                "x": 0,
+                "y": 0,
+                "width": 2317.5,
+                "height": 1251.875,
+                "top": 0,
+                "right": 2317.5,
+                "bottom": 1251.875,
+                "left": 0
+              }
+            },
+            {
+              "tag": "DIV",
+              "class": "",
+              "userSelect": "auto",
+              "appRegion": "none",
+              "draggable": false,
+              "rect": {
+                "x": 0,
+                "y": 0,
+                "width": 2317.5,
+                "height": 1251.875,
+                "top": 0,
+                "right": 2317.5,
+                "bottom": 1251.875,
+                "left": 0
+              }
+            },
+            {
+              "tag": "BODY",
+              "class": "",
+              "userSelect": "auto",
+              "appRegion": "none",
+              "draggable": false,
+              "rect": {
+                "x": 0,
+                "y": 0,
+                "width": 2317.5,
+                "height": 1251.875,
+                "top": 0,
+                "right": 2317.5,
+                "bottom": 1251.875,
+                "left": 0
+              }
+            },
+            {
+              "tag": "HTML",
+              "class": "",
+              "userSelect": "auto",
+              "appRegion": "none",
+              "draggable": false,
+              "rect": {
+                "x": 0,
+                "y": 0,
+                "width": 2317.5,
+                "height": 1251.875,
+                "top": 0,
+                "right": 2317.5,
+                "bottom": 1251.875,
+                "left": 0
+              }
+            }
+          ]
+        },
+        {
+          "i": 1,
+          "html": "<time datetime=\"2026-10-25T03:57:01.626622760Z\" title=\"kubernetes: 2026-10-25T03:57:01.626622760Z\">10/24/2026, 22:57:01</time><span class=\"rl-level rl-severity-info\">INFO</span><span class=\"rl-message\">row 0002 fields single badge</span><span class=\"rl-fields\" data-label=\"1 field\" aria-label=\"1 additional field\" style=\"\"></span>",
+          "nodes": [
+            {
+              "tag": "SPAN",
+              "class": "rl-message",
+              "userSelect": "auto",
+              "appRegion": "none",
+              "draggable": false,
+              "rect": {
+                "x": 419.84375,
+                "y": 98.4375,
+                "width": 201.474609375,
+                "height": 19.794921875,
+                "top": 98.4375,
+                "right": 621.318359375,
+                "bottom": 118.232421875,
+                "left": 419.84375
+              }
+            },
+            {
+              "tag": "DIV",
+              "class": "rl-row",
+              "userSelect": "auto",
+              "appRegion": "none",
+              "draggable": false,
+              "rect": {
+                "x": 211.9921875,
+                "y": 96.4453125,
+                "width": 2077.890625,
+                "height": 23.779296875,
+                "top": 96.4453125,
+                "right": 2289.8828125,
+                "bottom": 120.224609375,
+                "left": 211.9921875
+              }
+            },
+            {
+              "tag": "DIV",
+              "class": "rl-record",
+              "userSelect": "auto",
+              "appRegion": "none",
+              "draggable": false,
+              "rect": {
+                "x": 211.9921875,
+                "y": 96.4453125,
+                "width": 2077.890625,
+                "height": 23.779296875,
+                "top": 96.4453125,
+                "right": 2289.8828125,
+                "bottom": 120.224609375,
+                "left": 211.9921875
+              }
+            },
+            {
+              "tag": "DIV",
+              "class": "rl-records",
+              "userSelect": "auto",
+              "appRegion": "none",
+              "draggable": false,
+              "rect": {
+                "x": 200,
+                "y": 44.873046875,
+                "width": 2117.5,
+                "height": 1136.5234375,
+                "top": 44.873046875,
+                "right": 2317.5,
+                "bottom": 1181.396484375,
+                "left": 200
+              }
+            },
+            {
+              "tag": "DIV",
+              "class": "rl-work rl-layout-side",
+              "userSelect": "auto",
+              "appRegion": "none",
+              "draggable": false,
+              "rect": {
+                "x": 200,
+                "y": 44.873046875,
+                "width": 2117.5,
+                "height": 1136.5234375,
+                "top": 44.873046875,
+                "right": 2317.5,
+                "bottom": 1181.396484375,
+                "left": 200
+              }
+            },
+            {
+              "tag": "SECTION",
+              "class": "readable-logs",
+              "userSelect": "auto",
+              "appRegion": "none",
+              "draggable": false,
+              "rect": {
+                "x": 200,
+                "y": 0,
+                "width": 2117.5,
+                "height": 1219.2578125,
+                "top": 0,
+                "right": 2317.5,
+                "bottom": 1219.2578125,
+                "left": 200
+              }
+            },
+            {
+              "tag": "DIV",
+              "class": "main-layout-module__contents--Rh6XI",
+              "userSelect": "auto",
+              "appRegion": "none",
+              "draggable": false,
+              "rect": {
+                "x": 200,
+                "y": 0,
+                "width": 2117.5,
+                "height": 1219.2578125,
+                "top": 0,
+                "right": 2317.5,
+                "bottom": 1219.2578125,
+                "left": 200
+              }
+            },
+            {
+              "tag": "DIV",
+              "class": "main-layout-module__mainLayout--LIGm3",
+              "userSelect": "auto",
+              "appRegion": "none",
+              "draggable": false,
+              "rect": {
+                "x": 0,
+                "y": 0,
+                "width": 2317.5,
+                "height": 1251.875,
+                "top": 0,
+                "right": 2317.5,
+                "bottom": 1251.875,
+                "left": 0
+              }
+            },
+            {
+              "tag": "DIV",
+              "class": "",
+              "userSelect": "auto",
+              "appRegion": "none",
+              "draggable": false,
+              "rect": {
+                "x": 0,
+                "y": 0,
+                "width": 2317.5,
+                "height": 1251.875,
+                "top": 0,
+                "right": 2317.5,
+                "bottom": 1251.875,
+                "left": 0
+              }
+            },
+            {
+              "tag": "BODY",
+              "class": "",
+              "userSelect": "auto",
+              "appRegion": "none",
+              "draggable": false,
+              "rect": {
+                "x": 0,
+                "y": 0,
+                "width": 2317.5,
+                "height": 1251.875,
+                "top": 0,
+                "right": 2317.5,
+                "bottom": 1251.875,
+                "left": 0
+              }
+            },
+            {
+              "tag": "HTML",
+              "class": "",
+              "userSelect": "auto",
+              "appRegion": "none",
+              "draggable": false,
+              "rect": {
+                "x": 0,
+                "y": 0,
+                "width": 2317.5,
+                "height": 1251.875,
+                "top": 0,
+                "right": 2317.5,
+                "bottom": 1251.875,
+                "left": 0
+              }
+            }
+          ]
+        },
+        {
+          "i": 2,
+          "html": "<time datetime=\"2026-10-25T03:57:01.626623770Z\" title=\"kubernetes: 2026-10-25T03:57:01.626623770Z\">10/24/2026, 22:57:01</time><span class=\"rl-level\"></span><span class=\"rl-message\">  at worker(fields)  </span>",
+          "nodes": [
+            {
+              "tag": "SPAN",
+              "class": "rl-message",
+              "userSelect": "auto",
+              "appRegion": "none",
+              "draggable": false,
+              "rect": {
+                "x": 419.84375,
+                "y": 122.216796875,
+                "width": 151.103515625,
+                "height": 19.794921875,
+                "top": 122.216796875,
+                "right": 570.947265625,
+                "bottom": 142.01171875,
+                "left": 419.84375
+              }
+            },
+            {
+              "tag": "DIV",
+              "class": "rl-row",
+              "userSelect": "auto",
+              "appRegion": "none",
+              "draggable": false,
+              "rect": {
+                "x": 211.9921875,
+                "y": 120.224609375,
+                "width": 2077.890625,
+                "height": 23.779296875,
+                "top": 120.224609375,
+                "right": 2289.8828125,
+                "bottom": 144.00390625,
+                "left": 211.9921875
+              }
+            },
+            {
+              "tag": "DIV",
+              "class": "rl-record",
+              "userSelect": "auto",
+              "appRegion": "none",
+              "draggable": false,
+              "rect": {
+                "x": 211.9921875,
+                "y": 120.224609375,
+                "width": 2077.890625,
+                "height": 23.779296875,
+                "top": 120.224609375,
+                "right": 2289.8828125,
+                "bottom": 144.00390625,
+                "left": 211.9921875
+              }
+            },
+            {
+              "tag": "DIV",
+              "class": "rl-records",
+              "userSelect": "auto",
+              "appRegion": "none",
+              "draggable": false,
+              "rect": {
+                "x": 200,
+                "y": 44.873046875,
+                "width": 2117.5,
+                "height": 1136.5234375,
+                "top": 44.873046875,
+                "right": 2317.5,
+                "bottom": 1181.396484375,
+                "left": 200
+              }
+            },
+            {
+              "tag": "DIV",
+              "class": "rl-work rl-layout-side",
+              "userSelect": "auto",
+              "appRegion": "none",
+              "draggable": false,
+              "rect": {
+                "x": 200,
+                "y": 44.873046875,
+                "width": 2117.5,
+                "height": 1136.5234375,
+                "top": 44.873046875,
+                "right": 2317.5,
+                "bottom": 1181.396484375,
+                "left": 200
+              }
+            },
+            {
+              "tag": "SECTION",
+              "class": "readable-logs",
+              "userSelect": "auto",
+              "appRegion": "none",
+              "draggable": false,
+              "rect": {
+                "x": 200,
+                "y": 0,
+                "width": 2117.5,
+                "height": 1219.2578125,
+                "top": 0,
+                "right": 2317.5,
+                "bottom": 1219.2578125,
+                "left": 200
+              }
+            },
+            {
+              "tag": "DIV",
+              "class": "main-layout-module__contents--Rh6XI",
+              "userSelect": "auto",
+              "appRegion": "none",
+              "draggable": false,
+              "rect": {
+                "x": 200,
+                "y": 0,
+                "width": 2117.5,
+                "height": 1219.2578125,
+                "top": 0,
+                "right": 2317.5,
+                "bottom": 1219.2578125,
+                "left": 200
+              }
+            },
+            {
+              "tag": "DIV",
+              "class": "main-layout-module__mainLayout--LIGm3",
+              "userSelect": "auto",
+              "appRegion": "none",
+              "draggable": false,
+              "rect": {
+                "x": 0,
+                "y": 0,
+                "width": 2317.5,
+                "height": 1251.875,
+                "top": 0,
+                "right": 2317.5,
+                "bottom": 1251.875,
+                "left": 0
+              }
+            },
+            {
+              "tag": "DIV",
+              "class": "",
+              "userSelect": "auto",
+              "appRegion": "none",
+              "draggable": false,
+              "rect": {
+                "x": 0,
+                "y": 0,
+                "width": 2317.5,
+                "height": 1251.875,
+                "top": 0,
+                "right": 2317.5,
+                "bottom": 1251.875,
+                "left": 0
+              }
+            },
+            {
+              "tag": "BODY",
+              "class": "",
+              "userSelect": "auto",
+              "appRegion": "none",
+              "draggable": false,
+              "rect": {
+                "x": 0,
+                "y": 0,
+                "width": 2317.5,
+                "height": 1251.875,
+                "top": 0,
+                "right": 2317.5,
+                "bottom": 1251.875,
+                "left": 0
+              }
+            },
+            {
+              "tag": "HTML",
+              "class": "",
+              "userSelect": "auto",
+              "appRegion": "none",
+              "draggable": false,
+              "rect": {
+                "x": 0,
+                "y": 0,
+                "width": 2317.5,
+                "height": 1251.875,
+                "top": 0,
+                "right": 2317.5,
+                "bottom": 1251.875,
+                "left": 0
+              }
+            }
+          ]
+        },
+        {
+          "i": 3,
+          "html": "<time datetime=\"2026-10-25T03:57:01.626624380Z\" title=\"kubernetes: 2026-10-25T03:57:01.626624380Z\">10/24/2026, 22:57:01</time><span class=\"rl-level\"></span><span class=\"rl-message\">&nbsp;</span>",
+          "nodes": [
+            {
+              "tag": "SPAN",
+              "class": "rl-message",
+              "userSelect": "auto",
+              "appRegion": "none",
+              "draggable": false,
+              "rect": {
+                "x": 419.84375,
+                "y": 145.99609375,
+                "width": 7.197265625,
+                "height": 19.794921875,
+                "top": 145.99609375,
+                "right": 427.041015625,
+                "bottom": 165.791015625,
+                "left": 419.84375
+              }
+            },
+            {
+              "tag": "DIV",
+              "class": "rl-row",
+              "userSelect": "auto",
+              "appRegion": "none",
+              "draggable": false,
+              "rect": {
+                "x": 211.9921875,
+                "y": 144.00390625,
+                "width": 2077.890625,
+                "height": 23.779296875,
+                "top": 144.00390625,
+                "right": 2289.8828125,
+                "bottom": 167.783203125,
+                "left": 211.9921875
+              }
+            },
+            {
+              "tag": "DIV",
+              "class": "rl-record",
+              "userSelect": "auto",
+              "appRegion": "none",
+              "draggable": false,
+              "rect": {
+                "x": 211.9921875,
+                "y": 144.00390625,
+                "width": 2077.890625,
+                "height": 23.779296875,
+                "top": 144.00390625,
+                "right": 2289.8828125,
+                "bottom": 167.783203125,
+                "left": 211.9921875
+              }
+            },
+            {
+              "tag": "DIV",
+              "class": "rl-records",
+              "userSelect": "auto",
+              "appRegion": "none",
+              "draggable": false,
+              "rect": {
+                "x": 200,
+                "y": 44.873046875,
+                "width": 2117.5,
+                "height": 1136.5234375,
+                "top": 44.873046875,
+                "right": 2317.5,
+                "bottom": 1181.396484375,
+                "left": 200
+              }
+            },
+            {
+              "tag": "DIV",
+              "class": "rl-work rl-layout-side",
+              "userSelect": "auto",
+              "appRegion": "none",
+              "draggable": false,
+              "rect": {
+                "x": 200,
+                "y": 44.873046875,
+                "width": 2117.5,
+                "height": 1136.5234375,
+                "top": 44.873046875,
+                "right": 2317.5,
+                "bottom": 1181.396484375,
+                "left": 200
+              }
+            },
+            {
+              "tag": "SECTION",
+              "class": "readable-logs",
+              "userSelect": "auto",
+              "appRegion": "none",
+              "draggable": false,
+              "rect": {
+                "x": 200,
+                "y": 0,
+                "width": 2117.5,
+                "height": 1219.2578125,
+                "top": 0,
+                "right": 2317.5,
+                "bottom": 1219.2578125,
+                "left": 200
+              }
+            },
+            {
+              "tag": "DIV",
+              "class": "main-layout-module__contents--Rh6XI",
+              "userSelect": "auto",
+              "appRegion": "none",
+              "draggable": false,
+              "rect": {
+                "x": 200,
+                "y": 0,
+                "width": 2117.5,
+                "height": 1219.2578125,
+                "top": 0,
+                "right": 2317.5,
+                "bottom": 1219.2578125,
+                "left": 200
+              }
+            },
+            {
+              "tag": "DIV",
+              "class": "main-layout-module__mainLayout--LIGm3",
+              "userSelect": "auto",
+              "appRegion": "none",
+              "draggable": false,
+              "rect": {
+                "x": 0,
+                "y": 0,
+                "width": 2317.5,
+                "height": 1251.875,
+                "top": 0,
+                "right": 2317.5,
+                "bottom": 1251.875,
+                "left": 0
+              }
+            },
+            {
+              "tag": "DIV",
+              "class": "",
+              "userSelect": "auto",
+              "appRegion": "none",
+              "draggable": false,
+              "rect": {
+                "x": 0,
+                "y": 0,
+                "width": 2317.5,
+                "height": 1251.875,
+                "top": 0,
+                "right": 2317.5,
+                "bottom": 1251.875,
+                "left": 0
+              }
+            },
+            {
+              "tag": "BODY",
+              "class": "",
+              "userSelect": "auto",
+              "appRegion": "none",
+              "draggable": false,
+              "rect": {
+                "x": 0,
+                "y": 0,
+                "width": 2317.5,
+                "height": 1251.875,
+                "top": 0,
+                "right": 2317.5,
+                "bottom": 1251.875,
+                "left": 0
+              }
+            },
+            {
+              "tag": "HTML",
+              "class": "",
+              "userSelect": "auto",
+              "appRegion": "none",
+              "draggable": false,
+              "rect": {
+                "x": 0,
+                "y": 0,
+                "width": 2317.5,
+                "height": 1251.875,
+                "top": 0,
+                "right": 2317.5,
+                "bottom": 1251.875,
+                "left": 0
+              }
+            }
+          ]
+        },
+        {
+          "i": 6,
+          "html": "<time datetime=\"2026-10-25T03:57:01.626942130Z\" title=\"kubernetes: 2026-10-25T03:57:01.626942130Z\">10/24/2026, 22:57:01</time><span class=\"rl-level rl-severity-info\">INFO</span><span class=\"rl-message\">row 0007 fields selection test text</span><span class=\"rl-fields\" data-label=\"4 fields\" aria-label=\"4 additional fields\"></span>",
+          "nodes": [
+            {
+              "tag": "SPAN",
+              "class": "rl-message",
+              "userSelect": "auto",
+              "appRegion": "none",
+              "draggable": false,
+              "rect": {
+                "x": 419.84375,
+                "y": 217.333984375,
+                "width": 251.8359375,
+                "height": 19.794921875,
+                "top": 217.333984375,
+                "right": 671.6796875,
+                "bottom": 237.12890625,
+                "left": 419.84375
+              }
+            },
+            {
+              "tag": "DIV",
+              "class": "rl-row",
+              "userSelect": "auto",
+              "appRegion": "none",
+              "draggable": false,
+              "rect": {
+                "x": 211.9921875,
+                "y": 215.341796875,
+                "width": 2077.890625,
+                "height": 23.779296875,
+                "top": 215.341796875,
+                "right": 2289.8828125,
+                "bottom": 239.12109375,
+                "left": 211.9921875
+              }
+            },
+            {
+              "tag": "DIV",
+              "class": "rl-record",
+              "userSelect": "auto",
+              "appRegion": "none",
+              "draggable": false,
+              "rect": {
+                "x": 211.9921875,
+                "y": 215.341796875,
+                "width": 2077.890625,
+                "height": 23.779296875,
+                "top": 215.341796875,
+                "right": 2289.8828125,
+                "bottom": 239.12109375,
+                "left": 211.9921875
+              }
+            },
+            {
+              "tag": "DIV",
+              "class": "rl-records",
+              "userSelect": "auto",
+              "appRegion": "none",
+              "draggable": false,
+              "rect": {
+                "x": 200,
+                "y": 44.873046875,
+                "width": 2117.5,
+                "height": 1136.5234375,
+                "top": 44.873046875,
+                "right": 2317.5,
+                "bottom": 1181.396484375,
+                "left": 200
+              }
+            },
+            {
+              "tag": "DIV",
+              "class": "rl-work rl-layout-side",
+              "userSelect": "auto",
+              "appRegion": "none",
+              "draggable": false,
+              "rect": {
+                "x": 200,
+                "y": 44.873046875,
+                "width": 2117.5,
+                "height": 1136.5234375,
+                "top": 44.873046875,
+                "right": 2317.5,
+                "bottom": 1181.396484375,
+                "left": 200
+              }
+            },
+            {
+              "tag": "SECTION",
+              "class": "readable-logs",
+              "userSelect": "auto",
+              "appRegion": "none",
+              "draggable": false,
+              "rect": {
+                "x": 200,
+                "y": 0,
+                "width": 2117.5,
+                "height": 1219.2578125,
+                "top": 0,
+                "right": 2317.5,
+                "bottom": 1219.2578125,
+                "left": 200
+              }
+            },
+            {
+              "tag": "DIV",
+              "class": "main-layout-module__contents--Rh6XI",
+              "userSelect": "auto",
+              "appRegion": "none",
+              "draggable": false,
+              "rect": {
+                "x": 200,
+                "y": 0,
+                "width": 2117.5,
+                "height": 1219.2578125,
+                "top": 0,
+                "right": 2317.5,
+                "bottom": 1219.2578125,
+                "left": 200
+              }
+            },
+            {
+              "tag": "DIV",
+              "class": "main-layout-module__mainLayout--LIGm3",
+              "userSelect": "auto",
+              "appRegion": "none",
+              "draggable": false,
+              "rect": {
+                "x": 0,
+                "y": 0,
+                "width": 2317.5,
+                "height": 1251.875,
+                "top": 0,
+                "right": 2317.5,
+                "bottom": 1251.875,
+                "left": 0
+              }
+            },
+            {
+              "tag": "DIV",
+              "class": "",
+              "userSelect": "auto",
+              "appRegion": "none",
+              "draggable": false,
+              "rect": {
+                "x": 0,
+                "y": 0,
+                "width": 2317.5,
+                "height": 1251.875,
+                "top": 0,
+                "right": 2317.5,
+                "bottom": 1251.875,
+                "left": 0
+              }
+            },
+            {
+              "tag": "BODY",
+              "class": "",
+              "userSelect": "auto",
+              "appRegion": "none",
+              "draggable": false,
+              "rect": {
+                "x": 0,
+                "y": 0,
+                "width": 2317.5,
+                "height": 1251.875,
+                "top": 0,
+                "right": 2317.5,
+                "bottom": 1251.875,
+                "left": 0
+              }
+            },
+            {
+              "tag": "HTML",
+              "class": "",
+              "userSelect": "auto",
+              "appRegion": "none",
+              "draggable": false,
+              "rect": {
+                "x": 0,
+                "y": 0,
+                "width": 2317.5,
+                "height": 1251.875,
+                "top": 0,
+                "right": 2317.5,
+                "bottom": 1251.875,
+                "left": 0
+              }
+            }
+          ]
+        }
+      ],
+      "selection": "w 0007 fields selection test "
+    }
+  }
+}

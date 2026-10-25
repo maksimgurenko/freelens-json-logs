@@ -1,0 +1,94 @@
+{
+  "pods": [
+    {
+      "namespace": "kube-system",
+      "name": "coredns-559f6c778d-856db",
+      "uid": "8ee43d04-a0ca-418c-89cd-77419eb5c51e",
+      "restarts": {
+        "coredns": 2
+      }
+    },
+    {
+      "namespace": "kube-system",
+      "name": "coredns-559f6c778d-94xwh",
+      "uid": "c88ee682-a5c9-4134-8c21-ccb028295dc1",
+      "restarts": {
+        "coredns": 2
+      }
+    },
+    {
+      "namespace": "kube-system",
+      "name": "etcd-freelens-json-logs-spike-control-plane",
+      "uid": "d3f76f77-e385-419e-9d25-2cf30cc288cb",
+      "restarts": {
+        "etcd": 1
+      }
+    },
+    {
+      "namespace": "kube-system",
+      "name": "kindnet-sj5zz",
+      "uid": "b40a922b-6393-4d52-9484-02a7c8db2a7d",
+      "restarts": {
+        "kindnet-cni": 1
+      }
+    },
+    {
+      "namespace": "kube-system",
+      "name": "kube-apiserver-freelens-json-logs-spike-control-plane",
+      "uid": "19c71201-ebb5-4e07-ac97-c51ba079552d",
+      "restarts": {
+        "kube-apiserver": 1
+      }
+    },
+    {
+      "namespace": "kube-system",
+      "name": "kube-controller-manager-freelens-json-logs-spike-control-plane",
+      "uid": "60eaa045-f63c-440e-9282-78d96463aef5",
+      "restarts": {
+        "kube-controller-manager": 1
+      }
+    },
+    {
+      "namespace": "kube-system",
+      "name": "kube-proxy-rn8nn",
+      "uid": "104f5852-a067-42fc-9d21-f4bf7b3cbd5b",
+      "restarts": {
+        "kube-proxy": 1
+      }
+    },
+    {
+      "namespace": "kube-system",
+      "name": "kube-scheduler-freelens-json-logs-spike-control-plane",
+      "uid": "f5ca1537-c0c8-4487-a86a-5babf585c2a1",
+      "restarts": {
+        "kube-scheduler": 1
+      }
+    },
+    {
+      "namespace": "local-path-storage",
+      "name": "local-path-provisioner-75f7fc7dc5-54k6b",
+      "uid": "26c548eb-082f-4194-85c2-37d3ff090dac",
+      "restarts": {
+        "local-path-provisioner": 3
+      }
+    },
+    {
+      "namespace": "readable-logs-spike",
+      "name": "changing-logs",
+      "uid": "c8190dc0-0f37-4918-9918-53eba7c8ebc1",
+      "restarts": {
+        "json": 2,
+        "plain": 2
+      }
+    },
+    {
+      "namespace": "readable-logs-spike",
+      "name": "single-json",
+      "uid": "0035d4f0-23c6-4e7d-93b2-c1d13a41cb92",
+      "restarts": {
+        "empty": 2,
+        "json": 2
+      }
+    }
+  ]
+}

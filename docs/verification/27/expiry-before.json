@@ -1,0 +1,11 @@
+{
+  "at": "2026-10-25T18:53:32.463Z",
+  "result": {
+    "type": "object",
+    "value": {
+      "selected": "20",
+      "focus": "Close record inspector",
+      "original": "2026-10-25T18:50:52.137207334Z {\"message\":\"row 0021 fields selection test text\",\"level\":\"info\",\"fields\":\"original fields\",\"extra\":21,\"nested\":{\"fields\":\"value fields\"},\"unicode\":\"α🙂\"}"
+    }
+  }
+}

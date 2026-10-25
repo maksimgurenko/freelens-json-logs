@@ -1,0 +1,19 @@
+{
+  "at": "2026-10-25T03:27:05.898Z",
+  "result": {
+    "type": "object",
+    "value": {
+      "status": "Paused · reading snapshot…",
+      "heldRealRequests": 1,
+      "retainedSameSnapshot": true,
+      "initial": {
+        "top": 89.74609375,
+        "height": 1091.650390625
+      },
+      "loadingGeometry": {
+        "top": 89.74609375,
+        "height": 1091.650390625
+      }
+    }
+  }
+}

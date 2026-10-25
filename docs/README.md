@@ -11,6 +11,7 @@
 ## Develop and verify
 
 - [Build instructions and technical reference](local-development.md)
+- [UI verification without desktop interruptions](agents/ui-verification.md)
 - [CI and release publishing](releasing.md)
 - [Installed-release verification](verification/19/README.md)
 - [Domain glossary](../GLOSSARY.md)

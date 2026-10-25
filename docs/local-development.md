@@ -25,8 +25,8 @@ npm run typecheck
 npm test
 npm run package
 npm run check:package
-tar -tzf dist/freelens-readable-logs-0.1.20.tgz
-sha256sum dist/freelens-readable-logs-0.1.20.tgz
+tar -tzf dist/freelens-readable-logs-0.1.33.tgz
+sha256sum dist/freelens-readable-logs-0.1.33.tgz
 ```
 
 The locked esbuild platform package supplies its binary without install scripts.
@@ -83,7 +83,7 @@ Raw mode, selected record, content tab, timestamps and word wrap are temporary.
 New views start Readable, without selection, with timestamps on and wrap off.
 Bottom Inspection opens when a record is selected and occupies no space when
 selection is cleared or leaves the recent window; the saved Bottom preference
-remains selected. Side retains its empty selection guidance. Selecting a row never pauses automatic updates. If the selected exact record
+remains selected. Side and Inline also reserve no inspector space without a selection. Selecting a row never pauses automatic updates. If the selected exact record
 leaves the recent window, selection clears; Pause keeps the current window for
 inspection. All fields includes extracted/hidden fields. Copy application text
 and Copy transport line use retained originals, including their original spacing,
@@ -125,7 +125,7 @@ Follow [the accepted procedure](https://github.com/maksimgurenko/freelens-json-l
 2. For an update, **Uninstall** the old package and wait for removal to finish,
    retaining its saved extension settings. Install the new tarball via the form
    **once** and wait. Do not use the overwrite/reinstallation prompt.
-3. Check version **0.1.20** and Enabled, then open the cluster. Open a Pod's details
+3. Check version **0.1.33** and Enabled, then open the cluster. Open a Pod's details
    header and click the **Readable logs** icon beside the native actions. Verify
    cluster, namespace, Pod UID, container, the expected active profile and usable logs.
    Do not restart after installation as a substitute for passing this check.
@@ -154,8 +154,8 @@ RFC 3339 with an explicit zone; display uses the computer's local timezone.
 Original precision, JSON whitespace and all parsed fields remain in core state.
 Raw inspection and clipboard controls are subsequent ticket work.
 
-Routine loading/waiting feedback uses the fixed update-status area beside
-Pause/Refresh, without inserting a banner above the log window on every read.
+Routine loading/waiting feedback uses the fixed update-status area in
+the compact footer, without inserting a banner above the log window on every read.
 The records region exposes its busy state to accessibility tools; slow requests
 and failures retain their explicit notices.
 
@@ -210,6 +210,30 @@ module cache during uninstall/install; unique version paths load the updated mai
 and renderer code without clearing host caches or requiring a post-install restart.
 Electron is supplied by the host and stays external to both bundles.
 
+## Compact workspace
+
+The single toolbar keeps target context, container/profile selection, **Edit profiles**,
+Pause/Resume, Refresh and Find available. Open **Log target details** for full
+names and technical identifiers. **Display options** contains Readable/Raw,
+timestamps, wrap and the saved global Inspection layout. Related groups wrap
+in narrower windows. Readable and Raw use a black canvas, including empty space.
+
+Find opens a temporary row. **Close Find** hides the row while retaining its
+query and current match for this view; reopening does not filter the window or
+make a request. A new view starts with Find closed and its query empty.
+
+## Selecting and copying log text
+
+Drag through Readable or Raw rows to select text without opening or changing
+inspection. The additional-field count badge is interface metadata and is excluded
+from row selection/copy; application data named `fields` stays intact. A normal
+click inspects immediately, including within previously selected text, as do Enter
+and Space on a focused row. The first
+click of a double/triple-click may inspect before word/line selection exists.
+The inspector's Copy application text and Copy transport line actions retain the
+exact originals. Selecting text or inspecting a record does not pause updates;
+use Pause when you want to keep the current recent log window.
+
 ## Scroll position and Find
 
 New views follow output at the bottom. Scrolling away preserves the first visible
@@ -252,7 +276,7 @@ Severity mappings distinguish numbers from text, compare text ignoring case,
 and precede built-in normalization. No numeric meaning is inferred.
 
 Paste sample logs for a preview of up to 20 lines. **Save profile** applies a valid
-draft; **Cancel** or **Close profiles** discards unfinished edits. Specific errors
+draft; **Cancel draft** or **Back to logs** discards unfinished edits. Specific errors
 block Save. Preview samples and drafts never persist. Editing or reformatting
 retained logs makes no log request and Find recomputes using the active message.
 
@@ -325,3 +349,59 @@ settings removal, fully quit Freelens and remove only
 `~/.config/Freelens/extension-store/freelens-readable-logs/`, including its backups;
 keep every other extension's directory. Uninstall alone retains this directory.
 No crash durability or transactional disk guarantees are promised.
+
+
+## Local return and dismissal
+
+**Back to logs** leaves Profiles and discards its unfinished draft. **Cancel draft**
+stays in Profiles; **Save profile** applies valid changes explicitly. Saved profile,
+global-default and matching-order changes survive returning to logs.
+
+Escape dismisses one layer: an open menu/disclosure, then a delete/reset
+confirmation, then Profiles. In logs it hides Find (retaining the query), then
+closes inspection on the next press. Bare logs have no local Escape navigation.
+Native selects, menus and composition keep their input ownership; holding Escape
+does not dismiss additional layers. Reset already in progress continues and cannot
+be canceled by dismissal. Closing controls follow the same focus transitions:
+Find and Profiles restore their opener, inspection restores its retained row or a
+surviving log control. Local panels add no host page-history entries and do not
+pause automatic updates. Mouse Back in Profiles uses the same local dismissal actions. A nested confirmation
+or open disclosure takes priority; returning discards only the unfinished draft.
+The handler owns only an active, focused extension region and the pointer gesture
+begun there. In logs, and over host/dock areas, Back keeps host history ownership.
+Native keyboard/menu/top-bar Back and Forward remain host-owned. Local panels do
+not create history entries; host Forward never restores an unfinished local draft.
+Physical delivery/cancellation evidence is platform-specific under
+`docs/verification/28/`; Windows and macOS remain unverified. The shortcut reference and bindings below use the same local ownership rules.
+
+
+## Local keyboard shortcuts
+
+Use Ctrl on Linux/Windows and Cmd on macOS. In the active logs toolbar,
+viewport or inspector, primary+F reveals Find and selects its retained query.
+Enter/Shift+Enter move next/previous only in Find; primary+G/primary+Shift+G
+repeat the same navigation, revealing Find if needed. Other editing controls
+keep their input ownership. Primary+S saves an active Profiles draft through the
+same validation as Save profile. Invalid or failed saves retain the draft.
+Ctrl+End (Linux/Windows) or Cmd+Down (macOS), with a log row or viewport focused,
+follows the retained window without resuming paused requests.
+
+Display options → Shortcuts opens a temporary reference; Close or Escape dismisses
+it and restores Display options focus. Control tooltips show relevant bindings.
+Host Back/Forward, reload and command palette retain their host meanings. Platform
+verification and native input boundaries are recorded under `docs/verification/29/`.
+
+
+## Compact-view release verification
+
+The combined layout, selection, local return, mouse Back and shortcut workflow is
+verified against one exact installed package under `docs/verification/30/`. Read
+that report for the current completion state and package hash; earlier ticket
+reports describe their own package versions. Physical mouse evidence from an
+earlier package does not establish the final package gate.
+
+Linux checks use Freelens 1.10.3 on Hyprland/Wayland. Windows and macOS remain
+unverified. Linux OS IME/AltGraph coverage is also unverified; composition and
+modifier guard tests alone do not establish native input behavior. The local
+workflow adds no global shortcuts or settings and retains the existing bounded
+single-Pod/container, schema 3 and explicit recovery contracts.

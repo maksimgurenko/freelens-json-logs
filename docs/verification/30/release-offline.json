@@ -1,0 +1,80 @@
+{
+  "at": "2026-10-25T21:09:15.461Z",
+  "result": {
+    "type": "object",
+    "value": {
+      "mode": "offline",
+      "version": "0.1.33",
+      "failure": {
+        "error": "request to https://127.0.0.1:33765/api-kube/api/v1/namespaces/readable-logs-ticket-30/pods/release/log?container=bounded&tailLines=1000&timestamps=true&follow=false&previous=false failed, reason: connect ECONNREFUSED 127.0.0.1:9",
+        "request": {
+          "originalPath": "https://127.0.0.1:33765/api-kube/api/v1/namespaces/readable-logs-ticket-30/pods/release/log?container=bounded&tailLines=1000&timestamps=true&follow=false&previous=false",
+          "transmittedPath": "/api-kube/api/v1/namespaces/readable-logs-ticket-30/pods/release/log?container=bounded&tailLines=1000&timestamps=true&follow=false&previous=false",
+          "started": 90447.80000000075,
+          "denied": false,
+          "offline": true,
+          "error": "connect ECONNREFUSED 127.0.0.1:9",
+          "responseCompleted": 90448.19999999925
+        },
+        "digest": "250bb181ecdb9333c546969e278938b28546555571a0689cb068040aac8a9c08"
+      },
+      "recovery": {
+        "originalPath": "https://127.0.0.1:33765/api-kube/api/v1/namespaces/readable-logs-ticket-30/pods/release/log?container=bounded&tailLines=1000&timestamps=true&follow=false&previous=false",
+        "transmittedPath": "/api-kube/api/v1/namespaces/readable-logs-ticket-30/pods/release/log?container=bounded&tailLines=1000&timestamps=true&follow=false&previous=false",
+        "started": 97283.90000000224,
+        "denied": false,
+        "offline": false,
+        "status": 200,
+        "responseCompleted": 97292.80000000075,
+        "bytes": 126000,
+        "sha256": "0fae2552c7300fc1d936d34f91b963afe6ab8825b4fce159059e3dc35e98f0cd"
+      },
+      "retainedOriginalSha256": "250bb181ecdb9333c546969e278938b28546555571a0689cb068040aac8a9c08",
+      "noAutomaticFailureLoop": true,
+      "failedExplicitRetryOnce": true,
+      "successfulExplicitRetryResumes": true,
+      "requests": [
+        {
+          "originalPath": "https://127.0.0.1:33765/api-kube/api/v1/namespaces/readable-logs-ticket-30/pods/release/log?container=bounded&tailLines=1000&timestamps=true&follow=false&previous=false",
+          "transmittedPath": "/api-kube/api/v1/namespaces/readable-logs-ticket-30/pods/release/log?container=bounded&tailLines=1000&timestamps=true&follow=false&previous=false",
+          "started": 90447.80000000075,
+          "denied": false,
+          "offline": true,
+          "error": "connect ECONNREFUSED 127.0.0.1:9",
+          "responseCompleted": 90448.19999999925
+        },
+        {
+          "originalPath": "https://127.0.0.1:33765/api-kube/api/v1/namespaces/readable-logs-ticket-30/pods/release/log?container=bounded&tailLines=1000&timestamps=true&follow=false&previous=false",
+          "transmittedPath": "/api-kube/api/v1/namespaces/readable-logs-ticket-30/pods/release/log?container=bounded&tailLines=1000&timestamps=true&follow=false&previous=false",
+          "started": 93868.80000000075,
+          "denied": false,
+          "offline": true,
+          "error": "connect ECONNREFUSED 127.0.0.1:9",
+          "responseCompleted": 93869.10000000149
+        },
+        {
+          "originalPath": "https://127.0.0.1:33765/api-kube/api/v1/namespaces/readable-logs-ticket-30/pods/release/log?container=bounded&tailLines=1000&timestamps=true&follow=false&previous=false",
+          "transmittedPath": "/api-kube/api/v1/namespaces/readable-logs-ticket-30/pods/release/log?container=bounded&tailLines=1000&timestamps=true&follow=false&previous=false",
+          "started": 97283.90000000224,
+          "denied": false,
+          "offline": false,
+          "status": 200,
+          "responseCompleted": 97292.80000000075,
+          "bytes": 126000,
+          "sha256": "0fae2552c7300fc1d936d34f91b963afe6ab8825b4fce159059e3dc35e98f0cd"
+        },
+        {
+          "originalPath": "https://127.0.0.1:33765/api-kube/api/v1/namespaces/readable-logs-ticket-30/pods/release/log?container=bounded&tailLines=1000&timestamps=true&follow=false&previous=false",
+          "transmittedPath": "/api-kube/api/v1/namespaces/readable-logs-ticket-30/pods/release/log?container=bounded&tailLines=1000&timestamps=true&follow=false&previous=false",
+          "started": 100418,
+          "denied": false,
+          "offline": false,
+          "status": 200,
+          "responseCompleted": 100426.30000000075,
+          "bytes": 126000,
+          "sha256": "0fae2552c7300fc1d936d34f91b963afe6ab8825b4fce159059e3dc35e98f0cd"
+        }
+      ]
+    }
+  }
+}

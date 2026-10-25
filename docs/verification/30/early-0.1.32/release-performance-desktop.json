@@ -1,0 +1,19 @@
+{
+  "action": "probe",
+  "workspaceBefore": 1,
+  "focusBefore": "0x5600c57ceaf0",
+  "cursorBefore": {
+    "x": 2152,
+    "y": 1271
+  },
+  "exitCode": 0,
+  "nativePointerRestore": "{\"ok\": true, \"result\": {\"x\": 2151, \"y\": 1270}}",
+  "cursorAfter": {
+    "x": 2151,
+    "y": 1270
+  },
+  "workspaceAfter": 1,
+  "focusAfter": "0x5600c57ceaf0",
+  "hostWorkspace": 7,
+  "mainPid": 599073
+}

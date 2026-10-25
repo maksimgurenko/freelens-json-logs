@@ -1,0 +1,29 @@
+import {connect,save,assert,tick} from './host.mjs';import {readFileSync} from 'node:fs';import {nativeKeyboard} from './native-keyboard.mjs';
+let h=await connect(),keyboard;const out={package:'0.1.33',input:'OS uinput host accelerators; DOM inspection of actual packaged listeners',checks:[]};let beforeHistory;
+const check=async(name,expr)=>{const value=await h.run(expr);out.checks.push({name,value});assert(value,name);};
+try{
+ keyboard=await nativeKeyboard();beforeHistory=await h.send('Page.getNavigationHistory');
+ await h.run(`(()=>{const root=document.querySelector('.readable-logs');let f=root[Object.keys(root).find(k=>k.startsWith('__reactFiber$'))];while(f&&!f.memoizedProps?.shortcutCapture)f=f.return;global.__cv30Life={root,capture:f.memoizedProps.shortcutCapture,url:location.pathname+location.search};[...root.querySelectorAll('button')].find(e=>e.textContent==='Pause')?.click();root.querySelector('.rl-records').focus();})()`);
+ out.before=await h.run(`({callbacks:global.__cv30Life.capture.handlers.size,composition:getEventListeners(global.__cv30Life.root).compositionstart.length,windowKeyup:getEventListeners(window).keyup.length})`);assert(out.before.callbacks===1,'Expected one viewer callback');
+ out.traversal=[];for(let index=beforeHistory.currentIndex-1;index>=2;index--){await h.send('Page.navigateToHistoryEntry',{entryId:beforeHistory.entries[index].id});await tick(150);const view=await h.run(`({index:${index},hasViewer:!!document.querySelector('.readable-logs'),url:location.href})`);out.traversal.push(view);if(!view.hasViewer)break;}
+ out.after=await h.run(`({callbacks:global.__cv30Life.capture.handlers.size,connected:global.__cv30Life.root.isConnected,composition:getEventListeners(global.__cv30Life.root).compositionstart?.length??0,windowKeyup:getEventListeners(window).keyup?.length??0})`);
+ assert(out.after.callbacks===0&&!out.after.connected&&out.after.composition===0&&out.after.windowKeyup===out.before.windowKeyup-1,'Viewer registrations/listeners survive unmount');
+ await h.send('Page.navigateToHistoryEntry',{entryId:beforeHistory.entries[beforeHistory.currentIndex].id});await tick(200);
+ await check('Reentry starts a fresh view and one callback',`global.__cv30Life.capture.handlers.size===1&&document.querySelector('.rl-findbar').hidden&&document.querySelector('#rl-find').value===''`);
+ await h.run(`document.querySelector('.rl-records').focus()`);await keyboard.press('Ctrl+Shift+p');
+ out.palette=await h.run(`({cluster:!!document.querySelector('[data-testid="command-container"]'),findOpen:!document.querySelector('.rl-findbar').hidden})`);assert(out.palette.cluster&&!out.palette.findOpen,'Host palette accelerator changed');await h.key('Escape','Escape',27);
+ await h.clickLabel('Edit profiles');await h.clickLabel('Duplicate');const nativeBefore=await h.send('Page.getNavigationHistory');const nativeUrl=await h.run('location.href');await keyboard.press('Ctrl+[');await tick(200);out.nativeBack=await h.send('Page.getNavigationHistory');assert(out.nativeBack.currentIndex===nativeBefore.currentIndex-1,'Host Back traversed incorrectly');await check('Native primary+[ remains host Back',`location.href!==${JSON.stringify(nativeUrl)}`);
+ await keyboard.press('Ctrl+]');await tick(200);out.nativeForward=await h.send('Page.getNavigationHistory');assert(out.nativeForward.currentIndex===nativeBefore.currentIndex,'Host Forward traversed incorrectly');await check('Native primary+] returns to the original host entry',`location.href===${JSON.stringify(nativeUrl)}`);await h.run(`[...document.querySelectorAll('.rl-profile-editor button')].find(e=>e.textContent==='Back to logs')?.click()`);
+ // Restore the actual existing entry after real navigation; no fabricated entry.
+ await h.send('Page.navigateToHistoryEntry',{entryId:beforeHistory.entries[beforeHistory.currentIndex].id});await tick(150);
+ await h.run(`delete global.__cv30Life;document.querySelector('.rl-records').focus()`);
+ out.beforeReload=await h.run(`({url:location.href,version:document.querySelector('.readable-logs').dataset.version,rendererPid:process.pid,timeOrigin:performance.timeOrigin})`);
+ await keyboard.press('Ctrl+r');await tick(800);await h.close();h=null;
+ for(let i=0;i<30;i++){try{h=await connect();if(await h.run(`document.readyState==='complete'`))break;await h.close();h=null;}catch{}await tick(100);}
+ assert(h,'Host reload did not restore viewer');out.afterReload=await h.run(`({url:location.href,version:document.querySelector('.readable-logs')?.dataset.version??null,rendererPid:process.pid,timeOrigin:performance.timeOrigin,findOpen:!!document.querySelector('.rl-findbar')&&!document.querySelector('.rl-findbar').hidden})`);
+ assert(out.afterReload.timeOrigin!==out.beforeReload.timeOrigin,'Host document did not reload');out.reloadBoundary='Native host reload returns to overview; no local snapshot Refresh interception';await h.run(readFileSync('docs/verification/30/probes/show-original.js','utf8'));await h.run(readFileSync('docs/verification/30/probes/header.js','utf8'));out.restored=await h.run(readFileSync('docs/verification/30/probes/usable.js','utf8'));assert(out.restored.version==='0.1.33','Restored package differs');
+ out.passed=true;
+}catch(error){out.failure=String(error);process.exitCode=1;}
+finally{
+ try{if(h&&beforeHistory&&!out.afterReload){await h.send('Page.navigateToHistoryEntry',{entryId:beforeHistory.entries[beforeHistory.currentIndex].id});await tick(200);}if(h)out.cleanup=await h.run(`(()=>{delete global.__cv30Life;const r=document.querySelector('.readable-logs');[...r?.querySelectorAll('button')??[]].find(e=>e.textContent==='Pause')?.click();return {paused:!![...r?.querySelectorAll('button')??[]].find(e=>e.textContent==='Resume')};})()`);}finally{if(keyboard)await keyboard.close();if(h)await h.close();save('lifecycle',out);}
+}

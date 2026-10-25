@@ -1,0 +1,200 @@
+{
+  "at": "2026-10-25T20:31:01.927Z",
+  "result": {
+    "type": "object",
+    "value": {
+      "version": "0.1.32",
+      "cases": [
+        {
+          "container": "bounded",
+          "request": {
+            "originalPath": "https://127.0.0.1:41039/api-kube/api/v1/namespaces/readable-logs-ticket-30/pods/release/log?container=bounded&tailLines=1000&timestamps=true&follow=false&previous=false",
+            "transmittedPath": "/api-kube/api/v1/namespaces/readable-logs-ticket-30/pods/release/log?container=bounded&tailLines=1000&timestamps=true&follow=false&previous=false",
+            "started": 122542.69999999925,
+            "denied": false,
+            "offline": false,
+            "status": 200,
+            "responseCompleted": 122551,
+            "bytes": 126000,
+            "sha256": "42c2980c2020e243526213f35ff79ac67d0b9e44c5fd31211f5a808cc985fde8"
+          },
+          "returned": 1000,
+          "retained": 1000,
+          "omitted": 0,
+          "retainedBytes": 126000,
+          "oversizedNewest": false,
+          "exactSuffix": true,
+          "firstApplication": "{\"message\":\"row 0001\",\"level\":\"info\",\"hidden\":\"Private.Needle[0] α🙂\",\"nested\":{\"ok\":true}}",
+          "lastApplication": "{\"message\":\"row 1000\",\"level\":\"info\",\"hidden\":\"Private.Needle[0] α🙂\",\"nested\":{\"ok\":true}}",
+          "notice": []
+        },
+        {
+          "container": "over-tail",
+          "request": {
+            "originalPath": "https://127.0.0.1:41039/api-kube/api/v1/namespaces/readable-logs-ticket-30/pods/release/log?container=over-tail&tailLines=1000&timestamps=true&follow=false&previous=false",
+            "transmittedPath": "/api-kube/api/v1/namespaces/readable-logs-ticket-30/pods/release/log?container=over-tail&tailLines=1100&timestamps=true&follow=false&previous=false",
+            "started": 122629.5,
+            "denied": false,
+            "offline": false,
+            "status": 200,
+            "responseCompleted": 122637.29999999702,
+            "bytes": 59400,
+            "sha256": "88d3ae8530baa073b4c479c73c59059b6ccacd1733fb1f8e36a5303aae97b33f"
+          },
+          "returned": 1100,
+          "retained": 1000,
+          "omitted": 100,
+          "retainedBytes": 54000,
+          "oversizedNewest": false,
+          "exactSuffix": true,
+          "firstApplication": "{\"message\":\"row 0101\"}",
+          "lastApplication": "{\"message\":\"row 1100\"}",
+          "notice": [
+            "100 older record(s) omitted to keep the latest 1,000 lines within the 5 MiB original-text budget."
+          ]
+        },
+        {
+          "container": "utf8-near",
+          "request": {
+            "originalPath": "https://127.0.0.1:41039/api-kube/api/v1/namespaces/readable-logs-ticket-30/pods/release/log?container=utf8-near&tailLines=1000&timestamps=true&follow=false&previous=false",
+            "transmittedPath": "/api-kube/api/v1/namespaces/readable-logs-ticket-30/pods/release/log?container=utf8-near&tailLines=1000&timestamps=true&follow=false&previous=false",
+            "started": 122802.39999999851,
+            "denied": false,
+            "offline": false,
+            "status": 200,
+            "responseCompleted": 122830.5,
+            "bytes": 5148000,
+            "sha256": "0fab993cf2c83c9f9c171e4974ef42a4f6ac4573987facfef025bfacd32444ce"
+          },
+          "returned": 1000,
+          "retained": 1000,
+          "omitted": 0,
+          "retainedBytes": 5148000,
+          "oversizedNewest": false,
+          "exactSuffix": true,
+          "firstApplication": "{\"message\":\"near 0001\",\"payload\":\"α🙂α🙂α🙂α🙂α🙂α🙂α🙂α🙂α🙂α🙂α🙂α🙂α🙂α🙂α🙂α🙂α🙂α🙂α🙂α🙂α🙂α🙂α🙂α🙂α🙂α🙂α🙂α🙂α🙂α🙂α🙂α🙂α🙂α🙂α🙂α🙂α🙂α🙂α🙂α🙂α🙂α🙂",
+          "lastApplication": "{\"message\":\"near 1000\",\"payload\":\"α🙂α🙂α🙂α🙂α🙂α🙂α🙂α🙂α🙂α🙂α🙂α🙂α🙂α🙂α🙂α🙂α🙂α🙂α🙂α🙂α🙂α🙂α🙂α🙂α🙂α🙂α🙂α🙂α🙂α🙂α🙂α🙂α🙂α🙂α🙂α🙂α🙂α🙂α🙂α🙂α🙂α🙂",
+          "notice": []
+        },
+        {
+          "container": "utf8-over",
+          "request": {
+            "originalPath": "https://127.0.0.1:41039/api-kube/api/v1/namespaces/readable-logs-ticket-30/pods/release/log?container=utf8-over&tailLines=1000&timestamps=true&follow=false&previous=false",
+            "transmittedPath": "/api-kube/api/v1/namespaces/readable-logs-ticket-30/pods/release/log?container=utf8-over&tailLines=1000&timestamps=true&follow=false&previous=false",
+            "started": 123142.79999999702,
+            "denied": false,
+            "offline": false,
+            "status": 200,
+            "responseCompleted": 123172.09999999776,
+            "bytes": 5268000,
+            "sha256": "0e6509b2809245aae0c8deec55b8128cab64a47cd020f8e4af9263af1001f000"
+          },
+          "returned": 1000,
+          "retained": 995,
+          "omitted": 5,
+          "retainedBytes": 5241660,
+          "oversizedNewest": false,
+          "exactSuffix": true,
+          "firstApplication": "{\"message\":\"over 0006\",\"payload\":\"α🙂α🙂α🙂α🙂α🙂α🙂α🙂α🙂α🙂α🙂α🙂α🙂α🙂α🙂α🙂α🙂α🙂α🙂α🙂α🙂α🙂α🙂α🙂α🙂α🙂α🙂α🙂α🙂α🙂α🙂α🙂α🙂α🙂α🙂α🙂α🙂α🙂α🙂α🙂α🙂α🙂α🙂",
+          "lastApplication": "{\"message\":\"over 1000\",\"payload\":\"α🙂α🙂α🙂α🙂α🙂α🙂α🙂α🙂α🙂α🙂α🙂α🙂α🙂α🙂α🙂α🙂α🙂α🙂α🙂α🙂α🙂α🙂α🙂α🙂α🙂α🙂α🙂α🙂α🙂α🙂α🙂α🙂α🙂α🙂α🙂α🙂α🙂α🙂α🙂α🙂α🙂α🙂",
+          "notice": [
+            "5 older record(s) omitted to keep the latest 1,000 lines within the 5 MiB original-text budget."
+          ]
+        },
+        {
+          "container": "oversized",
+          "request": {
+            "originalPath": "https://127.0.0.1:41039/api-kube/api/v1/namespaces/readable-logs-ticket-30/pods/release/log?container=oversized&tailLines=1000&timestamps=true&follow=false&previous=false",
+            "transmittedPath": "/api-kube/api/v1/namespaces/readable-logs-ticket-30/pods/release/log?container=oversized&tailLines=1000&timestamps=true&follow=false&previous=false",
+            "started": 123391.89999999851,
+            "denied": false,
+            "offline": false,
+            "status": 200,
+            "responseCompleted": 123430.5,
+            "bytes": 5400080,
+            "sha256": "84a2d62de8dddb6f8837254508c25696e72e9c2ccc6e8230eb83892ed3497600"
+          },
+          "returned": 2,
+          "retained": 0,
+          "omitted": 2,
+          "retainedBytes": 0,
+          "oversizedNewest": true,
+          "exactSuffix": true,
+          "notice": [
+            "The newest record exceeds the 5 MiB original-text budget. No complete suffix fits."
+          ]
+        },
+        {
+          "container": "repeated",
+          "request": {
+            "originalPath": "https://127.0.0.1:41039/api-kube/api/v1/namespaces/readable-logs-ticket-30/pods/release/log?container=repeated&tailLines=1000&timestamps=true&follow=false&previous=false",
+            "transmittedPath": "/api-kube/api/v1/namespaces/readable-logs-ticket-30/pods/release/log?container=repeated&tailLines=1000&timestamps=true&follow=false&previous=false",
+            "started": 123499,
+            "denied": false,
+            "offline": false,
+            "status": 200,
+            "responseCompleted": 123511.69999999925,
+            "bytes": 72000,
+            "sha256": "605551f09dde8b7937ec96e83a9537b4b35f44847c353dd42834b3b81e3c6a23"
+          },
+          "returned": 1000,
+          "retained": 1000,
+          "omitted": 0,
+          "retainedBytes": 72000,
+          "oversizedNewest": false,
+          "exactSuffix": true,
+          "firstApplication": "{\"message\":\"repeated α🙂\",\"level\":30}",
+          "lastApplication": "{\"message\":\"repeated α🙂\",\"level\":30}",
+          "notice": []
+        },
+        {
+          "container": "malformed",
+          "request": {
+            "originalPath": "https://127.0.0.1:41039/api-kube/api/v1/namespaces/readable-logs-ticket-30/pods/release/log?container=malformed&tailLines=1000&timestamps=true&follow=false&previous=false",
+            "transmittedPath": "/api-kube/api/v1/namespaces/readable-logs-ticket-30/pods/release/log?container=malformed&tailLines=1000&timestamps=true&follow=false&previous=false",
+            "started": 123691.79999999702,
+            "denied": false,
+            "offline": false,
+            "status": 200,
+            "responseCompleted": 123696.89999999851,
+            "bytes": 412,
+            "sha256": "fad8d7001d3073c974239e1aec978a031884a8dbbba8ce519dc2c02a8f9e9118"
+          },
+          "returned": 9,
+          "retained": 9,
+          "omitted": 0,
+          "retainedBytes": 412,
+          "oversizedNewest": false,
+          "exactSuffix": true,
+          "firstApplication": "{broken",
+          "lastApplication": "{ \"msg\" : \"decoded \\u03b1\\nline\", \"hidden\" : \"Private.Needle[0]\", \"x\" : [1,null] }",
+          "notice": []
+        },
+        {
+          "container": "empty",
+          "request": {
+            "originalPath": "https://127.0.0.1:41039/api-kube/api/v1/namespaces/readable-logs-ticket-30/pods/release/log?container=empty&tailLines=1000&timestamps=true&follow=false&previous=false",
+            "transmittedPath": "/api-kube/api/v1/namespaces/readable-logs-ticket-30/pods/release/log?container=empty&tailLines=1000&timestamps=true&follow=false&previous=false",
+            "started": 123744.5,
+            "denied": false,
+            "offline": false,
+            "status": 200,
+            "responseCompleted": 123748.5,
+            "bytes": 0,
+            "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+          },
+          "returned": 0,
+          "retained": 0,
+          "omitted": 0,
+          "retainedBytes": 0,
+          "oversizedNewest": false,
+          "exactSuffix": true,
+          "notice": [
+            "No logs returned for empty."
+          ]
+        }
+      ],
+      "note": "Owned Pod emits actual stdout once per container; Kubernetes supplies timestamps. Only over-tail changes the outgoing tailLines to 1100 to exercise genuine greater-than-requested input; all response bodies pass through unchanged. Independent byte/suffix oracle compared with installed production state and DOM."
+    }
+  }
+}

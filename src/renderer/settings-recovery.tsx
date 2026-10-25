@@ -1,35 +1,51 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useLayoutEffect, useRef, useState } from 'react';
 import type { ViewerPreferences } from '../core/configuration.ts';
+import { focusLocal, type LocalDismissal } from './local-dismissal.ts';
 
 /** Recovery stays beside the problem, leaving logs and inspection available. */
-export function SettingsRecovery({ preferences, saved }: { preferences: ViewerPreferences; saved: ReturnType<ViewerPreferences['read']> }) {
+export function SettingsRecovery({ preferences, saved, dismissal }: { preferences: ViewerPreferences; saved: ReturnType<ViewerPreferences['read']>; dismissal: LocalDismissal }) {
   const [confirming, setConfirming] = useState(false);
   const [pending, setPending] = useState(false);
   const [error, setError] = useState('');
   const busy = useRef(false);
   const resetButton = useRef<HTMLButtonElement>(null);
   const cancelButton = useRef<HTMLButtonElement>(null);
+  const recovery = useRef<HTMLElement>(null);
+  const cancel = () => {
+    const root = recovery.current!.closest<HTMLElement>('.readable-logs')!;
+    setConfirming(false); setError('');
+    requestAnimationFrame(() => focusLocal(root, resetButton.current));
+  };
+  useLayoutEffect(() => dismissal.add(200, () => confirming ? () => { if (!busy.current) cancel(); } : undefined), [dismissal, confirming]);
   useEffect(() => { if (confirming) cancelButton.current?.focus(); }, [confirming]);
   const reset = async () => {
     if (busy.current) return;
+    const root = recovery.current!.closest<HTMLElement>('.readable-logs')!;
     busy.current = true; setPending(true); setError('');
     try {
       const result = await preferences.resetSettings(true);
       if (result.error) setError(result.error);
       else setConfirming(false);
     } catch (error) { setError(`Unable to reset settings: ${String(error)}`); }
-    finally { busy.current = false; setPending(false); }
+    finally {
+      busy.current = false; setPending(false);
+      requestAnimationFrame(() => {
+        if (root.isConnected && root.ownerDocument.hasFocus() &&
+          (root.ownerDocument.activeElement === root.ownerDocument.body || recovery.current?.contains(root.ownerDocument.activeElement)))
+          focusLocal(root, cancelButton.current ?? resetButton.current);
+      });
+    }
   };
   if (!saved.problem) return saved.backup ? <p className="rl-notice" role="status">Settings reset. Normal saving is available. Original settings backup: {saved.backup}</p> : null;
-  return <section className="rl-notice rl-error rl-recovery" aria-label="Settings recovery">
+  return <section ref={recovery} className="rl-notice rl-error rl-recovery" aria-label="Settings recovery">
     <p role="alert">{saved.problem} Using built-in Default and Side inspection. Saved settings are preserved; saving is unavailable.</p>
     <p>Settings: {saved.settingsPath}</p>
     {!confirming ? <button ref={resetButton} type="button" onClick={() => { setError(''); setConfirming(true); }}>Reset settings…</button> :
-      <div role="group" aria-label="Confirm settings reset" aria-busy={pending}>
+      <div role="group" data-local-confirmation aria-label="Confirm settings reset" aria-busy={pending}>
         <p>Reset all saved profiles, matching order, global default and Inspection? An exact backup must be preserved before these settings are replaced with built-in defaults.</p>
         <div className="rl-editor-actions">
           <button type="button" disabled={pending} onClick={() => { void reset(); }}>{pending ? 'Backing up and resetting…' : 'Back up and reset'}</button>
-          <button ref={cancelButton} type="button" disabled={pending} onClick={() => { setConfirming(false); setError(''); requestAnimationFrame(() => resetButton.current?.focus()); }}>Cancel reset</button>
+          <button ref={cancelButton} type="button" disabled={pending} onClick={cancel}>Cancel reset</button>
         </div>
       </div>}
     {error && <p role="alert">{error}</p>}

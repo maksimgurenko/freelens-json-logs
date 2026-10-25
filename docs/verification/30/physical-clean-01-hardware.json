@@ -1,0 +1,36 @@
+{
+  "at": "2026-10-25T20:52:45Z",
+  "device": "/dev/input/event5",
+  "name": "Logitech G305",
+  "physicalUsb": true,
+  "grabs": false,
+  "injection": false,
+  "durationSeconds": 30.0,
+  "events": [
+    {
+      "seconds": 1792961569,
+      "microseconds": 284835,
+      "code": 275,
+      "name": "BTN_SIDE",
+      "value": 1
+    },
+    {
+      "seconds": 1792961569,
+      "microseconds": 455827,
+      "code": 275,
+      "name": "BTN_SIDE",
+      "value": 0
+    }
+  ],
+  "backForwardCapabilities": [
+    "KEY_BACK",
+    "KEY_FORWARD",
+    "BTN_SIDE",
+    "BTN_EXTRA",
+    "BTN_FORWARD",
+    "BTN_BACK"
+  ],
+  "physicalGestureObserved": true,
+  "completePressRelease": true,
+  "acceptance": "unverified: correlate complete press/release with packaged-host trace"
+}

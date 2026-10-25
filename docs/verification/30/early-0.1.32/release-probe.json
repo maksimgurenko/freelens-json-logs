@@ -1,0 +1,112 @@
+{
+  "at": "2026-10-25T20:32:11.569Z",
+  "result": {
+    "type": "object",
+    "value": {
+      "installed": true,
+      "state": {
+        "at": 1792960331567,
+        "url": "https://770814298afe692457d07d8b15d6b8d3.renderer.freelens.app:41039/extension/freelens-readable-logs/readable-logs?clusterId=770814298afe692457d07d8b15d6b8d3&namespace=readable-logs-ticket-30&pod=release&podUid=ea47bdfd-7649-4910-8d8a-de59b51a1a9d",
+        "hidden": false,
+        "focused": false,
+        "version": "0.1.32",
+        "container": "bounded",
+        "choices": [
+          {
+            "kind": "Containers",
+            "names": [
+              "bounded",
+              "over-tail",
+              "utf8-near",
+              "utf8-over",
+              "oversized",
+              "repeated",
+              "malformed",
+              "empty"
+            ]
+          },
+          {
+            "kind": "init containers",
+            "names": []
+          },
+          {
+            "kind": "ephemeral containers",
+            "names": []
+          }
+        ],
+        "header": [
+          "readable-logs-ticket-30",
+          "/",
+          "release",
+          "Container",
+          "bounded",
+          "over-tail",
+          "utf8-near",
+          "utf8-over",
+          "oversized",
+          "repeated",
+          "malformed",
+          "empty",
+          "Profile",
+          "Auto · Default",
+          "Default",
+          "Edit profiles",
+          "Resume",
+          "Refresh",
+          "Find",
+          "Display options"
+        ],
+        "notice": [],
+        "buttons": [
+          {
+            "text": "Edit profiles",
+            "disabled": false
+          },
+          {
+            "text": "Resume",
+            "disabled": false
+          },
+          {
+            "text": "Refresh",
+            "disabled": false
+          },
+          {
+            "text": "Find",
+            "disabled": false
+          },
+          {
+            "text": "Readable",
+            "disabled": false
+          },
+          {
+            "text": "Raw",
+            "disabled": false
+          },
+          {
+            "text": "Shortcuts",
+            "disabled": false
+          },
+          {
+            "text": "Previous",
+            "disabled": true
+          },
+          {
+            "text": "Next",
+            "disabled": true
+          },
+          {
+            "text": "Close",
+            "disabled": false
+          },
+          {
+            "text": "To bottom",
+            "disabled": false
+          }
+        ],
+        "rows": 1000,
+        "first": "10/25/2026, 15:28:06\nINFO\nrow 0001",
+        "last": "10/25/2026, 15:28:06\nINFO\nrow 1000"
+      }
+    }
+  }
+}

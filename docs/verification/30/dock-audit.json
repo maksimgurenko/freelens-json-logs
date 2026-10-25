@@ -1,0 +1,50 @@
+{
+  "at": "2026-10-25T20:56:48.752Z",
+  "result": {
+    "type": "object",
+    "value": {
+      "dock": {
+        "rect": {
+          "x": 200,
+          "y": 919.2578125,
+          "width": 2117.5,
+          "height": 332.6171875
+        },
+        "class": "Dock isOpen",
+        "height": 300,
+        "minHeight": 100,
+        "maxHeight": 1130,
+        "isOpen": true,
+        "fullSize": false,
+        "contentFlexBasis": "300px"
+      },
+      "anchor": {
+        "class": "ResizingAnchor vertical leading",
+        "rect": {
+          "x": 200,
+          "y": 919.2578125,
+          "width": 2117.5,
+          "height": 11.9921875
+        },
+        "bodyResizing": false
+      },
+      "tabs": [
+        {
+          "id": "tab-terminal",
+          "label": "terminalTerminalclose",
+          "active": false
+        },
+        {
+          "id": "tab-log-tab-d34f2b4f-84ad-42e7-8642-d7a70844db27",
+          "label": "subjectPod changing-logsclose",
+          "active": false
+        },
+        {
+          "id": "tab-log-tab-a1298e84-48c1-4d63-9fec-a4713ca389ee",
+          "label": "subjectPod single-jsonclose",
+          "active": true
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "package": "0.1.31",
+  "input": "OS uinput host accelerators; DOM inspection of actual packaged listeners",
+  "checks": [],
+  "before": {
+    "callbacks": 1,
+    "composition": 2,
+    "windowKeyup": 1
+  },
+  "after": {
+    "callbacks": 1,
+    "connected": false,
+    "composition": 0,
+    "windowKeyup": 1
+  },
+  "failure": "Error: Viewer registrations/listeners survive unmount",
+  "cleanup": {
+    "paused": true
+  }
+}

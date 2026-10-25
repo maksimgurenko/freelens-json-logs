@@ -1,0 +1,10 @@
+{
+  "baseCommit": "53e75265bf0bb659e9b2b82264bdcc3560c26934",
+  "files": {
+    "src/renderer/viewer.tsx": "ee15c04aea43b92972ac24293209b927b16c011ee78d66a449b9d1117210fed6",
+    "src/renderer/viewer.css": "e1a61079a07ac5d2c101c65a78177eb21c10a316ebcc9a48be11490fc003e524",
+    "package.json": "3cdfbf56052fe3c8087d8b280198f9c7cf6e2c0974306bd1f1806d00f445b0d9",
+    "package-lock.json": "9acaac035a7569bb09e93d0ca9ebecffd5d5fcf7b397f7d90c54034dbab39f2b",
+    "docs/local-development.md": "eb4022fa7e70d3ed477f79ff7b9a5a410b01d42694e2dd2e844f05a176b2f616"
+  }
+}

@@ -1,0 +1,35 @@
+{
+  "at": "2026-10-25T19:48:24Z",
+  "applicationConfiguration": {
+    "schemaVersion": 3,
+    "viewer": {
+      "inspection": "inline"
+    },
+    "profiles": [],
+    "globalDefault": "default"
+  },
+  "hostOwnedMigrationMetadata": {
+    "migrations": {
+      "version": "0.1.28"
+    }
+  },
+  "originalApplicationConfigurationRestored": true,
+  "clipboardFormatsBuffersPixelsUnchanged": true,
+  "sameDockTabs": true,
+  "noTestHelpers": true,
+  "viewPausedAndSimple": true,
+  "host": {
+    "pid": 485281,
+    "workspace": 7
+  },
+  "actualDesktop": {
+    "workspace": 1,
+    "focus": "0x5600c57ceaf0",
+    "cursor": {
+      "x": 2155,
+      "y": 1262
+    }
+  },
+  "temporaryVirtualDevicesAbsent": true,
+  "backupFiles": []
+}

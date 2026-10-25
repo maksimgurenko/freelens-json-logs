@@ -1,0 +1,1 @@
+(()=>{const h=global.__cv26;return {events:h?.inputEvents?.slice(-6),selection:document.getSelection()?.toString(),selected:h?.selected(),active:document.activeElement?.id,version:h?.root()?.dataset.version,hasSavedClipboard:!!h?.clipboardSaved};})()

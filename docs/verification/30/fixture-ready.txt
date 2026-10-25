@@ -1,0 +1,3 @@
+pod/compact-workspace-with-a-long-identified-pod-name-for-layout condition met
+pod/release condition met
+pod/selection-copy condition met

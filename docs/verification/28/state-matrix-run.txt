@@ -1,0 +1,17 @@
+Traceback (most recent call last):
+  File "/home/max/work/freelens-json-logs/docs/verification/28/desktop.py", line 63, in <module>
+    if __name__=='__main__':main()
+                            ~~~~^^
+  File "/home/max/work/freelens-json-logs/docs/verification/28/desktop.py", line 48, in main
+    assert r.returncode==0,r.stdout+r.stderr
+           ^^^^^^^^^^^^^^^
+AssertionError: file:///home/max/work/freelens-json-logs/docs/verification/28/host.mjs:8
+export function assert(ok,message){if(!ok)throw Error(message);}
+                                                ^
+
+Error: Supplemental duplicate release never dismisses Find/inspection or traverses history
+    at assert (file:///home/max/work/freelens-json-logs/docs/verification/28/host.mjs:8:49)
+    at check (file:///home/max/work/freelens-json-logs/docs/verification/28/state-matrix.mjs:4:106)
+    at async file:///home/max/work/freelens-json-logs/docs/verification/28/state-matrix.mjs:32:2
+
+Node.js v24.18.0

@@ -1,0 +1,119 @@
+{
+  "at": "2026-10-25T20:01:32.131Z",
+  "result": {
+    "type": "object",
+    "value": {
+      "at": "2026-10-25T20:01:32.130Z",
+      "host": "1.10.3",
+      "electron": "41.10.0",
+      "chromium": "146.0.7680.216",
+      "platform": "linux",
+      "rendererPid": 547127,
+      "manifest": {
+        "name": "freelens-readable-logs",
+        "version": "0.1.30",
+        "private": true,
+        "description": "Readable bounded container log snapshots for Freelens 1.10.3",
+        "license": "UNLICENSED",
+        "main": "out/main-0.1.30.js",
+        "renderer": "out/renderer-0.1.30.js",
+        "storeName": "freelens-readable-logs",
+        "files": [
+          "out/",
+          "docs/local-development.md"
+        ],
+        "engines": {
+          "node": ">=24.18.0 <25",
+          "freelens": "1.10.3"
+        },
+        "packageManager": "npm@11.16.0",
+        "scripts": {
+          "typecheck": "tsc --noEmit",
+          "test": "node --experimental-strip-types --test tests/*.test.ts",
+          "build": "node scripts/build.mjs",
+          "package": "npm run build && npm pack --pack-destination dist",
+          "check:package": "node scripts/check-package.mjs"
+        },
+        "devDependencies": {
+          "@freelensapp/extensions": "1.10.3",
+          "@types/node": "24.12.4",
+          "@types/react": "17.0.93",
+          "esbuild": "0.28.2",
+          "react": "17.0.2",
+          "typescript": "5.9.3",
+          "mobx": "6.13.7",
+          "mobx-react": "7.6.0"
+        },
+        "overrides": {
+          "@freelensapp/core": "1.10.3"
+        }
+      },
+      "files": [
+        {
+          "file": "package.json",
+          "installed": "31e2caca83b6ef37b04512ff856dc5e3fdfa76b410e8faebe96a5db7553efdc9",
+          "source": "31e2caca83b6ef37b04512ff856dc5e3fdfa76b410e8faebe96a5db7553efdc9"
+        },
+        {
+          "file": "out/main-0.1.30.js",
+          "installed": "12d36d38017adee3d80526422ab75564159c78b0d70782a242048c2c5bb8ec84",
+          "source": "12d36d38017adee3d80526422ab75564159c78b0d70782a242048c2c5bb8ec84"
+        },
+        {
+          "file": "out/renderer-0.1.30.js",
+          "installed": "6d97cbe3bc958b011f4ab6bc9387211d34920ea85e5d09642baccb92abea21bf",
+          "source": "6d97cbe3bc958b011f4ab6bc9387211d34920ea85e5d09642baccb92abea21bf"
+        },
+        {
+          "file": "docs/local-development.md",
+          "installed": "2ea3fac3ec80f7407f43afeb5ead57010d3f3f409de7875d965ffc2f5d488876",
+          "source": "2ea3fac3ec80f7407f43afeb5ead57010d3f3f409de7875d965ffc2f5d488876"
+        }
+      ],
+      "tarballSha256": "960a83193bca7aeb017e8eaba844ec2d1e0afbdbad15d5470308c0c671a01a7f",
+      "remote": {
+        "available": false,
+        "error": "Cannot find module '@electron/remote'\nRequire stack:\n- electron/js2c/renderer_init"
+      },
+      "settingsSha256": "ef279f88ab1db5ab244402337631efa4970bdb6f76351c8f3473b5ebaf6a83a8",
+      "clipboard": {
+        "formats": [
+          "text/plain"
+        ],
+        "buffers": {
+          "text/plain": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "pixels": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "view": {
+        "url": "https://770814298afe692457d07d8b15d6b8d3.renderer.freelens.app:45039/extension/freelens-readable-logs/readable-logs?clusterId=770814298afe692457d07d8b15d6b8d3&namespace=readable-logs-spike&pod=single-json&podUid=0035d4f0-23c6-4e7d-93b2-c1d13a41cb92",
+        "historyLength": 5,
+        "version": "0.1.30",
+        "rows": 1,
+        "profiles": false,
+        "findOpen": false,
+        "query": "",
+        "scrollTop": 0,
+        "selected": null,
+        "paused": false,
+        "documentFocus": false,
+        "focus": "INPUT",
+        "dockTabs": [
+          {
+            "id": "tab-terminal",
+            "label": "terminalTerminalclose"
+          },
+          {
+            "id": "tab-log-tab-d34f2b4f-84ad-42e7-8642-d7a70844db27",
+            "label": "subjectPod changing-logsclose"
+          },
+          {
+            "id": "tab-log-tab-a1298e84-48c1-4d63-9fec-a4713ca389ee",
+            "label": "subjectPod single-jsonclose"
+          }
+        ],
+        "existingTestHelpers": []
+      }
+    }
+  }
+}

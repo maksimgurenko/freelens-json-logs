@@ -1,0 +1,430 @@
+{
+  "package": "0.1.33",
+  "case": "scope",
+  "input": "OS uinput for labeled commands; Playwright trusted Chromium for ordinary editing and scoped variants",
+  "checks": [
+    {
+      "name": "Wrong/extra/unbound f/4 does not open local Find",
+      "value": true
+    },
+    {
+      "name": "Wrong/extra/unbound F/10 does not open local Find",
+      "value": true
+    },
+    {
+      "name": "Wrong/extra/unbound f/6 does not open local Find",
+      "value": true
+    },
+    {
+      "name": "Wrong/extra/unbound f/3 does not open local Find",
+      "value": true
+    },
+    {
+      "name": "Wrong/extra/unbound g/1 does not open local Find",
+      "value": true
+    },
+    {
+      "name": "Wrong/extra/unbound F3/0 does not open local Find",
+      "value": true
+    },
+    {
+      "name": "Profiles edit fields exclude Find commands",
+      "value": true
+    },
+    {
+      "name": "Draft Tab traversal stays available",
+      "value": true
+    },
+    {
+      "name": "Composition preserves active draft (supplemental sequence)",
+      "value": true
+    },
+    {
+      "name": "Non-US native layout retains foreign draft editing and does not open local Find",
+      "value": true
+    },
+    {
+      "name": "Non-US semantic letter in active logs does not alias Latin Find",
+      "value": true
+    },
+    {
+      "name": "Foreign editable excludes Find and repeat",
+      "value": true
+    },
+    {
+      "name": "Native dock focus retains its own Find",
+      "value": true
+    },
+    {
+      "name": "Local shortcuts add no host history",
+      "value": true
+    }
+  ],
+  "nonUsSwitch": "ok\n",
+  "nonUsEvent": {
+    "key": "а",
+    "code": "KeyF",
+    "ctrl": true,
+    "meta": false,
+    "alt": false,
+    "shift": false,
+    "repeat": false,
+    "composing": false,
+    "trusted": true,
+    "target": "INPUT",
+    "prevented": false
+  },
+  "nonUsReadingEvent": {
+    "key": "а",
+    "code": "KeyF",
+    "ctrl": true,
+    "meta": false,
+    "alt": false,
+    "shift": false,
+    "repeat": false,
+    "composing": false,
+    "trusted": true,
+    "target": "DIV",
+    "prevented": false
+  },
+  "passed": true,
+  "final": {
+    "query": "",
+    "findOpen": false,
+    "count": "Enter text to find",
+    "selected": "0",
+    "focus": "input box grow",
+    "top": 8.125,
+    "paused": true
+  },
+  "events": [
+    {
+      "key": "f",
+      "code": "KeyF",
+      "ctrl": false,
+      "meta": true,
+      "alt": false,
+      "shift": false,
+      "repeat": false,
+      "composing": false,
+      "trusted": true,
+      "target": "DIV",
+      "prevented": false
+    },
+    {
+      "key": "F",
+      "code": "KeyF",
+      "ctrl": true,
+      "meta": false,
+      "alt": false,
+      "shift": true,
+      "repeat": false,
+      "composing": false,
+      "trusted": true,
+      "target": "DIV",
+      "prevented": false
+    },
+    {
+      "key": "f",
+      "code": "KeyF",
+      "ctrl": true,
+      "meta": true,
+      "alt": false,
+      "shift": false,
+      "repeat": false,
+      "composing": false,
+      "trusted": true,
+      "target": "DIV",
+      "prevented": false
+    },
+    {
+      "key": "f",
+      "code": "KeyF",
+      "ctrl": true,
+      "meta": false,
+      "alt": true,
+      "shift": false,
+      "repeat": false,
+      "composing": false,
+      "trusted": true,
+      "target": "DIV",
+      "prevented": false
+    },
+    {
+      "key": "g",
+      "code": "KeyG",
+      "ctrl": false,
+      "meta": false,
+      "alt": true,
+      "shift": false,
+      "repeat": false,
+      "composing": false,
+      "trusted": true,
+      "target": "DIV",
+      "prevented": false
+    },
+    {
+      "key": "F3",
+      "code": "F3",
+      "ctrl": false,
+      "meta": false,
+      "alt": false,
+      "shift": false,
+      "repeat": false,
+      "composing": false,
+      "trusted": true,
+      "target": "DIV",
+      "prevented": false
+    },
+    {
+      "key": "Control",
+      "code": "ControlLeft",
+      "ctrl": true,
+      "meta": false,
+      "alt": false,
+      "shift": false,
+      "repeat": false,
+      "composing": false,
+      "trusted": true,
+      "target": "INPUT",
+      "prevented": false
+    },
+    {
+      "key": "f",
+      "code": "KeyF",
+      "ctrl": true,
+      "meta": false,
+      "alt": false,
+      "shift": false,
+      "repeat": false,
+      "composing": false,
+      "trusted": true,
+      "target": "INPUT",
+      "prevented": false
+    },
+    {
+      "key": "Control",
+      "code": "ControlLeft",
+      "ctrl": true,
+      "meta": false,
+      "alt": false,
+      "shift": false,
+      "repeat": false,
+      "composing": false,
+      "trusted": true,
+      "target": "INPUT",
+      "prevented": false
+    },
+    {
+      "key": "g",
+      "code": "KeyG",
+      "ctrl": true,
+      "meta": false,
+      "alt": false,
+      "shift": false,
+      "repeat": false,
+      "composing": false,
+      "trusted": true,
+      "target": "INPUT",
+      "prevented": false
+    },
+    {
+      "key": "Tab",
+      "code": "Tab",
+      "ctrl": false,
+      "meta": false,
+      "alt": false,
+      "shift": false,
+      "repeat": false,
+      "composing": false,
+      "trusted": true,
+      "target": "INPUT",
+      "prevented": false
+    },
+    {
+      "key": "Shift",
+      "code": "ShiftLeft",
+      "ctrl": false,
+      "meta": false,
+      "alt": false,
+      "shift": true,
+      "repeat": false,
+      "composing": false,
+      "trusted": true,
+      "target": "INPUT",
+      "prevented": false
+    },
+    {
+      "key": "Tab",
+      "code": "Tab",
+      "ctrl": false,
+      "meta": false,
+      "alt": false,
+      "shift": true,
+      "repeat": false,
+      "composing": false,
+      "trusted": true,
+      "target": "INPUT",
+      "prevented": false
+    },
+    {
+      "key": "Control",
+      "code": "ControlLeft",
+      "ctrl": true,
+      "meta": false,
+      "alt": false,
+      "shift": false,
+      "repeat": false,
+      "composing": false,
+      "trusted": true,
+      "target": "INPUT",
+      "prevented": false
+    },
+    {
+      "key": "s",
+      "code": "KeyS",
+      "ctrl": true,
+      "meta": false,
+      "alt": false,
+      "shift": false,
+      "repeat": false,
+      "composing": false,
+      "trusted": true,
+      "target": "INPUT",
+      "prevented": false
+    },
+    {
+      "key": "Control",
+      "code": "ControlLeft",
+      "ctrl": true,
+      "meta": false,
+      "alt": false,
+      "shift": false,
+      "repeat": false,
+      "composing": false,
+      "trusted": true,
+      "target": "INPUT",
+      "prevented": false
+    },
+    {
+      "key": "а",
+      "code": "KeyF",
+      "ctrl": true,
+      "meta": false,
+      "alt": false,
+      "shift": false,
+      "repeat": false,
+      "composing": false,
+      "trusted": true,
+      "target": "INPUT",
+      "prevented": false
+    },
+    {
+      "key": "Control",
+      "code": "ControlLeft",
+      "ctrl": true,
+      "meta": false,
+      "alt": false,
+      "shift": false,
+      "repeat": false,
+      "composing": false,
+      "trusted": true,
+      "target": "DIV",
+      "prevented": false
+    },
+    {
+      "key": "а",
+      "code": "KeyF",
+      "ctrl": true,
+      "meta": false,
+      "alt": false,
+      "shift": false,
+      "repeat": false,
+      "composing": false,
+      "trusted": true,
+      "target": "DIV",
+      "prevented": false
+    },
+    {
+      "key": "Control",
+      "code": "ControlLeft",
+      "ctrl": true,
+      "meta": false,
+      "alt": false,
+      "shift": false,
+      "repeat": false,
+      "composing": false,
+      "trusted": true,
+      "target": "TEXTAREA",
+      "prevented": false
+    },
+    {
+      "key": "f",
+      "code": "KeyF",
+      "ctrl": true,
+      "meta": false,
+      "alt": false,
+      "shift": false,
+      "repeat": false,
+      "composing": false,
+      "trusted": true,
+      "target": "TEXTAREA",
+      "prevented": false
+    },
+    {
+      "key": "Control",
+      "code": "ControlLeft",
+      "ctrl": true,
+      "meta": false,
+      "alt": false,
+      "shift": false,
+      "repeat": false,
+      "composing": false,
+      "trusted": true,
+      "target": "INPUT",
+      "prevented": false
+    },
+    {
+      "key": "g",
+      "code": "KeyG",
+      "ctrl": true,
+      "meta": false,
+      "alt": false,
+      "shift": false,
+      "repeat": false,
+      "composing": false,
+      "trusted": true,
+      "target": "INPUT",
+      "prevented": false
+    },
+    {
+      "key": "Control",
+      "code": "ControlLeft",
+      "ctrl": true,
+      "meta": false,
+      "alt": false,
+      "shift": false,
+      "repeat": false,
+      "composing": false,
+      "trusted": true,
+      "target": "INPUT",
+      "prevented": false
+    },
+    {
+      "key": "f",
+      "code": "KeyF",
+      "ctrl": true,
+      "meta": false,
+      "alt": false,
+      "shift": false,
+      "repeat": false,
+      "composing": false,
+      "trusted": true,
+      "target": "INPUT",
+      "prevented": false
+    }
+  ],
+  "cleanup": {
+    "configurationRestored": true
+  }
+}

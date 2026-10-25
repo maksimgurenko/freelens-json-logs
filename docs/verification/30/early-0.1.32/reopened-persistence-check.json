@@ -1,0 +1,60 @@
+{
+  "at": "2026-10-25T20:35:18.465Z",
+  "result": {
+    "type": "object",
+    "value": {
+      "initial": {
+        "version": "0.1.32",
+        "layout": "bottom",
+        "manual": "",
+        "query": "",
+        "findHidden": true,
+        "selected": false,
+        "profiles": false,
+        "raw": "false",
+        "auto": true
+      },
+      "fullSavedConfigurationSurvived": true,
+      "configuration": {
+        "schemaVersion": 3,
+        "viewer": {
+          "inspection": "bottom"
+        },
+        "profiles": [
+          {
+            "id": "11390fd7-d461-47bd-8846-0ccdf58a9965",
+            "name": "CV30 durable saved profile",
+            "format": {
+              "messagePaths": [
+                "/level"
+              ],
+              "timestampPaths": [
+                "/timestamp",
+                "/time",
+                "/@timestamp"
+              ],
+              "levelPaths": [
+                "/level",
+                "/severity",
+                "/log.level",
+                "/log/level"
+              ],
+              "inlinePaths": [],
+              "hiddenPaths": [],
+              "numericTimestamp": "unset",
+              "severityMappings": []
+            },
+            "matching": {
+              "enabled": false,
+              "conditions": {
+                "labels": []
+              }
+            }
+          }
+        ],
+        "globalDefault": "11390fd7-d461-47bd-8846-0ccdf58a9965"
+      },
+      "ownedSavedProfileRemoved": true
+    }
+  }
+}

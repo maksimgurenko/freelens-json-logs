@@ -1,0 +1,53 @@
+{
+  "at": "2026-10-25T20:30:58.911Z",
+  "result": {
+    "type": "object",
+    "value": {
+      "version": "0.1.32",
+      "results": [
+        {
+          "mode": "Readable",
+          "layout": "inline",
+          "exactOriginal": true,
+          "black": true,
+          "collapsedOnClose": true
+        },
+        {
+          "mode": "Readable",
+          "layout": "side",
+          "exactOriginal": true,
+          "black": true,
+          "collapsedOnClose": true
+        },
+        {
+          "mode": "Readable",
+          "layout": "bottom",
+          "exactOriginal": true,
+          "black": true,
+          "collapsedOnClose": true
+        },
+        {
+          "mode": "Raw",
+          "layout": "inline",
+          "exactOriginal": true,
+          "black": true,
+          "collapsedOnClose": true
+        },
+        {
+          "mode": "Raw",
+          "layout": "side",
+          "exactOriginal": true,
+          "black": true,
+          "collapsedOnClose": true
+        },
+        {
+          "mode": "Raw",
+          "layout": "bottom",
+          "exactOriginal": true,
+          "black": true,
+          "collapsedOnClose": true
+        }
+      ]
+    }
+  }
+}

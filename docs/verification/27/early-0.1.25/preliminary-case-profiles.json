@@ -1,0 +1,46 @@
+{
+  "host": "Freelens 1.10.3",
+  "package": "0.1.25",
+  "case": "profiles",
+  "input": "Playwright trusted Chromium input in actual Electron; no physical hardware claim",
+  "checks": [
+    {
+      "name": "Escape from draft returns, preserving query/selection/viewport and saved configuration",
+      "result": true
+    },
+    {
+      "name": "Held Escape does not dismiss next Find layer",
+      "result": false
+    }
+  ],
+  "failure": "Error: Held Escape does not dismiss next Find layer",
+  "final": {
+    "profiles": false,
+    "find": false,
+    "query": "fields",
+    "selected": "20",
+    "focus": "Edit profiles",
+    "paused": true,
+    "url": "https://770814298afe692457d07d8b15d6b8d3.renderer.freelens.app:35055/extension/freelens-readable-logs/readable-logs?clusterId=770814298afe692457d07d8b15d6b8d3&namespace=readable-logs-ticket-27&pod=local-navigation&podUid=3df67f26-8a2e-4496-ba22-7370acf076e6",
+    "history": 7,
+    "top": 406.875
+  },
+  "events": [
+    {
+      "key": "Escape",
+      "code": "Escape",
+      "repeat": false,
+      "composing": false,
+      "trusted": true,
+      "target": "TEXTAREA"
+    },
+    {
+      "key": "Escape",
+      "code": "Escape",
+      "repeat": true,
+      "composing": false,
+      "trusted": true,
+      "target": "BUTTON"
+    }
+  ]
+}

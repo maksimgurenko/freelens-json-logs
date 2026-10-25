@@ -1,0 +1,20 @@
+{
+  "package": "0.1.26",
+  "result": {
+    "durableMatchesSaved": true,
+    "profiles": [
+      {
+        "id": "03c6ca41-91e3-4346-b976-0b0412f419dd",
+        "name": "CV27 disk second"
+      },
+      {
+        "id": "497b52ca-02d8-483e-bcf6-62adc24e8bc6",
+        "name": "CV27 disk first"
+      }
+    ],
+    "globalDefault": "03c6ca41-91e3-4346-b976-0b0412f419dd",
+    "unfinishedAbsent": true
+  },
+  "passed": true,
+  "restored": true
+}

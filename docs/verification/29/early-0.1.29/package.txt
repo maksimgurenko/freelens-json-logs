@@ -1,0 +1,25 @@
+
+> freelens-readable-logs@0.1.29 package
+> npm run build && npm pack --pack-destination dist
+
+npm notice run freelens-readable-logs@0.1.29 build
+npm notice run node scripts/build.mjs
+npm notice
+npm notice 📦  freelens-readable-logs@0.1.29
+npm notice Tarball Contents
+npm notice 3.0kB README.md
+npm notice 24.9kB docs/local-development.md
+npm notice 20.2kB out/main-0.1.29.js
+npm notice 129.7kB out/renderer-0.1.29.js
+npm notice 1.1kB package.json
+npm notice Tarball Details
+npm notice name: freelens-readable-logs
+npm notice version: 0.1.29
+npm notice filename: freelens-readable-logs-0.1.29.tgz
+npm notice package size: 42.5 kB
+npm notice unpacked size: 178.8 kB
+npm notice shasum: 457915057b3a9e06ab103211cd55962cc9de5de6
+npm notice integrity: sha512-AYYIyhcjZ7ey7[...]N3OsVhodq7Z3A==
+npm notice total files: 5
+npm notice
+freelens-readable-logs-0.1.29.tgz

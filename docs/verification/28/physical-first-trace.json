@@ -1,0 +1,448 @@
+{
+  "at": "2026-10-25T19:12:13.666Z",
+  "durationSeconds": 32,
+  "rootUrl": "https://renderer.freelens.app:32877/cluster/770814298afe692457d07d8b15d6b8d3",
+  "physicalInputSource": "not supplied; correlate physical-input.py and operator action",
+  "nativeCommands": "unobserved: renderer has no main-process BrowserWindow access",
+  "records": [
+    {
+      "contextId": 2,
+      "at": "2026-10-25T19:12:28.214Z",
+      "url": "https://770814298afe692457d07d8b15d6b8d3.renderer.freelens.app:32877/extension/freelens-readable-logs/readable-logs?clusterId=770814298afe692457d07d8b15d6b8d3&namespace=readable-logs-spike&pod=single-json&podUid=0035d4f0-23c6-4e7d-93b2-c1d13a41cb92",
+      "historyLength": 12,
+      "documentFocus": true,
+      "visibility": "visible",
+      "focus": {
+        "tag": "INPUT",
+        "class": ""
+      },
+      "profiles": true,
+      "rootVisible": true,
+      "type": "pointerdown",
+      "phase": "window capture",
+      "trusted": true,
+      "cancelable": true,
+      "defaultPrevented": false,
+      "button": 3,
+      "buttons": 8,
+      "pointerType": "mouse",
+      "x": 416.1015625,
+      "y": 345.6015625,
+      "target": {
+        "tag": "INPUT",
+        "class": ""
+      }
+    },
+    {
+      "contextId": 2,
+      "at": "2026-10-25T19:12:28.214Z",
+      "url": "https://770814298afe692457d07d8b15d6b8d3.renderer.freelens.app:32877/extension/freelens-readable-logs/readable-logs?clusterId=770814298afe692457d07d8b15d6b8d3&namespace=readable-logs-spike&pod=single-json&podUid=0035d4f0-23c6-4e7d-93b2-c1d13a41cb92",
+      "historyLength": 12,
+      "documentFocus": true,
+      "visibility": "visible",
+      "focus": {
+        "tag": "INPUT",
+        "class": ""
+      },
+      "profiles": true,
+      "rootVisible": true,
+      "type": "pointerdown",
+      "phase": "window bubble",
+      "trusted": true,
+      "cancelable": true,
+      "defaultPrevented": false,
+      "button": 3,
+      "buttons": 8,
+      "pointerType": "mouse",
+      "x": 416.1015625,
+      "y": 345.6015625,
+      "target": {
+        "tag": "INPUT",
+        "class": ""
+      }
+    },
+    {
+      "contextId": 2,
+      "at": "2026-10-25T19:12:28.214Z",
+      "url": "https://770814298afe692457d07d8b15d6b8d3.renderer.freelens.app:32877/extension/freelens-readable-logs/readable-logs?clusterId=770814298afe692457d07d8b15d6b8d3&namespace=readable-logs-spike&pod=single-json&podUid=0035d4f0-23c6-4e7d-93b2-c1d13a41cb92",
+      "historyLength": 12,
+      "documentFocus": true,
+      "visibility": "visible",
+      "focus": {
+        "tag": "INPUT",
+        "class": ""
+      },
+      "profiles": true,
+      "rootVisible": true,
+      "type": "mousedown",
+      "phase": "window capture",
+      "trusted": true,
+      "cancelable": true,
+      "defaultPrevented": false,
+      "button": 3,
+      "buttons": 8,
+      "x": 416,
+      "y": 345,
+      "target": {
+        "tag": "INPUT",
+        "class": ""
+      }
+    },
+    {
+      "contextId": 2,
+      "at": "2026-10-25T19:12:28.214Z",
+      "url": "https://770814298afe692457d07d8b15d6b8d3.renderer.freelens.app:32877/extension/freelens-readable-logs/readable-logs?clusterId=770814298afe692457d07d8b15d6b8d3&namespace=readable-logs-spike&pod=single-json&podUid=0035d4f0-23c6-4e7d-93b2-c1d13a41cb92",
+      "historyLength": 12,
+      "documentFocus": true,
+      "visibility": "visible",
+      "focus": {
+        "tag": "INPUT",
+        "class": ""
+      },
+      "profiles": true,
+      "rootVisible": true,
+      "type": "mousedown",
+      "phase": "window bubble",
+      "trusted": true,
+      "cancelable": true,
+      "defaultPrevented": false,
+      "button": 3,
+      "buttons": 8,
+      "x": 416,
+      "y": 345,
+      "target": {
+        "tag": "INPUT",
+        "class": ""
+      }
+    },
+    {
+      "contextId": 2,
+      "at": "2026-10-25T19:12:28.319Z",
+      "url": "https://770814298afe692457d07d8b15d6b8d3.renderer.freelens.app:32877/extension/freelens-readable-logs/readable-logs?clusterId=770814298afe692457d07d8b15d6b8d3&namespace=readable-logs-spike&pod=single-json&podUid=0035d4f0-23c6-4e7d-93b2-c1d13a41cb92",
+      "historyLength": 12,
+      "documentFocus": true,
+      "visibility": "visible",
+      "focus": {
+        "tag": "INPUT",
+        "class": ""
+      },
+      "profiles": true,
+      "rootVisible": true,
+      "type": "pointerup",
+      "phase": "window capture",
+      "trusted": true,
+      "cancelable": true,
+      "defaultPrevented": false,
+      "button": 3,
+      "buttons": 0,
+      "pointerType": "mouse",
+      "x": 416.1015625,
+      "y": 345.6015625,
+      "target": {
+        "tag": "INPUT",
+        "class": ""
+      }
+    },
+    {
+      "contextId": 2,
+      "at": "2026-10-25T19:12:28.319Z",
+      "url": "https://770814298afe692457d07d8b15d6b8d3.renderer.freelens.app:32877/extension/freelens-readable-logs/readable-logs?clusterId=770814298afe692457d07d8b15d6b8d3&namespace=readable-logs-spike&pod=single-json&podUid=0035d4f0-23c6-4e7d-93b2-c1d13a41cb92",
+      "historyLength": 12,
+      "documentFocus": true,
+      "visibility": "visible",
+      "focus": {
+        "tag": "INPUT",
+        "class": ""
+      },
+      "profiles": true,
+      "rootVisible": true,
+      "type": "pointerup",
+      "phase": "window bubble",
+      "trusted": true,
+      "cancelable": true,
+      "defaultPrevented": false,
+      "button": 3,
+      "buttons": 0,
+      "pointerType": "mouse",
+      "x": 416.1015625,
+      "y": 345.6015625,
+      "target": {
+        "tag": "INPUT",
+        "class": ""
+      }
+    },
+    {
+      "contextId": 2,
+      "at": "2026-10-25T19:12:28.319Z",
+      "url": "https://770814298afe692457d07d8b15d6b8d3.renderer.freelens.app:32877/extension/freelens-readable-logs/readable-logs?clusterId=770814298afe692457d07d8b15d6b8d3&namespace=readable-logs-spike&pod=single-json&podUid=0035d4f0-23c6-4e7d-93b2-c1d13a41cb92",
+      "historyLength": 12,
+      "documentFocus": true,
+      "visibility": "visible",
+      "focus": {
+        "tag": "INPUT",
+        "class": ""
+      },
+      "profiles": true,
+      "rootVisible": true,
+      "type": "mouseup",
+      "phase": "window capture",
+      "trusted": true,
+      "cancelable": true,
+      "defaultPrevented": false,
+      "button": 3,
+      "buttons": 0,
+      "x": 416,
+      "y": 345,
+      "target": {
+        "tag": "INPUT",
+        "class": ""
+      }
+    },
+    {
+      "contextId": 2,
+      "at": "2026-10-25T19:12:28.319Z",
+      "url": "https://770814298afe692457d07d8b15d6b8d3.renderer.freelens.app:32877/extension/freelens-readable-logs/readable-logs?clusterId=770814298afe692457d07d8b15d6b8d3&namespace=readable-logs-spike&pod=single-json&podUid=0035d4f0-23c6-4e7d-93b2-c1d13a41cb92",
+      "historyLength": 12,
+      "documentFocus": true,
+      "visibility": "visible",
+      "focus": {
+        "tag": "INPUT",
+        "class": ""
+      },
+      "profiles": true,
+      "rootVisible": true,
+      "type": "mouseup",
+      "phase": "window bubble",
+      "trusted": true,
+      "cancelable": true,
+      "defaultPrevented": false,
+      "button": 3,
+      "buttons": 0,
+      "x": 416,
+      "y": 345,
+      "target": {
+        "tag": "INPUT",
+        "class": ""
+      }
+    },
+    {
+      "contextId": 2,
+      "at": "2026-10-25T19:12:28.319Z",
+      "url": "https://770814298afe692457d07d8b15d6b8d3.renderer.freelens.app:32877/extension/freelens-readable-logs/readable-logs?clusterId=770814298afe692457d07d8b15d6b8d3&namespace=readable-logs-spike&pod=single-json&podUid=0035d4f0-23c6-4e7d-93b2-c1d13a41cb92",
+      "historyLength": 12,
+      "documentFocus": true,
+      "visibility": "visible",
+      "focus": {
+        "tag": "INPUT",
+        "class": ""
+      },
+      "profiles": true,
+      "rootVisible": true,
+      "type": "auxclick",
+      "phase": "window capture",
+      "trusted": true,
+      "cancelable": true,
+      "defaultPrevented": false,
+      "button": 3,
+      "buttons": 0,
+      "pointerType": "mouse",
+      "x": 416,
+      "y": 345,
+      "target": {
+        "tag": "INPUT",
+        "class": ""
+      }
+    },
+    {
+      "contextId": 2,
+      "at": "2026-10-25T19:12:28.319Z",
+      "url": "https://770814298afe692457d07d8b15d6b8d3.renderer.freelens.app:32877/extension/freelens-readable-logs/readable-logs?clusterId=770814298afe692457d07d8b15d6b8d3&namespace=readable-logs-spike&pod=single-json&podUid=0035d4f0-23c6-4e7d-93b2-c1d13a41cb92",
+      "historyLength": 12,
+      "documentFocus": true,
+      "visibility": "visible",
+      "focus": {
+        "tag": "INPUT",
+        "class": ""
+      },
+      "profiles": true,
+      "rootVisible": true,
+      "type": "auxclick",
+      "phase": "window bubble",
+      "trusted": true,
+      "cancelable": true,
+      "defaultPrevented": false,
+      "button": 3,
+      "buttons": 0,
+      "pointerType": "mouse",
+      "x": 416,
+      "y": 345,
+      "target": {
+        "tag": "INPUT",
+        "class": ""
+      }
+    },
+    {
+      "contextId": 2,
+      "at": "2026-10-25T19:12:28.352Z",
+      "url": "https://770814298afe692457d07d8b15d6b8d3.renderer.freelens.app:32877/pods?kube-details=%2Fapi%2Fv1%2Fnamespaces%2Freadable-logs-spike%2Fpods%2Fsingle-json",
+      "historyLength": 12,
+      "documentFocus": true,
+      "visibility": "visible",
+      "focus": {
+        "tag": "INPUT",
+        "class": "input box grow"
+      },
+      "profiles": false,
+      "rootVisible": false,
+      "type": "popstate",
+      "phase": "window capture",
+      "trusted": true,
+      "cancelable": false,
+      "defaultPrevented": false,
+      "target": {
+        "class": ""
+      }
+    },
+    {
+      "contextId": 2,
+      "at": "2026-10-25T19:12:28.352Z",
+      "url": "https://770814298afe692457d07d8b15d6b8d3.renderer.freelens.app:32877/pods?kube-details=%2Fapi%2Fv1%2Fnamespaces%2Freadable-logs-spike%2Fpods%2Fsingle-json",
+      "historyLength": 12,
+      "documentFocus": true,
+      "visibility": "visible",
+      "focus": {
+        "tag": "INPUT",
+        "class": "input box grow"
+      },
+      "profiles": false,
+      "rootVisible": false,
+      "type": "popstate",
+      "phase": "window bubble",
+      "trusted": true,
+      "cancelable": false,
+      "defaultPrevented": false,
+      "target": {
+        "class": ""
+      }
+    }
+  ],
+  "frames": {
+    "frameTree": {
+      "frame": {
+        "id": "5F8097982D699298AF7AA990F9FAFD33",
+        "loaderId": "88FD15658015026B01AB0C360BCA5F38",
+        "url": "https://renderer.freelens.app:32877/cluster/770814298afe692457d07d8b15d6b8d3",
+        "domainAndRegistry": "freelens.app",
+        "securityOrigin": "https://renderer.freelens.app:32877",
+        "securityOriginDetails": {
+          "isLocalhost": false
+        },
+        "mimeType": "text/html",
+        "adFrameStatus": {
+          "adFrameType": "none"
+        },
+        "secureContextType": "Secure",
+        "crossOriginIsolatedContextType": "NotIsolated",
+        "gatedAPIFeatures": []
+      },
+      "childFrames": [
+        {
+          "frame": {
+            "id": "C653AFA032FAF398AADB9CD96C508050",
+            "parentId": "5F8097982D699298AF7AA990F9FAFD33",
+            "loaderId": "3A8D8B1139006F58C12421222AC34F4A",
+            "name": "kind-freelens-json-logs-spike",
+            "url": "https://770814298afe692457d07d8b15d6b8d3.renderer.freelens.app:32877/extension/freelens-readable-logs/readable-logs?clusterId=770814298afe692457d07d8b15d6b8d3&namespace=readable-logs-spike&pod=single-json&podUid=0035d4f0-23c6-4e7d-93b2-c1d13a41cb92",
+            "domainAndRegistry": "freelens.app",
+            "securityOrigin": "https://770814298afe692457d07d8b15d6b8d3.renderer.freelens.app:32877",
+            "securityOriginDetails": {
+              "isLocalhost": false
+            },
+            "mimeType": "text/html",
+            "adFrameStatus": {
+              "adFrameType": "none"
+            },
+            "secureContextType": "Secure",
+            "crossOriginIsolatedContextType": "NotIsolatedFeatureDisabled",
+            "gatedAPIFeatures": []
+          }
+        }
+      ]
+    }
+  },
+  "contexts": [
+    {
+      "id": 1,
+      "origin": "https://renderer.freelens.app:32877",
+      "name": "",
+      "uniqueId": "-694908429690227529.-168325439707701711",
+      "auxData": {
+        "isDefault": true,
+        "type": "default",
+        "frameId": "5F8097982D699298AF7AA990F9FAFD33"
+      }
+    },
+    {
+      "id": 2,
+      "origin": "https://770814298afe692457d07d8b15d6b8d3.renderer.freelens.app:32877",
+      "name": "",
+      "uniqueId": "4879105909836934679.4568172928108402631",
+      "auxData": {
+        "isDefault": true,
+        "type": "default",
+        "frameId": "C653AFA032FAF398AADB9CD96C508050"
+      }
+    }
+  ],
+  "before": [
+    {
+      "contextId": 1,
+      "at": "2026-10-25T19:12:13.672Z",
+      "url": "https://renderer.freelens.app:32877/cluster/770814298afe692457d07d8b15d6b8d3",
+      "historyLength": 12,
+      "documentFocus": true,
+      "visibility": "visible",
+      "focus": {
+        "tag": "IFRAME",
+        "class": ""
+      },
+      "profiles": false,
+      "rootVisible": false,
+      "listenerCount": 16,
+      "observer": "passive DOM/history only"
+    },
+    {
+      "contextId": 2,
+      "at": "2026-10-25T19:12:13.672Z",
+      "url": "https://770814298afe692457d07d8b15d6b8d3.renderer.freelens.app:32877/extension/freelens-readable-logs/readable-logs?clusterId=770814298afe692457d07d8b15d6b8d3&namespace=readable-logs-spike&pod=single-json&podUid=0035d4f0-23c6-4e7d-93b2-c1d13a41cb92",
+      "historyLength": 12,
+      "documentFocus": true,
+      "visibility": "visible",
+      "focus": {
+        "tag": "INPUT",
+        "class": ""
+      },
+      "profiles": true,
+      "rootVisible": true,
+      "listenerCount": 16,
+      "observer": "passive DOM/history only"
+    }
+  ],
+  "after": [
+    {
+      "contextId": 2,
+      "url": "https://770814298afe692457d07d8b15d6b8d3.renderer.freelens.app:32877/pods?kube-details=%2Fapi%2Fv1%2Fnamespaces%2Freadable-logs-spike%2Fpods%2Fsingle-json",
+      "historyLength": 12,
+      "observerRemoved": true,
+      "bindingRemoved": true
+    },
+    {
+      "contextId": 1,
+      "url": "https://renderer.freelens.app:32877/cluster/770814298afe692457d07d8b15d6b8d3",
+      "historyLength": 12,
+      "observerRemoved": true,
+      "bindingRemoved": true
+    }
+  ],
+  "acceptance": "unverified: no cancellation or native-path acceptance claimed"
+}

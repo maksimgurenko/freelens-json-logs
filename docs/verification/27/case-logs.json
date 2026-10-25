@@ -1,0 +1,181 @@
+{
+  "host": "Freelens 1.10.3",
+  "package": "0.1.26",
+  "case": "logs",
+  "input": "Playwright trusted Chromium input in actual Electron; no physical hardware claim",
+  "checks": [
+    {
+      "name": "inline: Escape Find retains query, inspector and returns opener",
+      "result": true
+    },
+    {
+      "name": "inline: subsequent Escape closes inspector, returns retained row",
+      "result": true
+    },
+    {
+      "name": "inline: bare logs do not navigate",
+      "result": true
+    },
+    {
+      "name": "inline: visible close restores row and preserves query",
+      "result": true
+    },
+    {
+      "name": "side: Escape Find retains query, inspector and returns opener",
+      "result": true
+    },
+    {
+      "name": "side: subsequent Escape closes inspector, returns retained row",
+      "result": true
+    },
+    {
+      "name": "side: bare logs do not navigate",
+      "result": true
+    },
+    {
+      "name": "side: visible close restores row and preserves query",
+      "result": true
+    },
+    {
+      "name": "bottom: Escape Find retains query, inspector and returns opener",
+      "result": true
+    },
+    {
+      "name": "bottom: subsequent Escape closes inspector, returns retained row",
+      "result": true
+    },
+    {
+      "name": "bottom: bare logs do not navigate",
+      "result": true
+    },
+    {
+      "name": "bottom: visible close restores row and preserves query",
+      "result": true
+    },
+    {
+      "name": "Tab/Shift+Tab remain available",
+      "result": true
+    },
+    {
+      "name": "All local transitions preserve host URL/history",
+      "result": true
+    }
+  ],
+  "passed": true,
+  "final": {
+    "profiles": false,
+    "find": true,
+    "query": "fields",
+    "focus": "Find in logs",
+    "paused": true,
+    "url": "https://770814298afe692457d07d8b15d6b8d3.renderer.freelens.app:36813/extension/freelens-readable-logs/readable-logs?clusterId=770814298afe692457d07d8b15d6b8d3&namespace=readable-logs-ticket-27&pod=local-navigation&podUid=ec618786-cfb9-4027-866a-7a7441a9ee98",
+    "history": 5,
+    "top": 406.875
+  },
+  "events": [
+    {
+      "key": "Escape",
+      "code": "Escape",
+      "repeat": false,
+      "composing": false,
+      "trusted": true,
+      "target": "INPUT"
+    },
+    {
+      "key": "Escape",
+      "code": "Escape",
+      "repeat": false,
+      "composing": false,
+      "trusted": true,
+      "target": "BUTTON"
+    },
+    {
+      "key": "Escape",
+      "code": "Escape",
+      "repeat": false,
+      "composing": false,
+      "trusted": true,
+      "target": "DIV"
+    },
+    {
+      "key": "Escape",
+      "code": "Escape",
+      "repeat": false,
+      "composing": false,
+      "trusted": true,
+      "target": "INPUT"
+    },
+    {
+      "key": "Escape",
+      "code": "Escape",
+      "repeat": false,
+      "composing": false,
+      "trusted": true,
+      "target": "BUTTON"
+    },
+    {
+      "key": "Escape",
+      "code": "Escape",
+      "repeat": false,
+      "composing": false,
+      "trusted": true,
+      "target": "DIV"
+    },
+    {
+      "key": "Meta",
+      "code": "MetaRight",
+      "repeat": false,
+      "composing": false,
+      "trusted": true,
+      "target": "BUTTON"
+    },
+    {
+      "key": "Escape",
+      "code": "Escape",
+      "repeat": false,
+      "composing": false,
+      "trusted": true,
+      "target": "INPUT"
+    },
+    {
+      "key": "Escape",
+      "code": "Escape",
+      "repeat": false,
+      "composing": false,
+      "trusted": true,
+      "target": "BUTTON"
+    },
+    {
+      "key": "Escape",
+      "code": "Escape",
+      "repeat": false,
+      "composing": false,
+      "trusted": true,
+      "target": "DIV"
+    },
+    {
+      "key": "Tab",
+      "code": "Tab",
+      "repeat": false,
+      "composing": false,
+      "trusted": true,
+      "target": "INPUT"
+    },
+    {
+      "key": "Shift",
+      "code": "ShiftLeft",
+      "repeat": false,
+      "composing": false,
+      "trusted": true,
+      "target": "BUTTON"
+    },
+    {
+      "key": "Tab",
+      "code": "Tab",
+      "repeat": false,
+      "composing": false,
+      "trusted": true,
+      "target": "BUTTON"
+    }
+  ]
+}

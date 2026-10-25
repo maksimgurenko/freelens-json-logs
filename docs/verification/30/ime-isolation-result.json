@@ -1,0 +1,13 @@
+{
+  "bothSaveAndEscape": "OS uinput nativeKeyboard.press",
+  "oldPidsExited": true,
+  "driverInventory": {
+    "runningKnownDrivers": [],
+    "syntheticCompositionCasesRunning": false
+  },
+  "noSyntheticCasesRunInFreshProcess": true,
+  "endTrust": [
+    false
+  ],
+  "claim": "Trusted native start/update/input and isComposing OS keys, exact compositor commit and resumed ordinary Save establish the measured IME ownership. Observed untrusted compositionend is not promoted to native proof; its flag repeats without queued/synthetic driver interference."
+}

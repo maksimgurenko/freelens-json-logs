@@ -1,0 +1,1 @@
+(async()=>{const h=global.__cv25;h.root().style.width='';await h.select('empty');return {empty:h.root().querySelector('.rl-empty').textContent,noPane:!h.root().querySelector('.rl-inspector'),canvas:getComputedStyle(h.root().querySelector('.rl-records')).backgroundColor};})()

@@ -1,0 +1,14 @@
+{
+  "at": "2026-10-25T18:53:29.762Z",
+  "result": {
+    "type": "object",
+    "value": {
+      "uid": "ec618786-cfb9-4027-866a-7a7441a9ee98",
+      "namespace": "readable-logs-ticket-27",
+      "name": "local-navigation",
+      "containers": [
+        "selection"
+      ]
+    }
+  }
+}

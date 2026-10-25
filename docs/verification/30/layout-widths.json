@@ -1,0 +1,679 @@
+{
+  "at": "2026-10-25T21:08:42.545Z",
+  "result": {
+    "type": "object",
+    "value": {
+      "version": "0.1.33",
+      "longContainer": "long-container-name-for-readable-compact-toolbar-layout-checks",
+      "longProfile": "Manual · Compact verification profile with a deliberately long name for target selection and layout checks",
+      "widths": [
+        {
+          "width": 1600,
+          "scrollWidth": 1600,
+          "toolbarHeight": 44.873046875,
+          "controls": [
+            {
+              "name": "Log target details",
+              "left": 11.9921875,
+              "right": 311.9921875,
+              "width": 300
+            },
+            {
+              "name": "Container",
+              "left": 377.626953125,
+              "right": 517.626953125,
+              "width": 140
+            },
+            {
+              "name": "Profile",
+              "left": 565.87890625,
+              "right": 695.87890625,
+              "width": 130
+            },
+            {
+              "name": "Edit profiles",
+              "left": 701.875,
+              "right": 814.47265625,
+              "width": 112.59765625
+            },
+            {
+              "name": "Resume",
+              "left": 822.470703125,
+              "right": 890.361328125,
+              "width": 67.890625
+            },
+            {
+              "name": "Refresh",
+              "left": 896.357421875,
+              "right": 961.435546875,
+              "width": 65.078125
+            },
+            {
+              "name": "Find",
+              "left": 1412.685546875,
+              "right": 1456.6796875,
+              "width": 43.994140625
+            },
+            {
+              "name": "Display options",
+              "left": 1462.67578125,
+              "right": 1588.0078125,
+              "width": 125.33203125
+            },
+            {
+              "name": "Readable",
+              "left": 1264.62890625,
+              "right": 1339.6875,
+              "width": 75.05859375
+            },
+            {
+              "name": "Raw",
+              "left": 1343.681640625,
+              "right": 1387.67578125,
+              "width": 43.994140625
+            },
+            {
+              "name": "Inspection",
+              "left": 1326.337890625,
+              "right": 1455.458984375,
+              "width": 129.12109375
+            },
+            {
+              "name": "Shortcuts",
+              "left": 1264.62890625,
+              "right": 1571.38671875,
+              "width": 306.7578125
+            },
+            {
+              "name": "Find in logs",
+              "left": 46.73828125,
+              "right": 526.73828125,
+              "width": 480
+            },
+            {
+              "name": "Previous",
+              "left": 702.734375,
+              "right": 781.81640625,
+              "width": 79.08203125
+            },
+            {
+              "name": "Next",
+              "left": 789.814453125,
+              "right": 843.955078125,
+              "width": 54.140625
+            },
+            {
+              "name": "Close Find",
+              "left": 851.953125,
+              "right": 912.3046875,
+              "width": 60.3515625
+            },
+            {
+              "name": "To bottom",
+              "left": 202.9296875,
+              "right": 283.18359375,
+              "width": 80.25390625
+            }
+          ],
+          "overflow": [],
+          "inspectorDirection": "row"
+        },
+        {
+          "width": 1200,
+          "scrollWidth": 1200,
+          "toolbarHeight": 44.873046875,
+          "controls": [
+            {
+              "name": "Log target details",
+              "left": 11.9921875,
+              "right": 311.9921875,
+              "width": 300
+            },
+            {
+              "name": "Container",
+              "left": 377.626953125,
+              "right": 517.626953125,
+              "width": 140
+            },
+            {
+              "name": "Profile",
+              "left": 565.87890625,
+              "right": 695.87890625,
+              "width": 130
+            },
+            {
+              "name": "Edit profiles",
+              "left": 701.875,
+              "right": 814.47265625,
+              "width": 112.59765625
+            },
+            {
+              "name": "Resume",
+              "left": 822.470703125,
+              "right": 890.361328125,
+              "width": 67.890625
+            },
+            {
+              "name": "Refresh",
+              "left": 896.357421875,
+              "right": 961.435546875,
+              "width": 65.078125
+            },
+            {
+              "name": "Find",
+              "left": 1012.685546875,
+              "right": 1056.6796875,
+              "width": 43.994140625
+            },
+            {
+              "name": "Display options",
+              "left": 1062.67578125,
+              "right": 1188.0078125,
+              "width": 125.33203125
+            },
+            {
+              "name": "Readable",
+              "left": 864.62890625,
+              "right": 939.6875,
+              "width": 75.05859375
+            },
+            {
+              "name": "Raw",
+              "left": 943.681640625,
+              "right": 987.67578125,
+              "width": 43.994140625
+            },
+            {
+              "name": "Inspection",
+              "left": 926.337890625,
+              "right": 1055.458984375,
+              "width": 129.12109375
+            },
+            {
+              "name": "Shortcuts",
+              "left": 864.62890625,
+              "right": 1171.38671875,
+              "width": 306.7578125
+            },
+            {
+              "name": "Find in logs",
+              "left": 46.73828125,
+              "right": 526.73828125,
+              "width": 480
+            },
+            {
+              "name": "Previous",
+              "left": 702.734375,
+              "right": 781.81640625,
+              "width": 79.08203125
+            },
+            {
+              "name": "Next",
+              "left": 789.814453125,
+              "right": 843.955078125,
+              "width": 54.140625
+            },
+            {
+              "name": "Close Find",
+              "left": 851.953125,
+              "right": 912.3046875,
+              "width": 60.3515625
+            },
+            {
+              "name": "To bottom",
+              "left": 202.9296875,
+              "right": 283.18359375,
+              "width": 80.25390625
+            }
+          ],
+          "overflow": [],
+          "inspectorDirection": "row"
+        },
+        {
+          "width": 1023.994140625,
+          "scrollWidth": 1024,
+          "toolbarHeight": 44.873046875,
+          "controls": [
+            {
+              "name": "Log target details",
+              "left": 11.9921875,
+              "right": 179.23828125,
+              "width": 167.24609375
+            },
+            {
+              "name": "Container",
+              "left": 244.873046875,
+              "right": 384.873046875,
+              "width": 140
+            },
+            {
+              "name": "Profile",
+              "left": 433.125,
+              "right": 563.125,
+              "width": 130
+            },
+            {
+              "name": "Edit profiles",
+              "left": 569.12109375,
+              "right": 681.71875,
+              "width": 112.59765625
+            },
+            {
+              "name": "Resume",
+              "left": 689.716796875,
+              "right": 757.607421875,
+              "width": 67.890625
+            },
+            {
+              "name": "Refresh",
+              "left": 763.603515625,
+              "right": 828.681640625,
+              "width": 65.078125
+            },
+            {
+              "name": "Find",
+              "left": 836.6796875,
+              "right": 880.673828125,
+              "width": 43.994140625
+            },
+            {
+              "name": "Display options",
+              "left": 886.669921875,
+              "right": 1012.001953125,
+              "width": 125.33203125
+            },
+            {
+              "name": "Readable",
+              "left": 688.623046875,
+              "right": 763.681640625,
+              "width": 75.05859375
+            },
+            {
+              "name": "Raw",
+              "left": 767.67578125,
+              "right": 811.669921875,
+              "width": 43.994140625
+            },
+            {
+              "name": "Inspection",
+              "left": 750.33203125,
+              "right": 879.453125,
+              "width": 129.12109375
+            },
+            {
+              "name": "Shortcuts",
+              "left": 688.623046875,
+              "right": 995.380859375,
+              "width": 306.7578125
+            },
+            {
+              "name": "Find in logs",
+              "left": 46.73828125,
+              "right": 526.73828125,
+              "width": 480
+            },
+            {
+              "name": "Previous",
+              "left": 702.734375,
+              "right": 781.81640625,
+              "width": 79.08203125
+            },
+            {
+              "name": "Next",
+              "left": 789.814453125,
+              "right": 843.955078125,
+              "width": 54.140625
+            },
+            {
+              "name": "Close Find",
+              "left": 851.953125,
+              "right": 912.3046875,
+              "width": 60.3515625
+            },
+            {
+              "name": "To bottom",
+              "left": 202.9296875,
+              "right": 283.18359375,
+              "width": 80.25390625
+            }
+          ],
+          "overflow": [],
+          "inspectorDirection": "row"
+        },
+        {
+          "width": 800,
+          "scrollWidth": 800,
+          "toolbarHeight": 85.126953125,
+          "controls": [
+            {
+              "name": "Log target details",
+              "left": 11.9921875,
+              "right": 285.52734375,
+              "width": 273.53515625
+            },
+            {
+              "name": "Container",
+              "left": 351.162109375,
+              "right": 491.162109375,
+              "width": 140
+            },
+            {
+              "name": "Profile",
+              "left": 539.4140625,
+              "right": 669.4140625,
+              "width": 130
+            },
+            {
+              "name": "Edit profiles",
+              "left": 675.41015625,
+              "right": 788.0078125,
+              "width": 112.59765625
+            },
+            {
+              "name": "Resume",
+              "left": 11.9921875,
+              "right": 79.8828125,
+              "width": 67.890625
+            },
+            {
+              "name": "Refresh",
+              "left": 85.87890625,
+              "right": 150.95703125,
+              "width": 65.078125
+            },
+            {
+              "name": "Find",
+              "left": 612.685546875,
+              "right": 656.6796875,
+              "width": 43.994140625
+            },
+            {
+              "name": "Display options",
+              "left": 662.67578125,
+              "right": 788.0078125,
+              "width": 125.33203125
+            },
+            {
+              "name": "Readable",
+              "left": 464.62890625,
+              "right": 539.6875,
+              "width": 75.05859375
+            },
+            {
+              "name": "Raw",
+              "left": 543.681640625,
+              "right": 587.67578125,
+              "width": 43.994140625
+            },
+            {
+              "name": "Inspection",
+              "left": 526.337890625,
+              "right": 655.458984375,
+              "width": 129.12109375
+            },
+            {
+              "name": "Shortcuts",
+              "left": 464.62890625,
+              "right": 771.38671875,
+              "width": 306.7578125
+            },
+            {
+              "name": "Find in logs",
+              "left": 46.73828125,
+              "right": 402.44140625,
+              "width": 355.703125
+            },
+            {
+              "name": "Previous",
+              "left": 578.4375,
+              "right": 657.51953125,
+              "width": 79.08203125
+            },
+            {
+              "name": "Next",
+              "left": 665.517578125,
+              "right": 719.658203125,
+              "width": 54.140625
+            },
+            {
+              "name": "Close Find",
+              "left": 727.65625,
+              "right": 788.0078125,
+              "width": 60.3515625
+            },
+            {
+              "name": "To bottom",
+              "left": 202.9296875,
+              "right": 283.18359375,
+              "width": 80.25390625
+            }
+          ],
+          "overflow": [],
+          "inspectorDirection": "column"
+        },
+        {
+          "width": 600,
+          "scrollWidth": 600,
+          "toolbarHeight": 121.123046875,
+          "controls": [
+            {
+              "name": "Log target details",
+              "left": 11.9921875,
+              "right": 382.373046875,
+              "width": 370.380859375
+            },
+            {
+              "name": "Container",
+              "left": 448.0078125,
+              "right": 588.0078125,
+              "width": 140
+            },
+            {
+              "name": "Profile",
+              "left": 52.24609375,
+              "right": 182.24609375,
+              "width": 130
+            },
+            {
+              "name": "Edit profiles",
+              "left": 188.2421875,
+              "right": 300.83984375,
+              "width": 112.59765625
+            },
+            {
+              "name": "Resume",
+              "left": 308.837890625,
+              "right": 376.728515625,
+              "width": 67.890625
+            },
+            {
+              "name": "Refresh",
+              "left": 382.724609375,
+              "right": 447.802734375,
+              "width": 65.078125
+            },
+            {
+              "name": "Find",
+              "left": 412.685546875,
+              "right": 456.6796875,
+              "width": 43.994140625
+            },
+            {
+              "name": "Display options",
+              "left": 462.67578125,
+              "right": 588.0078125,
+              "width": 125.33203125
+            },
+            {
+              "name": "Readable",
+              "left": 264.62890625,
+              "right": 339.6875,
+              "width": 75.05859375
+            },
+            {
+              "name": "Raw",
+              "left": 343.681640625,
+              "right": 387.67578125,
+              "width": 43.994140625
+            },
+            {
+              "name": "Inspection",
+              "left": 326.337890625,
+              "right": 455.458984375,
+              "width": 129.12109375
+            },
+            {
+              "name": "Shortcuts",
+              "left": 264.62890625,
+              "right": 571.38671875,
+              "width": 306.7578125
+            },
+            {
+              "name": "Find in logs",
+              "left": 46.73828125,
+              "right": 202.44140625,
+              "width": 155.703125
+            },
+            {
+              "name": "Previous",
+              "left": 378.4375,
+              "right": 457.51953125,
+              "width": 79.08203125
+            },
+            {
+              "name": "Next",
+              "left": 465.517578125,
+              "right": 519.658203125,
+              "width": 54.140625
+            },
+            {
+              "name": "Close Find",
+              "left": 527.65625,
+              "right": 588.0078125,
+              "width": 60.3515625
+            },
+            {
+              "name": "To bottom",
+              "left": 202.9296875,
+              "right": 283.18359375,
+              "width": 80.25390625
+            }
+          ],
+          "overflow": [],
+          "inspectorDirection": "column"
+        },
+        {
+          "width": 360,
+          "scrollWidth": 360,
+          "toolbarHeight": 155.99609375,
+          "controls": [
+            {
+              "name": "Log target details",
+              "left": 11.9921875,
+              "right": 348.0078125,
+              "width": 336.015625
+            },
+            {
+              "name": "Container",
+              "left": 69.62890625,
+              "right": 209.62890625,
+              "width": 140
+            },
+            {
+              "name": "Profile",
+              "left": 52.24609375,
+              "right": 182.24609375,
+              "width": 130
+            },
+            {
+              "name": "Edit profiles",
+              "left": 188.2421875,
+              "right": 300.83984375,
+              "width": 112.59765625
+            },
+            {
+              "name": "Resume",
+              "left": 11.9921875,
+              "right": 79.8828125,
+              "width": 67.890625
+            },
+            {
+              "name": "Refresh",
+              "left": 85.87890625,
+              "right": 150.95703125,
+              "width": 65.078125
+            },
+            {
+              "name": "Find",
+              "left": 172.685546875,
+              "right": 216.6796875,
+              "width": 43.994140625
+            },
+            {
+              "name": "Display options",
+              "left": 222.67578125,
+              "right": 348.0078125,
+              "width": 125.33203125
+            },
+            {
+              "name": "Readable",
+              "left": 28.6328125,
+              "right": 103.69140625,
+              "width": 75.05859375
+            },
+            {
+              "name": "Raw",
+              "left": 107.685546875,
+              "right": 151.6796875,
+              "width": 43.994140625
+            },
+            {
+              "name": "Inspection",
+              "left": 90.341796875,
+              "right": 219.462890625,
+              "width": 129.12109375
+            },
+            {
+              "name": "Shortcuts",
+              "left": 28.6328125,
+              "right": 331.38671875,
+              "width": 302.75390625
+            },
+            {
+              "name": "Find in logs",
+              "left": 46.73828125,
+              "right": 180.009765625,
+              "width": 133.271484375
+            },
+            {
+              "name": "Previous",
+              "left": 11.9921875,
+              "right": 91.07421875,
+              "width": 79.08203125
+            },
+            {
+              "name": "Next",
+              "left": 99.072265625,
+              "right": 153.212890625,
+              "width": 54.140625
+            },
+            {
+              "name": "Close Find",
+              "left": 161.2109375,
+              "right": 221.5625,
+              "width": 60.3515625
+            },
+            {
+              "name": "To bottom",
+              "left": 202.9296875,
+              "right": 283.18359375,
+              "width": 80.25390625
+            }
+          ],
+          "overflow": [],
+          "inspectorDirection": "column"
+        }
+      ]
+    }
+  }
+}

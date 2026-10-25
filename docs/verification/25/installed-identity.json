@@ -1,0 +1,32 @@
+{
+  "version": "0.1.22",
+  "tarballSha256": "ef7c13ad3181b96fab8e5e925f37e6c6140c89b9ce3796003756566725f8b95e",
+  "files": [
+    {
+      "path": "package.json",
+      "builtSha256": "309356fa5eff319dd724e3fde6e80fb4e24f8636d13ff755b4da97bb17e01ea6",
+      "installedSha256": "309356fa5eff319dd724e3fde6e80fb4e24f8636d13ff755b4da97bb17e01ea6",
+      "equal": true
+    },
+    {
+      "path": "out/main-0.1.22.js",
+      "builtSha256": "12d36d38017adee3d80526422ab75564159c78b0d70782a242048c2c5bb8ec84",
+      "installedSha256": "12d36d38017adee3d80526422ab75564159c78b0d70782a242048c2c5bb8ec84",
+      "equal": true
+    },
+    {
+      "path": "out/renderer-0.1.22.js",
+      "builtSha256": "1aad950dfd823cb71be137f4af7d3c89aabae6ad871ad88906b7ceba25b1cf44",
+      "installedSha256": "1aad950dfd823cb71be137f4af7d3c89aabae6ad871ad88906b7ceba25b1cf44",
+      "equal": true
+    },
+    {
+      "path": "docs/local-development.md",
+      "builtSha256": "220d343f36c13be3eedc7dcf919f1f1e9c2a90c53e6a63d8aac713d4df22ab52",
+      "installedSha256": "220d343f36c13be3eedc7dcf919f1f1e9c2a90c53e6a63d8aac713d4df22ab52",
+      "equal": true
+    }
+  ],
+  "mainPid": 286618,
+  "windowWorkspace": 7
+}

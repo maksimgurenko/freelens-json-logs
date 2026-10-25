@@ -1,0 +1,32 @@
+{
+  "at": "2026-10-25T03:42:28.454Z",
+  "result": {
+    "type": "object",
+    "value": {
+      "innerWidth": 2392,
+      "innerHeight": 1313,
+      "outerWidth": 2392,
+      "outerHeight": 1313,
+      "devicePixelRatio": 1.600000023841858,
+      "frames": [
+        {
+          "src": "https://770814298afe692457d07d8b15d6b8d3.renderer.freelens.app:38165/",
+          "rect": {
+            "x": 75,
+            "y": 40,
+            "width": 2317.5,
+            "height": 1252.12890625,
+            "top": 40,
+            "right": 2392.5,
+            "bottom": 1292.12890625,
+            "left": 75
+          },
+          "computed": {
+            "transform": "none",
+            "zoom": "1"
+          }
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "at": "2026-10-25T20:10:32.990Z",
+  "result": {
+    "type": "object",
+    "value": {
+      "uid": "c8190dc0-0f37-4918-9918-53eba7c8ebc1",
+      "namespace": "readable-logs-spike",
+      "name": "changing-logs"
+    }
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "noSyntheticCasesInFreshProcess": true,
+  "oldPidsExited": true,
+  "priorDrivers": {
+    "knownHostDrivers": [],
+    "syntheticCasesRunning": false
+  },
+  "compositionEndTrust": [
+    false
+  ],
+  "conclusion": "The untrusted end flag repeats after full process exit/reopen with no supplemental synthetic composition case run in the new process. Prior/queued input-cases.mjs interference is not supported. The end event is still not promoted to native proof; trusted native preedit/composing keys and exact OS commit/normal Save are separate evidence."
+}

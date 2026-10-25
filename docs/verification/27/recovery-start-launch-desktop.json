@@ -1,0 +1,11 @@
+{
+  "action": "launch",
+  "workspaceBefore": 1,
+  "focusBefore": "0x5600c84b75d0",
+  "command": "env CHOKIDAR_USEPOLLING=1 CHOKIDAR_INTERVAL=100 TMPDIR=/home/max/.cache/freelens-readable-logs/tmp /usr/bin/freelens --remote-debugging-address=127.0.0.1 --remote-debugging-port=9235 >> /home/max/work/freelens-json-logs/.scratch/compact-view/27/host.log 2>&1",
+  "initialMappedWorkspace": -98,
+  "workspaceAfter": 1,
+  "focusAfter": "0x5600c84b75d0",
+  "hostWorkspace": 7,
+  "mainPid": 444436
+}

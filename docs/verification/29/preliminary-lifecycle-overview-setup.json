@@ -1,0 +1,9 @@
+{
+  "package": "0.1.31",
+  "input": "OS uinput host accelerators; DOM inspection of actual packaged listeners",
+  "checks": [],
+  "failure": "Error: {\"exceptionId\":2,\"text\":\"Uncaught\",\"lineNumber\":0,\"columnNumber\":76,\"scriptId\":\"408\",\"stackTrace\":{\"callFrames\":[{\"functionName\":\"\",\"scriptId\":\"408\",\"url\":\"\",\"lineNumber\":0,\"columnNumber\":76},{\"functionName\":\"\",\"scriptId\":\"408\",\"url\":\"\",\"lineNumber\":0,\"columnNumber\":407}]},\"exception\":{\"type\":\"object\",\"subtype\":\"error\",\"className\":\"TypeError\",\"description\":\"TypeError: Cannot convert undefined or null to object\\n    at Object.keys (<anonymous>)\\n    at <anonymous>:1:77\\n    at <anonymous>:1:408\",\"objectId\":\"6228276860807623766.24.3\"}}",
+  "cleanup": {
+    "paused": false
+  }
+}

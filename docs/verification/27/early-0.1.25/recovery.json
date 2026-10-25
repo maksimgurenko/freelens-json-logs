@@ -1,0 +1,59 @@
+{
+  "package": "0.1.25",
+  "checks": [
+    {
+      "name": "Reset confirmation focuses Cancel reset",
+      "result": true
+    },
+    {
+      "name": "Reset Escape cancels only confirmation, restores reset opener, preserves Profiles and original bytes",
+      "result": true
+    },
+    {
+      "name": "Visible Cancel reset restores same opener",
+      "result": true
+    },
+    {
+      "name": "Actual backup failure preserves original and leaves confirmation available",
+      "result": true
+    },
+    {
+      "name": "Failed reset Escape cancels only confirmation",
+      "result": true
+    },
+    {
+      "name": "Escape while reset pending preserves progress and Profiles; Cancel stays disabled",
+      "result": true
+    },
+    {
+      "name": "Visible local return cannot cancel pending reset",
+      "result": true
+    },
+    {
+      "name": "Actual backed-up reset finishes normally and restores surviving log focus",
+      "result": true
+    }
+  ],
+  "scope": "Controlled invalid file loaded by both production stores; actual production IPC and filesystem backup/reset/failure, no fake result",
+  "reset": {
+    "originalSha256": "aed5244b5481e710720bc2bc3437a4876b698c9b03f5d3a3ec4281db784b06f6",
+    "backupSha256": "aed5244b5481e710720bc2bc3437a4876b698c9b03f5d3a3ec4281db784b06f6",
+    "backup": "/home/max/.config/Freelens/extension-store/freelens-readable-logs/backups/readable-logs-2026-10-25T18-45-13-071Z-30e0b3f8-ec2d-45e3-8cef-ae593c5fc834.json",
+    "configuration": {
+      "schemaVersion": 3,
+      "viewer": {
+        "inspection": "side"
+      },
+      "profiles": [],
+      "globalDefault": "default"
+    },
+    "paused": true
+  },
+  "passed": true,
+  "cleanup": {
+    "ownedBackupsRemoved": [
+      "readable-logs-2026-10-25T18-45-13-071Z-30e0b3f8-ec2d-45e3-8cef-ae593c5fc834.json"
+    ],
+    "obstructionRemoved": true
+  }
+}

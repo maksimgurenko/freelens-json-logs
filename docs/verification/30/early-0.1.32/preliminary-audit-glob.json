@@ -1,0 +1,5 @@
+{
+  "failure": "KeyError clipboardRestored",
+  "cause": "Audit glob also included gesture desktop-restoration JSON files, which do not contain clipboard fields.",
+  "correction": "Enumerate the six gesture result files explicitly. No host or clipboard mutation occurred in the failed audit."
+}

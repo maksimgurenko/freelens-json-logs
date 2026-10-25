@@ -1,0 +1,19 @@
+{
+  "action": "script",
+  "workspaceBefore": 1,
+  "focusBefore": "0x5600c57ceaf0",
+  "cursorBefore": {
+    "x": 150,
+    "y": 811
+  },
+  "exitCode": 0,
+  "nativePointerRestore": "{\"ok\": true, \"result\": {\"x\": 151, \"y\": 811}}",
+  "cursorAfter": {
+    "x": 151,
+    "y": 811
+  },
+  "workspaceAfter": 1,
+  "focusAfter": "0x5600c57ceaf0",
+  "hostWorkspace": 7,
+  "mainPid": 660560
+}

@@ -1,0 +1,10 @@
+{
+  "at": "2026-10-25T20:14:15.107Z",
+  "result": {
+    "type": "object",
+    "value": {
+      "parent": "Menu MenuActions flex KubeObjectMenu toolbar gaps right bottom",
+      "html": "<li tabindex=\"0\" class=\"MenuItem\"><i class=\"Icon material interactive focusable\" tabindex=\"0\" id=\"tooltip_target_96\"><span class=\"icon\" data-icon-name=\"data_object\">data_object</span><div></div></i><span class=\"title\">Readable logs</span></li>"
+    }
+  }
+}

@@ -1,0 +1,66 @@
+{
+  "at": "2026-10-25T18:39:57.512Z",
+  "result": {
+    "type": "object",
+    "value": {
+      "globals": [
+        "MobxReact",
+        "React",
+        "ReactDOM",
+        "ReactJsxRuntime",
+        "ReactRouter",
+        "ReactRouterDom"
+      ],
+      "reactResolve": "/usr/share/freelens/resources/app.asar/node_modules/react/index.js",
+      "rendererGlobals": [
+        "Catalog",
+        "Component",
+        "Ipc",
+        "K8s",
+        "K8sApi",
+        "LensExtension",
+        "Navigation",
+        "Theme"
+      ],
+      "menus": [],
+      "nativeButtons": [
+        {
+          "t": "terminal",
+          "c": "Icon material focusable"
+        },
+        {
+          "t": "close",
+          "c": "Icon material interactive focusable small"
+        },
+        {
+          "t": "subject",
+          "c": "Icon material focusable small"
+        },
+        {
+          "t": "close",
+          "c": "Icon material interactive focusable small"
+        },
+        {
+          "t": "subject",
+          "c": "Icon material focusable small"
+        },
+        {
+          "t": "close",
+          "c": "Icon material interactive focusable small"
+        },
+        {
+          "t": "add",
+          "c": "Icon new-dock-tab material interactive focusable"
+        },
+        {
+          "t": "fullscreen",
+          "c": "Icon material interactive focusable"
+        },
+        {
+          "t": "keyboard_arrow_up",
+          "c": "Icon material interactive focusable"
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,47 @@
+{
+  "at": "2026-10-25T18:47:48.856Z",
+  "result": {
+    "type": "object",
+    "value": {
+      "host": "1.10.3",
+      "version": "0.1.25",
+      "url": "https://770814298afe692457d07d8b15d6b8d3.renderer.freelens.app:40483/extension/freelens-readable-logs/readable-logs?clusterId=770814298afe692457d07d8b15d6b8d3&namespace=readable-logs-spike&pod=single-json&podUid=0035d4f0-23c6-4e7d-93b2-c1d13a41cb92",
+      "rows": 1,
+      "paused": true,
+      "noInspector": true,
+      "findClosed": true,
+      "newViewQueryEmpty": true,
+      "noProfiles": true,
+      "configuration": {
+        "schemaVersion": 3,
+        "viewer": {
+          "inspection": "inline"
+        },
+        "profiles": [],
+        "globalDefault": "default",
+        "__internal__": {
+          "migrations": {
+            "version": "0.1.25"
+          }
+        }
+      },
+      "originalApplicationConfigurationRestored": true,
+      "noTestHelpers": true,
+      "transientBackupNoticeCleared": true,
+      "dockTabs": [
+        {
+          "id": "tab-terminal",
+          "label": "terminalTerminalclose"
+        },
+        {
+          "id": "tab-log-tab-d34f2b4f-84ad-42e7-8642-d7a70844db27",
+          "label": "subjectPod changing-logsclose"
+        },
+        {
+          "id": "tab-log-tab-a1298e84-48c1-4d63-9fec-a4713ca389ee",
+          "label": "subjectPod single-jsonclose"
+        }
+      ]
+    }
+  }
+}

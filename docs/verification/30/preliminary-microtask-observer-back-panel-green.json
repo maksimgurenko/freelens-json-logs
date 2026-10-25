@@ -1,0 +1,52 @@
+{
+  "provenance": "Trusted CDP Chromium Back input in installed host; supplemental to physical gate",
+  "pressed": {
+    "focus": "BODY",
+    "profiles": true
+  },
+  "after": {
+    "version": "0.1.33",
+    "profiles": false,
+    "events": [
+      {
+        "type": "pointerdown",
+        "target": "rl-editor-fields",
+        "focus": "INPUT",
+        "documentFocus": true,
+        "prevented": false,
+        "afterPrevented": false,
+        "afterFocus": "INPUT"
+      },
+      {
+        "type": "pointerup",
+        "target": "rl-editor-fields",
+        "focus": "BODY",
+        "documentFocus": true,
+        "prevented": false,
+        "afterPrevented": false,
+        "afterFocus": "BODY"
+      },
+      {
+        "type": "mouseup",
+        "target": "rl-editor-fields",
+        "focus": "BODY",
+        "documentFocus": true,
+        "prevented": false,
+        "afterPrevented": false,
+        "afterFocus": "BODY"
+      },
+      {
+        "type": "auxclick",
+        "target": "rl-editor-fields",
+        "focus": "BODY",
+        "documentFocus": true,
+        "prevented": false,
+        "afterPrevented": false,
+        "afterFocus": "BODY"
+      }
+    ]
+  },
+  "historyBefore": 4,
+  "historyAfter": 4,
+  "passed": true
+}

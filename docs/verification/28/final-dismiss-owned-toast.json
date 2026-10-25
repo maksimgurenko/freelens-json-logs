@@ -1,0 +1,10 @@
+{
+  "at": "2026-10-25T19:20:33.120Z",
+  "result": {
+    "type": "object",
+    "value": {
+      "dismissed": 0,
+      "scope": "Only this ticket package maintenance notices"
+    }
+  }
+}

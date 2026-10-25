@@ -1,0 +1,102 @@
+{
+  "at": "2026-10-25T03:42:28.395Z",
+  "result": {
+    "type": "object",
+    "value": {
+      "events": [
+        {
+          "type": "click",
+          "trusted": false,
+          "detail": 0,
+          "button": 0,
+          "buttons": 0,
+          "selected": null
+        },
+        {
+          "type": "click",
+          "trusted": false,
+          "detail": 0,
+          "button": 0,
+          "buttons": 0,
+          "selected": null
+        },
+        {
+          "type": "click",
+          "trusted": false,
+          "detail": 0,
+          "button": 0,
+          "buttons": 0,
+          "selected": null
+        },
+        {
+          "type": "click",
+          "trusted": false,
+          "detail": 0,
+          "button": 0,
+          "buttons": 0,
+          "selected": null
+        },
+        {
+          "type": "click",
+          "trusted": false,
+          "detail": 0,
+          "button": 0,
+          "buttons": 0,
+          "selected": null
+        },
+        {
+          "type": "pointerdown",
+          "trusted": true,
+          "detail": 0,
+          "button": 0,
+          "buttons": 1,
+          "selected": null
+        },
+        {
+          "type": "pointerup",
+          "trusted": true,
+          "detail": 0,
+          "button": 0,
+          "buttons": 0,
+          "selected": null
+        },
+        {
+          "type": "click",
+          "trusted": true,
+          "detail": 1,
+          "button": 0,
+          "buttons": 0,
+          "selected": null
+        }
+      ],
+      "userSelect": {
+        "records": "auto",
+        "row": "auto",
+        "message": "auto",
+        "body": "auto"
+      },
+      "row": {
+        "x": 211.9921875,
+        "y": 215.341796875,
+        "width": 2077.890625,
+        "height": 23.779296875,
+        "top": 215.341796875,
+        "right": 2289.8828125,
+        "bottom": 239.12109375,
+        "left": 211.9921875
+      },
+      "scroller": {
+        "x": 200,
+        "y": 44.873046875,
+        "width": 2117.5,
+        "height": 1136.5234375,
+        "top": 44.873046875,
+        "right": 2317.5,
+        "bottom": 1181.396484375,
+        "left": 200
+      },
+      "scrollTop": 0,
+      "selection": ""
+    }
+  }
+}

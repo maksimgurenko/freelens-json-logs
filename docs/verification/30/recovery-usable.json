@@ -1,0 +1,11 @@
+{
+  "at": "2026-10-25T21:11:14.435Z",
+  "result": {
+    "type": "object",
+    "value": {
+      "version": "0.1.33",
+      "rows": 1000,
+      "status": "Automatic updates"
+    }
+  }
+}

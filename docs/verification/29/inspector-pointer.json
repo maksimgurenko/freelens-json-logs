@@ -1,0 +1,40 @@
+{
+  "package": "0.1.31",
+  "input": "Trusted Chromium pointer click in actual inspector text; OS uinput Ctrl+F",
+  "checks": [
+    {
+      "layout": "inline",
+      "before": {
+        "focus": "SECTION",
+        "class": "rl-detail"
+      },
+      "after": {
+        "focus": "rl-find",
+        "findOpen": true
+      }
+    },
+    {
+      "layout": "side",
+      "before": {
+        "focus": "SECTION",
+        "class": "rl-detail"
+      },
+      "after": {
+        "focus": "rl-find",
+        "findOpen": true
+      }
+    },
+    {
+      "layout": "bottom",
+      "before": {
+        "focus": "SECTION",
+        "class": "rl-detail"
+      },
+      "after": {
+        "focus": "rl-find",
+        "findOpen": true
+      }
+    }
+  ],
+  "passed": true
+}

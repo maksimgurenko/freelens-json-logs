@@ -1,0 +1,5 @@
+{
+  "pointerGeometry": "Initial inspector pointer target was above the scrolled viewport (y=-23060.869). Scroll-into-view corrected setup; failure is not gesture acceptance.",
+  "clipboardBaselineAudit": "Initial final-audit assertion compared to the task-start empty clipboard. It failed on a newer unknown 12-character value. No correction to that old baseline was made. Per-probe hash auditing replaces that ownership assumption.",
+  "helperEdits": "Two verification-helper metadata/guard edits had syntax errors before execution and changed no host state. Corrected helpers subsequently pass; the latest failed desktop record is retained."
+}

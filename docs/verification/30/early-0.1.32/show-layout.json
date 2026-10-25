@@ -1,0 +1,11 @@
+{
+  "at": "2026-10-25T20:30:54.668Z",
+  "result": {
+    "type": "object",
+    "value": {
+      "uid": "b5bda5a4-7afd-4dce-a651-9be7c1868768",
+      "namespace": "readable-logs-ticket-30",
+      "name": "compact-workspace-with-a-long-identified-pod-name-for-layout"
+    }
+  }
+}

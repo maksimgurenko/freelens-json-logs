@@ -1,0 +1,14 @@
+{
+  "at": "2026-10-25T18:53:33.019Z",
+  "result": {
+    "type": "object",
+    "value": {
+      "selected": false,
+      "inspector": false,
+      "focus": "rl-records",
+      "rows": 1000,
+      "paused": true,
+      "missingOriginal": true
+    }
+  }
+}

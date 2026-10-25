@@ -1,0 +1,10 @@
+{
+  "at": "2026-10-25T18:54:05.045Z",
+  "result": {
+    "type": "object",
+    "value": {
+      "url": "https://renderer.freelens.app:32877/catalog",
+      "frameCached": true
+    }
+  }
+}

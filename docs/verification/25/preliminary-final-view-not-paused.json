@@ -1,0 +1,42 @@
+{
+  "at": "2026-10-25T03:31:08.080Z",
+  "result": {
+    "type": "object",
+    "subtype": "error",
+    "className": "Error",
+    "description": "Error: Final view/probe cleanup incorrect\n    at <anonymous>:1:857\n    at <anonymous>:1:1299",
+    "objectId": "1655782314548274958.2.8"
+  },
+  "exceptionDetails": {
+    "exceptionId": 3,
+    "text": "Uncaught",
+    "lineNumber": 0,
+    "columnNumber": 850,
+    "scriptId": "361",
+    "stackTrace": {
+      "callFrames": [
+        {
+          "functionName": "",
+          "scriptId": "361",
+          "url": "",
+          "lineNumber": 0,
+          "columnNumber": 856
+        },
+        {
+          "functionName": "",
+          "scriptId": "361",
+          "url": "",
+          "lineNumber": 0,
+          "columnNumber": 1298
+        }
+      ]
+    },
+    "exception": {
+      "type": "object",
+      "subtype": "error",
+      "className": "Error",
+      "description": "Error: Final view/probe cleanup incorrect\n    at <anonymous>:1:857\n    at <anonymous>:1:1299",
+      "objectId": "1655782314548274958.2.9"
+    }
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "branch": "implementation/compact-view",
+  "baseCommit": "a20af1d5adee4a894f9853540002b0b1771a791a",
+  "files": {
+    "src/renderer/viewer.tsx": "f47e06dbf65d1e1ac932168e1c6357460a229adb28175da125d3086325c7d387",
+    "src/renderer/viewer.css": "e1a61079a07ac5d2c101c65a78177eb21c10a316ebcc9a48be11490fc003e524",
+    "package.json": "65c223ac4c4ce2cc1299b1ce8bccced6703c4105b89458ded24d47e0f79fcfc6",
+    "package-lock.json": "62bf9a2133c344174fce95aeb04105d22be076a86bf5bf98bb156fef0275c336",
+    "docs/local-development.md": "ebcb049aed0b0cd8711cec21866dcef43358a6b2c20a48d231499bb94ac374e7"
+  }
+}
