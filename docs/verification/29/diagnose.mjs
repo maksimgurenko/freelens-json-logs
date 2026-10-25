@@ -1,0 +1,1 @@
+import {connect,save} from './host.mjs';import{readFileSync}from'node:fs';const h=await connect();try{save('diagnose-input',await h.run(readFileSync('docs/verification/29/probes/diagnose-input.js','utf8')))}finally{await h.close()}

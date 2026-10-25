@@ -1,0 +1,47 @@
+{
+  "package": "0.1.31",
+  "checks": [
+    {
+      "name": "Ordinary copy/paste through real Electron clipboard and native paste handler",
+      "value": true
+    },
+    {
+      "name": "Shift editing selection keeps text ownership",
+      "value": true
+    },
+    {
+      "name": "Recovery confirmation excludes local Find",
+      "value": true
+    },
+    {
+      "name": "Escape cancels only recovery confirmation",
+      "value": true
+    }
+  ],
+  "clipboardSaved": {
+    "formats": [
+      "text/plain"
+    ],
+    "buffers": {
+      "text/plain": "8c6ef0a684a2012713f52e7206d9fa4a5407f065225bbaf8c7bdcd7ea95beac9"
+    },
+    "pixels": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "altGraph": {
+    "altGraph": true,
+    "canceled": false,
+    "findOpen": false
+  },
+  "passed": true,
+  "cleanup": {
+    "problemRestored": true
+  },
+  "clipboardRestored": {
+    "formats": true,
+    "buffers": true,
+    "pixels": true,
+    "restoredBuffers": {
+      "text/plain": "8c6ef0a684a2012713f52e7206d9fa4a5407f065225bbaf8c7bdcd7ea95beac9"
+    }
+  }
+}

@@ -41,7 +41,7 @@ export function SettingsRecovery({ preferences, saved, dismissal }: { preference
     <p role="alert">{saved.problem} Using built-in Default and Side inspection. Saved settings are preserved; saving is unavailable.</p>
     <p>Settings: {saved.settingsPath}</p>
     {!confirming ? <button ref={resetButton} type="button" onClick={() => { setError(''); setConfirming(true); }}>Reset settings…</button> :
-      <div role="group" aria-label="Confirm settings reset" aria-busy={pending}>
+      <div role="group" data-local-confirmation aria-label="Confirm settings reset" aria-busy={pending}>
         <p>Reset all saved profiles, matching order, global default and Inspection? An exact backup must be preserved before these settings are replaced with built-in defaults.</p>
         <div className="rl-editor-actions">
           <button type="button" disabled={pending} onClick={() => { void reset(); }}>{pending ? 'Backing up and resetting…' : 'Back up and reset'}</button>

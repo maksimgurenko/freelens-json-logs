@@ -1,6 +1,6 @@
 # 28: Support mouse Back safely inside Freelens
 
-**Status:** ready-for-agent
+**Status:** done
 
 **Blocked by:** [27: Return from local contexts with predictable Escape and focus](27-return-from-local-contexts-with-predictable-escape-and-focus.md)
 

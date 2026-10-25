@@ -1,0 +1,59 @@
+{
+  "body": "readable-logs-spike\n/\nsingle-json\nContainer\njson\nempty\nProfile\nAuto · Default\nDefault\nEdit profiles\nResume\nRefresh\nFind\nDisplay options\n10/24/2026, 19:44:48\nINFO\nfreelens-json-logs-spike\n1 records · 0.1 KiB retained\nTo bottom\nFollowing output\nPaused\nv0.1.31",
+  "visible": 1,
+  "hasFocus": false,
+  "focus": "<div class=\"rl-records\" tabindex=\"0\" aria-label=\"Container log records\" aria-busy=\"false\"><div class=\"rl-record\" data-record-index=\"0\"><div class=\"rl-row\" role=\"button\" tabindex=\"0\" aria-pressed=\"false\" aria-label=\"Inspect record 1: freelens-json-logs-spike\"><time datetime=\"2026-10-25T00:44:48.424035244Z\" title=\"kubernetes: 2026-10-25T00:44:48.424035244Z\">10/24/2026, 19:44:48</time><span class=\"rl",
+  "handlers": 1,
+  "keyHandlers": [
+    {
+      "listener": "(event) => {\n        if (isMatchingEvent(event)) {\n            action();\n        }\n    }",
+      "capture": false
+    },
+    {
+      "listener": "(event) => {\n                if (event.code === \"Escape\") {\n                    event.stopPropagation();\n                    this.props.commandOverlay.close();\n                }\n            }",
+      "capture": false
+    },
+    {
+      "listener": "(evt) => {\n        if (!this.props.open) {\n            return;\n        }\n        if (evt.code === \"Escape\") {\n            this.close();\n        }\n    }",
+      "capture": false
+    },
+    {
+      "listener": "function () { [native code] }",
+      "capture": true
+    },
+    {
+      "listener": "function () { [native code] }",
+      "capture": true
+    },
+    {
+      "listener": "function () { [native code] }",
+      "capture": true
+    },
+    {
+      "listener": "function () { [native code] }",
+      "capture": true
+    },
+    {
+      "listener": "function () { [native code] }",
+      "capture": false
+    },
+    {
+      "listener": "function () { [native code] }",
+      "capture": true
+    },
+    {
+      "listener": "function () { [native code] }",
+      "capture": true
+    },
+    {
+      "listener": "(event) => {\n      for (const handler of this.handlers) handler(event);\n    }",
+      "capture": true
+    },
+    {
+      "listener": "(evt) => {\n            if (!isFindHotkey(evt)) {\n                return;\n            }\n            const selectedText = getSelectedTextFromLogsList();\n            if (selectedText) {\n                setSearch(selectedText, { immediate: true });\n            }\n        }",
+      "capture": true
+    }
+  ],
+  "dialogs": [],
+  "keyboard": "Linux x86_64"
+}

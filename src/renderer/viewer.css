@@ -1,5 +1,5 @@
 .readable-logs {
-  display: flex; flex-direction: column; height: 100%; min-height: 0; min-width: 0; container-type: inline-size;
+  position: relative; display: flex; flex-direction: column; height: 100%; min-height: 0; min-width: 0; container-type: inline-size;
   color: var(--textColorAccent, #e3e5e8); background: var(--mainBackground, #1e2124);
 }
 .readable-logs [hidden] { display: none; }
@@ -132,4 +132,14 @@
 @media (max-width: 1000px) {
   .readable-logs .rl-editor-columns { grid-template-columns: minmax(0, 1fr); gap: 18px; }
   .readable-logs .rl-profile-management > label:last-child { margin-inline-start: 0; }
+}
+
+.readable-logs .rl-shortcuts { position: absolute; inset: 48px 12px auto auto; z-index: 3; width: min(540px, calc(100% - 24px)); max-height: calc(100% - 60px); overflow: auto; box-sizing: border-box; padding: 16px; background: var(--contentColor, #262b2f); border: 1px solid var(--borderColor, #4c5053); border-radius: 3px; }
+.readable-logs .rl-shortcuts dl { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 12px 16px; margin: 20px 0; }
+.readable-logs .rl-shortcuts dd { margin: 0; }
+.readable-logs .rl-shortcuts kbd { font: inherit; white-space: nowrap; }
+.readable-logs .rl-shortcuts p { margin-top: 12px; line-height: 1.6; color: var(--textColorSecondary, #a6adb5); }
+@container (max-width: 500px) {
+  .readable-logs .rl-shortcuts dl { grid-template-columns: minmax(0, 1fr); gap: 4px; }
+  .readable-logs .rl-shortcuts dd { margin-bottom: 12px; }
 }

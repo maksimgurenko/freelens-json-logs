@@ -1,0 +1,10 @@
+{
+  "package": "0.1.31",
+  "checks": [],
+  "clipboardSaved": {
+    "formats": [
+      "text/plain"
+    ]
+  },
+  "failure": "Error: {\"exceptionId\":3,\"text\":\"Uncaught\",\"lineNumber\":0,\"columnNumber\":70,\"scriptId\":\"886\",\"stackTrace\":{\"callFrames\":[{\"functionName\":\"\",\"scriptId\":\"886\",\"url\":\"\",\"lineNumber\":0,\"columnNumber\":70},{\"functionName\":\"\",\"scriptId\":\"886\",\"url\":\"\",\"lineNumber\":0,\"columnNumber\":400}]},\"exception\":{\"type\":\"object\",\"subtype\":\"error\",\"className\":\"TypeError\",\"description\":\"TypeError: Cannot convert undefined or null to object\\n    at Object.keys (<anonymous>)\\n    at <anonymous>:1:71\\n    at <anonymous>:1:401\",\"objectId\":\"6228276860807623766.100.5\"}}"
+}

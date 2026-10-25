@@ -16,8 +16,9 @@ import { ProfileEditor } from './profile-editor.tsx';
 import { SettingsRecovery } from './settings-recovery.tsx';
 import { bindLocalEscape, focusLocal, LocalDismissal } from './local-dismissal.ts';
 import { bindLocalBack } from './local-back.ts';
+import { bindLocalShortcuts, editable, isMac, LocalShortcuts, shortcutHint, type ShortcutCapture } from './local-shortcuts.ts';
 
-interface ViewerProps { target: LogTarget; register: (dispose: () => void) => () => void; visibility: VisibilityChannel; preferences: ViewerPreferences }
+interface ViewerProps { target: LogTarget; register: (dispose: () => void) => () => void; visibility: VisibilityChannel; preferences: ViewerPreferences; shortcutCapture: ShortcutCapture }
 const EMPTY_RECORDS: readonly LogRecord[] = [];
 
 type SelectionPosition = Pick<Selection, 'anchorNode' | 'anchorOffset' | 'focusNode' | 'focusOffset'>;
@@ -40,7 +41,7 @@ function selectedTextTouches(row: HTMLElement, before?: SelectionPosition): bool
 }
 
 // Accepted B layout keeps frequent actions in one toolbar and presentation controls on demand.
-export function Viewer({ target, register, visibility, preferences }: ViewerProps) {
+export function Viewer({ target, register, visibility, preferences, shortcutCapture }: ViewerProps) {
   const root = useRef<HTMLElement>(null);
   const scroller = useRef<HTMLDivElement>(null);
   const viewport = useRef<LogViewport>();
@@ -63,6 +64,10 @@ export function Viewer({ target, register, visibility, preferences }: ViewerProp
   profilesActive.current = editingProfiles;
   const profilesButton = useRef<HTMLButtonElement>(null);
   const dismissal = useRef(new LocalDismissal()).current;
+  const commands = useRef(new LocalShortcuts()).current;
+  const [shortcutsOpen, setShortcutsOpen] = useState(false);
+  const displaySummary = useRef<HTMLElement>(null);
+  const shortcutsHeading = useRef<HTMLHeadingElement>(null);
   const inspectorFocused = useRef(false);
   useEffect(() => {
     const changed = () => setPreference(preferences.read());
@@ -81,7 +86,8 @@ export function Viewer({ target, register, visibility, preferences }: ViewerProp
     const stopEscape = bindLocalEscape(root.current!, () => visible && current.state.phase !== 'closed', dismissal);
     const stopBack = bindLocalBack(root.current!, () => visible && current.state.phase !== 'closed',
       () => profilesActive.current, dismissal);
-    const dispose = () => { stopBack(); stopEscape(); stopVisibility(); current.dispose(); };
+    const stopShortcuts = bindLocalShortcuts(root.current!, () => visible && current.state.phase !== 'closed', commands, shortcutCapture);
+    const dispose = () => { stopShortcuts(); stopBack(); stopEscape(); stopVisibility(); current.dispose(); };
     const unregister = register(dispose);
     void current.open();
     return () => { unregister(); dispose(); };
@@ -122,7 +128,7 @@ export function Viewer({ target, register, visibility, preferences }: ViewerProp
     }
   });
   useLayoutEffect(() => {
-    if (findOpen && !editingProfiles) findInput.current?.focus();
+    if (findOpen && !editingProfiles) { findInput.current?.focus(); findInput.current?.select(); }
   }, [findOpen]);
   const navigateMatch = (direction: 1 | -1) => {
     const next = moveMatch(matches, currentMatch, direction);
@@ -149,6 +155,20 @@ export function Viewer({ target, register, visibility, preferences }: ViewerProp
     focusLocal(root.current!, root.current?.querySelector<HTMLElement>(`.rl-record[data-record-index="${index}"] > .rl-row`));
     setInspection(previous => ({ ...previous, selected: undefined }));
   };
+  const openFind = () => { setFindOpen(true); findInput.current?.focus(); findInput.current?.select(); };
+  const closeShortcuts = () => { setShortcutsOpen(false); focusLocal(root.current!, displaySummary.current); };
+  useLayoutEffect(() => dismissal.add(300, () => shortcutsOpen ? closeShortcuts : undefined));
+  useLayoutEffect(() => { if (shortcutsOpen) shortcutsHeading.current?.focus(); }, [shortcutsOpen]);
+  useLayoutEffect(() => {
+    const reading = (target: Element) => !editingProfiles && (!editable(target) || target === findInput.current);
+    const stops = [commands.add('find', target => reading(target) ? openFind : undefined),
+      ...(['next', 'previous'] as const).map(command => commands.add(command, target => reading(target) ? () => {
+        openFind(); if (query) navigateMatch(command === 'next' ? 1 : -1);
+      } : undefined)),
+      commands.add('bottom', target => !editingProfiles && (target === scroller.current || target.matches('.rl-row'))
+        ? () => viewport.current?.toBottom() : undefined)];
+    return () => { stops.forEach(stop => stop()); };
+  });
   const closeFind = () => { setFindOpen(false); focusLocal(root.current!, findButton.current); };
   const backToLogs = () => { setEditingProfiles(false); focusLocal(root.current!, profilesButton.current); };
   useLayoutEffect(() => dismissal.add(0, () => editingProfiles ? backToLogs : findOpen ? closeFind : selected ? close : undefined));
@@ -201,9 +221,9 @@ export function Viewer({ target, register, visibility, preferences }: ViewerProp
       </div>
       <div className="rl-presentation" hidden={editingProfiles}>
         <button ref={findButton} type="button" aria-expanded={findOpen} aria-controls="rl-findbar"
-          onClick={() => { setFindOpen(true); findInput.current?.focus(); findInput.current?.select(); }}>Find</button>
+          title={`Find (${shortcutHint('F')})`} aria-keyshortcuts={isMac() ? 'Meta+f' : 'Control+f'} onClick={openFind}>Find</button>
         <details className="rl-display-options">
-          <summary>Display options</summary>
+          <summary ref={displaySummary}>Display options</summary>
           <div className="rl-display-panel">
             <div role="group" aria-label="Log presentation" className="rl-modes">
               <button type="button" aria-pressed={!inspection.raw} onClick={() => setInspection(previous => ({ ...previous, raw: false }))}>Readable</button>
@@ -216,19 +236,37 @@ export function Viewer({ target, register, visibility, preferences }: ViewerProp
               onChange={event => preferences.setInspection(event.target.value as 'inline' | 'side' | 'bottom')}>
               <option value="inline">Inline expansion</option><option value="side">Side inspector</option><option value="bottom">Bottom inspector</option>
             </select></label>
+            <button type="button" onClick={() => {
+              root.current?.querySelectorAll('details[open]').forEach(node => { (node as HTMLDetailsElement).open = false; });
+              setShortcutsOpen(true);
+            }}>Shortcuts</button>
           </div>
         </details>
       </div>
     </header>
+    {shortcutsOpen && <section className="rl-shortcuts" aria-label="Keyboard shortcuts" tabIndex={-1}>
+      <header className="rl-editor-head"><h2 ref={shortcutsHeading} tabIndex={-1}>Keyboard shortcuts</h2>
+        <button type="button" aria-label="Close shortcuts" title="Close shortcuts (Escape)" onClick={closeShortcuts}>Close</button></header>
+      <dl>
+        <dt>Find in logs</dt><dd><kbd>{shortcutHint('F')}</kbd></dd>
+        <dt>Next / previous match</dt><dd><kbd>{shortcutHint('G')}</kbd> / <kbd>{shortcutHint('Shift+G')}</kbd></dd>
+        <dt>In the Find input</dt><dd><kbd>{isMac() ? 'Return' : 'Enter'}</kbd> / <kbd>Shift+{isMac() ? 'Return' : 'Enter'}</kbd></dd>
+        <dt>Save a Profiles draft</dt><dd><kbd>{shortcutHint('S')}</kbd></dd>
+        <dt>Follow from a log row or viewport</dt><dd><kbd>{shortcutHint(isMac() ? 'Down' : 'End')}</kbd></dd>
+        <dt>Close one local context / return to logs</dt><dd><kbd>Escape</kbd></dd>
+        <dt>Host Back / Forward</dt><dd><kbd>{shortcutHint('[')}</kbd> / <kbd>{shortcutHint(']')}</kbd></dd>
+      </dl>
+      <p>Find commands work in logs, including the toolbar and inspector. Save works only with an active Profiles draft. Editing controls and native menus keep their own keys.</p>
+      <p>To bottom follows retained logs without resuming paused updates. Reload ({shortcutHint('R')}) and the command palette ({shortcutHint('Shift+P')}) belong to Freelens.</p>
+    </section>}
     <div id="rl-findbar" className="rl-findbar" role="search" aria-label="Find in logs" hidden={editingProfiles || !findOpen}>
       <label htmlFor="rl-find">Find</label>
       <input ref={findInput} id="rl-find" type="search" aria-label="Find in logs" placeholder="Find in application text or message"
-        value={query} onChange={event => changeQuery(event.target.value)}
-        onKeyDown={event => { if (event.key === 'Enter') { event.preventDefault(); navigateMatch(event.shiftKey ? -1 : 1); } }} />
+        title={`Next: Enter or ${shortcutHint('G')}; previous: Shift+Enter or ${shortcutHint('Shift+G')}`} value={query} onChange={event => changeQuery(event.target.value)} />
       <span className="rl-find-count" role="status" aria-live="polite">{query ? `${currentMatch < 0 ? 0 : matches.indexOf(currentMatch) + 1} of ${matches.length} matching records` : 'Enter text to find'}</span>
-      <button type="button" disabled={!matches.length} onClick={() => navigateMatch(-1)}>Previous</button>
-      <button type="button" disabled={!matches.length} onClick={() => navigateMatch(1)}>Next</button>
-      <button type="button" aria-label="Close Find" onClick={closeFind}>Close</button>
+      <button type="button" title={`Previous match (Shift+Enter in Find; ${shortcutHint('Shift+G')})`} disabled={!matches.length} onClick={() => navigateMatch(-1)}>Previous</button>
+      <button type="button" title={`Next match (Enter in Find; ${shortcutHint('G')})`} disabled={!matches.length} onClick={() => navigateMatch(1)}>Next</button>
+      <button type="button" aria-label="Close Find" title="Close Find (Escape)" onClick={closeFind}>Close</button>
     </div>
     <SettingsRecovery preferences={preferences} saved={preference} dismissal={dismissal} />
     {state?.lifecycleNotice && <p className="rl-notice" role="status">{state.lifecycleNotice}{state.paused ? ' Paused; select Refresh or Resume to read the current instance.' : ''}</p>}
@@ -242,7 +280,7 @@ export function Viewer({ target, register, visibility, preferences }: ViewerProp
       ? 'The newest record exceeds the 5 MiB original-text budget. No complete suffix fits.'
       : `${snapshot.omittedLines.toLocaleString()} older record(s) omitted to keep the latest 1,000 lines within the 5 MiB original-text budget.`}</p> : null}
     {scroll.lost && <p className="rl-notice" role="status">Your scroll position left the recent log window. Use To bottom to follow new output.</p>}
-    {editingProfiles && <ProfileEditor preferences={preferences} onClose={backToLogs} dismissal={dismissal} />}
+    {editingProfiles && <ProfileEditor preferences={preferences} onClose={backToLogs} dismissal={dismissal} commands={commands} />}
     <div className={`rl-work rl-layout-${preference.inspection}`} hidden={editingProfiles}>
     <div ref={scroller} className={`rl-records${wrap ? ' rl-wrap' : ''}`} tabIndex={0} aria-label="Container log records"
       onPointerDownCapture={event => {
@@ -288,7 +326,7 @@ export function Viewer({ target, register, visibility, preferences }: ViewerProp
     </div>
     <footer className="rl-footer" hidden={editingProfiles}>
       <span role="status">{snapshot ? `${snapshot.records.length.toLocaleString()} records · ${(snapshot.retainedBytes / 1024).toFixed(1)} KiB retained` : 'One current-instance snapshot'}</span>
-      <button type="button" onClick={() => viewport.current?.toBottom()}>To bottom</button>
+      <button type="button" title={`To bottom (${shortcutHint(isMac() ? 'Down' : 'End')} from a log row or viewport)`} onClick={() => viewport.current?.toBottom()}>To bottom</button>
       <span className="rl-follow-status" role="status">{scroll.following ? 'Following output' : 'Scrolled away'}</span>
       <span className="rl-update-status" role="status" title={updateStatus}>{updateStatus}</span>
       <span className="rl-version">v{PACKAGE_VERSION}</span>
@@ -305,7 +343,7 @@ function RecordInspector({ record, content, onContent, onClose }: {
     try { copyOriginal(record, kind); setCopyStatus(`Copied ${kind === 'application' ? 'application text' : 'transport line'}.`); }
     catch (error) { setCopyStatus(`Unable to copy: ${String(error)}`); }
   };
-  return <section className="rl-detail" aria-label="Selected record">
+  return <section className="rl-detail" aria-label="Selected record" tabIndex={-1}>
     <header className="rl-detail-head"><strong>Record</strong><button type="button" aria-label="Close record inspector" onClick={onClose}>Close</button></header>
     <div role="group" aria-label="Record content" className="rl-detail-tabs">
       {([['fields', 'All fields'], ['application', 'Application text'], ['transport', 'Transport line']] as const).map(([key, label]) =>

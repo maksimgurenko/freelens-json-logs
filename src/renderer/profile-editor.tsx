@@ -4,15 +4,17 @@ import { builtinProfile, BUILTIN_PROFILE_ID, duplicateProfile, LEVELS, profilePr
 import type { ViewerPreferences } from '../core/configuration.ts';
 import { displayTimestamp, parseTransportLine, recordFormatter } from '../core/records.ts';
 import type { LocalDismissal } from './local-dismissal.ts';
+import { editable, isMac, type LocalShortcuts, shortcutHint } from './local-shortcuts.ts';
 
 /** Staged local state lives only while this panel is mounted. No log IO or storage of samples. */
-export function ProfileEditor({ preferences, onClose, dismissal }: { preferences: ViewerPreferences; onClose: () => void; dismissal: LocalDismissal }) {
+export function ProfileEditor({ preferences, onClose, dismissal, commands }: { preferences: ViewerPreferences; onClose: () => void; dismissal: LocalDismissal; commands: LocalShortcuts }) {
   const [saved, setSaved] = useState(() => preferences.read());
   const [selected, setSelected] = useState(BUILTIN_PROFILE_ID);
   const [draft, setDraft] = useState<Profile>();
   const [sample, setSample] = useState('');
   const [notice, setNotice] = useState('');
   const [confirmDelete, setConfirmDelete] = useState(false);
+  const root = useRef<HTMLElement>(null);
   const heading = useRef<HTMLHeadingElement>(null);
   const deleteButton = useRef<HTMLButtonElement>(null);
   const keepButton = useRef<HTMLButtonElement>(null);
@@ -44,12 +46,14 @@ export function ProfileEditor({ preferences, onClose, dismissal }: { preferences
   const save = () => {
     if (!draft || errors.length) return;
     try {
-      preferences.saveProfile(draft); setSelected(draft.id); setDraft(undefined); setNotice('Profile saved. Retained logs use the saved rules.');
+      preferences.saveProfile(draft); setSelected(draft.id); setDraft(undefined); setNotice('Profile saved. Retained logs use the saved rules.'); heading.current?.focus({ preventScroll: true });
     } catch (error) { setNotice(`Unable to save: ${String(error)}`); }
   };
-  return <section className="rl-profile-editor" aria-label="Formatting profiles">
+  useLayoutEffect(() => commands.add('save', target => draft && !saved.problem && root.current?.contains(target) &&
+    (!editable(target) || target.matches('input, textarea') && !target.closest('[contenteditable], [role="textbox"], .monaco-editor, .CodeMirror')) ? save : undefined));
+  return <section ref={root} className="rl-profile-editor" aria-label="Formatting profiles">
     <header className="rl-editor-head"><h2 ref={heading} tabIndex={-1}>Formatting profiles</h2>
-      <button type="button" onClick={onClose}>Back to logs</button></header>
+      <button type="button" title="Back to logs (Escape)" onClick={onClose}>Back to logs</button></header>
     <p className="rl-editor-help">Edit a draft and preview sample logs. Save applies valid rules to retained records. Samples and unfinished edits are temporary.</p>
     {saved.problem && <p className="rl-notice rl-error" role="alert">{saved.problem} Saved settings are preserved; profile changes are unavailable.</p>}
     <div className="rl-profile-management">
@@ -67,7 +71,7 @@ export function ProfileEditor({ preferences, onClose, dismissal }: { preferences
         {profiles.map(profile => <option key={profile.id} value={profile.id}>{profile.name}</option>)}
       </select></label>
     </div>
-    {confirmDelete && <div className="rl-notice" role="alert">Delete {profile.name}? Affected manual selections return to Auto; a deleted global default returns to Default.
+    {confirmDelete && <div className="rl-notice" role="alert" data-local-confirmation>Delete {profile.name}? Affected manual selections return to Auto; a deleted global default returns to Default.
       <div className="rl-editor-actions"><button type="button" onClick={() => { preferences.deleteProfile(profile.id); setSelected(BUILTIN_PROFILE_ID); setConfirmDelete(false); setNotice('Profile deleted.'); heading.current?.focus({ preventScroll: true }); }}>Confirm delete</button>
         <button ref={keepButton} type="button" onClick={cancelDelete}>Keep profile</button></div></div>}
     <section className="rl-matching-order" aria-label="Matching order">
@@ -151,7 +155,7 @@ export function ProfileEditor({ preferences, onClose, dismissal }: { preferences
     <footer className="rl-editor-save">
       {!!errors.length && <ul role="alert">{errors.map((error, i) => <li key={i}>{error}</li>)}</ul>}
       {notice && <p role="status">{notice}</p>}
-      {draft && <div className="rl-editor-actions"><button type="button" disabled={!!errors.length || !!saved.problem} onClick={save}>Save profile</button>
+      {draft && <div className="rl-editor-actions"><button type="button" title={`Save profile (${shortcutHint('S')})`} aria-keyshortcuts={isMac() ? 'Meta+s' : 'Control+s'} disabled={!!errors.length || !!saved.problem} onClick={save}>Save profile</button>
         <button type="button" onClick={() => { setDraft(undefined); setNotice('Draft discarded. Saved rules are unchanged.'); heading.current?.focus({ preventScroll: true }); }}>Cancel draft</button></div>}
     </footer>
   </section>;

@@ -1,0 +1,374 @@
+{
+  "package": "0.1.31",
+  "case": "logs",
+  "input": "OS uinput for labeled commands; Playwright trusted Chromium for ordinary editing and scoped variants",
+  "checks": [
+    {
+      "name": "No query: repeat opens/focuses Find without navigating",
+      "value": true
+    },
+    {
+      "name": "Literal first match and one count per record",
+      "value": true
+    },
+    {
+      "name": "Enter next only within Find",
+      "value": true
+    },
+    {
+      "name": "Previous wraps first to last",
+      "value": true
+    },
+    {
+      "name": "Primary+G wraps last to first",
+      "value": true
+    },
+    {
+      "name": "Hidden Find retains query and repeats previous",
+      "value": true
+    },
+    {
+      "name": "No match stays zero",
+      "value": true
+    },
+    {
+      "name": "Primary+F selects the retained query",
+      "value": true
+    },
+    {
+      "name": "Tab/Shift+Tab remain native",
+      "value": true
+    },
+    {
+      "name": "Enter outside Find is not reinterpreted",
+      "value": true
+    },
+    {
+      "name": "Native Space still inspects focused row",
+      "value": true
+    },
+    {
+      "name": "Inspector control can own Find",
+      "value": true
+    },
+    {
+      "name": "Ctrl+End follows retained window and keeps Pause",
+      "value": true
+    },
+    {
+      "name": "Inspector leaves Ctrl+End to native scrolling",
+      "value": true
+    },
+    {
+      "name": "Shift selection command stays unconsumed",
+      "value": true
+    },
+    {
+      "name": "Oldest exact original is a match",
+      "value": true
+    },
+    {
+      "name": "Actual replacement recomputes vanished match, remains paused",
+      "value": true
+    },
+    {
+      "name": "Local shortcuts add no host history",
+      "value": true
+    }
+  ],
+  "first": {
+    "query": "changing JSON fixture",
+    "findOpen": true,
+    "count": "1 of 1000 matching records",
+    "focus": "rl-find",
+    "top": 8.125,
+    "paused": true
+  },
+  "passed": true,
+  "final": {
+    "query": "\"sequence\":5849,",
+    "findOpen": true,
+    "count": "0 of 0 matching records",
+    "focus": "",
+    "top": 8.125,
+    "paused": true
+  },
+  "events": [
+    {
+      "key": "Control",
+      "code": "ControlLeft",
+      "ctrl": true,
+      "meta": false,
+      "alt": false,
+      "shift": false,
+      "repeat": false,
+      "composing": false,
+      "trusted": true,
+      "target": "DIV",
+      "prevented": false
+    },
+    {
+      "key": "Shift",
+      "code": "ShiftLeft",
+      "ctrl": false,
+      "meta": false,
+      "alt": false,
+      "shift": true,
+      "repeat": false,
+      "composing": false,
+      "trusted": true,
+      "target": "INPUT",
+      "prevented": false
+    },
+    {
+      "key": "Shift",
+      "code": "ShiftLeft",
+      "ctrl": false,
+      "meta": false,
+      "alt": false,
+      "shift": true,
+      "repeat": false,
+      "composing": false,
+      "trusted": true,
+      "target": "INPUT",
+      "prevented": false
+    },
+    {
+      "key": "Control",
+      "code": "ControlLeft",
+      "ctrl": true,
+      "meta": false,
+      "alt": false,
+      "shift": false,
+      "repeat": false,
+      "composing": false,
+      "trusted": true,
+      "target": "INPUT",
+      "prevented": false
+    },
+    {
+      "key": "Control",
+      "code": "ControlLeft",
+      "ctrl": true,
+      "meta": false,
+      "alt": false,
+      "shift": false,
+      "repeat": false,
+      "composing": false,
+      "trusted": true,
+      "target": "DIV",
+      "prevented": false
+    },
+    {
+      "key": "Shift",
+      "code": "ShiftLeft",
+      "ctrl": true,
+      "meta": false,
+      "alt": false,
+      "shift": true,
+      "repeat": false,
+      "composing": false,
+      "trusted": true,
+      "target": "DIV",
+      "prevented": false
+    },
+    {
+      "key": "Control",
+      "code": "ControlLeft",
+      "ctrl": true,
+      "meta": false,
+      "alt": false,
+      "shift": false,
+      "repeat": false,
+      "composing": false,
+      "trusted": true,
+      "target": "INPUT",
+      "prevented": false
+    },
+    {
+      "key": "Control",
+      "code": "ControlLeft",
+      "ctrl": true,
+      "meta": false,
+      "alt": false,
+      "shift": false,
+      "repeat": false,
+      "composing": false,
+      "trusted": true,
+      "target": "DIV",
+      "prevented": false
+    },
+    {
+      "key": "Tab",
+      "code": "Tab",
+      "ctrl": false,
+      "meta": false,
+      "alt": false,
+      "shift": false,
+      "repeat": false,
+      "composing": false,
+      "trusted": true,
+      "target": "INPUT",
+      "prevented": false
+    },
+    {
+      "key": "Shift",
+      "code": "ShiftLeft",
+      "ctrl": false,
+      "meta": false,
+      "alt": false,
+      "shift": true,
+      "repeat": false,
+      "composing": false,
+      "trusted": true,
+      "target": "BUTTON",
+      "prevented": false
+    },
+    {
+      "key": "Tab",
+      "code": "Tab",
+      "ctrl": false,
+      "meta": false,
+      "alt": false,
+      "shift": true,
+      "repeat": false,
+      "composing": false,
+      "trusted": true,
+      "target": "BUTTON",
+      "prevented": false
+    },
+    {
+      "key": "Enter",
+      "code": "Enter",
+      "ctrl": false,
+      "meta": false,
+      "alt": false,
+      "shift": false,
+      "repeat": false,
+      "composing": false,
+      "trusted": true,
+      "target": "DIV",
+      "prevented": false
+    },
+    {
+      "key": " ",
+      "code": "Space",
+      "ctrl": false,
+      "meta": false,
+      "alt": false,
+      "shift": false,
+      "repeat": false,
+      "composing": false,
+      "trusted": true,
+      "target": "DIV",
+      "prevented": false
+    },
+    {
+      "key": "Control",
+      "code": "ControlLeft",
+      "ctrl": true,
+      "meta": false,
+      "alt": false,
+      "shift": false,
+      "repeat": false,
+      "composing": false,
+      "trusted": true,
+      "target": "BUTTON",
+      "prevented": false
+    },
+    {
+      "key": "Control",
+      "code": "ControlLeft",
+      "ctrl": true,
+      "meta": false,
+      "alt": false,
+      "shift": false,
+      "repeat": false,
+      "composing": false,
+      "trusted": true,
+      "target": "DIV",
+      "prevented": false
+    },
+    {
+      "key": "Control",
+      "code": "ControlLeft",
+      "ctrl": true,
+      "meta": false,
+      "alt": false,
+      "shift": false,
+      "repeat": false,
+      "composing": false,
+      "trusted": true,
+      "target": "BUTTON",
+      "prevented": false
+    },
+    {
+      "key": "End",
+      "code": "End",
+      "ctrl": true,
+      "meta": false,
+      "alt": false,
+      "shift": false,
+      "repeat": false,
+      "composing": false,
+      "trusted": true,
+      "target": "BUTTON",
+      "prevented": false
+    },
+    {
+      "key": "Control",
+      "code": "ControlLeft",
+      "ctrl": true,
+      "meta": false,
+      "alt": false,
+      "shift": false,
+      "repeat": false,
+      "composing": false,
+      "trusted": true,
+      "target": "DIV",
+      "prevented": false
+    },
+    {
+      "key": "Shift",
+      "code": "ShiftLeft",
+      "ctrl": true,
+      "meta": false,
+      "alt": false,
+      "shift": true,
+      "repeat": false,
+      "composing": false,
+      "trusted": true,
+      "target": "DIV",
+      "prevented": false
+    },
+    {
+      "key": "End",
+      "code": "End",
+      "ctrl": true,
+      "meta": false,
+      "alt": false,
+      "shift": true,
+      "repeat": false,
+      "composing": false,
+      "trusted": true,
+      "target": "DIV",
+      "prevented": false
+    },
+    {
+      "key": "Control",
+      "code": "ControlLeft",
+      "ctrl": true,
+      "meta": false,
+      "alt": false,
+      "shift": false,
+      "repeat": false,
+      "composing": false,
+      "trusted": true,
+      "target": "DIV",
+      "prevented": false
+    }
+  ],
+  "cleanup": {
+    "configurationRestored": true
+  }
+}

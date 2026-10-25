@@ -25,8 +25,8 @@ npm run typecheck
 npm test
 npm run package
 npm run check:package
-tar -tzf dist/freelens-readable-logs-0.1.28.tgz
-sha256sum dist/freelens-readable-logs-0.1.28.tgz
+tar -tzf dist/freelens-readable-logs-0.1.31.tgz
+sha256sum dist/freelens-readable-logs-0.1.31.tgz
 ```
 
 The locked esbuild platform package supplies its binary without install scripts.
@@ -125,7 +125,7 @@ Follow [the accepted procedure](https://github.com/maksimgurenko/freelens-json-l
 2. For an update, **Uninstall** the old package and wait for removal to finish,
    retaining its saved extension settings. Install the new tarball via the form
    **once** and wait. Do not use the overwrite/reinstallation prompt.
-3. Check version **0.1.28** and Enabled, then open the cluster. Open a Pod's details
+3. Check version **0.1.31** and Enabled, then open the cluster. Open a Pod's details
    header and click the **Readable logs** icon beside the native actions. Verify
    cluster, namespace, Pod UID, container, the expected active profile and usable logs.
    Do not restart after installation as a substitute for passing this check.
@@ -374,3 +374,20 @@ not create history entries; host Forward never restores an unfinished local draf
 Physical delivery/cancellation evidence is platform-specific under
 `docs/verification/28/`; Windows and macOS remain unverified. The additional
 shortcut set is separate work.
+
+
+## Local keyboard shortcuts
+
+Use Ctrl on Linux/Windows and Cmd on macOS. In the active logs toolbar,
+viewport or inspector, primary+F reveals Find and selects its retained query.
+Enter/Shift+Enter move next/previous only in Find; primary+G/primary+Shift+G
+repeat the same navigation, revealing Find if needed. Other editing controls
+keep their input ownership. Primary+S saves an active Profiles draft through the
+same validation as Save profile. Invalid or failed saves retain the draft.
+Ctrl+End (Linux/Windows) or Cmd+Down (macOS), with a log row or viewport focused,
+follows the retained window without resuming paused requests.
+
+Display options → Shortcuts opens a temporary reference; Close or Escape dismisses
+it and restores Display options focus. Control tooltips show relevant bindings.
+Host Back/Forward, reload and command palette retain their host meanings. Platform
+verification and native input boundaries are recorded under `docs/verification/29/`.

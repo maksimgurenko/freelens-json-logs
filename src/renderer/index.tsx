@@ -4,6 +4,7 @@ import { PAGE_ID, pageTarget, visibilityChannel, type PageParams } from '../adap
 import { Viewer } from './viewer.tsx';
 import { configurationStore } from '../adapter/configuration-store.ts';
 import { SETTINGS_RESET, SETTINGS_RESET_COMPLETE } from '../adapter/configuration-ipc.ts';
+import { ShortcutCapture } from './local-shortcuts.ts';
 
 class ConfigurationIpc extends Renderer.Ipc {}
 
@@ -11,6 +12,8 @@ export default class ReadableLogsRenderer extends Renderer.LensExtension {
   private visibility = visibilityChannel(this);
   private viewers = new Set<() => void>();
   private stopRecovery?: () => void;
+  private shortcuts = new ShortcutCapture();
+  private stopShortcuts?: () => void;
   private register = (dispose: () => void) => {
     this.viewers.add(dispose);
     return () => { this.viewers.delete(dispose); };
@@ -20,10 +23,11 @@ export default class ReadableLogsRenderer extends Renderer.LensExtension {
     components: { Page: ({ params }: { params: PageParams }) => {
       const target = pageTarget(params);
       return <Viewer key={JSON.stringify([target.clusterId, target.namespace, target.podName, target.podUid])}
-        target={target} register={this.register} visibility={this.visibility} preferences={configurationStore} />;
+        target={target} register={this.register} visibility={this.visibility} preferences={configurationStore} shortcutCapture={this.shortcuts} />;
     } },
   }];
   onActivate() {
+    this.stopShortcuts = this.shortcuts.bind(window);
     const ipc = ConfigurationIpc.createInstance(this);
     this.stopRecovery = ipc.listen(SETTINGS_RESET_COMPLETE, (_event, backup: string) => {
       configurationStore.loadExtension(this);
@@ -49,6 +53,7 @@ export default class ReadableLogsRenderer extends Renderer.LensExtension {
     },
   }];
   onDeactivate() {
+    this.stopShortcuts?.();
     this.stopRecovery?.();
     for (const dispose of this.viewers) dispose();
     this.viewers.clear();

@@ -1,0 +1,16 @@
+{
+  "provenance": "Measured initial run result preserved from tool output; original temporary filename was reused by a later attempt",
+  "package": "0.1.29",
+  "selectedNativeText": "freelens-json-logs-spi",
+  "beforeKey": {
+    "nativeQuery": "",
+    "focus": "rl-records"
+  },
+  "afterKey": {
+    "nativeQuery": "freelens-json-logs-spi",
+    "focus": "rl-find",
+    "localFindOpen": true
+  },
+  "passed": false,
+  "failure": "Earlier native capture changed native query from stale selection"
+}
