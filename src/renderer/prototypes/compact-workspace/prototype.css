@@ -46,7 +46,7 @@ button svg { pointer-events:none; }
 .workspace { display:flex; flex:1; min-height:0; position:relative; overflow:hidden; }
 .log-content { display:flex; flex:1; min-height:0; min-width:0; position:relative; }
 .readable-logs .rl-records { background:#000; padding:7px 10px; font-size:12px; line-height:1.65; }
-.readable-logs .rl-row { gap:12px; padding:1px 3px; min-height:22px; }
+.readable-logs .rl-row { gap:12px; padding:1px 3px; min-height:22px; user-select:text; cursor:text; }
 .readable-logs .rl-row time { color:#969fa7; }
 .readable-logs .rl-row:hover { background:#1b2023; }
 .readable-logs .rl-selected > .rl-row { background:#133431; }

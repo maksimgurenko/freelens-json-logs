@@ -49,6 +49,20 @@ Map: [Compact logs, navigation and keyboard shortcuts](https://github.com/maksim
 Awaiting the maintainer's browser verdict. No production implementation or
 acceptance decision is implied by this artifact.
 
+The maintainer preferred B and asked for a more obvious profile editing control.
+B now pairs its profile icon with a visible **Edit profiles** label immediately
+beside the selector. The revised affordance remains available for review.
+
+The maintainer also requested text selection without triggering inspection.
+Dragging over log text now preserves the text selection and leaves the inspector
+unchanged. Plain clicks and Enter/Space on a focused row still inspect a record.
+The shared canvas behavior applies to all three variants.
+
+An isolated Chromium pointer check verified dragged selections with both a closed
+and an open inspector in A, B and C, followed by normal-click and Enter inspection.
+The new Edit profiles button opened Profiles and kept B's toolbar at 42px at a
+1024px browser width with no page-wide horizontal overflow.
+
 ## Browser check, 2026-10-24
 
 Rendered all three at 1440 × 1000, plus long target names with Find and inspection

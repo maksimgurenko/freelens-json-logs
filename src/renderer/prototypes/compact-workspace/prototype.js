@@ -85,7 +85,7 @@ function variantA() {
 function variantB() {
   const pod=state.longNames?'orders-api-production-eu-west-1-7fc98d6b58-vj4q2':'changing-logs';
   return `<div class="toolbar single-toolbar"><div class="breadcrumbs" title="kind-freelens-json-logs-spike / readable-logs-spike / ${pod}"><span>readable-logs-spike</span>${icon('right')}<strong>${pod}</strong></div>
-    <div class="controls-group">${containerSelect(false)}${profileSelect(false)}${tool('profiles','Profiles · edit formatting rules','profile')}</div>
+    <div class="controls-group">${containerSelect(false)}${profileSelect(false)}${button('profiles','Edit profiles','profile','title="Edit formatting profiles"')}</div>
     <div class="controls-group push">${button('find','Find','search','title="Find in logs · Ctrl+F / ⌘F"')}${pause()}${tool('refresh','Refresh snapshot','refresh')}${tool('view-options','Display options','settings')}${tool('identity','Target details','info')}</div></div>
     ${state.find?`<div class="findbar">${findInput()}<span class="muted">Application text or message</span>${tool('close-find','Close Find · Escape','close')}</div>`:''}`;
 }
@@ -246,7 +246,26 @@ async function action(name,el) {
   }
   const restore=el?.dataset.action;render({focus:restore?`[data-action="${restore}"]`:undefined});
 }
-document.addEventListener('click',event=>{const el=event.target.closest('[data-action]');if(el&&!el.disabled)void action(el.dataset.action,el);});
+// Selecting a log fragment must not rerender the canvas and destroy that selection.
+let logPointerGesture;
+document.addEventListener('pointerdown',event=>{
+  logPointerGesture=event.button===0&&event.target.closest('.rl-row')?{x:event.clientX,y:event.clientY,dragged:false}:undefined;
+});
+document.addEventListener('pointermove',event=>{
+  if(logPointerGesture&&(event.buttons&1)&&Math.hypot(event.clientX-logPointerGesture.x,event.clientY-logPointerGesture.y)>4)logPointerGesture.dragged=true;
+});
+function selectedTextTouches(row) {
+  const selection=window.getSelection();
+  if(!selection||selection.isCollapsed)return false;
+  for(let i=0;i<selection.rangeCount;i++)if(selection.getRangeAt(i).intersectsNode(row))return true;
+  return false;
+}
+document.addEventListener('click',event=>{
+  const el=event.target.closest('[data-action]');
+  if(!el||el.disabled)return;
+  if(el.dataset.action==='select-record'&&(logPointerGesture?.dragged||selectedTextTouches(el)))return;
+  void action(el.dataset.action,el);
+});
 document.querySelector('#variant').addEventListener('change',event=>setVariant(event.target.value));
 app.addEventListener('input',event=>{
   const el=event.target,key=el.dataset.input;if(!key)return;
