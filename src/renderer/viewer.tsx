@@ -18,9 +18,19 @@ import { SettingsRecovery } from './settings-recovery.tsx';
 interface ViewerProps { target: LogTarget; register: (dispose: () => void) => () => void; visibility: VisibilityChannel; preferences: ViewerPreferences }
 const EMPTY_RECORDS: readonly LogRecord[] = [];
 
-function selectedTextTouches(row: HTMLElement): boolean {
+type SelectionPosition = Pick<Selection, 'anchorNode' | 'anchorOffset' | 'focusNode' | 'focusOffset'>;
+function selectionPosition(selection: Selection | null): SelectionPosition | undefined {
+  if (!selection) return;
+  const { anchorNode, anchorOffset, focusNode, focusOffset } = selection;
+  return { anchorNode, anchorOffset, focusNode, focusOffset };
+}
+function selectedTextTouches(row: HTMLElement, before?: SelectionPosition): boolean {
   const selection = row.ownerDocument.getSelection();
   if (!selection || selection.isCollapsed) return false;
+  // A plain click may leave the old range present until after click dispatch.
+  // Only a range changed by this gesture should suppress immediate inspection.
+  if (before && selection.anchorNode === before.anchorNode && selection.anchorOffset === before.anchorOffset &&
+    selection.focusNode === before.focusNode && selection.focusOffset === before.focusOffset) return false;
   for (let i = 0; i < selection.rangeCount; i++) {
     if (selection.getRangeAt(i).intersectsNode(row)) return true;
   }
@@ -32,7 +42,7 @@ export function Viewer({ target, register, visibility, preferences }: ViewerProp
   const root = useRef<HTMLElement>(null);
   const scroller = useRef<HTMLDivElement>(null);
   const viewport = useRef<LogViewport>();
-  const rowGesture = useRef<{ x: number; y: number; dragged: boolean }>();
+  const rowGesture = useRef<{ x: number; y: number; dragged: boolean; selection?: SelectionPosition }>();
   const requestedMatch = useRef<number>();
   const [scroll, setScroll] = useState<ViewportStatus>({ following: true, lost: false });
   const [query, setQuery] = useState('');
@@ -212,7 +222,7 @@ export function Viewer({ target, register, visibility, preferences }: ViewerProp
     <div ref={scroller} className={`rl-records${wrap ? ' rl-wrap' : ''}`} tabIndex={0} aria-label="Container log records"
       onPointerDownCapture={event => {
         rowGesture.current = event.button === 0 && (event.target as Element).closest('.rl-row')
-          ? { x: event.clientX, y: event.clientY, dragged: false } : undefined;
+          ? { x: event.clientX, y: event.clientY, dragged: false, selection: selectionPosition(event.currentTarget.ownerDocument.getSelection()) } : undefined;
       }}
       onPointerMoveCapture={event => {
         const gesture = rowGesture.current;
@@ -231,7 +241,7 @@ export function Viewer({ target, register, visibility, preferences }: ViewerProp
             onClick={event => {
               // Keyboard/assistive activation is intentional even with selected text.
               // Pointer selection must not rerender inspection at the end of a drag.
-              if (event.detail > 0 && (event.detail > 1 || rowGesture.current?.dragged || selectedTextTouches(event.currentTarget))) return;
+              if (event.detail > 0 && (event.detail > 1 || rowGesture.current?.dragged || selectedTextTouches(event.currentTarget, rowGesture.current?.selection))) return;
               setInspection(previous => ({ ...previous, selected: selectRecord(records, recordIndex) }));
             }}
             onKeyDown={event => { if (event.key === 'Enter' || event.key === ' ') { event.preventDefault(); setInspection(previous => ({ ...previous, selected: selectRecord(records, recordIndex) })); } }}>

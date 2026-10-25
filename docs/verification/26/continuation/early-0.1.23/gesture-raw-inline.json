@@ -1,0 +1,731 @@
+{
+  "host": "Freelens 1.10.3",
+  "version": "0.1.23",
+  "mode": "Raw",
+  "layout": "inline",
+  "input": "Playwright 1.64.1 trusted Chromium mouse/keyboard input in installed Electron; actual selection engine and actual clipboard; no hardware provenance claim",
+  "drags": [
+    {
+      "open": false,
+      "across": false,
+      "inspected": null,
+      "selectedText": "5T03:57:01.626942130Z {\"message\":\"row 0007 fields selection test text\",\"level\":\"info\",\"fields\":\"original fields\",\"extra\":7,\"nested\":{\"fields\":\"value fields\"",
+      "clipboardExact": true,
+      "actualBytes": 156,
+      "actualSha256": "5f922907e0c8be93b23f877594325b8d42468f52208b3a21a57fde53715ef57b"
+    },
+    {
+      "open": false,
+      "across": true,
+      "inspected": null,
+      "selectedText": "5T03:57:01.626942130Z {\"message\":\"row 0007 fields selection test text\",\"level\":\"info\",\"fields\":\"original fields\",\"extra\":7,\"nested\":{\"fields\":\"value fields\"},\"unicode\":\"α🙂\"}\n2026-10-25T03:57:01.626947750Z {\"message\":\"row 0008 fields selection test text\",\"level\":\"info\",\"fields\":\"original fields\",\"extra\":8,\"nested\":{\"fields\":\"value fields\"},\"unicode\":\"α🙂\"}\n2026-10-25T03:57:01.626948430Z {\"message\":\"row 0009 fields selection test text\",\"level\":\"info\",\"fields\":\"original fields\",\"extra\":9,\"nested\":{\"fields\":\"value fields\"",
+      "clipboardExact": true,
+      "actualBytes": 530,
+      "actualSha256": "f31bf31b927761bca5827f23ef7ccdc5c6b0576852fa3ebefc47076431e68cae"
+    },
+    {
+      "open": true,
+      "across": false,
+      "inspected": "14",
+      "selectedText": "5T03:57:01.626942130Z {\"message\":\"row 0007 fields selection test text\",\"level\":\"info\",\"fields\":\"original fields\",\"extra\":7,\"nested\":{\"fields\":\"value fields\"",
+      "clipboardExact": true,
+      "actualBytes": 156,
+      "actualSha256": "5f922907e0c8be93b23f877594325b8d42468f52208b3a21a57fde53715ef57b"
+    },
+    {
+      "open": true,
+      "across": true,
+      "inspected": "14",
+      "selectedText": "5T03:57:01.626942130Z {\"message\":\"row 0007 fields selection test text\",\"level\":\"info\",\"fields\":\"original fields\",\"extra\":7,\"nested\":{\"fields\":\"value fields\"},\"unicode\":\"α🙂\"}\n2026-10-25T03:57:01.626947750Z {\"message\":\"row 0008 fields selection test text\",\"level\":\"info\",\"fields\":\"original fields\",\"extra\":8,\"nested\":{\"fields\":\"value fields\"},\"unicode\":\"α🙂\"}\n2026-10-25T03:57:01.626948430Z {\"message\":\"row 0009 fields selection test text\",\"level\":\"info\",\"fields\":\"original fields\",\"extra\":9,\"nested\":{\"fields\":\"value fields\"",
+      "clipboardExact": true,
+      "actualBytes": 530,
+      "actualSha256": "f31bf31b927761bca5827f23ef7ccdc5c6b0576852fa3ebefc47076431e68cae"
+    }
+  ],
+  "badges": [],
+  "activation": [
+    {
+      "kind": "plain-click",
+      "selected": "6",
+      "observedWithinMs": 81.217627
+    },
+    {
+      "kind": "Enter",
+      "selected": "7"
+    },
+    {
+      "kind": "Space",
+      "selected": "8"
+    },
+    {
+      "kind": "double-click",
+      "firstInspected": "6",
+      "selectedText": "info",
+      "clipboardExact": true,
+      "actualBytes": 4,
+      "actualSha256": "06271baf49532c879aa3c58b48671884bcc858f09197412d682750496c33e1e1"
+    },
+    {
+      "kind": "triple-click",
+      "firstInspected": "6",
+      "selectedText": "2026-10-25T03:57:01.626942130Z {\"message\":\"row 0007 fields selection test text\",\"level\":\"info\",\"fields\":\"original fields\",\"extra\":7,\"nested\":{\"fields\":\"value fields\"},\"unicode\":\"α🙂\"}",
+      "clipboardExact": true,
+      "actualBytes": 186,
+      "actualSha256": "0553747686c1f4ad5ee90816be4d8140cf2bd1c339349de82ed38edc036f6956"
+    }
+  ],
+  "originals": [],
+  "inputReset": {
+    "cancelDragging": true,
+    "cdpLeftReleased": true,
+    "nativeLeftReleased": false
+  },
+  "selectionBeforeCopy": "26-10-25T03:57:01.626611230Z   { \"message\" : \"row 0001 fields α🙂\\ntext\", \"level\":\"info\", \"fields\":\"fields\", \"extra\":1, \"nested\":{\"fields\":\"value fields\"}, \"unicode\":\"漢字\" }  \n2026-10-25T03:57:01.626622760Z {\"message\":\"row 0002 fields single badge\",\"level\":\"info\",\"fields\":\"fields\"",
+  "lastSelection": {
+    "selectedText": "5T03:57:01.626942130Z {\"message\":\"row 0007 fields selection test text\",\"level\":\"info\",\"fields\":\"original fields\",\"extra\":7,\"nested\":{\"fields\":\"value fields\"},\"unicode\":\"α🙂\"}\n2026-10-25T03:57:01.626947750Z {\"message\":\"row 0008 fields selection test text\",\"level\":\"info\",\"fields\":\"original fields\",\"extra\":8,\"nested\":{\"fields\":\"value fields\"},\"unicode\":\"α🙂\"}\n2026-10-25T03:57:01.626948430Z {\"message\":\"row 0009 fields selection test text\",\"level\":\"info\",\"fields\":\"original fields\",\"extra\":9,\"nested\":{\"fields\":\"value fields\"",
+    "clipboardExact": true,
+    "actualBytes": 530,
+    "actualSha256": "f31bf31b927761bca5827f23ef7ccdc5c6b0576852fa3ebefc47076431e68cae"
+  },
+  "rawOriginalFields": {
+    "selectedText": "26-10-25T03:57:01.626611230Z   { \"message\" : \"row 0001 fields α🙂\\ntext\", \"level\":\"info\", \"fields\":\"fields\", \"extra\":1, \"nested\":{\"fields\":\"value fields\"}, \"unicode\":\"漢字\" }  \n2026-10-25T03:57:01.626622760Z {\"message\":\"row 0002 fields single badge\",\"level\":\"info\",\"fields\":\"fields\"",
+    "clipboardExact": true,
+    "actualBytes": 287,
+    "actualSha256": "13c3d1115d1b5653ea5e35e5d039daeabdb03860a3845ec8020bd414e282caf6"
+  },
+  "error": "Error: Original-copy record click failed",
+  "events": [
+    {
+      "type": "pointerdown",
+      "trusted": true,
+      "detail": 0,
+      "button": 0,
+      "buttons": 1,
+      "row": null
+    },
+    {
+      "type": "pointerup",
+      "trusted": true,
+      "detail": 0,
+      "button": 0,
+      "buttons": 0,
+      "row": null
+    },
+    {
+      "type": "click",
+      "trusted": true,
+      "detail": 1,
+      "button": 0,
+      "buttons": 0,
+      "row": null
+    },
+    {
+      "type": "pointerdown",
+      "trusted": true,
+      "detail": 0,
+      "button": 0,
+      "buttons": 1,
+      "row": "6"
+    },
+    {
+      "type": "pointerup",
+      "trusted": true,
+      "detail": 0,
+      "button": 0,
+      "buttons": 0,
+      "row": "6"
+    },
+    {
+      "type": "click",
+      "trusted": true,
+      "detail": 1,
+      "button": 0,
+      "buttons": 0,
+      "row": "6"
+    },
+    {
+      "type": "keydown",
+      "trusted": true,
+      "detail": 0,
+      "key": "Control",
+      "row": "6"
+    },
+    {
+      "type": "keydown",
+      "trusted": true,
+      "detail": 0,
+      "key": "c",
+      "row": "6"
+    },
+    {
+      "type": "copy",
+      "trusted": true,
+      "row": "6"
+    },
+    {
+      "type": "pointerdown",
+      "trusted": true,
+      "detail": 0,
+      "button": 0,
+      "buttons": 1,
+      "row": null
+    },
+    {
+      "type": "pointerup",
+      "trusted": true,
+      "detail": 0,
+      "button": 0,
+      "buttons": 0,
+      "row": null
+    },
+    {
+      "type": "click",
+      "trusted": true,
+      "detail": 1,
+      "button": 0,
+      "buttons": 0,
+      "row": null
+    },
+    {
+      "type": "pointerdown",
+      "trusted": true,
+      "detail": 0,
+      "button": 0,
+      "buttons": 1,
+      "row": "6"
+    },
+    {
+      "type": "pointerup",
+      "trusted": true,
+      "detail": 0,
+      "button": 0,
+      "buttons": 0,
+      "row": "8"
+    },
+    {
+      "type": "click",
+      "trusted": true,
+      "detail": 1,
+      "button": 0,
+      "buttons": 0,
+      "row": null
+    },
+    {
+      "type": "keydown",
+      "trusted": true,
+      "detail": 0,
+      "key": "Control",
+      "row": "6"
+    },
+    {
+      "type": "keydown",
+      "trusted": true,
+      "detail": 0,
+      "key": "c",
+      "row": "6"
+    },
+    {
+      "type": "copy",
+      "trusted": true,
+      "row": "6"
+    },
+    {
+      "type": "click",
+      "trusted": false,
+      "detail": 0,
+      "button": 0,
+      "buttons": 0,
+      "row": "14"
+    },
+    {
+      "type": "pointerdown",
+      "trusted": true,
+      "detail": 0,
+      "button": 0,
+      "buttons": 1,
+      "row": null
+    },
+    {
+      "type": "pointerup",
+      "trusted": true,
+      "detail": 0,
+      "button": 0,
+      "buttons": 0,
+      "row": null
+    },
+    {
+      "type": "click",
+      "trusted": true,
+      "detail": 1,
+      "button": 0,
+      "buttons": 0,
+      "row": null
+    },
+    {
+      "type": "pointerdown",
+      "trusted": true,
+      "detail": 0,
+      "button": 0,
+      "buttons": 1,
+      "row": "6"
+    },
+    {
+      "type": "pointerup",
+      "trusted": true,
+      "detail": 0,
+      "button": 0,
+      "buttons": 0,
+      "row": "6"
+    },
+    {
+      "type": "click",
+      "trusted": true,
+      "detail": 1,
+      "button": 0,
+      "buttons": 0,
+      "row": "6"
+    },
+    {
+      "type": "keydown",
+      "trusted": true,
+      "detail": 0,
+      "key": "Control",
+      "row": "6"
+    },
+    {
+      "type": "keydown",
+      "trusted": true,
+      "detail": 0,
+      "key": "c",
+      "row": "6"
+    },
+    {
+      "type": "copy",
+      "trusted": true,
+      "row": "6"
+    },
+    {
+      "type": "pointerdown",
+      "trusted": true,
+      "detail": 0,
+      "button": 0,
+      "buttons": 1,
+      "row": null
+    },
+    {
+      "type": "pointerup",
+      "trusted": true,
+      "detail": 0,
+      "button": 0,
+      "buttons": 0,
+      "row": null
+    },
+    {
+      "type": "click",
+      "trusted": true,
+      "detail": 1,
+      "button": 0,
+      "buttons": 0,
+      "row": null
+    },
+    {
+      "type": "pointerdown",
+      "trusted": true,
+      "detail": 0,
+      "button": 0,
+      "buttons": 1,
+      "row": "6"
+    },
+    {
+      "type": "pointerup",
+      "trusted": true,
+      "detail": 0,
+      "button": 0,
+      "buttons": 0,
+      "row": "8"
+    },
+    {
+      "type": "click",
+      "trusted": true,
+      "detail": 1,
+      "button": 0,
+      "buttons": 0,
+      "row": null
+    },
+    {
+      "type": "keydown",
+      "trusted": true,
+      "detail": 0,
+      "key": "Control",
+      "row": "6"
+    },
+    {
+      "type": "keydown",
+      "trusted": true,
+      "detail": 0,
+      "key": "c",
+      "row": "6"
+    },
+    {
+      "type": "copy",
+      "trusted": true,
+      "row": "6"
+    },
+    {
+      "type": "click",
+      "trusted": false,
+      "detail": 0,
+      "button": 0,
+      "buttons": 0,
+      "row": "14"
+    },
+    {
+      "type": "pointerdown",
+      "trusted": true,
+      "detail": 0,
+      "button": 0,
+      "buttons": 1,
+      "row": "6"
+    },
+    {
+      "type": "pointerup",
+      "trusted": true,
+      "detail": 0,
+      "button": 0,
+      "buttons": 0,
+      "row": "6"
+    },
+    {
+      "type": "click",
+      "trusted": true,
+      "detail": 1,
+      "button": 0,
+      "buttons": 0,
+      "row": "6"
+    },
+    {
+      "type": "click",
+      "trusted": false,
+      "detail": 0,
+      "button": 0,
+      "buttons": 0,
+      "row": "6"
+    },
+    {
+      "type": "keydown",
+      "trusted": true,
+      "detail": 0,
+      "key": "Enter",
+      "row": "7"
+    },
+    {
+      "type": "click",
+      "trusted": false,
+      "detail": 0,
+      "button": 0,
+      "buttons": 0,
+      "row": "7"
+    },
+    {
+      "type": "keydown",
+      "trusted": true,
+      "detail": 0,
+      "key": " ",
+      "row": "8"
+    },
+    {
+      "type": "click",
+      "trusted": false,
+      "detail": 0,
+      "button": 0,
+      "buttons": 0,
+      "row": "8"
+    },
+    {
+      "type": "pointerdown",
+      "trusted": true,
+      "detail": 0,
+      "button": 0,
+      "buttons": 1,
+      "row": "6"
+    },
+    {
+      "type": "pointerup",
+      "trusted": true,
+      "detail": 0,
+      "button": 0,
+      "buttons": 0,
+      "row": "6"
+    },
+    {
+      "type": "click",
+      "trusted": true,
+      "detail": 1,
+      "button": 0,
+      "buttons": 0,
+      "row": "6"
+    },
+    {
+      "type": "pointerdown",
+      "trusted": true,
+      "detail": 0,
+      "button": 0,
+      "buttons": 1,
+      "row": "6"
+    },
+    {
+      "type": "pointerup",
+      "trusted": true,
+      "detail": 0,
+      "button": 0,
+      "buttons": 0,
+      "row": "6"
+    },
+    {
+      "type": "click",
+      "trusted": true,
+      "detail": 2,
+      "button": 0,
+      "buttons": 0,
+      "row": "6"
+    },
+    {
+      "type": "dblclick",
+      "trusted": true,
+      "detail": 2,
+      "button": 0,
+      "buttons": 0,
+      "row": "6"
+    },
+    {
+      "type": "keydown",
+      "trusted": true,
+      "detail": 0,
+      "key": "Control",
+      "row": "6"
+    },
+    {
+      "type": "keydown",
+      "trusted": true,
+      "detail": 0,
+      "key": "c",
+      "row": "6"
+    },
+    {
+      "type": "copy",
+      "trusted": true,
+      "row": "6"
+    },
+    {
+      "type": "click",
+      "trusted": false,
+      "detail": 0,
+      "button": 0,
+      "buttons": 0,
+      "row": "6"
+    },
+    {
+      "type": "pointerdown",
+      "trusted": true,
+      "detail": 0,
+      "button": 0,
+      "buttons": 1,
+      "row": "6"
+    },
+    {
+      "type": "pointerup",
+      "trusted": true,
+      "detail": 0,
+      "button": 0,
+      "buttons": 0,
+      "row": "6"
+    },
+    {
+      "type": "click",
+      "trusted": true,
+      "detail": 1,
+      "button": 0,
+      "buttons": 0,
+      "row": "6"
+    },
+    {
+      "type": "pointerdown",
+      "trusted": true,
+      "detail": 0,
+      "button": 0,
+      "buttons": 1,
+      "row": "6"
+    },
+    {
+      "type": "pointerup",
+      "trusted": true,
+      "detail": 0,
+      "button": 0,
+      "buttons": 0,
+      "row": "6"
+    },
+    {
+      "type": "click",
+      "trusted": true,
+      "detail": 2,
+      "button": 0,
+      "buttons": 0,
+      "row": "6"
+    },
+    {
+      "type": "dblclick",
+      "trusted": true,
+      "detail": 2,
+      "button": 0,
+      "buttons": 0,
+      "row": "6"
+    },
+    {
+      "type": "pointerdown",
+      "trusted": true,
+      "detail": 0,
+      "button": 0,
+      "buttons": 1,
+      "row": "6"
+    },
+    {
+      "type": "pointerup",
+      "trusted": true,
+      "detail": 0,
+      "button": 0,
+      "buttons": 0,
+      "row": "6"
+    },
+    {
+      "type": "click",
+      "trusted": true,
+      "detail": 3,
+      "button": 0,
+      "buttons": 0,
+      "row": "6"
+    },
+    {
+      "type": "keydown",
+      "trusted": true,
+      "detail": 0,
+      "key": "Control",
+      "row": "6"
+    },
+    {
+      "type": "keydown",
+      "trusted": true,
+      "detail": 0,
+      "key": "c",
+      "row": "6"
+    },
+    {
+      "type": "copy",
+      "trusted": true,
+      "row": "6"
+    },
+    {
+      "type": "click",
+      "trusted": false,
+      "detail": 0,
+      "button": 0,
+      "buttons": 0,
+      "row": "6"
+    },
+    {
+      "type": "pointerdown",
+      "trusted": true,
+      "detail": 0,
+      "button": 0,
+      "buttons": 1,
+      "row": null
+    },
+    {
+      "type": "pointerup",
+      "trusted": true,
+      "detail": 0,
+      "button": 0,
+      "buttons": 0,
+      "row": null
+    },
+    {
+      "type": "click",
+      "trusted": true,
+      "detail": 1,
+      "button": 0,
+      "buttons": 0,
+      "row": null
+    },
+    {
+      "type": "pointerdown",
+      "trusted": true,
+      "detail": 0,
+      "button": 0,
+      "buttons": 1,
+      "row": "0"
+    },
+    {
+      "type": "pointerup",
+      "trusted": true,
+      "detail": 0,
+      "button": 0,
+      "buttons": 0,
+      "row": "1"
+    },
+    {
+      "type": "click",
+      "trusted": true,
+      "detail": 1,
+      "button": 0,
+      "buttons": 0,
+      "row": null
+    },
+    {
+      "type": "keydown",
+      "trusted": true,
+      "detail": 0,
+      "key": "Control",
+      "row": "0"
+    },
+    {
+      "type": "keydown",
+      "trusted": true,
+      "detail": 0,
+      "key": "c",
+      "row": "0"
+    },
+    {
+      "type": "copy",
+      "trusted": true,
+      "row": "0"
+    },
+    {
+      "type": "pointerdown",
+      "trusted": true,
+      "detail": 0,
+      "button": 0,
+      "buttons": 1,
+      "row": "0"
+    },
+    {
+      "type": "pointerup",
+      "trusted": true,
+      "detail": 0,
+      "button": 0,
+      "buttons": 0,
+      "row": "0"
+    },
+    {
+      "type": "click",
+      "trusted": true,
+      "detail": 1,
+      "button": 0,
+      "buttons": 0,
+      "row": "0"
+    }
+  ],
+  "clipboardRestored": {
+    "formats": true,
+    "buffers": true,
+    "pixels": true
+  }
+}

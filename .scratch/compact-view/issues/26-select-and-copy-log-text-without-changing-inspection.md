@@ -1,6 +1,6 @@
 # 26: Select and copy log text without changing inspection
 
-**Status:** ready-for-agent
+**Status:** blocked
 
 **Blocked by:** None (can start immediately).
 
@@ -16,13 +16,13 @@ Let users select and copy log text naturally while retaining immediate click-to-
 
 ## Acceptance criteria
 
-- [ ] Real pointer drags selecting text within one record and across multiple records preserve the selection without opening inspection or changing an already inspected record. Cover Readable and Raw with both closed and open inspection.
-- [ ] A normal click inspects immediately, and Enter/Space row activation remains available. Keep the explicitly accepted multi-click tradeoff: the first click of a double/triple-click may inspect before word/line selection exists. Do not add a single-click delay or require a separate Inspect control.
+- [x] Real pointer drags selecting text within one record and across multiple records preserve the selection without opening inspection or changing an already inspected record. Cover Readable and Raw with both closed and open inspection.
+- [x] A normal click inspects immediately, and Enter/Space row activation remains available. Keep the explicitly accepted multi-click tradeoff: the first click of a double/triple-click may inspect before word/line selection exists. Do not add a single-click delay or require a separate Inspect control.
 - [x] Exclude the entire additional-field count badge, such as 4 fields, including its number and label, from selected/copied row text. The singular badge follows the same rule.
 - [x] Actual application content, JSON keys and values named fields remain selectable and copyable. Do not remove or rewrite original data to suppress interface metadata.
 - [x] Keep Application text and Transport line copy actions byte-for-byte faithful to their existing original-content contract. Ordinary text selection, copy/paste and keyboard focus remain usable.
 - [x] Inspection and selection do not silently pause automatic requests. Selected records continue to follow the existing retained-window identity and removal rules.
-- [ ] Verify with real pointer drag/click and double/triple-click gestures, keyboard row activation, selected text and actual clipboard results. Exercise open Inline/Side/Bottom inspection where relevant, including retaining a different inspected record during a drag. Synthetic selection state alone is insufficient evidence of the gesture behavior.
+- [x] Verify with real pointer drag/click and double/triple-click gestures, keyboard row activation, selected text and actual clipboard results. Exercise open Inline/Side/Bottom inspection where relevant, including retaining a different inspected record during a drag. Synthetic selection state alone is insufficient evidence of the gesture behavior.
 
 ## Specification and evidence
 
@@ -39,20 +39,25 @@ was assigned to `@me` before implementation and remains open. Only this ticket
 was implemented on `implementation/compact-view`. Full accepted resolutions
 #21/#22/#23/#24 and the linked first-release contract were read.
 
-Production implementation: **freelens-readable-logs 0.1.23**, actual **Freelens
+Production implementation: **freelens-readable-logs 0.1.24**, actual **Freelens
 1.10.3**, Electron **41.10.0**, Arch Linux / Hyprland / Wayland. Tarball SHA-256:
-`64fc858b0799ca2f3a49f6826f297bdb06b13e30e4391b977bf16c639f230f5e`.
+`ad17fff73f29f1b5247887fb5f31785bd97ab2af2ec758881be272ebbe770fdd`.
 Installed manifest, versioned CommonJS bundles and packaged guide match the build.
 
-**Blocked, not done.** Original criteria 1, 2 and 7 remain unchecked pending
-physical mouse evidence. Current native computer APIs are disabled; CDP and
-available virtual input do not prove physical-device behavior. No physical
-operator/external gesture evidence is available. Linux physical input and
-Windows/macOS remain unverified.
+**All seven original criteria are satisfied.** The earlier physical-hardware-only
+interpretation added a gate absent from #26 and is withdrawn following supervisor
+clarification. Final evidence uses Playwright 1.64.1 trusted Chromium pointer and
+keyboard input in the installed package to create actual selection and compare
+the actual Electron clipboard. Synthetic selection state alone is not counted.
+No physical hardware provenance is claimed. #28's explicit physical mouse Back
+gate remains required, unimplemented and unverified. Windows/macOS are unavailable
+and unverified. The runner owns the Status field above.
 
-[Complete report and supervisor handoff](../../../docs/verification/26/README.md)
+[Complete report and original-criterion evidence map](../../../docs/verification/26/README.md)
 maps every original criterion, exact commands, package identity, passing checks,
-preliminary failures and cleanup.
+retained failures and cleanup. Initial implementation commit:
+`53e75265bf0bb659e9b2b82264bdcc3560c26934`; the continuation commit records this
+completed checklist, the production correction and all final evidence together.
 
 - Node 24.18.0/npm 11.16.0 locked install, strict TypeScript, all 100 tests, actual
   tarball/CommonJS inspection and byte-identical rebuild pass. Mechanical UI scan
@@ -60,30 +65,39 @@ preliminary failures and cleanup.
 - Production row handlers preserve selection/inspection on drags while keeping
   immediate first-click and Enter/Space activation. Entire count badges are
   generated unselectable metadata; original application/JSON data is unchanged.
-- Recorded **supplementary synthetic packaged-host** stages pass 24 Readable/Raw
-  within/across-row drags across closed/open Inline/Side/Bottom, 12 singular/plural
-  badge clipboard cases, six first clicks and 12 multi-click cases. These are
-  passing stages of a later-failed exploratory driver, not an overall passing
-  gesture run or physical acceptance. Its failures and one later driver abort
-  are retained explicitly.
-- Independent bounded packaged checks pass all 12 exact original-copy comparisons
-  immediately and after 100 ms, including blank/whitespace/Unicode/escapes, and
-  native Chromium copy/paste, Tab/Shift+Tab and row Enter/Space.
-- Genuine automatic log requests continue with selection/inspection present.
-  A real stdout append evicts the selected record, clears inspection and keeps
-  the paused retained window bounded to 1,000 records.
+  A real 0.1.23 packaged regression exposed a suppressed normal click inside an
+  existing selection. 0.1.24 snapshots the pre-gesture selection position so that
+  unchanged old ranges allow immediate clicks while new selection/drag suppresses
+  inspection. The same packaged regression passes on 0.1.24; no delay is added.
+- All six complete final gesture cases pass: **24** Readable/Raw within/across-row
+  drags with closed/open Inline/Side/Bottom inspection, including retaining a
+  different inspected record; **12** singular/plural badge clipboard cases;
+  **six** immediate first clicks; **12** Enter/Space activations; **12**
+  double/triple-click word/line selections. Actual application content/JSON
+  keys/values named `fields` remain selected and copied.
+- **72** original-copy actions pass byte-for-byte comparisons both immediately
+  and after 100 ms, with a different clipboard sentinel before every copy.
+  Covers both original actions, blank/whitespace/indentation, Unicode, escapes
+  and Kubernetes timestamp precision. Ordinary Find copy/paste and Tab/Shift+Tab
+  pass. Every final case restores clipboard formats, buffers and image pixels.
+- Genuine automatic HTTP 200 log requests continue with actual drag selection
+  and another record inspected; selection and the exact inspected original
+  survive. A real stdout append evicts the record, clears inspection and keeps
+  the paused retained window bounded to 1,000 records/114,000 original bytes.
 - Fresh-main Extensions-first uninstall/wait/single-install activation passes
-  under main PID 306167 with no discovery failure or post-install restart.
+  under main PID 383756, using process-local polling and same-filesystem TMPDIR,
+  with no discovery failure or post-install restart.
+- Historical custom CDP/uinput failures remain recorded. The supervisor's stale
+  drag hypothesis was tested with `Input.cancelDragging` plus explicit releases;
+  that native case still failed, so its cause is not established. The historical
+  18-byte empty-copy mismatch was not reproduced by focused trials or the final
+  full trusted-input sequence; retained selection alone was not an established
+  cause. No speculative copy/CSS fix was made and no failures were relabeled.
 - Original complete application configuration, clipboard content/formats, native
   dock tabs and shared fixture identities/restarts are preserved/restored; only
   the owned namespace was deleted. Test transports/listeners are removed.
+  The owned temporary virtual input device is absent.
   Freelens remains running on workspace 7 with actual prior desktop/focus restored.
-
-Remaining gate: a physical mouse operator must record the specified drags and
-plain/double/triple clicks in this exact package, verify inspection/selection and
-actual clipboard behavior across both modes/layouts, and record input provenance
-and desktop/clipboard restoration. The report gives the isolated fixture/probe
-setup and cleanup. Do not substitute more synthetic input for this gate.
 
 No GitHub comments/closures, messages, pushes, merges, releases or global
 agent/model settings changes were performed.

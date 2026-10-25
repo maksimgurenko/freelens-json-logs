@@ -1,0 +1,33 @@
+{
+  "host": "Freelens 1.10.3",
+  "version": "0.1.24",
+  "input": "Playwright trusted mouse/keyboard; actual selection and real owned log requests",
+  "selection": "w 0007 fields selection test text\n10/24/2026, 22:57:01\nINFO\nrow 0008 fields selection test text\n10/24/2026, 22:57:01\nINFO\nrow 0009 fields selection test ",
+  "automatic": {
+    "paused": false,
+    "additionalLogRequests": 1,
+    "selected": "14",
+    "originalRetained": true,
+    "requests": [
+      {
+        "originalPath": "https://127.0.0.1:34685/api-kube/api/v1/namespaces/readable-logs-ticket-26/pods/selection-copy/log?container=selection&tailLines=1000&timestamps=true&follow=false&previous=false",
+        "transmittedPath": "/api-kube/api/v1/namespaces/readable-logs-ticket-26/pods/selection-copy/log?container=selection&tailLines=1000&timestamps=true&follow=false&previous=false",
+        "started": 143155.30000000075,
+        "denied": false,
+        "offline": false,
+        "status": 200,
+        "responseCompleted": 143166.40000000037,
+        "bytes": 188284,
+        "sha256": "930d5800f5c1906c910ca9dec1a2838636bab367154da715f7edb7be697ef21d"
+      }
+    ]
+  },
+  "copyAfterRefresh": true,
+  "pausedExplicitly": true,
+  "passed": true,
+  "clipboardRestored": {
+    "formats": true,
+    "buffers": true,
+    "pixels": true
+  }
+}

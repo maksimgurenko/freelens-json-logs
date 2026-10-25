@@ -1,5 +1,7 @@
-// Actual packaged renderer / native Electron clipboard. Trusted Chromium input
-// dispatch is explicitly NOT physical mouse/OS evidence for ticket 26.
+// Earlier diagnostic driver against the packaged renderer / Electron clipboard.
+// Its failed runs remain evidence; continuation/gesture-case.mjs supersedes it
+// for ticket 26 acceptance. No physical hardware provenance is claimed or needed
+// by ticket 26; ticket 28 separately requires physical mouse Back evidence.
 import {writeFileSync} from 'node:fs';
 const ev='docs/verification/26/';
 const targets=await(await fetch('http://127.0.0.1:9235/json/list')).json(),target=targets.find(t=>t.type==='page');

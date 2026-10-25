@@ -1,57 +1,68 @@
-# Ticket 26 — text selection and inspection
+# Ticket 26 — selection, immediate inspection and exact copying
 
-Implementation is committed for **GitHub #26**, the lowest eligible local ticket,
-on `implementation/compact-view`. It was [assigned to @me](assignment.json)
-before implementation. **The ticket is blocked, not done:** physical mouse
-drag/click/double/triple-click evidence is unavailable in this session. Original
-criteria 1, 2 and 7 remain unchecked. Windows and macOS are unverified.
+All seven original criteria are satisfied on installed **freelens-readable-logs
+0.1.24** in **Freelens 1.10.3**, Arch Linux / Hyprland / Wayland, 2026-10-25 UTC.
+Only #26 was implemented on `implementation/compact-view`; it was the lowest
+eligible ticket and was [assigned to @me](assignment.json) before implementation.
+GitHub remains open.
 
-Read the original issue and the full accepted resolutions for
+The earlier blocked report added a physical hardware operator requirement that
+#26 does not state. That interpretation is withdrawn following the supervisor's
+clarification. #26 requires actual pointer gestures creating selection in the
+installed package; synthetic selection state alone is insufficient. The final
+checks use **Playwright 1.64.1 trusted Chromium mouse/keyboard input**, the real
+Electron selection engine and actual clipboard. No browser fixture or prebuilt
+selection substitutes for gestures. Geometry ranges and state preparation are
+not counted as gesture evidence. No physical hardware provenance is claimed.
+**#28's separately explicit physical mouse Back gate remains intact, unimplemented
+and unverified.** Windows and macOS are unavailable and unverified.
+
+## Contracts and production change
+
+Read `AGENTS.md`, tracker/domain guidance, `GLOSSARY.md`, the packaged development
+guide, verification reports 14/19/25 and the earlier #26 evidence. Read the original
+issue and full resolutions for
 [layout #21](https://github.com/maksimgurenko/freelens-json-logs/issues/21#issuecomment-6392444104),
 [selection/navigation #22](https://github.com/maksimgurenko/freelens-json-logs/issues/22#issuecomment-6392713015),
-[host constraints #23](https://github.com/maksimgurenko/freelens-json-logs/issues/23#issuecomment-6391059755),
+[input constraints #23](https://github.com/maksimgurenko/freelens-json-logs/issues/23#issuecomment-6391059755),
 [final contract #24](https://github.com/maksimgurenko/freelens-json-logs/issues/24#issuecomment-6392766804)
-and the linked first-release #8 contract. Read `AGENTS.md`, tracker/domain guidance,
-`GLOSSARY.md`, `docs/local-development.md` and verification reports 14, 19 and 25
-before editing or host checks. The disposable B prototype at `a293e92` was read
-for its gesture policy; no prototype/research code was merged wholesale.
+and the linked first-release #8 contract. The disposable B prototype at `a293e92`
+was compared for gesture policy; no prototype/research branch was merged wholesale.
 
-## Production changes
+The initial implementation is commit `53e75265bf0bb659e9b2b82264bdcc3560c26934`.
+Rows track pointer movement without changing inspection during a drag. The whole
+count badge is generated, unselectable interface metadata; application/inline/Raw
+text, original records and original-copy payloads remain intact. First clicks are
+immediate, multi-click selection retains the first inspected record, and Enter/Space
+remain explicit activation. Production adds no global listener, delay or extra
+Inspect control.
 
-`Viewer` tracks a primary pointer gesture inside the records region. Pointer
-clicks after movement, or intersecting an existing noncollapsed text selection,
-leave inspection alone. Additional clicks in a multi-click sequence do not
-inspect again. A plain first click remains immediate, without a timer or another
-Inspect control. Enter/Space and assistive/programmatic activation keep their
-existing explicit action. The first click of a double/triple-click may inspect,
-as accepted. These handlers neither prevent native text selection/copy nor call
-Pause; no document/global listeners are installed by this production change.
+Continuation found a real edge case: the old guard suppressed a plain click inside
+an existing selection. The minimal packaged
+[0.1.23 regression](continuation/early-0.1.23/selection-click-0.1.23.json) goes red:
+a gesture-created multi-row selection exists, but a normal click does not inspect.
+0.1.24 captures selection anchor/focus positions at pointer-down. An unchanged old
+range allows ordinary inspection; a new range or pointer drag still suppresses it.
+The same [0.1.24 regression passes](continuation/selection-click-0.1.24.json).
+This exercises the actual user boundary instead of a mocked selection seam.
 
-The whole additional-field count is CSS-generated interface metadata on an empty,
-unselectable span. Its number and singular/plural label therefore stay out of
-native selected text and clipboard row selections. An accessibility label retains
-the count's meaning. Actual message/inline/Raw text and complete original records
-are unchanged, including keys and values named `fields`. The existing original
-clipboard adapter, selected-record identity, retained-window logic and schema are
-unchanged.
+Parsing, formatting, original-copy adapter, retained-window identity/removal,
+requests/lifecycle, profile selection and configuration schema are unchanged.
 
-## Package and automated checks
+## Exact package and automated checks
 
-**freelens-readable-logs 0.1.23**, actual **Freelens 1.10.3**, Electron **41.10.0** /
-Chromium **146.0.7680.216**, Arch Linux / Hyprland / Wayland, 2026-10-25 UTC.
-Final tarball: `dist/freelens-readable-logs-0.1.23.tgz`.
+Tarball: `dist/freelens-readable-logs-0.1.24.tgz`.
+SHA-256: `ad17fff73f29f1b5247887fb5f31785bd97ab2af2ec758881be272ebbe770fdd`.
 
-SHA-256: `64fc858b0799ca2f3a49f6826f297bdb06b13e30e4391b977bf16c639f230f5e`.
+[Installed identity](continuation/installed-identity.json) matches manifest, both
+bundles and packaged guide byte-for-byte. Entries are `out/main-0.1.24.js` and
+`out/renderer-0.1.24.js`. Package/store `freelens-readable-logs`, config/page
+`readable-logs`, schema 3, SDK/core 1.10.3 and host-external dependencies remain
+stable. Only root package version fields change in the lockfile.
+[Source hashes](continuation/source-identity.json) identify final build inputs;
+the completion report names their commit.
 
-[Installed identity](installed-identity.json) matches the manifest, both bundles
-and packaged guide byte-for-byte with the build. Entry paths are
-`out/main-0.1.23.js` and `out/renderer-0.1.23.js`; package/store
-`freelens-readable-logs`, config/page `readable-logs`, schema 3 and SDK/core 1.10.3
-are retained. The lockfile changes only its root version fields.
-[Source hashes](source-identity.json) identify the build inputs above base commit
-`a20af1d`; the implementation/evidence commit is recorded in the Ralph report.
-
-Exact commands, from this checkout:
+Exact commands from this checkout:
 
 ```sh
 export PATH="$PWD/.scratch/readable-logs/toolchain/node_modules/node/bin:$PATH"
@@ -62,137 +73,124 @@ node .scratch/readable-logs/toolchain/node_modules/npm/bin/npm-cli.js run typech
 node .scratch/readable-logs/toolchain/node_modules/npm/bin/npm-cli.js test
 node .scratch/readable-logs/toolchain/node_modules/npm/bin/npm-cli.js run package
 node .scratch/readable-logs/toolchain/node_modules/npm/bin/npm-cli.js run check:package
-sha256sum dist/freelens-readable-logs-0.1.23.tgz
+sha256sum dist/freelens-readable-logs-0.1.24.tgz
 node .scratch/readable-logs/toolchain/node_modules/npm/bin/npm-cli.js run package
-sha256sum --check docs/verification/26/package.sha256
+sha256sum --check docs/verification/26/continuation/package.sha256
 ```
 
-[Node 24.18.0/npm 11.16.0](toolchain.txt), [locked install](locked-install.txt),
-[strict TypeScript](typecheck.txt), [100 tests, no failures/skips](tests.txt),
-[package creation](package.txt), [actual tarball/CommonJS inspection](package-check.txt)
-and [identical rebuild](reproducible.txt) pass.
-[Mechanical UI scan](design-detector.json) has no findings. Existing core tests
-cover original-byte payloads, retained-record identity, request/lifecycle and
-configuration contracts. No new mocked selection test is offered as gesture
-evidence. This is not a repeat of the full #19 release/performance matrix.
+[Node 24.18.0/npm 11.16.0](continuation/toolchain.txt),
+[locked install](continuation/locked-install.txt),
+[strict TypeScript](continuation/typecheck.txt),
+[100 tests without failures/skips](continuation/tests.txt),
+[packaging](continuation/package.txt), [CommonJS/tarball inspection](continuation/package-check.txt),
+[identical rebuild](continuation/reproducible.txt) and
+[design scan](continuation/design-detector.json) pass. Existing deterministic tests
+cover the preserved first-release data/request/configuration contracts. The full
+#19 release/performance matrix is not repeated by this ticket.
 
-## Actual packaged-host observations
+## All original criteria and final evidence
 
-These observations exercise the installed package and real Electron clipboard.
-**Trusted Chromium CDP input is still synthetic delivery. It does not establish
-physical mouse or OS input behavior.** No browser fixture is substituted for the
-packaged host, and none of these observations closes that physical gate.
+[Matrix summary](continuation/matrix-summary.json) derives from six independently
+passing installed-package cases. Each records trusted input events, actual selected
+text, actual clipboard comparisons and original clipboard restoration.
 
-| Original criterion | Evidence and remaining boundary |
+| Original criterion | Passing evidence |
 | --- | --- |
-| 1: real pointer drags, within/across rows, Readable/Raw, closed/open inspection | **Unchecked.** [Chromium subobservations](chromium-subobservations.json) record 24 passing synthetic drags: two modes × three layouts × closed/open × within/across. A different record (index 14) remains inspected in every open case. Selected text and real clipboard values match. Physical drags remain required. |
-| 2: immediate click, Enter/Space, accepted multi-click tradeoff | **Unchecked pending physical clicks.** The same passing stages record six immediate first-click inspections and 12 double/triple-click selections, preserving the first inspected record. [Separate bounded keyboard probe](focus-copy-paste.json) passes Enter and Space. No activation delay is introduced in source. |
-| 3: entire singular/plural badge excluded | **Checked.** Twelve passing badge-selection/copy cases cover `4 fields` and `1 field` across Inline/Side/Bottom with closed/open inspection. Real `clipboard.readText()` equals selected text and contains neither badge. Metadata has no selectable DOM text. See `badgeCopies` in [subobservations](chromium-subobservations.json). Physical repetition remains within criterion 7. |
-| 4: actual application/JSON content named fields preserved | **Checked.** Readable drag results still contain application word `fields`; Raw multi-row clipboard contains literal `"fields":"fields"` and nested `"fields":"value fields"`. See `rawOriginalFields` in [subobservations](chromium-subobservations.json). No record/formatting/parser code changed. |
-| 5: exact original actions, selection/copy/paste/focus | **Checked for available packaged checks.** [Isolated copy contract](copy-contract.json) passes 12 exact Application/Transport comparisons, immediately and after 100 ms, including empty/space-only text, indentation, Unicode, JSON escapes and original Kubernetes precision. [Bounded keyboard/copy/paste check](focus-copy-paste.json) passes native Chromium paste/copy in Find, Tab/Shift+Tab and Enter/Space row activation. [Clipboard/focus restoration](focus-copy-paste-restoration.json) passes. Physical gesture coverage remains criterion 7. |
-| 6: no implicit pause; retained-window selection/removal rules | **Checked.** [Automatic observation](automatic-before.json) starts a real automatic view with a DOM text range and another record inspected; [later observation](automatic-after.json) sees another genuine owned log request without Pause and retains the exact inspected transport line. [Real stdout append](emit.json) replaces the window; [expiry](expiry-after.json) retains exactly 1,000 rows/114,000 original bytes, clears the evicted selected record and collapses inspection. Paused Refresh remains paused. Selection was programmatic in this independent request-state check. |
-| 7: physical gestures, clipboard, all applicable layouts and another inspected record | **Unchecked.** Synthetic stages and native clipboard results are supplementary. The physical operator/device gate below is still missing. |
+| 1: drags within/across records, Readable/Raw, closed/open inspection | 24 input-created selections cover both modes, all layouts, closed inspection and a different inspected record (index 14). Every drag retains the expected inspector and text selection. See the six cases below. |
+| 2: immediate click, Enter/Space, accepted multi-click tradeoff | Six first clicks, 12 Enter/Space activations and 12 double/triple-click selections pass. The first multi-click may inspect immediately; subsequent clicks retain that record and word/line selection. [Previously selected text regression](continuation/selection-click-0.1.24.json) passes too. Production has no delay. |
+| 3: entire plural/singular badge excluded | Twelve clipboard cases cover `4 fields` and `1 field`, closed/open inspection and all layouts. Neither badge number nor label appears in copied rows; actual application word `fields` remains. |
+| 4: actual fields keys/values/content preserved | Every Raw case selects/copies original JSON with `"fields":"fields"` and nested `"fields":"value fields"`; Readable selections retain application word `fields`. No data is stripped or rewritten. |
+| 5: exact originals, copy/paste and focus | **72 actual original-copy comparisons**, immediately and after 100 ms, pass through trusted pointer activation of both copy actions. A different clipboard sentinel before every copy catches stale values. Includes empty/space-only text, indentation, Unicode, JSON escapes and original Kubernetes precision. [Ordinary Find copy/paste and Tab/Shift+Tab](continuation/focus-paste.json) pass using a cleared field and a different sentinel before Copy. |
+| 6: no implicit Pause; retained identity/removal | [Automatic check](continuation/automatic.json) creates a real drag selection with another record inspected, sees another genuine HTTP 200 snapshot and retains both the inspected original and copyable selection. Only explicit Pause pauses it. [Real stdout append](continuation/emit.json) then [evicts the record](continuation/expiry-after.json): exactly 1,000 records/114,000 original bytes remain, selection clears and inspection collapses. Paused Refresh stays paused. |
+| 7: real gesture behavior, layouts, keyboard and clipboard | The six full cases below create selections through trusted press/move/release and multi-click input, then compare actual Electron clipboard contents. No synthetic selection state alone counts. Provenance is limited to Linux trusted Chromium delivery. |
 
-## Supported installation and desktop handling
+- [Readable / Inline](continuation/gesture-readable-inline.json)
+- [Readable / Side](continuation/gesture-readable-side.json)
+- [Readable / Bottom](continuation/gesture-readable-bottom.json)
+- [Raw / Inline](continuation/gesture-raw-inline.json)
+- [Raw / Side](continuation/gesture-raw-side.json)
+- [Raw / Bottom](continuation/gesture-raw-bottom.json)
 
-[Normal pre-maintenance Quit](normal-pre-maintenance-quit.json) confirms all old
-host PIDs exited. [Fresh launch](fresh-update-desktop.json) used process-local
-`CHOKIDAR_USEPOLLING=1 CHOKIDAR_INTERVAL=100` and
-`TMPDIR=/home/max/.cache/freelens-readable-logs/tmp` on the extension filesystem.
-The initial window mapped on workspace 1 despite the silent launch request; the
-helper corrected it to workspace 7 before any host interaction and restored the
-actual preceding workspace/focus.
+One bounded case per focus/restore operation:
 
-The fresh main window opened [Extensions](extensions.json) before any cluster,
-then [Uninstall](uninstall.json), [confirmation](confirm-uninstall.json),
-[stable removal with settings retained](removal.json), [one Install](install.json)
-and [Enabled 0.1.23](installed.json). Then the cluster and actual Pod-header action
-opened the viewer. [Fresh fixture header](fresh-header.json) and
-[1,000 usable real records](fresh-setup.json) pass under the same main PID
-**306167**, without a post-install restart. **No discovery failure occurred.**
+```sh
+CV26_PLAYWRIGHT=1 PYTHONDONTWRITEBYTECODE=1 python3 docs/verification/26/desktop.py script continuation/gesture-readable-side docs/verification/26/continuation/gesture-case.mjs Readable side
+```
 
-`run-probe.py <root|770814> <probe-name> [output-label]` records background probes
-and rejects exceptions. `desktop.py` records actual workspace/focus before/after
-focus-dependent checks, uses `finally` restoration and keeps Freelens on 7.
-[Bounded keyboard operation](focus-copy-paste-desktop.json) and
-[final capture](final-restored-view-desktop.json) restore the exact prior focus.
+Verification-only Playwright 1.64.1 was installed with the documented Node/npm into
+`.scratch/compact-view/26/browser-driver` ([log](continuation/driver-install.txt)).
+It is not a production dependency/bundled asset. Replay needs the owned fixture
+and setup first; cleanup removed the namespace.
 
-## Preliminary failures retained
+## Installation and retained failures
 
-- The first owned fixture put too much output in one shell argument and failed
-  with `exec /bin/sh: argument list too long`. [Failure](preliminary-fixture-failure.json),
-  [initial unusable state](initial-state.json). The owned Pod was recreated using
-  generated output; the public Pod cache was refreshed before the header action.
-  The initial `setup.json`/`geometry.json` with zero rows are not usable-view
-  acceptance. The corrected [fixture](fixture.json), [creation](fixture-recreate.txt)
-  and `fresh-setup.json` contain the usable current UID/window. This was a fixture
-  failure, not package discovery, and no host restart was used to recover it.
-- The first exploratory CDP drag driver used `button: none` during pressed moves
-  and selected no text. The second attempt tried to drag within an existing
-  selection, exercising native text dragging instead of a new selection. The
-  third used the center of a multiline span, producing an empty badge selection.
-  Their `first-`, `second-` and `third-preliminary-input-failure.json` remain failures.
-- The fourth and fifth runs passed all 24 drag cases, 12 badge copies, six first
-  clicks and 12 multi-click cases before failing their final exact-copy stage:
-  programmatic `.click()` retained the preceding row selection, unlike a normal
-  pointer button click. [Fourth failure](fourth-preliminary-input-failure.json),
-  [fifth failure](fifth-preliminary-input-failure.json). The independent copy probe
-  explicitly clears that selection and passes immediate/delayed exact comparisons
-  for all six records and both representations. No clipboard adapter change was
-  needed. Non-fixture clipboard content is redacted in failed evidence.
-- A later exploratory run stalled in Chromium drag delivery. [Progress](input-progress.json),
-  [explicit clipboard/listener restoration](abort-input.json) and
-  [driver abort/desktop restoration](input-desktop.json) are retained. Only the
-  owned Node input driver was terminated; Freelens continued running. The
-  exploratory `input.mjs` now bounds each CDP command to three seconds and cancels
-  dragging on failure; that timeout-only hardening was syntax-checked, not rerun.
-  There is **no overall passing `input.json`**, and the subobservations are not
-  relabeled as an overall passing gesture run or physical acceptance.
+0.1.24 used [normal pre-maintenance Quit](continuation/normal-pre-maintenance-quit.json),
+[silent fresh launch](continuation/fresh-update-0.1.24-desktop.json),
+[Extensions before any cluster](continuation/extensions.json),
+[Uninstall](continuation/uninstall.json), [confirmation](continuation/confirm-uninstall.json),
+[stable removal retaining settings](continuation/removal.json),
+[one Install](continuation/install.json), [Enabled 0.1.24](continuation/installed.json),
+[cluster](continuation/open-cluster.json), [current target](continuation/target.json),
+[actual Pod header](continuation/header.json) and
+[1,000 usable real records](continuation/setup.json). Main PID **383756** remains
+running. **No discovery failure or post-install restart occurred.** Launch used
+process-local polling and same-filesystem TMPDIR. Initial mapping on workspace 1
+was corrected to 7 before host interaction, restoring prior workspace/focus.
 
-## Exact blocker and supervisor handoff
+Earlier results remain versioned history, not final-package acceptance:
 
-[Input-capability investigation](input-capabilities.json): native computer APIs
-are disabled on the current tool surface. CDP input is available. `/dev/uinput`
-and `wtype` offer virtual input, which cannot establish physical-device provenance.
-No physical mouse operator or external physical-input evidence is available.
-Linux physical input, Windows and macOS remain **unverified**.
+- The first fixture exceeded the shell argument limit. Only its owned Pod was
+  recreated with generated stdout. Initial zero-row setup is not usable-view
+  acceptance. [Failure](preliminary-fixture-failure.json), [fixture](fixture.json).
+- The manual CDP driver had move-button, selection and multiline-geometry problems.
+  Root `first-` through `fifth-` failure JSONs retain the failed runs and restoration.
+- The old empty-application-copy mismatch remains [recorded and redacted](fifth-preliminary-input-failure.json).
+  Its earlier attribution solely to retained selection was unsupported: focused
+  trials copied empty text correctly even with that selection retained. The final
+  full sequence uses trusted record/button clicks and distinct sentinels; all 72
+  immediate/delayed comparisons pass. The exact historical 18-byte mismatch was
+  not reproduced or assigned a speculative production cause. Copy adapter unchanged.
+- Exploratory custom CDP/uinput selection results were inconsistent. The supervisor's
+  stale-drag hypothesis was tested using the live [Input.cancelDragging contract](continuation/cancel-dragging-contract.json)
+  plus explicit CDP/native left releases. The [negative test](continuation/early-0.1.23/fourth-native-gesture-readable-side.json)
+  did not fix that native case; no cause is claimed. The [CSS hit-testing comparison](continuation/early-0.1.23/badge-repro.json)
+  did not explain it either. These exploratory results are excluded from the
+  passing matrix; production CSS was not changed in response.
+- The real old-selection click regression was fixed in 0.1.24 and rerun green,
+  independently of the historical copy mismatch.
+- The first continuation paste probe never reached Find: a parent-window
+  [owned install notification covered the button](continuation/find-parent-hit.json).
+  Only [this package's notifications](continuation/dismiss-owned-toast.json) were
+  dismissed. The corrected probe asserts a visible/focused input, sends one paste
+  gesture, waits for its effect and passes. Failed attempts remain recorded.
+- An exploratory native pointer restore changed focus under focus-follows-mouse;
+  the actual prior window was immediately restored. The helper now restores final
+  focus after pointer restoration if needed. All final acceptance cases record
+  matching before/after workspace and focused-window identities.
 
-Required remaining gate: an operator must use a **physical mouse** in this
-installed Freelens 1.10.3 package on workspace 7, record within/across-row drags in
-Readable and Raw with closed and open Inline/Side/Bottom inspection, retain a
-different inspected record during drags, and perform plain/double/triple clicks
-plus keyboard activation. Compare actual selected/copied text, both badge forms
-and original `fields` data. Record package identity, input provenance, results,
-clipboard/configuration restoration and immediate actual desktop/focus restoration.
-Check remaining original criteria only after that evidence passes.
-
-Freelens remains running for the supervisor. For an isolated physical recheck,
-recreate only `fixture.json` with the documented kind context, wait for the Pod,
-then use `show-fixture`, `header`, `setup` and `prepare` probes. The helper's
-programmatic preparation is not physical evidence. Preserve the operator's
-clipboard before gestures, then restore it. Afterward use `cleanup`,
-`show-original`, `header` and `final-review`, and delete only namespace
-`readable-logs-ticket-26`. No reinstallation is necessary for this unchanged
-package. Do not use `input.mjs` as the physical acceptance gate.
+Failures are not relabeled as passes. Earlier input-capability notes adding a
+physical-only #26 gate are superseded by this report and supervisor clarification.
+Physical mouse Back evidence remains required for #28.
 
 ## Restored state and scope
 
-[Cleanup](cleanup.json) restores the original complete application configuration:
-Inline inspection, no saved profiles, built-in Default. Only host-owned migration
-version metadata changes from 0.1.22 to 0.1.23. Clipboard formats, non-image buffers
-and original image pixels were restored in every completed/aborted focused probe.
-The [final view](after-focus-final-review.json) is the original shared
-`single-json/json`, paused, Readable, with no selected record, no empty inspector,
-no test transport/store/input helpers and the same three native dock tabs.
-[Final image](final-restored-view.png) was captured after dismissing only this
-ticket's package maintenance notifications. The owned namespace was
-[removed](fixture-cleanup.txt); [shared UIDs/restarts](shared-fixtures-preserved.json)
-are unchanged. Kubeconfig, shared fixtures and unrelated host/user settings were
-not changed.
+[Cleanup](continuation/cleanup.json) restores the complete configuration captured
+at continuation start: Inline inspection, no profiles, built-in Default. Only
+host-owned migration metadata changes to 0.1.24. Every final case restores clipboard
+formats, non-image buffers and original image pixels; no other application's
+clipboard content appears in final evidence.
 
-Only ticket 26, its production changes and local evidence are included in this
-commit, together with the allowed runner-written completed status for #25.
-Existing untracked `.gitignore`, `ralph`, `docs/ralph.md`, other tickets, previous
-scratch data and runtime `.ralph` data are preserved outside the commit. No GitHub
-comments/closures, messages, pushes, merges, releases or global agent/model changes
-were made.
+[Final view](continuation/final-review.json) is shared `single-json/json`, paused
+and Readable, no selected record/empty inspector, same three dock tabs and no test
+transport/store helper. [Capture](continuation/restored-shared-view.png) and
+[desktop restoration](continuation/restored-shared-view-desktop.json) leave Freelens
+on workspace 7 and restore the actual preceding workspace/focused window.
+The owned namespace is [removed](continuation/fixture-cleanup.txt),
+[shared UIDs/restarts](continuation/shared-preserved.json) are unchanged, and the
+[owned virtual input device is absent](continuation/native-device-cleanup.json).
+Kubeconfig, shared fixtures and unrelated settings are preserved.
+
+Only #26 changes/evidence are committed. Untracked `.gitignore`, `ralph`,
+`docs/ralph.md`, other tickets, prior scratch and runtime `.ralph` data remain
+outside the commit. No comments, issue closures, messages, pushes, merges, releases
+or global agent/model setting changes were made.

@@ -1,0 +1,61 @@
+{
+  "host": "Freelens 1.10.3",
+  "version": "0.1.23",
+  "mode": "Readable",
+  "layout": "side",
+  "input": "Trusted Chromium CDP Input in owning packaged cluster iframe; real selection engine and Electron clipboard; no physical hardware provenance claim",
+  "drags": [],
+  "badges": [],
+  "activation": [],
+  "originals": [],
+  "lastSelection": {
+    "selectedText": "",
+    "clipboardExact": false,
+    "actualBytes": 18,
+    "actualSha256": "674021d63a03d49d4c79f94d9a2b692a9be0c7cb865c46afcfa3b47270a09c81"
+  },
+  "error": "Error: Selected text/actual clipboard differ",
+  "events": [
+    {
+      "type": "pointerdown",
+      "trusted": true,
+      "detail": 0,
+      "button": 0,
+      "buttons": 1,
+      "row": "6"
+    },
+    {
+      "type": "pointerup",
+      "trusted": true,
+      "detail": 0,
+      "button": 0,
+      "buttons": 0,
+      "row": "6"
+    },
+    {
+      "type": "click",
+      "trusted": true,
+      "detail": 1,
+      "button": 0,
+      "buttons": 0,
+      "row": "6"
+    },
+    {
+      "type": "keydown",
+      "trusted": true,
+      "detail": 0,
+      "key": "c",
+      "row": "6"
+    },
+    {
+      "type": "copy",
+      "trusted": true,
+      "row": "6"
+    }
+  ],
+  "clipboardRestored": {
+    "formats": true,
+    "buffers": true,
+    "pixels": true
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "at": "2026-10-25T18:22:04.848Z",
+  "result": {
+    "type": "object",
+    "value": {
+      "point": {
+        "x": 2227.18,
+        "y": 62.12
+      },
+      "hitTag": "DIV",
+      "hitClass": "Animate opacity notification flex info enter",
+      "parentNotification": true,
+      "ownedPackageNotification": true
+    }
+  }
+}

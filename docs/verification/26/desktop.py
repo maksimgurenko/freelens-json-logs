@@ -10,6 +10,7 @@ def restore(focus,workspace):
 def main():
  action,label,*args=sys.argv[1:];workspace=read('hyprctl','activeworkspace','-j')['id'];focus=read('hyprctl','activewindow','-j').get('address')
  facts={'action':action,'workspaceBefore':workspace,'focusBefore':focus}
+ if action=='script':facts['cursorBefore']=read('hyprctl','cursorpos','-j')
  window=next((w for w in read('hyprctl','clients','-j') if w['class']=='freelens'),None)
  try:
   if action=='launch':
@@ -33,14 +34,28 @@ def main():
    if action=='capture':cmd=[str(node),'scripts/host-cdp.mjs','screenshot',str(ev/(label+'.png'))]
    elif action=='input':cmd=[str(node),str(ev/'input.mjs')]
    elif action=='focus':cmd=[str(node),str(ev/'focus.mjs')]
+   elif action=='script':cmd=[str(node),args[0],*args[1:]]
    elif action=='probe':cmd=[str(node),'scripts/host-cdp.mjs',args[0],str(ev/'probes'/(label+'.js'))]
    else:raise ValueError(action)
-   r=subprocess.run(cmd,cwd=root,capture_output=True,text=True);facts['exitCode']=r.returncode
+   runenv=dict(os.environ)
+   if action=='script':
+    runenv['CV26_CURSOR_START']=json.dumps(facts['cursorBefore'])
+    runenv['CV26_WINDOW_AT']=json.dumps({'x':window['at'][0],'y':window['at'][1]})
+   r=subprocess.run(cmd,cwd=root,capture_output=True,text=True,env=runenv);facts['exitCode']=r.returncode
    if action=='probe':(ev/(label+'.json')).write_text(r.stdout)
    assert r.returncode==0,r.stdout+r.stderr
  finally:
   restore(focus,workspace)
   window=next((w for w in read('hyprctl','clients','-j') if w['class']=='freelens'),None)
+  if action=='script':
+   if os.environ.get('CV26_NATIVE')=='1':
+    p=facts['cursorBefore'];commands=json.dumps({'op':'move','x':p['x'],'y':p['y']})+'\n'+json.dumps({'op':'close'})+'\n'
+    restored=subprocess.run(['/usr/bin/python3',str(ev/'continuation/native-input.py')],input=commands,capture_output=True,text=True,check=True)
+    facts['nativePointerRestore']=restored.stdout.strip().splitlines()[-1]
+    if read('hyprctl','activewindow','-j').get('address')!=focus:
+     restore(focus,workspace)
+     facts['finalFocusRestoredAfterPointer']=True
+   facts['cursorAfter']=read('hyprctl','cursorpos','-j')
   facts.update(workspaceAfter=read('hyprctl','activeworkspace','-j')['id'],focusAfter=read('hyprctl','activewindow','-j').get('address'),hostWorkspace=window['workspace']['id'] if window else None,mainPid=window['pid'] if window else None)
   (ev/(label+'-desktop.json')).write_text(json.dumps(facts,indent=2)+'\n')
   assert facts['focusBefore']==facts['focusAfter'] and facts['workspaceBefore']==facts['workspaceAfter'],facts
