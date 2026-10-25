@@ -1,0 +1,12 @@
+{
+  "at": "2026-10-25T03:30:09.295Z",
+  "result": {
+    "type": "object",
+    "value": {
+      "query": "TEMPORARY-VIEW-QUERY",
+      "raw": "true",
+      "layout": "bottom",
+      "left": true
+    }
+  }
+}

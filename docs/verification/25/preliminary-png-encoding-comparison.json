@@ -1,0 +1,39 @@
+{
+  "at": "2026-10-25T03:26:31.585Z",
+  "result": {
+    "type": "object",
+    "value": {}
+  },
+  "exceptionDetails": {
+    "exceptionId": 1,
+    "text": "Uncaught (in promise) Error: Clipboard restoration differs",
+    "lineNumber": 3,
+    "columnNumber": 52,
+    "scriptId": "290",
+    "stackTrace": {
+      "callFrames": [
+        {
+          "functionName": "assert",
+          "scriptId": "290",
+          "url": "",
+          "lineNumber": 2,
+          "columnNumber": 51
+        },
+        {
+          "functionName": "",
+          "scriptId": "291",
+          "url": "",
+          "lineNumber": 58,
+          "columnNumber": 31
+        }
+      ]
+    },
+    "exception": {
+      "type": "object",
+      "subtype": "error",
+      "className": "Error",
+      "description": "Error: Clipboard restoration differs\n    at assert (<anonymous>:3:52)\n    at <anonymous>:59:32",
+      "objectId": "1655782314548274958.2.3"
+    }
+  }
+}

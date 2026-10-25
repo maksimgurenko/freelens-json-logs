@@ -25,8 +25,8 @@ npm run typecheck
 npm test
 npm run package
 npm run check:package
-tar -tzf dist/freelens-readable-logs-0.1.20.tgz
-sha256sum dist/freelens-readable-logs-0.1.20.tgz
+tar -tzf dist/freelens-readable-logs-0.1.22.tgz
+sha256sum dist/freelens-readable-logs-0.1.22.tgz
 ```
 
 The locked esbuild platform package supplies its binary without install scripts.
@@ -83,7 +83,7 @@ Raw mode, selected record, content tab, timestamps and word wrap are temporary.
 New views start Readable, without selection, with timestamps on and wrap off.
 Bottom Inspection opens when a record is selected and occupies no space when
 selection is cleared or leaves the recent window; the saved Bottom preference
-remains selected. Side retains its empty selection guidance. Selecting a row never pauses automatic updates. If the selected exact record
+remains selected. Side and Inline also reserve no inspector space without a selection. Selecting a row never pauses automatic updates. If the selected exact record
 leaves the recent window, selection clears; Pause keeps the current window for
 inspection. All fields includes extracted/hidden fields. Copy application text
 and Copy transport line use retained originals, including their original spacing,
@@ -125,7 +125,7 @@ Follow [the accepted procedure](https://github.com/maksimgurenko/freelens-json-l
 2. For an update, **Uninstall** the old package and wait for removal to finish,
    retaining its saved extension settings. Install the new tarball via the form
    **once** and wait. Do not use the overwrite/reinstallation prompt.
-3. Check version **0.1.20** and Enabled, then open the cluster. Open a Pod's details
+3. Check version **0.1.22** and Enabled, then open the cluster. Open a Pod's details
    header and click the **Readable logs** icon beside the native actions. Verify
    cluster, namespace, Pod UID, container, the expected active profile and usable logs.
    Do not restart after installation as a substitute for passing this check.
@@ -154,8 +154,8 @@ RFC 3339 with an explicit zone; display uses the computer's local timezone.
 Original precision, JSON whitespace and all parsed fields remain in core state.
 Raw inspection and clipboard controls are subsequent ticket work.
 
-Routine loading/waiting feedback uses the fixed update-status area beside
-Pause/Refresh, without inserting a banner above the log window on every read.
+Routine loading/waiting feedback uses the fixed update-status area in
+the compact footer, without inserting a banner above the log window on every read.
 The records region exposes its busy state to accessibility tools; slow requests
 and failures retain their explicit notices.
 
@@ -209,6 +209,18 @@ The entry filenames include the package version. Freelens 1.10.3 retains Node
 module cache during uninstall/install; unique version paths load the updated main
 and renderer code without clearing host caches or requiring a post-install restart.
 Electron is supplied by the host and stays external to both bundles.
+
+## Compact workspace
+
+The single toolbar keeps target context, container/profile selection, **Edit profiles**,
+Pause/Resume, Refresh and Find available. Open **Log target details** for full
+names and technical identifiers. **Display options** contains Readable/Raw,
+timestamps, wrap and the saved global Inspection layout. Related groups wrap
+in narrower windows. Readable and Raw use a black canvas, including empty space.
+
+Find opens a temporary row. **Close Find** hides the row while retaining its
+query and current match for this view; reopening does not filter the window or
+make a request. A new view starts with Find closed and its query empty.
 
 ## Scroll position and Find
 

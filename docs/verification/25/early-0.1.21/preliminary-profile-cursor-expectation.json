@@ -1,0 +1,39 @@
+{
+  "at": "2026-10-25T03:23:18.254Z",
+  "result": {
+    "type": "object",
+    "value": {}
+  },
+  "exceptionDetails": {
+    "exceptionId": 2,
+    "text": "Uncaught (in promise) Error: Default did not recompute",
+    "lineNumber": 3,
+    "columnNumber": 52,
+    "scriptId": "290",
+    "stackTrace": {
+      "callFrames": [
+        {
+          "functionName": "assert",
+          "scriptId": "290",
+          "url": "",
+          "lineNumber": 2,
+          "columnNumber": 51
+        },
+        {
+          "functionName": "",
+          "scriptId": "293",
+          "url": "",
+          "lineNumber": 62,
+          "columnNumber": 34
+        }
+      ]
+    },
+    "exception": {
+      "type": "object",
+      "subtype": "error",
+      "className": "Error",
+      "description": "Error: Default did not recompute\n    at assert (<anonymous>:3:52)\n    at <anonymous>:63:35",
+      "objectId": "8967159666861386510.2.3"
+    }
+  }
+}

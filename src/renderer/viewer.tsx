@@ -18,8 +18,7 @@ import { SettingsRecovery } from './settings-recovery.tsx';
 interface ViewerProps { target: LogTarget; register: (dispose: () => void) => () => void; visibility: VisibilityChannel; preferences: ViewerPreferences }
 const EMPTY_RECORDS: readonly LogRecord[] = [];
 
-// Extend the accepted native-like surface: target strip, compact time/level/message rows,
-// quiet footer and explicit snapshot refresh controls.
+// Accepted B layout keeps frequent actions in one toolbar and presentation controls on demand.
 export function Viewer({ target, register, visibility, preferences }: ViewerProps) {
   const root = useRef<HTMLElement>(null);
   const scroller = useRef<HTMLDivElement>(null);
@@ -27,6 +26,9 @@ export function Viewer({ target, register, visibility, preferences }: ViewerProp
   const requestedMatch = useRef<number>();
   const [scroll, setScroll] = useState<ViewportStatus>({ following: true, lost: false });
   const [query, setQuery] = useState('');
+  const [findOpen, setFindOpen] = useState(false);
+  const findInput = useRef<HTMLInputElement>(null);
+  const findButton = useRef<HTMLButtonElement>(null);
   const [cursor, setCursor] = useState<{ records: readonly LogRecord[]; index: number }>({ records: EMPTY_RECORDS, index: -1 });
   const [state, setState] = useState<SnapshotState>();
   const [session, setSession] = useState<SnapshotSession>();
@@ -89,6 +91,9 @@ export function Viewer({ target, register, visibility, preferences }: ViewerProp
       requestedMatch.current = undefined;
     }
   });
+  useLayoutEffect(() => {
+    if (findOpen && !editingProfiles) findInput.current?.focus();
+  }, [findOpen, editingProfiles]);
   const navigateMatch = (direction: 1 | -1) => {
     const next = moveMatch(matches, currentMatch, direction);
     setCursor({ records, index: next });
@@ -110,54 +115,75 @@ export function Viewer({ target, register, visibility, preferences }: ViewerProp
     onContent={content => setInspection(previous => ({ ...previous, content }))} onClose={close} />;
   return <section ref={root} className="readable-logs" aria-label="Readable logs" data-version={PACKAGE_VERSION}>
     <style>{styles}</style>
-    <header className="rl-heading">
-      <h1>Readable logs</h1>
-      <p>{target.clusterName} / {target.namespace} / {target.podName}</p>
-    </header>
-    <div className="rl-target">
-      <strong title={`Pod UID: ${target.podUid}`}>{target.podName}</strong>
-      <label>Container <select aria-label="Container" value={state?.container ?? ''}
-        disabled={!state?.containers.length || state.gone || state.phase === 'closed'}
-        onChange={event => { void session?.selectContainer(event.target.value); }}>
-        {!state?.container && <option value="" disabled>Select a container</option>}
-        {(['regular', 'init', 'ephemeral'] as const).map(kind => <optgroup key={kind} label={kind === 'regular' ? 'Containers' : `${kind} containers`}>
-          {state?.containers.filter(container => container.kind === kind).map(container => <option key={container.name} value={container.name}>{container.name}</option>)}
-        </optgroup>)}
-      </select></label>
-      <label className="rl-profile">Profile <select aria-label="Profile" value={state?.manualProfile ?? ''}
-        disabled={!session || state?.phase === 'closed'} onChange={event => session?.selectProfile(event.target.value || undefined)}>
-        <option value="">Auto · {activeProfile(preference.configuration, undefined, profileContext).name}</option>
-        {[builtinProfile(), ...preference.configuration.profiles].map(profile => <option key={profile.id} value={profile.id}>{profile.name}</option>)}
-      </select></label>
-      <button ref={profilesButton} type="button" onClick={() => setEditingProfiles(value => !value)} aria-expanded={editingProfiles}>Profiles</button>
+    <header className="rl-toolbar" aria-label="Log controls">
+      <details className="rl-target-context">
+        <summary title={`${target.clusterName} / ${target.namespace} / ${target.podName}`} aria-label="Log target details">
+          <span className="rl-context-path"><span>{target.namespace}</span><span aria-hidden="true">/</span><strong>{target.podName}</strong></span>
+        </summary>
+        <div className="rl-identity">
+          <strong>Log target</strong>
+          <dl><dt>Cluster</dt><dd>{target.clusterName}</dd><dt>Namespace</dt><dd>{target.namespace}</dd>
+            <dt>Pod</dt><dd>{target.podName}</dd><dt>Cluster ID</dt><dd>{target.clusterId}</dd>
+            <dt>Pod UID</dt><dd>{target.podUid}</dd><dt>Active profile</dt><dd>{profile.name}</dd></dl>
+        </div>
+      </details>
+      <div className="rl-target-group">
+        <label>Container <select aria-label="Container" title={state?.container} value={state?.container ?? ''}
+          disabled={!state?.containers.length || state.gone || state.phase === 'closed'}
+          onChange={event => { void session?.selectContainer(event.target.value); }}>
+          {!state?.container && <option value="" disabled>Select a container</option>}
+          {(['regular', 'init', 'ephemeral'] as const).map(kind => <optgroup key={kind} label={kind === 'regular' ? 'Containers' : `${kind} containers`}>
+            {state?.containers.filter(container => container.kind === kind).map(container => <option key={container.name} value={container.name}>{container.name}</option>)}
+          </optgroup>)}
+        </select></label>
+      </div>
+      <div className="rl-profile-group">
+        <label>Profile <select aria-label="Profile" title={`${state?.manualProfile ? 'Manual' : 'Auto'} · ${profile.name}`} value={state?.manualProfile ?? ''}
+          disabled={!session || state?.phase === 'closed'} onChange={event => session?.selectProfile(event.target.value || undefined)}>
+          <option value="">Auto · {activeProfile(preference.configuration, undefined, profileContext).name}</option>
+          {[builtinProfile(), ...preference.configuration.profiles].map(profile => <option key={profile.id} value={profile.id}>{profile.name}</option>)}
+        </select></label>
+        <button ref={profilesButton} type="button" className="rl-edit-profiles" onClick={() => setEditingProfiles(value => !value)} aria-expanded={editingProfiles}>
+          <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true" focusable="false"><path d="m15 5 4 4M4 20l4-1L20 7a2.8 2.8 0 0 0-4-4L4 15z" /></svg>
+          Edit profiles
+        </button>
+      </div>
       <div className="rl-controls" role="group" aria-label="Log updates">
         <button type="button" disabled={!state?.container || state.gone || state.phase === 'closed'}
           onClick={() => { if (state?.paused) void session?.resume(); else session?.pause(); }}>{state?.paused ? 'Resume' : 'Pause'}</button>
         <button type="button" disabled={!state?.container || state.gone || state.phase === 'closed' || state.refreshing || state.waiting}
           onClick={() => { void session?.refresh(); }}>Refresh</button>
-        <span role="status">{updateStatus}</span>
       </div>
-    </div>
-    <div className="rl-findbar" role="search" aria-label="Find in logs" hidden={editingProfiles}>
+      <div className="rl-presentation" hidden={editingProfiles}>
+        <button ref={findButton} type="button" aria-expanded={findOpen} aria-controls="rl-findbar"
+          onClick={() => { setFindOpen(true); findInput.current?.focus(); findInput.current?.select(); }}>Find</button>
+        <details className="rl-display-options">
+          <summary>Display options</summary>
+          <div className="rl-display-panel">
+            <div role="group" aria-label="Log presentation" className="rl-modes">
+              <button type="button" aria-pressed={!inspection.raw} onClick={() => setInspection(previous => ({ ...previous, raw: false }))}>Readable</button>
+              <button type="button" aria-pressed={inspection.raw} onClick={() => setInspection(previous => ({ ...previous, raw: true }))}>Raw</button>
+            </div>
+            <label><input type="checkbox" checked={timestamps} onChange={event => setTimestamps(event.target.checked)} />Show timestamps</label>
+            <label><input type="checkbox" checked={wrap} onChange={event => setWrap(event.target.checked)} />Word wrap</label>
+            <label>Inspection <select aria-label="Inspection" title="Saved globally, separately from formatting profiles"
+              value={preference.inspection} disabled={!!preference.problem}
+              onChange={event => preferences.setInspection(event.target.value as 'inline' | 'side' | 'bottom')}>
+              <option value="inline">Inline expansion</option><option value="side">Side inspector</option><option value="bottom">Bottom inspector</option>
+            </select></label>
+          </div>
+        </details>
+      </div>
+    </header>
+    <div id="rl-findbar" className="rl-findbar" role="search" aria-label="Find in logs" hidden={editingProfiles || !findOpen}>
       <label htmlFor="rl-find">Find</label>
-      <input id="rl-find" type="search" aria-label="Find in logs" placeholder="Find in application text or message"
+      <input ref={findInput} id="rl-find" type="search" aria-label="Find in logs" placeholder="Find in application text or message"
         value={query} onChange={event => changeQuery(event.target.value)}
         onKeyDown={event => { if (event.key === 'Enter') { event.preventDefault(); navigateMatch(event.shiftKey ? -1 : 1); } }} />
       <span className="rl-find-count" role="status" aria-live="polite">{query ? `${currentMatch < 0 ? 0 : matches.indexOf(currentMatch) + 1} of ${matches.length} matching records` : 'Enter text to find'}</span>
       <button type="button" disabled={!matches.length} onClick={() => navigateMatch(-1)}>Previous</button>
       <button type="button" disabled={!matches.length} onClick={() => navigateMatch(1)}>Next</button>
-    </div>
-    <div className="rl-identity">Cluster {target.clusterId} · Pod UID {target.podUid} · Active profile {profile.name}</div>
-    <div className="rl-formatbar" hidden={editingProfiles}>
-      <label>Inspection <select aria-label="Inspection" title="Saved globally, separately from formatting profiles"
-        value={preference.inspection} disabled={!!preference.problem}
-        onChange={event => preferences.setInspection(event.target.value as 'inline' | 'side' | 'bottom')}>
-        <option value="inline">Inline expansion</option><option value="side">Side inspector</option><option value="bottom">Bottom inspector</option>
-      </select></label>
-      <div role="group" aria-label="Log presentation" className="rl-modes">
-        <button type="button" aria-pressed={!inspection.raw} onClick={() => setInspection(previous => ({ ...previous, raw: false }))}>Readable</button>
-        <button type="button" aria-pressed={inspection.raw} onClick={() => setInspection(previous => ({ ...previous, raw: true }))}>Raw</button>
-      </div>
+      <button type="button" aria-label="Close Find" onClick={() => { setFindOpen(false); findButton.current?.focus(); }}>Close</button>
     </div>
     <SettingsRecovery preferences={preferences} saved={preference} />
     {state?.lifecycleNotice && <p className="rl-notice" role="status">{state.lifecycleNotice}{state.paused ? ' Paused; select Refresh or Resume to read the current instance.' : ''}</p>}
@@ -170,12 +196,12 @@ export function Viewer({ target, register, visibility, preferences }: ViewerProp
     {snapshot?.omittedLines ? <p className="rl-notice" role="status">{snapshot.oversizedNewest
       ? 'The newest record exceeds the 5 MiB original-text budget. No complete suffix fits.'
       : `${snapshot.omittedLines.toLocaleString()} older record(s) omitted to keep the latest 1,000 lines within the 5 MiB original-text budget.`}</p> : null}
-    {snapshot && snapshot.returnedLines === 0 && <p className="rl-empty" role="status">No logs returned for {state?.container}.</p>}
     {scroll.lost && <p className="rl-notice" role="status">Your scroll position left the recent log window. Use To bottom to follow new output.</p>}
     {editingProfiles && <ProfileEditor preferences={preferences} onClose={() => { setEditingProfiles(false); profilesButton.current?.focus(); }} />}
     <div className={`rl-work rl-layout-${preference.inspection}`} hidden={editingProfiles}>
     <div ref={scroller} className={`rl-records${wrap ? ' rl-wrap' : ''}`} tabIndex={0} aria-label="Container log records"
       aria-busy={!state || state.phase === 'loading-pod' || state.refreshing || state.waiting}>
+      {snapshot && snapshot.returnedLines === 0 && <p className="rl-empty" role="status">No logs returned for {state?.container}.</p>}
       {records.map((record, recordIndex) => {
         const formatted = formattedRecords[recordIndex];
         const isSelected = recordIndex === index;
@@ -197,16 +223,15 @@ export function Viewer({ target, register, visibility, preferences }: ViewerProp
         </div>;
       })}
     </div>
-    {preference.inspection !== 'inline' && (preference.inspection !== 'bottom' || selected) && <aside className="rl-inspector" aria-label="Record inspector">
-      {inspector || <p className="rl-inspector-empty">Select a record to inspect all fields or copy its exact original text. Automatic updates continue while inspecting; use Pause to keep the current window.</p>}
+    {preference.inspection !== 'inline' && selected && <aside className="rl-inspector" aria-label="Record inspector">
+      {inspector}
     </aside>}
     </div>
     <footer className="rl-footer" hidden={editingProfiles}>
       <span role="status">{snapshot ? `${snapshot.records.length.toLocaleString()} records · ${(snapshot.retainedBytes / 1024).toFixed(1)} KiB retained` : 'One current-instance snapshot'}</span>
       <button type="button" onClick={() => viewport.current?.toBottom()}>To bottom</button>
       <span className="rl-follow-status" role="status">{scroll.following ? 'Following output' : 'Scrolled away'}</span>
-      <label><input type="checkbox" checked={timestamps} onChange={event => setTimestamps(event.target.checked)} />Show timestamps</label>
-      <label><input type="checkbox" checked={wrap} onChange={event => setWrap(event.target.checked)} />Word wrap</label>
+      <span className="rl-update-status" role="status" title={updateStatus}>{updateStatus}</span>
       <span className="rl-version">v{PACKAGE_VERSION}</span>
     </footer>
   </section>;

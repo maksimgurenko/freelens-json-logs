@@ -1,0 +1,1 @@
+(async()=>{const h=global.__cv25;await h.click('Retry');for(let i=0;i<1000&&(h.state().refreshing||h.state().error);i++)await h.tick(5);h.assert(!h.state().error,'Retry failed');if(h.button('Pause'))await h.click('Pause');return {recovered:true,paused:h.state().paused};})()

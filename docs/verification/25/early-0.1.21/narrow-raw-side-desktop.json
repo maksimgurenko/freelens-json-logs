@@ -1,0 +1,10 @@
+{
+  "action": "capture",
+  "workspaceBefore": 6,
+  "focusBefore": "0x5600c9ff37d0",
+  "exitCode": 0,
+  "workspaceAfter": 6,
+  "focusAfter": "0x5600c9ff37d0",
+  "hostWorkspace": 7,
+  "mainPid": 277980
+}

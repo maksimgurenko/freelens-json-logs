@@ -1,0 +1,11 @@
+{
+  "at": "2026-10-25T03:27:09.574Z",
+  "result": {
+    "type": "object",
+    "value": {
+      "automaticWhileControlsOpen": true,
+      "logReads": 1,
+      "identity": "Log targetClusterkind-freelens-json-logs-spikeNamespacereadable-logs-ticket-25Podcompact-workspace-with-a-long-identified-pod-name-for-layoutCluster ID770814298afe692457d07d8b15d6b8d3Pod UIDcdc9b6a1-a768-4321-b788-7509c71a7d83Active profileCompact verification profile with a deliberately long name for target selection and layout checks"
+    }
+  }
+}
