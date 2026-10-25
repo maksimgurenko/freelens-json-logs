@@ -23,6 +23,3 @@ For released behavior, use the guides above.
 
 - [Initial Freelens feasibility research, 2026-10-20](research/freelens-feasibility-2026-10-20.md)
 - [Native dock-tab placement](research/native-dock-tabs.md)
-- [Commercial Lens installation compatibility](research/lens-install-compatibility.md)
-- [Native Lens log features](research/lens-existing-log-features.md)
-- [Lens log-extension ecosystem](research/lens-log-extension-ecosystem.md)
