@@ -1,3 +1,5 @@
+import {requireAttended} from '../../../scripts/ui-test-policy.mjs';
+requireAttended();
 // Earlier diagnostic driver against the packaged renderer / Electron clipboard.
 // Its failed runs remain evidence; continuation/gesture-case.mjs supersedes it
 // for ticket 26 acceptance. No physical hardware provenance is claimed or needed

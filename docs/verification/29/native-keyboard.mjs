@@ -1,8 +1,10 @@
+import {requireAttended} from '../../../scripts/ui-test-policy.mjs';
 // OS delivery through an owned temporary uinput keyboard, never a physical claim.
 import {spawn,execFileSync} from 'node:child_process';
 import {createInterface} from 'node:readline';
 import {assert,tick} from './host.mjs';
 export async function nativeKeyboard(){
+ requireAttended();
  const child=spawn('/usr/bin/python3',['docs/verification/29/native-input.py'],{stdio:['pipe','pipe','inherit']});
  const lines=createInterface({input:child.stdout}),queued=[],waiters=[];
  lines.on('line',line=>{const value=JSON.parse(line),waiter=waiters.shift();if(waiter)waiter(value);else queued.push(value);});

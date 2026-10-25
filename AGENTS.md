@@ -17,7 +17,10 @@ Before exploring the codebase, read `docs/agents/domain.md`.
 
 ## Freelens validation
 
-Run Freelens (Lens) on Hyprland workspace 7. Launch and restore it silently,
-preserving the user's current workspace and focused window whenever possible.
-Prefer background interaction. When a native check needs focus, restore the
-previous workspace and focused window immediately afterward.
+Run Freelens (Lens) on Hyprland workspace 7. Routine verification must preserve
+the user's focus, workspace and pointer throughout the check. Use background CDP
+probes/screenshots; launch silently on workspace 7 when needed. Restoring focus
+after a test still interrupts the user.
+
+Before any UI verification, read `docs/agents/ui-verification.md` for the background
+workflow and the explicit opt-in required for attended native input checks.

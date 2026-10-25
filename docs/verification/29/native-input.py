@@ -2,6 +2,10 @@
 No physical hardware claim. Destroys only its own device and releases its keys.
 Ioctl/struct constants follow installed linux/uinput.h and linux/input-event-codes.h.
 """
+import pathlib as _ui_path,sys as _ui_sys
+_ui_sys.path.insert(0,str(_ui_path.Path(__file__).resolve().parents[3]/'scripts'))
+from ui_test_policy import require_attended as _require_attended
+_require_attended()
 import fcntl,json,os,struct,subprocess,sys,time
 fd=os.open('/dev/uinput',os.O_WRONLY|os.O_NONBLOCK)
 keys=[25,19,26,27,29,31,42,28,57,15,46,47,30,33,34,107,108,125,56,100,272]

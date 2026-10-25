@@ -1,3 +1,5 @@
+import {requireAttended} from '../../../scripts/ui-test-policy.mjs';
+requireAttended();
 // Opt-in native-check focus only; the calling desktop helper must restore focus.
 const targets=await(await fetch('http://127.0.0.1:9235/json/list')).json();
 const target=targets.find(t=>t.type==='page'&&new URL(t.url).hostname==='renderer.freelens.app');

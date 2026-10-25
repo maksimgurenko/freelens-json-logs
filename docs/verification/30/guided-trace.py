@@ -3,6 +3,10 @@
 Run from the repository. No notification is sent. The supervisor notifies only
 after .ralph/physical-back-armed.json exists. This script never injects Back.
 """
+import pathlib as _ui_path,sys as _ui_sys
+_ui_sys.path.insert(0,str(_ui_path.Path(__file__).resolve().parents[3]/'scripts'))
+from ui_test_policy import require_attended as _require_attended
+_require_attended()
 import importlib.util
 import json
 import os

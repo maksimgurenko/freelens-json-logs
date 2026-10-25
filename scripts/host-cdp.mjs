@@ -1,6 +1,10 @@
 // Local verification helper; never bundled into the extension. Targets the host's
 // opt-in localhost debugging endpoint, evaluates supplied probes, and captures PNGs.
 import { readFileSync, writeFileSync } from 'node:fs';
+import { requireAttended } from './ui-test-policy.mjs';
+const action = process.argv[2];
+const probe = ['contexts', 'screenshot'].includes(action) ? null : readFileSync(process.argv[3], 'utf8');
+if (probe?.startsWith('// @ui-attended')) requireAttended();
 const targets = await (await fetch('http://127.0.0.1:9235/json/list', { signal: AbortSignal.timeout(5000) })).json();
 const target = targets.find(value => value.type === 'page');
 if (!target) throw new Error('No Freelens page on localhost:9235');
@@ -41,7 +45,7 @@ try {
       if (attempt === 99) throw new Error('Host SDK did not become ready');
       await new Promise(resolve => setTimeout(resolve, 100));
     }
-    const result = await send('Runtime.evaluate', { expression: readFileSync(process.argv[3], 'utf8'), contextId: context.id, awaitPromise: true, returnByValue: true });
+    const result = await send('Runtime.evaluate', { expression: probe, contextId: context.id, awaitPromise: true, returnByValue: true });
     console.log(JSON.stringify({ at: new Date().toISOString(), ...result }, null, 2));
     if (result.exceptionDetails) process.exitCode = 1;
   }

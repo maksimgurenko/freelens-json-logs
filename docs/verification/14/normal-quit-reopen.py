@@ -1,3 +1,7 @@
+import pathlib as _ui_path,sys as _ui_sys
+_ui_sys.path.insert(0,str(_ui_path.Path(__file__).resolve().parents[3]/'scripts'))
+from ui_test_policy import require_attended as _require_attended
+_require_attended()
 import json,os,pathlib,signal,subprocess,time,sys
 root=pathlib.Path('/home/max/work/freelens-json-logs')
 rows=[line.split(None,2) for line in subprocess.check_output(['ps','-eo','pid=,ppid=,args='],text=True).splitlines()]

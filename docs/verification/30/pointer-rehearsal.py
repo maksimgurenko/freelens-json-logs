@@ -1,4 +1,8 @@
 """Unarmed/no-Back rehearsal of the physical recorder's exact desktop restore."""
+import pathlib as _ui_path,sys as _ui_sys
+_ui_sys.path.insert(0,str(_ui_path.Path(__file__).resolve().parents[3]/'scripts'))
+from ui_test_policy import require_attended as _require_attended
+_require_attended()
 import importlib.util
 import json
 from pathlib import Path

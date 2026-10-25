@@ -1,3 +1,5 @@
+import {requireAttended} from '../../../scripts/ui-test-policy.mjs';
+requireAttended();
 // Packaged-host trusted Chromium keyboard dispatch, not physical OS-input evidence.
 import {writeFileSync} from 'node:fs';
 const targets=await(await fetch('http://127.0.0.1:9235/json/list')).json(),target=targets.find(t=>t.type==='page');

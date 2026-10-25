@@ -1,3 +1,4 @@
+import {requireAttended} from '../../../../scripts/ui-test-policy.mjs';
 // Verification transport only. Inputs use Chromium's trusted input pipeline in
 // the installed Electron renderer; this module never creates selection ranges.
 import {writeFileSync} from 'node:fs';
@@ -8,12 +9,13 @@ export function save(name,data){writeFileSync(evidence+name+'.json',JSON.stringi
 export function assert(ok,message){if(!ok)throw Error(message);}
 export const tick=(ms=30)=>new Promise(resolve=>setTimeout(resolve,ms));
 export async function connect(){
+ if(process.env.CV26_NATIVE==='1')requireAttended();
  const targets=await(await fetch('http://127.0.0.1:9235/json/list',{signal:AbortSignal.timeout(3000)})).json();
  const target=targets.find(t=>t.type==='page');assert(target,'No packaged host page');
  const socket=new WebSocket(target.webSocketDebuggerUrl);await new Promise((resolve,reject)=>{socket.addEventListener('open',resolve,{once:true});socket.addEventListener('error',reject,{once:true});});
  let id=0;const pending=new Map(),contexts=[];
  socket.addEventListener('message',({data})=>{const m=JSON.parse(data);if(m.method==='Runtime.executionContextCreated')contexts.push(m.params.context);if(m.id){const p=pending.get(m.id);pending.delete(m.id);if(p){clearTimeout(p.timer);m.error?p.reject(Error(JSON.stringify(m.error))):p.resolve(m.result);}}});
- const send=(method,params={})=>new Promise((resolve,reject)=>{const n=++id;const timer=setTimeout(()=>{pending.delete(n);reject(Error('CDP timeout: '+method));},2500);pending.set(n,{resolve,reject,timer});socket.send(JSON.stringify({id:n,method,params}));});
+ const send=(method,params={})=>new Promise((resolve,reject)=>{if(method==='Page.bringToFront')requireAttended();const n=++id;const timer=setTimeout(()=>{pending.delete(n);reject(Error('CDP timeout: '+method));},2500);pending.set(n,{resolve,reject,timer});socket.send(JSON.stringify({id:n,method,params}));});
  await send('Runtime.enable');
  const context=contexts.find(c=>c.auxData?.isDefault&&c.origin.includes('770814'));
  const rootContext=contexts.find(c=>c.auxData?.isDefault&&c.origin===new URL(target.url).origin);assert(context&&rootContext,'Owning host/frame contexts absent');

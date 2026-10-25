@@ -1,16 +1,23 @@
-"""Ticket-owned silent launch / short focused probes, adapted from ticket 19 helpers."""
+"""Background capture/probes; other ticket scripts require attended opt-in."""
 import json,pathlib,subprocess,time,sys,os
 root=pathlib.Path(__file__).resolve().parents[3]
+sys.path.insert(0,str(root/'scripts'))
+from ui_test_policy import require_attended,allow_focus_change
 ev=root/'docs/verification/28';node=root/'.scratch/readable-logs/toolchain/node_modules/node/bin/node'
 def read(*args):return json.loads(subprocess.check_output(args,text=True))
-def dispatch(expr):subprocess.run(['hyprctl','eval',expr],check=True,stdout=subprocess.DEVNULL)
+def dispatch(expr):
+ if 'hl.dsp.focus(' in expr or 'hl.dsp.workspace(' in expr:allow_focus_change()
+ subprocess.run(['hyprctl','eval',expr],check=True,stdout=subprocess.DEVNULL)
 def restore(focus,workspace):
+ if os.environ.get('FREELENS_UI_MODE')!='attended':return
  # A focused special-workspace window does not restore the underlying regular
  # workspace. Restore that separately before returning its actual focused window.
  if read('hyprctl','activeworkspace','-j')['id']!=workspace:dispatch('hl.dispatch(hl.dsp.focus({workspace='+str(workspace)+'}))')
  if focus and any(w['address']==focus for w in read('hyprctl','clients','-j')):dispatch('hl.dispatch(hl.dsp.focus({window='+json.dumps('address:'+focus)+'}))')
 def main():
- action,label,*args=sys.argv[1:];workspace=read('hyprctl','activeworkspace','-j')['id'];focus=read('hyprctl','activewindow','-j').get('address')
+ action,label,*args=sys.argv[1:]
+ if action not in ('capture','probe','launch'):require_attended(read)
+ workspace=read('hyprctl','activeworkspace','-j')['id'];focus=read('hyprctl','activewindow','-j').get('address')
  facts={'action':action,'workspaceBefore':workspace,'focusBefore':focus}
  facts['cursorBefore']=read('hyprctl','cursorpos','-j')
  window=next((w for w in read('hyprctl','clients','-j') if w['class']=='freelens'),None)
@@ -32,7 +39,8 @@ def main():
    if window['workspace']['id']!=7:dispatch('hl.dispatch(hl.dsp.window.move({workspace=7,silent=true,window='+json.dumps('address:'+window['address'])+'}))')
   else:
    assert window and window['workspace']['id']==7,'Host must remain on workspace 7'
-   dispatch('hl.dispatch(hl.dsp.focus({window='+json.dumps('address:'+window['address'])+'}))');time.sleep(.2)
+   if action not in ('capture','probe'):
+    dispatch('hl.dispatch(hl.dsp.focus({window='+json.dumps('address:'+window['address'])+'}))');time.sleep(.2)
    if action=='capture':cmd=[str(node),'scripts/host-cdp.mjs','screenshot',str(ev/(label+'.png'))]
    elif action=='input':cmd=[str(node),str(ev/'input.mjs')]
    elif action=='focus':cmd=[str(node),str(ev/'focus.mjs')]
@@ -47,17 +55,18 @@ def main():
    if action=='probe':(ev/(label+'.json')).write_text(r.stdout)
    assert r.returncode==0,r.stdout+r.stderr
  finally:
-  restore(focus,workspace)
-  window=next((w for w in read('hyprctl','clients','-j') if w['class']=='freelens'),None)
-  p=facts['cursorBefore'];commands=json.dumps({'op':'move','x':p['x'],'y':p['y']})+'\n'+json.dumps({'op':'close'})+'\n'
-  restored=subprocess.run(['/usr/bin/python3',str(root/'docs/verification/26/continuation/native-input.py')],input=commands,capture_output=True,text=True,check=True,timeout=5)
-  facts['nativePointerRestore']=restored.stdout.strip().splitlines()[-1]
-  if read('hyprctl','activewindow','-j').get('address')!=focus:
+  if os.environ.get('FREELENS_UI_MODE')=='attended' and action not in ('capture','probe','launch'):
    restore(focus,workspace)
-   facts['finalFocusRestoredAfterPointer']=True
-  facts['cursorAfter']=read('hyprctl','cursorpos','-j')
+   p=facts['cursorBefore'];commands=json.dumps({'op':'move','x':p['x'],'y':p['y']})+'\n'+json.dumps({'op':'close'})+'\n'
+   restored=subprocess.run(['/usr/bin/python3',str(root/'docs/verification/26/continuation/native-input.py')],input=commands,capture_output=True,text=True,check=True,timeout=5)
+   facts['nativePointerRestore']=restored.stdout.strip().splitlines()[-1]
+   if read('hyprctl','activewindow','-j').get('address')!=focus:
+    restore(focus,workspace)
+    facts['finalFocusRestoredAfterPointer']=True
+   facts['cursorAfter']=read('hyprctl','cursorpos','-j')
+  window=next((w for w in read('hyprctl','clients','-j') if w['class']=='freelens'),None)
   facts.update(workspaceAfter=read('hyprctl','activeworkspace','-j')['id'],focusAfter=read('hyprctl','activewindow','-j').get('address'),hostWorkspace=window['workspace']['id'] if window else None,mainPid=window['pid'] if window else None)
   (ev/(label+'-desktop.json')).write_text(json.dumps(facts,indent=2)+'\n')
   assert facts['focusBefore']==facts['focusAfter'] and facts['workspaceBefore']==facts['workspaceAfter'],facts
- print(label+': passed, desktop restored')
+ print(label+': passed ('+('background' if action in ('capture','probe','launch') else 'attended')+')')
 if __name__=='__main__':main()
