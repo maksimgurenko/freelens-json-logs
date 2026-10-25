@@ -32,7 +32,9 @@ Choose an **Inspection** layout and select a row:
 | Side inspector | Beside the log list. |
 | Bottom inspector | Below the log list; occupies no space without a selection. |
 
-The layout preference is saved globally. **Close** clears the selection.
+The layout preference is saved globally. Click the selected row again or use
+**Close** to clear the selection and close the inspector. **Enter** or **Space**
+on a focused row also toggles its inspector.
 
 **All fields** shows the complete parsed JSON object, including fields hidden
 from compact rows. For plain text or malformed JSON, it shows the original

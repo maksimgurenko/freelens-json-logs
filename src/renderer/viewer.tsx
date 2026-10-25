@@ -143,6 +143,10 @@ export function Viewer({ target, register, visibility, preferences, shortcutCapt
   };
   const index = selectedIndex(records, inspection.selected);
   const selected = records[index];
+  const toggleInspection = (recordIndex: number) => {
+    setInspection(previous => ({ ...previous, selected: selectedIndex(records, previous.selected) === recordIndex
+      ? undefined : selectRecord(records, recordIndex) }));
+  };
   useEffect(() => {
     if (index < 0) {
       const element = root.current!;
@@ -305,9 +309,9 @@ export function Viewer({ target, register, visibility, preferences, shortcutCapt
               // Keyboard/assistive activation is intentional even with selected text.
               // Pointer selection must not rerender inspection at the end of a drag.
               if (event.detail > 0 && (event.detail > 1 || rowGesture.current?.dragged || selectedTextTouches(event.currentTarget, rowGesture.current?.selection))) return;
-              setInspection(previous => ({ ...previous, selected: selectRecord(records, recordIndex) }));
+              toggleInspection(recordIndex);
             }}
-            onKeyDown={event => { if (event.key === 'Enter' || event.key === ' ') { event.preventDefault(); setInspection(previous => ({ ...previous, selected: selectRecord(records, recordIndex) })); } }}>
+            onKeyDown={event => { if (event.key === 'Enter' || event.key === ' ') { event.preventDefault(); toggleInspection(recordIndex); } }}>
           {inspection.raw ? <span className="rl-message">{(timestamps ? record.transportLine : record.applicationText) || '\u00a0'}</span> : <>
           {timestamps && <time dateTime={formatted.timestamp} title={formatted.timestampSource ? `${formatted.timestampSource}: ${formatted.timestamp}` : undefined}>{displayTimestamp(formatted.timestamp)}</time>}
           <span className={`rl-level${formatted.canonicalLevel ? ` rl-severity-${formatted.canonicalLevel.toLowerCase()}` : ''}`}>{formatted.level}</span>
