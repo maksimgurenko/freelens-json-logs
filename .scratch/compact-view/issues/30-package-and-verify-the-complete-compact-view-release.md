@@ -1,6 +1,6 @@
 # 30: Package and verify the complete compact-view release
 
-**Status:** ready-for-agent
+**Status:** done
 
 **Blocked by:** [26: Select and copy log text without changing inspection](26-select-and-copy-log-text-without-changing-inspection.md), [29: Add scoped keyboard shortcuts and shortcut help](29-add-scoped-keyboard-shortcuts-and-shortcut-help.md), [28: Support mouse Back safely inside Freelens](28-support-mouse-back-safely-inside-freelens.md)
 
