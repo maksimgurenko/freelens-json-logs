@@ -25,8 +25,8 @@ npm run typecheck
 npm test
 npm run package
 npm run check:package
-tar -tzf dist/freelens-readable-logs-0.1.33.tgz
-sha256sum dist/freelens-readable-logs-0.1.33.tgz
+tar -tzf dist/freelens-readable-logs-0.1.34.tgz
+sha256sum dist/freelens-readable-logs-0.1.34.tgz
 ```
 
 The locked esbuild platform package supplies its binary without install scripts.
@@ -83,7 +83,8 @@ Raw mode, selected record, content tab, timestamps and word wrap are temporary.
 New views start Readable, without selection, with timestamps on and wrap off.
 Bottom Inspection opens when a record is selected and occupies no space when
 selection is cleared or leaves the recent window; the saved Bottom preference
-remains selected. Side and Inline also reserve no inspector space without a selection. Selecting a row never pauses automatic updates. If the selected exact record
+remains selected. Side and Inline also reserve no inspector space without a selection.
+Click the selected row again to close its inspector. Selecting a row never pauses automatic updates. If the selected exact record
 leaves the recent window, selection clears; Pause keeps the current window for
 inspection. All fields includes extracted/hidden fields. Copy application text
 and Copy transport line use retained originals, including their original spacing,
@@ -125,7 +126,7 @@ Follow [the accepted procedure](https://github.com/maksimgurenko/freelens-json-l
 2. For an update, **Uninstall** the old package and wait for removal to finish,
    retaining its saved extension settings. Install the new tarball via the form
    **once** and wait. Do not use the overwrite/reinstallation prompt.
-3. Check version **0.1.33** and Enabled, then open the cluster. Open a Pod's details
+3. Check version **0.1.34** and Enabled, then open the cluster. Open a Pod's details
    header and click the **Readable logs** icon beside the native actions. Verify
    cluster, namespace, Pod UID, container, the expected active profile and usable logs.
    Do not restart after installation as a substitute for passing this check.
