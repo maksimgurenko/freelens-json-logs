@@ -25,8 +25,8 @@ npm run typecheck
 npm test
 npm run package
 npm run check:package
-tar -tzf dist/freelens-readable-logs-0.1.22.tgz
-sha256sum dist/freelens-readable-logs-0.1.22.tgz
+tar -tzf dist/freelens-readable-logs-0.1.23.tgz
+sha256sum dist/freelens-readable-logs-0.1.23.tgz
 ```
 
 The locked esbuild platform package supplies its binary without install scripts.
@@ -125,7 +125,7 @@ Follow [the accepted procedure](https://github.com/maksimgurenko/freelens-json-l
 2. For an update, **Uninstall** the old package and wait for removal to finish,
    retaining its saved extension settings. Install the new tarball via the form
    **once** and wait. Do not use the overwrite/reinstallation prompt.
-3. Check version **0.1.22** and Enabled, then open the cluster. Open a Pod's details
+3. Check version **0.1.23** and Enabled, then open the cluster. Open a Pod's details
    header and click the **Readable logs** icon beside the native actions. Verify
    cluster, namespace, Pod UID, container, the expected active profile and usable logs.
    Do not restart after installation as a substitute for passing this check.
@@ -221,6 +221,17 @@ in narrower windows. Readable and Raw use a black canvas, including empty space.
 Find opens a temporary row. **Close Find** hides the row while retaining its
 query and current match for this view; reopening does not filter the window or
 make a request. A new view starts with Find closed and its query empty.
+
+## Selecting and copying log text
+
+Drag through Readable or Raw rows to select text without opening or changing
+inspection. The additional-field count badge is interface metadata and is excluded
+from row selection/copy; application data named `fields` stays intact. A normal
+click inspects immediately, as do Enter and Space on a focused row. The first
+click of a double/triple-click may inspect before word/line selection exists.
+The inspector's Copy application text and Copy transport line actions retain the
+exact originals. Selecting text or inspecting a record does not pause updates;
+use Pause when you want to keep the current recent log window.
 
 ## Scroll position and Find
 

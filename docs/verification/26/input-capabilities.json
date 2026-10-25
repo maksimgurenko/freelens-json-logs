@@ -1,0 +1,15 @@
+{
+  "nativeCua": "Native computer APIs disabled in current tool contract",
+  "chromium": "CDP pointer/keyboard dispatch available; synthetic delivery is not physical evidence",
+  "virtualInput": {
+    "uinputWritable": true,
+    "wtype": "/usr/bin/wtype",
+    "classification": "Virtual input only; does not establish physical-device behavior"
+  },
+  "missing": "Physical mouse operator and observed physical drag/click/double/triple-click evidence in packaged Freelens 1.10.3",
+  "platforms": {
+    "Linux": "Packaged synthetic checks only; physical mouse unverified",
+    "Windows": "unavailable, unverified",
+    "macOS": "unavailable, unverified"
+  }
+}

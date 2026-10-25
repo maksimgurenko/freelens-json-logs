@@ -1,0 +1,11 @@
+{
+  "at": "2026-10-25T03:39:15.331Z",
+  "result": {
+    "type": "object",
+    "value": {
+      "clickCount": 1,
+      "tarball": "/home/max/work/freelens-json-logs/dist/freelens-readable-logs-0.1.23.tgz",
+      "at": "2026-10-25T03:39:15.330Z"
+    }
+  }
+}

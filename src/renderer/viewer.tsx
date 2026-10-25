@@ -18,11 +18,21 @@ import { SettingsRecovery } from './settings-recovery.tsx';
 interface ViewerProps { target: LogTarget; register: (dispose: () => void) => () => void; visibility: VisibilityChannel; preferences: ViewerPreferences }
 const EMPTY_RECORDS: readonly LogRecord[] = [];
 
+function selectedTextTouches(row: HTMLElement): boolean {
+  const selection = row.ownerDocument.getSelection();
+  if (!selection || selection.isCollapsed) return false;
+  for (let i = 0; i < selection.rangeCount; i++) {
+    if (selection.getRangeAt(i).intersectsNode(row)) return true;
+  }
+  return false;
+}
+
 // Accepted B layout keeps frequent actions in one toolbar and presentation controls on demand.
 export function Viewer({ target, register, visibility, preferences }: ViewerProps) {
   const root = useRef<HTMLElement>(null);
   const scroller = useRef<HTMLDivElement>(null);
   const viewport = useRef<LogViewport>();
+  const rowGesture = useRef<{ x: number; y: number; dragged: boolean }>();
   const requestedMatch = useRef<number>();
   const [scroll, setScroll] = useState<ViewportStatus>({ following: true, lost: false });
   const [query, setQuery] = useState('');
@@ -200,6 +210,15 @@ export function Viewer({ target, register, visibility, preferences }: ViewerProp
     {editingProfiles && <ProfileEditor preferences={preferences} onClose={() => { setEditingProfiles(false); profilesButton.current?.focus(); }} />}
     <div className={`rl-work rl-layout-${preference.inspection}`} hidden={editingProfiles}>
     <div ref={scroller} className={`rl-records${wrap ? ' rl-wrap' : ''}`} tabIndex={0} aria-label="Container log records"
+      onPointerDownCapture={event => {
+        rowGesture.current = event.button === 0 && (event.target as Element).closest('.rl-row')
+          ? { x: event.clientX, y: event.clientY, dragged: false } : undefined;
+      }}
+      onPointerMoveCapture={event => {
+        const gesture = rowGesture.current;
+        if (gesture && (event.buttons & 1) && Math.hypot(event.clientX - gesture.x, event.clientY - gesture.y) > 4) gesture.dragged = true;
+      }}
+      onPointerCancel={() => { rowGesture.current = undefined; }}
       aria-busy={!state || state.phase === 'loading-pod' || state.refreshing || state.waiting}>
       {snapshot && snapshot.returnedLines === 0 && <p className="rl-empty" role="status">No logs returned for {state?.container}.</p>}
       {records.map((record, recordIndex) => {
@@ -209,14 +228,19 @@ export function Viewer({ target, register, visibility, preferences }: ViewerProp
         return <div className={`rl-record${isSelected ? ' rl-selected' : ''}${recordIndex === currentMatch ? ' rl-find-current' : ''}`} key={recordIndex} data-record-index={recordIndex}>
           <div className="rl-row" role="button" tabIndex={0} aria-pressed={isSelected}
             aria-label={`Inspect record ${recordIndex + 1}: ${formatted.message.slice(0, 100) || 'blank line'}`}
-            onClick={() => setInspection(previous => ({ ...previous, selected: selectRecord(records, recordIndex) }))}
+            onClick={event => {
+              // Keyboard/assistive activation is intentional even with selected text.
+              // Pointer selection must not rerender inspection at the end of a drag.
+              if (event.detail > 0 && (event.detail > 1 || rowGesture.current?.dragged || selectedTextTouches(event.currentTarget))) return;
+              setInspection(previous => ({ ...previous, selected: selectRecord(records, recordIndex) }));
+            }}
             onKeyDown={event => { if (event.key === 'Enter' || event.key === ' ') { event.preventDefault(); setInspection(previous => ({ ...previous, selected: selectRecord(records, recordIndex) })); } }}>
           {inspection.raw ? <span className="rl-message">{(timestamps ? record.transportLine : record.applicationText) || '\u00a0'}</span> : <>
           {timestamps && <time dateTime={formatted.timestamp} title={formatted.timestampSource ? `${formatted.timestampSource}: ${formatted.timestamp}` : undefined}>{displayTimestamp(formatted.timestamp)}</time>}
           <span className={`rl-level${formatted.canonicalLevel ? ` rl-severity-${formatted.canonicalLevel.toLowerCase()}` : ''}`}>{formatted.level}</span>
           <span className="rl-message">{formatted.message || '\u00a0'}</span>
           {formatted.inlineFields?.map(field => <span className="rl-inline-field" key={field.path}>{field.path}={JSON.stringify(field.value)}</span>)}
-          {!!fields && <span className="rl-fields">{fields} {fields === 1 ? 'field' : 'fields'}</span>}
+          {!!fields && <span className="rl-fields" data-label={`${fields} ${fields === 1 ? 'field' : 'fields'}`} aria-label={`${fields} additional ${fields === 1 ? 'field' : 'fields'}`} />}
           </>}
           </div>
           {isSelected && preference.inspection === 'inline' && inspector}

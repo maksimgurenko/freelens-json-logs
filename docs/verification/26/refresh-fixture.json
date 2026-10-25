@@ -1,0 +1,11 @@
+{
+  "at": "2026-10-25T03:41:09.285Z",
+  "result": {
+    "type": "object",
+    "value": {
+      "uid": "b5088fa0-3961-4287-bd9a-0fd5cd4b4d2f",
+      "namespace": "readable-logs-ticket-26",
+      "pod": "selection-copy"
+    }
+  }
+}

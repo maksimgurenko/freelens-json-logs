@@ -1,0 +1,14 @@
+{
+  "at": "2026-10-25T03:40:05.012Z",
+  "result": {
+    "type": "object",
+    "value": {
+      "host": "1.10.3",
+      "version": "0.1.23",
+      "paused": true,
+      "rows": 1,
+      "container": "selection",
+      "note": "Real owned-endpoint responses only; prepend end timestamp before SDK end handlers; no body substitution"
+    }
+  }
+}

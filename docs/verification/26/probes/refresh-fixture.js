@@ -1,0 +1,1 @@
+(async()=>{global.__cv26?.restore();const R=global.LensExtensions.Renderer;await R.K8sApi.podsStore.loadAll({namespaces:['readable-logs-ticket-26'],merge:true});const pod=await R.K8sApi.podsApi.get({namespace:'readable-logs-ticket-26',name:'selection-copy'});R.Navigation.showDetails(pod.selfLink);return {uid:pod.metadata.uid,namespace:pod.getNs(),pod:pod.getName()};})()

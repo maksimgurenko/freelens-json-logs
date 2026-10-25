@@ -1,0 +1,13 @@
+{
+	"__internal__": {
+		"migrations": {
+			"version": "0.1.22"
+		}
+	},
+	"schemaVersion": 3,
+	"viewer": {
+		"inspection": "inline"
+	},
+	"profiles": [],
+	"globalDefault": "default"
+}

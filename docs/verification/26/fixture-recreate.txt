@@ -1,0 +1,5 @@
+pod "selection-copy" deleted from readable-logs-ticket-26 namespace
+pod/selection-copy created
+pod/selection-copy condition met
+{"message":"row 0999 fields selection test text","level":"info","fields":"original fields","extra":999,"nested":{"fields":"value fields"},"unicode":"α🙂"}
+{"message":"row 1000 fields selection test text","level":"info","fields":"original fields","extra":1000,"nested":{"fields":"value fields"},"unicode":"α🙂"}
