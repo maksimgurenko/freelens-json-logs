@@ -16,6 +16,7 @@ import { FindHistoryPopover } from './find-history.tsx';
 import { selectedFindSeed } from './find-selection.ts';
 import { FindSourceText } from './find-source.tsx';
 import { FindHighlights, type HighlightStatus } from './find-highlights.ts';
+import { FindMarks } from './find-marks.ts';
 import { FindClient, FindMatching, type FindMatchingState } from './find-client.ts';
 import type { FindRpc } from '../adapter/find-ipc.ts';
 import { sameFindKey } from '../core/find-protocol.ts';
@@ -56,6 +57,9 @@ export function Viewer({ target, register, visibility, findRpc, preferences, sho
   const root = useRef<HTMLElement>(null);
   const scroller = useRef<HTMLDivElement>(null);
   const viewport = useRef<LogViewport>();
+  const markRail = useRef<HTMLDivElement>(null);
+  const marks = useRef<FindMarks>();
+  const markAction = useRef<(ref: RecordRef) => void>();
   const rowGesture = useRef<{ x: number; y: number; dragged: boolean; selection?: SelectionPosition }>();
   const [findPosition] = useState(() => new FindPosition());
   const [findEditing] = useState(() => new FindEditing());
@@ -139,7 +143,7 @@ export function Viewer({ target, register, visibility, findRpc, preferences, sho
     let closing: Promise<void> | undefined;
     const dispose = () => {
       if (closing) return closing;
-      stopShortcuts(); stopBack(); stopEscape(); stopVisibility(); highlights.current?.dispose(); current.dispose();
+      stopShortcuts(); stopBack(); stopEscape(); stopVisibility(); highlights.current?.dispose(); marks.current?.dispose(); current.dispose();
       return closing = findMatching.dispose();
     };
     const unregister = register(dispose);
@@ -204,6 +208,14 @@ export function Viewer({ target, register, visibility, findRpc, preferences, sho
     return () => { current.dispose(); viewport.current = undefined; };
   }, []);
   useLayoutEffect(() => {
+    const current = new FindMarks(scroller.current!, markRail.current!, ref => markAction.current?.(ref));
+    marks.current = current;
+    return () => { current.dispose(); marks.current = undefined; };
+  }, []);
+  useLayoutEffect(() => {
+    marks.current?.update(window, matchesReady && findOpen && !editingProfiles && decorationActive ? matching.records.map(match => match.ref) : [], findPosition.active);
+  }, [window, matchesReady, matching.records, findOpen, editingProfiles, decorationActive, currentMatch, inspection, timestamps, wrap, preference.inspection, formattedRecords]);
+  useLayoutEffect(() => {
     if (editingProfiles) return;
     viewport.current?.update(window);
   }, [window, editingProfiles, inspection, timestamps, wrap, preference.inspection, formattedRecords, matchesReady, matching.records]);
@@ -215,12 +227,13 @@ export function Viewer({ target, register, visibility, findRpc, preferences, sho
   useLayoutEffect(() => {
     if (findOpen && !editingProfiles) { findInput.current?.focus(); findInput.current?.select(); }
   }, [findOpen]);
-  const navigateMatch = (direction: 1 | -1) => {
+  const navigateMatch = (target: 1 | -1 | RecordRef) => {
     if (!matchesReady || !matches.length) return;
     commitHistory('navigate');
-    findPosition.navigate(direction); positionChanged();
+    findPosition.navigate(target); positionChanged();
     findInput.current?.focus({ preventScroll: true });
   };
+  markAction.current = ref => navigateMatch(ref);
   const commitEdit = (transaction?: FindEditTransaction) => {
     if (!transaction) return;
     cancelFindIntents();
@@ -488,6 +501,7 @@ export function Viewer({ target, register, visibility, findRpc, preferences, sho
     {scroll.lost && <p className="rl-notice" role="status">Your scroll position left the recent log window. Use To bottom to follow new output.</p>}
     {editingProfiles && <ProfileEditor preferences={preferences} onClose={backToLogs} dismissal={dismissal} commands={commands} />}
     <div className={`rl-work rl-layout-${preference.inspection}`} hidden={editingProfiles}>
+    <div className="rl-log-pane">
     <div ref={scroller} className={`rl-records${wrap ? ' rl-wrap' : ''}`} tabIndex={0} aria-label="Container log records"
       onPointerDownCapture={event => {
         rowGesture.current = event.button === 0 && (event.target as Element).closest('.rl-row')
@@ -543,6 +557,8 @@ export function Viewer({ target, register, visibility, findRpc, preferences, sho
           {isSelected && preference.inspection === 'inline' && inspector}
         </div>;
       })}
+    </div>
+    <div ref={markRail} className="rl-find-marks" role="group" aria-label="Find matching records" />
     </div>
     {preference.inspection !== 'inline' && selected && <aside className="rl-inspector" aria-label="Record inspector">
       {inspector}

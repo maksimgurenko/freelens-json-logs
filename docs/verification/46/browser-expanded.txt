@@ -1,0 +1,16 @@
+node:internal/modules/run_main:107
+    triggerUncaughtException(
+    ^
+
+AssertionError [ERR_ASSERTION]: {"exceptionId":1,"text":"Uncaught (in promise) Error: History timeout did not settle","lineNumber":0,"columnNumber":0,"exception":{"type":"object","subtype":"error","className":"Error","description":"Error: History timeout did not settle\n    at until (http://127.0.0.1:44179/fixture.js:12161:11)\n    at async http://127.0.0.1:44179/fixture.js:12423:7\n    at async skipped (http://127.0.0.1:44179/fixture.js:12386:7)\n    at async verifySelectionHistory (http://127.0.0.1:44179/fixture.js:12419:5)\n    at async globalThis.verifyIdentity (http://127.0.0.1:44179/fixture.js:12780:7)","objectId":"-5108713419955987628.2.1"}}
+    at evaluate (file:///home/max/work/freelens-json-logs/scripts/verify-find-identity.mjs:63:5)
+    at async file:///home/max/work/freelens-json-logs/scripts/verify-find-identity.mjs:86:19 {
+  generatedMessage: false,
+  code: 'ERR_ASSERTION',
+  actual: false,
+  expected: true,
+  operator: '==',
+  diff: 'simple'
+}
+
+Node.js v24.18.0

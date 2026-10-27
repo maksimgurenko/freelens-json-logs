@@ -50,6 +50,12 @@
 .readable-logs .rl-recovery [role="group"] { margin-top: 12px; }
 .readable-logs .rl-empty { padding: 32px 24px; }
 .readable-logs .rl-work { display: flex; flex: 1; min-width: 0; min-height: 0; overflow: hidden; background: #000; }
+.readable-logs .rl-log-pane { display: flex; flex: 1; min-width: 0; min-height: 0; overflow: hidden; }
+.readable-logs .rl-find-marks { position: relative; flex: 0 0 12px; background: #000; }
+.readable-logs button.rl-find-mark { position: absolute; inset-inline: 0; height: 7px; min-height: 0; padding: 0; border: 0; border-radius: 0; background: transparent; }
+.readable-logs .rl-find-mark::before { content: ''; position: absolute; inset: 2px 2px; background: #e6b850; }
+.readable-logs .rl-find-mark[aria-current]::before { inset-block: 0; border: 1px solid #fff; }
+.readable-logs .rl-find-mark:focus-visible { outline-offset: -2px; }
 .readable-logs .rl-records { flex: 1; min-width: 0; min-height: 0; overflow: auto; overflow-anchor: none; background: #000; padding: 8px 12px; font: 12px/1.65 var(--font-monospace, monospace); tab-size: 2; }
 .readable-logs .rl-row { display: flex; gap: 12px; min-height: 1.65em; width: max-content; min-width: 100%; }
 .readable-logs .rl-row[role="button"] { cursor: pointer; padding: 2px 4px; }

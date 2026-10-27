@@ -1,6 +1,6 @@
 # 45: Highlight matches and inspect hidden match sources
 
-**Status:** ready-for-agent
+**Status:** done
 **Blocked by:** [43: Search from the reading row and preserve refinement position](43-search-from-the-reading-row-and-preserve-refinement-position.md)
 **GitHub:** https://github.com/maksimgurenko/freelens-json-logs/issues/45
 

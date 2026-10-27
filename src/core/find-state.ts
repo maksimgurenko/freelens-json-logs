@@ -73,16 +73,19 @@ export class FindPosition {
       }
     } else this.active = matches.find(ref => sameRef(ref, this.active));
   }
-  navigate(direction: 1 | -1) {
+  navigate(target: 1 | -1 | RecordRef) {
     if (!this.matches.length) return;
+    const addressed = typeof target === 'object' ? this.matches.find(ref => sameRef(ref, target)) : undefined;
+    if (typeof target === 'object' && !addressed) return;
     this.cancelSelection();
+    const direction = typeof target === 'number' ? target : 1;
     const index = this.matches.findIndex(ref => sameRef(ref, this.active));
     const ordered = direction === 1 ? this.matches : [...this.matches].reverse();
     const origin = recordIndex(this.window, this.reading);
     const inclusive = origin < 0 ? ordered[0] : ordered.find(ref => direction * (recordIndex(this.window, ref) - origin) >= 0);
     const wrapped = index >= 0 ? index + direction < 0 || index + direction >= this.matches.length : !inclusive;
-    const found = index >= 0 ? this.matches[(index + direction + this.matches.length) % this.matches.length] : inclusive ?? ordered[0];
-    this.feedback = this.matches.length === 1 ? 'Only matching record' : wrapped ? direction === 1 ? 'Wrapped to beginning' : 'Wrapped to end' : '';
+    const found = addressed ?? (index >= 0 ? this.matches[(index + direction + this.matches.length) % this.matches.length] : inclusive ?? ordered[0]);
+    this.feedback = this.matches.length === 1 ? 'Only matching record' : !addressed && wrapped ? direction === 1 ? 'Wrapped to beginning' : 'Wrapped to end' : '';
     this.active = this.candidate = this.position = found;
     const id = ++this.serial;
     this.revealPermission = id;

@@ -90,3 +90,22 @@ test('every old input-key dimension is rejected and dismissed counts cannot prom
   find.clear(); assert.equal(find.candidate, undefined); assert.equal(find.position, undefined);
   find.read(window.refs[64]); find.reset(); assert.equal(find.reading, undefined);
 });
+
+test('a mark addresses exactly its current occurrence through navigation, preserving reading and rejecting expired targets', () => {
+  const find = new FindPosition();
+  find.read(window.refs[64]); find.prepare(window, key(1), 'new'); find.accept(key(1), hits);
+  find.navigate(window.refs[90]);
+  assert.equal(find.active, window.refs[90]);
+  assert.equal(find.candidate, window.refs[90]); assert.equal(find.position, window.refs[90]);
+  assert.equal(find.reading, window.refs[64]);
+  assert.equal(find.takeReveal(window, key(1)), window.refs[90]);
+  find.navigate(window.refs[82]); find.cancelReveal();
+  assert.equal(find.takeReveal(window, key(1)), undefined);
+  find.navigate(window.refs[1]); // Not a matching record.
+  assert.equal(find.active, window.refs[82]);
+  const replacement = replaceWindow(window, [parseTransportLine('row 90')]);
+  find.prepare(replacement, key(2), 'maintenance'); find.accept(key(2), replacement.refs);
+  find.navigate(window.refs[90]);
+  assert.equal(find.active, undefined);
+  assert.equal(find.takeReveal(replacement, key(2)), undefined);
+});

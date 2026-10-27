@@ -4,11 +4,27 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import * as Mobx from 'mobx';
 import { verifyFindPresentation } from './find-presentation-browser.jsx';
+import { verifyFindMarks } from './find-marks-browser.jsx';
 
 const check = (condition, message) => { if (!condition) throw new Error(message); };
 const sleep = ms => new Promise(resolve => setTimeout(resolve, ms));
 const turn = () => sleep(0);
 const results = [], errors = [], callbacks = new Map();
+// Observe browser resource ownership at the DOM boundary, across every mounted
+// renderer owner. A disconnected observer/frame must not outlive unmount.
+const geometryObservers = new Set(), geometryFrames = new Set();
+for (const name of ['ResizeObserver', 'MutationObserver']) {
+  const Native = globalThis[name];
+  globalThis[name] = class extends Native {
+    observe(...args) { geometryObservers.add(this); return super.observe(...args); }
+    disconnect() { geometryObservers.delete(this); return super.disconnect(); }
+  };
+}
+const requestFrame = globalThis.requestAnimationFrame.bind(globalThis), cancelFrame = globalThis.cancelAnimationFrame.bind(globalThis);
+globalThis.requestAnimationFrame = callback => {
+  const id = requestFrame(time => { geometryFrames.delete(id); callback(time); }); geometryFrames.add(id); return id;
+};
+globalThis.cancelAnimationFrame = id => { geometryFrames.delete(id); cancelFrame(id); };
 window.addEventListener('error', event => errors.push(String(event.error || event.message)));
 window.addEventListener('unhandledrejection', event => errors.push(String(event.reason)));
 let text = 'start\nx\nend', reads = 0, pendingRead, copies = [];
@@ -17,14 +33,14 @@ let uid = 'uid';
 let heldReply, failNext = false, requestCount = 0;
 let failNextRange = false;
 const rangeRequests = [];
-const holdNext = () => { let release; const promise = new Promise(resolve => { release = resolve; }); heldReply = { promise, release }; return heldReply; };
+const holdNext = text => { let release; const promise = new Promise(resolve => { release = resolve; }); heldReply = { promise, release, text }; return heldReply; };
 const ipc = {
   listen(name, callback) { callbacks.set(name, callback); return () => callbacks.delete(name); },
   async invoke(name, ...args) {
     if (name === 'viewer-visibility-request') { callbacks.get(args[1])?.({}, args[0]); return; }
     const exact = name === 'find-request' && args[1].work === 'match';
-    const gate = exact ? heldReply : undefined;
-    if (exact) { requestCount++; heldReply = undefined; if (failNext) { failNext = false; throw new Error('Controlled SDK failure'); } }
+    const gate = exact && (!heldReply?.text || heldReply.text === args[1].query.text) ? heldReply : undefined;
+    if (exact) { requestCount++; if (gate) heldReply = undefined; if (failNext) { failNext = false; throw new Error('Controlled SDK failure'); } }
     if (name === 'find-request' && !exact) {
       rangeRequests.push(args[1]);
       if (failNextRange) { failNextRange = false; throw new Error('Controlled decoration SDK failure'); }
@@ -239,8 +255,10 @@ async function verifySelectionHistory() {
   // Finish composition only after it was excluded at Close; completion is not a commitment.
   input().dispatchEvent(new CompositionEvent('compositionend', { bubbles: true, data: 'composing' })); await until(settled);
   clock().click(); check(!historyEntries().length, 'Composition completion deferred history'); byName('Close search history').click();
-  await skipped('timeout', async value => { gate = holdNext(); edit(value); await until(() => heldReply === undefined);
-    await until(() => root.textContent.includes('Find timed out'), 'History timeout did not settle'); gate.release(); await turn(); });
+  await skipped('timeout', async value => { gate = holdNext(value); edit(value); await until(() => heldReply === undefined);
+    await until(() => root.textContent.includes('Find timed out'), 'History timeout did not settle').catch(error => {
+      throw new Error(`${error.message}: ${JSON.stringify({ input: input().value, status: root.querySelector('.rl-find-count').textContent, requestCount, workerQueries: rangeRequests.slice(-3).map(request => request.query) })}`);
+    }); gate.release(); await turn(); });
   results.push('D10/D11/D16: pending/composing/oversized/failure/timeout input skipped without deferred writes');
 
   button('Clear'); await query('retained history'); closeFind(); button('Find');
@@ -503,6 +521,7 @@ globalThis.verifyIdentity = async () => {
     await until(() => rows().length === 3, 'No initial rows'); button('Pause');
     await verifyPresentation();
     await verifyFindPresentation({ root, rows, button, query, refresh, until, check, turn, results, rangeRequests, failRanges: () => { failNextRange = true; } });
+    await verifyFindMarks({ root, rows, button, query, refresh, until, check, turn, results, failRanges: () => { failNextRange = true; } });
     await verifySelectionHistory();
     await verifyAsync();
     await verifyPosition();
@@ -617,5 +636,7 @@ globalThis.verifyIdentity = async () => {
   }
   check(callbacks.size === 0, 'IPC listener leak'); check(errors.length === 0, errors.join('; '));
   check(CSS.highlights.size === 0, 'Viewer teardown retained Custom Highlight registrations');
+  check(geometryObservers.size === 0 && geometryFrames.size === 0, 'Viewer teardown retained geometry observers/animation frames');
+  results.push('unmount removes all geometry Mutation/Resize observers and pending animation frames');
   return { checks: results, reads, errors };
 };
