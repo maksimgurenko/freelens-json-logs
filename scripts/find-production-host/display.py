@@ -4,6 +4,8 @@ import json, os, select, socket, subprocess, tempfile, time
 
 ticket = os.environ.get('FIND_HOST_TICKET', '42')
 assert ticket in ('42', '48')
+run = os.environ.get('FIND_HOST_RUN', '')
+assert not run or all(c in 'abcdefghijklmnopqrstuvwxyz0123456789-' for c in run)
 
 root = Path(__file__).resolve().parents[2]
 scratch = root / f'.scratch/find/{ticket}-host'
@@ -11,7 +13,7 @@ scratch = root / f'.scratch/find/{ticket}-host'
 prefix = scratch / 'prefix'
 runtime = Path(tempfile.mkdtemp(prefix='fd-', dir='/tmp'))
 runtime.chmod(0o700)
-evidence = root / f'docs/verification/{ticket}/host'
+evidence = root / f'docs/verification/{ticket}/host' / run
 evidence.mkdir(parents=True, exist_ok=True)
 user_environment = subprocess.check_output(['systemctl', '--user', 'show-environment'], text=True)
 user_instance = next(line.split('=', 1)[1] for line in user_environment.splitlines() if line.startswith('HYPRLAND_INSTANCE_SIGNATURE='))
@@ -33,11 +35,19 @@ outer_config.mkdir(exist_ok=True)
 (outer_config / 'autostart').write_text('')
 (outer_config / 'environment').write_text('')
 command = [str(prefix / 'usr/bin/labwc'), '--config-dir', str(outer_config)]
+renderer = os.environ.get('FIND_DISPLAY_RENDERER', '')
+assert renderer in ('', 'mesa')
+if renderer == 'mesa':
+    for key in ('GBM_BACKEND', '__GLX_VENDOR_LIBRARY_NAME', 'LIBVA_DRIVER_NAME'):
+        base.pop(key, None)
+    base['__EGL_VENDOR_LIBRARY_FILENAMES'] = '/usr/share/glvnd/egl_vendor.d/50_mesa.json'
 outer_env = dict(base, LD_LIBRARY_PATH=str(prefix / 'usr/lib'), WLR_BACKENDS='headless', WLR_RENDERER='gles2', WLR_LIBINPUT_NO_DEVICES='1', WLR_HEADLESS_OUTPUTS='1')
+if renderer == 'mesa':
+    outer_env['WLR_RENDER_DRM_DEVICE'] = '/dev/dri/renderD128'
 started = time.monotonic()
 events = []
 outer = nested = None
-result = {'before': before, 'userInstance': user_instance, 'outerCommand': command}
+result = {'before': before, 'userInstance': user_instance, 'outerCommand': command, 'runtime': str(runtime), 'renderer': renderer, 'rendererEnvironment': {key: outer_env[key] for key in ('GBM_BACKEND','__GLX_VENDOR_LIBRARY_NAME','__EGL_VENDOR_LIBRARY_FILENAMES','WLR_RENDER_DRM_DEVICE') if key in outer_env}}
 try:
     output = (evidence / 'outer.log').open('w')
     outer = subprocess.Popen(command, env=outer_env, stdout=output, stderr=subprocess.STDOUT)
@@ -68,7 +78,7 @@ try:
     isolated_env['WAYLAND_DISPLAY'] = str(runtime / description['wl_socket'])
     # This dispatch targets only the private runtime/socket, never the real desktop.
     subprocess.run(['hyprctl', 'eval', 'hl.dispatch(hl.dsp.focus({workspace=7}))'], env=isolated_env, check=True, stdout=subprocess.DEVNULL)
-    info = {'outerPid': outer.pid, 'hyprlandPid': nested.pid, 'instance': instance, 'runtime': str(runtime), 'environment': {key: isolated_env[key] for key in ('XDG_RUNTIME_DIR', 'HYPRLAND_INSTANCE_SIGNATURE', 'WAYLAND_DISPLAY', 'HYPRLAND_NO_SD_VARS', 'HYPRLAND_NO_SD_NOTIFY', 'AQ_DRM_DEVICES', 'LIBSEAT_BACKEND', 'SEATD_SOCK')}}
+    info = {'unsetEnvironment': ['GBM_BACKEND','__GLX_VENDOR_LIBRARY_NAME','LIBVA_DRIVER_NAME'] if renderer == 'mesa' else [], 'outerPid': outer.pid, 'hyprlandPid': nested.pid, 'instance': instance, 'runtime': str(runtime), 'environment': {key: isolated_env[key] for key in ('XDG_RUNTIME_DIR', 'HYPRLAND_INSTANCE_SIGNATURE', 'WAYLAND_DISPLAY', 'HYPRLAND_NO_SD_VARS', 'HYPRLAND_NO_SD_NOTIFY', 'AQ_DRM_DEVICES', 'LIBSEAT_BACKEND', 'SEATD_SOCK', '__EGL_VENDOR_LIBRARY_FILENAMES') if key in isolated_env}}
     (scratch / 'session.json').write_text(json.dumps(info, indent=2) + '\n')
     print(json.dumps({'ready': True, **info}), flush=True)
     while not (scratch / 'stop').exists():
@@ -89,6 +99,9 @@ finally:
             process.terminate()
             try: process.wait(timeout=5)
             except subprocess.TimeoutExpired: process.kill(); process.wait()
+    if (runtime / 'hypr').exists():
+        for log in (runtime / 'hypr').glob('*/hyprland.log'):
+            (evidence / 'hyprland-internal.log').write_bytes(log.read_bytes())
     after = user_state()
     result.update(after=after, events=events, elapsedSeconds=time.monotonic() - started, outerExit=outer.returncode if outer else None, hyprlandExit=nested.returncode if nested else None)
     (evidence / 'real-desktop.json').write_text(json.dumps(result, indent=2) + '\n')

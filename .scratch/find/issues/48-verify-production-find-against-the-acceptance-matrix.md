@@ -61,3 +61,26 @@ cached authority. No comment/closure/publication.
   only explicit platform marking and honest verdict reporting are satisfied here.
 
 Ticket remains unfinished; report retry with checkpoint commit and this handoff.
+
+### Continuation from b740e7d
+
+Reclaimed #48; live bodies/full comments still equal cached authority.
+[Continuation report](../../../docs/verification/48/continuation.md) records
+33 passing actual installed DOM-state checks: stable mode refinement/history
+flags, initial Previous, edit/composition transactions, zero/one-hit, invalid
+seeds, async Clear and count-after-inspector-dismissal. No production byte changes.
+
+Resource gate remains failed: console/handle hygiene does not remove dense
+growth; a mount-only no-screenshot control also retains old viewers. Heap paths
+identify native ScriptedAnimationController retention, without claiming exclusive
+attribution or a product fix. Mesa-only private setup still fails IPC readiness.
+Original failures retained; natural native cadence/resource acceptance is pending.
+No additional full acceptance criterion is satisfied by partial host checks.
+Native/clipboard/Windows/macOS remain unverified. Continue only #48 per NEXT.md.
+
+Final continuation checks pass: pinned typecheck, 246 tests, six desktop policy
+checks, production browser, real built workers, resource smoke, strict packed
+checks and matching two-build SHA-256. [Independent reviews](../../../docs/verification/48/review-continuation.md)
+corrected stale trace verdicts and kept row-zero Host evidence pending; no remaining
+actionable defect. Owned profile/runtimes/apps/raw heaps and UID-checked namespace
+are cleaned up; recorded user/config hashes and real desktop state are preserved.

@@ -1,3 +1,4 @@
+import { evidence } from './config.mjs';
 // #48 installed production renderer, real Kubernetes snapshots and real SDK.
 // DOM events/Range observations establish browser integration, not physical input.
 import assert from 'node:assert/strict';
@@ -11,7 +12,7 @@ const pump=setInterval(async()=>{if(pumping)return;pumping=true;try{await d.page
 result.renderingSchedule='Background CDP screenshots drive frames: private compositor has zero-size output. This does not verify native presentation cadence.';
 try {
   await d.bind(d.cluster());
-  const fixture = JSON.parse(readFileSync('docs/verification/48/host/fixture.json'));
+  const fixture = JSON.parse(readFileSync(`${evidence}/fixture.json`));
   const clusterId = await d.page.evaluate('global.LensExtensions.Renderer.Catalog.getActiveCluster().id', d.cluster());
   await d.page.evaluate(`global.LensExtensions.Renderer.Navigation.navigate('/overview');true`,d.cluster());
   await d.wait(s=>!s.live&&!s.service.owners);

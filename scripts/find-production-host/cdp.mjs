@@ -22,9 +22,10 @@ export async function connect(port) {
     socket.addEventListener('error', reject, { once: true });
   });
   let id = 0;
-  const waiting = new Map(), contexts = new Map(), events = [];
+  const waiting = new Map(), contexts = new Map(), events = [], subscribers = new Set();
   socket.addEventListener('message', ({ data }) => {
     const message = JSON.parse(data);
+    if (message.method) for (const listener of subscribers) listener(message);
     if (message.method?.startsWith('NodeWorker.')) events.push(message);
     if (message.method === 'Runtime.executionContextCreated') contexts.set(message.params.context.id, message.params.context);
     if (message.method === 'Runtime.executionContextDestroyed') contexts.delete(message.params.executionContextId);
@@ -51,7 +52,7 @@ export async function connect(port) {
   assert.equal(identity.integration, integration);
   assert.equal(identity.wayland, session.environment.WAYLAND_DISPLAY);
   if (port === 9242) assert.equal(identity.pid, hostPid);
-  return { send, evaluate, contexts, events, close: () => socket.terminate() };
+  return { send, evaluate, contexts, events, subscribe(listener) { subscribers.add(listener); return () => subscribers.delete(listener); }, close: () => socket.terminate() };
 }
 
 if (process.argv[1]?.endsWith('/cdp.mjs')) {

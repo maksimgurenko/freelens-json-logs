@@ -1,5 +1,7 @@
 # #48 production Find verification checkpoint
 
+Latest: [continuation with 33 installed DOM-state checks and native-queue resource diagnosis](continuation.md). The original checkpoint below is retained as history; #48 remains unfinished.
+
 Selected **Verify production Find against the acceptance matrix** as the lowest
 eligible unfinished local ticket. #47 is done at
 `3fb33db5f5ded3523bcf66c1145f0af967ec0bf3`, the fixed pre-implementation/review HEAD.

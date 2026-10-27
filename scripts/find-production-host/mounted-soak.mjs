@@ -1,14 +1,16 @@
+import { evidence } from './config.mjs';
 // Actual installed viewer + snapshots/Find/active-idle/teardown. No native input.
 import assert from 'node:assert/strict';
 import { readFileSync, readdirSync } from 'node:fs';
 import { driver, report, sleep } from './driver.mjs';
 import { privateSession } from './private-session.mjs';
+const cleanInspector=process.env.FIND_SOAK_INSPECTOR_CLEAN==='1';
 const d=await driver(),result={session:privateSession(),samples:[],limits:'Three warmups and six samples per bound. Background CDP screenshots drive frames; native presentation and input cadence remain unverified.'};
 let pumping=false;const pump=setInterval(async()=>{if(pumping)return;pumping=true;try{await d.page.send('Page.captureScreenshot',{format:'png'});}catch{}finally{pumping=false;}},150);
 const until=async(predicate)=>{for(let i=0;i<400;i++){if(await predicate())return;await sleep(25);}throw Error('Mounted soak did not settle');};
 try {
   await d.bind(d.cluster());
-  const fixture=JSON.parse(readFileSync('docs/verification/48/host/fixture.json'));
+  const fixture=JSON.parse(readFileSync(`${evidence}/fixture.json`));
   const clusterId=await d.page.evaluate('global.LensExtensions.Renderer.Catalog.getActiveCluster().id',d.cluster());
   const params={namespace:fixture.namespace,pod:'find-fixtures',podUid:fixture.podUid,clusterId};
   for(const name of ['dense','long']){
@@ -33,6 +35,7 @@ try {
       await until(()=>d.page.evaluate(`document.querySelector('#rl-find')?.value===${JSON.stringify(name==='dense'?'a':'Q')}`,d.cluster()));
       assert.equal(await d.page.evaluate('document.querySelector(".rl-update-status").textContent',d.cluster()),'Paused');
       await d.page.evaluate("global.LensExtensions.Renderer.Navigation.navigate('/overview');true",d.cluster());await d.wait(s=>!s.live&&!s.service.owners&&!s.service.retiring);
+      if(cleanInspector){await d.page.send('Runtime.discardConsoleEntries');await d.main.send('Runtime.discardConsoleEntries');}
       await d.main.send('HeapProfiler.collectGarbage');await d.page.send('HeapProfiler.collectGarbage');
       const cleanup=await d.page.evaluate('({highlights:CSS.highlights.size,rows:document.querySelectorAll(".rl-record").length,memory:process.memoryUsage()})',d.cluster());
       assert.equal(cleanup.highlights,0);assert.equal(cleanup.rows,0);
@@ -42,6 +45,7 @@ try {
     }
     result.samples.push({name,warmupCycles:3,cycles:samples});console.log(JSON.stringify({name,cycles:samples.length}));
   }
+  result.inspectorConsoleClearedBeforeGc=cleanInspector;
   result.lifecyclePass=true;
   result.growth=result.samples.map(bound=>{
     const first=bound.cycles[0],last=bound.cycles.at(-1);
@@ -54,4 +58,4 @@ try {
   result.pass=result.lifecyclePass&&result.resourcePass;
   if(!result.pass)process.exitCode=1;
 }catch(error){result.error=error.stack;process.exitCode=1;}
-finally{clearInterval(pump);report('mounted-soak',result);console.log(JSON.stringify({pass:result.pass,error:result.error}));d.close();}
+finally{clearInterval(pump);report(cleanInspector?'mounted-soak-clean-inspector':'mounted-soak',result);console.log(JSON.stringify({pass:result.pass,error:result.error}));d.close();}

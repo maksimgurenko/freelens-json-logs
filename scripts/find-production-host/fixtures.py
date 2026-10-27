@@ -2,7 +2,11 @@
 from pathlib import Path
 import json, subprocess, sys, os
 assert os.environ.get('FIND_HOST_TICKET') == '48'
+run = os.environ.get('FIND_HOST_RUN', '')
+assert not run or all(c in 'abcdefghijklmnopqrstuvwxyz0123456789-' for c in run)
 root = Path(__file__).resolve().parents[2]
+evidence = root / 'docs/verification/48/host' / run
+evidence.mkdir(parents=True, exist_ok=True)
 state = root / '.scratch/find/48-host/fixture.json'
 base = ['kubectl', '--context', 'kind-freelens-json-logs-spike']
 if sys.argv[1:] == ['delete']:
@@ -34,5 +38,5 @@ pod={'apiVersion':'v1','kind':'Pod','metadata':{'name':'find-fixtures','namespac
 subprocess.run(base + ['create','-f','-'],input=json.dumps(pod),text=True,check=True)
 subprocess.run(base + ['-n',ns,'wait','pod/find-fixtures','--for=condition=Ready','--timeout=60s'],check=True)
 result=json.loads(subprocess.check_output(base + ['-n',ns,'get','pod','find-fixtures','-o','json']))
-(root/'docs/verification/48/host/fixture.json').write_text(json.dumps({'namespace':ns,'namespaceUid':uid,'podUid':result['metadata']['uid'],'image':image,'containers':result['status']['containerStatuses']},indent=2)+'\n')
+(evidence/'fixture.json').write_text(json.dumps({'namespace':ns,'namespaceUid':uid,'podUid':result['metadata']['uid'],'image':image,'containers':result['status']['containerStatuses']},indent=2)+'\n')
 print(ns)

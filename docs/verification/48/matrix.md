@@ -14,29 +14,29 @@ fill an unperformed installed-host/native/platform cell below.
 “Host DOM” means the actual installed packed renderer through real Freelens SDK
 and Kubernetes snapshots, with DOM events/Range selection. It does not mean
 physical pointer, keyboard, clipboard or native input delivery. “Partial” keeps
-the unperformed parts visible. Screenshot-driven rendering is explicitly limited
+the unperformed parts visible. Original screenshot-driven rendering is explicitly limited
 by the private compositor's 0×0 output; native presentation cadence is unverified.
 
 | Case | Current integrated host evidence | Remaining host/native gate |
 | --- | --- | --- |
 | D01 | Host DOM pass: row 64, inclusive origin 73 and replacement from 64 | Physical row intent/focus and scrolling |
 | D02 | Host DOM pass: deselection clears origin, new query finds first retained hit despite scrolling | Physical deselection/focus return |
-| D03 | Host DOM partial: first retained match and wrap verified | Initial Previous without active result; real repeat shortcuts |
+| D03 | Host DOM partial: first matching row, wrap and initial Previous after deselection with no active result | Dedicated row-zero-hit fixture; real repeat shortcuts |
 | D04 | Host DOM pass: progressive `up` through `upstream` remains at 73 | Native editing/IME |
 | D05 | Host DOM pass: Next → 82, zero-hit suffix, correction restores 82 | Out-of-order mounted host completion/native navigation |
-| D06 | Host DOM partial: identical full pre-insertion replacement resets origin | Host partial paste/cut/Undo/Redo/composition and Clear during pending; physical delivery |
+| D06 | Host DOM pass: full replacement, partial paste, cut/Undo/Redo, select-all composition and Clear during async dispatch | Native paste/Undo/IME delivery; stale composition completion at Host |
 | D07 | Host DOM pass within screenshot frame schedule: exact native Custom Highlights, stable text node and DOM Range across query decoration, black/no-counter canvas | Native selection/copy/contrast; natural presentation cadence |
 | D08 | Host DOM pass: hidden original → exact Application text; Raw decoded-only → exact Extracted message | Full inspector layout/profile matrix, physical original-copy/clipboard |
-| D09 | Host DOM partial: zero-hit clears result; both wrap directions | Complete empty/one-hit/no-scroll host matrix and native shortcuts |
-| D10 | Real SDK four flag combinations pass; history displayed in real UI; type/mode zero ordinal unresolved | Stabilize host fixture and verify each mode refines per #37; history recall/range/mark agreement; platform modifiers |
-| D11 | Real SDK startup-inclusive timeout, actual exit and explicit recovery pass | Mounted host pending Clear/cancel/recovery/edit responsiveness |
-| D12 | Host DOM partial: actual single-message Range seeds empty Find | Full host inspector/foreign/multiline/length/existing-query cases; physical selection isolation |
+| D09 | Host DOM pass: empty, zero/one-hit feedback and wrap; no-scroll after explicit DOM scroll event | Natural scroll-event delivery and native shortcuts |
+| D10 | Real SDK four combinations; 33-check settled/paused Host run verifies mode refinement, candidate retention and history recall with flags | Full host range/mark agreement across modes; platform modifiers |
+| D11 | Real SDK startup-inclusive timeout, actual exit and explicit recovery pass | Clear during async dispatch passes; held mounted completion/timeout/recovery and native edit responsiveness pending |
+| D12 | Host DOM partial: message Range seeds empty Find; existing query, labels and multi-record rejection pass | Full host inspector/foreign/multiline/Unicode-length matrix; physical selection isolation |
 | D13 | Host DOM partial: source node/selection across query updates | Real append/duplicate/eviction/retained-selection, profile and repeated restart traces |
-| D14 | Pure and mounted Chromium pass; host pending races unperformed | Real host delayed current/stale success/failure after inspector dismissal |
+| D14 | Host DOM current completion after inspector dismissal preserves useful count without selection/inspector resurrection | Held actual host late current/stale success/failure |
 | D15 | Host mounted bounds/Pause/active-idle sampling, real marks and visible ranges | Full measured host resize/geometry/group cycling/following; physical wheel/native windows |
-| D16 | Host DOM partial: navigation commits history; Close/Open retains query | Host history recall/one-layer dismissals/inactive ownership; physical menus/IME/AltGraph/focus |
+| D16 | Host DOM partial: navigation and valid zero-hit Close commit history; recall restores query/flags | Complete host one-layer dismissal; physical menus/IME/AltGraph/focus |
 
-Host DOM results: [28 integrated assertions](host/integrated-acceptance.json).
+Host DOM results: [28 original integrated assertions](host/integrated-acceptance.json), [33 continuation state assertions](host/dom-continuation/state-acceptance.json).
 SDK/frame/deadline results: [SDK suite](host/sdk-suite.json),
 [startup stall](host/startup-timeout.json), [mounted viewer inactivity](host/mounted-host-viewer.json),
 [disable/uninstall/reactivation](host/extension-lifecycle.json),
@@ -45,15 +45,15 @@ SDK/frame/deadline results: [SDK suite](host/sdk-suite.json),
 | Original state trace | Integrated host verdict |
 | --- | --- |
 | 1 refinement/origin | Host DOM pass for 64/73/82 trace and full replacement |
-| 2 edges/wrap | Partial: beginning, zero and wrap; initial Previous/one-hit matrix pending |
+| 2 edges/wrap | Partial: beginning, zero/wrap, initial Previous without active result, and one-hit feedback pass; dedicated row-zero-hit fixture and native repeat delivery pending |
 | 3 deliberate keyboard row focus | Unperformed; pure/Chromium evidence only |
 | 4 independent inspector/anchor | Partial: hidden-source action observed; A/B keyboard and eviction pending |
-| 5 delayed completion after dismissal | Unperformed at host seam |
+| 5 delayed completion after dismissal | Partial: current count after inspector dismissal without resurrected selection/inspector passes; held late worker completion remains pending |
 | 6 stale complete success/failure keys | Partial: SDK foreign/retired tokens and latest-only bursts; mounted out-of-order data pending |
 | 7 manual scroll/dismissal cancellation | Partial: real inactivity disposal/query retention; pending host reveal races pending |
 | 8 duplicate/zero overlap | Unperformed at host snapshot seam |
-| 9 maintenance without seek | Unperformed for actual snapshot/profile no-seek behavior; the initial type/mode zero ordinal is an unresolved separate refinement gate |
-| 10 input transactions | Partial: identical full replacement; remaining native/edit transactions pending |
+| 9 maintenance without seek | Unperformed for actual snapshot/profile no-seek behavior; settled/paused mode refinement passes in the continuation; the earlier live-snapshot timing observation is retained |
+| 10 input transactions | Partial: identical full replacement; DOM partial paste/cut/Undo/Redo/select-all composition pass in continuation; native delivery pending |
 | 11 seed/history/Escape | Partial: source Range seed and history commitment; complete host/native matrix pending |
 | 12 observed restarts | Unperformed at host snapshot seam |
 | 13 geometry/selection/following | Partial: Custom Highlights/source selection/bound workloads; resize/follow/reveal/current geometry matrix pending |
@@ -78,3 +78,5 @@ current-package coverage.
 
 All failed attempts are retained and described in the report. Every unverified
 cell is a release gate. No release acceptance, issue closure or publication.
+
+[Latest continuation](continuation.md) links 33 installed DOM-state assertions and minimized installed resource failure/retaining paths. Host trace 5 has current-count-after-dismissal coverage; held late replies remain pending. Every resource/native/platform limit above remains an execution gate.

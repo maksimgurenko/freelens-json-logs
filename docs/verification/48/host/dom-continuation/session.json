@@ -1,0 +1,17 @@
+{
+  "unsetEnvironment": [],
+  "outerPid": 1303263,
+  "hyprlandPid": 1303279,
+  "instance": "efb50993780079460b0cbed1363e2166a2de1d9f_1793083102_1471767239",
+  "runtime": "/tmp/fd-7mo43ulb",
+  "environment": {
+    "XDG_RUNTIME_DIR": "/tmp/fd-7mo43ulb",
+    "HYPRLAND_INSTANCE_SIGNATURE": "efb50993780079460b0cbed1363e2166a2de1d9f_1793083102_1471767239",
+    "WAYLAND_DISPLAY": "/tmp/fd-7mo43ulb/wayland-1",
+    "HYPRLAND_NO_SD_VARS": "1",
+    "HYPRLAND_NO_SD_NOTIFY": "1",
+    "AQ_DRM_DEVICES": "/dev/null",
+    "LIBSEAT_BACKEND": "seatd",
+    "SEATD_SOCK": "/home/max/work/freelens-json-logs/.scratch/find/48-host/no-seatd.sock"
+  }
+}

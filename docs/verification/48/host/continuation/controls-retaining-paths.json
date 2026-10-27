@@ -1,0 +1,346 @@
+{
+  "note": "Sanitized shortest strong paths only. Raw private-profile heap stays uncommitted and will be removed.",
+  "targets": 9,
+  "paths": [
+    [
+      {
+        "node": "(GC roots)",
+        "type": "element",
+        "edge": 1,
+        "from": ""
+      },
+      {
+        "node": "(Global handles)",
+        "type": "element",
+        "edge": 10,
+        "from": "(GC roots)"
+      },
+      {
+        "node": "system / NativeContext / https://82e42b45b0a644db4967b0b42d61e52f.renderer.freelens.app:33973",
+        "type": "internal",
+        "edge": "7 / blink::ScriptStateProtectingContext::context_",
+        "from": "(Global handles)"
+      },
+      {
+        "node": "global (global*) / https://82e42b45b0a644db4967b0b42d61e52f.renderer.freelens.app:33973",
+        "type": "internal",
+        "edge": "global_object",
+        "from": "system / NativeContext / https://82e42b45b0a644db4967b0b42d61e52f.renderer.freelens.app:33973"
+      },
+      {
+        "node": "HTMLDocument",
+        "type": "property",
+        "edge": "<symbol Window#DocumentCachedAccessor>",
+        "from": "global (global*) / https://82e42b45b0a644db4967b0b42d61e52f.renderer.freelens.app:33973"
+      },
+      {
+        "node": "ScriptedAnimationController",
+        "type": "element",
+        "edge": 29,
+        "from": "HTMLDocument"
+      },
+      {
+        "node": "InternalNode",
+        "type": "element",
+        "edge": 4,
+        "from": "ScriptedAnimationController"
+      },
+      {
+        "node": "<div class=\"rl-records\" tabindex=\"0\" aria-label=\"Container log records\" aria-busy=\"false\">",
+        "type": "element",
+        "edge": 7,
+        "from": "InternalNode"
+      },
+      {
+        "node": "<div class=\"rl-log-pane\">",
+        "type": "element",
+        "edge": 9,
+        "from": "<div class=\"rl-records\" tabindex=\"0\" aria-label=\"Container log records\" aria-busy=\"false\">"
+      },
+      {
+        "node": "<div class=\"rl-work rl-layout-side\">",
+        "type": "element",
+        "edge": 9,
+        "from": "<div class=\"rl-log-pane\">"
+      },
+      {
+        "node": "<section class=\"readable-logs\" aria-label=\"Readable logs\" data-version=\"0.1.34\">",
+        "type": "element",
+        "edge": 9,
+        "from": "<div class=\"rl-work rl-layout-side\">"
+      }
+    ],
+    [
+      {
+        "node": "(GC roots)",
+        "type": "element",
+        "edge": 1,
+        "from": ""
+      },
+      {
+        "node": "(Global handles)",
+        "type": "element",
+        "edge": 10,
+        "from": "(GC roots)"
+      },
+      {
+        "node": "system / NativeContext / https://82e42b45b0a644db4967b0b42d61e52f.renderer.freelens.app:33973",
+        "type": "internal",
+        "edge": "7 / blink::ScriptStateProtectingContext::context_",
+        "from": "(Global handles)"
+      },
+      {
+        "node": "global (global*) / https://82e42b45b0a644db4967b0b42d61e52f.renderer.freelens.app:33973",
+        "type": "internal",
+        "edge": "global_object",
+        "from": "system / NativeContext / https://82e42b45b0a644db4967b0b42d61e52f.renderer.freelens.app:33973"
+      },
+      {
+        "node": "HTMLDocument",
+        "type": "property",
+        "edge": "<symbol Window#DocumentCachedAccessor>",
+        "from": "global (global*) / https://82e42b45b0a644db4967b0b42d61e52f.renderer.freelens.app:33973"
+      },
+      {
+        "node": "ScriptedAnimationController",
+        "type": "element",
+        "edge": 29,
+        "from": "HTMLDocument"
+      },
+      {
+        "node": "InternalNode",
+        "type": "element",
+        "edge": 4,
+        "from": "ScriptedAnimationController"
+      },
+      {
+        "node": "<div class=\"rl-records\" tabindex=\"0\" aria-label=\"Container log records\" aria-busy=\"false\">",
+        "type": "element",
+        "edge": 4,
+        "from": "InternalNode"
+      },
+      {
+        "node": "<div class=\"rl-log-pane\">",
+        "type": "element",
+        "edge": 9,
+        "from": "<div class=\"rl-records\" tabindex=\"0\" aria-label=\"Container log records\" aria-busy=\"false\">"
+      },
+      {
+        "node": "<div class=\"rl-work rl-layout-side\">",
+        "type": "element",
+        "edge": 9,
+        "from": "<div class=\"rl-log-pane\">"
+      },
+      {
+        "node": "<section class=\"readable-logs\" aria-label=\"Readable logs\" data-version=\"0.1.34\">",
+        "type": "element",
+        "edge": 9,
+        "from": "<div class=\"rl-work rl-layout-side\">"
+      }
+    ],
+    [
+      {
+        "node": "(GC roots)",
+        "type": "element",
+        "edge": 1,
+        "from": ""
+      },
+      {
+        "node": "(Global handles)",
+        "type": "element",
+        "edge": 10,
+        "from": "(GC roots)"
+      },
+      {
+        "node": "system / NativeContext / https://82e42b45b0a644db4967b0b42d61e52f.renderer.freelens.app:33973",
+        "type": "internal",
+        "edge": "7 / blink::ScriptStateProtectingContext::context_",
+        "from": "(Global handles)"
+      },
+      {
+        "node": "global (global*) / https://82e42b45b0a644db4967b0b42d61e52f.renderer.freelens.app:33973",
+        "type": "internal",
+        "edge": "global_object",
+        "from": "system / NativeContext / https://82e42b45b0a644db4967b0b42d61e52f.renderer.freelens.app:33973"
+      },
+      {
+        "node": "HTMLDocument",
+        "type": "property",
+        "edge": "<symbol Window#DocumentCachedAccessor>",
+        "from": "global (global*) / https://82e42b45b0a644db4967b0b42d61e52f.renderer.freelens.app:33973"
+      },
+      {
+        "node": "ScriptedAnimationController",
+        "type": "element",
+        "edge": 29,
+        "from": "HTMLDocument"
+      },
+      {
+        "node": "InternalNode",
+        "type": "element",
+        "edge": 4,
+        "from": "ScriptedAnimationController"
+      },
+      {
+        "node": "<div class=\"rl-records\" tabindex=\"0\" aria-label=\"Container log records\" aria-busy=\"false\">",
+        "type": "element",
+        "edge": 5,
+        "from": "InternalNode"
+      },
+      {
+        "node": "<div class=\"rl-log-pane\">",
+        "type": "element",
+        "edge": 9,
+        "from": "<div class=\"rl-records\" tabindex=\"0\" aria-label=\"Container log records\" aria-busy=\"false\">"
+      },
+      {
+        "node": "<div class=\"rl-work rl-layout-side\">",
+        "type": "element",
+        "edge": 9,
+        "from": "<div class=\"rl-log-pane\">"
+      },
+      {
+        "node": "<section class=\"readable-logs\" aria-label=\"Readable logs\" data-version=\"0.1.34\">",
+        "type": "element",
+        "edge": 9,
+        "from": "<div class=\"rl-work rl-layout-side\">"
+      }
+    ],
+    [
+      {
+        "node": "(GC roots)",
+        "type": "element",
+        "edge": 1,
+        "from": ""
+      },
+      {
+        "node": "(Global handles)",
+        "type": "element",
+        "edge": 10,
+        "from": "(GC roots)"
+      },
+      {
+        "node": "system / NativeContext / https://82e42b45b0a644db4967b0b42d61e52f.renderer.freelens.app:33973",
+        "type": "internal",
+        "edge": "7 / blink::ScriptStateProtectingContext::context_",
+        "from": "(Global handles)"
+      },
+      {
+        "node": "global (global*) / https://82e42b45b0a644db4967b0b42d61e52f.renderer.freelens.app:33973",
+        "type": "internal",
+        "edge": "global_object",
+        "from": "system / NativeContext / https://82e42b45b0a644db4967b0b42d61e52f.renderer.freelens.app:33973"
+      },
+      {
+        "node": "HTMLDocument",
+        "type": "property",
+        "edge": "<symbol Window#DocumentCachedAccessor>",
+        "from": "global (global*) / https://82e42b45b0a644db4967b0b42d61e52f.renderer.freelens.app:33973"
+      },
+      {
+        "node": "ScriptedAnimationController",
+        "type": "element",
+        "edge": 29,
+        "from": "HTMLDocument"
+      },
+      {
+        "node": "InternalNode",
+        "type": "element",
+        "edge": 4,
+        "from": "ScriptedAnimationController"
+      },
+      {
+        "node": "<div class=\"rl-records\" tabindex=\"0\" aria-label=\"Container log records\" aria-busy=\"false\">",
+        "type": "element",
+        "edge": 1,
+        "from": "InternalNode"
+      },
+      {
+        "node": "<div class=\"rl-log-pane\">",
+        "type": "element",
+        "edge": 9,
+        "from": "<div class=\"rl-records\" tabindex=\"0\" aria-label=\"Container log records\" aria-busy=\"false\">"
+      },
+      {
+        "node": "<div class=\"rl-work rl-layout-side\">",
+        "type": "element",
+        "edge": 9,
+        "from": "<div class=\"rl-log-pane\">"
+      },
+      {
+        "node": "<section class=\"readable-logs\" aria-label=\"Readable logs\" data-version=\"0.1.34\">",
+        "type": "element",
+        "edge": 9,
+        "from": "<div class=\"rl-work rl-layout-side\">"
+      }
+    ],
+    [
+      {
+        "node": "(GC roots)",
+        "type": "element",
+        "edge": 1,
+        "from": ""
+      },
+      {
+        "node": "(Global handles)",
+        "type": "element",
+        "edge": 10,
+        "from": "(GC roots)"
+      },
+      {
+        "node": "system / NativeContext / https://82e42b45b0a644db4967b0b42d61e52f.renderer.freelens.app:33973",
+        "type": "internal",
+        "edge": "7 / blink::ScriptStateProtectingContext::context_",
+        "from": "(Global handles)"
+      },
+      {
+        "node": "global (global*) / https://82e42b45b0a644db4967b0b42d61e52f.renderer.freelens.app:33973",
+        "type": "internal",
+        "edge": "global_object",
+        "from": "system / NativeContext / https://82e42b45b0a644db4967b0b42d61e52f.renderer.freelens.app:33973"
+      },
+      {
+        "node": "HTMLDocument",
+        "type": "property",
+        "edge": "<symbol Window#DocumentCachedAccessor>",
+        "from": "global (global*) / https://82e42b45b0a644db4967b0b42d61e52f.renderer.freelens.app:33973"
+      },
+      {
+        "node": "ScriptedAnimationController",
+        "type": "element",
+        "edge": 29,
+        "from": "HTMLDocument"
+      },
+      {
+        "node": "InternalNode",
+        "type": "element",
+        "edge": 4,
+        "from": "ScriptedAnimationController"
+      },
+      {
+        "node": "<div class=\"rl-records\" tabindex=\"0\" aria-label=\"Container log records\" aria-busy=\"false\">",
+        "type": "element",
+        "edge": 6,
+        "from": "InternalNode"
+      },
+      {
+        "node": "<div class=\"rl-log-pane\">",
+        "type": "element",
+        "edge": 9,
+        "from": "<div class=\"rl-records\" tabindex=\"0\" aria-label=\"Container log records\" aria-busy=\"false\">"
+      },
+      {
+        "node": "<div class=\"rl-work rl-layout-side\">",
+        "type": "element",
+        "edge": 9,
+        "from": "<div class=\"rl-log-pane\">"
+      },
+      {
+        "node": "<section class=\"readable-logs\" aria-label=\"Readable logs\" data-version=\"0.1.34\">",
+        "type": "element",
+        "edge": 9,
+        "from": "<div class=\"rl-work rl-layout-side\">"
+      }
+    ]
+  ]
+}

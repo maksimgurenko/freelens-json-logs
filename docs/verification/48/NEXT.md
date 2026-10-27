@@ -1,70 +1,80 @@
 # Continue only Find #48
 
-Branch: `implementation/find`. Original fixed/review baseline:
-`3fb33db5f5ded3523bcf66c1145f0af967ec0bf3`. Read this checkpoint's README/matrix,
-local #48, accepted cached plan and full decisions. Reclaim #48 before work;
-revalidate live corrections. Do not work on another ticket or publish anything.
+Branch `implementation/find`. Original pre-ticket review baseline
+`3fb33db5f5ded3523bcf66c1145f0af967ec0bf3`; latest continuation started at
+`b740e7d1c407162d93809c43ea65b8f4e4fb436e`. Read local #48, the accepted cached
+plan/full decisions, README, matrix and **continuation.md**. Reclaim #48 and fetch
+live corrections before work. Do not choose another ticket or publish anything.
 
-1. **Investigate the failed mounted-resource gate first.** Current main/renderer/
-   worker bytes equal #47's integrated package; no production code was changed.
-   `host/mounted-soak.json` has three warmups + six samples per dense and long
-   bound, actual post-GC teardown metrics, lifecycle cleanup passes and retained
-   DOM/listener/heap/RSS growth. `host/installed-sdk-soak.json` separately has 20
-   measured SDK cycles per bound with stable DOM/listeners, zero remaining worker
-   resources, small heap growth and fixed threads. Do not call mounted cleanup
-   assertions a resource pass. Isolate production vs actual Freelens vs inspector
-   and screenshot retention. Useful controls: clear DevTools console entries,
-   release inspector object handles, reconnect the inspector after each cycle,
-   compare a fresh isolated host without screenshot pumping and without viewer
-   mount, and collect heap retainers/detached-node ownership. These are hypotheses,
-   not diagnosed causes. Keep original failing samples. The owned namespace/profile
-   are removed at checkpoint cleanup; recreate using `fixtures.py` and `prepare.py`.
-2. **Private rendering environment needs a real frame cadence.** Original NVIDIA
-   nested Hyprland initializes only a 0×0 output with GBM allocation failures;
-   rAF stalls until CDP screenshot. Host DOM assertions therefore explicitly use
-   screenshot-driven frames. AMD renderD128/Mesa setup attempts initialized buffers
-   but did not reach Hyprland IPC. Their logs/desktop observations are retained.
-   Do not fake document focus, bypass guards, or activate the user's desktop.
-   A working separate session is allowed; keep all display operations confined
-   to validated private runtime/socket/workspace 7. No product fallback is approved.
-3. Complete real installed-host counterparts still partial/unperformed in
-   `matrix.md`: D03 initial Previous; D06 native event transactions at DOM seam;
-   D10 mode refinement and history recall/flags/ranges/marks; D11/D14 held completions and Clear/dismissal;
-   D12 full seed-source/invalid selection matrix; D13/trace 8/9/12 real append,
-   duplicate overlap, eviction, profile maintenance and observed repeated restarts;
-   D15 actual measured widths/wrap/layout/group cycling/current geometry/following.
-   Use only owned fixture resources. Read-only existing cluster fixtures may be
-   observed; never mutate or remove them. Existing pure/production-Chromium tests
-   in `../47/coverage.md` provide the original cases and assertions, not host proof.
-   The original `viewer.mjs` type-then-immediately-toggle probe observed `0 of 1`.
-   #37 requires toggles to refine, not maintenance. An interim assertion accepting
-   zero was reverted after Spec review. First wait for actual initial logs, Pause
-   to remove snapshot timing as a confound, then type/toggle independently and
-   assert inclusive seek/candidate retention. The zero observation is unresolved,
-   not a policy change or diagnosed production defect. Keep raw failures.
-4. TDD at the already-authorized public matching/state/session/production-renderer
-   seams if a production defect is established. Preserve accepted exact counts,
-   native source selection, occurrence/epoch and asynchronous intents. Do not
-   silently revise an accepted mechanism or substitute a fallback. Re-run pinned
-   typecheck/focused tests regularly and full appropriate checks after a fix.
-5. After independent implementation/evidence work, explicitly account for physical
-   input/clipboard/native menus/IME/AltGraph/window delivery and Windows/macOS.
-   No native input or system clipboard was accessed here. Earlier attended approval
-   is inapplicable. These require a fresh agreed session or truly isolated graphical
-   session/access and must never be satisfied by DOM events or Linux stand-ins.
-6. Code-review has two independent axes pinned to the recorded original HEAD;
-   include the current ticket diff if uncommitted. Preserve user dirty work. Commit
-   only #48 work/evidence/local satisfied checkboxes. Report retry while concrete
-   autonomous work remains; report blocked for exact evidence/access/decision gates
-   after independent work. Done requires all original criteria satisfied.
+1. **Resource gate is minimized but still failed.** In `host/dom-continuation/`,
+   `retention-controls.json` runs three 120-record cycles each of mount-only,
+   Find, and inactivity. No screenshots; console cleared and inspector query
+   handles released. All three retain detached sections (+1,438 nodes/+143
+   listeners per mount-only cycle). `retaining-paths.json` captures shortest
+   non-weak paths through HTMLDocument → ScriptedAnimationController → native
+   queue → detached records scroller. This is a concrete native-queue retainer,
+   not proof that it is the only retainer or a production leak diagnosis. The
+   original dense/long mounted failure remains a release gate. Reproduce with a
+   **working private graphical output and actual frame cadence** before changing
+   product disposal or accepting resources. A native lifecycle queue in a 0×0
+   display may explain delayed reclamation, but that causal prediction is untested.
+   The final `retention-controls.mjs` exits nonzero on growth; heap-retainers.mjs
+   saves only paths and deletes its scratch heap. Do not commit raw heaps/profile.
+2. **Private-display limitation.** Default NVIDIA nested Hyprland has 0×0 output,
+   GBM buffer allocation failure and queued native scroll/lifecycle events.
+   Screenshots drive some rAF work but do not repair natural cadence. A new
+   `FIND_DISPLAY_RENDERER=mesa` diagnostic removes inherited NVIDIA GBM/GLX/VA
+   variables, forces Mesa EGL and `/dev/dri/renderD128` for headless labwc.
+   `host/mesa-clean/hyprland-internal.log.gz` gets as far as successful 1920×1080
+   linear swapchain allocation, then no Hyprland IPC in 15 s. All owned processes
+   stopped. This is a failed environment, not a fallback. Investigate readiness
+   against the private display only; keep the real desktop untouched. No product
+   mechanism was invalidated and no workaround approved.
+3. **New stable Host DOM state coverage is complete for its scope.**
+   `state-acceptance.mjs` waits for a real 120-record initial snapshot, Pauses,
+   and passes 33 checks. Both modes refine/retain candidates correctly, including
+   after navigation; history recalls text/flags. Initial Previous, partial paste,
+   cut, Undo/Redo, select-all composition, zero/one hit, selected-message seed,
+   existing-query/label/multi-record rejection, async Clear and current counts
+   after inspector dismissal pass. No production defect/fix was needed. Do not
+   reinstate the old zero-ordinal assertion or mode-maintenance interpretation.
+   No-scroll uses an explicitly dispatched DOM scroll event because native scroll
+   delivery stalls. This is DOM-seam evidence, never physical/native acceptance.
+4. **Remaining autonomous Host matrix:** actual snapshot append/retention/duplicate
+   mapping and eviction, profile no-fetch/no-seek maintenance, repeated observed
+   restarts including Pause; held mounted current/stale successes/failures,
+   timeout/edit/Retry and decoration failure; complete inspector/foreign/multiline/
+   Unicode-length selection-seed matrix; measured 260/390/700/1440 widths, wrap,
+   fonts/layout/grouped-mark cycling/current geometry and ordinary following.
+   Core/mounted Chromium checks in ../47/coverage.md pass; they are not Host proof.
+   Use only newly owned namespace/Pod/profile data. Shared fixtures are read-only.
+5. TDD at already-authorized public matching/state/session/production-renderer
+   seams if a real production defect is established. Preserve exact counts/copy,
+   occurrence/epoch and independent async intent contracts. Do not silently revise
+   the chosen mechanism or add a fallback. Use project-local Node 24.18.0/npm
+   11.16.0; typecheck/focused tests regularly, full appropriate checks after work.
+6. Physical keyboard/pointer selection, clipboard, native paste/Undo/Redo/IME/
+   AltGraph, exact modifiers/menus/focus and physical window-button delivery remain
+   **unverified**, as do Windows/macOS matching/worker/package and native checks.
+   Fresh attended agreement or a suitable truly separate graphical session/access
+   is required; DOM events and Linux stand-ins cannot fill those cells. No prior
+   attended approval applies. Do independent Host work before seeking attendance.
+7. Required independent two-axis code-review is authorized, `fork_turns=none` with
+   original requirements/artifacts and read-only scope. Pin to recorded pre-ticket
+   HEAD and include current ticket diff. Commit only #48 work/evidence/local
+   satisfied checkboxes. Retry while concrete autonomous work remains; blocked
+   only for precise evidence/access/decision gates after independent work. Done
+   requires every original criterion and a committed evidence/checkbox update.
 
-Host reproduction scripts default to historical #42 paths. Always export
-`FIND_HOST_TICKET=48` for this ticket and keep `FREELENS_UI_MODE` unset. Prepare,
-launch, install through the real Extensions form once, then install the observer
-before searching. Supervise display/host long-lived commands separately. Fresh
-main window before any cluster is required for Disable/Uninstall maintenance.
-The original `observer.cjs` wraps the actual Node Worker to log starts/exits; it
-never replaces worker code/clock/results. `private-session.mjs`/CDP verify process,
-profile, private socket/runtime and workspace membership. Existing shared guards
-remain in place. Clean only the recorded owned app/compositors/profile/runtime
-and UID-checked fixture namespace; never the user's profile, clipboard or windows.
+Use `FIND_HOST_TICKET=48`, a **new** safe `FIND_HOST_RUN` name for evidence, and
+keep `FREELENS_UI_MODE` unset. Scratch remains `.scratch/find/48-host`; the optional
+run subdirectory separates evidence, not simultaneous hosts/profiles. Prepare a
+new private profile/fixtures after cleanup; run display/launch as supervised
+long-lived commands. Install through the real Extensions form once before opening
+clusters, then install observer.cjs. Fresh main window is required for maintenance.
+The observer wraps the real Worker for starts/exits without changing code/results.
+
+Cleanup removed the owned namespace, isolated app/profile and private runtimes;
+recreate rather than relying on old PIDs/session.json. Keep user config/extension,
+shared fixtures, real workspace/focus/pointer unchanged. Never fake document focus,
+raise windows, inject native input, access clipboard, or bypass the shared guards.

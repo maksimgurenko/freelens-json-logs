@@ -9,10 +9,11 @@ export async function driver() {
   const integration = readFileSync(`${scratch}/integration-path`, 'utf8');
   assert.equal(await main.evaluate('process.env.FREELENS_INTEGRATION_TESTING_DIR'), integration);
   const bindMain = async () => {
-    const proto = await main.send('Runtime.evaluate', { expression: 'global.__findProductionPrototype' });
-    const objects = await main.send('Runtime.queryObjects', { prototypeObjectId: proto.result.objectId });
+    const proto = await main.send('Runtime.evaluate', { expression: 'global.__findProductionPrototype', objectGroup: 'find-host-bind' });
+    const objects = await main.send('Runtime.queryObjects', { prototypeObjectId: proto.result.objectId, objectGroup: 'find-host-bind' });
     await main.send('Runtime.callFunctionOn', { objectId: objects.objects.objectId,
       functionDeclaration: 'function(){global.__findMain=this.find(x=>x.find);}', returnByValue: true });
+    await main.send('Runtime.releaseObjectGroup', { objectGroup: 'find-host-bind' });
   };
   await bindMain();
   const entry = `${integration}/Freelens/node_modules/freelens-readable-logs/out/renderer-0.1.34.js`;
@@ -21,11 +22,12 @@ export async function driver() {
   const bind = async context => {
     assert(context, 'Real renderer context required');
     for (let i = 0; i < 200; i++) {
-      const proto = await page.send('Runtime.evaluate', { expression: `require(${JSON.stringify(entry)}).default.prototype`, contextId: context.id });
+      const proto = await page.send('Runtime.evaluate', { expression: `require(${JSON.stringify(entry)}).default.prototype`, contextId: context.id, objectGroup: 'find-host-bind' });
       if (proto.result.objectId) {
-        const objects = await page.send('Runtime.queryObjects', { prototypeObjectId: proto.result.objectId });
+        const objects = await page.send('Runtime.queryObjects', { prototypeObjectId: proto.result.objectId, objectGroup: 'find-host-bind' });
         const result = await page.send('Runtime.callFunctionOn', { objectId: objects.objects.objectId,
           functionDeclaration: 'function(){global.__findRenderer=this.find(x=>x.isEnabled&&x.findRpc);if(!global.__findRenderer)return null;global.__findSdk=global.__findRenderer.findRpc;return {id:global.__findRenderer.id,url:location.href};}', returnByValue: true });
+        await page.send('Runtime.releaseObjectGroup', { objectGroup: 'find-host-bind' });
         if (result.result?.value) return result.result.value;
       }
       await sleep(25); // Observe actual activation readiness, never retry a search.
