@@ -213,8 +213,8 @@ export function Viewer({ target, register, visibility, findRpc, preferences, sho
     return () => { current.dispose(); marks.current = undefined; };
   }, []);
   useLayoutEffect(() => {
-    marks.current?.update(window, matchesReady && findOpen && !editingProfiles && decorationActive ? matching.records.map(match => match.ref) : [], findPosition.active);
-  }, [window, matchesReady, matching.records, findOpen, editingProfiles, decorationActive, currentMatch, inspection, timestamps, wrap, preference.inspection, formattedRecords]);
+    marks.current?.update(window, matchesReady && findOpen && !editingProfiles && decorationActive ? matching.records.map(match => match.ref) : [], findPosition.active, queryRevision);
+  }, [window, matchesReady, matching.records, findOpen, editingProfiles, decorationActive, currentMatch, inspection, timestamps, wrap, preference.inspection, formattedRecords, queryRevision]);
   useLayoutEffect(() => {
     if (editingProfiles) return;
     viewport.current?.update(window);

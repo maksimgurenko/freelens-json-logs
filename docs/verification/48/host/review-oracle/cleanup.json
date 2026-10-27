@@ -1,0 +1,62 @@
+{
+  "recordedAt": "2026-10-27T09:07:16.085553+00:00",
+  "processesRemaining": [],
+  "profilesRemoved": [
+    "/tmp/freelens-production-find-48-mg201izb"
+  ],
+  "runtimeRemoved": "/tmp/fd-xjnrj3jz",
+  "namespace": "UID-checked owned namespace deleted",
+  "preservedBefore": {
+    "GLOSSARY.md": "79ab61253e4d9d0722392053071806534e24b5d5b3b2f8729f5fa5f1c67ecf09",
+    "docs/README.md": "68512a5dd9f5f3e29343f7efc25fdbe178a2addf5a2b0212bab31e0d9615a45a",
+    "/home/max/.config/Freelens/extension-store/freelens-readable-logs/readable-logs.json": "5816d46905ad1caf0623c286f6788f2127faf32fd933cbf66019fe91994ac8b7"
+  },
+  "preservedAfter": {
+    "GLOSSARY.md": "79ab61253e4d9d0722392053071806534e24b5d5b3b2f8729f5fa5f1c67ecf09",
+    "docs/README.md": "68512a5dd9f5f3e29343f7efc25fdbe178a2addf5a2b0212bab31e0d9615a45a",
+    "/home/max/.config/Freelens/extension-store/freelens-readable-logs/readable-logs.json": "5816d46905ad1caf0623c286f6788f2127faf32fd933cbf66019fe91994ac8b7"
+  },
+  "shutdown": {
+    "pid": 1768386,
+    "workers": {
+      "starts": 3,
+      "exits": 3,
+      "live": 0,
+      "peak": 1,
+      "resources": [
+        "FSReqCallback",
+        "TCPServerWrap",
+        "PipeWrap",
+        "PipeWrap",
+        "PipeWrap",
+        "ProcessWrap",
+        "Timeout",
+        "Timeout",
+        "Immediate",
+        "Immediate",
+        "Immediate",
+        "Immediate",
+        "Immediate",
+        "Immediate",
+        "Immediate",
+        "Immediate",
+        "Immediate"
+      ],
+      "beforeQuit": 0,
+      "handlers": [
+        "extensions@c27d41221907efa6ea37a465c5794d77daf51255df649e34d40c1f8a838098da:find-open",
+        "extensions@c27d41221907efa6ea37a465c5794d77daf51255df649e34d40c1f8a838098da:find-request",
+        "extensions@c27d41221907efa6ea37a465c5794d77daf51255df649e34d40c1f8a838098da:find-control"
+      ],
+      "windows": []
+    },
+    "service": {
+      "closed": true,
+      "owners": 0,
+      "retiring": 0,
+      "opening": 0,
+      "senders": 0,
+      "watch": false
+    }
+  }
+}

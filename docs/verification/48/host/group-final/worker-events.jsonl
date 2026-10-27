@@ -1,0 +1,13 @@
+{"at":1793089872880,"event":"worker-start","threadId":1}
+{"at":1793089872915,"event":"worker-exit","code":1,"live":0}
+{"at":1793089873402,"event":"worker-start","threadId":2}
+{"at":1793089873955,"event":"worker-exit","code":1,"live":0}
+{"at":1793089875053,"event":"worker-start","threadId":3}
+{"at":1793089875071,"event":"worker-exit","code":1,"live":0}
+{"at":1793089880625,"event":"worker-start","threadId":4}
+{"at":1793089882836,"event":"worker-exit","code":1,"live":0}
+{"at":1793089884976,"event":"worker-start","threadId":5}
+{"at":1793089931119,"event":"worker-exit","code":1,"live":0}
+{"at":1793089992312,"event":"worker-start","threadId":6}
+{"at":1793090468714,"event":"worker-exit","code":1,"live":0}
+{"at":1793090469001,"event":"process-exit","starts":6,"exits":6,"live":0,"peak":1,"resources":["FSReqCallback","TCPServerWrap","PipeWrap","PipeWrap","PipeWrap","ProcessWrap","Timeout","Timeout","Immediate","Immediate","Immediate","Immediate","Immediate"],"beforeQuit":0,"handlers":[],"windows":[]}

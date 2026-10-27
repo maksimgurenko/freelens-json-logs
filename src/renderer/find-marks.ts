@@ -15,6 +15,8 @@ export class FindMarks {
   private window?: OccurrenceWindow;
   private matches: readonly RecordRef[] = [];
   private active?: RecordRef;
+  private lastActivated?: RecordRef;
+  private queryRevision?: number;
   private views: MarkView[] = [];
   private frame = 0;
   private closed = false;
@@ -32,8 +34,16 @@ export class FindMarks {
     void scroller.ownerDocument.fonts.ready.then(() => { if (!this.closed) this.schedule(); });
     rail.hidden = true;
   }
-  update(window: OccurrenceWindow, matches: readonly RecordRef[], active?: RecordRef) {
+  update(window: OccurrenceWindow, matches: readonly RecordRef[], active: RecordRef | undefined, queryRevision: number) {
     if (this.closed) return;
+    // Pending maintenance hides the rail without ending this query's cycle.
+    // A new edit/context or an evicted occurrence cannot inherit that progress.
+    if (this.window?.context !== window.context || this.queryRevision !== queryRevision) {
+      this.lastActivated = undefined;
+      for (const view of this.views) view.last = undefined;
+    }
+    if (this.lastActivated && recordIndex(window, this.lastActivated) < 0) this.lastActivated = undefined;
+    this.queryRevision = queryRevision;
     this.window = window; this.matches = matches; this.active = active;
     this.resize.disconnect();
     if (!matches.length) { this.clear(); return; }
@@ -93,9 +103,12 @@ export class FindMarks {
       if (recordIndex(this.window, ref) < 0 || !this.matches.some(match => sameRecordRef(match, ref))) return;
       const current = this.views.find(view => view.group.members.some(member => sameRecordRef(member, ref)));
       if (!current) return;
-      current.last = ref; this.navigate(ref);
+      current.last = ref; this.lastActivated = ref; this.navigate(ref);
     };
-    const view: MarkView = { group, button, activate };
+    // Feedback/layout changes can rebuild a slot between successive clicks.
+    // Carry progress only when that same occurrence belongs to the new group.
+    const last = group.members.find(ref => this.lastActivated && sameRecordRef(ref, this.lastActivated));
+    const view: MarkView = { group, button, activate, last };
     button.addEventListener('click', activate);
     return view;
   }
@@ -110,6 +123,6 @@ export class FindMarks {
     this.closed = true; this.resize.disconnect(); this.mutations.disconnect();
     this.scroller.ownerDocument.defaultView?.removeEventListener('resize', this.schedule);
     this.scroller.ownerDocument.fonts.removeEventListener('loadingdone', this.schedule);
-    this.matches = []; this.window = undefined; this.active = undefined; this.clear();
+    this.matches = []; this.window = undefined; this.active = undefined; this.lastActivated = undefined; this.clear();
   }
 }

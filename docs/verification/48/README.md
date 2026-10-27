@@ -1,6 +1,8 @@
 # #48 production Find verification checkpoint
 
-Latest: [natural-frame diagnosis, clipping-safe production highlight fix and current-package verification](cadence.md). Earlier checkpoints below are retained as history; #48 remains unfinished.
+Latest: [source/geometry checks and grouped-mark cycling fix](geometry.md).
+The earlier [snapshot/delivery](snapshots.md) and [clipping/cadence](cadence.md)
+checkpoints below remain history; #48 remains unfinished and is not release accepted.
 
 Selected **Verify production Find against the acceptance matrix** as the lowest
 eligible unfinished local ticket. #47 is done at

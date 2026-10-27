@@ -1,0 +1,4 @@
+{
+  "pass": false,
+  "error": "AssertionError [ERR_ASSERTION]: Natural frame delivery did not complete in 3 seconds\n\n9 !== 61\n\n    at checkFrameCadence (file:///home/max/work/freelens-json-logs/scripts/find-production-host/frame-cadence.mjs:25:10)\n    at async file:///home/max/work/freelens-json-logs/scripts/find-production-host/frame-cadence.mjs:34:18"
+}

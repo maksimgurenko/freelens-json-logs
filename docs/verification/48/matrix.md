@@ -1,6 +1,39 @@
 # Integrated production Find acceptance matrix
 
-Latest current artifact: [cadence continuation](cadence.md), package SHA-256
+Latest artifact: [geometry/cycling continuation](geometry.md), SHA-256
+`d19f826bc8496a6ae3ca5afaeb79fab73753ceeebde62747174b8d4ead6dfcb3`.
+Its [192 installed source/geometry assertions](host/group-final/surfaces.json)
+advance **D07/D08/D12/D15 and traces 11/13** at the DOM layer: inspector source
+provenance in all layouts, Unicode seed limits, four CSS widths, fonts, inline
+expansion, current reveals and selection. Preconditions are included in that
+assertion count; it is not 192 distinct acceptance cases.
+
+Fresh final-package [33 state assertions](host/bounded-final/state-acceptance.json),
+[13 held deliveries](host/bounded-final/held-replies.json), terminal-Q, SDK/frame,
+startup timeout, cancellation, fresh-main Disable/Uninstall/reactivation and
+normal shutdown repeat their named subsets below. [Six independent following
+assertions](host/bounded-final/following.json) cover actual append/anchor movement,
+To bottom and paused Refresh for D15/trace 13. Restart following and full stale
+window/message/instance delivery remain separate unfinished gates.
+
+**Failed/unfinished:** the [bounded dense run](host/bounded-final/marks-following.json)
+has a failed harness oracle at click 19: previous row 18 left the current group
+0–17, so actual 0 is correct and expected 1 was wrong. It does not prove a product
+mismatch; the fresh corrected-oracle evidence follows.
+The [fresh corrected run](host/review-oracle/marks-following.json) now passes six
+scoped assertions with 37 activations and complete 1,000-record membership despite
+the 1,024 highlight cap. This supplies current grouped-mark DOM evidence for
+D10/D15 and trace13; its 70.89-second total is not input latency evidence.
+An earlier repeated-click run stalls, fails natural cadence (9/61 frames) and
+requires forced private-process cleanup. Both remain failed evidence. Passing
+short mounted-resource checks (three warmups/six cycles per bound, +5 nodes and
+zero listener growth each) do not establish dense interaction, long resource
+plateau, stock compositor or native responsiveness acceptance. No original whole
+unfinished criterion is newly satisfied. All historical rows below keep their
+recorded package scope unless explicitly repeated above; native/platform gates
+remain unchanged. [Exact continuation and remaining work](NEXT.md).
+
+Earlier artifact: [cadence continuation](cadence.md), package SHA-256
 `1775d0f0aaa1d23002bf723d68c6840fa44d2c6bd3c5536e72bbc05546f0fdf1`.
 Its installed terminal-Q regression, 33 DOM-state checks, SDK/frame suite and
 both mounted resource workloads pass in a **privately modified compositor**.
@@ -94,6 +127,6 @@ All failed attempts are retained and described in the report. Every unverified
 cell is a release gate. No release acceptance, issue closure or publication.
 
 [Earlier continuation](continuation.md) retains the original resource failure and
-retaining paths. [Latest snapshot/delivery evidence](snapshots.md) supplies the
+retaining paths. [Earlier snapshot/delivery evidence](snapshots.md) supplies the
 new current-package observations above. Every remaining resource/native/platform
 limit remains an execution gate.

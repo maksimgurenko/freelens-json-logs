@@ -1,0 +1,376 @@
+{
+  "recordedAt": "2026-10-27T08:51:29.618064+00:00",
+  "environment": {
+    "PATHprefix": "/home/max/work/freelens-json-logs/.scratch/readable-logs/toolchain/node_modules/node/bin",
+    "FREELENS_UI_MODE": "unset",
+    "Node": "24.18.0",
+    "npm": "11.16.0"
+  },
+  "commands": [
+    {
+      "name": "node",
+      "command": [
+        "node",
+        "--version"
+      ],
+      "exit": 0,
+      "seconds": 0.0023998240067157894,
+      "log": "node.txt"
+    },
+    {
+      "name": "npm",
+      "command": [
+        "node",
+        ".scratch/readable-logs/toolchain/node_modules/npm/bin/npm-cli.js",
+        "--version"
+      ],
+      "exit": 0,
+      "seconds": 0.03339648898690939,
+      "log": "npm.txt"
+    },
+    {
+      "name": "locked-install",
+      "command": [
+        "node",
+        ".scratch/readable-logs/toolchain/node_modules/npm/bin/npm-cli.js",
+        "ci",
+        "--ignore-scripts",
+        "--no-audit",
+        "--no-fund"
+      ],
+      "exit": 0,
+      "seconds": 1.9059014349768404,
+      "log": "locked-install.txt"
+    },
+    {
+      "name": "typecheck",
+      "command": [
+        "node",
+        ".scratch/readable-logs/toolchain/node_modules/npm/bin/npm-cli.js",
+        "run",
+        "typecheck"
+      ],
+      "exit": 0,
+      "seconds": 1.3218944309919607,
+      "log": "typecheck.txt.gz"
+    },
+    {
+      "name": "focused-marks",
+      "command": [
+        "node",
+        "--experimental-strip-types",
+        "--test",
+        "tests/find-marks.test.ts"
+      ],
+      "exit": 0,
+      "seconds": 0.05846012302208692,
+      "log": "focused-marks.txt"
+    },
+    {
+      "name": "tests",
+      "command": [
+        "node",
+        ".scratch/readable-logs/toolchain/node_modules/npm/bin/npm-cli.js",
+        "test"
+      ],
+      "exit": 0,
+      "seconds": 0.5689999919850379,
+      "log": "tests.txt"
+    },
+    {
+      "name": "ui-guards",
+      "command": [
+        "python3",
+        "-B",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "tests",
+        "-p",
+        "ui_desktop_test.py",
+        "-v"
+      ],
+      "exit": 0,
+      "seconds": 0.1163820129877422,
+      "log": "ui-guards.txt"
+    },
+    {
+      "name": "browser",
+      "command": [
+        "node",
+        ".scratch/readable-logs/toolchain/node_modules/npm/bin/npm-cli.js",
+        "run",
+        "test:browser"
+      ],
+      "exit": 1,
+      "seconds": 9.986527316999855,
+      "log": "browser-first-failed.txt"
+    },
+    {
+      "name": "browser",
+      "command": [
+        "node",
+        ".scratch/readable-logs/toolchain/node_modules/npm/bin/npm-cli.js",
+        "run",
+        "test:browser"
+      ],
+      "exit": 1,
+      "seconds": 6.420542637002654,
+      "log": "browser-second-failed.txt"
+    },
+    {
+      "name": "browser",
+      "command": [
+        "node",
+        ".scratch/readable-logs/toolchain/node_modules/npm/bin/npm-cli.js",
+        "run",
+        "test:browser"
+      ],
+      "exit": 0,
+      "seconds": 39.45607335900422,
+      "log": "browser.txt"
+    },
+    {
+      "name": "workers",
+      "command": [
+        "node",
+        ".scratch/readable-logs/toolchain/node_modules/npm/bin/npm-cli.js",
+        "run",
+        "test:workers"
+      ],
+      "exit": 0,
+      "seconds": 0.43028348599909805,
+      "log": "workers.txt"
+    },
+    {
+      "name": "resources",
+      "command": [
+        "node",
+        ".scratch/readable-logs/toolchain/node_modules/npm/bin/npm-cli.js",
+        "run",
+        "test:smoke"
+      ],
+      "exit": 0,
+      "seconds": 60.73031277701375,
+      "log": "resources.txt"
+    },
+    {
+      "name": "package",
+      "command": [
+        "node",
+        ".scratch/readable-logs/toolchain/node_modules/npm/bin/npm-cli.js",
+        "run",
+        "package"
+      ],
+      "exit": 0,
+      "seconds": 0.28545834400574677,
+      "log": "package.txt"
+    },
+    {
+      "name": "package-check",
+      "command": [
+        "node",
+        ".scratch/readable-logs/toolchain/node_modules/npm/bin/npm-cli.js",
+        "run",
+        "check:package"
+      ],
+      "exit": 0,
+      "seconds": 1.1617510259966366,
+      "log": "package-check.txt"
+    },
+    {
+      "name": "package-second",
+      "command": [
+        "node",
+        ".scratch/readable-logs/toolchain/node_modules/npm/bin/npm-cli.js",
+        "run",
+        "package"
+      ],
+      "exit": 0,
+      "seconds": 0.2789474680030253,
+      "log": "package-second.txt"
+    },
+    {
+      "name": "ui-guards",
+      "command": [
+        "python3",
+        "-B",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "tests",
+        "-p",
+        "ui_desktop_test.py",
+        "-v"
+      ],
+      "exit": 0,
+      "log": "ui-guards-after-review.txt",
+      "scope": "Repeated after final CDP send guards"
+    }
+  ],
+  "finalCommands": [
+    {
+      "name": "node",
+      "command": [
+        "node",
+        "--version"
+      ],
+      "exit": 0,
+      "seconds": 0.0023998240067157894,
+      "log": "node.txt"
+    },
+    {
+      "name": "npm",
+      "command": [
+        "node",
+        ".scratch/readable-logs/toolchain/node_modules/npm/bin/npm-cli.js",
+        "--version"
+      ],
+      "exit": 0,
+      "seconds": 0.03339648898690939,
+      "log": "npm.txt"
+    },
+    {
+      "name": "locked-install",
+      "command": [
+        "node",
+        ".scratch/readable-logs/toolchain/node_modules/npm/bin/npm-cli.js",
+        "ci",
+        "--ignore-scripts",
+        "--no-audit",
+        "--no-fund"
+      ],
+      "exit": 0,
+      "seconds": 1.9059014349768404,
+      "log": "locked-install.txt"
+    },
+    {
+      "name": "typecheck",
+      "command": [
+        "node",
+        ".scratch/readable-logs/toolchain/node_modules/npm/bin/npm-cli.js",
+        "run",
+        "typecheck"
+      ],
+      "exit": 0,
+      "seconds": 1.3218944309919607,
+      "log": "typecheck.txt.gz"
+    },
+    {
+      "name": "focused-marks",
+      "command": [
+        "node",
+        "--experimental-strip-types",
+        "--test",
+        "tests/find-marks.test.ts"
+      ],
+      "exit": 0,
+      "seconds": 0.05846012302208692,
+      "log": "focused-marks.txt"
+    },
+    {
+      "name": "tests",
+      "command": [
+        "node",
+        ".scratch/readable-logs/toolchain/node_modules/npm/bin/npm-cli.js",
+        "test"
+      ],
+      "exit": 0,
+      "seconds": 0.5689999919850379,
+      "log": "tests.txt"
+    },
+    {
+      "name": "ui-guards",
+      "command": [
+        "python3",
+        "-B",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "tests",
+        "-p",
+        "ui_desktop_test.py",
+        "-v"
+      ],
+      "exit": 0,
+      "log": "ui-guards-after-review.txt",
+      "scope": "Repeated after final CDP send guards"
+    },
+    {
+      "name": "browser",
+      "command": [
+        "node",
+        ".scratch/readable-logs/toolchain/node_modules/npm/bin/npm-cli.js",
+        "run",
+        "test:browser"
+      ],
+      "exit": 0,
+      "seconds": 39.45607335900422,
+      "log": "browser.txt"
+    },
+    {
+      "name": "workers",
+      "command": [
+        "node",
+        ".scratch/readable-logs/toolchain/node_modules/npm/bin/npm-cli.js",
+        "run",
+        "test:workers"
+      ],
+      "exit": 0,
+      "seconds": 0.43028348599909805,
+      "log": "workers.txt"
+    },
+    {
+      "name": "resources",
+      "command": [
+        "node",
+        ".scratch/readable-logs/toolchain/node_modules/npm/bin/npm-cli.js",
+        "run",
+        "test:smoke"
+      ],
+      "exit": 0,
+      "seconds": 60.73031277701375,
+      "log": "resources.txt"
+    },
+    {
+      "name": "package",
+      "command": [
+        "node",
+        ".scratch/readable-logs/toolchain/node_modules/npm/bin/npm-cli.js",
+        "run",
+        "package"
+      ],
+      "exit": 0,
+      "seconds": 0.28545834400574677,
+      "log": "package.txt"
+    },
+    {
+      "name": "package-check",
+      "command": [
+        "node",
+        ".scratch/readable-logs/toolchain/node_modules/npm/bin/npm-cli.js",
+        "run",
+        "check:package"
+      ],
+      "exit": 0,
+      "seconds": 1.1617510259966366,
+      "log": "package-check.txt"
+    },
+    {
+      "name": "package-second",
+      "command": [
+        "node",
+        ".scratch/readable-logs/toolchain/node_modules/npm/bin/npm-cli.js",
+        "run",
+        "package"
+      ],
+      "exit": 0,
+      "seconds": 0.2789474680030253,
+      "log": "package-second.txt"
+    }
+  ],
+  "finalPass": true
+}

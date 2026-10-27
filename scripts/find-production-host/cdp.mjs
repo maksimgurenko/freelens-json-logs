@@ -23,6 +23,10 @@ export async function connect(port) {
   });
   let id = 0;
   const waiting = new Map(), contexts = new Map(), events = [], subscribers = new Set();
+  socket.addEventListener('close', () => {
+    for (const pair of waiting.values()) pair.reject(Error('Private CDP target closed'));
+    waiting.clear();
+  });
   socket.addEventListener('message', ({ data }) => {
     const message = JSON.parse(data);
     if (message.method) for (const listener of subscribers) listener(message);
@@ -36,9 +40,13 @@ export async function connect(port) {
   });
   const send = (method, params = {}) => {
     if (method === 'Page.bringToFront') requireAttended();
+    if (socket.readyState !== WebSocket.OPEN) return Promise.reject(Error('Private CDP target closed'));
     return new Promise((resolve, reject) => {
       const next = ++id; waiting.set(next, { resolve, reject });
-      socket.send(JSON.stringify({ id: next, method, params }));
+      socket.send(JSON.stringify({ id: next, method, params }), error => {
+        if (!error) return;
+        const pair = waiting.get(next); waiting.delete(next); pair?.reject(error);
+      });
     });
   };
   const evaluate = async (expression, context) => {

@@ -1,0 +1,326 @@
+{
+  "session": {
+    "pid": 1714915,
+    "privateInstance": "efb50993780079460b0cbed1363e2166a2de1d9f_1793088997_266925434",
+    "privateRuntime": "/tmp/fd-w6jo1gmt",
+    "owned": [
+      {
+        "address": "0x5586ce9abef0",
+        "mapped": true,
+        "hidden": false,
+        "visible": true,
+        "acceptsInput": true,
+        "at": [
+          21,
+          21
+        ],
+        "size": [
+          1238,
+          678
+        ],
+        "workspace": {
+          "id": 7,
+          "name": "7"
+        },
+        "floating": false,
+        "monitor": 0,
+        "class": "freelens",
+        "title": "Freelens",
+        "initialClass": "freelens",
+        "initialTitle": "Freelens",
+        "pid": 1714915,
+        "xwayland": false,
+        "pinned": false,
+        "pinFullscreened": false,
+        "fullscreen": 0,
+        "fullscreenClient": 0,
+        "fullscreenHandler": "default",
+        "allowedOverFullscreen": true,
+        "grouped": [],
+        "tags": [],
+        "swallowing": "0x0",
+        "focusHistoryID": 0,
+        "inhibitingIdle": false,
+        "xdgTag": "",
+        "xdgDescription": "",
+        "contentType": "none",
+        "tearingHint": false,
+        "stableId": "18000009"
+      }
+    ]
+  },
+  "checks": [],
+  "scope": "Installed DOM, actual snapshots and worker exits; diagnostic private compositor. No physical/native input or clipboard.",
+  "scenario": "groups",
+  "grouped": {
+    "members": 18,
+    "population": 1000,
+    "marks": 58,
+    "visited": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11
+    ]
+  },
+  "error": "Error: TypeError: Cannot read properties of null (reading 'getAttribute')\n    at <anonymous>:1:107\n    at <anonymous>:1:218\n    at Object.evaluate (file:///home/max/work/freelens-json-logs/scripts/find-production-host/cdp.mjs:50:40)\n    at async file:///home/max/work/freelens-json-logs/scripts/find-production-host/marks-following.mjs:55:18",
+  "groupTrace": [
+    {
+      "active": 0,
+      "count": "1 of 1000 matching records",
+      "client": 383
+    },
+    {
+      "active": 1,
+      "count": "2 of 1000 matching records",
+      "client": 383
+    },
+    {
+      "active": 2,
+      "count": "3 of 1000 matching records",
+      "client": 383
+    },
+    {
+      "active": 3,
+      "count": "4 of 1000 matching records",
+      "client": 383
+    },
+    {
+      "active": 4,
+      "count": "5 of 1000 matching records",
+      "client": 383
+    },
+    {
+      "active": 5,
+      "count": "6 of 1000 matching records",
+      "client": 383
+    },
+    {
+      "active": 6,
+      "count": "7 of 1000 matching records",
+      "client": 383
+    },
+    {
+      "active": 7,
+      "count": "8 of 1000 matching records",
+      "client": 383
+    },
+    {
+      "active": 8,
+      "count": "9 of 1000 matching records",
+      "client": 383
+    },
+    {
+      "active": 9,
+      "count": "10 of 1000 matching records",
+      "client": 383
+    },
+    {
+      "active": 10,
+      "count": "11 of 1000 matching records",
+      "client": 383
+    },
+    {
+      "active": 11,
+      "count": "12 of 1000 matching records",
+      "client": 383
+    },
+    {
+      "active": 12,
+      "count": "13 of 1000 matching records",
+      "client": 412
+    },
+    {
+      "active": 13,
+      "count": "14 of 1000 matching records",
+      "client": 383
+    },
+    {
+      "active": 14,
+      "count": "15 of 1000 matching records",
+      "client": 383
+    },
+    {
+      "active": 15,
+      "count": "16 of 1000 matching records",
+      "client": 383
+    },
+    {
+      "active": 16,
+      "count": "17 of 1000 matching records",
+      "client": 383
+    },
+    {
+      "active": 17,
+      "count": "18 of 1000 matching records",
+      "client": 383
+    },
+    {
+      "active": 0,
+      "count": "1 of 1000 matching records",
+      "client": 383
+    },
+    {
+      "active": 1,
+      "count": "2 of 1000 matching records",
+      "client": 383
+    },
+    {
+      "active": 2,
+      "count": "3 of 1000 matching records",
+      "client": 383
+    },
+    {
+      "active": 3,
+      "count": "4 of 1000 matching records",
+      "client": 383
+    },
+    {
+      "active": 4,
+      "count": "5 of 1000 matching records",
+      "client": 383
+    },
+    {
+      "active": 5,
+      "count": "6 of 1000 matching records",
+      "client": 383
+    },
+    {
+      "active": 6,
+      "count": "7 of 1000 matching records",
+      "client": 383
+    },
+    {
+      "active": 7,
+      "count": "8 of 1000 matching records",
+      "client": 383
+    },
+    {
+      "active": 8,
+      "count": "9 of 1000 matching records",
+      "client": 383
+    },
+    {
+      "active": 9,
+      "count": "10 of 1000 matching records",
+      "client": 383
+    },
+    {
+      "active": 10,
+      "count": "11 of 1000 matching records",
+      "client": 383
+    },
+    {
+      "active": 11,
+      "count": "12 of 1000 matching records",
+      "client": 383
+    }
+  ],
+  "closed": {
+    "starts": 86,
+    "exits": 86,
+    "live": 0,
+    "peak": 1,
+    "resources": [
+      "TCPServerWrap",
+      "StatWatcher",
+      "StatWatcher",
+      "StatWatcher",
+      "StatWatcher",
+      "StatWatcher",
+      "StatWatcher",
+      "PipeWrap",
+      "PipeWrap",
+      "PipeWrap",
+      "ProcessWrap",
+      "TCPSocketWrap",
+      "TCPSocketWrap",
+      "TCPSocketWrap",
+      "TCPSocketWrap",
+      "TCPSocketWrap",
+      "TCPSocketWrap",
+      "TCPSocketWrap",
+      "TCPSocketWrap",
+      "TCPSocketWrap",
+      "Timeout",
+      "Timeout",
+      "Timeout",
+      "Immediate",
+      "Immediate",
+      "Immediate",
+      "Immediate"
+    ],
+    "beforeQuit": 1,
+    "handlers": [
+      "extensions@28ba190521699691fa6c1f4d09f1d314be7a57f46a363c8c54f8ae022fd7a5db:find-open",
+      "extensions@28ba190521699691fa6c1f4d09f1d314be7a57f46a363c8c54f8ae022fd7a5db:find-request",
+      "extensions@28ba190521699691fa6c1f4d09f1d314be7a57f46a363c8c54f8ae022fd7a5db:find-control"
+    ],
+    "windows": [
+      {
+        "id": 2,
+        "pid": 1715342,
+        "frames": [
+          {
+            "processId": 5,
+            "routingId": 1,
+            "url": "https://renderer.freelens.app:36941/cluster/21727f5d73144d28c14937afed69c5b0"
+          },
+          {
+            "processId": 5,
+            "routingId": 5,
+            "url": "https://21727f5d73144d28c14937afed69c5b0.renderer.freelens.app:36941/overview"
+          }
+        ],
+        "listeners": [
+          [
+            "destroyed",
+            1
+          ],
+          [
+            "render-process-gone",
+            1
+          ],
+          [
+            "did-frame-navigate",
+            0
+          ]
+        ]
+      }
+    ],
+    "service": {
+      "owners": 0,
+      "retiring": 0,
+      "opening": 0,
+      "senders": 0,
+      "watch": false,
+      "executions": []
+    }
+  }
+}

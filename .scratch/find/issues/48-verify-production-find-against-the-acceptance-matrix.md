@@ -150,3 +150,39 @@ restart remain unverified. Original raw labels/evidence are preserved with that
 caveat. Cleanup records 89 actual worker starts/exits, zero owned processes and
 UID-checked namespace/profile/runtime removal; user/config hashes are unchanged.
 Continue only #48 via NEXT.md; no release or full-ticket acceptance is claimed.
+
+### Continuation from f8d7643
+
+Reclaimed #48; live full bodies/comments equal cached authority.
+[Source/geometry and cycling report](../../../docs/verification/48/geometry.md)
+records two TDD regressions and a production fix: grouped-mark progress survives
+rail regrouping and pending maintenance while its occurrence/query stays valid.
+New edits/contexts reset it; expired refs cannot be recovered by text or index.
+
+Current package SHA-256
+`d19f826bc8496a6ae3ca5afaeb79fab73753ceeebde62747174b8d4ead6dfcb3`.
+192 actual installed source/geometry assertions pass (including preconditions),
+covering all inspector layouts, Unicode seed limits/provenance, four CSS widths,
+fonts, inline/hidden-source expansion, current reveals and DOM selection.
+Six independent real append/following/Pause assertions pass. Current-package
+state 33/held 13/terminal-Q/SDK 10/startup-timeout/20 bursts, fresh-main maintenance,
+normal startup shutdown and both short mounted-resource workloads pass.
+
+Dense interactive cadence remains unfinished: one final-package run stalls after
+records 0–9 and fails natural cadence 9/61, requiring forced private-host cleanup.
+A later click 19 failure was an incorrect oracle: row 18 no longer belongs to the
+current group 0–17, so starting at 0 is correct. Independent Spec review caught it;
+the failed harness evidence is retained and distinguished from a product bug.
+The corrected fresh run and exact remaining gates are recorded in the report.
+Native/clipboard, stock/long-resource, full remaining Host and Windows/macOS gates
+stay unverified. No original whole acceptance criterion is newly checked.
+
+The corrected fresh dense run passes six scoped DOM assertions with 37 activations
+through the first 18-member group, complete 1,000-record membership and truthful
+1,024-highlight-cap feedback; its 70.89-second whole-run duration is not native input
+latency evidence. Both pending-at-close and post-close CDP requests now reject.
+Independent cumulative Standards/Spec reviews use original ticket pin 3fb33db plus
+the f8d7643 continuation baseline; two harness findings are corrected, none remain
+actionable. Final pinned typecheck/249 tests/six UI guards/browser/worker/resource/
+strict package/two-build SHA-256 all pass; earlier failed attempts stay separate.
+No full acceptance/release claim. Continue only #48 using NEXT.md.

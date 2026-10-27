@@ -90,9 +90,10 @@ export async function verifyFindPresentation({ root, rows, button, query, refres
     if (bytes > budget) { check(rows().length === 0 && root.textContent.includes('exceeds the 5 MiB'), 'Oversized source retained'); continue; }
     check(rows().length === 1 && rows()[0].querySelector('.rl-message').textContent === long, 'Complete long source was truncated');
     check([...rows()[0].querySelectorAll('[data-source-start]')].every(node => node.textContent.length <= 8192), 'Long source fragment exceeds 8192 units');
-    const before = rangeRequests.length;
     scroller.scrollTop = scroller.scrollHeight;
-    await until(() => rangeRequests.length > before && ranges().some(range => range.toString() === 'Q'), 'Late visible 5 MiB source hit unavailable');
+    // Current-key covering ranges can already have been requested while the
+    // viewport was following. Reusing them must not require another dispatch.
+    await until(() => ranges().some(range => range.toString() === 'Q'), 'Late visible 5 MiB source hit unavailable');
     check(rangeRequests.at(-1).rangeInterest.scopes.some(scope => scope.start > budget - 20000), 'Late-source interest used an initial global sample');
     select(rows()[0].querySelector('.rl-message'));
     check(document.getSelection().toString() === long, 'Full 5 MiB source selection changed text');
