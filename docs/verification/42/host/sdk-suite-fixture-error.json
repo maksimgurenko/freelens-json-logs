@@ -1,0 +1,353 @@
+{
+  "steps": [
+    {
+      "name": "bidirectional foreign-frame rejection",
+      "owned": {
+        "starts": 0,
+        "exits": 0,
+        "live": 0,
+        "peak": 0,
+        "resources": [
+          "TCPServerWrap",
+          "StatWatcher",
+          "StatWatcher",
+          "StatWatcher",
+          "StatWatcher",
+          "StatWatcher",
+          "StatWatcher",
+          "PipeWrap",
+          "PipeWrap",
+          "PipeWrap",
+          "ProcessWrap",
+          "TCPSocketWrap",
+          "TCPSocketWrap",
+          "TCPSocketWrap",
+          "TCPSocketWrap",
+          "TCPSocketWrap",
+          "TCPSocketWrap",
+          "TCPSocketWrap",
+          "TCPSocketWrap",
+          "TCPSocketWrap",
+          "TCPSocketWrap",
+          "Timeout",
+          "Timeout",
+          "Timeout"
+        ],
+        "beforeQuit": 1,
+        "handlers": [
+          "extensions@0ae25dc646bc1c739c4928e069199632661d7f20142d97ace7d3e6ae51613302:find-open",
+          "extensions@0ae25dc646bc1c739c4928e069199632661d7f20142d97ace7d3e6ae51613302:find-request",
+          "extensions@0ae25dc646bc1c739c4928e069199632661d7f20142d97ace7d3e6ae51613302:find-control"
+        ],
+        "windows": [
+          {
+            "id": 2,
+            "pid": 734723,
+            "frames": [
+              {
+                "processId": 5,
+                "routingId": 1,
+                "url": "https://renderer.freelens.app:38649/cluster/ef703f7e058ac14ed219cbe96ce7f19b"
+              },
+              {
+                "processId": 5,
+                "routingId": 4,
+                "url": "https://ef703f7e058ac14ed219cbe96ce7f19b.renderer.freelens.app:38649/overview"
+              }
+            ],
+            "listeners": [
+              [
+                "destroyed",
+                2
+              ],
+              [
+                "render-process-gone",
+                2
+              ],
+              [
+                "did-frame-navigate",
+                1
+              ]
+            ]
+          }
+        ],
+        "service": {
+          "owners": 2,
+          "retiring": 0,
+          "opening": 0,
+          "senders": 1,
+          "watch": true,
+          "executions": [
+            {
+              "viewer": "root",
+              "sender": 2,
+              "processId": 5,
+              "routingId": 1,
+              "active": true,
+              "running": false,
+              "pending": false,
+              "slot": false
+            },
+            {
+              "viewer": "child",
+              "sender": 2,
+              "processId": 5,
+              "routingId": 4,
+              "active": true,
+              "running": false,
+              "pending": false,
+              "slot": false
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "literal flags",
+      "matchCase": false,
+      "wholeWords": false,
+      "reply": {
+        "requestId": 1,
+        "key": {
+          "viewerEpoch": 1,
+          "targetEpoch": 1,
+          "instanceEpoch": 1,
+          "windowRevision": 1,
+          "messageRevision": 1,
+          "queryRevision": 1
+        },
+        "workerGeneration": 1,
+        "kind": "matches",
+        "records": [
+          {
+            "ref": {
+              "context": "host-42",
+              "occurrence": 0
+            },
+            "application": true,
+            "message": false
+          },
+          {
+            "ref": {
+              "context": "host-42",
+              "occurrence": 1
+            },
+            "application": true,
+            "message": false
+          },
+          {
+            "ref": {
+              "context": "host-42",
+              "occurrence": 2
+            },
+            "application": true,
+            "message": false
+          },
+          {
+            "ref": {
+              "context": "host-42",
+              "occurrence": 3
+            },
+            "application": true,
+            "message": false
+          }
+        ]
+      }
+    },
+    {
+      "name": "literal flags",
+      "matchCase": false,
+      "wholeWords": true,
+      "reply": {
+        "requestId": 2,
+        "key": {
+          "viewerEpoch": 1,
+          "targetEpoch": 1,
+          "instanceEpoch": 1,
+          "windowRevision": 1,
+          "messageRevision": 1,
+          "queryRevision": 2
+        },
+        "workerGeneration": 1,
+        "kind": "matches",
+        "records": [
+          {
+            "ref": {
+              "context": "host-42",
+              "occurrence": 0
+            },
+            "application": true,
+            "message": false
+          },
+          {
+            "ref": {
+              "context": "host-42",
+              "occurrence": 1
+            },
+            "application": true,
+            "message": false
+          },
+          {
+            "ref": {
+              "context": "host-42",
+              "occurrence": 3
+            },
+            "application": true,
+            "message": false
+          }
+        ]
+      }
+    },
+    {
+      "name": "literal flags",
+      "matchCase": true,
+      "wholeWords": false,
+      "reply": {
+        "requestId": 3,
+        "key": {
+          "viewerEpoch": 1,
+          "targetEpoch": 1,
+          "instanceEpoch": 1,
+          "windowRevision": 1,
+          "messageRevision": 1,
+          "queryRevision": 3
+        },
+        "workerGeneration": 1,
+        "kind": "matches",
+        "records": [
+          {
+            "ref": {
+              "context": "host-42",
+              "occurrence": 1
+            },
+            "application": true,
+            "message": false
+          },
+          {
+            "ref": {
+              "context": "host-42",
+              "occurrence": 2
+            },
+            "application": true,
+            "message": false
+          }
+        ]
+      }
+    },
+    {
+      "name": "literal flags",
+      "matchCase": true,
+      "wholeWords": true,
+      "reply": {
+        "requestId": 4,
+        "key": {
+          "viewerEpoch": 1,
+          "targetEpoch": 1,
+          "instanceEpoch": 1,
+          "windowRevision": 1,
+          "messageRevision": 1,
+          "queryRevision": 4
+        },
+        "workerGeneration": 1,
+        "kind": "matches",
+        "records": [
+          {
+            "ref": {
+              "context": "host-42",
+              "occurrence": 1
+            },
+            "application": true,
+            "message": false
+          }
+        ]
+      }
+    }
+  ],
+  "root": {
+    "id": "/tmp/freelens-production-find-42-yexcvgiw/Freelens/node_modules/freelens-readable-logs/package.json",
+    "url": "https://renderer.freelens.app:38649/cluster/ef703f7e058ac14ed219cbe96ce7f19b"
+  },
+  "cluster": {
+    "id": "/tmp/freelens-production-find-42-yexcvgiw/Freelens/node_modules/freelens-readable-logs/package.json",
+    "url": "https://ef703f7e058ac14ed219cbe96ce7f19b.renderer.freelens.app:38649/overview"
+  },
+  "before": {
+    "starts": 0,
+    "exits": 0,
+    "live": 0,
+    "peak": 0,
+    "resources": [
+      "TCPServerWrap",
+      "StatWatcher",
+      "StatWatcher",
+      "StatWatcher",
+      "StatWatcher",
+      "StatWatcher",
+      "StatWatcher",
+      "PipeWrap",
+      "PipeWrap",
+      "PipeWrap",
+      "ProcessWrap",
+      "TCPSocketWrap",
+      "TCPSocketWrap",
+      "TCPSocketWrap",
+      "TCPSocketWrap",
+      "TCPSocketWrap",
+      "TCPSocketWrap",
+      "TCPSocketWrap",
+      "TCPSocketWrap",
+      "TCPSocketWrap",
+      "TCPSocketWrap",
+      "Timeout",
+      "Timeout",
+      "Timeout"
+    ],
+    "beforeQuit": 1,
+    "handlers": [
+      "extensions@0ae25dc646bc1c739c4928e069199632661d7f20142d97ace7d3e6ae51613302:find-open",
+      "extensions@0ae25dc646bc1c739c4928e069199632661d7f20142d97ace7d3e6ae51613302:find-request",
+      "extensions@0ae25dc646bc1c739c4928e069199632661d7f20142d97ace7d3e6ae51613302:find-control"
+    ],
+    "windows": [
+      {
+        "id": 2,
+        "pid": 734723,
+        "frames": [
+          {
+            "processId": 5,
+            "routingId": 1,
+            "url": "https://renderer.freelens.app:38649/cluster/ef703f7e058ac14ed219cbe96ce7f19b"
+          },
+          {
+            "processId": 5,
+            "routingId": 4,
+            "url": "https://ef703f7e058ac14ed219cbe96ce7f19b.renderer.freelens.app:38649/overview"
+          }
+        ],
+        "listeners": [
+          [
+            "destroyed",
+            1
+          ],
+          [
+            "render-process-gone",
+            1
+          ],
+          [
+            "did-frame-navigate",
+            0
+          ]
+        ]
+      }
+    ],
+    "service": {
+      "owners": 0,
+      "retiring": 0,
+      "opening": 0,
+      "senders": 0,
+      "watch": false,
+      "executions": []
+    }
+  },
+  "error": "AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:\n\n999 !== 1000\n\n    at file:///home/max/work/freelens-json-logs/scripts/find-production-host/suite.mjs:31:10"
+}

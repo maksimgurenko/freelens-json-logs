@@ -1,0 +1,125 @@
+{
+  "cycles": [
+    {
+      "cycle": 0,
+      "starts": 9,
+      "exits": 9,
+      "live": 0
+    },
+    {
+      "cycle": 1,
+      "starts": 11,
+      "exits": 11,
+      "live": 0
+    },
+    {
+      "cycle": 2,
+      "starts": 13,
+      "exits": 13,
+      "live": 0
+    },
+    {
+      "cycle": 3,
+      "starts": 15,
+      "exits": 15,
+      "live": 0
+    },
+    {
+      "cycle": 4,
+      "starts": 17,
+      "exits": 17,
+      "live": 0
+    },
+    {
+      "cycle": 5,
+      "starts": 19,
+      "exits": 19,
+      "live": 0
+    },
+    {
+      "cycle": 6,
+      "starts": 21,
+      "exits": 21,
+      "live": 0
+    },
+    {
+      "cycle": 7,
+      "starts": 23,
+      "exits": 23,
+      "live": 0
+    },
+    {
+      "cycle": 8,
+      "starts": 25,
+      "exits": 25,
+      "live": 0
+    },
+    {
+      "cycle": 9,
+      "starts": 27,
+      "exits": 27,
+      "live": 0
+    },
+    {
+      "cycle": 10,
+      "starts": 29,
+      "exits": 29,
+      "live": 0
+    },
+    {
+      "cycle": 11,
+      "starts": 31,
+      "exits": 31,
+      "live": 0
+    },
+    {
+      "cycle": 12,
+      "starts": 33,
+      "exits": 33,
+      "live": 0
+    },
+    {
+      "cycle": 13,
+      "starts": 35,
+      "exits": 35,
+      "live": 0
+    },
+    {
+      "cycle": 14,
+      "starts": 37,
+      "exits": 37,
+      "live": 0
+    },
+    {
+      "cycle": 15,
+      "starts": 39,
+      "exits": 39,
+      "live": 0
+    },
+    {
+      "cycle": 16,
+      "starts": 41,
+      "exits": 41,
+      "live": 0
+    },
+    {
+      "cycle": 17,
+      "starts": 43,
+      "exits": 43,
+      "live": 0
+    },
+    {
+      "cycle": 18,
+      "starts": 45,
+      "exits": 45,
+      "live": 0
+    },
+    {
+      "cycle": 19,
+      "starts": 47,
+      "exits": 47,
+      "live": 0
+    }
+  ],
+  "error": "Error: Lifecycle did not settle: {\"starts\":47,\"exits\":47,\"live\":0,\"peak\":1,\"resources\":[\"TCPServerWrap\",\"StatWatcher\",\"StatWatcher\",\"StatWatcher\",\"StatWatcher\",\"StatWatcher\",\"StatWatcher\",\"PipeWrap\",\"PipeWrap\",\"PipeWrap\",\"ProcessWrap\",\"TCPSocketWrap\",\"TCPSocketWrap\",\"TCPSocketWrap\",\"TCPSocketWrap\",\"TCPSocketWrap\",\"TCPSocketWrap\",\"TCPSocketWrap\",\"TCPSocketWrap\",\"TCPSocketWrap\",\"TCPSocketWrap\",\"Timeout\",\"Timeout\",\"Timeout\",\"Timeout\",\"Timeout\",\"Timeout\",\"Timeout\",\"Timeout\",\"Timeout\",\"Timeout\",\"Timeout\",\"Timeout\",\"Timeout\",\"Timeout\",\"Timeout\",\"Timeout\",\"Timeout\",\"Timeout\",\"Timeout\",\"Timeout\",\"Timeout\",\"Timeout\",\"Timeout\",\"Timeout\",\"Timeout\",\"Timeout\",\"Timeout\",\"Timeout\"],\"beforeQuit\":1,\"handlers\":[\"extensions@0ae25dc646bc1c739c4928e069199632661d7f20142d97ace7d3e6ae51613302:find-open\",\"extensions@0ae25dc646bc1c739c4928e069199632661d7f20142d97ace7d3e6ae51613302:find-request\",\"extensions@0ae25dc646bc1c739c4928e069199632661d7f20142d97ace7d3e6ae51613302:find-control\"],\"windows\":[{\"id\":2,\"pid\":774244,\"frames\":[{\"processId\":5,\"routingId\":1,\"url\":\"https://renderer.freelens.app:32833/cluster/ef703f7e058ac14ed219cbe96ce7f19b\"},{\"processId\":5,\"routingId\":5,\"url\":\"https://ef703f7e058ac14ed219cbe96ce7f19b.renderer.freelens.app:32833/overview\"}],\"listeners\":[[\"destroyed\",2],[\"render-process-gone\",2],[\"did-frame-navigate\",1]]}],\"service\":{\"owners\":1,\"retiring\":0,\"opening\":0,\"senders\":1,\"watch\":true,\"executions\":[{\"viewer\":\"disable-startup\",\"sender\":2,\"processId\":5,\"routingId\":1,\"active\":true,\"running\":false,\"pending\":false,\"slot\":false}]}}\n    at Object.wait (file:///home/max/work/freelens-json-logs/scripts/find-production-host/driver.mjs:33:11)\n    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)\n    at async file:///home/max/work/freelens-json-logs/scripts/find-production-host/churn.mjs:20:20"
+}

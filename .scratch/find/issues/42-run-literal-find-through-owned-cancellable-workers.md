@@ -26,15 +26,16 @@ Canonical decisions for this slice: [Matching and execution contract](https://gi
 - [x] Preserve and explain queries above 16,384 UTF-16 units without executing or truncating them. Mark matching pending immediately and disable navigation; show Searching after 100 ms. Expire the whole attempt at 1,000 ms including startup, with renderer timing before dispatch and main supervision before startup/posting.
 - [x] Keep query editing and logs available after timeout/failure. Latch useful local feedback until an explicit edit or Retry, use current data for recovery and never replay an old reveal. Refresh alone does not retry; there is no retry loop or silent execution fallback. Decoration failure preserves valid exact results.
 - [x] Build and pack the versioned trusted standalone worker from the same matcher, resolve it relative to the installed main module and execute it as trusted main-read source. The worker has no DOM/host globals or runtime package dependency; user text remains data. Extend strict package/build checks rather than weakening them.
-- [ ] Release owners, workers, timers and listeners on inactivity, viewer/frame closure, extension deactivation and shutdown, including idle/startup cases; await actual exit and preserve temporary state during inactivity. Verify real packed-worker/SDK operation, frame isolation, controlled timeout/late-exit cases, latest-only replacement and retention-bound fixtures. Existing checks remain green.
+- [x] Release owners, workers, timers and listeners on inactivity, viewer/frame closure, extension deactivation and shutdown, including idle/startup cases; await actual exit and preserve temporary state during inactivity. Verify real packed-worker/SDK operation, frame isolation, controlled timeout/late-exit cases, latest-only replacement and retention-bound fixtures. Existing checks remain green.
 
 
 ## Local verification evidence
 
-**Implementation checkpoint; not done.** Production input/two flags, SDK client,
-main frame-bound ownership and trusted worker loading are wired. The last original
-criterion remains open because actual production Freelens SDK/frame/lifecycle
-proof is required. Automated SDK/Electron stand-ins do not satisfy that gate.
+**Previous implementation checkpoint (superseded by actual-host completion below).**
+Production input/two flags, SDK client,
+main frame-bound ownership and trusted worker loading were wired. At that checkpoint,
+the last original criterion was open because actual production Freelens SDK/frame/lifecycle
+proof was still required. Automated SDK/Electron stand-ins did not satisfy that gate.
 
 - Original ticket baseline: `50bfc2e3999d5079ca9ca8e8698df3c158cf24a9`.
   Pre-continuation/review HEAD: `67b1d5e0bf3eea07e1e8762bbb7f3849cc106203`.
@@ -68,3 +69,28 @@ proof is required. Automated SDK/Electron stand-ins do not satisfy that gate.
   clipboard, production-host maintenance, GitHub comments/closure or publication.
   Physical/native input, Windows/macOS and full Find/release acceptance remain
   explicitly unverified downstream gates.
+
+
+### Actual production-host completion
+
+Continued from recorded HEAD `623792be8f5bbfe5623642dc0fe1649c0ff5fff4`. Reclaimed
+#42 before work; live authority matched the cached decisions. The last original
+criterion is now satisfied by the real packed production extension in Freelens
+1.10.3, in a separate headless graphical session on private workspace 7.
+
+- Real SDK root/cluster frame isolation, 1,000-record / 5 MiB matching and capped
+  ranges; idle reuse/inactivity, actual frame removal, startup replacement and
+  debugger-controlled whole-attempt timeout/recovery.
+- Actual mounted production viewer preserves query/flags across inactivity and
+  releases execution; real Disable/Enable/Uninstall/single-submit reinstall,
+  native window destruction and startup app shutdown verify actual exit and
+  owner/listener/timer/SDK-handler cleanup. Twenty 20-request bursts prove latest-only
+  production SDK dispatch; final owner/execution/listener counts are zero.
+- Full commands, hashes, criterion evidence, retained harness failures, resource
+  adapter results, user-work preservation and downstream limits:
+  [actual-host report](../../../docs/verification/42/host/README.md). Original smoke
+  command remains explicitly failed due its preserved old Electron double; #47
+  owns that integration. Current production resource workloads pass via the adapter.
+- No production change was needed in this continuation. Original implementation
+  and matcher/client/state tests remain green. Physical/native input and clipboard,
+  Windows/macOS, long host soak and later ticket/release acceptance remain unverified.

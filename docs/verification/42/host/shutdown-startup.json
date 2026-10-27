@@ -1,0 +1,124 @@
+{
+  "session": {
+    "pid": 795788,
+    "privateInstance": "efb50993780079460b0cbed1363e2166a2de1d9f_1793073396_1007003445",
+    "privateRuntime": "/tmp/fd-bwvradgb",
+    "owned": [
+      {
+        "address": "0x55daec1a5630",
+        "mapped": true,
+        "hidden": false,
+        "visible": true,
+        "acceptsInput": true,
+        "at": [
+          21,
+          21
+        ],
+        "size": [
+          -42,
+          -42
+        ],
+        "workspace": {
+          "id": 7,
+          "name": "7"
+        },
+        "floating": false,
+        "monitor": 0,
+        "class": "freelens",
+        "title": "Freelens",
+        "initialClass": "freelens",
+        "initialTitle": "Freelens",
+        "pid": 795788,
+        "xwayland": false,
+        "pinned": false,
+        "pinFullscreened": false,
+        "fullscreen": 0,
+        "fullscreenClient": 0,
+        "fullscreenHandler": "default",
+        "allowedOverFullscreen": true,
+        "grouped": [],
+        "tags": [],
+        "swallowing": "0x0",
+        "focusHistoryID": 0,
+        "inhibitingIdle": false,
+        "xdgTag": "",
+        "xdgDescription": "",
+        "contentType": "none",
+        "tearingHint": false,
+        "stableId": "18000009"
+      }
+    ]
+  },
+  "before": {
+    "starts": 1,
+    "exits": 0,
+    "live": 1,
+    "peak": 1,
+    "resources": [
+      "TCPServerWrap",
+      "StatWatcher",
+      "StatWatcher",
+      "StatWatcher",
+      "StatWatcher",
+      "StatWatcher",
+      "StatWatcher",
+      "MessagePort",
+      "Timeout"
+    ],
+    "beforeQuit": 1,
+    "handlers": [
+      "extensions@0ae25dc646bc1c739c4928e069199632661d7f20142d97ace7d3e6ae51613302:find-open",
+      "extensions@0ae25dc646bc1c739c4928e069199632661d7f20142d97ace7d3e6ae51613302:find-request",
+      "extensions@0ae25dc646bc1c739c4928e069199632661d7f20142d97ace7d3e6ae51613302:find-control"
+    ],
+    "windows": [
+      {
+        "id": 2,
+        "pid": 796208,
+        "frames": [
+          {
+            "processId": 5,
+            "routingId": 1,
+            "url": "https://renderer.freelens.app:33179/welcome"
+          }
+        ],
+        "listeners": [
+          [
+            "destroyed",
+            2
+          ],
+          [
+            "render-process-gone",
+            2
+          ],
+          [
+            "did-frame-navigate",
+            1
+          ]
+        ]
+      }
+    ],
+    "service": {
+      "owners": 1,
+      "retiring": 0,
+      "opening": 0,
+      "senders": 1,
+      "watch": true,
+      "executions": [
+        {
+          "viewer": "shutdown-startup",
+          "sender": 2,
+          "processId": 5,
+          "routingId": 1,
+          "active": true,
+          "running": true,
+          "pending": false,
+          "slot": true,
+          "ready": false,
+          "stopping": false
+        }
+      ]
+    }
+  },
+  "scheduled": true
+}
