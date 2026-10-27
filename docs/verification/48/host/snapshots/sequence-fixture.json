@@ -1,0 +1,7 @@
+{
+  "namespace": "find-verification-48-1534169",
+  "namespaceUid": "45af6bf6-4f24-4a91-99f1-f8ea2c574aac",
+  "pod": "find-sequence",
+  "podUid": "0c99f9cf-c583-4d8d-811b-2a70d175ef49",
+  "image": "busybox:1.37.0@sha256:bdf57e528e45e4433820e045b29b4597825a1c9e38353532d90a01445013f82e"
+}

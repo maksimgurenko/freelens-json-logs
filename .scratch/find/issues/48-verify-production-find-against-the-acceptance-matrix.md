@@ -114,3 +114,39 @@ passing tests; the final installed artifact repeats long-source, state, SDK/fram
 and both resource checks. Owned processes/profile credentials/runtimes and the
 UID-checked namespace are removed; recorded user/config hashes are unchanged.
 The precise autonomous continuation remains NEXT.md; release acceptance is open.
+
+### Continuation from 55dde78
+
+Reclaimed #48; current full bodies/comments equal cached authority.
+[Snapshot/delivery report](../../../docs/verification/48/snapshots.md) records
+**24 passing actual snapshot checks**: row-zero hit, retained DOM selection and
+repeated application-content occurrence through append, zero-hit gains waiting,
+saved profile no-fetch/no-substitute maintenance, live inspector/result eviction
+at the real 1,000-record tail, and two actual restarts including Pause. Exact
+identical-transport duplicates and partial metadata ordering remain Host gaps.
+
+**13 held SDK-delivery checks** pass with the actual installed worker, covering
+current completion after dismissal, stale query success/injected transport failure,
+manual scroll/Close cancellation, whole-attempt timeout/latch/explicit Retry and
+decoration failure preserving counts/history. Controlled transport evidence is
+distinct from natural worker failure or physical input. Harness failures are
+retained and corrected; no production change or contract substitution occurred.
+
+Same package SHA-256
+`1775d0f0aaa1d23002bf723d68c6840fa44d2c6bd3c5536e72bbc05546f0fdf1`:
+fresh isolated form install, 33 DOM state checks, terminal-Q, SDK/frame suite,
+startup timeout/actual exit, 20 cancellation bursts, startup shutdown and both
+mounted resource workloads pass. Short modified-compositor samples are not stock
+or long-duration resource acceptance. Full remaining geometry/seed/stale-context/
+maintenance, native/clipboard and Windows/macOS gates remain explicit in NEXT.md.
+No original checkbox is newly checked; release acceptance remains open.
+
+Final pinned locked install/typecheck, 249 tests, six UI guards, production
+browser/worker/resource suites, strict packed checks and deterministic two-build
+SHA-256 all pass. [Independent Standards and Spec reviews](../../../docs/verification/48/review-snapshots.md)
+leave zero actionable findings after narrowing an overbroad restart claim:
+Match case was asserted; Whole words and explicit following movement across
+restart remain unverified. Original raw labels/evidence are preserved with that
+caveat. Cleanup records 89 actual worker starts/exits, zero owned processes and
+UID-checked namespace/profile/runtime removal; user/config hashes are unchanged.
+Continue only #48 via NEXT.md; no release or full-ticket acceptance is claimed.

@@ -1,0 +1,209 @@
+{
+  "cycles": [
+    {
+      "cycle": 0,
+      "starts": 50,
+      "exits": 50,
+      "live": 0
+    },
+    {
+      "cycle": 1,
+      "starts": 52,
+      "exits": 52,
+      "live": 0
+    },
+    {
+      "cycle": 2,
+      "starts": 54,
+      "exits": 54,
+      "live": 0
+    },
+    {
+      "cycle": 3,
+      "starts": 56,
+      "exits": 56,
+      "live": 0
+    },
+    {
+      "cycle": 4,
+      "starts": 58,
+      "exits": 58,
+      "live": 0
+    },
+    {
+      "cycle": 5,
+      "starts": 60,
+      "exits": 60,
+      "live": 0
+    },
+    {
+      "cycle": 6,
+      "starts": 62,
+      "exits": 62,
+      "live": 0
+    },
+    {
+      "cycle": 7,
+      "starts": 64,
+      "exits": 64,
+      "live": 0
+    },
+    {
+      "cycle": 8,
+      "starts": 66,
+      "exits": 66,
+      "live": 0
+    },
+    {
+      "cycle": 9,
+      "starts": 68,
+      "exits": 68,
+      "live": 0
+    },
+    {
+      "cycle": 10,
+      "starts": 70,
+      "exits": 70,
+      "live": 0
+    },
+    {
+      "cycle": 11,
+      "starts": 72,
+      "exits": 72,
+      "live": 0
+    },
+    {
+      "cycle": 12,
+      "starts": 74,
+      "exits": 74,
+      "live": 0
+    },
+    {
+      "cycle": 13,
+      "starts": 76,
+      "exits": 76,
+      "live": 0
+    },
+    {
+      "cycle": 14,
+      "starts": 78,
+      "exits": 78,
+      "live": 0
+    },
+    {
+      "cycle": 15,
+      "starts": 80,
+      "exits": 80,
+      "live": 0
+    },
+    {
+      "cycle": 16,
+      "starts": 82,
+      "exits": 82,
+      "live": 0
+    },
+    {
+      "cycle": 17,
+      "starts": 84,
+      "exits": 84,
+      "live": 0
+    },
+    {
+      "cycle": 18,
+      "starts": 86,
+      "exits": 86,
+      "live": 0
+    },
+    {
+      "cycle": 19,
+      "starts": 88,
+      "exits": 88,
+      "live": 0
+    }
+  ],
+  "final": {
+    "starts": 88,
+    "exits": 88,
+    "live": 0,
+    "peak": 1,
+    "resources": [
+      "TCPServerWrap",
+      "StatWatcher",
+      "StatWatcher",
+      "StatWatcher",
+      "StatWatcher",
+      "StatWatcher",
+      "StatWatcher",
+      "PipeWrap",
+      "PipeWrap",
+      "PipeWrap",
+      "ProcessWrap",
+      "TCPSocketWrap",
+      "TCPSocketWrap",
+      "TCPSocketWrap",
+      "TCPSocketWrap",
+      "TCPSocketWrap",
+      "TCPSocketWrap",
+      "TCPSocketWrap",
+      "TCPSocketWrap",
+      "TCPSocketWrap",
+      "TCPSocketWrap",
+      "TCPSocketWrap",
+      "TCPSocketWrap",
+      "TCPSocketWrap",
+      "TCPSocketWrap",
+      "TCPSocketWrap",
+      "TCPSocketWrap",
+      "Timeout",
+      "Timeout",
+      "Timeout"
+    ],
+    "beforeQuit": 1,
+    "handlers": [
+      "extensions@af9fde264accfab5d4e96fd7544789fdf2c7b20db68b35c367af3f14d7e1233b:find-open",
+      "extensions@af9fde264accfab5d4e96fd7544789fdf2c7b20db68b35c367af3f14d7e1233b:find-request",
+      "extensions@af9fde264accfab5d4e96fd7544789fdf2c7b20db68b35c367af3f14d7e1233b:find-control"
+    ],
+    "windows": [
+      {
+        "id": 2,
+        "pid": 1534132,
+        "frames": [
+          {
+            "processId": 5,
+            "routingId": 1,
+            "url": "https://renderer.freelens.app:41329/cluster/3c12286fea344b5329b38f0e92da5f63"
+          },
+          {
+            "processId": 5,
+            "routingId": 5,
+            "url": "https://3c12286fea344b5329b38f0e92da5f63.renderer.freelens.app:41329/overview"
+          }
+        ],
+        "listeners": [
+          [
+            "destroyed",
+            1
+          ],
+          [
+            "render-process-gone",
+            1
+          ],
+          [
+            "did-frame-navigate",
+            0
+          ]
+        ]
+      }
+    ],
+    "service": {
+      "owners": 0,
+      "retiring": 0,
+      "opening": 0,
+      "senders": 0,
+      "watch": false,
+      "executions": []
+    }
+  },
+  "pass": true
+}

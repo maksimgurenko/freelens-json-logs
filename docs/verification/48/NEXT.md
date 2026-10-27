@@ -2,8 +2,8 @@
 
 Branch `implementation/find`. Original pre-ticket review baseline
 `3fb33db5f5ded3523bcf66c1145f0af967ec0bf3`; this continuation began at
-`d235606ddada690f08ec02e346d93f48ca94ecfe`. Read local #48, the accepted cached
-plan/full decisions, matrix and **cadence.md**. Reclaim #48 and fetch live
+`55dde7847bde0aac0983d50ee449f5da29d4a892`. Read local #48, the accepted cached
+plan/full decisions, matrix and **snapshots.md** (cadence.md for display setup). Reclaim #48 and fetch live
 corrections. Do not select another ticket or publish anything.
 
 1. **Private output diagnosis now has a reproducible result.** Stock NVIDIA
@@ -34,14 +34,24 @@ corrections. Do not select another ticket or publish anything.
    package/rebuild pass. This short modified-compositor sample does not establish
    a long installed plateau, exhaustive disk behavior, native latency or stock
    display behavior. Do not erase old failures or check the whole resource gate.
-4. **Remaining autonomous current-package Host matrix:** actual snapshot append /
-   retention / repeated-content mapping / eviction and retained selection,
-   profile no-fetch/no-seek maintenance and repeated observed restarts including
-   Pause; held mounted current/stale successes/failures, timeout/edit/Retry and
-   decoration failure; full inspector/foreign/multiline/Unicode-length seed
+4. **Remaining autonomous current-package Host matrix:** full inspector/foreign/multiline/Unicode-length seed
    matrix; measured 260/390/700/1440 widths, wrap, fonts/layout/grouped-mark
-   cycling/current geometry and following. Latest current package repeats 33 DOM
-   state checks and SDK/frame suite. Other previous Host cells remain scoped to
+   cycling/current geometry and following; exact identical-transport-line duplicate
+   windows, missing/count-then-ID metadata and held old-window/message/instance
+   successes/failures; still-matching profile candidates and Profiles pending-reveal
+   cancellation; Whole words enabled before restart and reset afterward, plus
+   explicit following status/movement across restart (the current unpaused test
+   verifies automatic acquisition only). Repeat current-package Disable/Uninstall/reactivation and owned
+   window lifecycle in a fresh isolated main window **before any cluster**; the
+   latest startup shutdown passes, but older maintenance cells retain their scope.
+   `snapshots.md` records 24 actual snapshot/profile/retention/eviction/restart
+   checks and 13 controlled held-delivery checks, plus current 33 DOM state,
+   terminal-Q, SDK/frame, startup timeout, 20 bursts and both resource workloads.
+   No product bytes changed. SDK proxies cannot be assigned and Node log HTTP
+   does not appear in Chromium Network events. The saved profile no-fetch check
+   uses equal whole-cluster apiserver counters; increases cannot be attributed.
+   Repeated application content has distinct timestamps and does not replace
+   exact duplicate-transport testing. Other previous Host cells remain scoped to
    the older recorded packages, not automatically accepted for current bytes.
    Use newly owned namespace/Pod/profile data; shared fixtures remain read-only.
 5. Native keyboard/pointer selection, clipboard, paste/Undo/Redo/IME/AltGraph,

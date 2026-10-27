@@ -1,0 +1,331 @@
+{
+  "session": {
+    "pid": 1533710,
+    "privateInstance": "efb50993780079460b0cbed1363e2166a2de1d9f_1793087402_140216434",
+    "privateRuntime": "/tmp/fd-fvlejg1i",
+    "owned": [
+      {
+        "address": "0x5611e3fef1a0",
+        "mapped": true,
+        "hidden": false,
+        "visible": true,
+        "acceptsInput": true,
+        "at": [
+          21,
+          21
+        ],
+        "size": [
+          1238,
+          678
+        ],
+        "workspace": {
+          "id": 7,
+          "name": "7"
+        },
+        "floating": false,
+        "monitor": 0,
+        "class": "freelens",
+        "title": "Freelens",
+        "initialClass": "freelens",
+        "initialTitle": "Freelens",
+        "pid": 1533710,
+        "xwayland": false,
+        "pinned": false,
+        "pinFullscreened": false,
+        "fullscreen": 0,
+        "fullscreenClient": 0,
+        "fullscreenHandler": "default",
+        "allowedOverFullscreen": true,
+        "grouped": [],
+        "tags": [],
+        "swallowing": "0x0",
+        "focusHistoryID": 0,
+        "inhibitingIdle": false,
+        "xdgTag": "",
+        "xdgDescription": "",
+        "contentType": "none",
+        "tearingHint": false,
+        "stableId": "18000003"
+      }
+    ]
+  },
+  "checks": [
+    "Pending held SDK delivery disables navigation immediately",
+    "Trace 5 held current success after inspector dismissal updates counts without restoring origin/inspector/result",
+    "Trace 6 late actual success cannot replace newer query/result",
+    "Trace 6 controlled stale transport failure cannot fail newer successful input",
+    "Trace 7 held current success may select but cannot undo intervening manual scroll",
+    "Trace 7 Close/return never replays held selection intent",
+    "D11 renderer whole-attempt timeout preserves editable input and disabled navigation",
+    "Late success cannot clear timeout latch",
+    "Refresh alone does not retry latched matching failure",
+    "Explicit Retry uses current inputs without replaying old reveal",
+    "Explicit edit recovers with a new search intent",
+    "Controlled decoration transport failure preserves exact count/navigation",
+    "Failed decoration does not block valid explicit-navigation history"
+  ],
+  "scope": "Actual packed matching/SDK with held delivery and injected transport errors. DOM input only; no native latency claim.",
+  "transportCalls": [
+    {
+      "work": "match",
+      "text": "upstream",
+      "key": {
+        "viewerEpoch": 10,
+        "targetEpoch": 1,
+        "instanceEpoch": 1,
+        "windowRevision": 5,
+        "messageRevision": 7,
+        "queryRevision": 2
+      }
+    },
+    {
+      "work": "match",
+      "text": "upstream",
+      "key": {
+        "viewerEpoch": 10,
+        "targetEpoch": 1,
+        "instanceEpoch": 1,
+        "windowRevision": 5,
+        "messageRevision": 7,
+        "queryRevision": 3
+      }
+    },
+    {
+      "work": "match",
+      "text": "payment",
+      "key": {
+        "viewerEpoch": 10,
+        "targetEpoch": 1,
+        "instanceEpoch": 1,
+        "windowRevision": 5,
+        "messageRevision": 7,
+        "queryRevision": 4
+      }
+    },
+    {
+      "work": "ranges",
+      "text": "payment",
+      "key": {
+        "viewerEpoch": 10,
+        "targetEpoch": 1,
+        "instanceEpoch": 1,
+        "windowRevision": 5,
+        "messageRevision": 7,
+        "queryRevision": 4
+      }
+    },
+    {
+      "work": "match",
+      "text": "upstream",
+      "key": {
+        "viewerEpoch": 10,
+        "targetEpoch": 1,
+        "instanceEpoch": 1,
+        "windowRevision": 5,
+        "messageRevision": 7,
+        "queryRevision": 5
+      }
+    },
+    {
+      "work": "match",
+      "text": "payment",
+      "key": {
+        "viewerEpoch": 10,
+        "targetEpoch": 1,
+        "instanceEpoch": 1,
+        "windowRevision": 5,
+        "messageRevision": 7,
+        "queryRevision": 6
+      }
+    },
+    {
+      "work": "ranges",
+      "text": "payment",
+      "key": {
+        "viewerEpoch": 10,
+        "targetEpoch": 1,
+        "instanceEpoch": 1,
+        "windowRevision": 5,
+        "messageRevision": 7,
+        "queryRevision": 6
+      }
+    },
+    {
+      "work": "match",
+      "text": "upstream",
+      "key": {
+        "viewerEpoch": 10,
+        "targetEpoch": 1,
+        "instanceEpoch": 1,
+        "windowRevision": 5,
+        "messageRevision": 7,
+        "queryRevision": 7
+      }
+    },
+    {
+      "work": "match",
+      "text": "payment",
+      "key": {
+        "viewerEpoch": 10,
+        "targetEpoch": 1,
+        "instanceEpoch": 1,
+        "windowRevision": 5,
+        "messageRevision": 7,
+        "queryRevision": 8
+      }
+    },
+    {
+      "work": "match",
+      "text": "upstream",
+      "key": {
+        "viewerEpoch": 10,
+        "targetEpoch": 1,
+        "instanceEpoch": 1,
+        "windowRevision": 5,
+        "messageRevision": 7,
+        "queryRevision": 9
+      }
+    },
+    {
+      "work": "match",
+      "text": "upstream",
+      "key": {
+        "viewerEpoch": 10,
+        "targetEpoch": 1,
+        "instanceEpoch": 1,
+        "windowRevision": 6,
+        "messageRevision": 8,
+        "queryRevision": 9
+      }
+    },
+    {
+      "work": "match",
+      "text": "payment",
+      "key": {
+        "viewerEpoch": 10,
+        "targetEpoch": 1,
+        "instanceEpoch": 1,
+        "windowRevision": 6,
+        "messageRevision": 8,
+        "queryRevision": 10
+      }
+    },
+    {
+      "work": "ranges",
+      "text": "payment",
+      "key": {
+        "viewerEpoch": 10,
+        "targetEpoch": 1,
+        "instanceEpoch": 1,
+        "windowRevision": 6,
+        "messageRevision": 8,
+        "queryRevision": 10
+      }
+    },
+    {
+      "work": "match",
+      "text": "upstream",
+      "key": {
+        "viewerEpoch": 10,
+        "targetEpoch": 1,
+        "instanceEpoch": 1,
+        "windowRevision": 6,
+        "messageRevision": 8,
+        "queryRevision": 11
+      }
+    },
+    {
+      "work": "ranges",
+      "text": "upstream",
+      "key": {
+        "viewerEpoch": 10,
+        "targetEpoch": 1,
+        "instanceEpoch": 1,
+        "windowRevision": 6,
+        "messageRevision": 8,
+        "queryRevision": 11
+      }
+    }
+  ],
+  "pass": true,
+  "closed": {
+    "starts": 9,
+    "exits": 9,
+    "live": 0,
+    "peak": 1,
+    "resources": [
+      "TCPServerWrap",
+      "StatWatcher",
+      "StatWatcher",
+      "StatWatcher",
+      "StatWatcher",
+      "StatWatcher",
+      "StatWatcher",
+      "PipeWrap",
+      "PipeWrap",
+      "PipeWrap",
+      "ProcessWrap",
+      "TCPSocketWrap",
+      "TCPSocketWrap",
+      "TCPSocketWrap",
+      "TCPSocketWrap",
+      "TCPSocketWrap",
+      "TCPSocketWrap",
+      "TCPSocketWrap",
+      "TCPSocketWrap",
+      "TCPSocketWrap",
+      "TCPSocketWrap",
+      "TCPSocketWrap",
+      "TCPSocketWrap",
+      "Timeout",
+      "Timeout",
+      "Timeout"
+    ],
+    "beforeQuit": 1,
+    "handlers": [
+      "extensions@af9fde264accfab5d4e96fd7544789fdf2c7b20db68b35c367af3f14d7e1233b:find-open",
+      "extensions@af9fde264accfab5d4e96fd7544789fdf2c7b20db68b35c367af3f14d7e1233b:find-request",
+      "extensions@af9fde264accfab5d4e96fd7544789fdf2c7b20db68b35c367af3f14d7e1233b:find-control"
+    ],
+    "windows": [
+      {
+        "id": 2,
+        "pid": 1534132,
+        "frames": [
+          {
+            "processId": 5,
+            "routingId": 1,
+            "url": "https://renderer.freelens.app:41329/cluster/3c12286fea344b5329b38f0e92da5f63"
+          },
+          {
+            "processId": 5,
+            "routingId": 4,
+            "url": "https://3c12286fea344b5329b38f0e92da5f63.renderer.freelens.app:41329/overview"
+          }
+        ],
+        "listeners": [
+          [
+            "destroyed",
+            1
+          ],
+          [
+            "render-process-gone",
+            1
+          ],
+          [
+            "did-frame-navigate",
+            0
+          ]
+        ]
+      }
+    ],
+    "service": {
+      "owners": 0,
+      "retiring": 0,
+      "opening": 0,
+      "senders": 0,
+      "watch": false,
+      "executions": []
+    }
+  }
+}

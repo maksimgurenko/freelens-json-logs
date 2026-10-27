@@ -1,0 +1,137 @@
+{
+  "session": {
+    "pid": 1533710,
+    "privateInstance": "efb50993780079460b0cbed1363e2166a2de1d9f_1793087402_140216434",
+    "privateRuntime": "/tmp/fd-fvlejg1i",
+    "owned": [
+      {
+        "address": "0x5611e3fef1a0",
+        "mapped": true,
+        "hidden": false,
+        "visible": true,
+        "acceptsInput": true,
+        "at": [
+          21,
+          21
+        ],
+        "size": [
+          1238,
+          678
+        ],
+        "workspace": {
+          "id": 7,
+          "name": "7"
+        },
+        "floating": false,
+        "monitor": 0,
+        "class": "freelens",
+        "title": "Freelens",
+        "initialClass": "freelens",
+        "initialTitle": "Freelens",
+        "pid": 1533710,
+        "xwayland": false,
+        "pinned": false,
+        "pinFullscreened": false,
+        "fullscreen": 0,
+        "fullscreenClient": 0,
+        "fullscreenHandler": "default",
+        "allowedOverFullscreen": true,
+        "grouped": [],
+        "tags": [],
+        "swallowing": "0x0",
+        "focusHistoryID": 0,
+        "inhibitingIdle": false,
+        "xdgTag": "",
+        "xdgDescription": "",
+        "contentType": "none",
+        "tearingHint": false,
+        "stableId": "18000003"
+      }
+    ]
+  },
+  "checks": [
+    "D03 real row-zero hit is included",
+    "Repeated application content has a distinct retained occurrence"
+  ],
+  "scope": "Real Kubernetes snapshots/restarts and installed DOM/SDK. No physical/native input or clipboard.",
+  "error": "Error: spawnSync kubectl ENOBUFS\n    at Object.spawnSync (node:internal/child_process:1143:20)\n    at spawnSync (node:child_process:911:24)\n    at execFileSync (node:child_process:954:15)\n    at kubectl (file:///home/max/work/freelens-json-logs/scripts/find-production-host/snapshot-acceptance.mjs:12:25)\n    at logRequests (file:///home/max/work/freelens-json-logs/scripts/find-production-host/snapshot-acceptance.mjs:19:19)\n    at refresh (file:///home/max/work/freelens-json-logs/scripts/find-production-host/snapshot-acceptance.mjs:35:18)\n    at file:///home/max/work/freelens-json-logs/scripts/find-production-host/snapshot-acceptance.mjs:65:82",
+  "closed": {
+    "starts": 3,
+    "exits": 3,
+    "live": 0,
+    "peak": 1,
+    "resources": [
+      "TCPServerWrap",
+      "StatWatcher",
+      "StatWatcher",
+      "StatWatcher",
+      "StatWatcher",
+      "StatWatcher",
+      "StatWatcher",
+      "PipeWrap",
+      "PipeWrap",
+      "PipeWrap",
+      "ProcessWrap",
+      "TCPSocketWrap",
+      "TCPSocketWrap",
+      "TCPSocketWrap",
+      "TCPSocketWrap",
+      "TCPSocketWrap",
+      "TCPSocketWrap",
+      "TCPSocketWrap",
+      "TCPSocketWrap",
+      "TCPSocketWrap",
+      "TCPSocketWrap",
+      "TCPSocketWrap",
+      "Timeout",
+      "Timeout",
+      "Timeout"
+    ],
+    "beforeQuit": 1,
+    "handlers": [
+      "extensions@af9fde264accfab5d4e96fd7544789fdf2c7b20db68b35c367af3f14d7e1233b:find-open",
+      "extensions@af9fde264accfab5d4e96fd7544789fdf2c7b20db68b35c367af3f14d7e1233b:find-request",
+      "extensions@af9fde264accfab5d4e96fd7544789fdf2c7b20db68b35c367af3f14d7e1233b:find-control"
+    ],
+    "windows": [
+      {
+        "id": 2,
+        "pid": 1534132,
+        "frames": [
+          {
+            "processId": 5,
+            "routingId": 1,
+            "url": "https://renderer.freelens.app:41329/cluster/3c12286fea344b5329b38f0e92da5f63"
+          },
+          {
+            "processId": 5,
+            "routingId": 4,
+            "url": "https://3c12286fea344b5329b38f0e92da5f63.renderer.freelens.app:41329/overview"
+          }
+        ],
+        "listeners": [
+          [
+            "destroyed",
+            1
+          ],
+          [
+            "render-process-gone",
+            1
+          ],
+          [
+            "did-frame-navigate",
+            0
+          ]
+        ]
+      }
+    ],
+    "service": {
+      "owners": 0,
+      "retiring": 0,
+      "opening": 0,
+      "senders": 0,
+      "watch": false,
+      "executions": []
+    }
+  }
+}
