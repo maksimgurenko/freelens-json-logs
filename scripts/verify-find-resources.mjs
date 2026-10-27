@@ -23,6 +23,11 @@ try {
       const result = await (await fetch('/find-rpc', { method: 'POST', body: JSON.stringify({ channel: name, args: [cluster, reply, ...rest] }) })).json();
       if (result.error) throw new Error(result.error); return result.value;
     }`);
+  renderer = replace(renderer, "  button('Back to logs'); await turn();", `  button('Back to logs'); await turn();
+  root.querySelector('[aria-label="Search history"]').click(); await turn();
+  check(root.querySelector('.rl-history-popover'), 'Find history did not open');
+  // Alternate explicit dismissal and teardown with the popover still open.
+  if (serial % 2) root.querySelector('[aria-label="Close search history"]').click();`);
   await writeFile(join(directory, 'tests/smoke/renderer.jsx'), renderer);
   let runner = await readFile('scripts/resource-smoke.mjs', 'utf8');
   runner = replace(runner, "import { build } from 'esbuild';", "import { build } from 'esbuild';\nimport { packedFindBridge } from './find-test-bridge.mjs';");

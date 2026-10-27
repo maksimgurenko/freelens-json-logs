@@ -11,6 +11,9 @@ import { copyOriginal } from '../adapter/clipboard.ts';
 import type { LogTarget } from '../core/target.ts';
 import { FindPosition, type FindEdit } from '../core/find-state.ts';
 import { FindEditing, type FindEditTransaction } from '../core/find-editing.ts';
+import { FindHistory } from '../core/find-history.ts';
+import { FindHistoryPopover } from './find-history.tsx';
+import { selectedFindSeed } from './find-selection.ts';
 import { FindClient, FindMatching, type FindMatchingState } from './find-client.ts';
 import type { FindRpc } from '../adapter/find-ipc.ts';
 import { sameFindKey } from '../core/find-protocol.ts';
@@ -54,6 +57,8 @@ export function Viewer({ target, register, visibility, findRpc, preferences, sho
   const rowGesture = useRef<{ x: number; y: number; dragged: boolean; selection?: SelectionPosition }>();
   const [findPosition] = useState(() => new FindPosition());
   const [findEditing] = useState(() => new FindEditing());
+  const [history] = useState(() => new FindHistory());
+  const openingSelection = useRef<{ text?: string }>();
   const [, renderPosition] = useState(0);
   const positionChanged = () => renderPosition(value => value + 1);
   const rowFocusIntent = useRef(false);
@@ -84,15 +89,15 @@ export function Viewer({ target, register, visibility, findRpc, preferences, sho
   const window = state?.window ?? EMPTY_WINDOW;
   const [findContext, setFindContext] = useState(window.context);
   // Reset before committing replacement-instance rows, including paused/empty
-  // windows. Later Find flags/history/intents belong to this same context seam.
+  // windows. All temporary Find state belongs to this same context seam.
   const context = state?.phase === 'closed' ? `${window.context}:closed` : window.context;
   if (findContext !== context) {
     setFindContext(context);
     setQuery('');
     setCommittedQuery('');
     setMatchCase(false); setWholeWords(false); composing.current = false;
-    explicitEdit.current = undefined;
-    findPosition.reset(); findEditing.clear();
+    explicitEdit.current = undefined; openingSelection.current = undefined;
+    findPosition.reset(); findEditing.clear(); history.clear();
     setInspection(previous => ({ ...previous, selected: undefined }));
   }
   if (state?.gone || state?.phase === 'closed') cancelFindIntents();
@@ -194,6 +199,7 @@ export function Viewer({ target, register, visibility, findRpc, preferences, sho
   }, [findOpen]);
   const navigateMatch = (direction: 1 | -1) => {
     if (!matchesReady || !matches.length) return;
+    commitHistory('navigate');
     findPosition.navigate(direction); positionChanged();
     findInput.current?.focus({ preventScroll: true });
   };
@@ -257,8 +263,11 @@ export function Viewer({ target, register, visibility, findRpc, preferences, sho
     setInspection(previous => ({ ...previous, selected: undefined }));
     focusLocal(root.current!, root.current?.querySelector<HTMLElement>(`.rl-record[data-record-index="${index}"] > .rl-row`));
   };
-  const openFind = () => {
+  const openFind = (fromPointer = false) => {
+    const seed = fromPointer && openingSelection.current ? openingSelection.current : { text: selectedFindSeed(root.current!) };
+    openingSelection.current = undefined;
     if (!findOpen) findOpener.current = root.current!.ownerDocument.activeElement as HTMLElement;
+    if (!query && seed.text !== undefined) changeQuery(seed.text, 'insertFromPaste');
     rowFocusIntent.current = false; setFindOpen(true); findInput.current?.focus({ preventScroll: true }); findInput.current?.select();
   };
   useEffect(() => {
@@ -301,7 +310,17 @@ export function Viewer({ target, register, visibility, findRpc, preferences, sho
         ? () => viewport.current?.toBottom() : undefined)];
     return () => { stops.forEach(stop => stop()); };
   });
-  const closeFind = () => { cancelFindIntents(); rowFocusIntent.current = false; setFindOpen(false); focusLocal(root.current!, findOpener.current); };
+  const commitHistory = (action: 'navigate' | 'close') => {
+    history.commit(findInputs.query, findInputs.key, { ...matching, composing: composing.current }, action);
+  };
+  const recallHistory = (entry: typeof findInputs.query) => {
+    composing.current = false; findMatching.setComposing(false);
+    findEditing.clear();
+    setMatchCase(entry.matchCase); setWholeWords(entry.wholeWords);
+    changeQuery(entry.text, 'insertFromPaste');
+    rowFocusIntent.current = false; findInput.current?.focus({ preventScroll: true });
+  };
+  const closeFind = () => { commitHistory('close'); cancelFindIntents(); rowFocusIntent.current = false; setFindOpen(false); focusLocal(root.current!, findOpener.current); };
   const backToLogs = () => { setEditingProfiles(false); focusLocal(root.current!, profilesButton.current); };
   useLayoutEffect(() => dismissal.add(0, () => editingProfiles ? backToLogs : findOpen ? closeFind : selected ? close : undefined));
   const inspector = selected && <RecordInspector record={selected} content={inspection.content}
@@ -362,7 +381,9 @@ export function Viewer({ target, register, visibility, findRpc, preferences, sho
       </div>
       <div className="rl-presentation" hidden={editingProfiles}>
         <button ref={findButton} type="button" aria-expanded={findOpen} aria-controls="rl-findbar"
-          title={`Find (${shortcutHint('F')})`} aria-keyshortcuts={isMac() ? 'Meta+f' : 'Control+f'} onClick={openFind}>Find</button>
+          onPointerDown={event => { if (event.button === 0) openingSelection.current = { text: selectedFindSeed(root.current!) }; }}
+          onPointerCancel={() => { openingSelection.current = undefined; }}
+          title={`Find (${shortcutHint('F')})`} aria-keyshortcuts={isMac() ? 'Meta+f' : 'Control+f'} onClick={event => openFind(event.detail > 0)}>Find</button>
         <details className="rl-display-options">
           <summary ref={displaySummary}>Display options</summary>
           <div className="rl-display-panel">
@@ -425,6 +446,8 @@ export function Viewer({ target, register, visibility, findRpc, preferences, sho
       </button>)}
       <button type="button" aria-label="Match case" title="Match case" aria-pressed={matchCase} onClick={() => changeMode('case')}>Aa</button>
       <button type="button" aria-label="Whole words" title="Whole words" className="rl-find-words" aria-pressed={wholeWords} onClick={() => changeMode('words')}>ab</button>
+      <FindHistoryPopover history={history} visible={findOpen && !editingProfiles && viewActive.current}
+        context={context} dismissal={dismissal} onRecall={recallHistory} />
       {['timeout', 'execution'].includes(matching.phase) && <button type="button" onClick={() => { cancelFindIntents(); findMatching.update(findInputs, 'retry'); }}>Retry</button>}
       <button type="button" aria-label="Close Find" title="Close Find (Escape)" onClick={closeFind}>Close</button>
       {feedback && <span className="rl-find-feedback">{feedback}</span>}
@@ -476,11 +499,11 @@ export function Viewer({ target, register, visibility, findRpc, preferences, sho
                 event.preventDefault(); toggleInspection(recordIndex);
               }
             }}>
-          {inspection.raw ? <span className="rl-message">{(timestamps ? record.transportLine : record.applicationText) || '\u00a0'}</span> : <>
+          {inspection.raw ? <span className="rl-message" data-find-seed={record.applicationText ? '' : undefined}>{(timestamps ? record.transportLine : record.applicationText) || '\u00a0'}</span> : <>
           {timestamps && <time dateTime={formatted.timestamp} title={formatted.timestampSource ? `${formatted.timestampSource}: ${formatted.timestamp}` : undefined}>{displayTimestamp(formatted.timestamp)}</time>}
           <span className={`rl-level${formatted.canonicalLevel ? ` rl-severity-${formatted.canonicalLevel.toLowerCase()}` : ''}`}>{formatted.level}</span>
-          <span className="rl-message">{formatted.message || '\u00a0'}</span>
-          {formatted.inlineFields?.map(field => <span className="rl-inline-field" key={field.path}>{field.path}={JSON.stringify(field.value)}</span>)}
+          <span className="rl-message" data-find-seed={formatted.message ? '' : undefined}>{formatted.message || '\u00a0'}</span>
+          {formatted.inlineFields?.map(field => <span className="rl-inline-field" key={field.path}>{field.path}=<span data-find-seed="">{JSON.stringify(field.value)}</span></span>)}
           {!!fields && <span className="rl-fields" data-label={`${fields} ${fields === 1 ? 'field' : 'fields'}`} aria-label={`${fields} additional ${fields === 1 ? 'field' : 'fields'}`} />}
           </>}
           </div>
@@ -520,7 +543,7 @@ function RecordInspector({ record, content, onContent, onClose }: {
     <div className="rl-detail-body">
       <p>{content === 'fields' ? record.parsed ? 'Complete parsed object, including extracted and hidden fields.' : 'This line is not a JSON object. Original application text:'
         : content === 'application' ? 'Exact application text; excludes the Kubernetes timestamp.' : 'Exact received line; includes the Kubernetes timestamp.'}</p>
-      <pre aria-label={content === 'fields' ? 'Complete record' : content === 'application' ? 'Original application text' : 'Original transport line'}>{content === 'fields'
+      <pre data-find-seed="" aria-label={content === 'fields' ? 'Complete record' : content === 'application' ? 'Original application text' : 'Original transport line'}>{content === 'fields'
         ? record.parsed ? JSON.stringify(record.parsed, null, 2) : record.applicationText : originalText(record, content)}</pre>
     </div>
     <footer className="rl-copy"><button type="button" onClick={() => copy('application')}>Copy application text</button>

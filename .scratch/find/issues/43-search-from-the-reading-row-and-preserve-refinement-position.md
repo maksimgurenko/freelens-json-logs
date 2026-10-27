@@ -1,6 +1,6 @@
 # 43: Search from the reading row and preserve refinement position
 
-**Status:** ready-for-agent
+**Status:** done
 **Blocked by:** [42: Run literal Find through owned, cancellable workers](42-run-literal-find-through-owned-cancellable-workers.md)
 **GitHub:** https://github.com/maksimgurenko/freelens-json-logs/issues/43
 

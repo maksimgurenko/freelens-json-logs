@@ -76,6 +76,176 @@ function edit(value) {
 }
 const settled = () => !['Matching pending', 'Searching…'].includes(root.querySelector('.rl-find-count').textContent);
 async function query(value) { edit(value); await until(settled, 'Find did not settle'); await turn(); }
+function selectText(node, start = 0, end = node.textContent.length) {
+  const range = document.createRange(); range.setStart(node.firstChild, start); range.setEnd(node.firstChild, end);
+  document.getSelection().removeAllRanges(); document.getSelection().addRange(range);
+}
+async function verifySelectionHistory() {
+  const byName = name => root.querySelector(`button[aria-label="${name}"]`);
+  const clock = () => byName('Search history');
+  const historyEntries = () => [...root.querySelectorAll('.rl-history-entry')];
+  const historyTexts = () => historyEntries().map(node => node.querySelector('.rl-history-text').textContent);
+  const closeFind = () => byName('Close Find').click();
+  const clearHistory = () => { clock().click();
+    const clear = [...root.querySelectorAll('.rl-history-popover button')].find(node => node.textContent === 'Clear history');
+    if (!clear.disabled) clear.click(); byName('Close search history').click(); };
+  clock().click(); // Hidden Find controls are mounted but not available to users.
+  check(!root.querySelector('.rl-history-popover'), 'Hidden history opened');
+  await refresh('first needle\nsecond needle\nsource needle');
+  rows()[1].querySelector('.rl-row').click();
+  selectText(rows()[2].querySelector('.rl-message'), 7, 13);
+  button('Find');
+  await until(settled, 'Selection seed did not settle');
+  check(input().value === 'needle', 'Empty Find did not seed actual selected log text');
+  check(root.querySelector('.rl-find-current')?.dataset.recordIndex === '1', 'Seed chose source record as reading row');
+  results.push('D12: selected source captured before focus; seed uses independent reading row');
+  // An existing query is never replaced by a newer selection.
+  closeFind(); selectText(rows()[0].querySelector('.rl-message'), 0, 5); button('Find');
+  check(input().value === 'needle', 'Selected text replaced existing query');
+  clearHistory(); button('Clear'); closeFind(); document.getSelection().removeAllRanges();
+  // Selection eligibility checks real Range provenance, not DOM labels/textContent.
+  const reject = async select => {
+    select(); button('Find'); await turn(); check(input().value === '', 'Ineligible selection seeded Find');
+    closeFind(); document.getSelection().removeAllRanges();
+  };
+  const foreign = document.createElement('p'); foreign.textContent = 'foreign'; document.body.append(foreign);
+  await reject(() => selectText(foreign)); foreign.remove();
+  await reject(() => {
+    const range = document.createRange(); range.setStart(rows()[0].querySelector('.rl-message').firstChild, 0);
+    range.setEnd(rows()[1].querySelector('.rl-message').firstChild, 3);
+    document.getSelection().addRange(range);
+  });
+  await refresh('{"message":"needle","extra":1}');
+  rows()[0].querySelector('.rl-row').click();
+  await reject(() => selectText(root.querySelector('.rl-detail-head strong')));
+  await reject(() => selectText(root.querySelector('.rl-detail-body p')));
+  await reject(() => selectText(root.querySelector('.rl-detail pre'))); // pretty object is multiline
+  await reject(() => { const range = document.createRange(); range.selectNodeContents(root.querySelector('.rl-fields')); document.getSelection().addRange(range); });
+  button('Application text'); selectText(root.querySelector('.rl-detail pre'), 12, 18); button('Find'); await until(settled);
+  check(input().value === 'needle', 'Inspector application selection not captured');
+  button('Clear'); closeFind();
+  button('Transport line'); selectText(root.querySelector('.rl-detail pre'), 12, 18); button('Find'); await until(settled);
+  check(input().value === 'needle', 'Inspector transport selection not captured');
+  button('Clear'); closeFind(); button('All fields');
+  const pre = root.querySelector('.rl-detail pre'); const start = pre.textContent.indexOf('needle');
+  selectText(pre, start, start + 6); button('Find'); await until(settled);
+  check(input().value === 'needle', 'Inspector field-value selection not captured');
+  button('Clear'); closeFind();
+  results.push('D12: existing-query preservation; foreign, multi-record, generated labels/badge and multiline rejection; inspector sources');
+
+  await refresh('😀'.repeat(257));
+  selectText(rows()[0].querySelector('.rl-message'), 0, 512); button('Find'); await until(settled);
+  check(input().value === '😀'.repeat(256), 'Selection limit used UTF-16 units instead of code points');
+  button('Clear'); closeFind(); await reject(() => selectText(rows()[0].querySelector('.rl-message')));
+  // Capture on pointerdown, before the browser focuses the toolbar. Moving the
+  // Range before click proves that onClick cannot accidentally reread it.
+  await refresh('first needle\nsecond needle\nsource needle');
+  button('Find'); byName('Match case').click(); byName('Whole words').click(); closeFind();
+  selectText(rows()[2].querySelector('.rl-message'), 7, 13);
+  const opener = [...root.querySelectorAll('.rl-toolbar button')].find(node => node.textContent === 'Find');
+  opener.dispatchEvent(new PointerEvent('pointerdown', { bubbles: true, button: 0 }));
+  document.getSelection().removeAllRanges(); opener.focus();
+  opener.dispatchEvent(new MouseEvent('click', { bubbles: true, detail: 1 })); await until(settled);
+  check(input().value === 'needle' && byName('Match case').getAttribute('aria-pressed') === 'true' && byName('Whole words').getAttribute('aria-pressed') === 'true', 'Pointer seed lost captured text or flags');
+  check(document.activeElement === input() && input().selectionEnd === 6, 'Open did not focus/select seed');
+  button('Clear'); closeFind();
+  selectText(rows()[0].querySelector('.rl-message'), 0, 5);
+  opener.dispatchEvent(new PointerEvent('pointerdown', { bubbles: true, button: 0 }));
+  selectText(rows()[2].querySelector('.rl-message'), 7, 13);
+  // A keyboard-style activation following an abandoned pointer press must
+  // sample the current Range, rather than consume the old pointer capture.
+  opener.click(); await until(settled);
+  check(input().value === 'needle', 'Keyboard open reused abandoned pointer selection');
+  results.push('D12: 256/257 astral code-point boundary, pre-pointer-focus capture and preserved flags/input selection');
+
+  clearHistory();
+  // Explicit navigation commits the exact tuple; recall resets its cursor.
+  byName('Next match').click();
+  clock().click(); check(historyTexts().join() === 'needle', 'Navigation did not commit history');
+  check(historyEntries()[0].textContent.includes('Match case') && historyEntries()[0].textContent.includes('Whole words'), 'History flags not visible');
+  byName('Close search history').click();
+  byName('Match case').click(); await until(settled); closeFind(); button('Find');
+  clock().click(); check(historyEntries().length === 2, 'Flag tuples were deduplicated by text alone');
+  byName('Close search history').click();
+  // Move reading context to row 1; the saved query previously reached row 2.
+  rows()[1].querySelector('.rl-row').click();
+  clock().click(); historyEntries()[1].click(); await until(settled);
+  check(!root.querySelector('.rl-history-popover') && document.activeElement === input(), 'Recall did not close/focus Find');
+  check(byName('Match case').getAttribute('aria-pressed') === 'true' && byName('Whole words').getAttribute('aria-pressed') === 'true', 'Recall lost modes');
+  check(root.querySelector('.rl-find-current')?.dataset.recordIndex === '1', 'Recall inherited historical cursor');
+  closeFind(); button('Find'); clock().click();
+  check(historyEntries().length === 2 && historyEntries()[0].textContent.includes('Match case'), 'MRU deduplication failed');
+  byName('Close search history').click();
+  await query('valid zero'); closeFind(); button('Find'); clock().click();
+  check(historyTexts()[0] === 'valid zero', 'Valid zero-hit close was not committed');
+  button('Clear history');
+  check(input().value === 'valid zero' && !historyEntries().length && root.textContent.includes('No recent searches.'), 'Clear history changed query or lost empty state');
+  check(document.activeElement === root.querySelector('.rl-history-popover h3'), 'Clear history lost focus');
+  byName('Close search history').click(); check(document.activeElement === clock(), 'Popover close did not return clock focus');
+  results.push('D10/D16: navigation/close commitment, exact flag tuples/MRU, current-origin recall, valid zero hits and useful Clear history');
+
+  const skipped = async (value, setup) => {
+    button('Clear'); await setup(value); closeFind();
+    await sleep(30); button('Find'); clock().click(); check(!historyEntries().length, `${value.slice(0, 20)} was committed`);
+    byName('Close search history').click();
+  };
+  button('Clear'); let gate = holdNext(); edit('unfinished'); await until(() => heldReply === undefined);
+  closeFind(); gate.release(); await until(settled); button('Find'); clock().click();
+  check(!historyEntries().length, 'Pending close wrote history after completion'); byName('Close search history').click();
+  await skipped('failure', async value => { failNext = true; await query(value); });
+  await skipped('x'.repeat(16_385), query);
+  await skipped('composing', async value => { input().dispatchEvent(new CompositionEvent('compositionstart', { bubbles: true })); edit(value); });
+  // Finish composition only after it was excluded at Close; completion is not a commitment.
+  input().dispatchEvent(new CompositionEvent('compositionend', { bubbles: true, data: 'composing' })); await until(settled);
+  clock().click(); check(!historyEntries().length, 'Composition completion deferred history'); byName('Close search history').click();
+  await skipped('timeout', async value => { gate = holdNext(); edit(value); await until(() => heldReply === undefined);
+    await until(() => root.textContent.includes('Find timed out'), 'History timeout did not settle'); gate.release(); await turn(); });
+  results.push('D10/D11/D16: pending/composing/oversized/failure/timeout input skipped without deferred writes');
+
+  button('Clear'); await query('retained history'); closeFind(); button('Find');
+  button('Edit profiles'); button('Back to logs'); clock().click();
+  check(historyTexts()[0] === 'retained history', 'Profiles lost history');
+  byName('Close search history').click();
+  const visibilityReply = [...callbacks.entries()].find(([name]) => name.startsWith('viewer-visibility-'));
+  visibilityReply[1]({}, null); await turn(); visibilityReply[1]({}, 'cluster'); await until(settled);
+  clock().click(); check(historyTexts()[0] === 'retained history', 'Temporary inactivity lost history');
+  // Outside click and Escape return focus to the clock. Escape is dispatched
+  // only with the document's real focus; guards are never patched.
+  root.querySelector('.rl-find-count').click();
+  check(!root.querySelector('.rl-history-popover') && document.activeElement === clock(), 'Outside click did not return clock focus');
+  clock().click(); closeFind();
+  check(!root.querySelector('.rl-history-popover') && !root.querySelector('.rl-findbar').hidden && document.activeElement === clock(), 'Outside click dismissed both history and Find');
+  clock().click();
+  const hostInput = document.createElement('input'); document.body.append(hostInput);
+  hostInput.focus(); hostInput.click();
+  check(!root.querySelector('.rl-history-popover') && document.activeElement === hostInput, 'History dismissal stole foreign host focus');
+  hostInput.remove();
+  clock().click();
+  if (document.hasFocus()) {
+    document.activeElement.dispatchEvent(new KeyboardEvent('keydown', { key: 'Escape', bubbles: true }));
+    check(!root.querySelector('.rl-history-popover') && !root.querySelector('.rl-findbar').hidden && document.activeElement === clock(), 'Escape dismissed more than history');
+    clock().click();
+  } else {
+    document.activeElement.dispatchEvent(new KeyboardEvent('keydown', { key: 'Escape', bubbles: true }));
+    check(!!root.querySelector('.rl-history-popover') && !root.querySelector('.rl-findbar').hidden, 'Unfocused document took Escape ownership');
+    results.push('Escape in unfocused headless document stays host-owned; native delivery is unverified');
+  }
+  // Check responsive popover bounds as real CSS, retaining the black canvas.
+  for (const width of [260, 390, 700, 1440]) {
+    root.style.width = `${width}px`; await turn();
+    const rect = root.querySelector('.rl-history-popover').getBoundingClientRect();
+    check(rect.left >= 0 && rect.right <= width + 1, `History overflow at ${width}`);
+    check(getComputedStyle(root.querySelector('.rl-records')).backgroundColor === 'rgb(0, 0, 0)', 'History changed black canvas');
+    if (globalThis.captureFindHistory) {
+      globalThis.findHistoryCaptureWidth = width;
+      await until(() => !globalThis.findHistoryCaptureWidth, 'Screenshot capture did not finish');
+    }
+  }
+  root.style.width = ''; byName('Close search history').click();
+  results.push('D16: Profiles preserves history, outside-click/close focus, real focus guard, popover fits 260/390/700/1440 widths');
+  clearHistory(); button('Clear'); byName('Match case').click(); byName('Whole words').click(); closeFind();
+  document.getSelection().removeAllRanges();
+}
 async function verifyPosition() {
   button('Find'); if (input().value) button('Clear');
   const lines = Array.from({ length: 100 }, (_, i) => [2, 73, 82, 90].includes(i) ? `row ${i} upstream` : `row ${i}`);
@@ -261,7 +431,7 @@ async function verifyAsync() {
   results.push('latched execution error; refresh never retries; Retry uses current data without selection');
 
   button('Clear'); gate = holdNext(); edit('fails once'); await until(() => heldReply === undefined);
-  await sleep(1050); check(root.textContent.includes('Find timed out'), 'Whole-attempt timeout missing');
+  await until(() => root.textContent.includes('Find timed out'), 'Whole-attempt timeout missing');
   gate.release(); await sleep(30); check(root.textContent.includes('Find timed out'), 'Late success erased timeout');
   await query('latest'); count(1);
   results.push('whole-attempt renderer timeout rejects late success; explicit edit recovers');
@@ -284,11 +454,13 @@ async function verifyAsync() {
   results.push('Profiles dismissal cancels pending selection/reveal and Find preserves Pause');
 }
 globalThis.verifyIdentity = async () => {
+  await document.fonts.ready;
   extension.onActivate();
   const params = Object.fromEntries(Object.entries({ namespace: 'ns', pod: 'pod', podUid: 'uid', clusterId: 'cluster' }).map(([key, value]) => [key, { get: () => value }]));
   ReactDOM.render(<Page params={params} />, root);
   try {
     await until(() => rows().length === 3, 'No initial rows'); button('Pause');
+    await verifySelectionHistory();
     await verifyAsync();
     await verifyPosition();
     await refresh('start\nx\nend');
@@ -340,6 +512,12 @@ globalThis.verifyIdentity = async () => {
 
     // Metadata continues while explicitly paused. Wait for the real production
     // observer, rather than resetting the session through an internal side door.
+    root.querySelector('[aria-label="Close Find"]').click(); button('Find');
+    const assertEmptyHistory = () => {
+      root.querySelector('[aria-label="Search history"]').click();
+      check(!root.querySelector('.rl-history-entry'), 'New context retained history');
+      root.querySelector('[aria-label="Close search history"]').click();
+    };
     status = undefined; await sleep(3100);
     check(input().value === 'x', 'Missing metadata spuriously reset query');
     status = { name: 'app', restartCount: 0, containerID: 'run-0' }; await sleep(3100);
@@ -347,6 +525,7 @@ globalThis.verifyIdentity = async () => {
     for (const count of [1, 2]) {
       status = { name: 'app', restartCount: count };
       await until(() => input().value === '' && rows().length === 0, 'Paused restart did not reset Find and records');
+      assertEmptyHistory();
       check(root.querySelector('.rl-update-status').textContent === 'Paused', 'Restart overrode Pause');
       await refresh('2026-10-22T12:34:56.123456789Z   { "message": "x", "hidden": "\\u03b1" }  ');
       await query('x');
@@ -378,7 +557,7 @@ globalThis.verifyIdentity = async () => {
     results.push('mounted session rejects old-instance log successes and failures');
     const container = root.querySelector('select[aria-label="Container"]');
     container.value = 'sidecar'; container.dispatchEvent(new Event('change', { bubbles: true })); await turn();
-    check(input().value === '', 'Container change retained query');
+    check(input().value === '', 'Container change retained query'); assertEmptyHistory();
     check(root.querySelector('.rl-update-status').textContent !== 'Paused', 'Container change did not preserve existing automatic-mode contract');
     button('Pause'); await query('x');
     uid = 'replacement';
@@ -389,6 +568,7 @@ globalThis.verifyIdentity = async () => {
     results.push('container resets context; Pod UID replacement retains terminal/outdated old target');
     check(getComputedStyle(scroller).backgroundColor === 'rgb(0, 0, 0)', 'Black canvas changed');
     check(!root.querySelector('.rl-line-number'), 'Line counters introduced');
+    check(localStorage.length === 0 && sessionStorage.length === 0 && !(await indexedDB.databases()).length, 'Find wrote browser storage');
   } finally {
     ReactDOM.unmountComponentAtNode(root); await extension.onDeactivate(); await turn();
   }

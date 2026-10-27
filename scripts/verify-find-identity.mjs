@@ -2,7 +2,7 @@
 import assert from 'node:assert/strict';
 import { spawn } from 'node:child_process';
 import { once } from 'node:events';
-import { mkdtemp, readFile, rm } from 'node:fs/promises';
+import { mkdir, mkdtemp, readFile, rm, writeFile } from 'node:fs/promises';
 import { createServer } from 'node:http';
 import { tmpdir } from 'node:os';
 import { join, resolve } from 'node:path';
@@ -20,12 +20,15 @@ try {
   bridge = packedFindBridge(resolve(manifest.main), join(directory, 'settings'));
   const fixture = await build({ entryPoints: ['tests/find-identity-browser.jsx'], bundle: true, write: false, format: 'iife',
     define: { 'process.env.NODE_ENV': '"production"', PACKED_RENDERER: JSON.stringify(await readFile(manifest.renderer, 'utf8')) } });
+  const fonts = new Map(await Promise.all(['MaterialIcons-Regular.ttf', 'Roboto-Regular.ttf'].map(async name =>
+    [`/${name}`, await readFile(`node_modules/@freelensapp/core/static/build/library/fonts/${name}`)])));
   server = createServer((request, response) => {
     if (request.url === '/find-rpc') { void bridge.http(request, response); return; }
+    if (fonts.has(request.url)) { response.setHeader('Content-Type', 'font/ttf'); response.end(fonts.get(request.url)); return; }
     response.setHeader('Cache-Control', 'no-store');
     response.setHeader('Content-Type', request.url === '/fixture.js' ? 'text/javascript' : 'text/html');
     response.end(request.url === '/fixture.js' ? fixture.outputFiles[0].text
-      : '<!doctype html><meta charset="utf-8"><style>html,body,#root{height:100%;margin:0}</style><div id="root"></div><script src="/fixture.js"></script>');
+      : '<!doctype html><meta charset="utf-8"><style>@font-face{font-family:Roboto;src:url(/Roboto-Regular.ttf)}@font-face{font-family:MaterialIcons;src:url(/MaterialIcons-Regular.ttf)}html,body,#root{height:100%;margin:0}body{font:14px Roboto,sans-serif;background:#1e2124}.Icon.material-icons{font-family:MaterialIcons;font-weight:normal;font-style:normal;line-height:1;white-space:nowrap;font-feature-settings:"liga"}</style><div id="root"></div><script src="/fixture.js"></script>');
   });
   server.listen(0, '127.0.0.1'); await once(server, 'listening');
   browser = spawn(process.env.CHROME_BIN || 'chromium', ['--headless=new', '--no-first-run', '--no-default-browser-check',
@@ -64,7 +67,22 @@ try {
     if (await evaluate('!!globalThis.verifyIdentity')) break;
     assert(attempt < 199, 'Fixture failed to load'); await sleep(25);
   }
-  const results = await evaluate('verifyIdentity()');
+  const captureDirectory = process.env.FIND_HISTORY_SCREENSHOTS;
+  if (captureDirectory) { await mkdir(captureDirectory, { recursive: true }); await evaluate('globalThis.captureFindHistory = true'); }
+  let finished = false;
+  const verification = evaluate('verifyIdentity()').finally(() => { finished = true; });
+  if (captureDirectory) {
+    while (!finished) {
+      const width = await evaluate('globalThis.findHistoryCaptureWidth');
+      if (width) {
+        const capture = await send('Page.captureScreenshot', { format: 'png', clip: { x: 0, y: 0, width, height: 900, scale: 1 } });
+        await writeFile(join(captureDirectory, `history-${width}.png`), Buffer.from(capture.data, 'base64'));
+        await evaluate('globalThis.findHistoryCaptureWidth = 0');
+      }
+      await sleep(25);
+    }
+  }
+  const results = await verification;
   for (let i = 0; bridge.status().live && i < 200; i++) await sleep(10);
   assert.equal(bridge.status().live, 0, 'Mounted viewer retained its worker');
   await bridge.dispose();
