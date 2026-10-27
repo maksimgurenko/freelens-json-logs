@@ -1,18 +1,20 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { configurationData, configurationProblem, defaultConfiguration, isInspectionLayout } from '../src/core/configuration.ts';
-import { initialInspection, originalText, selectRecord, selectedIndex } from '../src/core/inspection.ts';
+import { initialInspection, originalText } from '../src/core/inspection.ts';
+import { emptyWindow, replaceWindow, recordRef, recordIndex } from '../src/core/occurrences.ts';
 import { formatDefault, parseTransportLine } from '../src/core/records.ts';
 
 test('all layouts share selection while presentation, originals and complete fields stay independent', () => {
   const text = '  { "message": "α🙂 first\\nsecond", "msg": "unused", "log": {"level":"error","code":"E1"}, "private":true }  ';
   const record = parseTransportLine(`2026-10-22T12:34:56.123456789Z ${text}`);
   const records = [parseTransportLine('earlier'), record];
-  const state = { ...initialInspection(), selected: selectRecord(records, 1) };
+  const window = replaceWindow(emptyWindow('inspection'), records);
+  const state = { ...initialInspection(), selected: recordRef(window, 1) };
   const before = JSON.stringify(record);
   for (const layout of ['inline', 'side', 'bottom']) {
     assert(isInspectionLayout(layout));
-    assert.equal(selectedIndex(records, state.selected), 1);
+    assert.equal(recordIndex(window, state.selected), 1);
     const formatted = formatDefault(record);
     assert.equal(formatted.message, 'α🙂 first\nsecond');
     assert.equal(formatted.additionalFields?.msg, 'unused');
@@ -36,12 +38,13 @@ test('exact copy payloads include empty/blank, indentation, Unicode, JSON escape
 
 test('snapshot replacement preserves a surviving exact record and never substitutes a different index', () => {
   const records = ['a', 'b', 'b', 'c'].map(parseTransportLine);
-  const selected = selectRecord(records, 1);
-  assert.equal(selectedIndex(['b', 'b', 'c', 'd'].map(parseTransportLine), selected), 0);
-  assert.equal(selectedIndex(['b', 'c', 'd'].map(parseTransportLine), selected), -1);
-  assert.equal(selectedIndex(['changed', 'else'].map(parseTransportLine), selected), -1);
-  assert.equal(selectedIndex([], selected), -1);
-  assert.equal(selectRecord(records, 7), undefined);
+  const window = replaceWindow(emptyWindow('inspection'), records);
+  const selected = recordRef(window, 1);
+  assert.equal(recordIndex(replaceWindow(window, ['b', 'b', 'c', 'd'].map(parseTransportLine)), selected), 0);
+  assert.equal(recordIndex(replaceWindow(window, ['b', 'c', 'd'].map(parseTransportLine)), selected), -1);
+  assert.equal(recordIndex(replaceWindow(window, ['changed', 'else'].map(parseTransportLine)), selected), -1);
+  assert.equal(recordIndex(replaceWindow(window, []), selected), -1);
+  assert.equal(recordRef(window, 7), undefined);
 });
 
 test('saved schema starts Side and separates profiles from temporary inspection state', () => {
@@ -54,7 +57,7 @@ test('saved schema starts Side and separates profiles from temporary inspection 
   const first = initialInspection();
   first.raw = true;
   first.content = 'transport';
-  first.selected = selectRecord([parseTransportLine('first')], 0);
+  first.selected = recordRef(replaceWindow(emptyWindow('inspection'), [parseTransportLine('first')]), 0);
   assert.deepEqual(initialInspection(), { raw: false, content: 'fields' });
   assert.deepEqual(saved, defaultConfiguration());
 });

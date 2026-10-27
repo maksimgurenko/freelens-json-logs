@@ -1,0 +1,677 @@
+{
+  "inputs": {
+    "host-global:@freelensapp/extensions": {
+      "bytes": 39,
+      "imports": [],
+      "format": "cjs"
+    },
+    "src/adapter/visibility.ts": {
+      "bytes": 1172,
+      "imports": [],
+      "format": "esm"
+    },
+    "src/adapter/window-visibility.ts": {
+      "bytes": 1479,
+      "imports": [],
+      "format": "esm"
+    },
+    "host-global:mobx": {
+      "bytes": 29,
+      "imports": [],
+      "format": "cjs"
+    },
+    "src/core/profiles.ts": {
+      "bytes": 9693,
+      "imports": [],
+      "format": "esm"
+    },
+    "src/core/configuration.ts": {
+      "bytes": 3064,
+      "imports": [
+        {
+          "path": "src/core/profiles.ts",
+          "kind": "import-statement",
+          "original": "./profiles.ts"
+        }
+      ],
+      "format": "esm"
+    },
+    "src/adapter/configuration-file.ts": {
+      "bytes": 3077,
+      "imports": [
+        {
+          "path": "node:fs",
+          "kind": "import-statement",
+          "external": true
+        },
+        {
+          "path": "node:path",
+          "kind": "import-statement",
+          "external": true
+        },
+        {
+          "path": "node:crypto",
+          "kind": "import-statement",
+          "external": true
+        },
+        {
+          "path": "src/core/configuration.ts",
+          "kind": "import-statement",
+          "original": "../core/configuration.ts"
+        }
+      ],
+      "format": "esm"
+    },
+    "src/adapter/configuration-store.ts": {
+      "bytes": 4526,
+      "imports": [
+        {
+          "path": "host-global:@freelensapp/extensions",
+          "kind": "import-statement",
+          "original": "@freelensapp/extensions"
+        },
+        {
+          "path": "host-global:mobx",
+          "kind": "import-statement",
+          "original": "mobx"
+        },
+        {
+          "path": "src/core/configuration.ts",
+          "kind": "import-statement",
+          "original": "../core/configuration.ts"
+        },
+        {
+          "path": "src/core/profiles.ts",
+          "kind": "import-statement",
+          "original": "../core/profiles.ts"
+        },
+        {
+          "path": "node:path",
+          "kind": "import-statement",
+          "external": true
+        },
+        {
+          "path": "src/adapter/configuration-file.ts",
+          "kind": "import-statement",
+          "original": "./configuration-file.ts"
+        }
+      ],
+      "format": "esm"
+    },
+    "src/adapter/configuration-ipc.ts": {
+      "bytes": 142,
+      "imports": [],
+      "format": "esm"
+    },
+    "src/main.ts": {
+      "bytes": 2568,
+      "imports": [
+        {
+          "path": "host-global:@freelensapp/extensions",
+          "kind": "import-statement",
+          "original": "@freelensapp/extensions"
+        },
+        {
+          "path": "electron",
+          "kind": "import-statement",
+          "external": true
+        },
+        {
+          "path": "src/adapter/visibility.ts",
+          "kind": "import-statement",
+          "original": "./adapter/visibility.ts"
+        },
+        {
+          "path": "src/adapter/window-visibility.ts",
+          "kind": "import-statement",
+          "original": "./adapter/window-visibility.ts"
+        },
+        {
+          "path": "src/adapter/configuration-store.ts",
+          "kind": "import-statement",
+          "original": "./adapter/configuration-store.ts"
+        },
+        {
+          "path": "src/adapter/configuration-file.ts",
+          "kind": "import-statement",
+          "original": "./adapter/configuration-file.ts"
+        },
+        {
+          "path": "src/adapter/configuration-ipc.ts",
+          "kind": "import-statement",
+          "original": "./adapter/configuration-ipc.ts"
+        }
+      ],
+      "format": "esm"
+    },
+    "host-global:react": {
+      "bytes": 30,
+      "imports": [],
+      "format": "cjs"
+    },
+    "src/core/records.ts": {
+      "bytes": 7593,
+      "imports": [
+        {
+          "path": "src/core/profiles.ts",
+          "kind": "import-statement",
+          "original": "./profiles.ts"
+        }
+      ],
+      "format": "esm"
+    },
+    "src/core/snapshot.ts": {
+      "bytes": 1453,
+      "imports": [
+        {
+          "path": "src/core/records.ts",
+          "kind": "import-statement",
+          "original": "./records.ts"
+        }
+      ],
+      "format": "esm"
+    },
+    "src/core/requests.ts": {
+      "bytes": 1280,
+      "imports": [],
+      "format": "esm"
+    },
+    "src/core/observe.ts": {
+      "bytes": 749,
+      "imports": [
+        {
+          "path": "src/core/requests.ts",
+          "kind": "import-statement",
+          "original": "./requests.ts"
+        }
+      ],
+      "format": "esm"
+    },
+    "src/adapter/freelens.ts": {
+      "bytes": 4272,
+      "imports": [
+        {
+          "path": "host-global:@freelensapp/extensions",
+          "kind": "import-statement",
+          "original": "@freelensapp/extensions"
+        },
+        {
+          "path": "src/core/snapshot.ts",
+          "kind": "import-statement",
+          "original": "../core/snapshot.ts"
+        },
+        {
+          "path": "src/core/requests.ts",
+          "kind": "import-statement",
+          "original": "../core/requests.ts"
+        },
+        {
+          "path": "src/core/observe.ts",
+          "kind": "import-statement",
+          "original": "../core/observe.ts"
+        },
+        {
+          "path": "src/adapter/visibility.ts",
+          "kind": "import-statement",
+          "original": "./visibility.ts"
+        }
+      ],
+      "format": "esm"
+    },
+    "src/core/target.ts": {
+      "bytes": 910,
+      "imports": [],
+      "format": "esm"
+    },
+    "src/core/navigation.ts": {
+      "bytes": 1830,
+      "imports": [],
+      "format": "esm"
+    },
+    "src/core/occurrences.ts": {
+      "bytes": 1553,
+      "imports": [
+        {
+          "path": "src/core/navigation.ts",
+          "kind": "import-statement",
+          "original": "./navigation.ts"
+        }
+      ],
+      "format": "esm"
+    },
+    "src/core/session.ts": {
+      "bytes": 12577,
+      "imports": [
+        {
+          "path": "src/core/target.ts",
+          "kind": "import-statement",
+          "original": "./target.ts"
+        },
+        {
+          "path": "src/core/snapshot.ts",
+          "kind": "import-statement",
+          "original": "./snapshot.ts"
+        },
+        {
+          "path": "src/core/requests.ts",
+          "kind": "import-statement",
+          "original": "./requests.ts"
+        },
+        {
+          "path": "src/core/occurrences.ts",
+          "kind": "import-statement",
+          "original": "./occurrences.ts"
+        }
+      ],
+      "format": "esm"
+    },
+    "src/core/inspection.ts": {
+      "bytes": 539,
+      "imports": [],
+      "format": "esm"
+    },
+    "src/adapter/clipboard.ts": {
+      "bytes": 377,
+      "imports": [
+        {
+          "path": "electron",
+          "kind": "import-statement",
+          "external": true
+        },
+        {
+          "path": "src/core/inspection.ts",
+          "kind": "import-statement",
+          "original": "../core/inspection.ts"
+        }
+      ],
+      "format": "esm"
+    },
+    "src/renderer/log-viewport.ts": {
+      "bytes": 3924,
+      "imports": [
+        {
+          "path": "src/core/occurrences.ts",
+          "kind": "import-statement",
+          "original": "../core/occurrences.ts"
+        }
+      ],
+      "format": "esm"
+    },
+    "src/renderer/viewer.css": {
+      "bytes": 15349,
+      "imports": []
+    },
+    "src/renderer/local-shortcuts.ts": {
+      "bytes": 5495,
+      "imports": [],
+      "format": "esm"
+    },
+    "src/renderer/profile-editor.tsx": {
+      "bytes": 15946,
+      "imports": [
+        {
+          "path": "host-global:react",
+          "kind": "import-statement",
+          "original": "react"
+        },
+        {
+          "path": "src/core/profiles.ts",
+          "kind": "import-statement",
+          "original": "../core/profiles.ts"
+        },
+        {
+          "path": "src/core/records.ts",
+          "kind": "import-statement",
+          "original": "../core/records.ts"
+        },
+        {
+          "path": "src/renderer/local-shortcuts.ts",
+          "kind": "import-statement",
+          "original": "./local-shortcuts.ts"
+        }
+      ],
+      "format": "esm"
+    },
+    "src/renderer/local-dismissal.ts": {
+      "bytes": 4016,
+      "imports": [],
+      "format": "esm"
+    },
+    "src/renderer/settings-recovery.tsx": {
+      "bytes": 3367,
+      "imports": [
+        {
+          "path": "host-global:react",
+          "kind": "import-statement",
+          "original": "react"
+        },
+        {
+          "path": "src/renderer/local-dismissal.ts",
+          "kind": "import-statement",
+          "original": "./local-dismissal.ts"
+        }
+      ],
+      "format": "esm"
+    },
+    "src/renderer/local-back.ts": {
+      "bytes": 4121,
+      "imports": [
+        {
+          "path": "src/renderer/local-dismissal.ts",
+          "kind": "import-statement",
+          "original": "./local-dismissal.ts"
+        }
+      ],
+      "format": "esm"
+    },
+    "src/renderer/viewer.tsx": {
+      "bytes": 28401,
+      "imports": [
+        {
+          "path": "host-global:react",
+          "kind": "import-statement",
+          "original": "react"
+        },
+        {
+          "path": "src/adapter/visibility.ts",
+          "kind": "import-statement",
+          "original": "../adapter/visibility.ts"
+        },
+        {
+          "path": "src/adapter/freelens.ts",
+          "kind": "import-statement",
+          "original": "../adapter/freelens.ts"
+        },
+        {
+          "path": "src/core/session.ts",
+          "kind": "import-statement",
+          "original": "../core/session.ts"
+        },
+        {
+          "path": "src/core/records.ts",
+          "kind": "import-statement",
+          "original": "../core/records.ts"
+        },
+        {
+          "path": "src/core/inspection.ts",
+          "kind": "import-statement",
+          "original": "../core/inspection.ts"
+        },
+        {
+          "path": "src/core/occurrences.ts",
+          "kind": "import-statement",
+          "original": "../core/occurrences.ts"
+        },
+        {
+          "path": "src/adapter/clipboard.ts",
+          "kind": "import-statement",
+          "original": "../adapter/clipboard.ts"
+        },
+        {
+          "path": "src/core/navigation.ts",
+          "kind": "import-statement",
+          "original": "../core/navigation.ts"
+        },
+        {
+          "path": "src/renderer/log-viewport.ts",
+          "kind": "import-statement",
+          "original": "./log-viewport.ts"
+        },
+        {
+          "path": "src/renderer/viewer.css",
+          "kind": "import-statement",
+          "original": "./viewer.css"
+        },
+        {
+          "path": "src/core/profiles.ts",
+          "kind": "import-statement",
+          "original": "../core/profiles.ts"
+        },
+        {
+          "path": "src/renderer/profile-editor.tsx",
+          "kind": "import-statement",
+          "original": "./profile-editor.tsx"
+        },
+        {
+          "path": "src/renderer/settings-recovery.tsx",
+          "kind": "import-statement",
+          "original": "./settings-recovery.tsx"
+        },
+        {
+          "path": "src/renderer/local-dismissal.ts",
+          "kind": "import-statement",
+          "original": "./local-dismissal.ts"
+        },
+        {
+          "path": "src/renderer/local-back.ts",
+          "kind": "import-statement",
+          "original": "./local-back.ts"
+        },
+        {
+          "path": "src/renderer/local-shortcuts.ts",
+          "kind": "import-statement",
+          "original": "./local-shortcuts.ts"
+        }
+      ],
+      "format": "esm"
+    },
+    "src/renderer/index.tsx": {
+      "bytes": 2795,
+      "imports": [
+        {
+          "path": "host-global:react",
+          "kind": "import-statement",
+          "original": "react"
+        },
+        {
+          "path": "host-global:@freelensapp/extensions",
+          "kind": "import-statement",
+          "original": "@freelensapp/extensions"
+        },
+        {
+          "path": "src/adapter/freelens.ts",
+          "kind": "import-statement",
+          "original": "../adapter/freelens.ts"
+        },
+        {
+          "path": "src/renderer/viewer.tsx",
+          "kind": "import-statement",
+          "original": "./viewer.tsx"
+        },
+        {
+          "path": "src/adapter/configuration-store.ts",
+          "kind": "import-statement",
+          "original": "../adapter/configuration-store.ts"
+        },
+        {
+          "path": "src/adapter/configuration-ipc.ts",
+          "kind": "import-statement",
+          "original": "../adapter/configuration-ipc.ts"
+        },
+        {
+          "path": "src/renderer/local-shortcuts.ts",
+          "kind": "import-statement",
+          "original": "./local-shortcuts.ts"
+        }
+      ],
+      "format": "esm"
+    }
+  },
+  "outputs": {
+    "out/main-0.1.34.js": {
+      "imports": [
+        {
+          "path": "electron",
+          "kind": "require-call",
+          "external": true
+        },
+        {
+          "path": "node:path",
+          "kind": "require-call",
+          "external": true
+        },
+        {
+          "path": "node:fs",
+          "kind": "require-call",
+          "external": true
+        },
+        {
+          "path": "node:path",
+          "kind": "require-call",
+          "external": true
+        },
+        {
+          "path": "node:crypto",
+          "kind": "require-call",
+          "external": true
+        }
+      ],
+      "exports": [],
+      "entryPoint": "src/main.ts",
+      "inputs": {
+        "host-global:@freelensapp/extensions": {
+          "bytesInOutput": 152
+        },
+        "host-global:mobx": {
+          "bytesInOutput": 117
+        },
+        "src/main.ts": {
+          "bytesInOutput": 2103
+        },
+        "src/adapter/visibility.ts": {
+          "bytesInOutput": 102
+        },
+        "src/adapter/window-visibility.ts": {
+          "bytesInOutput": 858
+        },
+        "src/adapter/configuration-store.ts": {
+          "bytesInOutput": 3670
+        },
+        "src/core/profiles.ts": {
+          "bytesInOutput": 6936
+        },
+        "src/core/configuration.ts": {
+          "bytesInOutput": 1585
+        },
+        "src/adapter/configuration-file.ts": {
+          "bytesInOutput": 2545
+        },
+        "src/adapter/configuration-ipc.ts": {
+          "bytesInOutput": 124
+        }
+      },
+      "bytes": 20205
+    },
+    "out/renderer-0.1.34.js": {
+      "imports": [
+        {
+          "path": "electron",
+          "kind": "require-call",
+          "external": true
+        },
+        {
+          "path": "node:path",
+          "kind": "require-call",
+          "external": true
+        },
+        {
+          "path": "node:fs",
+          "kind": "require-call",
+          "external": true
+        }
+      ],
+      "exports": [],
+      "entryPoint": "src/renderer/index.tsx",
+      "inputs": {
+        "host-global:react": {
+          "bytesInOutput": 120
+        },
+        "host-global:@freelensapp/extensions": {
+          "bytesInOutput": 152
+        },
+        "host-global:mobx": {
+          "bytesInOutput": 117
+        },
+        "src/renderer/index.tsx": {
+          "bytesInOutput": 2813
+        },
+        "src/adapter/freelens.ts": {
+          "bytesInOutput": 3322
+        },
+        "src/core/profiles.ts": {
+          "bytesInOutput": 7943
+        },
+        "src/core/records.ts": {
+          "bytesInOutput": 5685
+        },
+        "src/core/snapshot.ts": {
+          "bytesInOutput": 1045
+        },
+        "src/core/requests.ts": {
+          "bytesInOutput": 771
+        },
+        "src/core/observe.ts": {
+          "bytesInOutput": 455
+        },
+        "src/adapter/visibility.ts": {
+          "bytesInOutput": 749
+        },
+        "src/renderer/viewer.tsx": {
+          "bytesInOutput": 34495
+        },
+        "src/core/target.ts": {
+          "bytesInOutput": 364
+        },
+        "src/core/navigation.ts": {
+          "bytesInOutput": 1253
+        },
+        "src/core/occurrences.ts": {
+          "bytesInOutput": 765
+        },
+        "src/core/session.ts": {
+          "bytesInOutput": 10625
+        },
+        "src/core/inspection.ts": {
+          "bytesInOutput": 194
+        },
+        "src/adapter/clipboard.ts": {
+          "bytesInOutput": 156
+        },
+        "src/renderer/log-viewport.ts": {
+          "bytesInOutput": 2964
+        },
+        "src/renderer/viewer.css": {
+          "bytesInOutput": 15374
+        },
+        "src/renderer/profile-editor.tsx": {
+          "bytesInOutput": 20173
+        },
+        "src/renderer/local-shortcuts.ts": {
+          "bytesInOutput": 4306
+        },
+        "src/renderer/settings-recovery.tsx": {
+          "bytesInOutput": 3688
+        },
+        "src/renderer/local-dismissal.ts": {
+          "bytesInOutput": 3104
+        },
+        "src/renderer/local-back.ts": {
+          "bytesInOutput": 2799
+        },
+        "src/adapter/configuration-store.ts": {
+          "bytesInOutput": 3670
+        },
+        "src/core/configuration.ts": {
+          "bytesInOutput": 1585
+        },
+        "src/adapter/configuration-file.ts": {
+          "bytesInOutput": 738
+        },
+        "src/adapter/configuration-ipc.ts": {
+          "bytesInOutput": 124
+        }
+      },
+      "bytes": 132251
+    }
+  }
+}

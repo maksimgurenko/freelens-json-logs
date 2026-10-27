@@ -20,13 +20,6 @@ export function windowOverlap(previous: readonly LogRecord[], next: readonly Log
   return matched;
 }
 
-export function retainedIndex(previous: readonly LogRecord[], next: readonly LogRecord[], index: number): number {
-  if (index < 0 || index >= previous.length) return -1;
-  if (previous === next) return index;
-  const dropped = previous.length - windowOverlap(previous, next);
-  return index >= dropped ? index - dropped : -1;
-}
-
 /** The one predicate supplies both the count and navigation; each record occurs once. */
 export function findMatches(records: readonly LogRecord[], messages: readonly string[], query: string): number[] {
   if (!query) return [];

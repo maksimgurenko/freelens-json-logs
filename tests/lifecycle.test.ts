@@ -43,6 +43,29 @@ function setup() {
   } }, () => {}, pool, clock);
   return { clock, pool, session, reads };
 }
+test('instance epochs publish before replacement reads, survive Pause and reset once per observed boundary', async t => {
+  const h = setup(); t.after(() => h.session.dispose());
+  void h.session.open(); await flush(); h.reads[0].response.resolve('old'); await flush();
+  const first = h.session.state.instanceEpoch;
+  assert.equal(typeof first, 'number');
+  h.session.pause(); h.session.selectProfile('manual');
+  h.session.observePod({ ...pod, instances: undefined });
+  h.session.observePod({ ...pod, instances: { app: { restarts: 0 } } });
+  assert.equal(h.session.state.instanceEpoch, first);
+  for (const count of [1, 2, 3]) {
+    h.session.observePod({ ...pod, instances: { app: { restarts: count } } });
+    assert.equal(h.session.state.instanceEpoch, first + count);
+    assert.equal(h.session.state.window.records.length, 0);
+    assert.equal(h.session.state.snapshot, undefined);
+    h.session.observePod({ ...pod, instances: { app: { restarts: count, id: `run-${count}` } } });
+    assert.equal(h.session.state.instanceEpoch, first + count);
+    assert.equal(h.session.state.manualProfile, 'manual');
+    assert(h.session.state.paused);
+  }
+  const before = h.session.state.instanceEpoch;
+  void h.session.selectContainer('sidecar');
+  assert.equal(h.session.state.instanceEpoch, before + 1);
+});
 for (const failure of [false, true]) {
   for (const paused of [false, true]) {
     test(`observed restart clears old window, preserves profile/${paused ? 'Pause' : 'Auto'} and rejects late ${failure ? 'failure' : 'success'}`, async t => {
@@ -258,4 +281,25 @@ test('restart count followed by the new instance ID does not clear the accepted 
   h.reads[1].response.resolve('current'); await flush(); const current = h.session.state.snapshot;
   h.session.observePod({ ...pod, instances: { app: { restarts: 1, id: 'run-1' } } });
   assert.equal(h.session.state.snapshot, current); assert.equal(h.reads.length, 2);
+});
+
+test('first-known metadata and same-container actions preserve the epoch; different known IDs publish before reading', async t => {
+  const seen: { epoch: number; records: number }[] = [];
+  const clock = new FakeClock();
+  const session = new SnapshotSession(target, { loadPod: async () => ({ ...pod, instances: undefined }),
+    readLogs: async () => { seen.push({ epoch: session.state.instanceEpoch, records: session.state.window.records.length }); return 'x'; } },
+  () => {}, new LogRequests(), clock);
+  t.after(() => session.dispose());
+  await session.open(); const epoch = session.state.instanceEpoch;
+  session.observePod(pod);
+  assert.equal(session.state.instanceEpoch, epoch);
+  await session.selectContainer('app');
+  assert.equal(session.state.instanceEpoch, epoch);
+  session.pause(); await session.refresh(); await session.resume();
+  session.setActive(false); session.setActive(true); await flush();
+  assert.equal(session.state.instanceEpoch, epoch);
+  session.observePod({ ...pod, instances: { app: { restarts: 0, id: 'different' } } });
+  await flush();
+  assert.equal(session.state.instanceEpoch, epoch + 1);
+  assert.deepEqual(seen.at(-1), { epoch: epoch + 1, records: 0 });
 });

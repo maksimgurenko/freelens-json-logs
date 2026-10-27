@@ -1,9 +1,15 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { findMatches, moveMatch, retainedIndex, windowOverlap } from '../src/core/navigation.ts';
+import { findMatches, moveMatch, windowOverlap } from '../src/core/navigation.ts';
+import { emptyWindow, replaceWindow, recordIndex, recordRef } from '../src/core/occurrences.ts';
+import type { LogRecord } from '../src/core/records.ts';
 import { formatDefault, parseTransportLine } from '../src/core/records.ts';
 
 const records = (lines: string[]) => lines.map(parseTransportLine);
+const retainedIndex = (previous: readonly LogRecord[], next: readonly LogRecord[], index: number) => {
+  const old = replaceWindow(emptyWindow('navigation'), previous);
+  return recordIndex(replaceWindow(old, next), recordRef(old, index));
+};
 
 test('ordered overlap preserves the correct repeated occurrence and reports the departed one lost', () => {
   const old = records(['before', 'repeat', 'repeat', 'after']);

@@ -1,9 +1,11 @@
 import { containerChoices, initialContainer, type Container, type LogTarget, type PodDescription } from './target.ts';
 import { retainSnapshot, type LogSnapshot } from './snapshot.ts';
 import { LogRequests, systemClock, type Clock } from './requests.ts';
+import { emptyWindow, replaceWindow, type OccurrenceWindow } from './occurrences.ts';
 
 export const REFRESH_DELAY = 3_000;
 export const SLOW_DELAY = 15_000;
+let nextViewer = 0;
 
 /** Host operations enter here; state and stale-result decisions remain host-independent. */
 export interface SnapshotPort {
@@ -14,6 +16,8 @@ export interface SnapshotPort {
 }
 export interface SnapshotState {
   target: LogTarget;
+  instanceEpoch: number;
+  window: OccurrenceWindow;
   containers: Container[];
   container: string;
   phase: 'loading-pod' | 'choose-container' | 'loading-logs' | 'ready' | 'error' | 'closed';
@@ -30,6 +34,7 @@ export interface SnapshotState {
   lifecycleNotice?: string;
 }
 export class SnapshotSession {
+  private readonly viewerId = ++nextViewer;
   private generation = 0;
   private active = true;
   private cancelAutomatic?: () => void;
@@ -48,10 +53,21 @@ export class SnapshotSession {
     this.changed = changed;
     this.requests = requests;
     this.clock = clock;
-    this.state = { target, containers: [], container: '', phase: 'loading-pod',
+    this.state = { target, instanceEpoch: 0, window: emptyWindow(this.context(target, 0)), containers: [], container: '', phase: 'loading-pod',
       paused: false, refreshing: false, waiting: false, slow: false, outdated: false, gone: false };
   }
+  private context(target: LogTarget, instanceEpoch: number) {
+    return JSON.stringify([this.viewerId, target.clusterId, target.namespace, target.podName, target.podUid, instanceEpoch]);
+  }
   private update(change: Partial<SnapshotState>) {
+    // Publish lifecycle identity and the cleared mapping atomically, before a
+    // replacement read can start. Request generations also change for Pause and
+    // visibility, so they cannot serve as an observed-instance epoch.
+    if (change.instanceEpoch !== undefined) {
+      change.window = emptyWindow(this.context(this.state.target, change.instanceEpoch));
+    } else if ('snapshot' in change) {
+      change.window = replaceWindow(this.state.window, change.snapshot?.records ?? []);
+    }
     this.state = { ...this.state, ...change };
     this.changed(this.state);
   }
@@ -75,8 +91,9 @@ export class SnapshotSession {
   async selectContainer(container: string) {
     if (this.state.phase === 'closed' || this.state.gone || !this.state.containers.some(item => item.name === container)) return;
     if (container === this.state.container && this.work?.generation === this.generation) return this.work.promise;
+    if (container === this.state.container && this.state.instanceEpoch > 0) return this.refresh();
     this.invalidate();
-    this.update({ container, phase: 'loading-logs', snapshot: undefined, error: undefined,
+    this.update({ container, instanceEpoch: this.state.instanceEpoch + 1, phase: 'loading-logs', snapshot: undefined, error: undefined,
       paused: false, outdated: false, refreshing: false, waiting: false, slow: false,
       manualProfile: undefined, lifecycleNotice: undefined });
     await this.refresh();
@@ -136,7 +153,7 @@ export class SnapshotSession {
     this.pod = { ...pod, instances };
     if (before && after && (before.restarts !== after.restarts || (before.id && after.id && before.id !== after.id))) {
       this.invalidate();
-      this.update({ snapshot: undefined, error: undefined, outdated: false,
+      this.update({ instanceEpoch: this.state.instanceEpoch + 1, snapshot: undefined, error: undefined, outdated: false,
         phase: 'loading-logs', refreshing: false, waiting: false, slow: false,
         lifecycleNotice: 'Container restart observed. Previous-instance logs were cleared.' });
       if (!this.state.paused) void this.refresh();

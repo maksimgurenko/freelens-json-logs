@@ -2,13 +2,13 @@ import React, { useEffect, useLayoutEffect, useMemo, useRef, useState } from 're
 import { bindVisibility, type VisibilityChannel } from '../adapter/visibility.ts';
 import { freelensPort, freelensRequests, PACKAGE_VERSION } from '../adapter/freelens.ts';
 import { SnapshotSession, type SnapshotState } from '../core/session.ts';
-import { displayTimestamp, recordFormatter } from '../core/records.ts';
-import type { LogRecord } from '../core/records.ts';
-import { initialInspection, originalText, selectRecord, selectedIndex, type RecordContent } from '../core/inspection.ts';
+import { displayTimestamp, recordFormatter, type LogRecord } from '../core/records.ts';
+import { initialInspection, originalText, type RecordContent } from '../core/inspection.ts';
+import { emptyWindow, recordRef, recordIndex, type RecordRef } from '../core/occurrences.ts';
 import type { ViewerPreferences } from '../core/configuration.ts';
 import { copyOriginal } from '../adapter/clipboard.ts';
 import type { LogTarget } from '../core/target.ts';
-import { findMatches, moveMatch, retainedIndex } from '../core/navigation.ts';
+import { findMatches, moveMatch } from '../core/navigation.ts';
 import { LogViewport, type ViewportStatus } from './log-viewport.ts';
 import styles from './viewer.css';
 import { activeProfile, BUILTIN_PROFILE_ID, builtinProfile } from '../core/profiles.ts';
@@ -19,7 +19,7 @@ import { bindLocalBack } from './local-back.ts';
 import { bindLocalShortcuts, editable, isMac, LocalShortcuts, shortcutHint, type ShortcutCapture } from './local-shortcuts.ts';
 
 interface ViewerProps { target: LogTarget; register: (dispose: () => void) => () => void; visibility: VisibilityChannel; preferences: ViewerPreferences; shortcutCapture: ShortcutCapture }
-const EMPTY_RECORDS: readonly LogRecord[] = [];
+const EMPTY_WINDOW = emptyWindow('unopened');
 
 type SelectionPosition = Pick<Selection, 'anchorNode' | 'anchorOffset' | 'focusNode' | 'focusOffset'>;
 function selectionPosition(selection: Selection | null): SelectionPosition | undefined {
@@ -46,18 +46,32 @@ export function Viewer({ target, register, visibility, preferences, shortcutCapt
   const scroller = useRef<HTMLDivElement>(null);
   const viewport = useRef<LogViewport>();
   const rowGesture = useRef<{ x: number; y: number; dragged: boolean; selection?: SelectionPosition }>();
-  const requestedMatch = useRef<number>();
+  const requestedMatch = useRef<RecordRef>();
   const [scroll, setScroll] = useState<ViewportStatus>({ following: true, lost: false });
   const [query, setQuery] = useState('');
   const [findOpen, setFindOpen] = useState(false);
   const findInput = useRef<HTMLInputElement>(null);
   const findButton = useRef<HTMLButtonElement>(null);
-  const [cursor, setCursor] = useState<{ records: readonly LogRecord[]; index: number }>({ records: EMPTY_RECORDS, index: -1 });
+  const [cursor, setCursor] = useState<RecordRef>();
+  const [expiredResult, setExpiredResult] = useState(false);
   const [state, setState] = useState<SnapshotState>();
   const [session, setSession] = useState<SnapshotSession>();
   const [timestamps, setTimestamps] = useState(true);
   const [wrap, setWrap] = useState(false);
   const [inspection, setInspection] = useState(initialInspection);
+  const window = state?.window ?? EMPTY_WINDOW;
+  const [findContext, setFindContext] = useState(window.context);
+  // Reset before committing replacement-instance rows, including paused/empty
+  // windows. Later Find flags/history/intents belong to this same context seam.
+  if (findContext !== window.context || (state?.phase === 'closed' && query)) {
+    setFindContext(window.context);
+    setQuery('');
+    setCursor(undefined);
+    setExpiredResult(false);
+    setInspection(previous => ({ ...previous, selected: undefined }));
+    requestedMatch.current = undefined;
+  }
+  if (state?.gone || state?.phase === 'closed') requestedMatch.current = undefined;
   const [preference, setPreference] = useState(() => preferences.read());
   const [editingProfiles, setEditingProfiles] = useState(false);
   const profilesActive = useRef(false);
@@ -97,7 +111,7 @@ export function Viewer({ target, register, visibility, preferences, shortcutCapt
     : state.waiting ? 'Waiting for earlier request…'
     : state.refreshing ? state.paused ? 'Paused · reading snapshot…' : 'Reading snapshot…'
     : state.paused ? 'Paused' : state.error ? 'Automatic updates stopped' : 'Automatic updates';
-  const records = snapshot?.records ?? EMPTY_RECORDS;
+  const records = window.records;
   const profileContext = useMemo(() => ({ namespace: target.namespace, container: state?.container ?? '', labels: state?.podLabels ?? {} }),
     [target.namespace, state?.container, state?.podLabels]);
   const profile = useMemo(() => activeProfile(preference.configuration, state?.manualProfile, profileContext), [preference.configuration, state?.manualProfile, profileContext]);
@@ -109,11 +123,14 @@ export function Viewer({ target, register, visibility, preferences, shortcutCapt
   const formattedRecords = useMemo(() => records.map(recordFormatter(profile.format)), [records, profile.format]);
   const messages = useMemo(() => formattedRecords.map(record => record.message), [formattedRecords]);
   const matches = useMemo(() => findMatches(records, messages, query), [records, messages, query]);
-  const mappedCursor = retainedIndex(cursor.records, records, cursor.index);
+  const mappedCursor = recordIndex(window, cursor);
   const currentMatch = matches.includes(mappedCursor) ? mappedCursor : -1;
   useEffect(() => {
-    setCursor(previous => previous.records === records && previous.index === currentMatch ? previous : { records, index: currentMatch });
-  }, [records, currentMatch]);
+    if (cursor && currentMatch < 0) {
+      setCursor(undefined);
+      setExpiredResult(mappedCursor < 0);
+    }
+  }, [window, cursor, currentMatch, mappedCursor]);
   useLayoutEffect(() => {
     const current = new LogViewport(scroller.current!, setScroll);
     viewport.current = current;
@@ -121,7 +138,7 @@ export function Viewer({ target, register, visibility, preferences, shortcutCapt
   }, []);
   useLayoutEffect(() => {
     if (editingProfiles) return;
-    viewport.current?.update(records);
+    viewport.current?.update(window);
     if (requestedMatch.current !== undefined) {
       viewport.current?.show(requestedMatch.current);
       requestedMatch.current = undefined;
@@ -132,20 +149,22 @@ export function Viewer({ target, register, visibility, preferences, shortcutCapt
   }, [findOpen]);
   const navigateMatch = (direction: 1 | -1) => {
     const next = moveMatch(matches, currentMatch, direction);
-    setCursor({ records, index: next });
-    requestedMatch.current = next;
+    setCursor(recordRef(window, next));
+    setExpiredResult(false);
+    requestedMatch.current = recordRef(window, next);
   };
   const changeQuery = (value: string) => {
     const first = findMatches(records, messages, value)[0] ?? -1;
     setQuery(value);
-    setCursor({ records, index: first });
-    requestedMatch.current = first;
+    setCursor(recordRef(window, first));
+    setExpiredResult(false);
+    requestedMatch.current = recordRef(window, first);
   };
-  const index = selectedIndex(records, inspection.selected);
+  const index = recordIndex(window, inspection.selected);
   const selected = records[index];
   const toggleInspection = (recordIndex: number) => {
-    setInspection(previous => ({ ...previous, selected: selectedIndex(records, previous.selected) === recordIndex
-      ? undefined : selectRecord(records, recordIndex) }));
+    setInspection(previous => ({ ...previous, selected: recordIndex === index
+      ? undefined : recordRef(window, recordIndex) }));
   };
   useEffect(() => {
     if (index < 0) {
@@ -268,6 +287,7 @@ export function Viewer({ target, register, visibility, preferences, shortcutCapt
       <input ref={findInput} id="rl-find" type="search" aria-label="Find in logs" placeholder="Find in application text or message"
         title={`Next: Enter or ${shortcutHint('G')}; previous: Shift+Enter or ${shortcutHint('Shift+G')}`} value={query} onChange={event => changeQuery(event.target.value)} />
       <span className="rl-find-count" role="status" aria-live="polite">{query ? `${currentMatch < 0 ? 0 : matches.indexOf(currentMatch) + 1} of ${matches.length} matching records` : 'Enter text to find'}</span>
+      {expiredResult && <span role="status">Current result left the recent log window.</span>}
       <button type="button" title={`Previous match (Shift+Enter in Find; ${shortcutHint('Shift+G')})`} disabled={!matches.length} onClick={() => navigateMatch(-1)}>Previous</button>
       <button type="button" title={`Next match (Enter in Find; ${shortcutHint('G')})`} disabled={!matches.length} onClick={() => navigateMatch(1)}>Next</button>
       <button type="button" aria-label="Close Find" title="Close Find (Escape)" onClick={closeFind}>Close</button>
@@ -302,7 +322,8 @@ export function Viewer({ target, register, visibility, preferences, shortcutCapt
         const formatted = formattedRecords[recordIndex];
         const isSelected = recordIndex === index;
         const fields = Object.keys(formatted.additionalFields ?? {}).length;
-        return <div className={`rl-record${isSelected ? ' rl-selected' : ''}${recordIndex === currentMatch ? ' rl-find-current' : ''}`} key={recordIndex} data-record-index={recordIndex}>
+        const ref = window.refs[recordIndex];
+        return <div className={`rl-record${isSelected ? ' rl-selected' : ''}${recordIndex === currentMatch ? ' rl-find-current' : ''}`} key={`${ref.context}:${ref.occurrence}`} data-record-index={recordIndex}>
           <div className="rl-row" role="button" tabIndex={0} aria-pressed={isSelected}
             aria-label={`Inspect record ${recordIndex + 1}: ${formatted.message.slice(0, 100) || 'blank line'}`}
             onClick={event => {
