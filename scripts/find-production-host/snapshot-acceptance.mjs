@@ -106,8 +106,12 @@ try {
   for (let iteration = 0; iteration < 2; iteration++) {
     if (iteration === 1) await button('Resume');
     await button('Match case');
+    // Observe the committed mode change before testing readiness; the previous
+    // query's enabled button can still be visible before React's matching effect.
+    await evaluate('new Promise(r=>requestAnimationFrame(()=>requestAnimationFrame(r)))');
     await until(`!document.querySelector('[aria-label="Next match"]').disabled`, 'Mode matching not ready');
     await button('Whole words');
+    await evaluate('new Promise(r=>requestAnimationFrame(()=>requestAnimationFrame(r)))');
     await until(`!document.querySelector('[aria-label="Next match"]').disabled`, 'Whole-word matching not ready');
     await button('Next match');
     await button('To bottom');

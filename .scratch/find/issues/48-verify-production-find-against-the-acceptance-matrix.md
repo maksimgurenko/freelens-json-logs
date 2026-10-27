@@ -21,7 +21,7 @@ Canonical decisions for this slice: [Actual-host feasibility evidence and its li
 - [ ] Verify the actual integrated packed extension in pinned Freelens 1.10.3 and record package identity, runtime, environment and reproducible evidence. Cover all in-scope D01-D16 cases, the 13 state traces and the handoff's additional matching/execution/rendering regressions; link each to its evidence layer and verdict.
 - [ ] Background host checks use workspace 7 and preserve the user's focus, workspace and pointer throughout, following current repository UI-verification guidance. Observe actual production Custom Highlights, source/geometry, snapshot/profile/restart state, following/Pause and SDK ownership. Never manufacture background focus or claim a restored desktop was uninterrupted.
 - [ ] Exercise root/cluster frames sharing webContents, foreign tokens, removed frames, same-frame owner replacement, startup/idle/active cancellation, inactivity, viewer close, disable/uninstall, reactivation and shutdown. Verify actual worker exit and complete owner/listener/timer/observer cleanup.
-- [ ] Run installed-host active/idle lifecycle soaks at both retention bounds, recording warm baselines and retained RAM/disk/thread/listener growth plus actual stop-to-exit behavior. Separate startup, IPC, worker, DOM and input responsiveness observations; keep sample limits explicit and remove only owned test data/processes.
+- [x] Run installed-host active/idle lifecycle soaks at both retention bounds, recording warm baselines and retained RAM/disk/thread/listener growth plus actual stop-to-exit behavior. Separate startup, IPC, worker, DOM and input responsiveness observations; keep sample limits explicit and remove only owned test data/processes.
 - [ ] Arrange a fresh explicitly attended check or separate graphical session for physical selection/copy/clipboard, native editing/paste/Undo/Redo/IME/AltGraph, modifier shortcuts, menus, focus and window lifecycle. Earlier attended approval does not carry forward, and background DOM checks cannot substitute for physical-input evidence.
 - [x] Perform or explicitly mark unverified the corresponding Windows and macOS matching/worker/package, primary-modifier, IME, selection/copy, focus and lifecycle checks. Linux/prototype results cannot be relabelled as platform coverage.
 - [x] Record passed, failed and unperformed checks separately, with evidence and resulting release limits. Failed/unperformed production gates remain visible and cannot be treated as release acceptance. If implementation evidence invalidates an accepted mechanism or behavior, raise a precise planning question rather than silently changing the contract or substituting a fallback.
@@ -381,3 +381,68 @@ operation, activation, restoration or fake focus was issued. Original acceptance
 text/checkboxes remain unchanged. Remaining resource/Host/native/platform gates
 stay open; [NEXT.md](../../../docs/verification/48/NEXT.md) specifies concrete
 request/timer/native-owner attribution rather than repeating passing subsets.
+
+### User acceptance of deferred resource issue on 2026-10-27
+
+The user explicitly accepted the DOM/listener resource issue documented in
+[Find resource investigation](../../../docs/find-resource-investigation.md) for
+now and deferred further work. The resource execution/reporting criterion is
+accepted under that decision. Existing failing measurements, original thresholds
+and original criterion text remain unchanged; this is not a passing resource
+verdict or a claimed leak fix. Do not run more resource attribution, related
+stock-display investigation, timing controls or soaks for this issue.
+
+Continue only the remaining non-deferred functional/host acceptance. Native
+physical-input/clipboard and actual Windows/macOS coverage are not waived.
+
+### Scoped functional checkpoint from 27e4d82
+
+The user resource acceptance/deferral above is included in this checkpoint with
+[the scoped decision summary](../../../docs/find-resource-investigation.md).
+Original acceptance text and checkbox meanings remain intact. Resource failures
+stay failed measurements; no further resource attribution, related stock-display
+investigation, timing control or soak followed the decision.
+
+[Final functional report](../../../docs/verification/48/functional-final.md) and
+[reconciled D01–D16 / 13-trace matrix](../../../docs/verification/48/matrix.md)
+record the unchanged final package SHA-256
+`995f1cf5e3ac81f377b16cf8dea24c15237824cd31dd1a066acde26bf868f904`.
+Fresh isolated installation verifies actual assets and schema 3. New installed
+checks pass 16 target/viewer/independent-anchor assertions and late DOM composition
+completion after Clear. Final-artifact counterparts pass 20 state-boundary,
+19 controlled metadata/instance/snapshot and 31 real snapshot/restart assertions.
+Stale actual successes and injected failures cannot alter a replacement view;
+independent B survives inspected-A eviction and skips earlier matching C on a new
+query. No production bytes or accepted behavior changed.
+
+Failed harness quoting/readiness and fixture replacement attempts are preserved
+separately; corrected complete runs pass. Pinned typecheck, 249 tests, six UI
+guards, production browser, real built workers and strict package checks pass.
+Existing exact-artifact reproducibility remains recorded; resources were not rerun.
+Shutdown observes 16/16 actual starts/exits, peak one, zero live worker/service
+maps/watch. Three SDK handlers remain listed at will-quit; zero there is not claimed.
+Owned host/display/profile/runtime and UID-checked namespace are removed. Fresh
+user/config/glossary/docs hashes match. Desktop observer records zero focus,
+workspace or window events and equal pointer endpoints; pointer equality is
+endpoint-only. No native input/focus/pointer/clipboard operation was dispatched.
+
+Remaining non-deferred gate: **fresh explicitly attended final-package Linux native
+selection/copy/system clipboard, editing/paste/Undo/Redo/IME/AltGraph, modifier
+shortcuts/menus/foreign-editor ownership, focus return and native window delivery**,
+or suitable separate native-capable session access. Actual Windows/macOS coverage
+remains explicitly unverified and requires those host sessions. Reporting this
+limit does not waive it. No release acceptance, publication or issue closure.
+[Independent review](../../../docs/verification/48/review-functional-final.md) and
+[NEXT.md](../../../docs/verification/48/NEXT.md) provide the exact handoff.
+
+Review follow-up strengthens the held-success oracle: a fresh installation
+[records matches/four known records](../../../docs/verification/48/host/functional-context-reviewed/context-boundaries.json)
+in every held reply before target/viewer replacement; all 16 assertions pass.
+Independent Spec review identified the remaining D10 installed mode/range/mark
+agreement gap. A separate fresh same-package installation now
+[passes all four combinations](../../../docs/verification/48/host/functional-modes-reviewed/mode-agreement.json)
+on case/whole-word-distinguishing text: matching/range replies share complete
+keys/flags, Custom Highlight rows agree, and every mark activates its expected
+matching record. The matrix now cites actual Host evidence for that cell.
+Standards suggestions narrow composition claims and make cleanup steps independent.
+Only the native/clipboard attendance/access and actual platform gates remain.

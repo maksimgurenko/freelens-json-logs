@@ -1,0 +1,46 @@
+{
+  "displayCommand": [
+    "python3",
+    "scripts/find-production-host/display.py"
+  ],
+  "displayEnvironment": {
+    "FIND_HOST_TICKET": "48",
+    "FIND_HOST_RUN": "functional-context-reviewed",
+    "FIND_DISPLAY_RENDERER": "mesa",
+    "LD_LIBRARY_PATH": "/home/max/work/freelens-json-logs/.scratch/find/48-host/aquamarine/build"
+  },
+  "hostCommand": [
+    "python3",
+    "scripts/find-production-host/launch.py"
+  ],
+  "hostEnvironment": {
+    "FIND_HOST_TICKET": "48",
+    "FIND_HOST_RUN": "functional-modes-reviewed",
+    "FREELENS_UI_MODE": null
+  },
+  "session": {
+    "unsetEnvironment": [
+      "GBM_BACKEND",
+      "__GLX_VENDOR_LIBRARY_NAME",
+      "LIBVA_DRIVER_NAME"
+    ],
+    "outerPid": 2525316,
+    "hyprlandPid": 2525339,
+    "instance": "efb50993780079460b0cbed1363e2166a2de1d9f_1793105654_1279137367",
+    "runtime": "/tmp/fd-n6k5wo_3",
+    "environment": {
+      "XDG_RUNTIME_DIR": "/tmp/fd-n6k5wo_3",
+      "HYPRLAND_INSTANCE_SIGNATURE": "efb50993780079460b0cbed1363e2166a2de1d9f_1793105654_1279137367",
+      "WAYLAND_DISPLAY": "/tmp/fd-n6k5wo_3/wayland-1",
+      "HYPRLAND_NO_SD_VARS": "1",
+      "HYPRLAND_NO_SD_NOTIFY": "1",
+      "AQ_DRM_DEVICES": "/dev/null",
+      "LIBSEAT_BACKEND": "seatd",
+      "SEATD_SOCK": "/home/max/work/freelens-json-logs/.scratch/find/48-host/no-seatd.sock",
+      "__EGL_VENDOR_LIBRARY_FILENAMES": "/usr/share/glvnd/egl_vendor.d/50_mesa.json"
+    }
+  },
+  "hostExit": 0,
+  "displayExit": 0,
+  "scope": "One existing diagnostic display reused for two fresh functional-only installations; no resource/display investigation."
+}

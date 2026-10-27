@@ -1,0 +1,10 @@
+{
+  "elapsedSeconds": 183.15927456499776,
+  "events": [],
+  "eventCount": 0,
+  "focusSame": true,
+  "workspaceSame": true,
+  "pointerEndpointsSame": true,
+  "clientSetsSame": true,
+  "scope": "Both reviewed functional installations in the same private display; continuous focus/workspace/window observer, endpoint-only pointer equality; no native input/focus/pointer/clipboard dispatch."
+}

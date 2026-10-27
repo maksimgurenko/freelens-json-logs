@@ -1,5 +1,29 @@
 # #48 production Find verification checkpoint
 
+**User decision, 2026-10-27: resource issue accepted for now and deferred.**
+The DOM/listener resource investigation in
+[the accepted issue summary](../../find-resource-investigation.md#accepted-deferral)
+no longer blocks this Find increment. Stop further resource/related stock-display
+investigation and soaks. The failed verdicts below remain historical measurements,
+not passing tests. Native/platform and remaining non-resource host checks are
+not waived. This decision supersedes older instructions below to continue the
+resource investigation.
+
+Latest scoped checkpoint: [non-deferred functional acceptance](functional-final.md).
+The unchanged final `995f1cf5` package passes 16 new installed target/viewer/anchor
+assertions, 20 state-boundary assertions, 19 controlled instance/snapshot assertions,
+31 actual snapshot/restart assertions and a late-composition-after-Clear probe.
+Review follow-ups explicitly verify held replies are successful matches and
+add installed four-mode matching/range/highlight/activated-mark agreement.
+The [reconciled matrix](matrix.md) maps every D01–D16 case and all 13 traces to
+their actual evidence layers and final package. Failed probe/setup attempts remain
+separate. No further resource investigation or soak was performed after the decision.
+Remaining non-deferred gates are fresh native/clipboard attendance/access and
+actual Windows/macOS coverage. No release acceptance is claimed.
+
+The checkpoint descriptions below are historical; their earlier resource tasks
+and words “latest/current” do not override the decision or final matrix.
+
 Latest continuation: [weak viewer roots and natural idle](weak-idle.md).
 The corrected 120-cycle-per-bound installed run still **fails**, with 27 long
 violations peaking +203 nodes/+36 listeners. Some spikes clean up during natural
