@@ -18,40 +18,53 @@ Canonical decisions for this slice: [Matching and execution contract](https://gi
 
 ## Acceptance criteria
 
-- [ ] Wire the production Find input and both matching controls through a main-owned Node worker and extension-scoped SDK client. The query is exact untrimmed literal text; punctuation is ordinary text, both flags start off, and there is no regular-expression control.
-- [ ] One pure matcher supplies complete ordered record results, application-text/extracted-message provenance and bounded original-source UTF-16 ranges. Search application text OR the active extracted message, exclude Kubernetes timestamps and count each matching record once. A range cap never changes exact counts or navigation.
-- [ ] Implement accepted locale-independent simple/common Unicode folding, exact Match case, original-code-point Letter/Number/underscore whole-word neighbors and left-to-right non-overlap across requested source fragments. Cover all four flag combinations and the specified Kelvin/sigma/sharp-s, accents, astral/lone-surrogate and U+0345 regressions.
-- [ ] Validate request input before allocation/execution and replies/range bounds before applying them. Bind viewer ownership to actual requesting webContents and frame/process-routing identity; reject foreign or disposed owners. Carry viewer/target/instance/window/message/query, request, worker-generation and range-interest identities, rejecting stale failures as well as successes.
-- [ ] Allow at most one lazy reusable worker, one running operation and the newest replacement descriptor per active viewer. Prioritize exact matching over decoration churn, cancel superseded execution and wait for actual worker exit before replacing it. Retain bounded current inputs without a query/window backlog.
-- [ ] Preserve and explain queries above 16,384 UTF-16 units without executing or truncating them. Mark matching pending immediately and disable navigation; show Searching after 100 ms. Expire the whole attempt at 1,000 ms including startup, with renderer timing before dispatch and main supervision before startup/posting.
-- [ ] Keep query editing and logs available after timeout/failure. Latch useful local feedback until an explicit edit or Retry, use current data for recovery and never replay an old reveal. Refresh alone does not retry; there is no retry loop or silent execution fallback. Decoration failure preserves valid exact results.
-- [ ] Build and pack the versioned trusted standalone worker from the same matcher, resolve it relative to the installed main module and execute it as trusted main-read source. The worker has no DOM/host globals or runtime package dependency; user text remains data. Extend strict package/build checks rather than weakening them.
+- [x] Wire the production Find input and both matching controls through a main-owned Node worker and extension-scoped SDK client. The query is exact untrimmed literal text; punctuation is ordinary text, both flags start off, and there is no regular-expression control.
+- [x] One pure matcher supplies complete ordered record results, application-text/extracted-message provenance and bounded original-source UTF-16 ranges. Search application text OR the active extracted message, exclude Kubernetes timestamps and count each matching record once. A range cap never changes exact counts or navigation.
+- [x] Implement accepted locale-independent simple/common Unicode folding, exact Match case, original-code-point Letter/Number/underscore whole-word neighbors and left-to-right non-overlap across requested source fragments. Cover all four flag combinations and the specified Kelvin/sigma/sharp-s, accents, astral/lone-surrogate and U+0345 regressions.
+- [x] Validate request input before allocation/execution and replies/range bounds before applying them. Bind viewer ownership to actual requesting webContents and frame/process-routing identity; reject foreign or disposed owners. Carry viewer/target/instance/window/message/query, request, worker-generation and range-interest identities, rejecting stale failures as well as successes.
+- [x] Allow at most one lazy reusable worker, one running operation and the newest replacement descriptor per active viewer. Prioritize exact matching over decoration churn, cancel superseded execution and wait for actual worker exit before replacing it. Retain bounded current inputs without a query/window backlog.
+- [x] Preserve and explain queries above 16,384 UTF-16 units without executing or truncating them. Mark matching pending immediately and disable navigation; show Searching after 100 ms. Expire the whole attempt at 1,000 ms including startup, with renderer timing before dispatch and main supervision before startup/posting.
+- [x] Keep query editing and logs available after timeout/failure. Latch useful local feedback until an explicit edit or Retry, use current data for recovery and never replay an old reveal. Refresh alone does not retry; there is no retry loop or silent execution fallback. Decoration failure preserves valid exact results.
+- [x] Build and pack the versioned trusted standalone worker from the same matcher, resolve it relative to the installed main module and execute it as trusted main-read source. The worker has no DOM/host globals or runtime package dependency; user text remains data. Extend strict package/build checks rather than weakening them.
 - [ ] Release owners, workers, timers and listeners on inactivity, viewer/frame closure, extension deactivation and shutdown, including idle/startup cases; await actual exit and preserve temporary state during inactivity. Verify real packed-worker/SDK operation, frame isolation, controlled timeout/late-exit cases, latest-only replacement and retention-bound fixtures. Existing checks remain green.
+
 
 ## Local verification evidence
 
-Partial implementation checkpoint on `implementation/find`; **not done**. The
-pure matcher/protocol, trusted standalone worker/package checks and per-viewer
-main scheduler are implemented and independently reviewed. Production SDK/frame
-ownership and Find UI integration remain unfinished, so the original acceptance
-checkboxes remain open.
+**Implementation checkpoint; not done.** Production input/two flags, SDK client,
+main frame-bound ownership and trusted worker loading are wired. The last original
+criterion remains open because actual production Freelens SDK/frame/lifecycle
+proof is required. Automated SDK/Electron stand-ins do not satisfy that gate.
 
-- Pre-implementation/review baseline: `50bfc2e3999d5079ca9ca8e8698df3c158cf24a9`.
-- Claimed on GitHub before implementation with `gh issue edit 42 --add-assignee @me`.
-- Full evidence, exact commands/environment, package identity and continuation:
-  [verification report](../../../docs/verification/42/README.md).
-- 97 focused matcher/protocol/scheduler tests, 212 full tests, typecheck, six UI
-  guards, nine grouped mounted identity checks and existing resource smoke pass.
-  The actual worker lifecycle has 20 cycles/441 requests, 41 starts and actual
-  exits, peak concurrency one and zero remaining workers. Strict tarball checks
-  execute the unpacked asset outside the checkout, preserve exact counts under
-  the range cap and confirm exit. Two package builds have identical SHA-256.
-- Independent Standards review: one nonblocking repeated cancellation rule,
-  consolidated before final checks. Spec review: zero confirmed checkpoint defects;
-  remaining integration/acceptance gates are explicitly recorded.
-- Next context must continue #42: main-owned package-relative trusted source and
-  SDK ownership bound to webContents plus frame/process-routing membership;
-  renderer client/input and two flags with full identities, pending/deadline and
-  latched explicit recovery; mounted async and actual packed SDK/frame/lifecycle
-  checks. Follow the exact continuation in the report. No native/platform or
-  complete Find/release acceptance is claimed.
+- Original ticket baseline: `50bfc2e3999d5079ca9ca8e8698df3c158cf24a9`.
+  Pre-continuation/review HEAD: `67b1d5e0bf3eea07e1e8762bbb7f3849cc106203`.
+- Reclaimed before work with `gh issue edit 42 --add-assignee @me`; current live
+  #42 and #36/#37/#38/#40 decision comments match the cached authority.
+- Current criterion-by-criterion evidence, exact commands/environment/identity,
+  limitations and autonomous next-context handoff:
+  [continuation report](../../../docs/verification/42/continuation/README.md).
+  Earlier matcher/scheduler work: [initial report](../../../docs/verification/42/README.md).
+- Typecheck, 14 focused SDK/client tests, **226 full tests**, six desktop guards,
+  16 grouped real mounted production-bundle checks, strict packed main/worker
+  checks and two-build reproducibility pass. Actual scheduler workload: 20 cycles,
+  441 requests, 41 actual starts/exits, peak one, zero live. Packed-main service
+  check: four actual starts/exits and no workers/owner/app listeners after cleanup.
+- Preserved original `npm run test:smoke` **fails** because its old Electron double
+  lacks the new shutdown `app` hook. The disposable adapter retains the original
+  thresholds and all memory/disk/DOM/listener/storage assertions with current
+  test doubles and real production main/worker. Its 40 cycles pass, with 40 actual
+  worker starts/exits and none remaining. Original smoke/CI/dependency files remain
+  unchanged and untracked; #47 owns their integration. No installed-host soak claim.
+- Independent Standards review: zero hard breaches, one resolved nonblocking
+  test-helper duplication. Spec: one actual-host evidence gate; zero confirmed
+  implementation defects or scope creep. Both reviews used explicit `fork_turns: none`.
+- Continue #42 only: isolated actual Freelens production package/SDK root-cluster
+  frame ownership, actual frame removal, startup/idle/inactive/close, real
+  Disable/Uninstall/reactivation/native-window-close and app shutdown, with actual
+  worker exit and handler/owner/listener cleanup. A fresh context can establish
+  the separate graphical session and finish this concrete autonomous verification.
+- All prestart tracked dirty files retain their original hashes; unrelated user
+  work and .ralph runtime are excluded from this ticket commit. No native desktop,
+  clipboard, production-host maintenance, GitHub comments/closure or publication.
+  Physical/native input, Windows/macOS and full Find/release acceptance remain
+  explicitly unverified downstream gates.

@@ -6,6 +6,7 @@ import { execFileSync } from 'node:child_process';
 import Module from 'node:module';
 import { createHash } from 'node:crypto';
 import { checkFindWorker } from './check-find-worker.mjs';
+import { checkPackedFindService } from './check-find-service.mjs';
 
 const manifest = JSON.parse(readFileSync('package.json'));
 const tarball = `dist/${manifest.name}-${manifest.version}.tgz`;
@@ -21,7 +22,7 @@ const workerMetadata = metadata.outputs[workerEntry];
 assert.deepEqual(workerMetadata.imports.map(entry => entry.path), ['node:worker_threads']);
 assert.deepEqual(Object.keys(workerMetadata.inputs).sort(), ['src/core/find-matcher.ts', 'src/core/find-protocol.ts', 'src/worker/find.ts']);
 const directory = mkdtempSync(join(tmpdir(), 'readable-logs-package-'));
-let workerCheck;
+let workerCheck, serviceCheck;
 try {
   execFileSync('tar', ['-xzf', join(process.cwd(), tarball), '-C', directory]);
   const packed = JSON.parse(readFileSync(join(directory, 'package/package.json')));
@@ -54,6 +55,7 @@ try {
   try {
     process.chdir(directory);
     workerCheck = await checkFindWorker(source, packed.version);
+    serviceCheck = await checkPackedFindService(join(directory, 'package', packed.main), join(directory, 'isolated-settings'));
   } finally { process.chdir(previousDirectory); }
 } finally { rmSync(directory, { recursive: true, force: true }); }
-console.log(JSON.stringify({ tarball, sha256: createHash('sha256').update(readFileSync(tarball)).digest('hex'), contents, bundledInputs: inputs, workerCheck, entryPoints: 'CommonJS default exports load with host globals; trusted packed worker executes outside checkout; no runtime package dependencies bundled' }, null, 2));
+console.log(JSON.stringify({ tarball, sha256: createHash('sha256').update(readFileSync(tarball)).digest('hex'), contents, bundledInputs: inputs, workerCheck, serviceCheck, entryPoints: 'CommonJS default exports load with host globals; trusted packed worker executes outside checkout; no runtime package dependencies bundled' }, null, 2));

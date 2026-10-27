@@ -10,11 +10,12 @@ class ConfigurationIpc extends Renderer.Ipc {}
 
 export default class ReadableLogsRenderer extends Renderer.LensExtension {
   private visibility = visibilityChannel(this);
-  private viewers = new Set<() => void>();
+  private findRpc = ConfigurationIpc.createInstance(this);
+  private viewers = new Set<() => void | Promise<void>>();
   private stopRecovery?: () => void;
   private shortcuts = new ShortcutCapture();
   private stopShortcuts?: () => void;
-  private register = (dispose: () => void) => {
+  private register = (dispose: () => void | Promise<void>) => {
     this.viewers.add(dispose);
     return () => { this.viewers.delete(dispose); };
   };
@@ -23,7 +24,7 @@ export default class ReadableLogsRenderer extends Renderer.LensExtension {
     components: { Page: ({ params }: { params: PageParams }) => {
       const target = pageTarget(params);
       return <Viewer key={JSON.stringify([target.clusterId, target.namespace, target.podName, target.podUid])}
-        target={target} register={this.register} visibility={this.visibility} preferences={configurationStore} shortcutCapture={this.shortcuts} />;
+        target={target} register={this.register} visibility={this.visibility} findRpc={this.findRpc} preferences={configurationStore} shortcutCapture={this.shortcuts} />;
     } },
   }];
   onActivate() {
@@ -52,10 +53,11 @@ export default class ReadableLogsRenderer extends Renderer.LensExtension {
       },
     },
   }];
-  onDeactivate() {
+  async onDeactivate() {
     this.stopShortcuts?.();
     this.stopRecovery?.();
-    for (const dispose of this.viewers) dispose();
+    const closing = [...this.viewers].map(dispose => dispose());
     this.viewers.clear();
+    await Promise.all(closing);
   }
 }

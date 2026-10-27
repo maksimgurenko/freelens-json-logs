@@ -14,11 +14,13 @@ export class LogViewport {
   private appliedLeft = 0;
   private resize: ResizeObserver;
   private element: HTMLElement;
+  private manualScroll?: () => void;
   private changed: (status: ViewportStatus) => void;
 
-  constructor(element: HTMLElement, changed: (status: ViewportStatus) => void) {
+  constructor(element: HTMLElement, changed: (status: ViewportStatus) => void, manualScroll?: () => void) {
     this.element = element;
     this.changed = changed;
+    this.manualScroll = manualScroll;
     element.addEventListener('scroll', this.onScroll);
     this.resize = new ResizeObserver(() => this.restore());
     this.resize.observe(element);
@@ -52,6 +54,7 @@ export class LogViewport {
     // Programmatic restore scroll events arrive asynchronously. They must not
     // acknowledge a lost anchor or recapture a different record as its identity.
     if (this.element.scrollTop === this.appliedTop && this.element.scrollLeft === this.appliedLeft) return;
+    this.manualScroll?.();
     this.capture(true);
   };
   private capture(user: boolean) {

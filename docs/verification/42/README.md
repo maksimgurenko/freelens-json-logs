@@ -1,4 +1,13 @@
-# #42 — Literal worker execution checkpoint
+# #42 — Literal Find execution: current checkpoint
+
+**Incomplete; actual-host SDK/lifecycle proof remains.** The production SDK/frame
+service, asynchronous renderer client and Find input/two matching flags are now
+wired and independently reviewed. The initial pure-worker checkpoint below is
+historical. Current implementation, exact commands, automated evidence, limitations
+and next-context handoff are in the [continuation report](continuation/README.md).
+Do not select #43 or claim complete Find/release acceptance yet.
+
+# Initial pure-worker checkpoint (67b1d5e)
 
 **Incomplete ticket; retry required.** This commit implements the pure literal
 matcher, validated wire schema, standalone worker build/package and per-viewer

@@ -13,9 +13,18 @@ window.addEventListener('unhandledrejection', event => errors.push(String(event.
 let text = 'start\nx\nend', reads = 0, pendingRead, copies = [];
 let status = { name: 'app', restartCount: 0, containerID: 'run-0' };
 let uid = 'uid';
+let heldReply, failNext = false, requestCount = 0;
+const holdNext = () => { let release; const promise = new Promise(resolve => { release = resolve; }); heldReply = { promise, release }; return heldReply; };
 const ipc = {
   listen(name, callback) { callbacks.set(name, callback); return () => callbacks.delete(name); },
-  async invoke(name, cluster, reply) { check(name === 'viewer-visibility-request', name); callbacks.get(reply)?.({}, cluster); },
+  async invoke(name, ...args) {
+    if (name === 'viewer-visibility-request') { callbacks.get(args[1])?.({}, args[0]); return; }
+    const gate = name === 'find-request' ? heldReply : undefined;
+    if (name === 'find-request') { requestCount++; heldReply = undefined; if (failNext) { failNext = false; throw new Error('Controlled SDK failure'); } }
+    const result = await (await fetch('/find-rpc', { method: 'POST', body: JSON.stringify({ channel: name, args }) })).json();
+    if (gate) await gate.promise;
+    if (result.error) throw new Error(result.error); return result.value;
+  },
   broadcast() {},
 };
 class Ipc { static createInstance() { return ipc; } }
@@ -58,11 +67,81 @@ async function until(predicate, message) {
 }
 async function refresh(value) {
   text = value; const before = reads; button('Refresh');
-  await until(() => reads > before && root.querySelector('.rl-records').getAttribute('aria-busy') === 'false', 'Refresh did not settle'); await turn();
+  await until(() => reads > before && root.querySelector('.rl-records').getAttribute('aria-busy') === 'false', 'Refresh did not settle'); await until(() => !['Matching pending', 'Searching…'].includes(root.querySelector('.rl-find-count').textContent), 'Find maintenance did not settle'); await turn();
 }
-async function query(value) {
+function edit(value) {
   Object.getOwnPropertyDescriptor(HTMLInputElement.prototype, 'value').set.call(input(), value);
-  input().dispatchEvent(new Event('input', { bubbles: true })); await turn();
+  input().dispatchEvent(new Event('input', { bubbles: true }));
+}
+const settled = () => !['Matching pending', 'Searching…'].includes(root.querySelector('.rl-find-count').textContent);
+async function query(value) { edit(value); await until(settled, 'Find did not settle'); await turn(); }
+async function verifyAsync() {
+  button('Find');
+  await refresh('Error.\nerror.\nerrors.\nxError.');
+  const mode = label => root.querySelector(`button[aria-label="${label}"]`);
+  const count = expected => check(root.querySelector('.rl-find-count').textContent.endsWith(`of ${expected} matching records`), root.querySelector('.rl-find-count').textContent);
+  await query('Error.'); count(3);
+  mode('Match case').click(); await until(settled); count(2);
+  mode('Whole words').click(); await until(settled); count(1);
+  mode('Match case').click(); await until(settled); count(2);
+  check(!root.querySelector('button[aria-label*="regular expression"]'), 'Regex control shipped');
+  const before = requestCount; await query('x'.repeat(16385));
+  check(input().value.length === 16385 && root.textContent.includes('16,384 UTF-16'), 'Oversized query truncated or unexplained');
+  check(requestCount === before, 'Oversized query executed');
+  button('Clear'); await turn();
+  check(input().value === '' && document.activeElement === input() && mode('Whole words').getAttribute('aria-pressed') === 'true', 'Clear lost focus/mode');
+  mode('Whole words').click();
+  results.push('production worker: four literal flag combinations, punctuation, oversize preservation/no dispatch and Clear');
+
+  let gate = holdNext(); edit('Error');
+  await until(() => heldReply === undefined, 'Delayed SDK attempt never dispatched');
+  check(root.querySelector('.rl-find-count').textContent === 'Matching pending', 'New input exposed old completed count');
+  check([...root.querySelectorAll('.rl-findbar button')].filter(node => ['Next', 'Previous'].includes(node.textContent)).every(node => node.disabled), 'Pending navigation enabled');
+  await sleep(120); check(root.querySelector('.rl-find-count').textContent === 'Searching…', 'Searching feedback missing');
+  root.querySelector('button[aria-label="Close Find"]').click(); gate.release(); await until(settled);
+  check(!root.querySelector('.rl-find-current') && !root.querySelector('.rl-detail'), 'Closed Find completion chose a result/inspector');
+  button('Find'); count(4);
+  results.push('immediate pending/disabled navigation; delayed Searching; close permits current counts without a reveal');
+
+  button('Clear'); gate = holdNext(); edit('Error'); await until(() => heldReply === undefined);
+  button('Clear'); gate.release(); await sleep(30);
+  check(input().value === '' && !root.querySelector('.rl-find-current') && root.querySelector('.rl-find-count').textContent === 'Enter text to find', 'Late completion revived cleared input');
+  gate = holdNext(); edit('Error'); await until(() => heldReply === undefined);
+  await query('errors.'); count(1); gate.release(); await sleep(30); count(1);
+  check(input().value === 'errors.', 'Old input resurrected');
+  results.push('Clear and out-of-order SDK replies cannot revive old query/results');
+
+  failNext = true; await query('fails once');
+  check(root.textContent.includes('could not complete'), 'Execution failure hidden');
+  const failedCount = requestCount;
+  await refresh('fails once\nlatest fails once');
+  check(requestCount === failedCount && root.textContent.includes('could not complete'), 'Refresh retried a latched failure');
+  [...root.querySelectorAll('.rl-findbar button')].find(node => node.textContent === 'Retry').click(); await until(settled); count(2);
+  check(!root.querySelector('.rl-find-current'), 'Retry replayed an old reveal');
+  results.push('latched execution error; refresh never retries; Retry uses current data without selection');
+
+  button('Clear'); gate = holdNext(); edit('fails once'); await until(() => heldReply === undefined);
+  await sleep(1050); check(root.textContent.includes('Find timed out'), 'Whole-attempt timeout missing');
+  gate.release(); await sleep(30); check(root.textContent.includes('Find timed out'), 'Late success erased timeout');
+  await query('latest'); count(1);
+  results.push('whole-attempt renderer timeout rejects late success; explicit edit recovers');
+
+  // Browser composition events exercise the production handler transaction,
+  // without claiming physical IME behavior.
+  button('Clear'); const composedBefore = requestCount;
+  input().dispatchEvent(new CompositionEvent('compositionstart', { bubbles: true }));
+  edit('la'); edit('late'); await sleep(30); check(requestCount === composedBefore, 'Uncommitted composition executed');
+  edit('latest'); input().dispatchEvent(new CompositionEvent('compositionend', { bubbles: true, data: 'latest' }));
+  await until(settled); count(1); check(requestCount === composedBefore + 1, 'Composition committed more than once');
+  input().dispatchEvent(new Event('input', { bubbles: true })); await sleep(30); check(requestCount === composedBefore + 1, 'Duplicate composition input executed');
+  results.push('composition stages no work; committed value evaluates once with duplicate input guarded');
+
+  button('Clear'); gate = holdNext(); edit('latest'); await until(() => heldReply === undefined);
+  button('Edit profiles'); gate.release(); await until(settled); button('Back to logs');
+  check(!root.querySelector('.rl-find-current'), 'Profiles return replayed a reveal');
+  button('Clear'); await refresh('start\nx\nend'); root.querySelector('button[aria-label="Close Find"]').click();
+  check(root.querySelector('.rl-update-status').textContent === 'Paused', 'Find changed explicit Pause');
+  results.push('Profiles dismissal cancels pending selection/reveal and Find preserves Pause');
 }
 globalThis.verifyIdentity = async () => {
   extension.onActivate();
@@ -70,6 +149,7 @@ globalThis.verifyIdentity = async () => {
   ReactDOM.render(<Page params={params} />, root);
   try {
     await until(() => rows().length === 3, 'No initial rows'); button('Pause');
+    await verifyAsync();
     const oldX = rows()[1]; oldX.querySelector('.rl-row').click();
     button('Find'); await query('x');
     const focusedRow = oldX.querySelector('.rl-row'); focusedRow.focus({ preventScroll: true });
@@ -168,7 +248,7 @@ globalThis.verifyIdentity = async () => {
     check(getComputedStyle(scroller).backgroundColor === 'rgb(0, 0, 0)', 'Black canvas changed');
     check(!root.querySelector('.rl-line-number'), 'Line counters introduced');
   } finally {
-    ReactDOM.unmountComponentAtNode(root); extension.onDeactivate(); await turn();
+    ReactDOM.unmountComponentAtNode(root); await extension.onDeactivate(); await turn();
   }
   check(callbacks.size === 0, 'IPC listener leak'); check(errors.length === 0, errors.join('; '));
   return { checks: results, reads, errors };

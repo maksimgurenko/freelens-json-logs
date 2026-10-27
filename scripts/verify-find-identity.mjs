@@ -5,20 +5,23 @@ import { once } from 'node:events';
 import { mkdtemp, readFile, rm } from 'node:fs/promises';
 import { createServer } from 'node:http';
 import { tmpdir } from 'node:os';
-import { join } from 'node:path';
+import { join, resolve } from 'node:path';
+import { packedFindBridge } from './find-test-bridge.mjs';
 import { build } from 'esbuild';
 
 const directory = await mkdtemp(join(tmpdir(), 'find-identity-'));
 const sleep = ms => new Promise(resolve => setTimeout(resolve, ms));
-let browser, socket, server;
+let browser, socket, server, bridge;
 const kill = () => { if (browser?.pid) { try { process.kill(-browser.pid, 'SIGKILL'); } catch { /* Already exited. */ } } };
 const deadline = setTimeout(kill, 90_000);
 try {
   await import('./build.mjs');
   const manifest = JSON.parse(await readFile('package.json', 'utf8'));
+  bridge = packedFindBridge(resolve(manifest.main), join(directory, 'settings'));
   const fixture = await build({ entryPoints: ['tests/find-identity-browser.jsx'], bundle: true, write: false, format: 'iife',
     define: { 'process.env.NODE_ENV': '"production"', PACKED_RENDERER: JSON.stringify(await readFile(manifest.renderer, 'utf8')) } });
   server = createServer((request, response) => {
+    if (request.url === '/find-rpc') { void bridge.http(request, response); return; }
     response.setHeader('Cache-Control', 'no-store');
     response.setHeader('Content-Type', request.url === '/fixture.js' ? 'text/javascript' : 'text/html');
     response.end(request.url === '/fixture.js' ? fixture.outputFiles[0].text
@@ -61,10 +64,15 @@ try {
     if (await evaluate('!!globalThis.verifyIdentity')) break;
     assert(attempt < 199, 'Fixture failed to load'); await sleep(25);
   }
-  console.log(JSON.stringify({ browser: await send('Browser.getVersion'), package: `${manifest.name}@${manifest.version}`,
-    results: await evaluate('verifyIdentity()') }, null, 2));
+  const results = await evaluate('verifyIdentity()');
+  for (let i = 0; bridge.status().live && i < 200; i++) await sleep(10);
+  assert.equal(bridge.status().live, 0, 'Mounted viewer retained its worker');
+  await bridge.dispose();
+  console.log(JSON.stringify({ workerLifecycle: bridge.status(), browser: await send('Browser.getVersion'), package: `${manifest.name}@${manifest.version}`,
+    results }, null, 2));
 } finally {
   clearTimeout(deadline); socket?.close();
+  await bridge?.dispose();
   if (browser?.pid && browser.exitCode === null) { kill(); await once(browser, 'exit'); }
   if (server) { server.closeAllConnections(); await new Promise(resolve => server.close(resolve)); }
   await rm(directory, { recursive: true, force: true });
