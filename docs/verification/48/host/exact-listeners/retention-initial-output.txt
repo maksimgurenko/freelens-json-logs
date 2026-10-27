@@ -1,0 +1,1 @@
+{"error":"AssertionError [ERR_ASSERTION]: One byte over the limit omits the oversized newest record with explicit feedback\n    at check (file:///home/max/work/freelens-json-logs/scripts/find-production-host/retention-boundary.mjs:14:35)\n    at file:///home/max/work/freelens-json-logs/scripts/find-production-host/retention-boundary.mjs:56:3","checks":3}

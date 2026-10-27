@@ -1,0 +1,207 @@
+{
+  "note": "Exact host verification invocations/outcomes reconstructed from this session commands and preserved outputs; elapsed times not claimed where not instrumented. Setup/display/launch/fixture/delete invocations are in the report.",
+  "steps": [
+    {
+      "command": [
+        "node",
+        "scripts/find-production-host/install.mjs"
+      ],
+      "environment": {
+        "PATH_prefix": "$PWD/.scratch/readable-logs/toolchain/node_modules/node/bin",
+        "FIND_HOST_TICKET": "48",
+        "FIND_HOST_RUN": "exact-listeners",
+        "FREELENS_UI_MODE": null
+      },
+      "exit": 0,
+      "output": "install-output.txt"
+    },
+    {
+      "command": [
+        "node",
+        "scripts/find-production-host/cdp.mjs",
+        "9242",
+        "main",
+        "scripts/find-production-host/observer.cjs"
+      ],
+      "environment": {
+        "PATH_prefix": "$PWD/.scratch/readable-logs/toolchain/node_modules/node/bin",
+        "FIND_HOST_TICKET": "48",
+        "FIND_HOST_RUN": "exact-listeners",
+        "FREELENS_UI_MODE": null
+      },
+      "exit": 0,
+      "output": "observer.json"
+    },
+    {
+      "command": [
+        "node",
+        "scripts/find-production-host/open-view.mjs"
+      ],
+      "environment": {
+        "PATH_prefix": "$PWD/.scratch/readable-logs/toolchain/node_modules/node/bin",
+        "FIND_HOST_TICKET": "48",
+        "FIND_HOST_RUN": "exact-listeners",
+        "FREELENS_UI_MODE": null
+      },
+      "exit": 0,
+      "output": "open-output.txt"
+    },
+    {
+      "command": [
+        "node",
+        "scripts/find-production-host/identity.mjs"
+      ],
+      "environment": {
+        "PATH_prefix": "$PWD/.scratch/readable-logs/toolchain/node_modules/node/bin",
+        "FIND_HOST_TICKET": "48",
+        "FIND_HOST_RUN": "exact-listeners",
+        "FREELENS_UI_MODE": null
+      },
+      "exit": 0,
+      "output": "package-identity.json"
+    },
+    {
+      "command": [
+        "node",
+        "scripts/find-production-host/abort-census-check.mjs"
+      ],
+      "environment": {
+        "PATH_prefix": "$PWD/.scratch/readable-logs/toolchain/node_modules/node/bin",
+        "FIND_HOST_TICKET": "48",
+        "FIND_HOST_RUN": "exact-listeners",
+        "FREELENS_UI_MODE": null
+      },
+      "exit": 0,
+      "output": "abort-only-census-check.json"
+    },
+    {
+      "command": [
+        "node",
+        "scripts/find-production-host/retention-boundary.mjs"
+      ],
+      "environment": {
+        "PATH_prefix": "$PWD/.scratch/readable-logs/toolchain/node_modules/node/bin",
+        "FIND_HOST_TICKET": "48",
+        "FIND_HOST_RUN": "exact-listeners",
+        "FREELENS_UI_MODE": null
+      },
+      "exit": 1,
+      "output": "retention-initial-oracle.json"
+    },
+    {
+      "command": [
+        "node",
+        "scripts/find-production-host/retention-boundary.mjs"
+      ],
+      "environment": {
+        "PATH_prefix": "$PWD/.scratch/readable-logs/toolchain/node_modules/node/bin",
+        "FIND_HOST_TICKET": "48",
+        "FIND_HOST_RUN": "exact-listeners",
+        "FREELENS_UI_MODE": null
+      },
+      "exit": 0,
+      "output": "retention-boundary.json"
+    },
+    {
+      "command": [
+        "node",
+        "scripts/find-production-host/mounted-soak.mjs"
+      ],
+      "environment": {
+        "PATH_prefix": "$PWD/.scratch/readable-logs/toolchain/node_modules/node/bin",
+        "FIND_HOST_TICKET": "48",
+        "FIND_HOST_RUN": "exact-listeners",
+        "FREELENS_UI_MODE": null,
+        "FIND_SOAK_INSPECTOR_CLEAN": "1",
+        "FIND_SOAK_NATURAL_FRAMES": "1",
+        "FIND_SOAK_CYCLES": "30",
+        "FIND_SOAK_IDLE_MS": "100",
+        "FIND_SOAK_SIGNAL_TRACE": "1",
+        "FIND_SOAK_SIGNAL_CENSUS": "1"
+      },
+      "exit": 1,
+      "output": "attached-soak.json.gz"
+    },
+    {
+      "command": [
+        "node",
+        "scripts/find-production-host/mounted-soak.mjs"
+      ],
+      "environment": {
+        "PATH_prefix": "$PWD/.scratch/readable-logs/toolchain/node_modules/node/bin",
+        "FIND_HOST_TICKET": "48",
+        "FIND_HOST_RUN": "exact-listeners-plain",
+        "FREELENS_UI_MODE": null,
+        "FIND_SOAK_INSPECTOR_CLEAN": "1",
+        "FIND_SOAK_NATURAL_FRAMES": "1",
+        "FIND_SOAK_CYCLES": "30",
+        "FIND_SOAK_IDLE_MS": "100"
+      },
+      "exit": 0,
+      "output": "mounted-soak-clean-inspector.json.gz"
+    },
+    {
+      "command": [
+        "node",
+        "scripts/find-production-host/abort-census-check.mjs"
+      ],
+      "environment": {
+        "PATH_prefix": "$PWD/.scratch/readable-logs/toolchain/node_modules/node/bin",
+        "FIND_HOST_TICKET": "48",
+        "FIND_HOST_RUN": "exact-listeners",
+        "FREELENS_UI_MODE": null
+      },
+      "exit": 0,
+      "output": "flat-target-census-check.json"
+    },
+    {
+      "command": [
+        "node",
+        "scripts/find-production-host/mounted-soak.mjs"
+      ],
+      "environment": {
+        "PATH_prefix": "$PWD/.scratch/readable-logs/toolchain/node_modules/node/bin",
+        "FIND_HOST_TICKET": "48",
+        "FIND_HOST_RUN": "exact-listeners-all",
+        "FREELENS_UI_MODE": null,
+        "FIND_SOAK_INSPECTOR_CLEAN": "1",
+        "FIND_SOAK_NATURAL_FRAMES": "1",
+        "FIND_SOAK_CYCLES": "30",
+        "FIND_SOAK_IDLE_MS": "100",
+        "FIND_SOAK_SIGNAL_TRACE": "1",
+        "FIND_SOAK_SIGNAL_CENSUS": "1",
+        "FIND_SOAK_EVENT_TARGETS": "1"
+      },
+      "exit": 0,
+      "output": "mounted-soak-clean-inspector.json.gz"
+    },
+    {
+      "command": [
+        "node",
+        "scripts/find-production-host/abort-census-check.mjs"
+      ],
+      "environment": {
+        "PATH_prefix": "$PWD/.scratch/readable-logs/toolchain/node_modules/node/bin",
+        "FIND_HOST_TICKET": "48",
+        "FIND_HOST_RUN": "exact-listeners",
+        "FREELENS_UI_MODE": null
+      },
+      "exit": 0,
+      "output": "abort-census-check.json"
+    },
+    {
+      "command": [
+        "node",
+        "scripts/find-production-host/shutdown.mjs"
+      ],
+      "environment": {
+        "PATH_prefix": "$PWD/.scratch/readable-logs/toolchain/node_modules/node/bin",
+        "FIND_HOST_TICKET": "48",
+        "FIND_HOST_RUN": "exact-listeners",
+        "FREELENS_UI_MODE": null
+      },
+      "exit": 0,
+      "output": "shutdown-clean.json"
+    }
+  ]
+}

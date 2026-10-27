@@ -1,6 +1,17 @@
 # Integrated production Find acceptance matrix
 
-Latest continuation: [resource verdict correction and host-only retainers](listener-attribution.md).
+Latest continuation: [exact retention boundary and pre-heap listeners](exact-listeners.md).
+Current unchanged package's installed controlled-response checks pass at 5 MiB
+exactly, one byte under/over, over-budget predecessor omission and the 1,001-line
+suffix. Exact full-source DOM selection and late-source highlight pass. These
+are controlled HTTP bodies, not physical clipboard or natural kubelet byte sizes.
+A diagnostic long-source sample still fails **+1,551 nodes/+26 listeners** while
+its traced AbortSignal subset remains 17 listeners. Plain and all-target
+repetitions pass but do not clear the failed resource gate. All remaining
+Host/native/platform limits below retain their named evidence scope. No whole
+unfinished original criterion is checked.
+
+Previous continuation: [resource verdict correction and host-only retainers](listener-attribution.md).
 Fresh installed uninstrumented resources remain **failed**. The soak now checks
 every post-warmup sample: an endpoint pass cannot hide a failed earlier sample.
 Attached listener detail is stable in the sampled captures; exact failed-sample

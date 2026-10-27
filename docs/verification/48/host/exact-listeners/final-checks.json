@@ -1,0 +1,153 @@
+[
+  {
+    "name": "locked-install",
+    "command": [
+      "/home/max/work/freelens-json-logs/.scratch/readable-logs/toolchain/node_modules/node/bin/node",
+      "/home/max/work/freelens-json-logs/.scratch/readable-logs/toolchain/node_modules/npm/bin/npm-cli.js",
+      "ci",
+      "--ignore-scripts",
+      "--no-audit",
+      "--no-fund"
+    ],
+    "cwd": "/home/max/work/freelens-json-logs",
+    "environment": {
+      "PATH_prefix": "/home/max/work/freelens-json-logs/.scratch/readable-logs/toolchain/node_modules/node/bin",
+      "FREELENS_UI_MODE": null
+    },
+    "exit": 0,
+    "elapsedSeconds": 1.9021671630034689
+  },
+  {
+    "name": "typecheck",
+    "command": [
+      "/home/max/work/freelens-json-logs/.scratch/readable-logs/toolchain/node_modules/node/bin/node",
+      "/home/max/work/freelens-json-logs/.scratch/readable-logs/toolchain/node_modules/npm/bin/npm-cli.js",
+      "run",
+      "typecheck"
+    ],
+    "cwd": "/home/max/work/freelens-json-logs",
+    "environment": {
+      "PATH_prefix": "/home/max/work/freelens-json-logs/.scratch/readable-logs/toolchain/node_modules/node/bin",
+      "FREELENS_UI_MODE": null
+    },
+    "exit": 0,
+    "elapsedSeconds": 1.291802605992416
+  },
+  {
+    "name": "tests",
+    "command": [
+      "/home/max/work/freelens-json-logs/.scratch/readable-logs/toolchain/node_modules/node/bin/node",
+      "/home/max/work/freelens-json-logs/.scratch/readable-logs/toolchain/node_modules/npm/bin/npm-cli.js",
+      "test"
+    ],
+    "cwd": "/home/max/work/freelens-json-logs",
+    "environment": {
+      "PATH_prefix": "/home/max/work/freelens-json-logs/.scratch/readable-logs/toolchain/node_modules/node/bin",
+      "FREELENS_UI_MODE": null
+    },
+    "exit": 0,
+    "elapsedSeconds": 0.5789932949992362
+  },
+  {
+    "name": "ui-guards",
+    "command": [
+      "python3",
+      "-B",
+      "-m",
+      "unittest",
+      "discover",
+      "-s",
+      "tests",
+      "-p",
+      "ui_desktop_test.py",
+      "-v"
+    ],
+    "cwd": "/home/max/work/freelens-json-logs",
+    "environment": {
+      "PATH_prefix": "/home/max/work/freelens-json-logs/.scratch/readable-logs/toolchain/node_modules/node/bin",
+      "FREELENS_UI_MODE": null
+    },
+    "exit": 0,
+    "elapsedSeconds": 0.11910908698337153
+  },
+  {
+    "name": "browser",
+    "command": [
+      "/home/max/work/freelens-json-logs/.scratch/readable-logs/toolchain/node_modules/node/bin/node",
+      "/home/max/work/freelens-json-logs/.scratch/readable-logs/toolchain/node_modules/npm/bin/npm-cli.js",
+      "run",
+      "test:browser"
+    ],
+    "cwd": "/home/max/work/freelens-json-logs",
+    "environment": {
+      "PATH_prefix": "/home/max/work/freelens-json-logs/.scratch/readable-logs/toolchain/node_modules/node/bin",
+      "FREELENS_UI_MODE": null
+    },
+    "exit": 0,
+    "elapsedSeconds": 48.65998278799816
+  },
+  {
+    "name": "workers",
+    "command": [
+      "/home/max/work/freelens-json-logs/.scratch/readable-logs/toolchain/node_modules/node/bin/node",
+      "/home/max/work/freelens-json-logs/.scratch/readable-logs/toolchain/node_modules/npm/bin/npm-cli.js",
+      "run",
+      "test:workers"
+    ],
+    "cwd": "/home/max/work/freelens-json-logs",
+    "environment": {
+      "PATH_prefix": "/home/max/work/freelens-json-logs/.scratch/readable-logs/toolchain/node_modules/node/bin",
+      "FREELENS_UI_MODE": null
+    },
+    "exit": 0,
+    "elapsedSeconds": 0.43686129999696277
+  },
+  {
+    "name": "resource-smoke",
+    "command": [
+      "/home/max/work/freelens-json-logs/.scratch/readable-logs/toolchain/node_modules/node/bin/node",
+      "/home/max/work/freelens-json-logs/.scratch/readable-logs/toolchain/node_modules/npm/bin/npm-cli.js",
+      "run",
+      "test:smoke"
+    ],
+    "cwd": "/home/max/work/freelens-json-logs",
+    "environment": {
+      "PATH_prefix": "/home/max/work/freelens-json-logs/.scratch/readable-logs/toolchain/node_modules/node/bin",
+      "FREELENS_UI_MODE": null
+    },
+    "exit": 0,
+    "elapsedSeconds": 60.475942132005
+  },
+  {
+    "name": "package",
+    "command": [
+      "/home/max/work/freelens-json-logs/.scratch/readable-logs/toolchain/node_modules/node/bin/node",
+      "/home/max/work/freelens-json-logs/.scratch/readable-logs/toolchain/node_modules/npm/bin/npm-cli.js",
+      "run",
+      "package"
+    ],
+    "cwd": "/home/max/work/freelens-json-logs",
+    "environment": {
+      "PATH_prefix": "/home/max/work/freelens-json-logs/.scratch/readable-logs/toolchain/node_modules/node/bin",
+      "FREELENS_UI_MODE": null
+    },
+    "exit": 0,
+    "elapsedSeconds": 0.28929872502340004
+  },
+  {
+    "name": "package-check",
+    "command": [
+      "/home/max/work/freelens-json-logs/.scratch/readable-logs/toolchain/node_modules/node/bin/node",
+      "/home/max/work/freelens-json-logs/.scratch/readable-logs/toolchain/node_modules/npm/bin/npm-cli.js",
+      "run",
+      "check:package"
+    ],
+    "cwd": "/home/max/work/freelens-json-logs",
+    "environment": {
+      "PATH_prefix": "/home/max/work/freelens-json-logs/.scratch/readable-logs/toolchain/node_modules/node/bin",
+      "FREELENS_UI_MODE": null
+    },
+    "exit": 0,
+    "elapsedSeconds": 1.1623452909989282
+  }
+]

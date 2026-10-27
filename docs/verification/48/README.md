@@ -1,6 +1,12 @@
 # #48 production Find verification checkpoint
 
-Latest checkpoint: [all-sample resource verdicts and host retention attribution](listener-attribution.md).
+Latest checkpoint: [exact retention boundaries and pre-heap listener observations](exact-listeners.md).
+Six controlled installed-viewer retention checks pass. A captured diagnostic
+sample still fails +1,551 nodes/+26 listeners; stable AbortSignal listeners and
+passing plain/all-target repetitions do not clear the failed gate. Native and
+platform checks remain unverified.
+
+Previous checkpoint: [all-sample resource verdicts and host retention attribution](listener-attribution.md).
 The same installed package is unchanged. The uninstrumented resource gate stays
 failed; endpoint-only historical passes do not establish an all-sample pass.
 

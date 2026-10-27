@@ -34,14 +34,17 @@ try {
   if(naturalFrames)result.frameCadence=await checkFrameCadence(d);
   await d.bind(d.cluster());
   if(process.env.FIND_SOAK_SIGNAL_TRACE==='1'){
-    signalTrace=await traceAbortListeners(d.page);
-    result.abortSignalTraceScope='Optional private diagnostic wraps addEventListener, never callbacks. Weak references report reachable signals/callbacks registered during this run, not whether a listener was subsequently removed. Bounded to 8,192 registrations per frame. Methods restored at teardown; timing is instrumented.';
+    const allTargets=process.env.FIND_SOAK_EVENT_TARGETS==='1';
+    signalTrace=await traceAbortListeners(d.page,{allTargets});
+    result.abortSignalTraceScope=`Optional private diagnostic wraps addEventListener, never callbacks. Weak references report reachable ${allTargets?'EventTargets':'AbortSignals'}/callbacks registered during this run, not whether a listener was subsequently removed. Bounded to 8,192 registrations per frame. Methods restored at teardown; timing is instrumented.`;
+    if(process.env.FIND_SOAK_SIGNAL_CENSUS==='1')result.abortSignalCensusScope='Actual attached listeners on reachable traced targets, at initial/final/new-high samples before any later heap capture. At most 2,048 targets per frame; handles released after each census. Before/after DOM counters retain any intervening change. Diagnostic timing is instrumented.';
   }
   const fixture=JSON.parse(readFileSync(`${evidence}/fixture.json`));
   const clusterId=await d.page.evaluate('global.LensExtensions.Renderer.Catalog.getActiveCluster().id',d.cluster());
   const params={namespace:fixture.namespace,pod:'find-fixtures',podUid:fixture.podUid,clusterId};
   for(const name of ['dense','long']){
     const samples=[];
+    result.samples.push({name,warmupCycles:3,cycles:samples});
     for(let cycle=-3;cycle<measuredCycles;cycle++){
       await d.page.evaluate("global.LensExtensions.Renderer.Navigation.navigate('/overview');true",d.cluster());await d.wait(s=>!s.live&&!s.service.owners);
       await d.page.evaluate(`global.__findRenderer.navigate('readable-logs',${JSON.stringify(params)});true`,d.cluster());
@@ -81,13 +84,16 @@ try {
       if(cycle>=0){
         samples.push(sample);
         const earlier=samples.slice(0,-1).map(s=>s.dom.jsEventListeners);
+        if(signalTrace && process.env.FIND_SOAK_SIGNAL_CENSUS==='1' && (cycle===0 || cycle===measuredCycles-1 || sample.dom.jsEventListeners>Math.max(...earlier))) {
+          sample.attachedAbortSignals=await signalTrace.attached();
+        }
         if((captureListeners||captureHeap) && (cycle===0 || cycle===measuredCycles-1 || sample.dom.jsEventListeners>Math.max(...earlier) || sample.dom.jsEventListeners<Math.min(...earlier))) {
           if(captureListeners)sample.listeners=await listenerCensus(d.page,`${name}-${cycle}`);
           if(captureHeap)sample.listenerHeap=await listenerHeap(d.page,`${name}-${cycle}`);
         }
       }
     }
-    result.samples.push({name,warmupCycles:3,cycles:samples});console.log(JSON.stringify({name,cycles:samples.length}));
+    console.log(JSON.stringify({name,cycles:samples.length}));
   }
   result.inspectorConsoleClearedBeforeGc=cleanInspector;
   result.lifecyclePass=true;

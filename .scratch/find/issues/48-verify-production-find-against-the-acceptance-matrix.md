@@ -296,3 +296,45 @@ zero focus/workspace/window transitions; pointer equality is endpoint-only.
 and [NEXT.md](../../../docs/verification/48/NEXT.md) retain concrete continuation.
 No unfinished original criterion is newly checked; full Host/resource, stock/
 long-duration, native/clipboard and Windows/macOS gates remain open.
+
+
+### Continuation from 3555efc
+
+Reclaimed #48; [live full authority](../../../docs/verification/48/host/exact-listeners/authority.json)
+equals cached decisions/accepted plan. [Exact retention and pre-heap report](../../../docs/verification/48/exact-listeners.md)
+records six installed controlled-response checks: exact 5 MiB and one byte under/
+over, complete source/DOM selection hashes, late terminal highlight, predecessor
+omission and newest 1,000 of 1,001 records. This is the actual production adapter/
+session/viewer/SDK/worker with target-scoped HTTP bodies, not natural byte-size or
+physical clipboard evidence. The initial incorrect notice-text oracle remains
+separate from the corrected passing run; no product change occurred.
+
+A bounded pre-heap attached-listener census distinguishes reachable callbacks
+from attached listeners, includes optional detached subtrees and de-duplicates
+ancestor/child capture. Its installed self-check passes removed/once/abort and
+detached-parent/child cases; handles and wrappers are released. A 30-cycle-per-
+bound diagnostic still **fails long +1,551 nodes/+26 listeners**. Its seven traced
+AbortSignals keep exactly 17 listeners, so they do not explain the global spike.
+Plain and all-target 30-cycle repetitions pass; they do not clear that failure.
+The all-target subset is stable but captures no failure; attribution stays open.
+
+Package SHA-256 remains `995f1cf5e3ac81f377b16cf8dea24c15237824cd31dd1a066acde26bf868f904`.
+Pinned full validation and [independent review](../../../docs/verification/48/review-exact-listeners.md)
+are recorded with the report. Shutdown observes 318/318 actual starts/exits,
+peak one, zero service maps/watch. Owned profile/runtime/UID-checked namespace
+are removed; fresh user/settings hashes match. Desktop observation records zero
+focus/workspace/window transitions; pointer equality is endpoint-only. No native
+input/clipboard or host patch. Original criteria/checkboxes remain unchanged;
+remaining resources/full Host/stock/long-duration/native/platform gates stay open.
+[NEXT.md](../../../docs/verification/48/NEXT.md) gives a minimal weak-viewer-root
+census as the next autonomous task. This is a retry checkpoint, not acceptance.
+
+
+Independent Standards review found a harness false-pass path: HTTP restoration/
+actual-exit errors were swallowed. The final harness records both failure paths
+and forces failed verdict/nonzero exit; the reviewer confirms the correction.
+A fresh private installation repeats all six retention checks with exact method
+restoration and empty lifecycle state, then observes 3/3 actual worker starts/
+exits. Final Spec follow-up confirms those raw values/asset identity. No remaining
+hard Standards or Spec finding; optional legacy diagnostic naming is deferred.
+Both owned host intervals are cleaned, with zero observed desktop transitions.
