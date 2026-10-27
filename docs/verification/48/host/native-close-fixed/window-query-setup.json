@@ -1,0 +1,124 @@
+{
+  "route": "Explicit DOM setup only; not a native input claim",
+  "state": {
+    "starts": 1,
+    "exits": 0,
+    "live": 1,
+    "peak": 1,
+    "resources": [
+      "TCPServerWrap",
+      "StatWatcher",
+      "StatWatcher",
+      "StatWatcher",
+      "StatWatcher",
+      "StatWatcher",
+      "StatWatcher",
+      "TCPSocketWrap",
+      "PipeWrap",
+      "PipeWrap",
+      "PipeWrap",
+      "ProcessWrap",
+      "TCPSocketWrap",
+      "TCPSocketWrap",
+      "TCPSocketWrap",
+      "TCPSocketWrap",
+      "TCPSocketWrap",
+      "TCPSocketWrap",
+      "TCPSocketWrap",
+      "TCPSocketWrap",
+      "TCPSocketWrap",
+      "MessagePort",
+      "TCPSocketWrap",
+      "Timeout",
+      "Timeout",
+      "Timeout",
+      "Timeout",
+      "Timeout",
+      "Timeout",
+      "Timeout",
+      "Timeout",
+      "Timeout",
+      "Timeout",
+      "Timeout",
+      "Timeout",
+      "Timeout",
+      "Timeout",
+      "Timeout",
+      "Timeout",
+      "Timeout",
+      "Timeout",
+      "Timeout",
+      "Timeout",
+      "Timeout",
+      "Timeout",
+      "Timeout",
+      "Timeout",
+      "Timeout",
+      "Timeout",
+      "Timeout",
+      "Timeout",
+      "Timeout",
+      "Immediate"
+    ],
+    "beforeQuit": 1,
+    "handlers": [
+      "extensions@0f0aa7714cc40bb57635ac56fd9308623a071986d340968968c39f2ec9d8fe12:find-open",
+      "extensions@0f0aa7714cc40bb57635ac56fd9308623a071986d340968968c39f2ec9d8fe12:find-request",
+      "extensions@0f0aa7714cc40bb57635ac56fd9308623a071986d340968968c39f2ec9d8fe12:find-control"
+    ],
+    "windows": [
+      {
+        "id": 2,
+        "pid": 3337855,
+        "frames": [
+          {
+            "processId": 5,
+            "routingId": 1,
+            "url": "https://renderer.freelens.app:45647/cluster/95f0b3bfd1dfcf4db762e585a91e7fb8"
+          },
+          {
+            "processId": 5,
+            "routingId": 4,
+            "url": "https://95f0b3bfd1dfcf4db762e585a91e7fb8.renderer.freelens.app:45647/extension/freelens-readable-logs/readable-logs?namespace=readable-logs-spike&pod=single-json&podUid=0035d4f0-23c6-4e7d-93b2-c1d13a41cb92&clusterId=95f0b3bfd1dfcf4db762e585a91e7fb8"
+          }
+        ],
+        "listeners": [
+          [
+            "destroyed",
+            2
+          ],
+          [
+            "render-process-gone",
+            2
+          ],
+          [
+            "did-frame-navigate",
+            1
+          ]
+        ]
+      }
+    ],
+    "service": {
+      "owners": 1,
+      "retiring": 0,
+      "opening": 0,
+      "senders": 1,
+      "watch": true,
+      "executions": [
+        {
+          "viewer": "504298ec-7189-48b9-9cec-f5c17409c92c",
+          "sender": 2,
+          "processId": 5,
+          "routingId": 4,
+          "active": true,
+          "running": false,
+          "pending": true,
+          "slot": true,
+          "ready": false,
+          "stopping": true
+        }
+      ]
+    }
+  },
+  "query": "freelens-json-logs-spike"
+}

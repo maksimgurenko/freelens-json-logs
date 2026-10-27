@@ -1,0 +1,10 @@
+{"at":1793121545322,"event":"worker-start","threadId":1}
+{"at":1793121777277,"event":"worker-exit","code":1,"live":0}
+{"at":1793121777807,"event":"worker-start","threadId":2}
+{"at":1793121777819,"event":"worker-exit","code":1,"live":0}
+{"at":1793121777820,"event":"worker-start","threadId":3}
+{"at":1793121778288,"event":"worker-exit","code":1,"live":0}
+{"at":1793121778806,"event":"worker-start","threadId":4}
+{"at":1793121778818,"event":"worker-exit","code":1,"live":0}
+{"at":1793121778819,"event":"worker-start","threadId":5}
+{"at":1793121780579,"event":"worker-exit","code":1,"live":0}

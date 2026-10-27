@@ -1,0 +1,293 @@
+{
+  "physicalHardware": false,
+  "checks": [
+    {
+      "name": "Private protocol pointer click, wheel and source drag/copy",
+      "before": {
+        "query": "upstream",
+        "open": true,
+        "focus": true,
+        "active": 73,
+        "selection": "upstream",
+        "inspected": -1,
+        "scroll": 1745,
+        "events": []
+      },
+      "pass": false,
+      "error": "Error: Pointer clear: {\"query\":\"upstream\",\"open\":true,\"focus\":true,\"active\":73,\"selection\":\"upstream\",\"inspected\":-1,\"scroll\":1745,\"events\":[]}\n    at until (file:///home/max/work/freelens-json-logs/scripts/find-production-host/native-surfaces.mjs:11:117)\n    at async file:///home/max/work/freelens-json-logs/scripts/find-production-host/native-surfaces.mjs:19:45\n    at async test (file:///home/max/work/freelens-json-logs/scripts/find-production-host/native-surfaces.mjs:12:92)\n    at async file:///home/max/work/freelens-json-logs/scripts/find-production-host/native-surfaces.mjs:18:2",
+      "after": {
+        "query": "upstream",
+        "open": true,
+        "focus": true,
+        "active": 73,
+        "selection": "upstream",
+        "inspected": -1,
+        "scroll": 1745,
+        "events": []
+      }
+    },
+    {
+      "name": "Genuine input-method-v2 preedit/commit if supported by this host",
+      "before": {
+        "query": "upstream",
+        "open": true,
+        "focus": true,
+        "active": 73,
+        "selection": "upstream",
+        "inspected": -1,
+        "scroll": 1745,
+        "events": []
+      },
+      "pass": false,
+      "error": "AssertionError [ERR_ASSERTION]: The expression evaluated to a falsy value:\n\n  assert(result.ime.events.some(e=>e.type==='compositionend'&&e.trusted))\n\n    at file:///home/max/work/freelens-json-logs/scripts/find-production-host/native-surfaces.mjs:44:4\n    at async test (file:///home/max/work/freelens-json-logs/scripts/find-production-host/native-surfaces.mjs:12:92)\n    at async file:///home/max/work/freelens-json-logs/scripts/find-production-host/native-surfaces.mjs:31:2",
+      "after": {
+        "query": "あ",
+        "open": true,
+        "focus": true,
+        "active": -1,
+        "selection": "",
+        "inspected": -1,
+        "scroll": 1745,
+        "events": [
+          {
+            "type": "keydown",
+            "trusted": true,
+            "key": "Tab",
+            "composing": false,
+            "target": "rl-find"
+          },
+          {
+            "type": "keydown",
+            "trusted": true,
+            "key": "Tab",
+            "composing": false,
+            "target": ""
+          },
+          {
+            "type": "keydown",
+            "trusted": true,
+            "key": "a",
+            "composing": false,
+            "target": "rl-find"
+          },
+          {
+            "type": "compositionstart",
+            "trusted": true,
+            "data": "upstream",
+            "target": "rl-find"
+          },
+          {
+            "type": "compositionupdate",
+            "trusted": true,
+            "data": "あ",
+            "target": "rl-find"
+          },
+          {
+            "type": "input",
+            "trusted": true,
+            "data": "あ",
+            "composing": true,
+            "inputType": "insertCompositionText",
+            "target": "rl-find"
+          },
+          {
+            "type": "compositionupdate",
+            "trusted": true,
+            "data": "あ",
+            "target": "rl-find"
+          },
+          {
+            "type": "input",
+            "trusted": true,
+            "data": "あ",
+            "composing": true,
+            "inputType": "insertCompositionText",
+            "target": "rl-find"
+          },
+          {
+            "type": "compositionend",
+            "trusted": false,
+            "data": "あ",
+            "target": "rl-find"
+          }
+        ]
+      }
+    }
+  ],
+  "route": "private compositor virtual pointer/keyboard; input-method-v2 capability",
+  "ime": {
+    "pid": 3308606,
+    "environment": {
+      "PATH": "/usr/bin:/bin",
+      "LANG": "C.UTF-8",
+      "HOME": "/tmp/freelens-production-find-48-6s41guhd",
+      "XDG_RUNTIME_DIR": "/tmp/fd-07r3z4rz",
+      "WAYLAND_DISPLAY": "/tmp/fd-07r3z4rz/wayland-1",
+      "HYPRLAND_INSTANCE_SIGNATURE": "efb50993780079460b0cbed1363e2166a2de1d9f_1793121203_1321473513"
+    },
+    "stdout": "{\"ready\":true,\"active\":false,\"unavailable\":false}\n{\"ok\":true,\"active\":true,\"serial\":3,\"unavailable\":false}\n{\"ok\":true,\"active\":true,\"serial\":3,\"unavailable\":false}\n{\"ok\":true,\"active\":true,\"serial\":4,\"unavailable\":false}\n",
+    "stderr": "",
+    "events": [
+      {
+        "type": "compositionstart",
+        "trusted": true,
+        "data": "upstream",
+        "target": "rl-find"
+      },
+      {
+        "type": "compositionupdate",
+        "trusted": true,
+        "data": "あ",
+        "target": "rl-find"
+      },
+      {
+        "type": "compositionupdate",
+        "trusted": true,
+        "data": "あ",
+        "target": "rl-find"
+      },
+      {
+        "type": "compositionend",
+        "trusted": false,
+        "data": "あ",
+        "target": "rl-find"
+      }
+    ],
+    "exit": 0
+  },
+  "events": [
+    {
+      "type": "keydown",
+      "trusted": true,
+      "key": "Tab",
+      "composing": false,
+      "target": "rl-find"
+    },
+    {
+      "type": "keydown",
+      "trusted": true,
+      "key": "Tab",
+      "composing": false,
+      "target": ""
+    },
+    {
+      "type": "keydown",
+      "trusted": true,
+      "key": "a",
+      "composing": false,
+      "target": "rl-find"
+    },
+    {
+      "type": "compositionstart",
+      "trusted": true,
+      "data": "upstream",
+      "target": "rl-find"
+    },
+    {
+      "type": "compositionupdate",
+      "trusted": true,
+      "data": "あ",
+      "target": "rl-find"
+    },
+    {
+      "type": "input",
+      "trusted": true,
+      "data": "あ",
+      "composing": true,
+      "inputType": "insertCompositionText",
+      "target": "rl-find"
+    },
+    {
+      "type": "compositionupdate",
+      "trusted": true,
+      "data": "あ",
+      "target": "rl-find"
+    },
+    {
+      "type": "input",
+      "trusted": true,
+      "data": "あ",
+      "composing": true,
+      "inputType": "insertCompositionText",
+      "target": "rl-find"
+    },
+    {
+      "type": "compositionend",
+      "trusted": false,
+      "data": "あ",
+      "target": "rl-find"
+    }
+  ],
+  "final": {
+    "query": "あ",
+    "open": true,
+    "focus": true,
+    "active": -1,
+    "selection": "",
+    "inspected": -1,
+    "scroll": 1745,
+    "events": [
+      {
+        "type": "keydown",
+        "trusted": true,
+        "key": "Tab",
+        "composing": false,
+        "target": "rl-find"
+      },
+      {
+        "type": "keydown",
+        "trusted": true,
+        "key": "Tab",
+        "composing": false,
+        "target": ""
+      },
+      {
+        "type": "keydown",
+        "trusted": true,
+        "key": "a",
+        "composing": false,
+        "target": "rl-find"
+      },
+      {
+        "type": "compositionstart",
+        "trusted": true,
+        "data": "upstream",
+        "target": "rl-find"
+      },
+      {
+        "type": "compositionupdate",
+        "trusted": true,
+        "data": "あ",
+        "target": "rl-find"
+      },
+      {
+        "type": "input",
+        "trusted": true,
+        "data": "あ",
+        "composing": true,
+        "inputType": "insertCompositionText",
+        "target": "rl-find"
+      },
+      {
+        "type": "compositionupdate",
+        "trusted": true,
+        "data": "あ",
+        "target": "rl-find"
+      },
+      {
+        "type": "input",
+        "trusted": true,
+        "data": "あ",
+        "composing": true,
+        "inputType": "insertCompositionText",
+        "target": "rl-find"
+      },
+      {
+        "type": "compositionend",
+        "trusted": false,
+        "data": "あ",
+        "target": "rl-find"
+      }
+    ]
+  }
+}

@@ -1,0 +1,4 @@
+{"name":"Native hide/show preserves query, actually exits worker, reactivates","pass":true}
+{"name":"Native minimize/restore support and worker cleanup","pass":true}
+{"name":"Native owned auxiliary window changes OS focus and tiled host geometry; return preserves state","pass":false,"error":"AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:"}
+{"name":"Native close owning host window and actual execution cleanup","pass":true}

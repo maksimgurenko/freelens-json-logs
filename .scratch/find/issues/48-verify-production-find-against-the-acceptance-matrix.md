@@ -4,6 +4,13 @@
 **Blocked by:** [47: Integrate package, regression and resource checks](47-integrate-package-regression-and-resource-checks.md)
 **GitHub:** https://github.com/maksimgurenko/freelens-json-logs/issues/48
 
+Current checkpoint (2026-10-27): bounded unattended native pass and narrow
+close→quit visibility-disposal fix are complete. See [native report](../../../docs/verification/48/native-isolated.md),
+[matrix](../../../docs/verification/48/matrix.md) and [NEXT](../../../docs/verification/48/NEXT.md).
+Current artifact SHA-256 is `0648bbe51fcf6eee4f43d0ba0a55f42b870019966df45646d92293762c60a250`.
+Pointer/full IME and the exact remaining ownership/edge subchecks stay unverified;
+broad criteria below remain unchecked. Original failed evidence is retained.
+
 ## Parent
 
 Part of [Map: Find technical implementation plan](https://github.com/maksimgurenko/freelens-json-logs/issues/33).
@@ -446,3 +453,40 @@ keys/flags, Custom Highlight rows agree, and every mark activates its expected
 matching record. The matrix now cites actual Host evidence for that cell.
 Standards suggestions narrow composition claims and make cleanup steps independent.
 Only the native/clipboard attendance/access and actual platform gates remain.
+
+
+### Bounded native pass and close→quit fix from 5982a32
+
+The newest 2026-10-27 user direction authorized one unattended Linux pass in a
+separate graphical session, followed by an explicitly requested narrow fix for
+the observed native close→quit failure. Original criteria above remain verbatim.
+The original 17:43:17 UTC native deadline was retained; all native execution,
+including the fixed-package close→quit verification, finished in about 17 minutes.
+
+[Native report](../../../docs/verification/48/native-isolated.md) records five
+virtual-keyboard groups, two production copy/editor groups and four final-package
+native BrowserWindow API groups. The initial package/results remain scoped to
+`995f1cf5`; current final SHA-256 is
+`0648bbe51fcf6eee4f43d0ba0a55f42b870019966df45646d92293762c60a250`.
+Only main changed; renderer/worker hashes match. Visibility disposal now retains
+its original webContents emitter instead of re-reading a destroyed window's
+throwing getter. Red-before-green regression, 27 lifecycle tests, 250 full tests,
+typecheck, six UI guards, packed checks and two reproducible builds pass. Fresh
+isolated native close→quit exits normally with 7 worker starts/exits, peak one,
+zero live workers and closed/empty owner maps/watch.
+
+Two setup failures, the invalid loose modifier verdict, limited IME delivery,
+original failed shutdown and corrected blur-worker oracle are retained separately.
+Native source drag selection/retention/seeding, wheel/manual scroll, selection/marks
+through resize, full trusted IME/Enter/clear/cancel, foreign host menus/focused-other-
+window shortcut exclusion and native edge/history/mode/pending-focus variants
+remain unverified. No physical hardware claim; Windows/macOS excluded/unverified.
+The DOM/listener issue remains accepted/deferred; no resource work followed it.
+
+Both owned displays/profiles/runtimes and the UID-checked namespace are cleaned.
+Desktop observers saw repeated notifications of one unchanged focus address,
+no observed focus-address/workspace/window transition, and equal pointer endpoints.
+No user-desktop native input/window/clipboard activity; original dirty files and
+settings are preserved. Independent review precedes the current-branch commit.
+No publication. This checkpoint remains **blocked** on the precise unperformed
+Linux evidence, with broad criteria unchecked; stop after the requested attempt.

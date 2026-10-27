@@ -1,0 +1,34 @@
+{
+  "pid": 3286353,
+  "windowIds": [],
+  "before": {
+    "starts": 5,
+    "exits": 5,
+    "live": 0,
+    "peak": 1,
+    "resources": [
+      "TCPServerWrap",
+      "StatWatcher",
+      "StatWatcher",
+      "StatWatcher",
+      "StatWatcher",
+      "StatWatcher",
+      "StatWatcher",
+      "PipeWrap",
+      "PipeWrap",
+      "PipeWrap",
+      "ProcessWrap",
+      "Timeout",
+      "Timeout",
+      "Timeout",
+      "Timeout"
+    ],
+    "beforeQuit": 1,
+    "handlers": [
+      "extensions@59710d7ab7a29b3c54beddee93a3d53b03f5fb3553627b03fb7f4508d2edf24c:find-open",
+      "extensions@59710d7ab7a29b3c54beddee93a3d53b03f5fb3553627b03fb7f4508d2edf24c:find-request",
+      "extensions@59710d7ab7a29b3c54beddee93a3d53b03f5fb3553627b03fb7f4508d2edf24c:find-control"
+    ],
+    "windows": []
+  }
+}

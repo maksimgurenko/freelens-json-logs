@@ -1,0 +1,35 @@
+{
+  "tools": [
+    "wtype 0.4-2",
+    "wl-clipboard 1:2.3.0-1",
+    "wayland 1.26.0-1",
+    "gcc 16.2.1+r23+gd564253eb6c8-1"
+  ],
+  "hashes": {
+    "/usr/bin/wtype": "d760e193e31b65f6158462fdb295c101780495ae760852301a42cfb907357bc5",
+    "/usr/bin/wl-copy": "22638b83ecbbe4d639cb47f3c6680d41df2a86e7aa82fdd99609cc26b5fd9c3a",
+    "/usr/bin/wl-paste": "768ae8582276c178d6c3d413ce803535318e164604f8b85411f24108d65b63b2",
+    ".scratch/find/48-host/native-pointer": "439e27ae40657c9e606e7331b761ded75a763fcd9d69bc72bc8cee67f67054d1",
+    ".scratch/find/48-host/native-ime": "b69a610fc3c81c1188933bcfb52ebe767a79e253da3008cb006b71969846de1b",
+    ".scratch/find/48-host/native-registry": "1dabae80e45cd91641f7338f0041a7c275f9f9bdd06f22011b5f0f2b189b4c42",
+    ".scratch/find/48-host/virtual-pointer.xml": "3ff6d540be0bc5228195bf072bde42117ea17945a5c2061add5d3cf97d6bb524",
+    ".scratch/compact-view/30/input-method-unstable-v2.xml": "99414dbad9458e71aa1fa01bc45f94ca6685787bfcb4d98948f72c1b45b60703",
+    "docs/verification/48/native-pointer.c": "f7b908a832e83dc7eeb66c4592f452e544117cef2ded1907e0e964b079175a41",
+    "docs/verification/30/ime-driver.c": "5ce6f10ac3c362a15cd3c03de8d3877bf35e6423e56467a0a0d28085e81c579b",
+    "scripts/find-production-host/native-input.mjs": "edcc1fffb38f62b704d2d62941536a58c0c7fcf13678b053f8442af0c46795f9",
+    "scripts/find-production-host/native-keyboard.mjs": "fcf1936165b667b33e74c92fbe3f52cc5e23cd12bc4cd2ad615ccea7bb86c406",
+    "scripts/find-production-host/native-surfaces.mjs": "abc7267ac3795ed40c1e7b72c3ccc87dc5f73c19cca66584c347eda980304eca",
+    "scripts/find-production-host/native-copy-editor.mjs": "38e1b5a730004f07768859669068a071e4f4e655d3ea8c876fb30901b12bd16a",
+    "scripts/find-production-host/native-window-lifecycle.mjs": "1f968e75cfe578e37d038a084f4bf718624dd41f3e709a36770381018eaaeb2f",
+    "scripts/find-production-host/quit-after-close.mjs": "4d5c6948db0fd22b2aa38c972a6d8fb2bec17a2a6d540d0e48e1af1e4534eedb"
+  },
+  "pointerProtocolURL": "https://raw.githubusercontent.com/swaywm/wlr-protocols/master/unstable/wlr-virtual-pointer-unstable-v1.xml",
+  "commands": [
+    "wayland-scanner client-header .scratch/find/48-host/virtual-pointer.xml .scratch/find/48-host/virtual-pointer-client.h",
+    "wayland-scanner private-code .scratch/find/48-host/virtual-pointer.xml .scratch/find/48-host/virtual-pointer-code.c",
+    "cc -Wall -Wextra -I.scratch/find/48-host docs/verification/48/native-pointer.c .scratch/find/48-host/virtual-pointer-code.c -o .scratch/find/48-host/native-pointer -lwayland-client",
+    "cc -Wall -Wextra docs/verification/30/ime-registry.c -o .scratch/find/48-host/native-registry -lwayland-client",
+    "cc -Wall -Wextra -I.scratch/compact-view/30 docs/verification/30/ime-driver.c .scratch/compact-view/30/input-method-code.c -o .scratch/find/48-host/native-ime -lwayland-client -lm"
+  ],
+  "scope": "No install, no uinput, no historical attended helper invoked. Historical IME sources compiled as reference-only tooling into fresh test binary."
+}

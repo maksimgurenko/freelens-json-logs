@@ -1,61 +1,57 @@
-# Find #48: native attendance/access remains
+# Find #48: bounded native attempt finished; partial acceptance
 
-User decision on 2026-10-27: the DOM/listener resource issue in
-[Find resource investigation](../../find-resource-investigation.md#accepted-deferral)
-is **accepted for now and deferred**. Stop resource attribution, request/timer/queue
-diagnosis, related stock-display investigation, timing controls and soak repetitions.
-Failed measurements and original thresholds remain. Do not reopen this accepted
-issue during ordinary functional acceptance or invent more resource tasks.
+Branch `implementation/find`; review baseline
+`5982a321d720669f0272e09f272499a79eb9c8fc`. Ticket #48 only. The user's
+2026-10-27 direction authorized a bounded unattended Linux pass in a genuinely
+separate session. It did not authorize native activity on the user's desktop.
+The attempt and the explicitly requested narrow lifecycle fix are finished;
+do not automatically repeat native capability setup/checks.
 
-Branch `implementation/find`; continuation/review baseline
-`27e4d828c436a697dba4520593df0d4579914980`. Original ticket pin:
-`3fb33db5f5ded3523bcf66c1145f0af967ec0bf3`. Ticket #48 only; no publication.
-[Scoped checkpoint](functional-final.md) and [final matrix](matrix.md) are current.
-The user's explicit decision supersedes older prompts/reports to investigate resources.
+[Current report](native-isolated.md), [matrix](matrix.md), and
+[review](review-native-isolated.md) record the evidence and limits.
+Current package: `freelens-readable-logs@0.1.34`, SHA-256
+`0648bbe51fcf6eee4f43d0ba0a55f42b870019966df45646d92293762c60a250`.
+The previous `995f1cf5` artifact/results are preserved. Only main changed;
+renderer and worker hashes match. Do not silently promote old whole-package results.
 
-## Completed available functional work
+Private virtual keyboard groups pass typing/refinement/replacement/correction,
+paste/cut/Undo/Redo, exact modifiers/AltGraph, Ctrl+F/G/Shift+G/Enter variants,
+history/Find Escape and opener return. Real inspector copy buttons produce exact
+Application text/Transport line on the private clipboard; the actual Profiles
+sample editor retains shortcut ownership. No physical hardware claim.
 
-Final package `freelens-readable-logs@0.1.34`, SHA-256
-`995f1cf5e3ac81f377b16cf8dea24c15237824cd31dd1a066acde26bf868f904`.
-Fresh isolated installation verifies actual assets/schema and background workspace 7.
-Target replacement and same-target viewer remount reject held actual successes and
-injected transport failures. Actual viewer epochs and main owner tokens change;
-targetEpoch remains 1 within each keyed viewer. An independent reading row B survives
-inspected-A eviction and starts a fresh query after an earlier matching C.
+Native BrowserWindow API hide/show, minimize/restore, auxiliary focus/resize/return
+and close pass. Close→quit initially failed because visibility disposal re-read
+`window.webContents` after native destruction. A narrow retained-emitter fix has
+red-before-green public-boundary regression, typecheck, 250 tests, packed checks
+and reproducible builds. The new package's isolated close→quit exits normally:
+7 worker starts/exits, peak one, zero live, closed/empty service ownership/watch.
+The original failure and erroneous blur-worker oracle remain recorded separately.
+OS blur alone is not viewer inactivity under the accepted contract.
 
-Reviewed held successes explicitly have kind matches/four expected records.
-Installed four-mode counts/ranges/Custom Highlights/activated marks agree on each
-complete current key. Final-artifact state/instance/real-snapshot/restart counterparts are confirmed;
-late DOM composition completion after Clear cannot resurrect input or highlights.
-The matrix links all D01–D16 cases and all 13 traces by evidence layer. Existing
-same-artifact source/geometry/held-response/SDK/maintenance checks keep their scopes.
-Failed harness/setup attempts are retained, corrected and distinguished from product
-failures. No production behavior/bytes changed. No resource run followed the decision.
+Exact remaining Linux evidence:
 
-## Exact remaining non-deferred gate
+- Pointer-delivered control actions, drag source selection/copy/selected-text seed,
+  source selection retained through refresh, wheel/manual-scroll behavior and
+  selection/mark preservation through native resize.
+- Full trusted native IME composition/commit/Enter/clear/cancel/late completion.
+  Input-method-v2 activated with trusted preedit and query commit, but observed
+  composition-end was untrusted; full acceptance was not established.
+- Foreign host-menu/transient Escape ownership, shortcut exclusion while another
+  native window owns focus, native mode/history recall and edge-direction variants,
+  and native pending-completion focus return.
+- Physical-device/contrast evidence is not established by the virtual devices.
 
-Arrange a **fresh explicitly attended** final-package Linux check, or provide a
-suitable separate graphical session capable of physical/native input and clipboard
-verification. Needed: selection/copy/system clipboard; typing/paste/Undo/Redo;
-IME/AltGraph and exact modifiers; primary+F/G and related shortcuts; menus/Escape,
-foreign editor ownership, focus/opener return; native close/hide/minimize/restore and
-return with actual execution cleanup. DOM events and browser tests do not satisfy it.
+Windows/macOS are excluded and explicitly unverified. The DOM/listener resource
+issue remains [accepted/deferred](../../find-resource-investigation.md#accepted-deferral):
+no resource attribution, timing controls, stock-display investigation or soaks.
+Historical failed measurements and thresholds are intact.
 
-Read `docs/agents/ui-verification.md`. Earlier approval does not carry forward.
-Keep `FREELENS_UI_MODE` unset until a specifically arranged attended command. No
-unattended native input, focus/pointer/clipboard changes, activation/restoration,
-Page.bringToFront, fake document focus or shared-guard bypass is authorized.
-User should focus Freelens on workspace 7 for the agreed attended checks.
+Both private hosts/displays/profiles/runtimes and the owned UID-checked namespace
+are cleaned. User desktop observers record repeated notifications of one unchanged
+focus address, no observed focus-address/workspace/window transition and equal
+pointer endpoints; no user-desktop native input/window/clipboard activity.
+Original dirty files/settings and unrelated fixtures are preserved.
 
-Actual Windows/macOS matching/worker/package, primary-modifier, IME, selection/copy,
-focus and lifecycle checks remain **unverified** and require those host sessions.
-The ticket permits explicitly marking these limits; that reporting criterion is
-satisfied, but actual platform coverage is not waived or claimed.
-
-Owned functional test host/profile/runtime and UID-checked namespace are cleaned
-per the report. Do not recreate them for more resource work. Preserve unrelated
-user/configuration data, dirty glossary/docs and scratch/build/cache.
-
-The decision and available functional evidence are committed together after independent
-Standards/Spec review. Report **blocked** for the exact native attendance/access gate;
-do not claim done/release acceptance or push, merge, open a PR, comment or close an issue.
+Report **blocked** for the remaining evidence, keeping broad original criteria
+unchecked. No automatic retry, push, PR, merge, GitHub message/closure or release.

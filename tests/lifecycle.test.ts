@@ -225,6 +225,32 @@ test('view waits for visibility answer without fetching then opens automatically
   h.session.setActive(true); await flush(); assert.equal(h.reads.length, 1);
 });
 
+test('visibility disposal after native close removes listeners without accessing a destroyed window', () => {
+  let destroyed = false;
+  const contents = Object.assign(new EventEmitter(), {
+    getURL: () => 'https://renderer.freelens.app/cluster/cluster',
+  });
+  const window = Object.assign(new EventEmitter(), {
+    isDestroyed: () => destroyed, isVisible: () => true, isMinimized: () => false,
+  }, {
+    // Electron's BrowserWindow getter throws after native window destruction.
+    get webContents() { return contents; },
+  });
+  Object.defineProperty(window, 'webContents', { get() {
+    if (destroyed) throw new TypeError('Object has been destroyed');
+    return contents;
+  } });
+  const selected: (string | null)[] = [];
+  const stop = watchWindowVisibility(window, 'cluster', value => selected.push(value));
+  destroyed = true; window.emit('closed');
+  assert.deepEqual(selected, ['cluster', null]);
+  assert.doesNotThrow(() => { stop(); stop(); });
+  assert.equal(window.eventNames().length, 0);
+  assert.equal(contents.eventNames().length, 0);
+  contents.emit('did-navigate'); window.emit('show');
+  assert.deepEqual(selected, ['cluster', null]);
+});
+
 test('paused refresh after restart waits for the old outstanding read and fetches once', async t => {
   const h = setup(); t.after(() => h.session.dispose());
   void h.session.open(); await flush(); h.session.pause();

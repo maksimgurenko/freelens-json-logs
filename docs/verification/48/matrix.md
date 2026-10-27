@@ -1,11 +1,13 @@
 # Integrated production Find acceptance matrix
 
-Reconciled 2026-10-27 against `freelens-readable-logs@0.1.34`, SHA-256
+Reconciled 2026-10-27. Current `freelens-readable-logs@0.1.34` package is
+SHA-256 `0648bbe51fcf6eee4f43d0ba0a55f42b870019966df45646d92293762c60a250`.
+[Fresh installed identity](host/native-close-fixed/package-identity.json) and
+[bounded native pass / visibility-disposal fix](native-isolated.md) record the
+current checkpoint. Earlier functional and keyboard/copy evidence belongs to
 `995f1cf5e3ac81f377b16cf8dea24c15237824cd31dd1a066acde26bf868f904`.
-[Fresh installed identity](host/functional-final/package-identity.json) verifies
-main/renderer/versioned-worker bytes, Freelens 1.10.3, schema 3 and stable
-package/store/page/configuration identities. No production bytes changed in this
-checkpoint. [Report and exact commands](functional-final.md).
+[Asset comparison](host/native-close-fixed/asset-comparison.json) proves identical
+renderer/worker bytes; only main changed. Prior results retain their artifact scope.
 
 **User decision, 2026-10-27: the DOM/listener resource issue is accepted for now
 and deferred.** [Accepted deferral](../../find-resource-investigation.md#accepted-deferral)
@@ -20,12 +22,16 @@ The accepted plan at `d02b7e7c19c8e48b1cde714f0a23813b40374824` and full
 #36/#37/#38/#40 decisions govern, with the explicit resource deferral above.
 [Live revalidation](host/functional-final/authority.json) matches cached authority.
 [Core/browser coverage by case](../47/coverage.md) remains the source mapping;
-this checkpoint freshly passes [249 tests](host/functional-final/tests-output.txt),
+the prior functional checkpoint passed [249 tests](host/functional-final/tests-output.txt),
 [production browser](host/functional-final/browser-output.txt),
 [actual workers](host/functional-final/workers-output.txt) and
 [strict package checks](host/functional-final/package-check-output.txt).
+The current main-only fix passes [250 tests](host/native-isolated/tests-fixed-output.txt),
+[packed checks](host/native-isolated/package-fixed-check.txt) and fresh affected
+[native lifecycle verification](host/native-close-fixed/native-window-lifecycle.json).
 
-Every Host link in the two tables below is for the exact final `995f1cf5` artifact.
+Functional Host links in the two tables below are for the prior `995f1cf5` artifact.
+New native window/close-to-quit evidence is for current `0648bbe5`.
 `feedback-final` records its prior installed functional checks; `functional-final`
 adds new target/viewer/anchor checks and repeats the previously older-artifact
 snapshot/state/instance subsets. Exact retention uses the same final artifact in
@@ -39,31 +45,33 @@ pinned host and main worker, with explicit DOM events, Range selection or contro
 response delivery. It never means physical input or clipboard delivery. The private
 labwc → Hyprland workspace-7 session uses the documented modified Aquamarine
 diagnostic. Its stock/native limits remain; investigating the display for the
-accepted resource issue is deferred. No fake document focus or native input was used.
+accepted resource issue is deferred. Those functional probes used no fake document focus or native input. The separate
+[bounded native pass](native-isolated.md) labels every virtual/native API route.
 
 ## D01–D16
 
-“Pass” below applies to the named functional Host layer; the final column remains
-unverified. Pure/browser counterparts for all rows pass at their own layers.
+“Pass” applies only to the named layer and artifact. Virtual keyboard/copy results
+use the prior package with identical renderer/worker assets. Current native window
+results use the fixed main package. Physical hardware is not claimed.
 
-| Case | Final-artifact functional Host verdict and evidence | Remaining native layer |
+| Case | Final-artifact functional Host verdict and evidence | Native results / remaining Linux evidence |
 | --- | --- | --- |
-| D01 reading origin/replacement | Pass: [state boundaries](host/functional-final/state-boundaries.json), 64 → 73 → 82; independent DOM keyboard reading row 90; replacement seeks from live origin | Physical row activation, keyboard focus and scrolling |
-| D02 deselect while scrolled | Pass: [settled DOM state](host/feedback-final/state-acceptance.json); deselection clears origin and a new query starts at retained beginning | Physical deselection and focus return |
-| D03 first/last/initial Previous | Pass: [real row-zero snapshot](host/functional-final/snapshot-acceptance.json), [initial Previous](host/feedback-final/state-acceptance.json), zero/one-hit and wrap | Native repeat shortcuts |
-| D04 progressive refinement | Pass: [state boundaries](host/functional-final/state-boundaries.json), [DOM state](host/feedback-final/state-acceptance.json); still-matching candidates stay current | Native editing and IME |
-| D05 correction and stale replies | Pass: [held query replies](host/feedback-final/held-replies.json), [window/message replies](host/functional-final/state-boundaries.json), [instance replies](host/functional-final/controlled-snapshots.json), [target/viewer replacement](host/functional-context-reviewed/context-boundaries.json); stale actual success and injected transport failure cannot change the new state | Physical editing/navigation |
-| D06 replacement/clear/Undo/IME | Pass: [DOM transactions](host/feedback-final/state-acceptance.json); [late composition after Clear](host/functional-final/composition-clear.json) stays empty without input/highlight resurrection | Native paste, Undo/Redo, IME delivery |
-| D07 text-safe marks | Pass: [192 source/geometry assertions](host/feedback-final/surfaces.json), [real append node/Range preservation](host/functional-final/snapshot-acceptance.json), [late terminal highlight](host/feedback-final/long-source.json) | Physical drag selection/copy and contrast review |
-| D08 hidden/or decoded-only hits | Pass: [exact source representations/layouts](host/feedback-final/surfaces.json), [actual saved extraction changes](host/functional-final/snapshot-acceptance.json); original-copy arguments preserve exact sources at browser layer | Physical source selection/system clipboard |
-| D09 empty/zero/one/wrap | Pass: [DOM state](host/feedback-final/state-acceptance.json); Clear/zero-hit do not scroll; one hit and wrapping remain explicit | Natural physical scroll and native shortcuts |
-| D10 modes/history | Pass: [four SDK modes](host/feedback-final/sdk-suite.json), [DOM mode/candidate/history flags](host/feedback-final/state-acceptance.json), [seven exact MRU tuples](host/functional-final/state-boundaries.json); [installed four-mode agreement](host/functional-modes-reviewed/mode-agreement.json) verifies identical match/range keys, highlighted rows and activated mark membership | Platform primary modifiers |
-| D11 async cancellation/recovery | Pass: [startup-inclusive timeout/actual exit](host/feedback-final/startup-timeout.json), [Clear/current/stale replies, latch, Retry and failed decoration](host/feedback-final/held-replies.json), [target/viewer replies](host/functional-context-reviewed/context-boundaries.json) | Real editing responsiveness, not inferred from worker/SDK timings |
-| D12 selected text | Pass: [all inspector sources, foreign/multiline and Unicode limits](host/feedback-final/surfaces.json); [seed preserves flags](host/functional-final/state-boundaries.json) | Physical selection/copy/clipboard isolation |
-| D13 snapshots/repeats/maintenance | Pass: [real append/retention/profile/restarts](host/functional-final/snapshot-acceptance.json), [exact complete-transport overlap/zero overlap/metadata](host/functional-final/controlled-snapshots.json), [independent B survives inspected-A eviction](host/functional-context-reviewed/context-boundaries.json) | Physical retained selection; controlled ordering is not a natural kubelet guarantee |
-| D14 dismissed inspector/pending | Pass: [held inspector/query completion](host/feedback-final/held-replies.json), [window/message/Profiles](host/functional-final/state-boundaries.json), [instance](host/functional-final/controlled-snapshots.json), [target/viewer](host/functional-context-reviewed/context-boundaries.json); no stale resurrection/error | Native focus return |
-| D15 geometry/following/Pause | Pass: [measured source/geometry](host/feedback-final/surfaces.json), [actual appended following/Pause](host/feedback-final/marks-following.json), [two actual restarts with bottom movement](host/functional-final/snapshot-acceptance.json), [stable dense cadence](host/feedback-final/dense-cadence-wrap-baseline.json) | Physical wheel/resize/native window delivery; resource issue accepted/deferred |
-| D16 dismissal/history/ownership | Pass for non-focus DOM state: [Close/zero-hit/history recall](host/feedback-final/state-acceptance.json), [seven-entry history and Profiles return](host/functional-final/state-boundaries.json); focus-dependent ownership guards pass in production browser | Physical one-layer Escape, native menus/editors, IME/AltGraph, OS focus and shortcuts |
+| D01 reading origin/replacement | Pass: [state boundaries](host/functional-final/state-boundaries.json), 64 → 73 → 82; independent DOM keyboard reading row 90; replacement seeks from live origin | Virtual keyboard row activation and replacement pass; pointer activation/scrolling remain unverified |
+| D02 deselect while scrolled | Pass: [settled DOM state](host/feedback-final/state-acceptance.json); deselection clears origin and a new query starts at retained beginning | Keyboard inspector dismissal passes; pointer deselection/scrolled focus return unverified |
+| D03 first/last/initial Previous | Pass: [real row-zero snapshot](host/functional-final/snapshot-acceptance.json), [initial Previous](host/feedback-final/state-acceptance.json), zero/one-hit and wrap | Virtual Ctrl+G/Shift+G and Enter/Shift+Enter pass; initial Previous native subcase unperformed |
+| D04 progressive refinement | Pass: [state boundaries](host/functional-final/state-boundaries.json), [DOM state](host/feedback-final/state-acceptance.json); still-matching candidates stay current | Virtual native typing/refinement pass; full IME unverified |
+| D05 correction and stale replies | Pass: [held query replies](host/feedback-final/held-replies.json), [window/message replies](host/functional-final/state-boundaries.json), [instance replies](host/functional-final/controlled-snapshots.json), [target/viewer replacement](host/functional-context-reviewed/context-boundaries.json); stale actual success and injected transport failure cannot change the new state | Virtual replacement/refinement/no-match correction pass; stale-reply controls retain their functional layer |
+| D06 replacement/clear/Undo/IME | Pass: [DOM transactions](host/feedback-final/state-acceptance.json); [late composition after Clear](host/functional-final/composition-clear.json) stays empty without input/highlight resurrection | Private paste/cut/Undo/Redo pass; full trusted IME commit/clear/cancel/Enter transactions unverified |
+| D07 text-safe marks | Pass: [192 source/geometry assertions](host/feedback-final/surfaces.json), [real append node/Range preservation](host/functional-final/snapshot-acceptance.json), [late terminal highlight](host/feedback-final/long-source.json) | Exact native inspector clipboard actions pass; drag selection/retention and physical contrast review unverified |
+| D08 hidden/or decoded-only hits | Pass: [exact source representations/layouts](host/feedback-final/surfaces.json), [actual saved extraction changes](host/functional-final/snapshot-acceptance.json); original-copy arguments preserve exact sources at browser layer | Exact Application text/Transport line private clipboard actions pass; native hidden-source activation/selection unverified |
+| D09 empty/zero/one/wrap | Pass: [DOM state](host/feedback-final/state-acceptance.json); Clear/zero-hit do not scroll; one hit and wrapping remain explicit | Virtual shortcuts pass; native wheel/manual scroll and all edge variants unverified |
+| D10 modes/history | Pass: [four SDK modes](host/feedback-final/sdk-suite.json), [DOM mode/candidate/history flags](host/feedback-final/state-acceptance.json), [seven exact MRU tuples](host/functional-final/state-boundaries.json); [installed four-mode agreement](host/functional-modes-reviewed/mode-agreement.json) verifies identical match/range keys, highlighted rows and activated mark membership | Linux Ctrl shortcuts/history Escape pass; native mode toggles/history recall subcases unperformed; Windows/macOS excluded |
+| D11 async cancellation/recovery | Pass: [startup-inclusive timeout/actual exit](host/feedback-final/startup-timeout.json), [Clear/current/stale replies, latch, Retry and failed decoration](host/feedback-final/held-replies.json), [target/viewer replies](host/functional-context-reviewed/context-boundaries.json) | Virtual typing/edit transactions pass; no hardware latency claim or timing-control run |
+| D12 selected text | Pass: [all inspector sources, foreign/multiline and Unicode limits](host/feedback-final/surfaces.json); [seed preserves flags](host/functional-final/state-boundaries.json) | Private original-copy buttons pass; source drag selection/selected-text seed unverified |
+| D13 snapshots/repeats/maintenance | Pass: [real append/retention/profile/restarts](host/functional-final/snapshot-acceptance.json), [exact complete-transport overlap/zero overlap/metadata](host/functional-final/controlled-snapshots.json), [independent B survives inspected-A eviction](host/functional-context-reviewed/context-boundaries.json) | Native retained source selection through refresh unperformed; controlled ordering retains its prior scope |
+| D14 dismissed inspector/pending | Pass: [held inspector/query completion](host/feedback-final/held-replies.json), [window/message/Profiles](host/functional-final/state-boundaries.json), [instance](host/functional-final/controlled-snapshots.json), [target/viewer](host/functional-context-reviewed/context-boundaries.json); no stale resurrection/error | Native inspector Escape and Find opener return pass; pending-completion native focus variant unperformed |
+| D15 geometry/following/Pause | Pass: [measured source/geometry](host/feedback-final/surfaces.json), [actual appended following/Pause](host/feedback-final/marks-following.json), [two actual restarts with bottom movement](host/functional-final/snapshot-acceptance.json), [stable dense cadence](host/feedback-final/dense-cadence-wrap-baseline.json) | Current native API resize/return, hide/show, minimize/restore and close→quit pass; wheel and selection/mark preservation through resize unverified |
+| D16 dismissal/history/ownership | Pass for non-focus DOM state: [Close/zero-hit/history recall](host/feedback-final/state-acceptance.json), [seven-entry history and Profiles return](host/functional-final/state-boundaries.json); focus-dependent ownership guards pass in production browser | Virtual history/Find Escape, actual profile sample-editor ownership and AltGraph guard pass; full IME, foreign host menus and shortcut exclusion in another native window unverified |
 
 ## All 13 state traces
 
@@ -78,7 +86,7 @@ unverified. Pure/browser counterparts for all rows pass at their own layers.
 | 7 cancel old reveal | [Explicit DOM manual scroll/Close](host/feedback-final/held-replies.json), [Profiles/return/fresh navigation](host/functional-final/state-boundaries.json); installed mounted inactivity retains state, actual exit observed | Physical scroll/dismissal/OS visibility |
 | 8 overlap/eviction | [Exact duplicate transport lines, identical windows, zero overlap](host/functional-final/controlled-snapshots.json), [real newest-1000 eviction](host/functional-final/snapshot-acceptance.json), [independent anchor](host/functional-context-reviewed/context-boundaries.json) | Controlled bodies do not prove natural duplicate timestamps/unseen additions |
 | 9 maintenance never seeks | [Actual append/zero-hit gains/no-fetch profile](host/functional-final/snapshot-acceptance.json), [still-matching saved-profile candidate](host/functional-final/state-boundaries.json) | Physical retained selection |
-| 10 input transactions | [DOM full/partial paste, cut/Undo/Redo/composition](host/feedback-final/state-acceptance.json), [Clear rejects late composition end](host/functional-final/composition-clear.json); duplicate composition suppression also in browser | Native paste/Undo/Redo/IME |
+| 10 input transactions | [DOM transactions](host/feedback-final/state-acceptance.json), [late Clear](host/functional-final/composition-clear.json); [virtual keyboard paste/Undo/Redo](host/native-isolated/native-keyboard.json) | Full trusted native IME/Enter/clear/cancel unverified |
 | 11 seed/history/Escape | [Sources/Unicode/layout eligibility](host/feedback-final/surfaces.json), [flags/seven-tuple MRU](host/functional-final/state-boundaries.json), [Close/recall](host/feedback-final/state-acceptance.json); Escape ownership at browser layer | Focus-dependent physical Escape/menus/AltGraph |
 | 12 observed restarts | [Two actual restarts](host/functional-final/snapshot-acceptance.json) reset query/both flags/result/history, preserve manual profile/Pause/following with appended-bottom movement; [controlled metadata/old-instance/log delivery](host/functional-final/controlled-snapshots.json) covers missing/count-then-ID/known-ID cases | Controlled ordering is distinct from non-atomic natural metadata/log acquisition |
 | 13 geometry/selection/following | [Measured source geometry](host/feedback-final/surfaces.json), [append/Pause/following](host/feedback-final/marks-following.json), [restart movement](host/functional-final/snapshot-acceptance.json), current browser cap-boundary regression | Physical selection/window input; resources accepted/deferred |
@@ -95,16 +103,23 @@ unverified. Pure/browser counterparts for all rows pass at their own layers.
 | Shutdown/owned execution cleanup | [Fresh shutdown](host/functional-final/shutdown-clean.json); actual worker exits and empty service maps/watch. SDK handlers listed at will-quit are reported honestly; zero there is not claimed |
 | DOM/listener/RAM/disk/thread/resource/stock-display investigation | **Accepted for now and deferred by user.** [Resource summary/decision](../../find-resource-investigation.md). Failed every-sample runs, including +1,551/+26 and +203/+36, stay failed; original thresholds are preserved. No further investigation or soak was run for this checkpoint |
 
-## Unperformed native/platform gates
+## Native pass and exact remaining gates
 
-| Layer | Verdict / exact required access |
+[Bounded report, provenance, failures and commands](native-isolated.md). Keyboard
+and clipboard actions use private compositor virtual devices; native window actions
+use the exact owned BrowserWindow API. None establishes physical hardware provenance.
+
+| Layer | Verdict / exact remaining evidence |
 | --- | --- |
-| Linux physical selection/copy/system clipboard | **Unverified.** Fresh explicitly attended session on the final package, or a suitable separate session capable of native input and clipboard verification |
-| Linux native typing/paste/Undo/Redo/IME/AltGraph/modifier shortcuts/menus/focus return | **Unverified.** Real input and OS focus/IME access; synthetic DOM/CDP results do not substitute |
-| Linux physical/native window lifecycle | **Unverified.** Native close/hide/minimize/restore/return delivery with actual worker cleanup; no old attended approval carries forward |
-| Windows matching/worker/package/primary modifier/IME/selection/copy/focus/lifecycle | **Unverified.** Actual Windows host/session needed; explicit marking satisfies the ticket's reporting option, not platform coverage |
-| macOS matching/worker/package/primary modifier/IME/selection/copy/focus/lifecycle | **Unverified.** Actual macOS host/session needed; Linux/prototype evidence is not coverage |
+| Linux keyboard editing/clipboard/shortcuts | [Five groups pass](host/native-isolated/native-keyboard.json): typing/replacement/refinement/correction, private paste/cut/Undo/Redo, Ctrl+F/G/Shift+G/Enter variants, exact modifiers/virtual AltGraph, history/Find Escape and opener return. Initial-package evidence, identical renderer/worker bytes in current package |
+| Exact original clipboard and actual non-Find editor | [Two groups pass](host/native-isolated/native-copy-editor.json): real production inspector Application text/Transport line actions match independent originals on private clipboard; actual Profiles Sample logs editor owns Ctrl+F/G. No native source drag selection claim |
+| Linux native window lifecycle | [Current-package API route passes](host/native-close-fixed/native-window-lifecycle.json): hide/show, minimize/restore, auxiliary focus/resize/return, close. [Close→quit](host/native-close-fixed/shutdown-clean.json) exits normally with 7/7 workers and empty closed service ownership/watch. Initial failed shutdown is retained; narrow disposal fix has red-before-green regression |
+| Linux pointer/source selection/wheel | **Unverified.** Protocol cursor movement did not establish delivered control clicks. Drag source selection/copy/seeding and retained selection through refresh were not reached; wheel/manual-scroll and selection/marks through resize remain unperformed |
+| Linux full IME | **Unverified.** Real input-method-v2 activation/trusted preedit and committed query are observed, but composition-end is untrusted. Enter commit, clear/cancel and late native completion remain unperformed |
+| Linux other ownership/edge variants | **Unverified:** foreign host-menu/transient Escape, shortcut exclusion while another native window owns focus, native mode/history recall and edge-direction variants, pending-completion focus return. DOM/browser evidence retains its own layer |
+| Windows matching/worker/package/primary modifier/IME/selection/copy/focus/lifecycle | **Excluded/unverified.** Actual Windows session needed; explicit reporting is satisfied, coverage is not claimed |
+| macOS matching/worker/package/primary modifier/IME/selection/copy/focus/lifecycle | **Excluded/unverified.** Actual macOS session needed; Linux/virtual-device evidence is not coverage |
 
-Remaining non-deferred acceptance is native attendance/access and actual platform
-coverage. Original all-layer acceptance criteria remain unchecked where native
-parts are unperformed. No release acceptance, issue closure or publication is claimed.
+Broad original criteria remain unchecked because required Linux subchecks above
+are unperformed. No further native attempt or resource investigation is scheduled.
+No release acceptance, publication or issue closure is claimed.

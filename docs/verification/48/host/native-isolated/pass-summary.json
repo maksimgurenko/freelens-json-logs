@@ -1,0 +1,12 @@
+{
+  "nativeBudgetSeconds": 1800,
+  "nativeExecutionSeconds": 686.3699510097504,
+  "resourceWorkPerformed": false,
+  "desktopNativeActivity": false,
+  "physicalHardwareClaimed": false,
+  "sessionAttempts": 1,
+  "setupFailuresPreserved": 2,
+  "productionSourceChanged": false,
+  "packageSha256": "995f1cf5e3ac81f377b16cf8dea24c15237824cd31dd1a066acde26bf868f904",
+  "cleanupCompletedUTC": "2026-10-27T17:26:20Z"
+}

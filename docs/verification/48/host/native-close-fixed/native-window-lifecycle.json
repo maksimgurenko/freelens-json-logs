@@ -1,0 +1,2058 @@
+{
+  "route": "Electron BrowserWindow native API, exact private window ID",
+  "checks": [
+    {
+      "name": "Native hide/show preserves query, actually exits worker, reactivates",
+      "before": {
+        "starts": 3,
+        "exits": 2,
+        "live": 1,
+        "peak": 1,
+        "resources": [
+          "TCPServerWrap",
+          "StatWatcher",
+          "StatWatcher",
+          "StatWatcher",
+          "StatWatcher",
+          "StatWatcher",
+          "StatWatcher",
+          "TCPSocketWrap",
+          "PipeWrap",
+          "PipeWrap",
+          "PipeWrap",
+          "ProcessWrap",
+          "TCPSocketWrap",
+          "TCPSocketWrap",
+          "TCPSocketWrap",
+          "TCPSocketWrap",
+          "TCPSocketWrap",
+          "TCPSocketWrap",
+          "TCPSocketWrap",
+          "TCPSocketWrap",
+          "TCPSocketWrap",
+          "MessagePort",
+          "Timeout",
+          "Timeout",
+          "Timeout",
+          "Timeout",
+          "Timeout",
+          "Timeout",
+          "Timeout",
+          "Timeout",
+          "Timeout",
+          "Timeout",
+          "Timeout",
+          "Timeout",
+          "Timeout",
+          "Timeout",
+          "Timeout",
+          "Timeout",
+          "Timeout",
+          "Timeout",
+          "Timeout",
+          "Timeout",
+          "Timeout",
+          "Timeout",
+          "Timeout",
+          "Timeout",
+          "Timeout",
+          "Timeout",
+          "Timeout",
+          "Timeout"
+        ],
+        "beforeQuit": 1,
+        "handlers": [
+          "extensions@0f0aa7714cc40bb57635ac56fd9308623a071986d340968968c39f2ec9d8fe12:find-open",
+          "extensions@0f0aa7714cc40bb57635ac56fd9308623a071986d340968968c39f2ec9d8fe12:find-request",
+          "extensions@0f0aa7714cc40bb57635ac56fd9308623a071986d340968968c39f2ec9d8fe12:find-control"
+        ],
+        "windows": [
+          {
+            "id": 2,
+            "pid": 3337855,
+            "frames": [
+              {
+                "processId": 5,
+                "routingId": 1,
+                "url": "https://renderer.freelens.app:45647/cluster/95f0b3bfd1dfcf4db762e585a91e7fb8"
+              },
+              {
+                "processId": 5,
+                "routingId": 4,
+                "url": "https://95f0b3bfd1dfcf4db762e585a91e7fb8.renderer.freelens.app:45647/extension/freelens-readable-logs/readable-logs?namespace=readable-logs-spike&pod=single-json&podUid=0035d4f0-23c6-4e7d-93b2-c1d13a41cb92&clusterId=95f0b3bfd1dfcf4db762e585a91e7fb8"
+              }
+            ],
+            "listeners": [
+              [
+                "destroyed",
+                2
+              ],
+              [
+                "render-process-gone",
+                2
+              ],
+              [
+                "did-frame-navigate",
+                1
+              ]
+            ]
+          }
+        ],
+        "service": {
+          "owners": 1,
+          "retiring": 0,
+          "opening": 0,
+          "senders": 1,
+          "watch": true,
+          "executions": [
+            {
+              "viewer": "504298ec-7189-48b9-9cec-f5c17409c92c",
+              "sender": 2,
+              "processId": 5,
+              "routingId": 4,
+              "active": true,
+              "running": false,
+              "pending": false,
+              "slot": true,
+              "ready": true,
+              "stopping": false
+            }
+          ]
+        }
+      },
+      "viewBefore": {
+        "query": "freelens-json-logs-spike",
+        "active": -1,
+        "focus": true,
+        "viewport": {
+          "x": 200,
+          "y": 162,
+          "width": 951,
+          "height": 383,
+          "top": 162,
+          "right": 1151,
+          "bottom": 545,
+          "left": 200
+        },
+        "scroll": 0
+      },
+      "native": {
+        "before": {
+          "visible": true,
+          "minimized": false,
+          "focused": true,
+          "workers": {
+            "starts": 3,
+            "exits": 2,
+            "live": 1,
+            "peak": 1,
+            "resources": [
+              "TCPServerWrap",
+              "StatWatcher",
+              "StatWatcher",
+              "StatWatcher",
+              "StatWatcher",
+              "StatWatcher",
+              "StatWatcher",
+              "TCPSocketWrap",
+              "PipeWrap",
+              "PipeWrap",
+              "PipeWrap",
+              "ProcessWrap",
+              "TCPSocketWrap",
+              "TCPSocketWrap",
+              "TCPSocketWrap",
+              "TCPSocketWrap",
+              "TCPSocketWrap",
+              "TCPSocketWrap",
+              "TCPSocketWrap",
+              "TCPSocketWrap",
+              "TCPSocketWrap",
+              "MessagePort",
+              "Timeout",
+              "Timeout",
+              "Timeout",
+              "Timeout",
+              "Timeout",
+              "Timeout",
+              "Timeout",
+              "Timeout",
+              "Timeout",
+              "Timeout",
+              "Timeout",
+              "Timeout",
+              "Timeout",
+              "Timeout",
+              "Timeout",
+              "Timeout",
+              "Timeout",
+              "Timeout",
+              "Timeout",
+              "Timeout",
+              "Timeout",
+              "Timeout",
+              "Timeout",
+              "Timeout",
+              "Timeout",
+              "Timeout",
+              "Timeout",
+              "Timeout"
+            ],
+            "beforeQuit": 1,
+            "handlers": [
+              "extensions@0f0aa7714cc40bb57635ac56fd9308623a071986d340968968c39f2ec9d8fe12:find-open",
+              "extensions@0f0aa7714cc40bb57635ac56fd9308623a071986d340968968c39f2ec9d8fe12:find-request",
+              "extensions@0f0aa7714cc40bb57635ac56fd9308623a071986d340968968c39f2ec9d8fe12:find-control"
+            ],
+            "windows": [
+              {
+                "id": 2,
+                "pid": 3337855,
+                "frames": [
+                  {
+                    "processId": 5,
+                    "routingId": 1,
+                    "url": "https://renderer.freelens.app:45647/cluster/95f0b3bfd1dfcf4db762e585a91e7fb8"
+                  },
+                  {
+                    "processId": 5,
+                    "routingId": 4,
+                    "url": "https://95f0b3bfd1dfcf4db762e585a91e7fb8.renderer.freelens.app:45647/extension/freelens-readable-logs/readable-logs?namespace=readable-logs-spike&pod=single-json&podUid=0035d4f0-23c6-4e7d-93b2-c1d13a41cb92&clusterId=95f0b3bfd1dfcf4db762e585a91e7fb8"
+                  }
+                ],
+                "listeners": [
+                  [
+                    "destroyed",
+                    2
+                  ],
+                  [
+                    "render-process-gone",
+                    2
+                  ],
+                  [
+                    "did-frame-navigate",
+                    1
+                  ]
+                ]
+              }
+            ]
+          },
+          "service": {
+            "owners": 1,
+            "executions": [
+              {
+                "active": true,
+                "running": false,
+                "slot": true
+              }
+            ]
+          }
+        },
+        "hidden": {
+          "visible": false,
+          "minimized": false,
+          "focused": false,
+          "workers": {
+            "starts": 3,
+            "exits": 3,
+            "live": 0,
+            "peak": 1,
+            "resources": [
+              "TCPServerWrap",
+              "StatWatcher",
+              "StatWatcher",
+              "StatWatcher",
+              "StatWatcher",
+              "StatWatcher",
+              "StatWatcher",
+              "TCPSocketWrap",
+              "PipeWrap",
+              "PipeWrap",
+              "PipeWrap",
+              "ProcessWrap",
+              "TCPSocketWrap",
+              "TCPSocketWrap",
+              "TCPSocketWrap",
+              "TCPSocketWrap",
+              "TCPSocketWrap",
+              "TCPSocketWrap",
+              "TCPSocketWrap",
+              "TCPSocketWrap",
+              "TCPSocketWrap",
+              "Timeout",
+              "Timeout",
+              "Timeout",
+              "Timeout",
+              "Timeout",
+              "Timeout",
+              "Timeout",
+              "Timeout",
+              "Timeout",
+              "Timeout",
+              "Timeout",
+              "Timeout",
+              "Timeout",
+              "Timeout",
+              "Timeout",
+              "Timeout",
+              "Timeout",
+              "Timeout",
+              "Timeout",
+              "Timeout",
+              "Timeout",
+              "Timeout",
+              "Timeout",
+              "Timeout",
+              "Timeout",
+              "Timeout",
+              "Timeout",
+              "Timeout"
+            ],
+            "beforeQuit": 1,
+            "handlers": [
+              "extensions@0f0aa7714cc40bb57635ac56fd9308623a071986d340968968c39f2ec9d8fe12:find-open",
+              "extensions@0f0aa7714cc40bb57635ac56fd9308623a071986d340968968c39f2ec9d8fe12:find-request",
+              "extensions@0f0aa7714cc40bb57635ac56fd9308623a071986d340968968c39f2ec9d8fe12:find-control"
+            ],
+            "windows": [
+              {
+                "id": 2,
+                "pid": 3337855,
+                "frames": [
+                  {
+                    "processId": 5,
+                    "routingId": 1,
+                    "url": "https://renderer.freelens.app:45647/cluster/95f0b3bfd1dfcf4db762e585a91e7fb8"
+                  },
+                  {
+                    "processId": 5,
+                    "routingId": 4,
+                    "url": "https://95f0b3bfd1dfcf4db762e585a91e7fb8.renderer.freelens.app:45647/extension/freelens-readable-logs/readable-logs?namespace=readable-logs-spike&pod=single-json&podUid=0035d4f0-23c6-4e7d-93b2-c1d13a41cb92&clusterId=95f0b3bfd1dfcf4db762e585a91e7fb8"
+                  }
+                ],
+                "listeners": [
+                  [
+                    "destroyed",
+                    2
+                  ],
+                  [
+                    "render-process-gone",
+                    2
+                  ],
+                  [
+                    "did-frame-navigate",
+                    1
+                  ]
+                ]
+              }
+            ]
+          },
+          "service": {
+            "owners": 1,
+            "executions": [
+              {
+                "active": false,
+                "running": false,
+                "slot": false
+              }
+            ]
+          }
+        },
+        "returned": {
+          "visible": true,
+          "minimized": false,
+          "focused": true,
+          "workers": {
+            "starts": 5,
+            "exits": 4,
+            "live": 1,
+            "peak": 1,
+            "resources": [
+              "TCPServerWrap",
+              "StatWatcher",
+              "StatWatcher",
+              "StatWatcher",
+              "StatWatcher",
+              "StatWatcher",
+              "StatWatcher",
+              "TCPSocketWrap",
+              "PipeWrap",
+              "PipeWrap",
+              "PipeWrap",
+              "ProcessWrap",
+              "TCPSocketWrap",
+              "TCPSocketWrap",
+              "TCPSocketWrap",
+              "TCPSocketWrap",
+              "TCPSocketWrap",
+              "TCPSocketWrap",
+              "TCPSocketWrap",
+              "TCPSocketWrap",
+              "TCPSocketWrap",
+              "MessagePort",
+              "Timeout",
+              "Timeout",
+              "Timeout",
+              "Timeout",
+              "Timeout",
+              "Timeout",
+              "Timeout",
+              "Timeout",
+              "Timeout",
+              "Timeout",
+              "Timeout",
+              "Timeout",
+              "Timeout",
+              "Timeout",
+              "Timeout",
+              "Timeout",
+              "Timeout",
+              "Timeout",
+              "Timeout",
+              "Timeout",
+              "Timeout",
+              "Timeout",
+              "Timeout",
+              "Timeout",
+              "Timeout",
+              "Timeout",
+              "Timeout",
+              "Timeout"
+            ],
+            "beforeQuit": 1,
+            "handlers": [
+              "extensions@0f0aa7714cc40bb57635ac56fd9308623a071986d340968968c39f2ec9d8fe12:find-open",
+              "extensions@0f0aa7714cc40bb57635ac56fd9308623a071986d340968968c39f2ec9d8fe12:find-request",
+              "extensions@0f0aa7714cc40bb57635ac56fd9308623a071986d340968968c39f2ec9d8fe12:find-control"
+            ],
+            "windows": [
+              {
+                "id": 2,
+                "pid": 3337855,
+                "frames": [
+                  {
+                    "processId": 5,
+                    "routingId": 1,
+                    "url": "https://renderer.freelens.app:45647/cluster/95f0b3bfd1dfcf4db762e585a91e7fb8"
+                  },
+                  {
+                    "processId": 5,
+                    "routingId": 4,
+                    "url": "https://95f0b3bfd1dfcf4db762e585a91e7fb8.renderer.freelens.app:45647/extension/freelens-readable-logs/readable-logs?namespace=readable-logs-spike&pod=single-json&podUid=0035d4f0-23c6-4e7d-93b2-c1d13a41cb92&clusterId=95f0b3bfd1dfcf4db762e585a91e7fb8"
+                  }
+                ],
+                "listeners": [
+                  [
+                    "destroyed",
+                    2
+                  ],
+                  [
+                    "render-process-gone",
+                    2
+                  ],
+                  [
+                    "did-frame-navigate",
+                    1
+                  ]
+                ]
+              }
+            ]
+          },
+          "service": {
+            "owners": 1,
+            "executions": [
+              {
+                "active": true,
+                "running": false,
+                "slot": true
+              }
+            ]
+          }
+        }
+      },
+      "pass": true,
+      "after": {
+        "starts": 5,
+        "exits": 4,
+        "live": 1,
+        "peak": 1,
+        "resources": [
+          "TCPServerWrap",
+          "StatWatcher",
+          "StatWatcher",
+          "StatWatcher",
+          "StatWatcher",
+          "StatWatcher",
+          "StatWatcher",
+          "TCPSocketWrap",
+          "PipeWrap",
+          "PipeWrap",
+          "PipeWrap",
+          "ProcessWrap",
+          "TCPSocketWrap",
+          "TCPSocketWrap",
+          "TCPSocketWrap",
+          "TCPSocketWrap",
+          "TCPSocketWrap",
+          "TCPSocketWrap",
+          "TCPSocketWrap",
+          "TCPSocketWrap",
+          "TCPSocketWrap",
+          "MessagePort",
+          "Timeout",
+          "Timeout",
+          "Timeout",
+          "Timeout",
+          "Timeout",
+          "Timeout",
+          "Timeout",
+          "Timeout",
+          "Timeout",
+          "Timeout",
+          "Timeout",
+          "Timeout",
+          "Timeout",
+          "Timeout",
+          "Timeout",
+          "Timeout",
+          "Timeout",
+          "Timeout",
+          "Timeout",
+          "Timeout",
+          "Timeout",
+          "Timeout",
+          "Timeout",
+          "Timeout",
+          "Timeout",
+          "Timeout",
+          "Timeout",
+          "Timeout"
+        ],
+        "beforeQuit": 1,
+        "handlers": [
+          "extensions@0f0aa7714cc40bb57635ac56fd9308623a071986d340968968c39f2ec9d8fe12:find-open",
+          "extensions@0f0aa7714cc40bb57635ac56fd9308623a071986d340968968c39f2ec9d8fe12:find-request",
+          "extensions@0f0aa7714cc40bb57635ac56fd9308623a071986d340968968c39f2ec9d8fe12:find-control"
+        ],
+        "windows": [
+          {
+            "id": 2,
+            "pid": 3337855,
+            "frames": [
+              {
+                "processId": 5,
+                "routingId": 1,
+                "url": "https://renderer.freelens.app:45647/cluster/95f0b3bfd1dfcf4db762e585a91e7fb8"
+              },
+              {
+                "processId": 5,
+                "routingId": 4,
+                "url": "https://95f0b3bfd1dfcf4db762e585a91e7fb8.renderer.freelens.app:45647/extension/freelens-readable-logs/readable-logs?namespace=readable-logs-spike&pod=single-json&podUid=0035d4f0-23c6-4e7d-93b2-c1d13a41cb92&clusterId=95f0b3bfd1dfcf4db762e585a91e7fb8"
+              }
+            ],
+            "listeners": [
+              [
+                "destroyed",
+                2
+              ],
+              [
+                "render-process-gone",
+                2
+              ],
+              [
+                "did-frame-navigate",
+                1
+              ]
+            ]
+          }
+        ],
+        "service": {
+          "owners": 1,
+          "retiring": 0,
+          "opening": 0,
+          "senders": 1,
+          "watch": true,
+          "executions": [
+            {
+              "viewer": "504298ec-7189-48b9-9cec-f5c17409c92c",
+              "sender": 2,
+              "processId": 5,
+              "routingId": 4,
+              "active": true,
+              "running": false,
+              "pending": false,
+              "slot": true,
+              "ready": true,
+              "stopping": false
+            }
+          ]
+        }
+      },
+      "viewAfter": {
+        "query": "freelens-json-logs-spike",
+        "active": -1,
+        "focus": true,
+        "viewport": {
+          "x": 200,
+          "y": 162,
+          "width": 951,
+          "height": 383,
+          "top": 162,
+          "right": 1151,
+          "bottom": 545,
+          "left": 200
+        },
+        "scroll": 0
+      }
+    },
+    {
+      "name": "Native minimize/restore support and worker cleanup",
+      "before": {
+        "starts": 5,
+        "exits": 4,
+        "live": 1,
+        "peak": 1,
+        "resources": [
+          "TCPServerWrap",
+          "StatWatcher",
+          "StatWatcher",
+          "StatWatcher",
+          "StatWatcher",
+          "StatWatcher",
+          "StatWatcher",
+          "TCPSocketWrap",
+          "PipeWrap",
+          "PipeWrap",
+          "PipeWrap",
+          "ProcessWrap",
+          "TCPSocketWrap",
+          "TCPSocketWrap",
+          "TCPSocketWrap",
+          "TCPSocketWrap",
+          "TCPSocketWrap",
+          "TCPSocketWrap",
+          "TCPSocketWrap",
+          "TCPSocketWrap",
+          "TCPSocketWrap",
+          "MessagePort",
+          "Timeout",
+          "Timeout",
+          "Timeout",
+          "Timeout",
+          "Timeout",
+          "Timeout",
+          "Timeout",
+          "Timeout",
+          "Timeout",
+          "Timeout",
+          "Timeout",
+          "Timeout",
+          "Timeout",
+          "Timeout",
+          "Timeout",
+          "Timeout",
+          "Timeout",
+          "Timeout",
+          "Timeout",
+          "Timeout",
+          "Timeout",
+          "Timeout",
+          "Timeout",
+          "Timeout",
+          "Timeout",
+          "Timeout",
+          "Timeout",
+          "Timeout"
+        ],
+        "beforeQuit": 1,
+        "handlers": [
+          "extensions@0f0aa7714cc40bb57635ac56fd9308623a071986d340968968c39f2ec9d8fe12:find-open",
+          "extensions@0f0aa7714cc40bb57635ac56fd9308623a071986d340968968c39f2ec9d8fe12:find-request",
+          "extensions@0f0aa7714cc40bb57635ac56fd9308623a071986d340968968c39f2ec9d8fe12:find-control"
+        ],
+        "windows": [
+          {
+            "id": 2,
+            "pid": 3337855,
+            "frames": [
+              {
+                "processId": 5,
+                "routingId": 1,
+                "url": "https://renderer.freelens.app:45647/cluster/95f0b3bfd1dfcf4db762e585a91e7fb8"
+              },
+              {
+                "processId": 5,
+                "routingId": 4,
+                "url": "https://95f0b3bfd1dfcf4db762e585a91e7fb8.renderer.freelens.app:45647/extension/freelens-readable-logs/readable-logs?namespace=readable-logs-spike&pod=single-json&podUid=0035d4f0-23c6-4e7d-93b2-c1d13a41cb92&clusterId=95f0b3bfd1dfcf4db762e585a91e7fb8"
+              }
+            ],
+            "listeners": [
+              [
+                "destroyed",
+                2
+              ],
+              [
+                "render-process-gone",
+                2
+              ],
+              [
+                "did-frame-navigate",
+                1
+              ]
+            ]
+          }
+        ],
+        "service": {
+          "owners": 1,
+          "retiring": 0,
+          "opening": 0,
+          "senders": 1,
+          "watch": true,
+          "executions": [
+            {
+              "viewer": "504298ec-7189-48b9-9cec-f5c17409c92c",
+              "sender": 2,
+              "processId": 5,
+              "routingId": 4,
+              "active": true,
+              "running": false,
+              "pending": false,
+              "slot": true,
+              "ready": true,
+              "stopping": false
+            }
+          ]
+        }
+      },
+      "viewBefore": {
+        "query": "freelens-json-logs-spike",
+        "active": -1,
+        "focus": true,
+        "viewport": {
+          "x": 200,
+          "y": 162,
+          "width": 951,
+          "height": 383,
+          "top": 162,
+          "right": 1151,
+          "bottom": 545,
+          "left": 200
+        },
+        "scroll": 0
+      },
+      "native": {
+        "before": {
+          "minimized": false,
+          "visible": true,
+          "workers": {
+            "starts": 5,
+            "exits": 4,
+            "live": 1,
+            "peak": 1,
+            "resources": [
+              "TCPServerWrap",
+              "StatWatcher",
+              "StatWatcher",
+              "StatWatcher",
+              "StatWatcher",
+              "StatWatcher",
+              "StatWatcher",
+              "TCPSocketWrap",
+              "PipeWrap",
+              "PipeWrap",
+              "PipeWrap",
+              "ProcessWrap",
+              "TCPSocketWrap",
+              "TCPSocketWrap",
+              "TCPSocketWrap",
+              "TCPSocketWrap",
+              "TCPSocketWrap",
+              "TCPSocketWrap",
+              "TCPSocketWrap",
+              "TCPSocketWrap",
+              "TCPSocketWrap",
+              "MessagePort",
+              "Timeout",
+              "Timeout",
+              "Timeout",
+              "Timeout",
+              "Timeout",
+              "Timeout",
+              "Timeout",
+              "Timeout",
+              "Timeout",
+              "Timeout",
+              "Timeout",
+              "Timeout",
+              "Timeout",
+              "Timeout",
+              "Timeout",
+              "Timeout",
+              "Timeout",
+              "Timeout",
+              "Timeout",
+              "Timeout",
+              "Timeout",
+              "Timeout",
+              "Timeout",
+              "Timeout",
+              "Timeout",
+              "Timeout",
+              "Timeout",
+              "Timeout"
+            ],
+            "beforeQuit": 1,
+            "handlers": [
+              "extensions@0f0aa7714cc40bb57635ac56fd9308623a071986d340968968c39f2ec9d8fe12:find-open",
+              "extensions@0f0aa7714cc40bb57635ac56fd9308623a071986d340968968c39f2ec9d8fe12:find-request",
+              "extensions@0f0aa7714cc40bb57635ac56fd9308623a071986d340968968c39f2ec9d8fe12:find-control"
+            ],
+            "windows": [
+              {
+                "id": 2,
+                "pid": 3337855,
+                "frames": [
+                  {
+                    "processId": 5,
+                    "routingId": 1,
+                    "url": "https://renderer.freelens.app:45647/cluster/95f0b3bfd1dfcf4db762e585a91e7fb8"
+                  },
+                  {
+                    "processId": 5,
+                    "routingId": 4,
+                    "url": "https://95f0b3bfd1dfcf4db762e585a91e7fb8.renderer.freelens.app:45647/extension/freelens-readable-logs/readable-logs?namespace=readable-logs-spike&pod=single-json&podUid=0035d4f0-23c6-4e7d-93b2-c1d13a41cb92&clusterId=95f0b3bfd1dfcf4db762e585a91e7fb8"
+                  }
+                ],
+                "listeners": [
+                  [
+                    "destroyed",
+                    2
+                  ],
+                  [
+                    "render-process-gone",
+                    2
+                  ],
+                  [
+                    "did-frame-navigate",
+                    1
+                  ]
+                ]
+              }
+            ]
+          }
+        },
+        "minimized": {
+          "minimized": true,
+          "visible": false,
+          "workers": {
+            "starts": 5,
+            "exits": 5,
+            "live": 0,
+            "peak": 1,
+            "resources": [
+              "TCPServerWrap",
+              "StatWatcher",
+              "StatWatcher",
+              "StatWatcher",
+              "StatWatcher",
+              "StatWatcher",
+              "StatWatcher",
+              "PipeWrap",
+              "PipeWrap",
+              "PipeWrap",
+              "ProcessWrap",
+              "TCPSocketWrap",
+              "TCPSocketWrap",
+              "TCPSocketWrap",
+              "TCPSocketWrap",
+              "TCPSocketWrap",
+              "Timeout",
+              "Timeout",
+              "Timeout",
+              "Timeout",
+              "Timeout",
+              "Timeout",
+              "Timeout",
+              "Timeout",
+              "Timeout",
+              "Timeout",
+              "Timeout",
+              "Timeout",
+              "Timeout",
+              "Timeout",
+              "Timeout",
+              "Timeout",
+              "Timeout",
+              "Timeout",
+              "Timeout",
+              "Timeout",
+              "Timeout",
+              "Timeout",
+              "Timeout",
+              "Timeout",
+              "Timeout",
+              "Timeout",
+              "Timeout",
+              "Timeout"
+            ],
+            "beforeQuit": 1,
+            "handlers": [
+              "extensions@0f0aa7714cc40bb57635ac56fd9308623a071986d340968968c39f2ec9d8fe12:find-open",
+              "extensions@0f0aa7714cc40bb57635ac56fd9308623a071986d340968968c39f2ec9d8fe12:find-request",
+              "extensions@0f0aa7714cc40bb57635ac56fd9308623a071986d340968968c39f2ec9d8fe12:find-control"
+            ],
+            "windows": [
+              {
+                "id": 2,
+                "pid": 3337855,
+                "frames": [
+                  {
+                    "processId": 5,
+                    "routingId": 1,
+                    "url": "https://renderer.freelens.app:45647/cluster/95f0b3bfd1dfcf4db762e585a91e7fb8"
+                  },
+                  {
+                    "processId": 5,
+                    "routingId": 4,
+                    "url": "https://95f0b3bfd1dfcf4db762e585a91e7fb8.renderer.freelens.app:45647/extension/freelens-readable-logs/readable-logs?namespace=readable-logs-spike&pod=single-json&podUid=0035d4f0-23c6-4e7d-93b2-c1d13a41cb92&clusterId=95f0b3bfd1dfcf4db762e585a91e7fb8"
+                  }
+                ],
+                "listeners": [
+                  [
+                    "destroyed",
+                    2
+                  ],
+                  [
+                    "render-process-gone",
+                    2
+                  ],
+                  [
+                    "did-frame-navigate",
+                    1
+                  ]
+                ]
+              }
+            ]
+          }
+        },
+        "returned": {
+          "minimized": false,
+          "visible": true,
+          "workers": {
+            "starts": 7,
+            "exits": 6,
+            "live": 1,
+            "peak": 1,
+            "resources": [
+              "TCPServerWrap",
+              "StatWatcher",
+              "StatWatcher",
+              "StatWatcher",
+              "StatWatcher",
+              "StatWatcher",
+              "StatWatcher",
+              "PipeWrap",
+              "PipeWrap",
+              "PipeWrap",
+              "ProcessWrap",
+              "TCPSocketWrap",
+              "TCPSocketWrap",
+              "TCPSocketWrap",
+              "TCPSocketWrap",
+              "MessagePort",
+              "Timeout",
+              "Timeout",
+              "Timeout",
+              "Timeout",
+              "Timeout",
+              "Timeout",
+              "Timeout",
+              "Timeout",
+              "Timeout",
+              "Timeout",
+              "Timeout",
+              "Timeout",
+              "Timeout",
+              "Timeout",
+              "Timeout",
+              "Timeout",
+              "Timeout",
+              "Timeout",
+              "Timeout",
+              "Timeout",
+              "Timeout",
+              "Timeout",
+              "Timeout",
+              "Timeout",
+              "Timeout",
+              "Timeout",
+              "Timeout",
+              "Timeout"
+            ],
+            "beforeQuit": 1,
+            "handlers": [
+              "extensions@0f0aa7714cc40bb57635ac56fd9308623a071986d340968968c39f2ec9d8fe12:find-open",
+              "extensions@0f0aa7714cc40bb57635ac56fd9308623a071986d340968968c39f2ec9d8fe12:find-request",
+              "extensions@0f0aa7714cc40bb57635ac56fd9308623a071986d340968968c39f2ec9d8fe12:find-control"
+            ],
+            "windows": [
+              {
+                "id": 2,
+                "pid": 3337855,
+                "frames": [
+                  {
+                    "processId": 5,
+                    "routingId": 1,
+                    "url": "https://renderer.freelens.app:45647/cluster/95f0b3bfd1dfcf4db762e585a91e7fb8"
+                  },
+                  {
+                    "processId": 5,
+                    "routingId": 4,
+                    "url": "https://95f0b3bfd1dfcf4db762e585a91e7fb8.renderer.freelens.app:45647/extension/freelens-readable-logs/readable-logs?namespace=readable-logs-spike&pod=single-json&podUid=0035d4f0-23c6-4e7d-93b2-c1d13a41cb92&clusterId=95f0b3bfd1dfcf4db762e585a91e7fb8"
+                  }
+                ],
+                "listeners": [
+                  [
+                    "destroyed",
+                    2
+                  ],
+                  [
+                    "render-process-gone",
+                    2
+                  ],
+                  [
+                    "did-frame-navigate",
+                    1
+                  ]
+                ]
+              }
+            ]
+          }
+        }
+      },
+      "pass": true,
+      "after": {
+        "starts": 7,
+        "exits": 6,
+        "live": 1,
+        "peak": 1,
+        "resources": [
+          "TCPServerWrap",
+          "StatWatcher",
+          "StatWatcher",
+          "StatWatcher",
+          "StatWatcher",
+          "StatWatcher",
+          "StatWatcher",
+          "PipeWrap",
+          "PipeWrap",
+          "PipeWrap",
+          "ProcessWrap",
+          "TCPSocketWrap",
+          "TCPSocketWrap",
+          "TCPSocketWrap",
+          "TCPSocketWrap",
+          "MessagePort",
+          "Timeout",
+          "Timeout",
+          "Timeout",
+          "Timeout",
+          "Timeout",
+          "Timeout",
+          "Timeout",
+          "Timeout",
+          "Timeout",
+          "Timeout",
+          "Timeout",
+          "Timeout",
+          "Timeout",
+          "Timeout",
+          "Timeout",
+          "Timeout",
+          "Timeout",
+          "Timeout",
+          "Timeout",
+          "Timeout",
+          "Timeout",
+          "Timeout",
+          "Timeout",
+          "Timeout",
+          "Timeout",
+          "Timeout",
+          "Timeout",
+          "Timeout"
+        ],
+        "beforeQuit": 1,
+        "handlers": [
+          "extensions@0f0aa7714cc40bb57635ac56fd9308623a071986d340968968c39f2ec9d8fe12:find-open",
+          "extensions@0f0aa7714cc40bb57635ac56fd9308623a071986d340968968c39f2ec9d8fe12:find-request",
+          "extensions@0f0aa7714cc40bb57635ac56fd9308623a071986d340968968c39f2ec9d8fe12:find-control"
+        ],
+        "windows": [
+          {
+            "id": 2,
+            "pid": 3337855,
+            "frames": [
+              {
+                "processId": 5,
+                "routingId": 1,
+                "url": "https://renderer.freelens.app:45647/cluster/95f0b3bfd1dfcf4db762e585a91e7fb8"
+              },
+              {
+                "processId": 5,
+                "routingId": 4,
+                "url": "https://95f0b3bfd1dfcf4db762e585a91e7fb8.renderer.freelens.app:45647/extension/freelens-readable-logs/readable-logs?namespace=readable-logs-spike&pod=single-json&podUid=0035d4f0-23c6-4e7d-93b2-c1d13a41cb92&clusterId=95f0b3bfd1dfcf4db762e585a91e7fb8"
+              }
+            ],
+            "listeners": [
+              [
+                "destroyed",
+                2
+              ],
+              [
+                "render-process-gone",
+                2
+              ],
+              [
+                "did-frame-navigate",
+                1
+              ]
+            ]
+          }
+        ],
+        "service": {
+          "owners": 1,
+          "retiring": 0,
+          "opening": 0,
+          "senders": 1,
+          "watch": true,
+          "executions": [
+            {
+              "viewer": "504298ec-7189-48b9-9cec-f5c17409c92c",
+              "sender": 2,
+              "processId": 5,
+              "routingId": 4,
+              "active": true,
+              "running": false,
+              "pending": false,
+              "slot": true,
+              "ready": true,
+              "stopping": false
+            }
+          ]
+        }
+      },
+      "viewAfter": {
+        "query": "freelens-json-logs-spike",
+        "active": -1,
+        "focus": false,
+        "viewport": {
+          "x": 200,
+          "y": 162,
+          "width": 951,
+          "height": 383,
+          "top": 162,
+          "right": 1151,
+          "bottom": 545,
+          "left": 200
+        },
+        "scroll": 0
+      }
+    },
+    {
+      "name": "Native auxiliary window owns OS focus and changes tiled geometry; return preserves state",
+      "before": {
+        "starts": 7,
+        "exits": 6,
+        "live": 1,
+        "peak": 1,
+        "resources": [
+          "TCPServerWrap",
+          "StatWatcher",
+          "StatWatcher",
+          "StatWatcher",
+          "StatWatcher",
+          "StatWatcher",
+          "StatWatcher",
+          "PipeWrap",
+          "PipeWrap",
+          "PipeWrap",
+          "ProcessWrap",
+          "TCPSocketWrap",
+          "TCPSocketWrap",
+          "TCPSocketWrap",
+          "TCPSocketWrap",
+          "MessagePort",
+          "Timeout",
+          "Timeout",
+          "Timeout",
+          "Timeout",
+          "Timeout",
+          "Timeout",
+          "Timeout",
+          "Timeout",
+          "Timeout",
+          "Timeout",
+          "Timeout",
+          "Timeout",
+          "Timeout",
+          "Timeout",
+          "Timeout",
+          "Timeout",
+          "Timeout",
+          "Timeout",
+          "Timeout",
+          "Timeout",
+          "Timeout",
+          "Timeout",
+          "Timeout",
+          "Timeout",
+          "Timeout",
+          "Timeout",
+          "Timeout",
+          "Timeout"
+        ],
+        "beforeQuit": 1,
+        "handlers": [
+          "extensions@0f0aa7714cc40bb57635ac56fd9308623a071986d340968968c39f2ec9d8fe12:find-open",
+          "extensions@0f0aa7714cc40bb57635ac56fd9308623a071986d340968968c39f2ec9d8fe12:find-request",
+          "extensions@0f0aa7714cc40bb57635ac56fd9308623a071986d340968968c39f2ec9d8fe12:find-control"
+        ],
+        "windows": [
+          {
+            "id": 2,
+            "pid": 3337855,
+            "frames": [
+              {
+                "processId": 5,
+                "routingId": 1,
+                "url": "https://renderer.freelens.app:45647/cluster/95f0b3bfd1dfcf4db762e585a91e7fb8"
+              },
+              {
+                "processId": 5,
+                "routingId": 4,
+                "url": "https://95f0b3bfd1dfcf4db762e585a91e7fb8.renderer.freelens.app:45647/extension/freelens-readable-logs/readable-logs?namespace=readable-logs-spike&pod=single-json&podUid=0035d4f0-23c6-4e7d-93b2-c1d13a41cb92&clusterId=95f0b3bfd1dfcf4db762e585a91e7fb8"
+              }
+            ],
+            "listeners": [
+              [
+                "destroyed",
+                2
+              ],
+              [
+                "render-process-gone",
+                2
+              ],
+              [
+                "did-frame-navigate",
+                1
+              ]
+            ]
+          }
+        ],
+        "service": {
+          "owners": 1,
+          "retiring": 0,
+          "opening": 0,
+          "senders": 1,
+          "watch": true,
+          "executions": [
+            {
+              "viewer": "504298ec-7189-48b9-9cec-f5c17409c92c",
+              "sender": 2,
+              "processId": 5,
+              "routingId": 4,
+              "active": true,
+              "running": false,
+              "pending": false,
+              "slot": true,
+              "ready": true,
+              "stopping": false
+            }
+          ]
+        }
+      },
+      "viewBefore": {
+        "query": "freelens-json-logs-spike",
+        "active": -1,
+        "focus": false,
+        "viewport": {
+          "x": 200,
+          "y": 162,
+          "width": 951,
+          "height": 383,
+          "top": 162,
+          "right": 1151,
+          "bottom": 545,
+          "left": 200
+        },
+        "scroll": 0
+      },
+      "native": {
+        "before": {
+          "bounds": {
+            "x": 0,
+            "y": 0,
+            "width": 1238,
+            "height": 678
+          },
+          "focused": false,
+          "workers": {
+            "starts": 7,
+            "exits": 6,
+            "live": 1,
+            "peak": 1,
+            "resources": [
+              "TCPServerWrap",
+              "StatWatcher",
+              "StatWatcher",
+              "StatWatcher",
+              "StatWatcher",
+              "StatWatcher",
+              "StatWatcher",
+              "PipeWrap",
+              "PipeWrap",
+              "PipeWrap",
+              "ProcessWrap",
+              "TCPSocketWrap",
+              "TCPSocketWrap",
+              "TCPSocketWrap",
+              "TCPSocketWrap",
+              "MessagePort",
+              "Timeout",
+              "Timeout",
+              "Timeout",
+              "Timeout",
+              "Timeout",
+              "Timeout",
+              "Timeout",
+              "Timeout",
+              "Timeout",
+              "Timeout",
+              "Timeout",
+              "Timeout",
+              "Timeout",
+              "Timeout",
+              "Timeout",
+              "Timeout",
+              "Timeout",
+              "Timeout",
+              "Timeout",
+              "Timeout",
+              "Timeout",
+              "Timeout",
+              "Timeout",
+              "Timeout",
+              "Timeout",
+              "Timeout",
+              "Timeout",
+              "Timeout"
+            ],
+            "beforeQuit": 1,
+            "handlers": [
+              "extensions@0f0aa7714cc40bb57635ac56fd9308623a071986d340968968c39f2ec9d8fe12:find-open",
+              "extensions@0f0aa7714cc40bb57635ac56fd9308623a071986d340968968c39f2ec9d8fe12:find-request",
+              "extensions@0f0aa7714cc40bb57635ac56fd9308623a071986d340968968c39f2ec9d8fe12:find-control"
+            ],
+            "windows": [
+              {
+                "id": 2,
+                "pid": 3337855,
+                "frames": [
+                  {
+                    "processId": 5,
+                    "routingId": 1,
+                    "url": "https://renderer.freelens.app:45647/cluster/95f0b3bfd1dfcf4db762e585a91e7fb8"
+                  },
+                  {
+                    "processId": 5,
+                    "routingId": 4,
+                    "url": "https://95f0b3bfd1dfcf4db762e585a91e7fb8.renderer.freelens.app:45647/extension/freelens-readable-logs/readable-logs?namespace=readable-logs-spike&pod=single-json&podUid=0035d4f0-23c6-4e7d-93b2-c1d13a41cb92&clusterId=95f0b3bfd1dfcf4db762e585a91e7fb8"
+                  }
+                ],
+                "listeners": [
+                  [
+                    "destroyed",
+                    2
+                  ],
+                  [
+                    "render-process-gone",
+                    2
+                  ],
+                  [
+                    "did-frame-navigate",
+                    1
+                  ]
+                ]
+              }
+            ]
+          }
+        },
+        "foreign": {
+          "bounds": {
+            "x": 0,
+            "y": 0,
+            "width": 720,
+            "height": 678
+          },
+          "focused": false,
+          "workers": {
+            "starts": 7,
+            "exits": 6,
+            "live": 1,
+            "peak": 1,
+            "resources": [
+              "TCPServerWrap",
+              "StatWatcher",
+              "StatWatcher",
+              "StatWatcher",
+              "StatWatcher",
+              "StatWatcher",
+              "StatWatcher",
+              "PipeWrap",
+              "PipeWrap",
+              "PipeWrap",
+              "ProcessWrap",
+              "TCPSocketWrap",
+              "TCPSocketWrap",
+              "TCPSocketWrap",
+              "TCPSocketWrap",
+              "MessagePort",
+              "Timeout",
+              "Timeout",
+              "Timeout",
+              "Timeout",
+              "Timeout",
+              "Timeout",
+              "Timeout",
+              "Timeout",
+              "Timeout",
+              "Timeout",
+              "Timeout",
+              "Timeout",
+              "Timeout",
+              "Timeout",
+              "Timeout",
+              "Timeout",
+              "Timeout",
+              "Timeout",
+              "Timeout",
+              "Timeout",
+              "Timeout",
+              "Timeout",
+              "Timeout",
+              "Timeout",
+              "Timeout",
+              "Timeout",
+              "Timeout",
+              "Timeout"
+            ],
+            "beforeQuit": 1,
+            "handlers": [
+              "extensions@0f0aa7714cc40bb57635ac56fd9308623a071986d340968968c39f2ec9d8fe12:find-open",
+              "extensions@0f0aa7714cc40bb57635ac56fd9308623a071986d340968968c39f2ec9d8fe12:find-request",
+              "extensions@0f0aa7714cc40bb57635ac56fd9308623a071986d340968968c39f2ec9d8fe12:find-control"
+            ],
+            "windows": [
+              {
+                "id": 3,
+                "pid": 3338452,
+                "frames": [
+                  {
+                    "processId": 6,
+                    "routingId": 1,
+                    "url": "data:text/html,<title>Owned native focus fixture</title><p>Private session only</p>"
+                  }
+                ],
+                "listeners": [
+                  [
+                    "destroyed",
+                    1
+                  ],
+                  [
+                    "render-process-gone",
+                    1
+                  ],
+                  [
+                    "did-frame-navigate",
+                    0
+                  ]
+                ]
+              },
+              {
+                "id": 2,
+                "pid": 3337855,
+                "frames": [
+                  {
+                    "processId": 5,
+                    "routingId": 1,
+                    "url": "https://renderer.freelens.app:45647/cluster/95f0b3bfd1dfcf4db762e585a91e7fb8"
+                  },
+                  {
+                    "processId": 5,
+                    "routingId": 4,
+                    "url": "https://95f0b3bfd1dfcf4db762e585a91e7fb8.renderer.freelens.app:45647/extension/freelens-readable-logs/readable-logs?namespace=readable-logs-spike&pod=single-json&podUid=0035d4f0-23c6-4e7d-93b2-c1d13a41cb92&clusterId=95f0b3bfd1dfcf4db762e585a91e7fb8"
+                  }
+                ],
+                "listeners": [
+                  [
+                    "destroyed",
+                    2
+                  ],
+                  [
+                    "render-process-gone",
+                    2
+                  ],
+                  [
+                    "did-frame-navigate",
+                    1
+                  ]
+                ]
+              }
+            ]
+          },
+          "auxId": 3,
+          "auxFocused": true
+        },
+        "returned": {
+          "bounds": {
+            "x": 0,
+            "y": 0,
+            "width": 1238,
+            "height": 678
+          },
+          "focused": true,
+          "workers": {
+            "starts": 7,
+            "exits": 6,
+            "live": 1,
+            "peak": 1,
+            "resources": [
+              "TCPServerWrap",
+              "StatWatcher",
+              "StatWatcher",
+              "StatWatcher",
+              "StatWatcher",
+              "StatWatcher",
+              "StatWatcher",
+              "PipeWrap",
+              "PipeWrap",
+              "PipeWrap",
+              "ProcessWrap",
+              "TCPSocketWrap",
+              "TCPSocketWrap",
+              "TCPSocketWrap",
+              "TCPSocketWrap",
+              "MessagePort",
+              "Timeout",
+              "Timeout",
+              "Timeout",
+              "Timeout",
+              "Timeout",
+              "Timeout",
+              "Timeout",
+              "Timeout",
+              "Timeout",
+              "Timeout",
+              "Timeout",
+              "Timeout",
+              "Timeout",
+              "Timeout",
+              "Timeout",
+              "Timeout",
+              "Timeout",
+              "Timeout",
+              "Timeout",
+              "Timeout",
+              "Timeout",
+              "Timeout",
+              "Timeout",
+              "Timeout",
+              "Timeout",
+              "Timeout",
+              "Timeout",
+              "Timeout"
+            ],
+            "beforeQuit": 1,
+            "handlers": [
+              "extensions@0f0aa7714cc40bb57635ac56fd9308623a071986d340968968c39f2ec9d8fe12:find-open",
+              "extensions@0f0aa7714cc40bb57635ac56fd9308623a071986d340968968c39f2ec9d8fe12:find-request",
+              "extensions@0f0aa7714cc40bb57635ac56fd9308623a071986d340968968c39f2ec9d8fe12:find-control"
+            ],
+            "windows": [
+              {
+                "id": 2,
+                "pid": 3337855,
+                "frames": [
+                  {
+                    "processId": 5,
+                    "routingId": 1,
+                    "url": "https://renderer.freelens.app:45647/cluster/95f0b3bfd1dfcf4db762e585a91e7fb8"
+                  },
+                  {
+                    "processId": 5,
+                    "routingId": 4,
+                    "url": "https://95f0b3bfd1dfcf4db762e585a91e7fb8.renderer.freelens.app:45647/extension/freelens-readable-logs/readable-logs?namespace=readable-logs-spike&pod=single-json&podUid=0035d4f0-23c6-4e7d-93b2-c1d13a41cb92&clusterId=95f0b3bfd1dfcf4db762e585a91e7fb8"
+                  }
+                ],
+                "listeners": [
+                  [
+                    "destroyed",
+                    2
+                  ],
+                  [
+                    "render-process-gone",
+                    2
+                  ],
+                  [
+                    "did-frame-navigate",
+                    1
+                  ]
+                ]
+              }
+            ]
+          }
+        },
+        "auxDestroyed": true
+      },
+      "pass": true,
+      "after": {
+        "starts": 7,
+        "exits": 6,
+        "live": 1,
+        "peak": 1,
+        "resources": [
+          "TCPServerWrap",
+          "StatWatcher",
+          "StatWatcher",
+          "StatWatcher",
+          "StatWatcher",
+          "StatWatcher",
+          "StatWatcher",
+          "PipeWrap",
+          "PipeWrap",
+          "PipeWrap",
+          "ProcessWrap",
+          "TCPSocketWrap",
+          "TCPSocketWrap",
+          "TCPSocketWrap",
+          "TCPSocketWrap",
+          "MessagePort",
+          "Timeout",
+          "Timeout",
+          "Timeout",
+          "Timeout",
+          "Timeout",
+          "Timeout",
+          "Timeout",
+          "Timeout",
+          "Timeout",
+          "Timeout",
+          "Timeout",
+          "Timeout",
+          "Timeout",
+          "Timeout",
+          "Timeout",
+          "Timeout",
+          "Timeout",
+          "Timeout",
+          "Timeout",
+          "Timeout",
+          "Timeout",
+          "Timeout",
+          "Timeout",
+          "Timeout",
+          "Timeout",
+          "Timeout",
+          "Timeout",
+          "Timeout"
+        ],
+        "beforeQuit": 1,
+        "handlers": [
+          "extensions@0f0aa7714cc40bb57635ac56fd9308623a071986d340968968c39f2ec9d8fe12:find-open",
+          "extensions@0f0aa7714cc40bb57635ac56fd9308623a071986d340968968c39f2ec9d8fe12:find-request",
+          "extensions@0f0aa7714cc40bb57635ac56fd9308623a071986d340968968c39f2ec9d8fe12:find-control"
+        ],
+        "windows": [
+          {
+            "id": 2,
+            "pid": 3337855,
+            "frames": [
+              {
+                "processId": 5,
+                "routingId": 1,
+                "url": "https://renderer.freelens.app:45647/cluster/95f0b3bfd1dfcf4db762e585a91e7fb8"
+              },
+              {
+                "processId": 5,
+                "routingId": 4,
+                "url": "https://95f0b3bfd1dfcf4db762e585a91e7fb8.renderer.freelens.app:45647/extension/freelens-readable-logs/readable-logs?namespace=readable-logs-spike&pod=single-json&podUid=0035d4f0-23c6-4e7d-93b2-c1d13a41cb92&clusterId=95f0b3bfd1dfcf4db762e585a91e7fb8"
+              }
+            ],
+            "listeners": [
+              [
+                "destroyed",
+                2
+              ],
+              [
+                "render-process-gone",
+                2
+              ],
+              [
+                "did-frame-navigate",
+                1
+              ]
+            ]
+          }
+        ],
+        "service": {
+          "owners": 1,
+          "retiring": 0,
+          "opening": 0,
+          "senders": 1,
+          "watch": true,
+          "executions": [
+            {
+              "viewer": "504298ec-7189-48b9-9cec-f5c17409c92c",
+              "sender": 2,
+              "processId": 5,
+              "routingId": 4,
+              "active": true,
+              "running": false,
+              "pending": false,
+              "slot": true,
+              "ready": true,
+              "stopping": false
+            }
+          ]
+        }
+      },
+      "viewAfter": {
+        "query": "freelens-json-logs-spike",
+        "active": -1,
+        "focus": true,
+        "viewport": {
+          "x": 200,
+          "y": 162,
+          "width": 951,
+          "height": 383,
+          "top": 162,
+          "right": 1151,
+          "bottom": 545,
+          "left": 200
+        },
+        "scroll": 0
+      }
+    },
+    {
+      "name": "Native close owning host window and actual execution cleanup",
+      "before": {
+        "starts": 7,
+        "exits": 6,
+        "live": 1,
+        "peak": 1,
+        "resources": [
+          "TCPServerWrap",
+          "StatWatcher",
+          "StatWatcher",
+          "StatWatcher",
+          "StatWatcher",
+          "StatWatcher",
+          "StatWatcher",
+          "PipeWrap",
+          "PipeWrap",
+          "PipeWrap",
+          "ProcessWrap",
+          "TCPSocketWrap",
+          "TCPSocketWrap",
+          "TCPSocketWrap",
+          "TCPSocketWrap",
+          "MessagePort",
+          "Timeout",
+          "Timeout",
+          "Timeout",
+          "Timeout",
+          "Timeout",
+          "Timeout",
+          "Timeout",
+          "Timeout",
+          "Timeout",
+          "Timeout",
+          "Timeout",
+          "Timeout",
+          "Timeout",
+          "Timeout",
+          "Timeout",
+          "Timeout",
+          "Timeout",
+          "Timeout",
+          "Timeout",
+          "Timeout",
+          "Timeout",
+          "Timeout",
+          "Timeout",
+          "Timeout",
+          "Timeout",
+          "Timeout",
+          "Timeout",
+          "Timeout"
+        ],
+        "beforeQuit": 1,
+        "handlers": [
+          "extensions@0f0aa7714cc40bb57635ac56fd9308623a071986d340968968c39f2ec9d8fe12:find-open",
+          "extensions@0f0aa7714cc40bb57635ac56fd9308623a071986d340968968c39f2ec9d8fe12:find-request",
+          "extensions@0f0aa7714cc40bb57635ac56fd9308623a071986d340968968c39f2ec9d8fe12:find-control"
+        ],
+        "windows": [
+          {
+            "id": 2,
+            "pid": 3337855,
+            "frames": [
+              {
+                "processId": 5,
+                "routingId": 1,
+                "url": "https://renderer.freelens.app:45647/cluster/95f0b3bfd1dfcf4db762e585a91e7fb8"
+              },
+              {
+                "processId": 5,
+                "routingId": 4,
+                "url": "https://95f0b3bfd1dfcf4db762e585a91e7fb8.renderer.freelens.app:45647/extension/freelens-readable-logs/readable-logs?namespace=readable-logs-spike&pod=single-json&podUid=0035d4f0-23c6-4e7d-93b2-c1d13a41cb92&clusterId=95f0b3bfd1dfcf4db762e585a91e7fb8"
+              }
+            ],
+            "listeners": [
+              [
+                "destroyed",
+                2
+              ],
+              [
+                "render-process-gone",
+                2
+              ],
+              [
+                "did-frame-navigate",
+                1
+              ]
+            ]
+          }
+        ],
+        "service": {
+          "owners": 1,
+          "retiring": 0,
+          "opening": 0,
+          "senders": 1,
+          "watch": true,
+          "executions": [
+            {
+              "viewer": "504298ec-7189-48b9-9cec-f5c17409c92c",
+              "sender": 2,
+              "processId": 5,
+              "routingId": 4,
+              "active": true,
+              "running": false,
+              "pending": false,
+              "slot": true,
+              "ready": true,
+              "stopping": false
+            }
+          ]
+        }
+      },
+      "viewBefore": {
+        "query": "freelens-json-logs-spike",
+        "active": -1,
+        "focus": true,
+        "viewport": {
+          "x": 200,
+          "y": 162,
+          "width": 951,
+          "height": 383,
+          "top": 162,
+          "right": 1151,
+          "bottom": 545,
+          "left": 200
+        },
+        "scroll": 0
+      },
+      "close": {
+        "destroyed": true,
+        "windows": []
+      },
+      "cleaned": {
+        "starts": 7,
+        "exits": 7,
+        "live": 0,
+        "peak": 1,
+        "resources": [
+          "TCPServerWrap",
+          "StatWatcher",
+          "StatWatcher",
+          "StatWatcher",
+          "StatWatcher",
+          "StatWatcher",
+          "StatWatcher",
+          "PipeWrap",
+          "PipeWrap",
+          "PipeWrap",
+          "ProcessWrap",
+          "Timeout",
+          "Timeout",
+          "Timeout",
+          "Timeout",
+          "Timeout",
+          "Timeout",
+          "Timeout",
+          "Timeout",
+          "Timeout",
+          "Timeout",
+          "Timeout",
+          "Timeout",
+          "Timeout",
+          "Timeout",
+          "Timeout",
+          "Timeout",
+          "Timeout",
+          "Timeout",
+          "Timeout",
+          "Timeout",
+          "Timeout",
+          "Timeout",
+          "Timeout",
+          "Timeout",
+          "Timeout",
+          "Timeout",
+          "Timeout",
+          "Timeout"
+        ],
+        "beforeQuit": 1,
+        "handlers": [
+          "extensions@0f0aa7714cc40bb57635ac56fd9308623a071986d340968968c39f2ec9d8fe12:find-open",
+          "extensions@0f0aa7714cc40bb57635ac56fd9308623a071986d340968968c39f2ec9d8fe12:find-request",
+          "extensions@0f0aa7714cc40bb57635ac56fd9308623a071986d340968968c39f2ec9d8fe12:find-control"
+        ],
+        "windows": [],
+        "service": {
+          "owners": 0,
+          "retiring": 0,
+          "opening": 0,
+          "senders": 0,
+          "watch": false,
+          "executions": []
+        }
+      },
+      "pass": true,
+      "after": {
+        "starts": 7,
+        "exits": 7,
+        "live": 0,
+        "peak": 1,
+        "resources": [
+          "TCPServerWrap",
+          "StatWatcher",
+          "StatWatcher",
+          "StatWatcher",
+          "StatWatcher",
+          "StatWatcher",
+          "StatWatcher",
+          "PipeWrap",
+          "PipeWrap",
+          "PipeWrap",
+          "ProcessWrap",
+          "Timeout",
+          "Timeout",
+          "Timeout",
+          "Timeout",
+          "Timeout",
+          "Timeout",
+          "Timeout",
+          "Timeout",
+          "Timeout",
+          "Timeout",
+          "Timeout",
+          "Timeout",
+          "Timeout",
+          "Timeout",
+          "Timeout",
+          "Timeout",
+          "Timeout",
+          "Timeout",
+          "Timeout",
+          "Timeout",
+          "Timeout",
+          "Timeout",
+          "Timeout",
+          "Timeout",
+          "Timeout",
+          "Timeout",
+          "Timeout",
+          "Timeout"
+        ],
+        "beforeQuit": 1,
+        "handlers": [
+          "extensions@0f0aa7714cc40bb57635ac56fd9308623a071986d340968968c39f2ec9d8fe12:find-open",
+          "extensions@0f0aa7714cc40bb57635ac56fd9308623a071986d340968968c39f2ec9d8fe12:find-request",
+          "extensions@0f0aa7714cc40bb57635ac56fd9308623a071986d340968968c39f2ec9d8fe12:find-control"
+        ],
+        "windows": [],
+        "service": {
+          "owners": 0,
+          "retiring": 0,
+          "opening": 0,
+          "senders": 0,
+          "watch": false,
+          "executions": []
+        }
+      }
+    }
+  ],
+  "session": {
+    "pid": 3337439,
+    "privateInstance": "efb50993780079460b0cbed1363e2166a2de1d9f_1793122128_1914072219",
+    "privateRuntime": "/tmp/fd-flt0h7pf",
+    "owned": [
+      {
+        "address": "0x55a92fe4b110",
+        "mapped": true,
+        "hidden": false,
+        "visible": true,
+        "acceptsInput": true,
+        "at": [
+          21,
+          21
+        ],
+        "size": [
+          1238,
+          678
+        ],
+        "workspace": {
+          "id": 7,
+          "name": "7"
+        },
+        "floating": false,
+        "monitor": 0,
+        "class": "freelens",
+        "title": "Freelens",
+        "initialClass": "freelens",
+        "initialTitle": "Freelens",
+        "pid": 3337439,
+        "xwayland": false,
+        "pinned": false,
+        "pinFullscreened": false,
+        "fullscreen": 0,
+        "fullscreenClient": 0,
+        "fullscreenHandler": "default",
+        "allowedOverFullscreen": true,
+        "grouped": [],
+        "tags": [],
+        "swallowing": "0x0",
+        "focusHistoryID": 0,
+        "inhibitingIdle": false,
+        "xdgTag": "",
+        "xdgDescription": "",
+        "contentType": "none",
+        "tearingHint": false,
+        "stableId": "18000003"
+      }
+    ]
+  },
+  "windowId": 2
+}
