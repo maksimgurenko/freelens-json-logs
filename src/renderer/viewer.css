@@ -77,6 +77,11 @@
 .readable-logs .rl-findbar input { flex: 1; min-width: 100px; max-width: 480px; padding: 5px 8px; font: inherit; color: inherit; background: var(--contentColor, #262b2f); border: 1px solid var(--borderColor, #4c5053); border-radius: 3px; caret-color: var(--primary, #00a7a0); }
 .readable-logs .rl-findbar input::placeholder { color: var(--textColorSecondary, #a6adb5); opacity: 1; }
 .readable-logs .rl-find-count { min-width: 160px; font-size: 12px; font-variant-numeric: tabular-nums; color: var(--textColorSecondary, #a6adb5); }
+.readable-logs .rl-find-direction { display: inline-flex; align-items: center; justify-content: center; padding: 4px; }
+.readable-logs .rl-find-direction .Icon { font-size: 21px; width: 21px; height: 21px; }
+.readable-logs .rl-find-words { text-decoration: underline; }
+.readable-logs .rl-find-feedback { font-size: 12px; flex-basis: 100%; }
+.readable-logs .rl-sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; border: 0; }
 .readable-logs .rl-modes { display: flex; gap: 4px; }
 .readable-logs button[aria-pressed="true"] { background: var(--tableBgcSelected, #263737); border-color: var(--textColorSecondary, #a6adb5); }
 .readable-logs .rl-inspector { flex: 0 0 38%; min-width: 260px; max-width: 43%; overflow: auto; border-inline-start: 1px solid var(--borderFaintColor, #373a3e); background: var(--contentColor, #262b2f); }

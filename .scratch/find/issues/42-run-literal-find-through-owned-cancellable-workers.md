@@ -1,6 +1,6 @@
 # 42: Run literal Find through owned, cancellable workers
 
-**Status:** ready-for-agent
+**Status:** done
 **Blocked by:** [41: Preserve record identity across refreshes and restarts](41-preserve-record-identity-across-refreshes-and-restarts.md)
 **GitHub:** https://github.com/maksimgurenko/freelens-json-logs/issues/42
 

@@ -1,0 +1,35 @@
+(node:861058) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///home/max/work/freelens-json-logs/tests/find-client.test.ts is not specified and it doesn't parse as CommonJS.
+Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+To eliminate this warning, add "type": "module" to /home/max/work/freelens-json-logs/package.json.
+(Use `node --trace-warnings ...` to show where the warning was created)
+✔ pending and the whole-attempt deadline start before SDK registration resolves (1.524898ms)
+✔ superseded successes and failures cannot publish into a newer query/window/message/context (1.523968ms)
+✔ worker failure latches through maintenance; edit and explicit Retry use current records (0.308929ms)
+✔ oversized exact input is preserved without dispatch; empty clears and cancels pending work (0.283699ms)
+✔ inactivity stops work, keeps valid data and only recomputes pending current inputs on return (0.28301ms)
+✔ malformed current replies fail locally and zero-hit exact replies complete normally (0.152019ms)
+✔ closure during registration closes the eventual owner without dispatch or late state updates (0.13227ms)
+✔ composition suspends obsolete matching and evaluates only the committed input once (0.15334ms)
+(node:861059) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///home/max/work/freelens-json-logs/tests/find-editing.test.ts is not specified and it doesn't parse as CommonJS.
+Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+To eliminate this warning, add "type": "module" to /home/max/work/freelens-json-logs/package.json.
+(Use `node --trace-warnings ...` to show where the warning was created)
+✔ pre-insertion selection distinguishes shared-prefix replacement, partial paste and Undo/Redo (0.667469ms)
+✔ composition captures replacement before insertion, commits once and cannot complete after Clear (0.13969ms)
+(node:861065) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///home/max/work/freelens-json-logs/tests/find-state.test.ts is not specified and it doesn't parse as CommonJS.
+Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+To eliminate this warning, add "type": "module" to /home/max/work/freelens-json-logs/package.json.
+(Use `node --trace-warnings ...` to show where the warning was created)
+✔ reading row 64: refinement stays 73, Next reaches 82, typo correction restores 82, replacement rebases (0.585719ms)
+✔ deliberate reading rebases navigation inclusively; edge and one-hit feedback (0.11088ms)
+✔ scroll cancels only reveal, dismissal/inspection cancels selection; current counts remain useful (0.10276ms)
+✔ maintenance retains surviving hits, never replaces them, and expiry cannot revive equal text (0.11222ms)
+✔ every old input-key dimension is rejected and dismissed counts cannot promote a candidate (0.14423ms)
+ℹ tests 15
+ℹ suites 0
+ℹ pass 15
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 56.651778

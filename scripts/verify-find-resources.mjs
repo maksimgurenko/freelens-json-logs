@@ -16,6 +16,8 @@ try {
   core = replace(core, "{ BrowserWindow: { fromWebContents: () => window } }", "{ app: Object.assign(new EventEmitter(), { quit() {} }), BrowserWindow: { fromWebContents: () => window } }");
   await writeFile(join(directory, 'tests/smoke/core.mjs'), core);
   let renderer = await readFile('tests/smoke/renderer.jsx', 'utf8');
+  renderer = replace(renderer, '    Renderer: {', `    Renderer: {
+      Component: { Icon: ({ material }) => <span className="Icon" aria-hidden="true">{material}</span> },`);
   renderer = replace(renderer, '  async invoke(name, cluster, reply) {', `  async invoke(name, cluster, reply, ...rest) {
     if (name.startsWith('find-')) {
       const result = await (await fetch('/find-rpc', { method: 'POST', body: JSON.stringify({ channel: name, args: [cluster, reply, ...rest] }) })).json();

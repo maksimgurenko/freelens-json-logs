@@ -1,0 +1,53 @@
+(node:817765) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///home/max/work/freelens-json-logs/tests/find-state.test.ts is not specified and it doesn't parse as CommonJS.
+Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+To eliminate this warning, add "type": "module" to /home/max/work/freelens-json-logs/package.json.
+(Use `node --trace-warnings ...` to show where the warning was created)
+✔ reading row 64: refinement stays 73, Next reaches 82, typo correction restores 82, replacement rebases (0.63141ms)
+✖ deliberate reading rebases navigation inclusively; edge and one-hit feedback (0.518081ms)
+✖ scroll cancels only reveal, dismissal/inspection cancels selection; current counts remain useful (0.09775ms)
+ℹ tests 3
+ℹ suites 0
+ℹ pass 1
+ℹ fail 2
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 57.77572
+
+✖ failing tests:
+
+test at tests/find-state.test.ts:29:1
+✖ deliberate reading rebases navigation inclusively; edge and one-hit feedback (0.518081ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  + actual - expected
+
+  + ''
+  - 'Wrapped to beginning'
+
+      at TestContext.<anonymous> (file:///home/max/work/freelens-json-logs/tests/find-state.test.ts:34:10)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1325:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:911:18)
+      at Test.postRun (node:internal/test_runner/test:1465:19)
+      at Test.run (node:internal/test_runner/test:1390:12)
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:385:3) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: '',
+    expected: 'Wrapped to beginning',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests/find-state.test.ts:44:1
+✖ scroll cancels only reveal, dismissal/inspection cancels selection; current counts remain useful (0.09775ms)
+  TypeError: find.cancelReveal is not a function
+      at TestContext.<anonymous> (file:///home/max/work/freelens-json-logs/tests/find-state.test.ts:47:8)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1325:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:911:18)
+      at Test.postRun (node:internal/test_runner/test:1465:19)
+      at Test.run (node:internal/test_runner/test:1390:12)
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:911:7)

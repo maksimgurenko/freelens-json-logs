@@ -35,6 +35,7 @@ class ExtensionStore {
 }
 Object.assign(globalThis, { global: globalThis, React, ReactDOM, Mobx, LensExtensions: {
   Common: { Store: { ExtensionStore } }, Renderer: { Ipc, LensExtension: class {},
+    Component: { Icon: ({ material }) => <span className="Icon material-icons" aria-hidden="true">{material}</span> },
     Catalog: { getActiveCluster: () => ({ id: 'cluster', name: 'Identity test' }) },
     K8sApi: { podsApi: {
       async get() { return { metadata: { uid, labels: {} }, spec: { containers: [{ name: 'app' }, { name: 'sidecar' }] },
@@ -75,6 +76,145 @@ function edit(value) {
 }
 const settled = () => !['Matching pending', 'Searching…'].includes(root.querySelector('.rl-find-count').textContent);
 async function query(value) { edit(value); await until(settled, 'Find did not settle'); await turn(); }
+async function verifyPosition() {
+  button('Find'); if (input().value) button('Clear');
+  const lines = Array.from({ length: 100 }, (_, i) => [2, 73, 82, 90].includes(i) ? `row ${i} upstream` : `row ${i}`);
+  await refresh(lines.join('\n'));
+  rows()[64].querySelector('.rl-row').click();
+  await query('up');
+  const active = () => Number(root.querySelector('.rl-find-current')?.dataset.recordIndex ?? -1);
+  check(active() === 73, `Reading row ignored: ${active()}`);
+  await query('upstream'); check(active() === 73, 'Refinement advanced');
+  root.querySelector('button[aria-label="Next match"]')?.click();
+  check(active() === 82, 'Next did not reach 82');
+  await query('upstreamx'); check(active() === -1, 'No-match query retained active hit');
+  await query('upstream'); check(active() === 82, 'Correction lost refinement candidate');
+  input().setSelectionRange(0, input().value.length);
+  input().dispatchEvent(new InputEvent('beforeinput', { bubbles: true, inputType: 'insertFromPaste', data: 'upstream' }));
+  // React correctly suppresses a redundant onChange for identical native text;
+  // the native input transaction must still reach the Find editing boundary.
+  input().dispatchEvent(new InputEvent('input', { bubbles: true, inputType: 'insertFromPaste', data: 'upstream' }));
+  await until(settled); check(active() === 73, 'Identical full replacement inherited result');
+  root.querySelector('button[aria-label="Next match"]').click(); check(active() === 82, 'Next after identical replacement failed');
+  input().setSelectionRange(0, input().value.length);
+  input().dispatchEvent(new InputEvent('beforeinput', { bubbles: true, inputType: 'insertFromPaste', data: 'ups' }));
+  await query('ups'); check(active() === 73, 'Shared-prefix full replacement inherited result');
+  input().setSelectionRange(1, 1);
+  root.querySelector('[aria-label="Next match"]').click();
+  check(active() === 82 && input().selectionStart === 1 && input().selectionEnd === 1, 'Navigation reset native caret');
+  input().setSelectionRange(3, 3);
+  input().dispatchEvent(new InputEvent('beforeinput', { bubbles: true, inputType: 'insertFromPaste', data: 'tream' }));
+  await query('upstream'); check(active() === 82, 'Partial paste started a new query');
+  input().setSelectionRange(0, input().value.length);
+  input().dispatchEvent(new InputEvent('beforeinput', { bubbles: true, inputType: 'historyUndo' }));
+  await query('ups'); check(active() === 82, 'Undo used selected input as a new origin');
+  input().dispatchEvent(new InputEvent('beforeinput', { bubbles: true, inputType: 'historyRedo' }));
+  await query('upstream'); check(active() === 82, 'Redo lost refinement candidate');
+  input().dispatchEvent(new InputEvent('beforeinput', { bubbles: true, inputType: 'deleteByCut' }));
+  await query(''); check(active() === -1 && !root.querySelector('.rl-findbar').hidden, 'Cut-to-empty did not end sequence');
+  input().dispatchEvent(new InputEvent('beforeinput', { bubbles: true, inputType: 'historyRedo' }));
+  await query('upstream'); check(active() === 73, 'Redo across empty did not start from reading row');
+  results.push('D01/D04-D06: inclusive reading origin, progressive refinement, typo correction and pre-insertion replacement');
+  results.push('D06: mounted partial paste, cut-to-empty and Undo/Redo event classification; navigation preserves native caret');
+
+  // Deliberate Tab intent uses the existing focusable rows, without introducing
+  // a navigation scheme. A plain programmatic focus must not rebase Find.
+  const tabTo = index => {
+    document.activeElement.dispatchEvent(new KeyboardEvent('keydown', { key: 'Tab', bubbles: true }));
+    rows()[index].querySelector('.rl-row').focus({ preventScroll: true });
+    // Unfocused headless documents can change activeElement without delivering
+    // focus events. Exercise React's event boundary explicitly, without faking
+    // document.hasFocus or bypassing local shortcut guards.
+    rows()[index].querySelector('.rl-row').dispatchEvent(new FocusEvent('focusin', { bubbles: true }));
+    document.activeElement.dispatchEvent(new KeyboardEvent('keyup', { key: 'Tab', bubbles: true }));
+  };
+  tabTo(90); await turn(); check(active() === -1 && root.querySelector('.rl-selected')?.dataset.recordIndex === '64', `Keyboard focus conflated reading and inspection: active=${active()} selected=${root.querySelector('.rl-selected')?.dataset.recordIndex}`);
+  root.querySelector('button[aria-label="Close record inspector"]').click();
+  check(document.activeElement === rows()[64].querySelector('.rl-row'), 'Inspector focus was not restored');
+  root.querySelector('[aria-label="Next match"]').click(); check(active() === 90, 'Inspector close lost independent reading row');
+  root.querySelector('[aria-label="Next match"]').click(); check(active() === 2 && root.textContent.includes('Wrapped to beginning'), 'Forward wrap missing');
+  root.querySelector('[aria-label="Previous match"]').click(); check(active() === 90 && root.textContent.includes('Wrapped to end'), 'Backward wrap missing');
+  results.push('D03/D09/D14: independent keyboard reading/inspection, suppressed focus restoration and wrap feedback');
+
+  // Deselecting the origin during current matching may update counts only.
+  rows()[64].querySelector('.rl-row').click();
+  let gate = holdNext(); edit('upstream'); await until(() => heldReply === undefined);
+  rows()[64].querySelector('.rl-row').click();
+  const deselectedTop = root.querySelector('.rl-records').scrollTop;
+  gate.release(); await until(settled); await turn();
+  check(active() === -1 && !root.querySelector('.rl-detail') && root.querySelector('.rl-records').scrollTop === deselectedTop, 'Pending completion resurrected deselected origin or scrolled');
+  button('Clear'); await query('up'); check(active() === 2, 'Programmatic focus return recreated reading anchor');
+
+  // The matching selection may finish after a manual scroll, but its older
+  // reveal permission cannot move the viewport back to that result.
+  gate = holdNext(); edit('upstream'); await until(() => heldReply === undefined);
+  const scroller = root.querySelector('.rl-records');
+  scroller.scrollTop = 700; await sleep(50); const manualTop = scroller.scrollTop;
+  gate.release(); await until(settled); await turn();
+  check(active() === 2 && scroller.scrollTop === manualTop, 'Delayed matching undid manual scrolling');
+  root.querySelector('[aria-label="Next match"]').click(); check(active() === 73 && scroller.scrollTop !== manualTop, 'Fresh navigation could not reveal');
+  results.push('D02/D11/D14/D15: pending deselection prevents selection; manual scroll cancels reveal only; explicit navigation recovers');
+
+  // Same selected input during composition is a new query; final input and
+  // duplicate end events must neither reevaluate nor navigate a second time.
+  rows()[64].querySelector('.rl-row').click();
+  input().setSelectionRange(0, input().value.length);
+  const beforeComposition = requestCount;
+  input().dispatchEvent(new CompositionEvent('compositionstart', { bubbles: true }));
+  edit('ups');
+  input().dispatchEvent(new KeyboardEvent('keydown', { bubbles: true, key: 'Enter', isComposing: true }));
+  check(requestCount === beforeComposition, 'Composition Enter executed work');
+  input().dispatchEvent(new CompositionEvent('compositionend', { bubbles: true, data: 'ups' }));
+  await until(settled); check(active() === 73 && requestCount === beforeComposition + 1, 'Composition replacement did not start at reading row exactly once');
+  input().dispatchEvent(new CompositionEvent('compositionend', { bubbles: true, data: 'ups' }));
+  input().dispatchEvent(new Event('input', { bubbles: true })); await turn();
+  check(requestCount === beforeComposition + 1, 'Duplicate composition completion reexecuted');
+  input().dispatchEvent(new CompositionEvent('compositionstart', { bubbles: true })); edit('stale');
+  button('Clear'); input().dispatchEvent(new CompositionEvent('compositionend', { bubbles: true, data: 'stale' }));
+  check(input().value === '', 'Late composition end resurrected cleared query');
+  results.push('D06/D11: select-all composition commits once, Enter stays composition-owned, Clear rejects late completion');
+
+  // A profile can remove a decoded-message match without changing application
+  // text. Profile maintenance must never fetch or choose a replacement result.
+  rows()[64].querySelector('.rl-row').click();
+  await refresh('{"message":"pay\\u006dent"}\n{"message":"other"}');
+  await query('payment'); check(active() === 0, 'Decoded fixture did not match');
+  const beforeProfileReads = reads;
+  button('Edit profiles'); button('Duplicate');
+  const paths = root.querySelector('textarea[aria-label="Message paths"]');
+  Object.getOwnPropertyDescriptor(HTMLTextAreaElement.prototype, 'value').set.call(paths, '');
+  paths.dispatchEvent(new Event('input', { bubbles: true })); button('Save profile');
+  const profileId = root.querySelector('select[aria-label="Saved profile"]').value;
+  button('Back to logs');
+  const profile = root.querySelector('select[aria-label="Profile"]');
+  profile.value = profileId; profile.dispatchEvent(new Event('change', { bubbles: true }));
+  await until(settled); check(active() === -1 && root.querySelector('.rl-find-count').textContent === '0 of 0 matching records', 'Profile maintenance chose an absent hit');
+  profile.value = ''; profile.dispatchEvent(new Event('change', { bubbles: true }));
+  await until(settled); check(active() === -1 && root.querySelector('.rl-find-count').textContent === '0 of 1 matching records', 'Profile maintenance chose a newly gained hit');
+  check(reads === beforeProfileReads, 'Profile search maintenance fetched logs');
+  root.querySelector('[aria-label="Next match"]').click(); check(active() === 0 && root.textContent.includes('Only matching record'), 'One-hit navigation feedback missing');
+  const beforePresentationRequests = requestCount;
+  const display = root.querySelector('.rl-display-options'); display.open = true;
+  button('Raw');
+  const wrap = [...display.querySelectorAll('input')].find(input => input.parentElement.textContent.includes('Word wrap'));
+  wrap.click(); await turn();
+  check(active() === 0 && requestCount === beforePresentationRequests, 'Presentation changed search identity');
+  button('Readable'); wrap.click(); display.open = false;
+  results.push('D09/D13: decoded profile maintenance keeps counts separate from selection, never fetches; presentation preserves identity');
+  button('Clear'); await refresh(lines.join('\n'));
+
+  const width = root.style.width;
+  for (const size of [260, 390, 700, 1440]) {
+    root.style.width = `${size}px`; await turn();
+    check(root.scrollWidth <= size, `Find overflow at ${size}`);
+    check(getComputedStyle(root.querySelector('.rl-records')).backgroundColor === 'rgb(0, 0, 0)', 'Black canvas changed');
+  }
+  root.style.width = width;
+  check(root.querySelector('.rl-findbar').parentElement === root.querySelector('.readable-logs') && !root.querySelector('.rl-toolbar .rl-findbar'), 'Find merged into toolbar');
+  check([...root.querySelectorAll('.rl-find-direction .Icon')].map(node => node.textContent).join(',') === 'keyboard_arrow_up,keyboard_arrow_down', 'Wrong host navigation icons');
+  results.push('D09/D10/D16: compact separate bar, native icon names, black canvas at 260/390/700/1440 widths');
+  root.querySelector('button[aria-label="Close Find"]').click();
+}
 async function verifyAsync() {
   button('Find');
   await refresh('Error.\nerror.\nerrors.\nxError.');
@@ -96,7 +236,7 @@ async function verifyAsync() {
   let gate = holdNext(); edit('Error');
   await until(() => heldReply === undefined, 'Delayed SDK attempt never dispatched');
   check(root.querySelector('.rl-find-count').textContent === 'Matching pending', 'New input exposed old completed count');
-  check([...root.querySelectorAll('.rl-findbar button')].filter(node => ['Next', 'Previous'].includes(node.textContent)).every(node => node.disabled), 'Pending navigation enabled');
+  check([...root.querySelectorAll('.rl-find-direction')].length === 2 && [...root.querySelectorAll('.rl-find-direction')].every(node => node.disabled), 'Pending navigation enabled');
   await sleep(120); check(root.querySelector('.rl-find-count').textContent === 'Searching…', 'Searching feedback missing');
   root.querySelector('button[aria-label="Close Find"]').click(); gate.release(); await until(settled);
   check(!root.querySelector('.rl-find-current') && !root.querySelector('.rl-detail'), 'Closed Find completion chose a result/inspector');
@@ -150,6 +290,8 @@ globalThis.verifyIdentity = async () => {
   try {
     await until(() => rows().length === 3, 'No initial rows'); button('Pause');
     await verifyAsync();
+    await verifyPosition();
+    await refresh('start\nx\nend');
     const oldX = rows()[1]; oldX.querySelector('.rl-row').click();
     button('Find'); await query('x');
     const focusedRow = oldX.querySelector('.rl-row'); focusedRow.focus({ preventScroll: true });

@@ -1,14 +1,16 @@
 import React, { useEffect, useLayoutEffect, useMemo, useRef, useState } from 'react';
+import { Renderer } from '@freelensapp/extensions';
 import { bindVisibility, type VisibilityChannel } from '../adapter/visibility.ts';
 import { freelensPort, freelensRequests, PACKAGE_VERSION } from '../adapter/freelens.ts';
 import { SnapshotSession, type SnapshotState } from '../core/session.ts';
 import { displayTimestamp, recordFormatter, type LogRecord } from '../core/records.ts';
 import { initialInspection, originalText, type RecordContent } from '../core/inspection.ts';
-import { emptyWindow, recordRef, recordIndex, type RecordRef } from '../core/occurrences.ts';
+import { emptyWindow, recordRef, recordIndex } from '../core/occurrences.ts';
 import type { ViewerPreferences } from '../core/configuration.ts';
 import { copyOriginal } from '../adapter/clipboard.ts';
 import type { LogTarget } from '../core/target.ts';
-import { moveMatch } from '../core/navigation.ts';
+import { FindPosition, type FindEdit } from '../core/find-state.ts';
+import { FindEditing, type FindEditTransaction } from '../core/find-editing.ts';
 import { FindClient, FindMatching, type FindMatchingState } from './find-client.ts';
 import type { FindRpc } from '../adapter/find-ipc.ts';
 import { sameFindKey } from '../core/find-protocol.ts';
@@ -50,7 +52,13 @@ export function Viewer({ target, register, visibility, findRpc, preferences, sho
   const scroller = useRef<HTMLDivElement>(null);
   const viewport = useRef<LogViewport>();
   const rowGesture = useRef<{ x: number; y: number; dragged: boolean; selection?: SelectionPosition }>();
-  const requestedMatch = useRef<RecordRef>();
+  const [findPosition] = useState(() => new FindPosition());
+  const [findEditing] = useState(() => new FindEditing());
+  const [, renderPosition] = useState(0);
+  const positionChanged = () => renderPosition(value => value + 1);
+  const rowFocusIntent = useRef(false);
+  const viewActive = useRef(false);
+  const findOpener = useRef<HTMLElement>();
   const [scroll, setScroll] = useState<ViewportStatus>({ following: true, lost: false });
   const [query, setQuery] = useState('');
   const [committedQuery, setCommittedQuery] = useState('');
@@ -62,15 +70,12 @@ export function Viewer({ target, register, visibility, findRpc, preferences, sho
   const revisions = useRef({ window: 0, message: 0, query: 0 });
   const composing = useRef(false);
   const [compositionRevision, setCompositionRevision] = useState(0);
-  const explicitEdit = useRef(false);
-  const selectIntent = useRef<{ key: import('../core/find-protocol.ts').FindKey }>();
-  const cancelReveal = () => { selectIntent.current = undefined; requestedMatch.current = undefined; };
+  const explicitEdit = useRef<FindEdit>();
+  const cancelFindIntents = () => findPosition.cancelSelection();
 
   const [findOpen, setFindOpen] = useState(false);
   const findInput = useRef<HTMLInputElement>(null);
   const findButton = useRef<HTMLButtonElement>(null);
-  const [cursor, setCursor] = useState<RecordRef>();
-  const [expiredResult, setExpiredResult] = useState(false);
   const [state, setState] = useState<SnapshotState>();
   const [session, setSession] = useState<SnapshotSession>();
   const [timestamps, setTimestamps] = useState(true);
@@ -80,18 +85,17 @@ export function Viewer({ target, register, visibility, findRpc, preferences, sho
   const [findContext, setFindContext] = useState(window.context);
   // Reset before committing replacement-instance rows, including paused/empty
   // windows. Later Find flags/history/intents belong to this same context seam.
-  if (findContext !== window.context || (state?.phase === 'closed' && query)) {
-    setFindContext(window.context);
+  const context = state?.phase === 'closed' ? `${window.context}:closed` : window.context;
+  if (findContext !== context) {
+    setFindContext(context);
     setQuery('');
     setCommittedQuery('');
     setMatchCase(false); setWholeWords(false); composing.current = false;
-    explicitEdit.current = false; selectIntent.current = undefined;
-    setCursor(undefined);
-    setExpiredResult(false);
+    explicitEdit.current = undefined;
+    findPosition.reset(); findEditing.clear();
     setInspection(previous => ({ ...previous, selected: undefined }));
-    requestedMatch.current = undefined;
   }
-  if (state?.gone || state?.phase === 'closed') { selectIntent.current = undefined; requestedMatch.current = undefined; }
+  if (state?.gone || state?.phase === 'closed') cancelFindIntents();
   const [preference, setPreference] = useState(() => preferences.read());
   const [editingProfiles, setEditingProfiles] = useState(false);
   const profilesActive = useRef(false);
@@ -116,7 +120,7 @@ export function Viewer({ target, register, visibility, findRpc, preferences, sho
     setWrap(false);
     setInspection(initialInspection());
     let visible = false;
-    const stopVisibility = bindVisibility(root.current!, target.clusterId, visibility, active => { visible = active; if (!active) cancelReveal(); findMatching.setActive(active); current.setActive(active); });
+    const stopVisibility = bindVisibility(root.current!, target.clusterId, visibility, active => { visible = active; viewActive.current = active; if (!active) cancelFindIntents(); findMatching.setActive(active); current.setActive(active); });
     const stopEscape = bindLocalEscape(root.current!, () => visible && current.state.phase !== 'closed', dismissal);
     const stopBack = bindLocalBack(root.current!, () => visible && current.state.phase !== 'closed',
       () => profilesActive.current, dismissal);
@@ -157,66 +161,66 @@ export function Viewer({ target, register, visibility, findRpc, preferences, sho
   }), [viewerEpoch, state?.instanceEpoch, windowRevision, messageRevision, queryRevision]);
   useLayoutEffect(() => {
     if (!composing.current) findMatching.setComposing(false);
-    const reason = explicitEdit.current ? 'edit' : 'maintenance';
-    selectIntent.current = reason === 'edit' && committedQuery ? { key: findInputs.key } : undefined;
-    explicitEdit.current = false;
-    requestedMatch.current = undefined;
-    findMatching.update(findInputs, reason);
+    const edit = explicitEdit.current ?? 'maintenance';
+    findPosition.prepare(window, findInputs.key, edit);
+    if (!findOpen || editingProfiles || !viewActive.current) findPosition.cancelSelection();
+    if (!committedQuery) findPosition.clear();
+    explicitEdit.current = undefined;
+    findMatching.update(findInputs, edit === 'maintenance' ? 'maintenance' : 'edit');
+    positionChanged();
   }, [findInputs]);
   const matchesReady = matching.phase === 'ready' && !!matching.key && sameFindKey(matching.key, findInputs.key) && !composing.current;
   const matches = useMemo(() => matchesReady ? matching.records.map(match => recordIndex(window, match.ref)).filter(index => index >= 0) : [], [matchesReady, matching.records, window]);
   useLayoutEffect(() => {
-    const intent = selectIntent.current;
-    if (!matchesReady || !intent || !sameFindKey(intent.key, findInputs.key)) return;
-    selectIntent.current = undefined;
-    const ref = recordRef(window, matches[0] ?? -1);
-    setCursor(ref); setExpiredResult(false); requestedMatch.current = ref;
+    if (!matchesReady) return;
+    findPosition.accept(findInputs.key, matching.records.map(match => match.ref));
+    positionChanged();
   }, [matching]);
-  const mappedCursor = recordIndex(window, cursor);
+  const mappedCursor = recordIndex(window, findPosition.active);
   const currentMatch = matches.includes(mappedCursor) ? mappedCursor : -1;
-  useEffect(() => {
-    if (cursor && matchesReady && currentMatch < 0) {
-      setCursor(undefined);
-      setExpiredResult(mappedCursor < 0);
-    }
-  }, [window, cursor, currentMatch, mappedCursor, matchesReady]);
   useLayoutEffect(() => {
-    const current = new LogViewport(scroller.current!, setScroll, cancelReveal);
+    const current = new LogViewport(scroller.current!, setScroll, () => findPosition.cancelReveal());
     viewport.current = current;
     return () => { current.dispose(); viewport.current = undefined; };
   }, []);
   useLayoutEffect(() => {
     if (editingProfiles) return;
     viewport.current?.update(window);
-    if (requestedMatch.current !== undefined) {
-      viewport.current?.show(requestedMatch.current);
-      requestedMatch.current = undefined;
-    }
+    const reveal = findPosition.takeReveal(window, findInputs.key);
+    if (findOpen && !state?.gone && state?.phase !== 'closed' && reveal) viewport.current?.show(reveal);
   });
   useLayoutEffect(() => {
     if (findOpen && !editingProfiles) { findInput.current?.focus(); findInput.current?.select(); }
   }, [findOpen]);
   const navigateMatch = (direction: 1 | -1) => {
     if (!matchesReady || !matches.length) return;
-    selectIntent.current = undefined;
-    const next = moveMatch(matches, currentMatch, direction);
-    setCursor(recordRef(window, next));
-    setExpiredResult(false);
-    requestedMatch.current = recordRef(window, next);
+    findPosition.navigate(direction); positionChanged();
+    findInput.current?.focus({ preventScroll: true });
   };
-  const changeQuery = (value: string) => {
-    setQuery(value);
-    cancelReveal();
-    if (!composing.current) { explicitEdit.current = value !== committedQuery; setCommittedQuery(value); }
+  const commitEdit = (transaction?: FindEditTransaction) => {
+    if (!transaction) return;
+    cancelFindIntents();
+    explicitEdit.current = transaction.edit;
+    setCommittedQuery(transaction.text); setCompositionRevision(value => value + 1);
   };
+  const changeQuery = (value: string, inputType: string) => {
+    const transaction = findEditing.change(value, inputType);
+    if (composing.current || transaction) setQuery(value);
+    commitEdit(transaction);
+  };
+  // Native input still carries an edit when select-all replacement inserts the
+  // same text. React's change deduplication alone would discard that sequence.
+  const handleFindInput = (event: React.FormEvent<HTMLInputElement>) =>
+    changeQuery(event.currentTarget.value, (event.nativeEvent as InputEvent).inputType);
   const changeMode = (mode: 'case' | 'words') => {
-    cancelReveal(); explicitEdit.current = true;
+    cancelFindIntents(); explicitEdit.current = 'refine';
     if (mode === 'case') setMatchCase(value => !value); else setWholeWords(value => !value);
   };
   const clearFind = () => {
-    composing.current = false; findMatching.setComposing(false); cancelReveal(); explicitEdit.current = false;
-    setQuery(''); setCommittedQuery(''); setCursor(undefined); setExpiredResult(false);
-    findInput.current?.focus();
+    composing.current = false; findMatching.setComposing(false); cancelFindIntents(); explicitEdit.current = undefined;
+    findEditing.clear(); findPosition.clear();
+    setQuery(''); setCommittedQuery(''); positionChanged();
+    findInput.current?.focus({ preventScroll: true });
   };
   const findStatus = matching.phase === 'too-long' ? 'Find is limited to 16,384 UTF-16 units. Shorten the query to search.'
     : matching.phase === 'timeout' ? 'Find timed out. Edit the query or Retry.'
@@ -224,12 +228,21 @@ export function Viewer({ target, register, visibility, findRpc, preferences, sho
     : !query ? 'Enter text to find'
     : !matchesReady ? matching.searching ? 'Searching…' : 'Matching pending'
     : `${currentMatch < 0 ? 0 : matches.indexOf(currentMatch) + 1} of ${matches.length} matching records`;
+  const feedback = findPosition.feedback;
+  const [announcement, setAnnouncement] = useState('');
+  useEffect(() => {
+    const timer = setTimeout(() => setAnnouncement(`${findStatus}${feedback ? `. ${feedback}` : ''}`), 100);
+    return () => clearTimeout(timer);
+  }, [findStatus, feedback]);
   const index = recordIndex(window, inspection.selected);
   const selected = records[index];
   const toggleInspection = (recordIndex: number) => {
-    cancelReveal();
+    const ref = recordRef(window, recordIndex)!;
+    if (recordIndex === index) findPosition.closeInspection(ref); else findPosition.read(ref);
+    positionChanged();
     setInspection(previous => ({ ...previous, selected: recordIndex === index
       ? undefined : recordRef(window, recordIndex) }));
+    if (recordIndex === index) { rowFocusIntent.current = false; focusLocal(root.current!, scroller.current); }
   };
   useEffect(() => {
     if (index < 0) {
@@ -240,11 +253,40 @@ export function Viewer({ target, register, visibility, findRpc, preferences, sho
     }
   }, [snapshot, index]);
   const close = () => {
-    cancelReveal();
-    focusLocal(root.current!, root.current?.querySelector<HTMLElement>(`.rl-record[data-record-index="${index}"] > .rl-row`));
+    findPosition.closeInspection(inspection.selected); positionChanged(); rowFocusIntent.current = false;
     setInspection(previous => ({ ...previous, selected: undefined }));
+    focusLocal(root.current!, root.current?.querySelector<HTMLElement>(`.rl-record[data-record-index="${index}"] > .rl-row`));
   };
-  const openFind = () => { setFindOpen(true); findInput.current?.focus(); findInput.current?.select(); };
+  const openFind = () => {
+    if (!findOpen) findOpener.current = root.current!.ownerDocument.activeElement as HTMLElement;
+    rowFocusIntent.current = false; setFindOpen(true); findInput.current?.focus({ preventScroll: true }); findInput.current?.select();
+  };
+  useEffect(() => {
+    const input = findInput.current!;
+    const beforeInput = (event: InputEvent) => findEditing.beforeInput(event.inputType, input.value, input.selectionStart, input.selectionEnd);
+    input.addEventListener('beforeinput', beforeInput);
+    return () => input.removeEventListener('beforeinput', beforeInput);
+  }, []);
+  useEffect(() => {
+    const document = root.current!.ownerDocument;
+    const keydown = (event: KeyboardEvent) => {
+      rowFocusIntent.current = viewActive.current && event.key === 'Tab' && !event.ctrlKey && !event.metaKey && !event.altKey &&
+        !event.isComposing && event.keyCode !== 229 && !event.getModifierState('AltGraph');
+    };
+    const clear = () => { rowFocusIntent.current = false; };
+    document.addEventListener('keydown', keydown, true);
+    document.addEventListener('keyup', clear, true);
+    document.addEventListener('pointerdown', clear, true);
+    document.addEventListener('focusin', clear);
+    document.defaultView?.addEventListener('blur', clear);
+    return () => {
+      document.removeEventListener('keydown', keydown, true);
+      document.removeEventListener('keyup', clear, true);
+      document.removeEventListener('pointerdown', clear, true);
+      document.removeEventListener('focusin', clear);
+      document.defaultView?.removeEventListener('blur', clear);
+    };
+  }, []);
   const closeShortcuts = () => { setShortcutsOpen(false); focusLocal(root.current!, displaySummary.current); };
   useLayoutEffect(() => dismissal.add(300, () => shortcutsOpen ? closeShortcuts : undefined));
   useLayoutEffect(() => { if (shortcutsOpen) shortcutsHeading.current?.focus(); }, [shortcutsOpen]);
@@ -252,19 +294,29 @@ export function Viewer({ target, register, visibility, findRpc, preferences, sho
     const reading = (target: Element) => !editingProfiles && (!editable(target) || target === findInput.current);
     const stops = [commands.add('find', target => reading(target) ? openFind : undefined),
       ...(['next', 'previous'] as const).map(command => commands.add(command, target => reading(target) ? () => {
-        openFind(); if (query) navigateMatch(command === 'next' ? 1 : -1);
+        if (!findOpen) { findOpener.current = target as HTMLElement; setFindOpen(true); }
+        if (query) navigateMatch(command === 'next' ? 1 : -1);
       } : undefined)),
       commands.add('bottom', target => !editingProfiles && (target === scroller.current || target.matches('.rl-row'))
         ? () => viewport.current?.toBottom() : undefined)];
     return () => { stops.forEach(stop => stop()); };
   });
-  const closeFind = () => { cancelReveal(); setFindOpen(false); focusLocal(root.current!, findButton.current); };
+  const closeFind = () => { cancelFindIntents(); rowFocusIntent.current = false; setFindOpen(false); focusLocal(root.current!, findOpener.current); };
   const backToLogs = () => { setEditingProfiles(false); focusLocal(root.current!, profilesButton.current); };
   useLayoutEffect(() => dismissal.add(0, () => editingProfiles ? backToLogs : findOpen ? closeFind : selected ? close : undefined));
   const inspector = selected && <RecordInspector record={selected} content={inspection.content}
     onContent={content => setInspection(previous => ({ ...previous, content }))} onClose={close} />;
   return <section ref={root} className="readable-logs" aria-label="Readable logs" data-version={PACKAGE_VERSION}
-    onFocusCapture={event => { inspectorFocused.current = !!(event.target as Element).closest('.rl-detail'); }}>
+    onPointerDownCapture={() => { rowFocusIntent.current = false; }}
+    onFocusCapture={event => {
+      inspectorFocused.current = !!(event.target as Element).closest('.rl-detail');
+      if (rowFocusIntent.current && (event.target as Element).matches('.rl-row')) {
+        const row = (event.target as Element).closest<HTMLElement>('[data-record-index]');
+        const ref = recordRef(window, Number(row?.dataset.recordIndex));
+        if (ref) { findPosition.read(ref); positionChanged(); }
+      }
+      rowFocusIntent.current = false;
+    }}>
     <style>{styles}</style>
     <header className="rl-toolbar" aria-label="Log controls">
       <details className="rl-target-context">
@@ -296,7 +348,7 @@ export function Viewer({ target, register, visibility, findRpc, preferences, sho
         </select></label>
         <button ref={profilesButton} type="button" className="rl-edit-profiles" onClick={() => {
           if (editingProfiles) backToLogs();
-          else { cancelReveal(); root.current?.querySelectorAll('details[open]').forEach(node => { (node as HTMLDetailsElement).open = false; }); setEditingProfiles(true); }
+          else { cancelFindIntents(); root.current?.querySelectorAll('details[open]').forEach(node => { (node as HTMLDetailsElement).open = false; }); setEditingProfiles(true); }
         }} aria-expanded={editingProfiles}>
           <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true" focusable="false"><path d="m15 5 4 4M4 20l4-1L20 7a2.8 2.8 0 0 0-4-4L4 15z" /></svg>
           Edit profiles
@@ -350,23 +402,33 @@ export function Viewer({ target, register, visibility, findRpc, preferences, sho
     </section>}
     <div id="rl-findbar" className="rl-findbar" role="search" aria-label="Find in logs" hidden={editingProfiles || !findOpen}>
       <label htmlFor="rl-find">Find</label>
-      <input ref={findInput} id="rl-find" type="search" aria-label="Find in logs" placeholder="Find in application text or message"
+      <input ref={findInput} id="rl-find" type="search" aria-label="Find in logs" placeholder="Search retained logs"
         title={`Next: Enter or ${shortcutHint('G')}; previous: Shift+Enter or ${shortcutHint('Shift+G')}`} value={query}
-        onCompositionStart={() => { composing.current = true; cancelReveal(); findMatching.setComposing(true); }}
+        onCompositionStart={event => {
+          const input = event.currentTarget;
+          findEditing.startComposition(input.value, input.selectionStart, input.selectionEnd);
+          composing.current = true; cancelFindIntents(); findMatching.setComposing(true);
+        }}
         onCompositionEnd={event => {
           if (!composing.current) return;
           composing.current = false; findMatching.setComposing(false);
-          changeQuery(event.currentTarget.value); explicitEdit.current = true; setCompositionRevision(value => value + 1);
-        }} onChange={event => changeQuery(event.target.value)} />
-      <button type="button" aria-label="Match case" aria-pressed={matchCase} onClick={() => changeMode('case')}>Aa</button>
-      <button type="button" aria-label="Whole words" aria-pressed={wholeWords} onClick={() => changeMode('words')}>Whole words</button>
-      <span className="rl-find-count" role="status" aria-live="polite">{findStatus}</span>
-      {['timeout', 'execution'].includes(matching.phase) && <button type="button" onClick={() => { cancelReveal(); findMatching.update(findInputs, 'retry'); }}>Retry</button>}
-      <button type="button" aria-label="Clear Find" disabled={!query} onClick={clearFind}>Clear</button>
-      {expiredResult && <span role="status">Current result left the recent log window.</span>}
-      <button type="button" title={`Previous match (Shift+Enter in Find; ${shortcutHint('Shift+G')})`} disabled={!matches.length} onClick={() => navigateMatch(-1)}>Previous</button>
-      <button type="button" title={`Next match (Enter in Find; ${shortcutHint('G')})`} disabled={!matches.length} onClick={() => navigateMatch(1)}>Next</button>
+          const transaction = findEditing.endComposition(event.currentTarget.value);
+          if (transaction) setQuery(transaction.text);
+          commitEdit(transaction);
+        }} onInput={handleFindInput} onChange={handleFindInput} />
+      <span className="rl-find-count">{findStatus}</span>
+      <button type="button" aria-label="Clear Find" title="Clear search" disabled={!query} onClick={clearFind}>Clear</button>
+      {([-1, 1] as const).map(direction => <button key={direction} type="button" className="rl-find-direction"
+        aria-label={direction === 1 ? 'Next match' : 'Previous match'} title={direction === 1 ? 'Next match (Enter)' : 'Previous match (Shift+Enter)'}
+        disabled={!matchesReady || !matches.length} onClick={() => navigateMatch(direction)}>
+        <Renderer.Component.Icon material={direction === 1 ? 'keyboard_arrow_down' : 'keyboard_arrow_up'} />
+      </button>)}
+      <button type="button" aria-label="Match case" title="Match case" aria-pressed={matchCase} onClick={() => changeMode('case')}>Aa</button>
+      <button type="button" aria-label="Whole words" title="Whole words" className="rl-find-words" aria-pressed={wholeWords} onClick={() => changeMode('words')}>ab</button>
+      {['timeout', 'execution'].includes(matching.phase) && <button type="button" onClick={() => { cancelFindIntents(); findMatching.update(findInputs, 'retry'); }}>Retry</button>}
       <button type="button" aria-label="Close Find" title="Close Find (Escape)" onClick={closeFind}>Close</button>
+      {feedback && <span className="rl-find-feedback">{feedback}</span>}
+      <span className="rl-sr-only" role="status" aria-live="polite" aria-atomic="true">{announcement}</span>
     </div>
     <SettingsRecovery preferences={preferences} saved={preference} dismissal={dismissal} />
     {state?.lifecycleNotice && <p className="rl-notice" role="status">{state.lifecycleNotice}{state.paused ? ' Paused; select Refresh or Resume to read the current instance.' : ''}</p>}
@@ -408,7 +470,12 @@ export function Viewer({ target, register, visibility, findRpc, preferences, sho
               if (event.detail > 0 && (event.detail > 1 || rowGesture.current?.dragged || selectedTextTouches(event.currentTarget, rowGesture.current?.selection))) return;
               toggleInspection(recordIndex);
             }}
-            onKeyDown={event => { if (event.key === 'Enter' || event.key === ' ') { event.preventDefault(); toggleInspection(recordIndex); } }}>
+            onKeyDown={event => {
+              if ((event.key === 'Enter' || event.key === ' ') && !event.ctrlKey && !event.metaKey && !event.altKey && !event.shiftKey &&
+                !event.nativeEvent.isComposing && event.keyCode !== 229 && !event.getModifierState('AltGraph')) {
+                event.preventDefault(); toggleInspection(recordIndex);
+              }
+            }}>
           {inspection.raw ? <span className="rl-message">{(timestamps ? record.transportLine : record.applicationText) || '\u00a0'}</span> : <>
           {timestamps && <time dateTime={formatted.timestamp} title={formatted.timestampSource ? `${formatted.timestampSource}: ${formatted.timestamp}` : undefined}>{displayTimestamp(formatted.timestamp)}</time>}
           <span className={`rl-level${formatted.canonicalLevel ? ` rl-severity-${formatted.canonicalLevel.toLowerCase()}` : ''}`}>{formatted.level}</span>
