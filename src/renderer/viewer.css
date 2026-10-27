@@ -55,7 +55,11 @@
 .readable-logs .rl-row[role="button"] { cursor: pointer; padding: 2px 4px; }
 .readable-logs .rl-row:focus-visible { outline-offset: -2px; }
 .readable-logs .rl-selected > .rl-row { background: var(--tableBgcSelected, #263737); }
-.readable-logs .rl-find-current > .rl-row { outline: 1px solid var(--primary, #00a7a0); outline-offset: -1px; background: var(--tableBgcSelected, #263737); }
+.readable-logs .rl-find-current > .rl-row { outline: 1px solid var(--primary, #00a7a0); outline-offset: -1px; }
+.readable-logs .rl-find-current > .rl-row:focus-visible { outline: 2px dashed var(--textColorAccent, #e3e5e8); outline-offset: -3px; }
+.readable-logs .rl-row:has(.rl-match-hint) { flex-wrap: wrap; width: auto; }
+.readable-logs button.rl-match-hint { border: 0; background: transparent; color: var(--textColorSecondary, #a6adb5); padding: 0 4px; text-decoration: underline; text-underline-offset: 3px; font: 12px/1.65 var(--font-main, sans-serif); user-select: none; white-space: nowrap; align-self: baseline; }
+.readable-logs .rl-match-hint::before { content: attr(data-label); }
 .readable-logs .rl-fields { color: var(--textColorSecondary, #a6adb5); white-space: nowrap; font: 11px/1.8 var(--font-main, sans-serif); user-select: none; }
 /* Generated interface metadata stays out of native selection/copy, including ranges crossing the badge. */
 .readable-logs .rl-fields::before { content: attr(data-label); }

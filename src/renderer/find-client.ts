@@ -14,7 +14,10 @@ export class FindClient {
   private active = true;
   private closed = false;
   private closing?: Promise<void>;
+  private requestId = 0;
+  private work?: FindRequest['work'];
   constructor(rpc: FindRpc, viewer: string) { this.rpc = rpc; this.viewer = viewer; }
+  nextRequestId() { return ++this.requestId; }
   private token(): Promise<string> {
     this.owner ??= this.rpc.invoke(FIND_OPEN, this.viewer).then(value => {
       if (typeof value !== 'string' || !value || value.length > 128) throw new Error('Invalid Find registration');
@@ -24,6 +27,7 @@ export class FindClient {
   }
   async submit(request: FindRequest): Promise<unknown> {
     if (this.closed || !this.active) return;
+    this.work = request.work;
     const revision = this.revision, token = await this.token();
     if (this.closed || !this.active || revision !== this.revision) return;
     const value = await this.rpc.invoke(FIND_REQUEST, token, request);
@@ -32,7 +36,8 @@ export class FindClient {
   private control(action: string, active?: boolean): Promise<void> {
     return this.owner ? this.owner.then(async token => { await this.rpc.invoke(FIND_CONTROL, token, action, active); }).catch(() => {}) : Promise.resolve();
   }
-  cancel() { this.revision++; void this.control('cancel'); }
+  cancel() { this.revision++; this.work = undefined; void this.control('cancel'); }
+  cancelRanges() { if (this.work === 'ranges') this.cancel(); }
   setActive(active: boolean) {
     if (this.closed || this.active === active) return;
     this.active = active;
@@ -66,7 +71,6 @@ export class FindMatching {
   private inputs?: FindInputs;
   private composing = false;
   private attempt?: Attempt;
-  private requestId = 0;
   private active = true;
   private closed = false;
   constructor(client: FindClient, changed: (state: FindMatchingState) => void, clock: FindClock = {
@@ -90,7 +94,7 @@ export class FindMatching {
   }
   private start() {
     if (!this.inputs || this.closed || !this.active) return;
-    const request: FindRequest = { ...this.inputs, requestId: ++this.requestId, work: 'match' };
+    const request: FindRequest = { ...this.inputs, requestId: this.client.nextRequestId(), work: 'match' };
     const attempt: Attempt = { request, started: this.clock.now(), stopFeedback: () => {}, stopDeadline: () => {} };
     this.attempt = attempt;
     // Both timers precede registration/dispatch. Callback lateness does not let

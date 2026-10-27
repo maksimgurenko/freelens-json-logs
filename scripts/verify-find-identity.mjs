@@ -67,17 +67,18 @@ try {
     if (await evaluate('!!globalThis.verifyIdentity')) break;
     assert(attempt < 199, 'Fixture failed to load'); await sleep(25);
   }
-  const captureDirectory = process.env.FIND_HISTORY_SCREENSHOTS;
-  if (captureDirectory) { await mkdir(captureDirectory, { recursive: true }); await evaluate('globalThis.captureFindHistory = true'); }
+  const captureDirectory = process.env.FIND_HISTORY_SCREENSHOTS || process.env.FIND_PRESENTATION_SCREENSHOTS;
+  if (captureDirectory) { await mkdir(captureDirectory, { recursive: true }); await evaluate(process.env.FIND_PRESENTATION_SCREENSHOTS
+    ? 'globalThis.captureFindPresentation = true' : 'globalThis.captureFindHistory = true'); }
   let finished = false;
   const verification = evaluate('verifyIdentity()').finally(() => { finished = true; });
   if (captureDirectory) {
     while (!finished) {
-      const width = await evaluate('globalThis.findHistoryCaptureWidth');
+      const width = await evaluate('globalThis.findHistoryCaptureWidth || globalThis.findPresentationCaptureWidth');
       if (width) {
         const capture = await send('Page.captureScreenshot', { format: 'png', clip: { x: 0, y: 0, width, height: 900, scale: 1 } });
-        await writeFile(join(captureDirectory, `history-${width}.png`), Buffer.from(capture.data, 'base64'));
-        await evaluate('globalThis.findHistoryCaptureWidth = 0');
+        await writeFile(join(captureDirectory, `${process.env.FIND_PRESENTATION_SCREENSHOTS ? 'presentation' : 'history'}-${width}.png`), Buffer.from(capture.data, 'base64'));
+        await evaluate('globalThis.findHistoryCaptureWidth = 0; globalThis.findPresentationCaptureWidth = 0');
       }
       await sleep(25);
     }

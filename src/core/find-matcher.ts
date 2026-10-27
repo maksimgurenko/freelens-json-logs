@@ -36,15 +36,18 @@ export function sourceRanges(records: readonly FindRecord[], query: FindQuery, s
     }
     group.scopes.push(entry);
   }
+  let remainingGroups = groups.size;
   for (const group of groups.values()) {
-    if (ranges.length === FIND_RANGE_LIMIT) break;
+    // Early dense presentations must not consume every later visible source's
+    // slots. Unused shares flow forward in caller priority order.
+    const limit = ranges.length + Math.ceil((FIND_RANGE_LIMIT - ranges.length) / remainingGroups--);
     matcher.lastIndex = 0;
     const end = Math.max(...group.scopes.map(entry => entry.scope.end));
     let overflow: number | undefined;
     for (let match; (match = matcher.exec(group.text)) && match.index < end;) {
       const start = match.index, finish = start + match[0].length;
       if (!group.scopes.some(({ scope }) => start < scope.end && finish > scope.start)) continue;
-      if (ranges.length === FIND_RANGE_LIMIT) { overflow = start; break; }
+      if (ranges.length === limit) { overflow = start; break; }
       ranges.push({ ref: group.scopes[0].scope.ref, source: group.scopes[0].scope.source, start, end: finish });
     }
     for (const entry of group.scopes) entry.complete = overflow === undefined || entry.scope.end <= overflow;

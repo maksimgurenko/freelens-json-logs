@@ -79,9 +79,10 @@ test('dense decoration caps never change exact counts, provenance or late visibl
   const scopes = records.map(record => ({ ref: record.ref, source: 'application' as const, start: 0, end: 200 }));
   const { ranges, coverage } = sourceRanges(records, query('a'), scopes);
   assert.equal(ranges.length, 4096);
-  assert.equal(coverage[39].complete, true);
+  assert.equal(coverage[39].complete, false);
   assert.equal(coverage[40].complete, false);
   assert.equal(coverage[999].complete, false);
+  assert(ranges.some(range => range.ref.occurrence === 999), 'Dense early sources must leave range slots for later visible sources');
   const matches = matchingRecords(records, query('a'));
   assert.equal(matches.length, 1000);
   assert.deepEqual(matches[999], { ref: records[999].ref, application: true, message: true });

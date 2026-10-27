@@ -1,0 +1,145 @@
+(node:1040641) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///home/max/work/freelens-json-logs/src/core/session.ts is not specified and it doesn't parse as CommonJS.
+Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+To eliminate this warning, add "type": "module" to /home/max/work/freelens-json-logs/package.json.
+(Use `node --trace-warnings ...` to show where the warning was created)
+{
+  "check": "core/main RAM and disk",
+  "cycles": 40,
+  "samples": [
+    {
+      "heapUsed": 21839880,
+      "external": 8928244,
+      "rss": 290824192
+    },
+    {
+      "heapUsed": 21943888,
+      "external": 8928284,
+      "rss": 335478784
+    },
+    {
+      "heapUsed": 21972632,
+      "external": 8958491,
+      "rss": 345071616
+    },
+    {
+      "heapUsed": 21998424,
+      "external": 8958491,
+      "rss": 345317376
+    },
+    {
+      "heapUsed": 17284192,
+      "external": 8955075,
+      "rss": 344494080
+    },
+    {
+      "heapUsed": 17304336,
+      "external": 8955075,
+      "rss": 345026560
+    },
+    {
+      "heapUsed": 17313736,
+      "external": 8955075,
+      "rss": 344899584
+    }
+  ],
+  "limits": {
+    "heapUsed": 12582912,
+    "external": 8388608,
+    "rss": 100663296
+  },
+  "disk": [
+    {
+      "path": "extension-store/freelens-readable-logs/readable-logs.json",
+      "bytes": 90,
+      "sha256": "53be5f1acd44c863b46b59c97c93bbc5d73f52fe9d94c1918e78b32e9fd7f9cd"
+    }
+  ]
+}
+{
+  "check": "production renderer RAM, DOM and disk",
+  "cycles": 40,
+  "reads": 200,
+  "writes": 0,
+  "samples": [
+    {
+      "heapUsed": 6721556,
+      "documents": 1,
+      "nodes": 2808,
+      "jsEventListeners": 415,
+      "disk": {
+        "bytes": 2685955,
+        "files": 137
+      }
+    },
+    {
+      "heapUsed": 6989928,
+      "documents": 1,
+      "nodes": 2809,
+      "jsEventListeners": 415,
+      "disk": {
+        "bytes": 3015349,
+        "files": 183
+      }
+    },
+    {
+      "heapUsed": 7388436,
+      "documents": 1,
+      "nodes": 2808,
+      "jsEventListeners": 415,
+      "disk": {
+        "bytes": 3017410,
+        "files": 183
+      }
+    },
+    {
+      "heapUsed": 7432480,
+      "documents": 1,
+      "nodes": 2809,
+      "jsEventListeners": 415,
+      "disk": {
+        "bytes": 2972073,
+        "files": 189
+      }
+    },
+    {
+      "heapUsed": 7188284,
+      "documents": 1,
+      "nodes": 2809,
+      "jsEventListeners": 415,
+      "disk": {
+        "bytes": 2972088,
+        "files": 190
+      }
+    },
+    {
+      "heapUsed": 7499148,
+      "documents": 1,
+      "nodes": 2808,
+      "jsEventListeners": 415,
+      "disk": {
+        "bytes": 2972107,
+        "files": 190
+      }
+    },
+    {
+      "heapUsed": 7529248,
+      "documents": 1,
+      "nodes": 2808,
+      "jsEventListeners": 415,
+      "disk": {
+        "bytes": 2972107,
+        "files": 190
+      }
+    }
+  ],
+  "limits": {
+    "heapUsed": 8388608,
+    "nodes": 128,
+    "jsEventListeners": 8,
+    "documents": 0,
+    "diskBytes": 8388608,
+    "diskFiles": 128
+  }
+}
+{"check":"Find worker lifecycle after smoke","starts":40,"exits":40,"live":0,"peak":1,"senderListeners":0,"appListeners":0}
+Resource smoke passed: core/main and renderer.

@@ -3,6 +3,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import * as Mobx from 'mobx';
+import { verifyFindPresentation } from './find-presentation-browser.jsx';
 
 const check = (condition, message) => { if (!condition) throw new Error(message); };
 const sleep = ms => new Promise(resolve => setTimeout(resolve, ms));
@@ -14,13 +15,20 @@ let text = 'start\nx\nend', reads = 0, pendingRead, copies = [];
 let status = { name: 'app', restartCount: 0, containerID: 'run-0' };
 let uid = 'uid';
 let heldReply, failNext = false, requestCount = 0;
+let failNextRange = false;
+const rangeRequests = [];
 const holdNext = () => { let release; const promise = new Promise(resolve => { release = resolve; }); heldReply = { promise, release }; return heldReply; };
 const ipc = {
   listen(name, callback) { callbacks.set(name, callback); return () => callbacks.delete(name); },
   async invoke(name, ...args) {
     if (name === 'viewer-visibility-request') { callbacks.get(args[1])?.({}, args[0]); return; }
-    const gate = name === 'find-request' ? heldReply : undefined;
-    if (name === 'find-request') { requestCount++; heldReply = undefined; if (failNext) { failNext = false; throw new Error('Controlled SDK failure'); } }
+    const exact = name === 'find-request' && args[1].work === 'match';
+    const gate = exact ? heldReply : undefined;
+    if (exact) { requestCount++; heldReply = undefined; if (failNext) { failNext = false; throw new Error('Controlled SDK failure'); } }
+    if (name === 'find-request' && !exact) {
+      rangeRequests.push(args[1]);
+      if (failNextRange) { failNextRange = false; throw new Error('Controlled decoration SDK failure'); }
+    }
     const result = await (await fetch('/find-rpc', { method: 'POST', body: JSON.stringify({ channel: name, args }) })).json();
     if (gate) await gate.promise;
     if (result.error) throw new Error(result.error); return result.value;
@@ -77,8 +85,40 @@ function edit(value) {
 const settled = () => !['Matching pending', 'Searching…'].includes(root.querySelector('.rl-find-count').textContent);
 async function query(value) { edit(value); await until(settled, 'Find did not settle'); await turn(); }
 function selectText(node, start = 0, end = node.textContent.length) {
-  const range = document.createRange(); range.setStart(node.firstChild, start); range.setEnd(node.firstChild, end);
+  const point = offset => {
+    const walker = document.createTreeWalker(node, NodeFilter.SHOW_TEXT);
+    for (let text; (text = walker.nextNode());) {
+      if (offset <= text.length) return [text, offset]; offset -= text.length;
+    }
+    throw new Error('Selection outside source');
+  };
+  const range = document.createRange(); range.setStart(...point(start)); range.setEnd(...point(end));
   document.getSelection().removeAllRanges(); document.getSelection().addRange(range);
+}
+async function verifyPresentation() {
+  await refresh('first needle\n{"message":"visible","hidden":"needle"}\n{"message":"\\u03a3"}');
+  rows()[0].querySelector('.rl-row').click(); button('Find'); await query('needle');
+  const current = root.querySelector('.rl-find-current');
+  const originalHint = root.querySelector('[aria-label="Match in original text"]');
+  check(originalHint, 'Missing Match in original text'); originalHint.click(); await turn();
+  check(root.querySelector('.rl-detail-tabs [aria-pressed="true"]').textContent === 'Application text', 'Hidden original did not open Application text');
+  check(root.querySelector('.rl-detail pre').textContent === '{"message":"visible","hidden":"needle"}', 'Hidden source changed original');
+  check(root.querySelector('.rl-find-current') === current, 'Hidden inspection changed Find result');
+  await query('σ');
+  root.querySelector('.rl-display-options').open = true; button('Raw');
+  const extractedHint = root.querySelector('[aria-label="Match in extracted message"]');
+  check(extractedHint, 'Missing Match in extracted message'); extractedHint.click(); await turn();
+  check(root.querySelector('.rl-detail-tabs [aria-pressed="true"]').textContent === 'Extracted message', 'Decoded-only source not explicit');
+  check(root.querySelector('.rl-detail pre').textContent === 'Σ', 'Extracted representation is not exact decoded string');
+  check(root.querySelector('.rl-modes [aria-pressed="true"]').textContent === 'Raw', 'Hint changed Raw mode');
+  button('Clear'); root.querySelector('[aria-label="Close Find"]').click();
+  selectText(root.querySelector('.rl-detail pre')); button('Find'); await until(settled);
+  check(input().value === 'Σ', 'Extracted-message selection did not seed Find from its actual source');
+  results.push('D08: original-only and decoded-only hints open exact sources without changing representation or Find result');
+  root.querySelector('.rl-display-options').open = true; button('Readable');
+  root.querySelector('.rl-display-options').open = false;
+  root.querySelector('[aria-label="Close record inspector"]').click(); button('Clear');
+  root.querySelector('[aria-label="Close Find"]').click();
 }
 async function verifySelectionHistory() {
   const byName = name => root.querySelector(`button[aria-label="${name}"]`);
@@ -111,12 +151,13 @@ async function verifySelectionHistory() {
   const foreign = document.createElement('p'); foreign.textContent = 'foreign'; document.body.append(foreign);
   await reject(() => selectText(foreign)); foreign.remove();
   await reject(() => {
-    const range = document.createRange(); range.setStart(rows()[0].querySelector('.rl-message').firstChild, 0);
-    range.setEnd(rows()[1].querySelector('.rl-message').firstChild, 3);
+    const range = document.createRange(); range.setStart(rows()[0].querySelector('[data-source-start]').firstChild, 0);
+    range.setEnd(rows()[1].querySelector('[data-source-start]').firstChild, 3);
     document.getSelection().addRange(range);
   });
   await refresh('{"message":"needle","extra":1}');
   rows()[0].querySelector('.rl-row').click();
+  button('All fields');
   await reject(() => selectText(root.querySelector('.rl-detail-head strong')));
   await reject(() => selectText(root.querySelector('.rl-detail-body p')));
   await reject(() => selectText(root.querySelector('.rl-detail pre'))); // pretty object is multiline
@@ -460,6 +501,8 @@ globalThis.verifyIdentity = async () => {
   ReactDOM.render(<Page params={params} />, root);
   try {
     await until(() => rows().length === 3, 'No initial rows'); button('Pause');
+    await verifyPresentation();
+    await verifyFindPresentation({ root, rows, button, query, refresh, until, check, turn, results, rangeRequests, failRanges: () => { failNextRange = true; } });
     await verifySelectionHistory();
     await verifyAsync();
     await verifyPosition();
@@ -573,5 +616,6 @@ globalThis.verifyIdentity = async () => {
     ReactDOM.unmountComponentAtNode(root); await extension.onDeactivate(); await turn();
   }
   check(callbacks.size === 0, 'IPC listener leak'); check(errors.length === 0, errors.join('; '));
+  check(CSS.highlights.size === 0, 'Viewer teardown retained Custom Highlight registrations');
   return { checks: results, reads, errors };
 };

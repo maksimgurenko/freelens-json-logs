@@ -1,0 +1,16 @@
+node:internal/modules/run_main:107
+    triggerUncaughtException(
+    ^
+
+AssertionError [ERR_ASSERTION]: {"exceptionId":1,"text":"Uncaught (in promise)","lineNumber":0,"columnNumber":0,"exception":{"type":"object","subtype":"error","className":"DOMException","description":"IndexSizeError: Failed to execute 'setEnd' on 'Range': There is no child at offset 3.\n    at http://127.0.0.1:45605/fixture.js:11877:13\n    at reject (http://127.0.0.1:45605/fixture.js:11862:7)\n    at verifySelectionHistory (http://127.0.0.1:45605/fixture.js:11874:11)\n    at async globalThis.verifyIdentity (http://127.0.0.1:45605/fixture.js:12371:7)","objectId":"3019243778263443934.2.1","preview":{"type":"object","subtype":"error","description":"IndexSizeError: Failed to execute 'setEnd' on 'Range': There is no child at offset 3.\n    at http://127.0.0.1:45605/fixture.js:11877:13\n    at reject (http://127.0.0.1:45605/fixture.js:11862:7)\n    at verifySelectionHistory (http://127.0.0.1:45605/fixture.js:11874:11)\n    at async globalThis.verifyIdentity (http://127.0.0.1:45605/fixture.js:12371:7)","overflow":false,"properties":[{"name":"stack","type":"string","value":"IndexSizeError: Failed to execute 'setEnd' on 'Ran…ntity (http://127.0.0.1:45605/fixture.js:12371:7)"},{"name":"code","type":"number","value":"1"},{"name":"name","type":"string","value":"IndexSizeError"},{"name":"message","type":"string","value":"Failed to execute 'setEnd' on 'Range': There is no child at offset 3."}]}}}
+    at evaluate (file:///home/max/work/freelens-json-logs/scripts/verify-find-identity.mjs:63:5)
+    at async file:///home/max/work/freelens-json-logs/scripts/verify-find-identity.mjs:85:19 {
+  generatedMessage: false,
+  code: 'ERR_ASSERTION',
+  actual: false,
+  expected: true,
+  operator: '==',
+  diff: 'simple'
+}
+
+Node.js v24.18.0
