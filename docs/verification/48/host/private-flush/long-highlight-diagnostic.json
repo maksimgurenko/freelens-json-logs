@@ -1,0 +1,42 @@
+{
+  "text": "find-verification-48-1376280\n/\nfind-fixtures\nContainer\ntraces\ndense\nlong\nProfile\nAuto · Default\nDefault\nEdit profiles\nResume\nRefresh\nFind\nDisplay options\nFind\n1 of 1 matching records\nClear\nkeyboard_arrow_up\nkeyboard_arrow_down\nAa\nab\nhistory\nClose\n1 of 1 matching records\n10/27/2026, 02:01:06\nxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+  "scroll": {
+    "top": 1058701,
+    "height": 1059113,
+    "client": 412,
+    "width": 935
+  },
+  "sources": [
+    {
+      "units": 5242752,
+      "tail": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx Q",
+      "data": {},
+      "rect": {
+        "x": 420.015625,
+        "y": -1058557,
+        "width": 705.625,
+        "height": 1059090.375,
+        "top": -1058557,
+        "right": 1125.640625,
+        "bottom": 533.375,
+        "left": 420.015625
+      }
+    }
+  ],
+  "highlights": [
+    {
+      "n": "rl-find-20",
+      "size": 0
+    },
+    {
+      "n": "rl-find-active-20",
+      "size": 0
+    }
+  ],
+  "wrap": [
+    {
+      "text": "Word wrap",
+      "checked": true
+    }
+  ]
+}

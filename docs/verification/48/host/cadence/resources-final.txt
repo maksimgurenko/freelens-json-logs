@@ -1,0 +1,365 @@
+
+> freelens-readable-logs@0.1.34 test:smoke
+> node scripts/resource-smoke.mjs
+
+(node:1478168) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///home/max/work/freelens-json-logs/src/core/session.ts is not specified and it doesn't parse as CommonJS.
+Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+To eliminate this warning, add "type": "module" to /home/max/work/freelens-json-logs/package.json.
+(Use `node --trace-warnings ...` to show where the warning was created)
+{
+  "check": "core/main RAM and disk",
+  "cycles": 40,
+  "samples": [
+    {
+      "heapUsed": 21837512,
+      "external": 8928244,
+      "rss": 291938304
+    },
+    {
+      "heapUsed": 21942136,
+      "external": 8928284,
+      "rss": 337063936
+    },
+    {
+      "heapUsed": 21970880,
+      "external": 8958491,
+      "rss": 346669056
+    },
+    {
+      "heapUsed": 21996672,
+      "external": 8958491,
+      "rss": 346349568
+    },
+    {
+      "heapUsed": 17282440,
+      "external": 8955075,
+      "rss": 342532096
+    },
+    {
+      "heapUsed": 17303184,
+      "external": 8955075,
+      "rss": 343941120
+    },
+    {
+      "heapUsed": 17312584,
+      "external": 8955075,
+      "rss": 344035328
+    }
+  ],
+  "limits": {
+    "heapUsed": 12582912,
+    "external": 8388608,
+    "rss": 100663296
+  },
+  "disk": [
+    {
+      "path": "extension-store/freelens-readable-logs/readable-logs.json",
+      "bytes": 90,
+      "sha256": "53be5f1acd44c863b46b59c97c93bbc5d73f52fe9d94c1918e78b32e9fd7f9cd"
+    }
+  ]
+}
+(node:1478439) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///home/max/work/freelens-json-logs/src/core/snapshot.ts is not specified and it doesn't parse as CommonJS.
+Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+To eliminate this warning, add "type": "module" to /home/max/work/freelens-json-logs/package.json.
+(Use `node --trace-warnings ...` to show where the warning was created)
+{
+  "check": "production main/worker retention and resource churn",
+  "cycles": 20,
+  "limits": {
+    "heapUsed": 12582912,
+    "external": 8388608,
+    "rss": 100663296
+  },
+  "samples": [
+    {
+      "heapUsed": 15927792,
+      "external": 8865711,
+      "rss": 185401344,
+      "timers": 0,
+      "ports": 0,
+      "threads": 7
+    },
+    {
+      "heapUsed": 15926320,
+      "external": 8865751,
+      "rss": 185409536,
+      "timers": 0,
+      "ports": 0,
+      "threads": 7
+    },
+    {
+      "heapUsed": 11245552,
+      "external": 8861100,
+      "rss": 213905408,
+      "timers": 0,
+      "ports": 0,
+      "threads": 7
+    },
+    {
+      "heapUsed": 11253208,
+      "external": 8861100,
+      "rss": 213422080,
+      "timers": 0,
+      "ports": 0,
+      "threads": 7
+    },
+    {
+      "heapUsed": 11268816,
+      "external": 8861100,
+      "rss": 212664320,
+      "timers": 0,
+      "ports": 0,
+      "threads": 7
+    }
+  ],
+  "lifecycle": {
+    "starts": 60,
+    "exits": 60,
+    "live": 0,
+    "peak": 1,
+    "owners": 0,
+    "inflight": 0,
+    "peakInflight": 13,
+    "workerListenersAfterExit": 0,
+    "maxStopToExitMs": 74.67555800000001,
+    "queuedTransport": 0,
+    "senderListeners": 0,
+    "appListeners": 0
+  },
+  "stopToExitMs": [
+    0.529139999999984,
+    0.48064899999997124,
+    0.4833899999999858,
+    0.4678000000000111,
+    0.43424999999979264,
+    0.427120000000059,
+    0.4358199999999215,
+    0.47403000000008433,
+    0.45309900000006564,
+    0.5207399999999325,
+    0.45620000000008076,
+    0.4513799999999719,
+    0.42534900000009657,
+    0.4716800000001058,
+    0.4513400000000729,
+    0.48254899999983536,
+    0.49450900000010733,
+    0.44911000000001877,
+    0.5599099999999453,
+    0.5931289999998626
+  ],
+  "matchingAndRangeMs": [
+    101.53565499999996,
+    96.05006999999995,
+    67.47584400000005,
+    93.49225200000001,
+    67.21174399999995,
+    97.78298799999993,
+    66.65531399999986,
+    94.48905100000002,
+    65.97245500000008,
+    95.25673099999995,
+    67.66536399999995,
+    95.96061000000009,
+    65.85639600000013,
+    96.01929999999993,
+    66.87472400000024,
+    95.22742100000005,
+    66.39925500000027,
+    95.48585000000003,
+    68.54391200000009,
+    99.06767800000034
+  ],
+  "scope": "Real built workers and production SDK handlers; host/frame tree are stand-ins, not installed-host soak or native input"
+}
+{
+  "check": "production renderer RAM, DOM and disk",
+  "cycles": 40,
+  "reads": 320,
+  "writes": 0,
+  "observers": 0,
+  "frames": 0,
+  "timers": 0,
+  "highlights": 0,
+  "samples": [
+    {
+      "heapUsed": 9451572,
+      "documents": 1,
+      "nodes": 2818,
+      "jsEventListeners": 416,
+      "disk": {
+        "bytes": 3015363,
+        "files": 183
+      },
+      "lifecycle": {
+        "starts": 4,
+        "exits": 4,
+        "live": 0,
+        "peak": 1,
+        "owners": 0,
+        "inflight": 0,
+        "peakInflight": 2,
+        "workerListenersAfterExit": 0,
+        "maxStopToExitMs": 0.9007689999998547,
+        "queuedTransport": 0,
+        "senderListeners": 0,
+        "appListeners": 1
+      }
+    },
+    {
+      "heapUsed": 10158360,
+      "documents": 1,
+      "nodes": 2818,
+      "jsEventListeners": 416,
+      "disk": {
+        "bytes": 2967975,
+        "files": 190
+      },
+      "lifecycle": {
+        "starts": 10,
+        "exits": 10,
+        "live": 0,
+        "peak": 1,
+        "owners": 0,
+        "inflight": 0,
+        "peakInflight": 2,
+        "workerListenersAfterExit": 0,
+        "maxStopToExitMs": 0.9007689999998547,
+        "queuedTransport": 0,
+        "senderListeners": 0,
+        "appListeners": 1
+      }
+    },
+    {
+      "heapUsed": 10514328,
+      "documents": 1,
+      "nodes": 2817,
+      "jsEventListeners": 416,
+      "disk": {
+        "bytes": 2970104,
+        "files": 190
+      },
+      "lifecycle": {
+        "starts": 16,
+        "exits": 16,
+        "live": 0,
+        "peak": 1,
+        "owners": 0,
+        "inflight": 0,
+        "peakInflight": 2,
+        "workerListenersAfterExit": 0,
+        "maxStopToExitMs": 0.9007689999998547,
+        "queuedTransport": 0,
+        "senderListeners": 0,
+        "appListeners": 1
+      }
+    },
+    {
+      "heapUsed": 10302000,
+      "documents": 1,
+      "nodes": 2818,
+      "jsEventListeners": 416,
+      "disk": {
+        "bytes": 2970106,
+        "files": 190
+      },
+      "lifecycle": {
+        "starts": 22,
+        "exits": 22,
+        "live": 0,
+        "peak": 1,
+        "owners": 0,
+        "inflight": 0,
+        "peakInflight": 2,
+        "workerListenersAfterExit": 0,
+        "maxStopToExitMs": 0.9007689999998547,
+        "queuedTransport": 0,
+        "senderListeners": 0,
+        "appListeners": 1
+      }
+    },
+    {
+      "heapUsed": 10633772,
+      "documents": 1,
+      "nodes": 2817,
+      "jsEventListeners": 416,
+      "disk": {
+        "bytes": 2922498,
+        "files": 190
+      },
+      "lifecycle": {
+        "starts": 28,
+        "exits": 28,
+        "live": 0,
+        "peak": 1,
+        "owners": 0,
+        "inflight": 0,
+        "peakInflight": 2,
+        "workerListenersAfterExit": 0,
+        "maxStopToExitMs": 1.0295089999999618,
+        "queuedTransport": 0,
+        "senderListeners": 0,
+        "appListeners": 1
+      }
+    },
+    {
+      "heapUsed": 10647524,
+      "documents": 1,
+      "nodes": 2817,
+      "jsEventListeners": 416,
+      "disk": {
+        "bytes": 2922691,
+        "files": 190
+      },
+      "lifecycle": {
+        "starts": 34,
+        "exits": 34,
+        "live": 0,
+        "peak": 1,
+        "owners": 0,
+        "inflight": 0,
+        "peakInflight": 2,
+        "workerListenersAfterExit": 0,
+        "maxStopToExitMs": 1.0295089999999618,
+        "queuedTransport": 0,
+        "senderListeners": 0,
+        "appListeners": 1
+      }
+    },
+    {
+      "heapUsed": 10278468,
+      "documents": 1,
+      "nodes": 2818,
+      "jsEventListeners": 416,
+      "disk": {
+        "bytes": 2922690,
+        "files": 190
+      },
+      "lifecycle": {
+        "starts": 40,
+        "exits": 40,
+        "live": 0,
+        "peak": 1,
+        "owners": 0,
+        "inflight": 0,
+        "peakInflight": 2,
+        "workerListenersAfterExit": 0,
+        "maxStopToExitMs": 1.0295089999999618,
+        "queuedTransport": 0,
+        "senderListeners": 0,
+        "appListeners": 1
+      }
+    }
+  ],
+  "limits": {
+    "heapUsed": 8388608,
+    "nodes": 128,
+    "jsEventListeners": 8,
+    "documents": 0,
+    "diskBytes": 8388608,
+    "diskFiles": 128
+  }
+}
+{"check":"Find worker lifecycle after smoke","starts":40,"exits":40,"live":0,"peak":1,"owners":0,"inflight":0,"peakInflight":2,"workerListenersAfterExit":0,"maxStopToExitMs":1.0295089999999618,"queuedTransport":0,"senderListeners":0,"appListeners":0}
+Resource smoke passed: core/main and renderer.

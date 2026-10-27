@@ -1,0 +1,76 @@
+
+> freelens-readable-logs@0.1.34 test:workers
+> node scripts/verify-find-execution.mjs
+
+(node:1446068) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///home/max/work/freelens-json-logs/src/main/find-execution.ts is not specified and it doesn't parse as CommonJS.
+Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+To eliminate this warning, add "type": "module" to /home/max/work/freelens-json-logs/package.json.
+(Use `node --trace-warnings ...` to show where the warning was created)
+{
+  "package": "freelens-readable-logs@0.1.34",
+  "asset": "out/find-worker-0.1.34.js",
+  "environment": {
+    "node": "24.18.0",
+    "acorn": "8.16.0",
+    "ada": "3.4.4",
+    "amaro": "1.1.9",
+    "ares": "1.34.6",
+    "brotli": "1.2.0",
+    "cldr": "48.0",
+    "icu": "78.3",
+    "llhttp": "9.4.2",
+    "merve": "1.2.2",
+    "modules": "137",
+    "napi": "10",
+    "nbytes": "0.1.4",
+    "ncrypto": "0.0.1",
+    "nghttp2": "1.69.0",
+    "nghttp3": "",
+    "ngtcp2": "",
+    "openssl": "3.5.7",
+    "simdjson": "4.6.4",
+    "simdutf": "6.4.0",
+    "sqlite": "3.53.1",
+    "tz": "2026b",
+    "undici": "7.28.0",
+    "unicode": "17.0",
+    "uv": "1.52.1",
+    "uvwasi": "0.0.23",
+    "v8": "13.6.233.17-node.50",
+    "zlib": "1.3.1-e00f703",
+    "zstd": "1.5.7"
+  },
+  "cycles": 20,
+  "requests": 441,
+  "starts": 41,
+  "exits": 41,
+  "peak": 1,
+  "live": 0,
+  "startupStopToExitMs": 2.6045560000000023,
+  "supersessionThroughLatestReplyMs": {
+    "max": 18.104040999999995,
+    "samples": [
+      18.104040999999995,
+      15.773044999999996,
+      15.498784999999998,
+      15.870984000000007,
+      15.551164999999983,
+      15.538734999999974,
+      15.537045000000006,
+      15.687724999999972,
+      15.66250500000001,
+      15.311685000000011,
+      15.734904,
+      15.91253500000002,
+      15.803814000000017,
+      15.45664400000004,
+      15.840714000000048,
+      15.937123999999983,
+      15.201054999999997,
+      15.519645000000025,
+      15.232404999999972,
+      15.35821500000003
+    ]
+  },
+  "scope": "Actual built worker with production scheduler; SDK/frame ownership, mounted Find and host soak remain unverified"
+}

@@ -100,6 +100,23 @@ export async function verifyFindPresentation({ root, rows, button, query, refres
   }
   results.push('actual at/under/over 5 MiB retention, complete single-source DOM/selection, bounded fragments and late-source visible range requests');
 
+  // Status/toolbar changes can resize a clipping scroller without resizing the
+  // viewer or its source text, and without generating a scroll event.
+  const work = root.querySelector('.rl-work');
+  work.style.maxHeight = '120px';
+  await refresh(JSON.stringify({ message: `${'ordinary\n'.repeat(16)}middle Q\n${'ordinary\n'.repeat(64)}` }));
+  await query('Q'); await wait(); scroller.scrollTop = 0; await turn();
+  await until(() => !ranges().some(range => range.toString() === 'Q'), 'Clipping fixture did not hide Q');
+  const clippedSource = rows()[0].querySelector('.rl-message');
+  const sourceHeight = clippedSource.getBoundingClientRect().height, rootHeight = root.clientHeight;
+  const oldClipHeight = scroller.clientHeight, oldScrollTop = scroller.scrollTop;
+  work.style.maxHeight = '';
+  await until(() => scroller.clientHeight > oldClipHeight, 'Clipping scroller did not grow');
+  check(clippedSource.getBoundingClientRect().height === sourceHeight && root.clientHeight === rootHeight && scroller.scrollTop === oldScrollTop,
+    'Clipping fixture changed source/root geometry or scroll');
+  await until(() => ranges().some(range => range.toString() === 'Q'), 'Newly visible hit after clipping-scroller resize is undecorated');
+  results.push('clipping-scroller resize requests newly visible ranges while source/root dimensions and scroll remain unchanged');
+
   await refresh('{"message":"x","other":"\\u03a3","value":"needle"}');
   rows()[0].querySelector('.rl-row').click(); button('All fields');
   button('Clear'); root.querySelector('[aria-label="Close Find"]').click();

@@ -1,0 +1,60 @@
+[
+  {
+    "request": {
+      "key": {
+        "viewerEpoch": 20,
+        "targetEpoch": 1,
+        "instanceEpoch": 2,
+        "windowRevision": 7,
+        "messageRevision": 47,
+        "queryRevision": 2
+      },
+      "work": "ranges",
+      "interest": {
+        "id": 479,
+        "scopes": [
+          {
+            "ref": {
+              "context": "[20,\"2cb8121942e3cd749887202eec4bb10d\",\"find-verification-48-1376280\",\"find-fixtures\",\"0e9afa35-c7e2-4d01-8386-aae46c2d6bae\",2]",
+              "occurrence": 0
+            },
+            "source": "message",
+            "start": 5240547,
+            "end": 5242720
+          }
+        ]
+      }
+    }
+  },
+  {
+    "reply": {
+      "requestId": 212,
+      "key": {
+        "viewerEpoch": 20,
+        "targetEpoch": 1,
+        "instanceEpoch": 2,
+        "windowRevision": 7,
+        "messageRevision": 47,
+        "queryRevision": 2
+      },
+      "workerGeneration": 2,
+      "kind": "ranges",
+      "interestId": 479,
+      "ranges": [],
+      "coverage": [
+        {
+          "scope": {
+            "ref": {
+              "context": "[20,\"2cb8121942e3cd749887202eec4bb10d\",\"find-verification-48-1376280\",\"find-fixtures\",\"0e9afa35-c7e2-4d01-8386-aae46c2d6bae\",2]",
+              "occurrence": 0
+            },
+            "source": "message",
+            "start": 5240547,
+            "end": 5242720
+          },
+          "complete": true
+        }
+      ]
+    }
+  }
+]

@@ -1,5 +1,12 @@
 # Integrated production Find acceptance matrix
 
+Latest current artifact: [cadence continuation](cadence.md), package SHA-256
+`1775d0f0aaa1d23002bf723d68c6840fa44d2c6bd3c5536e72bbc05546f0fdf1`.
+Its installed terminal-Q regression, 33 DOM-state checks, SDK/frame suite and
+both mounted resource workloads pass in a **privately modified compositor**.
+All other Host cells below retain their historical package scope and need current
+artifact confirmation. Stock-output, complete Host/native/platform gates remain.
+
 This is a partial #48 checkpoint, not release acceptance. Authority is the
 accepted plan at `d02b7e7c19c8e48b1cde714f0a23813b40374824`, its reviewed
 `a774370` design with literal-only/black-canvas exceptions, and full #36/#37/#38/#40

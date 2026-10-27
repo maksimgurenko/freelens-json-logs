@@ -4,6 +4,83 @@ import { FindClient } from '../src/renderer/find-client.ts';
 import { FindRanges } from '../src/renderer/find-ranges.ts';
 import type { FindRequest } from '../src/core/find-protocol.ts';
 
+test('a clipping resize inside pending coverage completes without restarting decoration', async () => {
+  const calls: { request: FindRequest; resolve: (value: unknown) => void }[] = [];
+  const client = new FindClient({ async invoke(channel, ...args) {
+    if (channel === 'find-open') return 'owner';
+    if (channel === 'find-request') return new Promise(resolve => calls.push({ request: args[1] as FindRequest, resolve }));
+  } }, 'viewer');
+  const ranges = new FindRanges(client, () => {}), ref = { context: 'one', occurrence: 0 };
+  const inputs = { key: { viewerEpoch: 1, targetEpoch: 1, instanceEpoch: 1, windowRevision: 1, messageRevision: 1, queryRevision: 1 },
+    query: { text: 'a', matchCase: false, wholeWords: false }, records: [{ ref, application: 'a a a' }] };
+  const scope = { ref, source: 'application' as const, start: 0, end: 5 };
+  const tick = async () => { for (let i = 0; i < 12; i++) await Promise.resolve(); };
+  try {
+    ranges.update(inputs, [scope], 1); await tick();
+    ranges.update(inputs, [{ ...scope, start: 2, end: 3 }], 1); await tick();
+    const { request, resolve } = calls[0];
+    resolve({ requestId: request.requestId, key: request.key, workerGeneration: 1, kind: 'ranges', interestId: request.rangeInterest!.id,
+      ranges: [{ ...scope, start: 2, end: 3 }], coverage: [{ scope, complete: true }] });
+    await tick();
+    assert.equal(ranges.state.phase, 'ready', 'Shrinking the clip discarded a reply covering the visible text');
+    assert.equal(calls.length, 1);
+    ranges.update(inputs, [scope], 1); await tick();
+    assert.equal(ranges.state.phase, 'ready'); assert.equal(calls.length, 1);
+  } finally { ranges.dispose(); await client.dispose(); }
+});
+
+test('incomplete coverage still requests a narrower late-source interest', async () => {
+  const calls: FindRequest[] = [];
+  const client = new FindClient({ async invoke(channel, ...args) {
+    if (channel === 'find-open') return 'owner';
+    if (channel !== 'find-request') return;
+    const request = args[1] as FindRequest; calls.push(request);
+    return { requestId: request.requestId, key: request.key, workerGeneration: 1, kind: 'ranges', interestId: request.rangeInterest!.id,
+      ranges: [{ ...request.rangeInterest!.scopes[0], end: request.rangeInterest!.scopes[0].start + 1 }],
+      coverage: request.rangeInterest!.scopes.map(scope => ({ scope, complete: calls.length > 1 })) };
+  } }, 'viewer');
+  const ranges = new FindRanges(client, () => {}), ref = { context: 'one', occurrence: 0 };
+  const inputs = { key: { viewerEpoch: 1, targetEpoch: 1, instanceEpoch: 1, windowRevision: 1, messageRevision: 1, queryRevision: 1 },
+    query: { text: 'a', matchCase: false, wholeWords: false }, records: [{ ref, application: 'a a a' }] };
+  const scope = { ref, source: 'application' as const, start: 0, end: 5 };
+  const tick = async () => { for (let i = 0; i < 12; i++) await Promise.resolve(); };
+  try {
+    ranges.update(inputs, [scope], 1); await tick(); assert.equal(ranges.state.complete, false);
+    ranges.update(inputs, [{ ...scope, start: 4 }], 1); await tick();
+    assert.equal(calls.length, 2); assert.equal(ranges.state.phase, 'ready'); assert.equal(ranges.state.complete, true);
+    assert.equal(ranges.state.ranges[0].start, 4);
+  } finally { ranges.dispose(); await client.dispose(); }
+});
+
+test('a newer covered interest is evaluated after a pending broad reply proves incomplete', async () => {
+  const calls: { request: FindRequest; resolve: (value: unknown) => void }[] = [];
+  const client = new FindClient({ async invoke(channel, ...args) {
+    if (channel === 'find-open') return 'owner';
+    if (channel === 'find-request') return new Promise(resolve => calls.push({ request: args[1] as FindRequest, resolve }));
+  } }, 'viewer');
+  const ranges = new FindRanges(client, () => {}), ref = { context: 'one', occurrence: 0 };
+  const inputs = { key: { viewerEpoch: 1, targetEpoch: 1, instanceEpoch: 1, windowRevision: 1, messageRevision: 1, queryRevision: 1 },
+    query: { text: 'a', matchCase: false, wholeWords: false }, records: [{ ref, application: 'a a a' }] };
+  const scope = { ref, source: 'application' as const, start: 0, end: 5 };
+  const tick = async () => { for (let i = 0; i < 12; i++) await Promise.resolve(); };
+  const reply = (index: number, start: number, complete: boolean) => {
+    const { request, resolve } = calls[index];
+    resolve({ requestId: request.requestId, key: request.key, workerGeneration: 1, kind: 'ranges', interestId: request.rangeInterest!.id,
+      ranges: [{ ...scope, start, end: start + 1 }], coverage: request.rangeInterest!.scopes.map(scope => ({ scope, complete })) });
+  };
+  try {
+    ranges.update(inputs, [scope], 1); await tick();
+    ranges.update(inputs, [{ ...scope, start: 2, end: 3 }], 1);
+    ranges.update(inputs, [{ ...scope, start: 4 }], 1); await tick();
+    assert.equal(calls.length, 1, 'Covered pending work should retain its deadline');
+    reply(0, 0, false); await tick();
+    assert.equal(calls.length, 2, 'Incomplete pending reply lost the latest visible interest');
+    assert.deepEqual(calls[1].request.rangeInterest!.scopes, [{ ...scope, start: 4 }]);
+    reply(1, 4, true); await tick();
+    assert.equal(ranges.state.phase, 'ready'); assert.equal(ranges.state.ranges[0].start, 4);
+  } finally { ranges.dispose(); await client.dispose(); }
+});
+
 test('decoration failure latches independently of exact matching and explicit retry uses current interest', async () => {
   const requests: FindRequest[] = [];
   let fail = true;

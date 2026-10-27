@@ -1,0 +1,110 @@
+{
+  "namespace": "find-verification-48-1483290",
+  "namespaceUid": "b8ad41f9-93bb-4a26-98eb-fa47b127235b",
+  "podUid": "13b408b6-f653-483e-98d2-b712a809f4c9",
+  "image": "busybox:1.37.0@sha256:bdf57e528e45e4433820e045b29b4597825a1c9e38353532d90a01445013f82e",
+  "containers": [
+    {
+      "containerID": "containerd://501670f74a2177deda236592e278c096c4868312d3561d13e6da588163a4ffa2",
+      "image": "docker.io/library/busybox:1.37",
+      "imageID": "docker.io/library/busybox@sha256:bdf57e528e45e4433820e045b29b4597825a1c9e38353532d90a01445013f82e",
+      "lastState": {},
+      "name": "dense",
+      "ready": true,
+      "resources": {},
+      "restartCount": 0,
+      "started": true,
+      "state": {
+        "running": {
+          "startedAt": "2026-10-27T07:33:45Z"
+        }
+      },
+      "user": {
+        "linux": {
+          "gid": 0,
+          "supplementalGroups": [
+            0,
+            10
+          ],
+          "uid": 0
+        }
+      },
+      "volumeMounts": [
+        {
+          "mountPath": "/var/run/secrets/kubernetes.io/serviceaccount",
+          "name": "kube-api-access-p8twv",
+          "readOnly": true,
+          "recursiveReadOnly": "Disabled"
+        }
+      ]
+    },
+    {
+      "containerID": "containerd://01eda1d8f50b8b6afc7984ded0da20df4d7d02e92732721ecade94cab75f90af",
+      "image": "docker.io/library/busybox:1.37",
+      "imageID": "docker.io/library/busybox@sha256:bdf57e528e45e4433820e045b29b4597825a1c9e38353532d90a01445013f82e",
+      "lastState": {},
+      "name": "long",
+      "ready": true,
+      "resources": {},
+      "restartCount": 0,
+      "started": true,
+      "state": {
+        "running": {
+          "startedAt": "2026-10-27T07:33:45Z"
+        }
+      },
+      "user": {
+        "linux": {
+          "gid": 0,
+          "supplementalGroups": [
+            0,
+            10
+          ],
+          "uid": 0
+        }
+      },
+      "volumeMounts": [
+        {
+          "mountPath": "/var/run/secrets/kubernetes.io/serviceaccount",
+          "name": "kube-api-access-p8twv",
+          "readOnly": true,
+          "recursiveReadOnly": "Disabled"
+        }
+      ]
+    },
+    {
+      "containerID": "containerd://7035777982662f78c261d45978f328b6821459a860b127b26b2b0889bf868b81",
+      "image": "docker.io/library/busybox:1.37",
+      "imageID": "docker.io/library/busybox@sha256:bdf57e528e45e4433820e045b29b4597825a1c9e38353532d90a01445013f82e",
+      "lastState": {},
+      "name": "traces",
+      "ready": true,
+      "resources": {},
+      "restartCount": 0,
+      "started": true,
+      "state": {
+        "running": {
+          "startedAt": "2026-10-27T07:33:45Z"
+        }
+      },
+      "user": {
+        "linux": {
+          "gid": 0,
+          "supplementalGroups": [
+            0,
+            10
+          ],
+          "uid": 0
+        }
+      },
+      "volumeMounts": [
+        {
+          "mountPath": "/var/run/secrets/kubernetes.io/serviceaccount",
+          "name": "kube-api-access-p8twv",
+          "readOnly": true,
+          "recursiveReadOnly": "Disabled"
+        }
+      ]
+    }
+  ]
+}

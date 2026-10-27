@@ -1,0 +1,1 @@
+{"pass":false,"checks":["Exact matching remains one record","Terminal Q is visible in the real source"],"error":"AssertionError [ERR_ASSERTION]: Visible terminal Q has no Custom Highlight\n    at file:///home/max/work/freelens-json-logs/scripts/find-production-host/long-source.mjs:51:3"}

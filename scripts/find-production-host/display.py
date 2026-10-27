@@ -58,7 +58,8 @@ try:
         time.sleep(.05)
     else: raise RuntimeError('Private outer socket did not appear')
     config = scratch / 'hyprland.lua'
-    config.write_text('-- Disposable nested compositor; no user configuration or startup commands.\n')
+    config.write_text('-- Disposable nested compositor; no user configuration or startup commands.\n'
+                      'hl.monitor({output="", mode="1920x1080@60", position="0x0", scale=1})\n')
     nested_env = dict(base, WAYLAND_DISPLAY=str(sockets[0]), AQ_DRM_DEVICES='/dev/null', LIBSEAT_BACKEND='seatd', SEATD_SOCK=str(scratch / 'no-seatd.sock'))
     output = (evidence / 'hyprland.log').open('w')
     nested = subprocess.Popen(['Hyprland', '--config', str(config)], env=nested_env, stdout=output, stderr=subprocess.STDOUT)
@@ -68,7 +69,7 @@ try:
         candidates = list((runtime / 'hypr').glob('*/.socket.sock'))
         if candidates:
             candidate = candidates[0].parent.name
-            test = subprocess.run(['hyprctl', 'activeworkspace', '-j'], env=dict(nested_env, HYPRLAND_INSTANCE_SIGNATURE=candidate), capture_output=True, text=True)
+            test = subprocess.run(['hyprctl', 'activeworkspace', '-j'], env=dict(nested_env, HYPRLAND_INSTANCE_SIGNATURE=candidate), capture_output=True, text=True, timeout=2)
             if test.returncode == 0 and test.stdout.lstrip().startswith('{'): instance = candidate; break
         time.sleep(.05)
     if not instance: raise RuntimeError('Nested Hyprland IPC did not become ready')

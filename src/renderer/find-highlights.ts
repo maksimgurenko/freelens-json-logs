@@ -58,6 +58,9 @@ export class FindHighlights {
         visible: [] as FindScope[], fragments: Array.from(element.querySelectorAll<HTMLElement>('[data-source-start]')).map(fragment =>
           ({ node: fragment.firstChild as Text, start: Number(fragment.dataset.sourceStart) })).filter(fragment => !!fragment.node) };
       this.resize.observe(element);
+      // Local status/toolbar layout can expose text by resizing its clipping
+      // scroller while the root and source keep exactly the same dimensions.
+      for (const parent of this.clippingParents(element)) this.resize.observe(parent);
       return source;
     }) : [];
     this.clearHighlights();
@@ -70,15 +73,20 @@ export class FindHighlights {
     if (this.closed || this.frame) return;
     this.frame = requestAnimationFrame(() => { this.frame = 0; this.measure(); });
   };
-  private clip(element: HTMLElement): Clip {
-    let clip: Clip = this.root.getBoundingClientRect();
+  private clippingParents(element: HTMLElement): HTMLElement[] {
+    const parents: HTMLElement[] = [];
     for (let parent = element.parentElement; parent && parent !== this.root; parent = parent.parentElement) {
       const style = getComputedStyle(parent);
-      if (/(auto|scroll|hidden|clip)/.test(`${style.overflowX} ${style.overflowY}`)) {
-        const rect = parent.getBoundingClientRect();
-        clip = intersect(clip, { top: rect.top + parent.clientTop, left: rect.left + parent.clientLeft,
-          right: rect.left + parent.clientLeft + parent.clientWidth, bottom: rect.top + parent.clientTop + parent.clientHeight });
-      }
+      if (/(auto|scroll|hidden|clip)/.test(`${style.overflowX} ${style.overflowY}`)) parents.push(parent);
+    }
+    return parents;
+  }
+  private clip(element: HTMLElement): Clip {
+    let clip: Clip = this.root.getBoundingClientRect();
+    for (const parent of this.clippingParents(element)) {
+      const rect = parent.getBoundingClientRect();
+      clip = intersect(clip, { top: rect.top + parent.clientTop, left: rect.left + parent.clientLeft,
+        right: rect.left + parent.clientLeft + parent.clientWidth, bottom: rect.top + parent.clientTop + parent.clientHeight });
     }
     return clip;
   }
@@ -118,7 +126,11 @@ export class FindHighlights {
     }
     // Duplicate viewport/inspector presentations can request the same source.
     const unique = [...new Map(scopes.map(scope => [JSON.stringify(scope), scope])).values()];
+    const previous = this.ranges.state;
     this.ranges.update(this.inputs, unique, this.revision);
+    // Covered interest can reuse ready data without publishing a new reply.
+    // Project those ranges through this measurement's current visible spans.
+    if (this.ranges.state === previous) this.draw(previous);
   }
   private nativeRange(source: SourceIndex, scope: FindScope): Range | undefined {
     const start = source.fragments.find(fragment => fragment.start <= scope.start && fragment.start + fragment.node.length > scope.start);

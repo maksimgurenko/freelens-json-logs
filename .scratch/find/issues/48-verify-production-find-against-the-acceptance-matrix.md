@@ -84,3 +84,33 @@ checks and matching two-build SHA-256. [Independent reviews](../../../docs/verif
 corrected stale trace verdicts and kept row-zero Host evidence pending; no remaining
 actionable defect. Owned profile/runtimes/apps/raw heaps and UID-checked namespace
 are cleaned up; recorded user/config hashes and real desktop state are preserved.
+
+### Continuation from d235606
+
+Reclaimed #48; live bodies/full comments match cached authority. [Natural-frame
+and clipping report](../../../docs/verification/48/cadence.md) records a private
+compositor startup diagnostic, natural rAF without screenshots, and a production
+highlight fix established by failing installed-host and range-controller checks.
+Clipping ancestors now invalidate visible interest; covered pending/complete
+range work survives smaller clips and redraws current visible spans. Incomplete
+coverage still requests late-source ranges; no deadline reset or fallback.
+
+Final package SHA-256
+`1775d0f0aaa1d23002bf723d68c6840fa44d2c6bd3c5536e72bbc05546f0fdf1`.
+Fresh isolated form installation, all 20 terminal-Q samples, 33 DOM-state checks,
+SDK/frame suite and dense/long mounted resources pass. Three warmups/six samples
+per bound have +5 retained nodes, zero listener growth each; all worker exits are
+observed. Pinned typecheck, 249 tests, six UI guards, browser/worker/resource,
+strict package checks and deterministic rebuild pass. Earlier failed attempts
+are retained. Modified compositor and short samples are explicit evidence limits.
+Original acceptance text/checkboxes remain unchanged; full Host, stock-resource,
+physical/native/clipboard and Windows/macOS gates remain unfinished.
+
+Independent [Standards and Spec reviews](../../../docs/verification/48/review-cadence.md)
+leave zero actionable findings. Spec identified a lost newer interest during a
+pending broad reply; the added red/green regression now preserves only the latest
+interest and requests it after an incomplete reply. Current full suite is 249
+passing tests; the final installed artifact repeats long-source, state, SDK/frame
+and both resource checks. Owned processes/profile credentials/runtimes and the
+UID-checked namespace are removed; recorded user/config hashes are unchanged.
+The precise autonomous continuation remains NEXT.md; release acceptance is open.

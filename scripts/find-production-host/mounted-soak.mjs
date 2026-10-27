@@ -4,11 +4,14 @@ import assert from 'node:assert/strict';
 import { readFileSync, readdirSync } from 'node:fs';
 import { driver, report, sleep } from './driver.mjs';
 import { privateSession } from './private-session.mjs';
+import { checkFrameCadence } from './frame-cadence.mjs';
 const cleanInspector=process.env.FIND_SOAK_INSPECTOR_CLEAN==='1';
-const d=await driver(),result={session:privateSession(),samples:[],limits:'Three warmups and six samples per bound. Background CDP screenshots drive frames; native presentation and input cadence remain unverified.'};
-let pumping=false;const pump=setInterval(async()=>{if(pumping)return;pumping=true;try{await d.page.send('Page.captureScreenshot',{format:'png'});}catch{}finally{pumping=false;}},150);
+const naturalFrames=process.env.FIND_SOAK_NATURAL_FRAMES==='1';
+const d=await driver(),result={session:privateSession(),samples:[],limits:`Three warmups and six samples per bound. ${naturalFrames?'Natural private-output frames; no screenshots.':'Background CDP screenshots drive frames.'} Native input cadence remains unverified.`};
+let pumping=false;const pump=naturalFrames?null:setInterval(async()=>{if(pumping)return;pumping=true;try{await d.page.send('Page.captureScreenshot',{format:'png'});}catch{}finally{pumping=false;}},150);
 const until=async(predicate)=>{for(let i=0;i<400;i++){if(await predicate())return;await sleep(25);}throw Error('Mounted soak did not settle');};
 try {
+  if(naturalFrames)result.frameCadence=await checkFrameCadence(d);
   await d.bind(d.cluster());
   const fixture=JSON.parse(readFileSync(`${evidence}/fixture.json`));
   const clusterId=await d.page.evaluate('global.LensExtensions.Renderer.Catalog.getActiveCluster().id',d.cluster());
@@ -22,19 +25,24 @@ try {
       await d.page.evaluate(`(()=>{const select=document.querySelector('select[aria-label="Container"]');select.value=${JSON.stringify(name)};select.dispatchEvent(new Event('change',{bubbles:true}));return true;})()`,d.cluster());
       await until(()=>d.page.evaluate(`document.querySelectorAll('.rl-record').length===${name==='dense'?1000:1}&&!document.querySelector('.rl-records[aria-busy="true"]')`,d.cluster()));
       const started=performance.now();
-      await d.page.evaluate(`(()=>{const root=document.querySelector('.readable-logs');const b=n=>[...root.querySelectorAll('button')].find(x=>x.textContent.trim()===n).click();b('Pause');b('Find');const input=root.querySelector('#rl-find');Object.getOwnPropertyDescriptor(HTMLInputElement.prototype,'value').set.call(input,${JSON.stringify(name==='dense'?'a':'Q')});input.dispatchEvent(new Event('input',{bubbles:true}));return true;})()`,d.cluster());
+      const query=name==='dense'?'a':'Q';
+      await d.page.evaluate(`(()=>{const root=document.querySelector('.readable-logs');const b=n=>[...root.querySelectorAll('button')].find(x=>x.textContent.trim()===n).click();b('Pause');b('Find');const input=root.querySelector('#rl-find');Object.getOwnPropertyDescriptor(HTMLInputElement.prototype,'value').set.call(input,${JSON.stringify(query)});input.dispatchEvent(new Event('input',{bubbles:true}));return true;})()`,d.cluster());
       await until(()=>d.page.evaluate(`document.querySelector('.rl-find-count')?.textContent.endsWith('of ${name==='dense'?1000:1} matching records')`,d.cluster()));
       const matchObservedMs=performance.now()-started;
-      if(name==='long')await d.page.evaluate(`(()=>{const root=document.querySelector('.readable-logs');root.querySelector('.rl-display-options').open=true;[...root.querySelectorAll('.rl-display-panel label')].find(e=>e.textContent.includes('Word wrap')).querySelector('input').click();root.querySelector('.rl-display-options').open=false;const scroller=root.querySelector('.rl-records');scroller.scrollTop=scroller.scrollHeight;return true;})()`,d.cluster());
+      if(name==='long')await d.page.evaluate(`(async()=>{const root=document.querySelector('.readable-logs');root.querySelector('.rl-display-options').open=true;[...root.querySelectorAll('.rl-display-panel label')].find(e=>e.textContent.includes('Word wrap')).querySelector('input').click();root.querySelector('.rl-display-options').open=false;await new Promise(resolve=>requestAnimationFrame(()=>requestAnimationFrame(resolve)));[...root.querySelectorAll('button')].find(b=>b.textContent.trim()==='To bottom').click();return true;})()`,d.cluster());
       await until(()=>d.page.evaluate('[...CSS.highlights].some(([,h])=>h.size>0)',d.cluster()));
-      const active=await d.page.evaluate(`({rows:document.querySelectorAll('.rl-record').length,sourceUnits:[...document.querySelectorAll('.rl-message')].reduce((n,e)=>n+e.textContent.length,0),highlights:[...CSS.highlights].reduce((n,[,h])=>n+h.size,0),marks:document.querySelectorAll('.rl-find-mark').length,status:document.querySelector('.rl-highlight-status')?.textContent,query:document.querySelector('#rl-find').value,paused:document.querySelector('.rl-update-status').textContent})`,d.cluster());
+      const active=await d.page.evaluate(`({rows:document.querySelectorAll('.rl-record').length,sourceUnits:[...document.querySelectorAll('.rl-message')].reduce((n,e)=>n+e.textContent.length,0),highlights:[...CSS.highlights].reduce((n,[,h])=>n+h.size,0),highlightStarts:[...CSS.highlights].flatMap(([,h])=>[...h].map(r=>Number(r.startContainer.parentElement.dataset.sourceStart)+r.startOffset)),marks:document.querySelectorAll('.rl-find-mark').length,status:document.querySelector('.rl-highlight-status')?.textContent,query:document.querySelector('#rl-find').value,paused:document.querySelector('.rl-update-status').textContent})`,d.cluster());
       assert(active.highlights>0&&active.highlights<=1024);assert(active.marks>0);assert.equal(active.paused,'Paused');
+      if(name==='long')assert(active.highlightStarts.some(start=>start>active.sourceUnits-8192),'Long workload did not decorate late visible source');
       const stop=performance.now();await d.page.evaluate("global.LensExtensions.Renderer.Navigation.navigate('/extensions');true",d.root());
       await d.wait(s=>!s.live&&s.service.executions.every(e=>!e.active&&!e.running&&!e.pending&&!e.slot));const inactiveMs=performance.now()-stop;
       await d.page.evaluate(`global.LensExtensions.Renderer.Navigation.navigate('/cluster/'+${JSON.stringify(clusterId)});true`,d.root());
-      await until(()=>d.page.evaluate(`document.querySelector('#rl-find')?.value===${JSON.stringify(name==='dense'?'a':'Q')}`,d.cluster()));
+      await until(()=>d.page.evaluate(`document.querySelector('#rl-find')?.value===${JSON.stringify(query)}`,d.cluster()));
       assert.equal(await d.page.evaluate('document.querySelector(".rl-update-status").textContent',d.cluster()),'Paused');
       await d.page.evaluate("global.LensExtensions.Renderer.Navigation.navigate('/overview');true",d.cluster());await d.wait(s=>!s.live&&!s.service.owners&&!s.service.retiring);
+      // Let native scroll/lifecycle queues drain after unmount before measuring
+      // retained objects. The natural-frame precondition is checked above.
+      if(naturalFrames)await d.page.evaluate('new Promise(resolve=>requestAnimationFrame(()=>requestAnimationFrame(resolve)))',d.cluster());
       if(cleanInspector){await d.page.send('Runtime.discardConsoleEntries');await d.main.send('Runtime.discardConsoleEntries');}
       await d.main.send('HeapProfiler.collectGarbage');await d.page.send('HeapProfiler.collectGarbage');
       const cleanup=await d.page.evaluate('({highlights:CSS.highlights.size,rows:document.querySelectorAll(".rl-record").length,memory:process.memoryUsage()})',d.cluster());

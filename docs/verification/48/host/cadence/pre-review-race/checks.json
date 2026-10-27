@@ -1,0 +1,104 @@
+[
+  {
+    "name": "toolchain",
+    "command": [
+      "node",
+      "--version"
+    ],
+    "exit": 0,
+    "seconds": 0.0024388360034208745
+  },
+  {
+    "name": "typecheck",
+    "command": [
+      "node",
+      ".scratch/readable-logs/toolchain/node_modules/npm/bin/npm-cli.js",
+      "run",
+      "typecheck"
+    ],
+    "exit": 0,
+    "seconds": 1.2864747109997552
+  },
+  {
+    "name": "tests",
+    "command": [
+      "node",
+      ".scratch/readable-logs/toolchain/node_modules/npm/bin/npm-cli.js",
+      "test"
+    ],
+    "exit": 0,
+    "seconds": 0.613475088000996
+  },
+  {
+    "name": "ui-guards",
+    "command": [
+      "python3",
+      "-B",
+      "-m",
+      "unittest",
+      "discover",
+      "-s",
+      "tests",
+      "-p",
+      "ui_desktop_test.py",
+      "-v"
+    ],
+    "exit": 0,
+    "seconds": 0.12660429399693385
+  },
+  {
+    "name": "browser",
+    "command": [
+      "node",
+      ".scratch/readable-logs/toolchain/node_modules/npm/bin/npm-cli.js",
+      "run",
+      "test:browser"
+    ],
+    "exit": 0,
+    "seconds": 41.67184453297523
+  },
+  {
+    "name": "workers",
+    "command": [
+      "node",
+      ".scratch/readable-logs/toolchain/node_modules/npm/bin/npm-cli.js",
+      "run",
+      "test:workers"
+    ],
+    "exit": 0,
+    "seconds": 0.4273259890032932
+  },
+  {
+    "name": "resources",
+    "command": [
+      "node",
+      ".scratch/readable-logs/toolchain/node_modules/npm/bin/npm-cli.js",
+      "run",
+      "test:smoke"
+    ],
+    "exit": 0,
+    "seconds": 62.560272058995906
+  },
+  {
+    "name": "package",
+    "command": [
+      "node",
+      ".scratch/readable-logs/toolchain/node_modules/npm/bin/npm-cli.js",
+      "run",
+      "package"
+    ],
+    "exit": 0,
+    "seconds": 0.27263424498960376
+  },
+  {
+    "name": "package-check",
+    "command": [
+      "node",
+      ".scratch/readable-logs/toolchain/node_modules/npm/bin/npm-cli.js",
+      "run",
+      "check:package"
+    ],
+    "exit": 0,
+    "seconds": 1.1497796440089587
+  }
+]

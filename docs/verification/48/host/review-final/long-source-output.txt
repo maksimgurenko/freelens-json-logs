@@ -1,0 +1,1 @@
+{"pass":true,"checks":["Completed exact matching remains one record; maintenance is honestly pending","Terminal Q is visible in the real source","Visible terminal Q has a settled source-safe Custom Highlight"]}
