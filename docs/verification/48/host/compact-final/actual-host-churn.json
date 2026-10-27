@@ -1,0 +1,209 @@
+{
+  "cycles": [
+    {
+      "cycle": 0,
+      "starts": 177,
+      "exits": 177,
+      "live": 0
+    },
+    {
+      "cycle": 1,
+      "starts": 179,
+      "exits": 179,
+      "live": 0
+    },
+    {
+      "cycle": 2,
+      "starts": 181,
+      "exits": 181,
+      "live": 0
+    },
+    {
+      "cycle": 3,
+      "starts": 183,
+      "exits": 183,
+      "live": 0
+    },
+    {
+      "cycle": 4,
+      "starts": 185,
+      "exits": 185,
+      "live": 0
+    },
+    {
+      "cycle": 5,
+      "starts": 187,
+      "exits": 187,
+      "live": 0
+    },
+    {
+      "cycle": 6,
+      "starts": 189,
+      "exits": 189,
+      "live": 0
+    },
+    {
+      "cycle": 7,
+      "starts": 191,
+      "exits": 191,
+      "live": 0
+    },
+    {
+      "cycle": 8,
+      "starts": 193,
+      "exits": 193,
+      "live": 0
+    },
+    {
+      "cycle": 9,
+      "starts": 195,
+      "exits": 195,
+      "live": 0
+    },
+    {
+      "cycle": 10,
+      "starts": 197,
+      "exits": 197,
+      "live": 0
+    },
+    {
+      "cycle": 11,
+      "starts": 199,
+      "exits": 199,
+      "live": 0
+    },
+    {
+      "cycle": 12,
+      "starts": 201,
+      "exits": 201,
+      "live": 0
+    },
+    {
+      "cycle": 13,
+      "starts": 203,
+      "exits": 203,
+      "live": 0
+    },
+    {
+      "cycle": 14,
+      "starts": 205,
+      "exits": 205,
+      "live": 0
+    },
+    {
+      "cycle": 15,
+      "starts": 207,
+      "exits": 207,
+      "live": 0
+    },
+    {
+      "cycle": 16,
+      "starts": 209,
+      "exits": 209,
+      "live": 0
+    },
+    {
+      "cycle": 17,
+      "starts": 211,
+      "exits": 211,
+      "live": 0
+    },
+    {
+      "cycle": 18,
+      "starts": 213,
+      "exits": 213,
+      "live": 0
+    },
+    {
+      "cycle": 19,
+      "starts": 215,
+      "exits": 215,
+      "live": 0
+    }
+  ],
+  "final": {
+    "starts": 215,
+    "exits": 215,
+    "live": 0,
+    "peak": 1,
+    "resources": [
+      "TCPServerWrap",
+      "StatWatcher",
+      "StatWatcher",
+      "StatWatcher",
+      "StatWatcher",
+      "StatWatcher",
+      "StatWatcher",
+      "PipeWrap",
+      "PipeWrap",
+      "PipeWrap",
+      "ProcessWrap",
+      "TCPSocketWrap",
+      "TCPSocketWrap",
+      "TCPSocketWrap",
+      "TCPSocketWrap",
+      "TCPSocketWrap",
+      "TCPSocketWrap",
+      "TCPSocketWrap",
+      "TCPSocketWrap",
+      "TCPSocketWrap",
+      "TCPSocketWrap",
+      "TCPSocketWrap",
+      "TCPSocketWrap",
+      "TCPSocketWrap",
+      "TCPSocketWrap",
+      "TCPSocketWrap",
+      "TCPSocketWrap",
+      "Timeout",
+      "Timeout",
+      "Timeout"
+    ],
+    "beforeQuit": 1,
+    "handlers": [
+      "extensions@52bcb660c8d041a54a070bdd6e17e58f5cf11bd54b272b18828e5cdcfc4ff1c4:find-open",
+      "extensions@52bcb660c8d041a54a070bdd6e17e58f5cf11bd54b272b18828e5cdcfc4ff1c4:find-request",
+      "extensions@52bcb660c8d041a54a070bdd6e17e58f5cf11bd54b272b18828e5cdcfc4ff1c4:find-control"
+    ],
+    "windows": [
+      {
+        "id": 2,
+        "pid": 2007381,
+        "frames": [
+          {
+            "processId": 5,
+            "routingId": 1,
+            "url": "https://renderer.freelens.app:46641/cluster/66d54a72f37fb55d6d07b2455ce71621"
+          },
+          {
+            "processId": 5,
+            "routingId": 5,
+            "url": "https://66d54a72f37fb55d6d07b2455ce71621.renderer.freelens.app:46641/overview"
+          }
+        ],
+        "listeners": [
+          [
+            "destroyed",
+            1
+          ],
+          [
+            "render-process-gone",
+            1
+          ],
+          [
+            "did-frame-navigate",
+            0
+          ]
+        ]
+      }
+    ],
+    "service": {
+      "owners": 0,
+      "retiring": 0,
+      "opening": 0,
+      "senders": 0,
+      "watch": false,
+      "executions": []
+    }
+  },
+  "pass": true
+}

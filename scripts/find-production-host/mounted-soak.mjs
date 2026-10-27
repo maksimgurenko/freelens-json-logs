@@ -1,13 +1,26 @@
-import { evidence } from './config.mjs';
+import { evidence, scratch } from './config.mjs';
 // Actual installed viewer + snapshots/Find/active-idle/teardown. No native input.
 import assert from 'node:assert/strict';
-import { readFileSync, readdirSync } from 'node:fs';
+import { readFileSync, readdirSync, lstatSync } from 'node:fs';
+import { createHash } from 'node:crypto';
+import { join } from 'node:path';
 import { driver, report, sleep } from './driver.mjs';
 import { privateSession } from './private-session.mjs';
 import { checkFrameCadence } from './frame-cadence.mjs';
 const cleanInspector=process.env.FIND_SOAK_INSPECTOR_CLEAN==='1';
 const naturalFrames=process.env.FIND_SOAK_NATURAL_FRAMES==='1';
-const d=await driver(),result={session:privateSession(),samples:[],limits:`Three warmups and six samples per bound. ${naturalFrames?'Natural private-output frames; no screenshots.':'Background CDP screenshots drive frames.'} Native input cadence remains unverified.`};
+const measuredCycles=Number(process.env.FIND_SOAK_CYCLES??6);
+assert(Number.isSafeInteger(measuredCycles)&&measuredCycles>=6&&measuredCycles<=120,'Expected 6–120 measured cycles');
+const idleMs=Number(process.env.FIND_SOAK_IDLE_MS??0);
+assert(Number.isSafeInteger(idleMs)&&idleMs>=0&&idleMs<=1000,'Expected 0–1000 idle milliseconds');
+const integration=readFileSync(`${scratch}/integration-path`,'utf8');
+const footprint=(path,hash=false)=>Object.fromEntries(readdirSync(path).flatMap(name=>{
+  const next=join(path,name),stat=lstatSync(next);
+  return stat.isDirectory()?Object.entries(footprint(next,hash)).map(([key,value])=>[name+'/'+key,value])
+    :[[name,{bytes:stat.size,...hash?{sha256:createHash('sha256').update(readFileSync(next)).digest('hex')}:{}}]];
+}));
+const startedAt=Date.now();
+const d=await driver(),result={session:privateSession(),samples:[],measuredCycles,idleMs,startedAt,limits:`Three warmups and ${measuredCycles} measured cycles per bound. ${naturalFrames?'Natural private-output frames; no screenshots.':'Background CDP screenshots drive frames.'} Native input cadence remains unverified.`};
 let pumping=false;const pump=naturalFrames?null:setInterval(async()=>{if(pumping)return;pumping=true;try{await d.page.send('Page.captureScreenshot',{format:'png'});}catch{}finally{pumping=false;}},150);
 const until=async(predicate)=>{for(let i=0;i<400;i++){if(await predicate())return;await sleep(25);}throw Error('Mounted soak did not settle');};
 try {
@@ -18,7 +31,7 @@ try {
   const params={namespace:fixture.namespace,pod:'find-fixtures',podUid:fixture.podUid,clusterId};
   for(const name of ['dense','long']){
     const samples=[];
-    for(let cycle=-3;cycle<6;cycle++){
+    for(let cycle=-3;cycle<measuredCycles;cycle++){
       await d.page.evaluate("global.LensExtensions.Renderer.Navigation.navigate('/overview');true",d.cluster());await d.wait(s=>!s.live&&!s.service.owners);
       await d.page.evaluate(`global.__findRenderer.navigate('readable-logs',${JSON.stringify(params)});true`,d.cluster());
       await until(()=>d.page.evaluate('document.querySelectorAll(".rl-record").length===120',d.cluster()));
@@ -36,6 +49,8 @@ try {
       if(name==='long')assert(active.highlightStarts.some(start=>start>active.sourceUnits-8192),'Long workload did not decorate late visible source');
       const stop=performance.now();await d.page.evaluate("global.LensExtensions.Renderer.Navigation.navigate('/extensions');true",d.root());
       await d.wait(s=>!s.live&&s.service.executions.every(e=>!e.active&&!e.running&&!e.pending&&!e.slot));const inactiveMs=performance.now()-stop;
+      if(idleMs)await sleep(idleMs);
+      assert.equal((await d.status()).live,0,'Inactive viewer restarted a worker');
       await d.page.evaluate(`global.LensExtensions.Renderer.Navigation.navigate('/cluster/'+${JSON.stringify(clusterId)});true`,d.root());
       await until(()=>d.page.evaluate(`document.querySelector('#rl-find')?.value===${JSON.stringify(query)}`,d.cluster()));
       assert.equal(await d.page.evaluate('document.querySelector(".rl-update-status").textContent',d.cluster()),'Paused');
@@ -45,10 +60,10 @@ try {
       if(naturalFrames)await d.page.evaluate('new Promise(resolve=>requestAnimationFrame(()=>requestAnimationFrame(resolve)))',d.cluster());
       if(cleanInspector){await d.page.send('Runtime.discardConsoleEntries');await d.main.send('Runtime.discardConsoleEntries');}
       await d.main.send('HeapProfiler.collectGarbage');await d.page.send('HeapProfiler.collectGarbage');
-      const cleanup=await d.page.evaluate('({highlights:CSS.highlights.size,rows:document.querySelectorAll(".rl-record").length,memory:process.memoryUsage()})',d.cluster());
+      const cleanup=await d.page.evaluate('({highlights:CSS.highlights.size,rows:document.querySelectorAll(".rl-record").length,memory:process.memoryUsage(),pid:process.pid})',d.cluster());
       assert.equal(cleanup.highlights,0);assert.equal(cleanup.rows,0);
       const status=await d.status();assert.equal(status.starts,status.exits);assert.equal(status.service.senders,0);assert.equal(status.service.watch,false);
-      const sample={cycle,matchObservedMs,inactiveMs,active,cleanup,main:await d.main.evaluate('process.memoryUsage()'),dom:await d.page.send('Memory.getDOMCounters'),threads:readdirSync(`/proc/${result.session.pid}/task`).length,status};
+      const sample={at:Date.now(),cycle,matchObservedMs,inactiveMs,active,cleanup,main:await d.main.evaluate('process.memoryUsage()'),dom:await d.page.send('Memory.getDOMCounters'),threads:readdirSync(`/proc/${result.session.pid}/task`).length,rendererThreads:readdirSync(`/proc/${cleanup.pid}/task`).length,disk:footprint(integration),settings:footprint(join(integration,'Freelens/extension-store/freelens-readable-logs'),true),status};
       if(cycle>=0)samples.push(sample);
     }
     result.samples.push({name,warmupCycles:3,cycles:samples});console.log(JSON.stringify({name,cycles:samples.length}));
@@ -57,12 +72,14 @@ try {
   result.lifecyclePass=true;
   result.growth=result.samples.map(bound=>{
     const first=bound.cycles[0],last=bound.cycles.at(-1);
-    return {name:bound.name,nodes:last.dom.nodes-first.dom.nodes,listeners:last.dom.jsEventListeners-first.dom.jsEventListeners,
+    assert(bound.cycles.every(sample=>JSON.stringify(sample.settings)===JSON.stringify(first.settings)),'Viewing changed extension settings/disk');
+    return {name:bound.name,nodes:last.dom.nodes-first.dom.nodes,listeners:last.dom.jsEventListeners-first.dom.jsEventListeners,documents:last.dom.documents-first.dom.documents,mainThreads:last.threads-first.threads,rendererThreads:last.rendererThreads-first.rendererThreads,
       rendererHeap:last.cleanup.memory.heapUsed-first.cleanup.memory.heapUsed,rendererRss:last.cleanup.memory.rss-first.cleanup.memory.rss};
   });
   // Same conservative retained-object limits as docs/resource-smoke.md. Failure
   // is an investigation gate, not attribution to extension vs host/inspector.
   result.resourcePass=result.growth.every(g=>g.nodes<=128&&g.listeners<=8&&g.rendererHeap<=8*1024*1024);
+  result.elapsedMs=Date.now()-startedAt;
   result.pass=result.lifecyclePass&&result.resourcePass;
   if(!result.pass)process.exitCode=1;
 }catch(error){result.error=error.stack;process.exitCode=1;}

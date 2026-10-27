@@ -1,84 +1,76 @@
 # Continue only Find #48
 
 Branch `implementation/find`. Original ticket pin:
-`3fb33db5f5ded3523bcf66c1145f0af967ec0bf3`; this continuation/review baseline:
-`9280757b9c79b4f5d3944ea8bcc92699f67dda8c`. Record the next current HEAD, reclaim
-#48 and fetch full live corrections. Read the local ticket, accepted cached plan,
-full #36/#37/#38/#40 decisions, [state-completion.md](state-completion.md),
-[matrix.md](matrix.md), [geometry.md](geometry.md) and [cadence.md](cadence.md).
-Only #48 is authorized; no comments, closure, push, PR, merge or release.
+`3fb33db5f5ded3523bcf66c1145f0af967ec0bf3`. Latest continuation/review baseline:
+`0f39b79dc27076323a53f47f7aab209801b8022f`; record the **new current HEAD** before
+any next implementation and use it for that continuation review. Reclaim #48 and
+fetch full live corrections. Read the local ticket, cached accepted plan and full
+#36/#37/#38/#40 decisions, [dense-cadence.md](dense-cadence.md), [matrix.md](matrix.md)
+and earlier state reports. Only #48 is authorized. No comments/closure, push,
+PR, merge or release. Do not work on another ticket.
 
-1. **Current artifact is unchanged.** `freelens-readable-logs@0.1.34`, SHA-256
-   `d19f826bc8496a6ae3ca5afaeb79fab73753ceeebde62747174b8d4ead6dfcb3`.
-   This continuation changes acceptance drivers/evidence only. Existing clipping
-   and mark-cycle fixes remain. Installed main/renderer/worker assets match the
-   build; schema 3/stable identities remain. No fallback or prototype/research merge.
-2. **Concrete autonomous next task: minimise dense cadence failure.**
-   `node scripts/find-production-host/dense-profile.mjs` in a prepared private host
-   SHA-verifies/replays the preserved old harness, samples CPU for ~40 seconds,
-   stops the owned driver and observes page/worker disposal. Only seven activations
-   complete. Its old regrouping oracle is known wrong; this is diagnostic evidence,
-   not acceptance. Raw `host/dense-diagnostic/dense-cpu-profile.json.gz` includes
-   native/program time, highlight projection, timestamp rendering, viewport restore
-   and clipping; individual profiler nodes do not establish the cause. Read the
-   diagnosing-bugs skill. Build a faster red-capable natural-cadence loop comparing
-   dense wrapped rows with no query, zero-hit query and capped dense query, then
-   a few mark activations. Change one variable at a time and retain layout/profiler
-   evidence. TDD is authorized at existing production-renderer/state/session seams
-   once a product defect is isolated. Do not invent a native latency bound.
-3. **Resource gate remains open.** The long-lived host's three warmups/six dense
-   cycles pass actual lifecycle cleanup but fail +15 listeners (828→843) against
-   +8, with +27 nodes/+862,544 B heap/+696,320 B RSS; long is +5 nodes/0 listeners.
-   See `host/dense-diagnostic/mounted-soak-clean-inspector.json`. Preceding state,
-   controlled-delivery and profiler workloads require fresh-process comparison
-   before attribution. The separate `host/resource-control` result is in the latest
-   report. Keep the failed run even if the control passes. Short samples/private
-   compositor do not establish a long RAM/disk plateau or stock-display acceptance.
-4. **New state subsets and their limits.** `host/state-completion` passes 20 state
-   assertions and 31 real snapshot/restart assertions: independent reading/inspection
-   via explicit DOM Tab/focusin, still-matching profile candidate, stale window/message
-   successes/failures, Profiles cancellation, seven-entry MRU and seed flags; both
-   flags reset across two actual restarts, with Pause/manual profile/history and
-   explicit following/real appended-bottom movement. `host/dense-diagnostic` repeats
-   33-state/13-held/SDK-frame/startup-timeout/20-burst checks. Earlier reruns failed
-   their 120-row fixture precondition after the new append workload; fresh namespace
-   passes are separate. Explicit focusin is not physical keyboard delivery.
-5. **Controlled Host cases now pass at the boundary layer.**
-   `controlled-snapshots.mjs` passes 19 assertions through the actual installed
-   SDK adapter/session/viewer/main-worker with target-scoped HTTP bodies/delivery:
-   exact identical-transport overlap, identical/zero-overlap windows, node/DOM
-   selection, missing/first-known/count-then-ID/known-ID metadata, stale-instance
-   matching success/error with increasing epochs and old log success/error.
-   All descriptors/gates are restored. This is not naturally identical timestamps,
-   natural kubelet ordering, physical selection or atomic UID-bound snapshot proof.
-   Use the final `host/instance-review/controlled-snapshots.json`: independent review
-   strengthened old-instance errors to require exact empty Find status/no Retry
-   before any new edit. The earlier `dense-diagnostic` file proves less and stays
-   historical. Fresh corrected 19-check evidence, matching assets and shutdown pass.
-6. **Private/native/platform limits.** Stock NVIDIA nested output is 0×0; stock
-   Mesa readiness failed. Reuse only the documented private Aquamarine diagnostic
-   build for autonomous DOM work, or establish an unmodified suitable output.
-   Use private labwc→Hyprland workspace 7, `FREELENS_UI_MODE` unset and the UI guards.
-   Never fake focus, inject native input, operate clipboard or activate/restore/
-   restart user windows. Background document focus is false: focus-dependent
-   Escape/shortcuts/menu/foreign-editor delivery stays unverified. Fresh attended
-   agreement or appropriate separate native/platform access is needed for physical
-   selection/copy/clipboard, editing/paste/Undo/Redo/IME/AltGraph, modifiers, menus,
-   OS focus and window buttons. Windows/macOS remain unverified. Finish independent
-   work first; report blocked precisely when only human/access/evidence gates remain.
-7. **Checks/review/commit.** Use local Node 24.18.0/npm 11.16.0. The latest report
-   links locked install/typecheck, 249 tests, six UI guards, production browser,
-   built workers/resource smoke, strict package and deterministic two-build checks.
-   Independent two-axis review uses the recorded baseline plus scoped current diff
-   and original requirements, with `fork_turns=none`. Commit only #48 work/evidence.
-   Retry while a fresh context can finish concrete autonomous work; done requires
-   every original criterion and committed ticket/evidence.
-
-Use a new safe `FIND_HOST_RUN`, fresh profile/fixtures and `FIND_HOST_TICKET=48`.
-`state-boundaries` appends to traces: unchanged state/held/mounted suites need a
-new 120-row namespace afterward. `controlled-snapshots` restores the HTTP descriptor
-and SDK handler. `identity.mjs` compares installed assets/build and reads the private
-schema. Install once through Extensions before any cluster; changed bytes at the
-same version require a new process/profile. Remove only still-owned UID-matching
-resources. Preserve user configuration/installation, shared fixtures and unrelated
-checkout work. Review and cleanup outcomes are in the latest report.
+1. **Current artifact/fix.** `freelens-readable-logs@0.1.34`, SHA-256
+   `995f1cf5e3ac81f377b16cf8dea24c15237824cd31dd1a066acde26bf868f904`.
+   Stable package/store, page/config and schema 3 remain. Main/worker unchanged;
+   renderer now reserves a compact, responsive highlight-status footprint while
+   Find is open. Pending/completed/capped feedback cannot drive the prior clip
+   oscillation. Source nodes, exact matching/counts, copy, retention and lifecycle
+   contracts are unchanged. Do not revert the fix or merge research/prototypes.
+2. **Concrete next autonomous task: attribute the repeated +9 listener failure.**
+   Final actual-host `host/feedback-final/mounted-soak-clean-inspector.json.gz` has
+   three warmups and 30 measured cycles per bound, natural frames, 100 ms inactive
+   waits. Lifecycle/actual exits/settings pass, but dense post-GC listener growth
+   is **+9 against +8**, nodes +51 and heap +1,862,708 B. Long +19 nodes/-1 listener.
+   An earlier long-reserve package independently fails +9; intermediate compact
+   package passes 30 cycles. Raw runs, summaries and commands remain separate.
+   Read diagnosing-bugs. Capture sanitized listener **types/targets/retainers at
+   the actual low/high samples**, not just totals. Add one-variable controls:
+   root/cluster inactivity with a viewer but no Find, then host-only inactivity
+   without an extension viewer. Compare with the existing stationary/host-route/
+   viewer-no-Find/viewer-Find/viewer-Find-idle controls. No threshold relaxation,
+   speculative lifetime change or claim that a passing control clears a failure.
+3. **Node control is a lead, not yet a deterministic leak.** Intermediate
+   `host/compact-final/navigation-control.json.gz` has +14 DOM nodes/15 Find-idle
+   cycles and zero listener growth; stationary/route/no-Find/Find are flat.
+   Final repetition is 0/-2/+9/-9/+5 nodes, listeners 0/0/+1/-1/-1. Transient host
+   objects remain a competing explanation. Earlier sanitized heap capture finds
+   zero detached viewer sections, which does not rule out other retained nodes.
+   Remove raw private heaps after extracting sanitized paths. Do not preserve
+   credentials or source-text heaps in Git. Existing controlled state/session/
+   renderer seams are authorized for TDD once a real defect is isolated.
+4. **Current artifact evidence.** `host/feedback-final` passes 33 DOM state,
+   13 held-delivery, 192 source/geometry assertions (including 260px usable log
+   height), terminal-Q, no-query/zero-hit/dense natural cadence (~186 ms/12 dense
+   frames, two layouts), three initial group members, six append/following/Pause
+   assertions, fresh-main Disable/Uninstall/reinstall, SDK/frame ownership,
+   startup-inclusive timeout, 20 latest-only bursts and startup shutdown. Actual
+   worker starts/exits **219/219**, peak one, zero maps/watch at shutdown. These
+   are scoped DOM/SDK checks, not native delivery. Full current-package snapshot/
+   profile/restart/duplicate and stale target/viewer counterparts remain separate
+   from older named-artifact runs; do not relabel those as this package.
+5. **Tools/checks/review.** Use project-local Node 24.18.0/npm 11.16.0. Latest full
+   locked install/typecheck, 249 tests, six UI guards, production browser, actual
+   built workers, original resource smoke, strict package and two-build SHA pass.
+   Focused range tests also pass. Independent two-axis review uses the recorded
+   baseline plus current scoped diff, original requirements first, `fork_turns=none`.
+   Existing optional host-control duplication does not require an unrelated refactor.
+6. **Private/native/platform gates.** Use the documented private labwc→Hyprland
+   workspace 7 and private Aquamarine diagnostic build only for autonomous DOM
+   work. Stock output remains unestablished. Keep `FREELENS_UI_MODE` unset and
+   shared guards intact; no user-window activation/restart/restore/minimize, native
+   input, pointer movement, clipboard operation, bringToFront or fake focus.
+   Background document focus is false. Focus-dependent Escape/shortcuts/menu/
+   foreign-editor delivery remains unverified, as do physical selection/copy,
+   paste/Undo/Redo/IME/AltGraph/modifiers/focus/window delivery and all listed
+   Windows/macOS checks. Finish independent work before seeking fresh attended or
+   suitable separate native/platform evidence. No release acceptance is implied.
+7. **Ownership and reporting.** All four test hosts/profiles, private runtime and
+   both UID-checked namespaces are removed; private build/cache and unrelated
+   scratch/user work remain. Create a fresh safe `FIND_HOST_RUN`, profile and
+   owned fixtures. Install once through Extensions before opening any cluster;
+   same-version changed bytes require a fresh process/profile. Following appends
+   to the surface fixture, so rerun surface tests only with new owned data.
+   Preserve original acceptance text and check only whole satisfied criteria.
+   Commit only #48 implementation/evidence. Report retry while concrete autonomous
+   work remains; blocked when only precise human/access/evidence gates remain;
+   done requires every original criterion and committed evidence.

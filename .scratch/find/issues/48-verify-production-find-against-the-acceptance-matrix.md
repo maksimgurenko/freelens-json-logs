@@ -227,3 +227,40 @@ leaves zero unresolved findings. All three owned hosts, profiles/runtimes and
 UID-checked fixtures are cleaned; user/config hashes are unchanged. Raw failures
 remain historical evidence. The concrete next autonomous task is a minimal dense
 cadence loop and listener-attribution/long-resource checks in NEXT.md.
+
+### Continuation from 0f39b79
+
+Reclaimed #48; [live full bodies/comments and accepted-plan comparison](../../../docs/verification/48/host/dense-cadence/authority.json)
+match cached authority. [Dense cadence report](../../../docs/verification/48/dense-cadence.md)
+records a production feedback/clip oscillation, its exact boundary red regression
+(301/325 px alternating), and the stable compact status reserve. Pending and capped
+feedback stay short; width260 retains usable logs. Exact sources/copy, counts,
+matching, measured marks and worker/retention/Pause/following contracts are preserved.
+
+Final package SHA-256
+`995f1cf5e3ac81f377b16cf8dea24c15237824cd31dd1a066acde26bf868f904`.
+Fresh isolated form install and actual asset/schema identity pass. Current package
+passes 33 state, 13 held-delivery, 192 source/geometry assertions, terminal-Q,
+12 natural dense frames in ~186 ms with two layouts, three grouped activations,
+actual append/following/Pause, real Disable/Uninstall/reinstall, SDK/frame suite,
+startup timeout, 20 latest-only bursts and startup shutdown. Actual starts/exits
+are 219/219, peak one, zero service maps/watch on shutdown. Native input is unverified.
+
+The final 30-cycle-per-bound installed soak **fails dense +9 listeners against
++8**, despite passing actual lifecycle/exit/settings checks. Dense +51 nodes and
++1,862,708 B heap; long +19 nodes/-1 listener. Intermediate resource failures and
+passes stay separately attributed to their packages. Inactivity controls narrow
+a node-growth lead but do not establish a deterministic cause or clear listeners.
+[Exact next autonomous investigation](../../../docs/verification/48/NEXT.md) is
+listener type/target/retainer capture with no-Find and host-only visibility controls.
+
+Final locked install/typecheck, 249 tests, six UI guards, mounted production
+browser, real built workers, original resource smoke, strict package checks and
+deterministic two-build SHA pass. [Independent Standards/Spec review](../../../docs/verification/48/review-dense-cadence.md)
+records no actionable production findings; optional helper duplication is deferred.
+Cleanup removes four owned hosts/profiles, private runtime and UID-checked fixtures;
+unrelated dirty hashes and recorded user settings are preserved. Desktop observer
+reports only repeated notifications of the same focused kitty, no address/workspace/
+window transitions; pointer equality is endpoint-only. No native input/focus/clipboard
+operation was sent. No unfinished original criterion is newly checked. Resource,
+remaining full Host, stock/native/clipboard and Windows/macOS gates remain open.

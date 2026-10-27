@@ -1,6 +1,33 @@
 # Integrated production Find acceptance matrix
 
-Latest continuation: [state boundaries and bounded dense diagnosis](state-completion.md),
+Latest continuation: [dense cadence and stable highlight feedback](dense-cadence.md).
+Final package SHA-256 `995f1cf5e3ac81f377b16cf8dea24c15237824cd31dd1a066acde26bf868f904`.
+The final installed subset repeats 33 state, 13 held-delivery, 192 source/geometry
+assertions, terminal-Q, natural dense frames, real extension maintenance, SDK/frame
+ownership, timeout, burst and shutdown checks. Exact final commands and verdicts
+are [recorded per command](host/feedback-final/host-commands.json). Unfinished
+native/platform/resource gates remain open; this is not release acceptance.
+
+The production fix removes feedback-driven clip oscillation. The exact cap-boundary
+browser regression fails before the fix with alternating 301/325 px clip heights,
+then passes in the [final production browser](host/feedback-final/browser.txt).
+Short pending/capped feedback plus a responsive invisible reserve keep source
+geometry stable, with the 260px log viewport still usable. No matcher, retention,
+copy, following/Pause or worker contract changes.
+
+Resource results are kept by artifact: `dense-fixed` **fails +9 listeners**;
+`compact-final` passes its 30-cycle limits but its inactivity control retains
+**14 DOM nodes/15 cycles**. Final `feedback-final` again **fails +9 dense listeners**;
+its node-control repetition is variable (+5 Find-idle nodes/-1 listener). Passing controls cannot erase the failed run.
+[Final resource/control evidence and limits](dense-cadence.md#resource-evidence-and-attribution-limits)
+keep full stock/long-resource acceptance open. Physical/native/clipboard and all
+Windows/macOS checks remain **unverified**.
+
+The tables below are previous checkpoint evidence. Their words “current” and
+“latest” refer to those named recorded artifacts, not the new final package.
+None is silently promoted to a new-package host run.
+
+Previous continuation: [state boundaries and bounded dense diagnosis](state-completion.md),
 same package SHA-256 `d19f826bc8496a6ae3ca5afaeb79fab73753ceeebde62747174b8d4ead6dfcb3`.
 New current-package evidence is scoped below; historical rows retain their original
 artifact/environment limits:

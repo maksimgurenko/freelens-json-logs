@@ -57,6 +57,45 @@ export async function verifyFindPresentation({ root, rows, button, query, refres
     });
   }
   results.push('actual 999/1000/1001-line retention; dense exact counts survive 1024 DOM cap; late visible records receive current ranges');
+  // A capped query must settle without its own feedback repeatedly changing
+  // the visible interest. The dense source crosses the DOM cap at this clip.
+  const viewer = root.querySelector('.readable-logs');
+  const oldSize = { width: viewer.style.width, height: viewer.style.height };
+  viewer.style.width = '1163px'; viewer.style.height = '617px';
+  if (!wrapControl.checked) wrapControl.click();
+  button('Clear');
+  await refresh(Array.from({ length: 1000 }, () => `2026-10-22T12:34:56Z ${'a '.repeat(2400)}`).join('\n'));
+  scroller.scrollTop = 8;
+  await new Promise(resolve => requestAnimationFrame(() => requestAnimationFrame(resolve)));
+  // Place match 1025 just inside the no-feedback clip. A newly inserted status
+  // line hides it, dropping visible ranges under the cap and removing itself.
+  const boundary = document.createRange();
+  const denseText = rows()[0].querySelector('[data-source-start]').firstChild;
+  boundary.setStart(denseText, 2048); boundary.setEnd(denseText, 2049);
+  viewer.style.height = `${viewer.clientHeight + boundary.getBoundingClientRect().top - scroller.getBoundingClientRect().bottom + 5}px`;
+  await query('a'); scroller.scrollTop = 8;
+  await until(() => ranges().length > 0 && decorated(), 'Dense wrapped decoration did not settle');
+  for (let frame = 0; frame < 6; frame++) await new Promise(resolve => requestAnimationFrame(resolve));
+  const feedbackHeights = [];
+  for (let frame = 0; frame < 12; frame++) {
+    await new Promise(resolve => requestAnimationFrame(resolve));
+    feedbackHeights.push(scroller.clientHeight);
+  }
+  check(new Set(feedbackHeights).size === 1, `Dense feedback resized its own clip repeatedly: ${feedbackHeights}`);
+  check(root.querySelector('.rl-find-count').textContent.endsWith('of 1000 matching records') && ranges().length > 0 && ranges().length <= 1024,
+    'Stable feedback lost exact membership or visible bounded highlights');
+  viewer.style.width = '260px'; viewer.style.height = '617px';
+  await new Promise(resolve => requestAnimationFrame(() => requestAnimationFrame(resolve)));
+  check(scroller.clientHeight > 0 && viewer.scrollWidth <= 260, 'Reserved feedback displaced the narrow log viewport');
+  viewer.style.width = oldSize.width; viewer.style.height = oldSize.height;
+  if (wrapControl.checked) wrapControl.click();
+  results.push('capped wrapped decoration settles with stable feedback geometry and complete exact membership');
+  // Restore the preceding fixture and bottom reading position for its separate
+  // viewport/inspector sharing check below.
+  await refresh(Array.from({ length: 1001 }, (_, index) => `a ${index} ${'a '.repeat(120)}`).join('\n'));
+  scroller.scrollTop = scroller.scrollHeight;
+  await until(() => ranges().some(range => rows().at(-1).contains(range.startContainer)), 'Restored dense fixture has no visible ranges');
+
   rows().at(-1).querySelector('.rl-row').click(); button('Application text');
   await until(() => ranges().some(range => root.querySelector('.rl-detail pre').contains(range.startContainer)) &&
     ranges().some(range => range.startContainer.parentElement.closest('.rl-row')), 'Viewport and inspector did not share decoration slots');
@@ -114,7 +153,7 @@ export async function verifyFindPresentation({ root, rows, button, query, refres
   work.style.maxHeight = '';
   await until(() => scroller.clientHeight > oldClipHeight, 'Clipping scroller did not grow');
   check(clippedSource.getBoundingClientRect().height === sourceHeight && root.clientHeight === rootHeight && scroller.scrollTop === oldScrollTop,
-    'Clipping fixture changed source/root geometry or scroll');
+    `Clipping fixture changed source/root geometry or scroll: ${JSON.stringify({sourceHeight,nowSource:clippedSource.getBoundingClientRect().height,rootHeight,nowRoot:root.clientHeight,oldScrollTop,nowTop:scroller.scrollTop,oldClipHeight,nowClip:scroller.clientHeight})}`);
   await until(() => ranges().some(range => range.toString() === 'Q'), 'Newly visible hit after clipping-scroller resize is undecorated');
   results.push('clipping-scroller resize requests newly visible ranges while source/root dimensions and scroll remain unchanged');
 

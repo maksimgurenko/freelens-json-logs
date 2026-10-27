@@ -1,0 +1,379 @@
+{
+  "steps": [
+    {
+      "name": "actual Disable during paused worker startup",
+      "before": {
+        "starts": 1,
+        "exits": 0,
+        "live": 1,
+        "peak": 1,
+        "resources": [
+          "TCPServerWrap",
+          "StatWatcher",
+          "StatWatcher",
+          "StatWatcher",
+          "StatWatcher",
+          "StatWatcher",
+          "StatWatcher",
+          "MessagePort",
+          "Timeout"
+        ],
+        "beforeQuit": 1,
+        "handlers": [
+          "extensions@52bcb660c8d041a54a070bdd6e17e58f5cf11bd54b272b18828e5cdcfc4ff1c4:find-open",
+          "extensions@52bcb660c8d041a54a070bdd6e17e58f5cf11bd54b272b18828e5cdcfc4ff1c4:find-request",
+          "extensions@52bcb660c8d041a54a070bdd6e17e58f5cf11bd54b272b18828e5cdcfc4ff1c4:find-control"
+        ],
+        "windows": [
+          {
+            "id": 2,
+            "pid": 2007381,
+            "frames": [
+              {
+                "processId": 5,
+                "routingId": 1,
+                "url": "https://renderer.freelens.app:46641/extensions"
+              }
+            ],
+            "listeners": [
+              [
+                "destroyed",
+                2
+              ],
+              [
+                "render-process-gone",
+                2
+              ],
+              [
+                "did-frame-navigate",
+                1
+              ]
+            ]
+          }
+        ],
+        "service": {
+          "owners": 1,
+          "retiring": 0,
+          "opening": 0,
+          "senders": 1,
+          "watch": true,
+          "executions": [
+            {
+              "viewer": "disable-startup",
+              "sender": 2,
+              "processId": 5,
+              "routingId": 1,
+              "active": true,
+              "running": true,
+              "pending": false,
+              "slot": true,
+              "ready": false,
+              "stopping": false
+            }
+          ]
+        }
+      },
+      "after": {
+        "snapshot": {
+          "starts": 1,
+          "exits": 1,
+          "live": 0,
+          "peak": 1,
+          "resources": [
+            "TCPServerWrap",
+            "StatWatcher",
+            "StatWatcher",
+            "StatWatcher",
+            "StatWatcher",
+            "StatWatcher",
+            "StatWatcher"
+          ],
+          "beforeQuit": 0,
+          "handlers": [],
+          "windows": [
+            {
+              "id": 2,
+              "pid": 2007381,
+              "frames": [
+                {
+                  "processId": 5,
+                  "routingId": 1,
+                  "url": "https://renderer.freelens.app:46641/extensions"
+                }
+              ],
+              "listeners": [
+                [
+                  "destroyed",
+                  1
+                ],
+                [
+                  "render-process-gone",
+                  1
+                ],
+                [
+                  "did-frame-navigate",
+                  0
+                ]
+              ]
+            }
+          ]
+        },
+        "old": {
+          "closed": true,
+          "owners": 0,
+          "retiring": 0,
+          "opening": 0,
+          "senders": 0,
+          "watch": false
+        }
+      }
+    },
+    {
+      "name": "reactivation and actual Uninstall with idle worker",
+      "idle": {
+        "starts": 2,
+        "exits": 1,
+        "live": 1,
+        "peak": 1,
+        "resources": [
+          "TCPServerWrap",
+          "StatWatcher",
+          "StatWatcher",
+          "StatWatcher",
+          "StatWatcher",
+          "StatWatcher",
+          "StatWatcher",
+          "MessagePort"
+        ],
+        "beforeQuit": 1,
+        "handlers": [
+          "extensions@52bcb660c8d041a54a070bdd6e17e58f5cf11bd54b272b18828e5cdcfc4ff1c4:find-open",
+          "extensions@52bcb660c8d041a54a070bdd6e17e58f5cf11bd54b272b18828e5cdcfc4ff1c4:find-request",
+          "extensions@52bcb660c8d041a54a070bdd6e17e58f5cf11bd54b272b18828e5cdcfc4ff1c4:find-control"
+        ],
+        "windows": [
+          {
+            "id": 2,
+            "pid": 2007381,
+            "frames": [
+              {
+                "processId": 5,
+                "routingId": 1,
+                "url": "https://renderer.freelens.app:46641/extensions"
+              }
+            ],
+            "listeners": [
+              [
+                "destroyed",
+                2
+              ],
+              [
+                "render-process-gone",
+                2
+              ],
+              [
+                "did-frame-navigate",
+                1
+              ]
+            ]
+          }
+        ],
+        "service": {
+          "owners": 1,
+          "retiring": 0,
+          "opening": 0,
+          "senders": 1,
+          "watch": true,
+          "executions": [
+            {
+              "viewer": "reenabled",
+              "sender": 2,
+              "processId": 5,
+              "routingId": 1,
+              "active": true,
+              "running": false,
+              "pending": false,
+              "slot": true,
+              "ready": true,
+              "stopping": false
+            }
+          ]
+        }
+      },
+      "removed": {
+        "snapshot": {
+          "starts": 2,
+          "exits": 2,
+          "live": 0,
+          "peak": 1,
+          "resources": [
+            "TCPServerWrap",
+            "StatWatcher",
+            "StatWatcher",
+            "StatWatcher",
+            "Timeout",
+            "Timeout",
+            "Timeout",
+            "Timeout",
+            "Timeout",
+            "Timeout",
+            "Timeout"
+          ],
+          "beforeQuit": 0,
+          "handlers": [],
+          "windows": [
+            {
+              "id": 2,
+              "pid": 2007381,
+              "frames": [
+                {
+                  "processId": 5,
+                  "routingId": 1,
+                  "url": "https://renderer.freelens.app:46641/extensions"
+                }
+              ],
+              "listeners": [
+                [
+                  "destroyed",
+                  1
+                ],
+                [
+                  "render-process-gone",
+                  1
+                ],
+                [
+                  "did-frame-navigate",
+                  0
+                ]
+              ]
+            }
+          ]
+        },
+        "old": {
+          "closed": true,
+          "owners": 0,
+          "retiring": 0,
+          "opening": 0,
+          "senders": 0,
+          "watch": false
+        }
+      }
+    },
+    {
+      "name": "single-submit reinstall and production recovery",
+      "after": {
+        "starts": 3,
+        "exits": 3,
+        "live": 0,
+        "peak": 1,
+        "resources": [
+          "TCPServerWrap",
+          "StatWatcher",
+          "StatWatcher",
+          "StatWatcher",
+          "StatWatcher",
+          "StatWatcher",
+          "StatWatcher"
+        ],
+        "beforeQuit": 1,
+        "handlers": [
+          "extensions@52bcb660c8d041a54a070bdd6e17e58f5cf11bd54b272b18828e5cdcfc4ff1c4:find-open",
+          "extensions@52bcb660c8d041a54a070bdd6e17e58f5cf11bd54b272b18828e5cdcfc4ff1c4:find-request",
+          "extensions@52bcb660c8d041a54a070bdd6e17e58f5cf11bd54b272b18828e5cdcfc4ff1c4:find-control"
+        ],
+        "windows": [
+          {
+            "id": 2,
+            "pid": 2007381,
+            "frames": [
+              {
+                "processId": 5,
+                "routingId": 1,
+                "url": "https://renderer.freelens.app:46641/extensions"
+              }
+            ],
+            "listeners": [
+              [
+                "destroyed",
+                1
+              ],
+              [
+                "render-process-gone",
+                1
+              ],
+              [
+                "did-frame-navigate",
+                0
+              ]
+            ]
+          }
+        ],
+        "service": {
+          "owners": 0,
+          "retiring": 0,
+          "opening": 0,
+          "senders": 0,
+          "watch": false,
+          "executions": []
+        }
+      }
+    }
+  ],
+  "freshMain": {
+    "starts": 0,
+    "exits": 0,
+    "live": 0,
+    "peak": 0,
+    "resources": [
+      "TCPServerWrap",
+      "StatWatcher",
+      "StatWatcher",
+      "StatWatcher",
+      "StatWatcher",
+      "StatWatcher",
+      "StatWatcher"
+    ],
+    "beforeQuit": 1,
+    "handlers": [
+      "extensions@52bcb660c8d041a54a070bdd6e17e58f5cf11bd54b272b18828e5cdcfc4ff1c4:find-open",
+      "extensions@52bcb660c8d041a54a070bdd6e17e58f5cf11bd54b272b18828e5cdcfc4ff1c4:find-request",
+      "extensions@52bcb660c8d041a54a070bdd6e17e58f5cf11bd54b272b18828e5cdcfc4ff1c4:find-control"
+    ],
+    "windows": [
+      {
+        "id": 2,
+        "pid": 2007381,
+        "frames": [
+          {
+            "processId": 5,
+            "routingId": 1,
+            "url": "https://renderer.freelens.app:46641/extensions"
+          }
+        ],
+        "listeners": [
+          [
+            "destroyed",
+            1
+          ],
+          [
+            "render-process-gone",
+            1
+          ],
+          [
+            "did-frame-navigate",
+            0
+          ]
+        ]
+      }
+    ],
+    "service": {
+      "owners": 0,
+      "retiring": 0,
+      "opening": 0,
+      "senders": 0,
+      "watch": false,
+      "executions": []
+    }
+  },
+  "pass": true
+}

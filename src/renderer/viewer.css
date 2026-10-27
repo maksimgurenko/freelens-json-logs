@@ -91,6 +91,12 @@
 .readable-logs .rl-find-direction .Icon, .readable-logs .rl-find-clock .Icon { font-size: 21px; width: 21px; height: 21px; }
 .readable-logs .rl-find-words { text-decoration: underline; }
 .readable-logs .rl-find-feedback { font-size: 12px; flex-basis: 100%; }
+/* Reserve the same wrapped status footprint for pending/complete/capped ranges.
+   Otherwise feedback can resize its own clip across the DOM cap indefinitely.
+   The invisible generated reserve is neither live status nor source text. */
+.readable-logs .rl-highlight-status { display: grid; flex-basis: 100%; min-width: 0; }
+.readable-logs .rl-highlight-status::before { content: attr(data-reserve); visibility: hidden; grid-area: 1 / 1; }
+.readable-logs .rl-highlight-status > span { grid-area: 1 / 1; }
 .readable-logs .rl-findbar { position: relative; }
 .readable-logs .rl-history-popover { position: absolute; z-index: 4; inset-block-start: calc(100% + 6px); inset-inline-end: 12px; width: 320px; max-width: calc(100% - 24px); max-height: 60vh; overflow: auto; padding: 12px; box-sizing: border-box; color: var(--textColorPrimary, #e4e4e4); background: var(--contentColor, #262b2f); border: 1px solid var(--borderColor, #4c5053); border-radius: 3px; }
 .readable-logs .rl-history-popover h3 { margin: 0 0 8px; font-size: 14px; }

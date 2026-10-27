@@ -1,5 +1,9 @@
 # #48 production Find verification checkpoint
 
+Latest checkpoint: [stable dense highlight feedback, final package and verification](dense-cadence.md).
+Its original ticket/continuation review pins, intermediate failures, final evidence
+and remaining gates are recorded separately. #48 and release acceptance remain open.
+
 Latest: [state boundaries, controlled snapshot delivery and dense diagnosis](state-completion.md).
 The [source/geometry checks and grouped-mark cycling fix](geometry.md) retain their
 recorded scope. Current dense interaction/resource and all native/platform gates remain open.

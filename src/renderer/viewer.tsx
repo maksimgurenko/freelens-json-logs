@@ -15,7 +15,7 @@ import { FindHistory } from '../core/find-history.ts';
 import { FindHistoryPopover } from './find-history.tsx';
 import { selectedFindSeed } from './find-selection.ts';
 import { FindSourceText } from './find-source.tsx';
-import { FindHighlights, type HighlightStatus } from './find-highlights.ts';
+import { FindHighlights, HIGHLIGHT_LIMIT_MESSAGE, type HighlightStatus } from './find-highlights.ts';
 import { FindMarks } from './find-marks.ts';
 import { FindClient, FindMatching, type FindMatchingState } from './find-client.ts';
 import type { FindRpc } from '../adapter/find-ipc.ts';
@@ -482,9 +482,11 @@ export function Viewer({ target, register, visibility, findRpc, preferences, sho
       {['timeout', 'execution'].includes(matching.phase) && <button type="button" onClick={() => { cancelFindIntents(); findMatching.update(findInputs, 'retry'); }}>Retry</button>}
       <button type="button" aria-label="Close Find" title="Close Find (Escape)" onClick={closeFind}>Close</button>
       {feedback && <span className="rl-find-feedback">{feedback}</span>}
-      {highlightStatus.message && <span className="rl-highlight-status" role="status">{highlightStatus.message}
+      <span className="rl-highlight-status" role="status" data-reserve={HIGHLIGHT_LIMIT_MESSAGE}>
+        <span>{highlightStatus.message}
         {highlightStatus.retryable && <button type="button" onClick={() => highlights.current?.retry()}>Retry highlights</button>}
-      </span>}
+        </span>
+      </span>
       <span className="rl-sr-only" role="status" aria-live="polite" aria-atomic="true">{announcement}</span>
     </div>
     <SettingsRecovery preferences={preferences} saved={preference} dismissal={dismissal} />

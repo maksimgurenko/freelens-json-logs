@@ -7,6 +7,7 @@ interface Fragment { node: Text; start: number }
 interface SourceIndex { element: HTMLElement; ref: RecordRef; source: FindSource; fragments: Fragment[]; visible: FindScope[] }
 interface Clip { top: number; right: number; bottom: number; left: number }
 export interface HighlightStatus { message: string; retryable: boolean }
+export const HIGHLIGHT_LIMIT_MESSAGE = 'Highlighting incomplete.';
 const intersects = (a: Clip, b: Clip) => a.bottom > b.top && a.top < b.bottom && a.right > b.left && a.left < b.right;
 const inside = (a: Clip, b: Clip) => a.top >= b.top && a.bottom <= b.bottom && a.left >= b.left && a.right <= b.right;
 const intersect = (a: Clip, b: Clip): Clip => ({ top: Math.max(a.top, b.top), right: Math.min(a.right, b.right),
@@ -145,7 +146,7 @@ export class FindHighlights {
     if (this.closed) return;
     if (state.phase !== 'ready') {
       this.setStatus(state.phase === 'failed' ? 'Highlighting incomplete. Retry highlights to try again; exact matches remain available.'
-        : state.phase === 'pending' ? 'Highlighting pending; exact matches remain available.' : '', state.phase === 'failed');
+        : state.phase === 'pending' ? 'Highlighting pending.' : '', state.phase === 'failed');
       return;
     }
     if (!globalThis.CSS?.highlights || !globalThis.Highlight) return;
@@ -172,7 +173,7 @@ export class FindHighlights {
     }
     this.names.forEach((name, index) => CSS.highlights.set(name, highlights[index]));
     const incomplete = !state.complete || this.interestCapped || presentations.reduce((sum, entry) => sum + entry.ranges.length, 0) > count;
-    this.setStatus(incomplete ? 'Highlighting incomplete: visible text exceeds the decoration limit. Exact matches remain available.' : '');
+    this.setStatus(incomplete ? HIGHLIGHT_LIMIT_MESSAGE : '');
   }
   private clearHighlights() { this.names.forEach(name => globalThis.CSS?.highlights?.delete(name)); }
   private setStatus(message: string, retryable = false) {

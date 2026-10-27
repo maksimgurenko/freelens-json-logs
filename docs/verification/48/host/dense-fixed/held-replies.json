@@ -1,0 +1,319 @@
+{
+  "session": {
+    "pid": 1979213,
+    "privateInstance": "efb50993780079460b0cbed1363e2166a2de1d9f_1793094804_1107866213",
+    "privateRuntime": "/tmp/fd-1o9iv64n",
+    "owned": [
+      {
+        "address": "0x5604ee85d4c0",
+        "mapped": true,
+        "hidden": false,
+        "visible": true,
+        "acceptsInput": true,
+        "at": [
+          21,
+          21
+        ],
+        "size": [
+          1238,
+          678
+        ],
+        "workspace": {
+          "id": 7,
+          "name": "7"
+        },
+        "floating": false,
+        "monitor": 0,
+        "class": "freelens",
+        "title": "Freelens",
+        "initialClass": "freelens",
+        "initialTitle": "Freelens",
+        "pid": 1979213,
+        "xwayland": false,
+        "pinned": false,
+        "pinFullscreened": false,
+        "fullscreen": 0,
+        "fullscreenClient": 0,
+        "fullscreenHandler": "default",
+        "allowedOverFullscreen": true,
+        "grouped": [],
+        "tags": [],
+        "swallowing": "0x0",
+        "focusHistoryID": 0,
+        "inhibitingIdle": false,
+        "xdgTag": "",
+        "xdgDescription": "",
+        "contentType": "none",
+        "tearingHint": false,
+        "stableId": "18000005"
+      }
+    ]
+  },
+  "checks": [
+    "Pending held SDK delivery disables navigation immediately",
+    "Trace 5 held current success after inspector dismissal updates counts without restoring origin/inspector/result",
+    "Trace 6 late actual success cannot replace newer query/result",
+    "Trace 6 controlled stale transport failure cannot fail newer successful input",
+    "Trace 7 held current success may select but cannot undo intervening manual scroll",
+    "Trace 7 Close/return never replays held selection intent",
+    "D11 renderer whole-attempt timeout preserves editable input and disabled navigation",
+    "Late success cannot clear timeout latch",
+    "Refresh alone does not retry latched matching failure",
+    "Explicit Retry uses current inputs without replaying old reveal",
+    "Explicit edit recovers with a new search intent",
+    "Controlled decoration transport failure preserves exact count/navigation",
+    "Failed decoration does not block valid explicit-navigation history"
+  ],
+  "scope": "Actual packed matching/SDK with held delivery and injected transport errors. DOM input only; no native latency claim.",
+  "transportCalls": [
+    {
+      "work": "match",
+      "text": "upstream",
+      "key": {
+        "viewerEpoch": 70,
+        "targetEpoch": 1,
+        "instanceEpoch": 1,
+        "windowRevision": 5,
+        "messageRevision": 7,
+        "queryRevision": 2
+      }
+    },
+    {
+      "work": "match",
+      "text": "upstream",
+      "key": {
+        "viewerEpoch": 70,
+        "targetEpoch": 1,
+        "instanceEpoch": 1,
+        "windowRevision": 5,
+        "messageRevision": 7,
+        "queryRevision": 3
+      }
+    },
+    {
+      "work": "match",
+      "text": "payment",
+      "key": {
+        "viewerEpoch": 70,
+        "targetEpoch": 1,
+        "instanceEpoch": 1,
+        "windowRevision": 5,
+        "messageRevision": 7,
+        "queryRevision": 4
+      }
+    },
+    {
+      "work": "ranges",
+      "text": "payment",
+      "key": {
+        "viewerEpoch": 70,
+        "targetEpoch": 1,
+        "instanceEpoch": 1,
+        "windowRevision": 5,
+        "messageRevision": 7,
+        "queryRevision": 4
+      }
+    },
+    {
+      "work": "match",
+      "text": "upstream",
+      "key": {
+        "viewerEpoch": 70,
+        "targetEpoch": 1,
+        "instanceEpoch": 1,
+        "windowRevision": 5,
+        "messageRevision": 7,
+        "queryRevision": 5
+      }
+    },
+    {
+      "work": "match",
+      "text": "payment",
+      "key": {
+        "viewerEpoch": 70,
+        "targetEpoch": 1,
+        "instanceEpoch": 1,
+        "windowRevision": 5,
+        "messageRevision": 7,
+        "queryRevision": 6
+      }
+    },
+    {
+      "work": "ranges",
+      "text": "payment",
+      "key": {
+        "viewerEpoch": 70,
+        "targetEpoch": 1,
+        "instanceEpoch": 1,
+        "windowRevision": 5,
+        "messageRevision": 7,
+        "queryRevision": 6
+      }
+    },
+    {
+      "work": "match",
+      "text": "upstream",
+      "key": {
+        "viewerEpoch": 70,
+        "targetEpoch": 1,
+        "instanceEpoch": 1,
+        "windowRevision": 5,
+        "messageRevision": 7,
+        "queryRevision": 7
+      }
+    },
+    {
+      "work": "match",
+      "text": "payment",
+      "key": {
+        "viewerEpoch": 70,
+        "targetEpoch": 1,
+        "instanceEpoch": 1,
+        "windowRevision": 5,
+        "messageRevision": 7,
+        "queryRevision": 8
+      }
+    },
+    {
+      "work": "match",
+      "text": "upstream",
+      "key": {
+        "viewerEpoch": 70,
+        "targetEpoch": 1,
+        "instanceEpoch": 1,
+        "windowRevision": 5,
+        "messageRevision": 7,
+        "queryRevision": 9
+      }
+    },
+    {
+      "work": "match",
+      "text": "upstream",
+      "key": {
+        "viewerEpoch": 70,
+        "targetEpoch": 1,
+        "instanceEpoch": 1,
+        "windowRevision": 6,
+        "messageRevision": 8,
+        "queryRevision": 9
+      }
+    },
+    {
+      "work": "match",
+      "text": "payment",
+      "key": {
+        "viewerEpoch": 70,
+        "targetEpoch": 1,
+        "instanceEpoch": 1,
+        "windowRevision": 6,
+        "messageRevision": 8,
+        "queryRevision": 10
+      }
+    },
+    {
+      "work": "match",
+      "text": "upstream",
+      "key": {
+        "viewerEpoch": 70,
+        "targetEpoch": 1,
+        "instanceEpoch": 1,
+        "windowRevision": 6,
+        "messageRevision": 8,
+        "queryRevision": 11
+      }
+    },
+    {
+      "work": "ranges",
+      "text": "upstream",
+      "key": {
+        "viewerEpoch": 70,
+        "targetEpoch": 1,
+        "instanceEpoch": 1,
+        "windowRevision": 6,
+        "messageRevision": 8,
+        "queryRevision": 11
+      }
+    }
+  ],
+  "pass": true,
+  "closed": {
+    "starts": 111,
+    "exits": 111,
+    "live": 0,
+    "peak": 1,
+    "resources": [
+      "TCPServerWrap",
+      "StatWatcher",
+      "StatWatcher",
+      "StatWatcher",
+      "StatWatcher",
+      "StatWatcher",
+      "StatWatcher",
+      "PipeWrap",
+      "PipeWrap",
+      "PipeWrap",
+      "ProcessWrap",
+      "TCPSocketWrap",
+      "TCPSocketWrap",
+      "TCPSocketWrap",
+      "TCPSocketWrap",
+      "TCPSocketWrap",
+      "TCPSocketWrap",
+      "TCPSocketWrap",
+      "TCPSocketWrap",
+      "TCPSocketWrap",
+      "TCPSocketWrap",
+      "TCPSocketWrap",
+      "TCPSocketWrap",
+      "Timeout",
+      "Timeout",
+      "Timeout"
+    ],
+    "beforeQuit": 1,
+    "handlers": [
+      "extensions@2e8d308f904388d734a0a820b03f0c72a3cfbd5c0a37bcd0093180044163f167:find-open",
+      "extensions@2e8d308f904388d734a0a820b03f0c72a3cfbd5c0a37bcd0093180044163f167:find-request",
+      "extensions@2e8d308f904388d734a0a820b03f0c72a3cfbd5c0a37bcd0093180044163f167:find-control"
+    ],
+    "windows": [
+      {
+        "id": 2,
+        "pid": 1979650,
+        "frames": [
+          {
+            "processId": 5,
+            "routingId": 1,
+            "url": "https://renderer.freelens.app:41299/cluster/8fa415a4e17ee909e343734452116e71"
+          },
+          {
+            "processId": 5,
+            "routingId": 4,
+            "url": "https://8fa415a4e17ee909e343734452116e71.renderer.freelens.app:41299/overview"
+          }
+        ],
+        "listeners": [
+          [
+            "destroyed",
+            1
+          ],
+          [
+            "render-process-gone",
+            1
+          ],
+          [
+            "did-frame-navigate",
+            0
+          ]
+        ]
+      }
+    ],
+    "service": {
+      "owners": 0,
+      "retiring": 0,
+      "opening": 0,
+      "senders": 0,
+      "watch": false,
+      "executions": []
+    }
+  }
+}

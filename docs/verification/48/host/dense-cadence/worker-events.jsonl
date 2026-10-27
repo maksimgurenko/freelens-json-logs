@@ -1,0 +1,9 @@
+{"at":1793094851245,"event":"worker-start","threadId":1}
+{"at":1793094857746,"event":"worker-exit","code":1,"live":0}
+{"at":1793094883515,"event":"worker-start","threadId":2}
+{"at":1793094885269,"event":"worker-exit","code":1,"live":0}
+{"at":1793094911186,"event":"worker-start","threadId":3}
+{"at":1793094919548,"event":"worker-exit","code":1,"live":0}
+{"at":1793094940264,"event":"worker-start","threadId":4}
+{"at":1793094942337,"event":"worker-exit","code":1,"live":0}
+{"at":1793095358021,"event":"process-exit","starts":4,"exits":4,"live":0,"peak":1,"resources":["FSReqCallback","TCPServerWrap","PipeWrap","PipeWrap","PipeWrap","ProcessWrap","Timeout","Timeout","Immediate","Immediate","Immediate","Immediate","Immediate"],"beforeQuit":0,"handlers":[],"windows":[]}

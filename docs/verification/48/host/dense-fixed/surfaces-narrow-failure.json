@@ -1,0 +1,218 @@
+{
+  "session": {
+    "pid": 1979213,
+    "privateInstance": "efb50993780079460b0cbed1363e2166a2de1d9f_1793094804_1107866213",
+    "privateRuntime": "/tmp/fd-1o9iv64n",
+    "owned": [
+      {
+        "address": "0x5604ee85d4c0",
+        "mapped": true,
+        "hidden": false,
+        "visible": true,
+        "acceptsInput": true,
+        "at": [
+          21,
+          21
+        ],
+        "size": [
+          1238,
+          678
+        ],
+        "workspace": {
+          "id": 7,
+          "name": "7"
+        },
+        "floating": false,
+        "monitor": 0,
+        "class": "freelens",
+        "title": "Freelens",
+        "initialClass": "freelens",
+        "initialTitle": "Freelens",
+        "pid": 1979213,
+        "xwayland": false,
+        "pinned": false,
+        "pinFullscreened": false,
+        "fullscreen": 0,
+        "fullscreenClient": 0,
+        "fullscreenHandler": "default",
+        "allowedOverFullscreen": true,
+        "grouped": [],
+        "tags": [],
+        "swallowing": "0x0",
+        "focusHistoryID": 0,
+        "inhibitingIdle": false,
+        "xdgTag": "",
+        "xdgDescription": "",
+        "contentType": "none",
+        "tearingHint": false,
+        "stableId": "18000005"
+      }
+    ]
+  },
+  "scope": "Installed renderer and actual SDK/worker; DOM selection/geometry only. Private diagnostic compositor, native/platform unverified.",
+  "error": "Error: Error: Geometry lost complete matching population\n    at until (<anonymous>:6:122)\n    at async geometry (<anonymous>:44:22)\n    at async <anonymous>:63:35\n    at Object.evaluate (file:///home/max/work/freelens-json-logs/scripts/find-production-host/cdp.mjs:54:40)\n    at async file:///home/max/work/freelens-json-logs/scripts/find-production-host/surfaces.mjs:22:21",
+  "completedChecks": [
+    "Seed source contains D12 256 astral code points seed despite 512 UTF-16 units",
+    "Exact DOM Range for D12 256 astral code points seed despite 512 UTF-16 units",
+    "D12 256 astral code points seed despite 512 UTF-16 units",
+    "Seed source contains D12 257 astral code points rejected",
+    "Exact DOM Range for D12 257 astral code points rejected",
+    "D12 257 astral code points rejected",
+    "Seed source contains D12 line separator U+a rejected",
+    "Exact DOM Range for D12 line separator U+a rejected",
+    "D12 line separator U+a rejected",
+    "Seed source contains D12 line separator U+d rejected",
+    "Exact DOM Range for D12 line separator U+d rejected",
+    "D12 line separator U+d rejected",
+    "Seed source contains D12 line separator U+2028 rejected",
+    "Exact DOM Range for D12 line separator U+2028 rejected",
+    "D12 line separator U+2028 rejected",
+    "Seed source contains D12 line separator U+2029 rejected",
+    "Exact DOM Range for D12 line separator U+2029 rejected",
+    "D12 line separator U+2029 rejected",
+    "D12 short foreign surface selection ignored",
+    "Seed source contains D12 inline Application text \"message\" provenance",
+    "Exact DOM Range for D12 inline Application text \"message\" provenance",
+    "D12 inline Application text \"message\" provenance",
+    "Seed source contains D12 inline Transport line \"message\" provenance",
+    "Exact DOM Range for D12 inline Transport line \"message\" provenance",
+    "D12 inline Transport line \"message\" provenance",
+    "Seed source contains D12 inline Extracted message \"Σ decoded\" provenance",
+    "Exact DOM Range for D12 inline Extracted message \"Σ decoded\" provenance",
+    "D12 inline Extracted message \"Σ decoded\" provenance",
+    "Seed source contains D12 inline All fields \"needle\" provenance",
+    "Exact DOM Range for D12 inline All fields \"needle\" provenance",
+    "D12 inline All fields \"needle\" provenance",
+    "Seed source contains D12 inline All fields \"Σ needle\" provenance",
+    "Exact DOM Range for D12 inline All fields \"Σ needle\" provenance",
+    "D12 inline All fields \"Σ needle\" provenance",
+    "Seed source contains D12 inline All fields \"  \" provenance",
+    "Exact DOM Range for D12 inline All fields \"  \" provenance",
+    "D12 inline All fields \"  \" provenance",
+    "Seed source contains D12 side Application text \"message\" provenance",
+    "Exact DOM Range for D12 side Application text \"message\" provenance",
+    "D12 side Application text \"message\" provenance",
+    "Seed source contains D12 side Transport line \"message\" provenance",
+    "Exact DOM Range for D12 side Transport line \"message\" provenance",
+    "D12 side Transport line \"message\" provenance",
+    "Seed source contains D12 side Extracted message \"Σ decoded\" provenance",
+    "Exact DOM Range for D12 side Extracted message \"Σ decoded\" provenance",
+    "D12 side Extracted message \"Σ decoded\" provenance",
+    "Seed source contains D12 side All fields \"needle\" provenance",
+    "Exact DOM Range for D12 side All fields \"needle\" provenance",
+    "D12 side All fields \"needle\" provenance",
+    "Seed source contains D12 side All fields \"Σ needle\" provenance",
+    "Exact DOM Range for D12 side All fields \"Σ needle\" provenance",
+    "D12 side All fields \"Σ needle\" provenance",
+    "Seed source contains D12 side All fields \"  \" provenance",
+    "Exact DOM Range for D12 side All fields \"  \" provenance",
+    "D12 side All fields \"  \" provenance",
+    "Seed source contains D12 bottom Application text \"message\" provenance",
+    "Exact DOM Range for D12 bottom Application text \"message\" provenance",
+    "D12 bottom Application text \"message\" provenance",
+    "Seed source contains D12 bottom Transport line \"message\" provenance",
+    "Exact DOM Range for D12 bottom Transport line \"message\" provenance",
+    "D12 bottom Transport line \"message\" provenance",
+    "Seed source contains D12 bottom Extracted message \"Σ decoded\" provenance",
+    "Exact DOM Range for D12 bottom Extracted message \"Σ decoded\" provenance",
+    "D12 bottom Extracted message \"Σ decoded\" provenance",
+    "Seed source contains D12 bottom All fields \"needle\" provenance",
+    "Exact DOM Range for D12 bottom All fields \"needle\" provenance",
+    "D12 bottom All fields \"needle\" provenance",
+    "Seed source contains D12 bottom All fields \"Σ needle\" provenance",
+    "Exact DOM Range for D12 bottom All fields \"Σ needle\" provenance",
+    "D12 bottom All fields \"Σ needle\" provenance",
+    "Seed source contains D12 bottom All fields \"  \" provenance",
+    "Exact DOM Range for D12 bottom All fields \"  \" provenance",
+    "D12 bottom All fields \"  \" provenance",
+    "wrapped mark includes 0",
+    "wrapped measured row 0",
+    "wrapped mark includes 64",
+    "wrapped measured row 64",
+    "wrapped mark includes 120",
+    "wrapped measured row 120",
+    "wrapped mark includes 162",
+    "wrapped measured row 162",
+    "Long real source wraps"
+  ],
+  "closed": {
+    "starts": 113,
+    "exits": 113,
+    "live": 0,
+    "peak": 1,
+    "resources": [
+      "TCPServerWrap",
+      "StatWatcher",
+      "StatWatcher",
+      "StatWatcher",
+      "StatWatcher",
+      "StatWatcher",
+      "StatWatcher",
+      "PipeWrap",
+      "PipeWrap",
+      "PipeWrap",
+      "ProcessWrap",
+      "TCPSocketWrap",
+      "TCPSocketWrap",
+      "TCPSocketWrap",
+      "TCPSocketWrap",
+      "TCPSocketWrap",
+      "TCPSocketWrap",
+      "TCPSocketWrap",
+      "TCPSocketWrap",
+      "TCPSocketWrap",
+      "TCPSocketWrap",
+      "TCPSocketWrap",
+      "TCPSocketWrap",
+      "Timeout",
+      "Timeout",
+      "Timeout"
+    ],
+    "beforeQuit": 1,
+    "handlers": [
+      "extensions@2e8d308f904388d734a0a820b03f0c72a3cfbd5c0a37bcd0093180044163f167:find-open",
+      "extensions@2e8d308f904388d734a0a820b03f0c72a3cfbd5c0a37bcd0093180044163f167:find-request",
+      "extensions@2e8d308f904388d734a0a820b03f0c72a3cfbd5c0a37bcd0093180044163f167:find-control"
+    ],
+    "windows": [
+      {
+        "id": 2,
+        "pid": 1979650,
+        "frames": [
+          {
+            "processId": 5,
+            "routingId": 1,
+            "url": "https://renderer.freelens.app:41299/cluster/8fa415a4e17ee909e343734452116e71"
+          },
+          {
+            "processId": 5,
+            "routingId": 4,
+            "url": "https://8fa415a4e17ee909e343734452116e71.renderer.freelens.app:41299/overview"
+          }
+        ],
+        "listeners": [
+          [
+            "destroyed",
+            1
+          ],
+          [
+            "render-process-gone",
+            1
+          ],
+          [
+            "did-frame-navigate",
+            0
+          ]
+        ]
+      }
+    ],
+    "service": {
+      "owners": 0,
+      "retiring": 0,
+      "opening": 0,
+      "senders": 0,
+      "watch": false,
+      "executions": []
+    }
+  }
+}
