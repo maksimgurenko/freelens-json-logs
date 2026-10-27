@@ -1,6 +1,6 @@
 # 47: Integrate package, regression and resource checks
 
-**Status:** ready-for-agent
+**Status:** done
 **Blocked by:** [44: Search selected text and recall temporary history](44-search-selected-text-and-recall-temporary-history.md), [45: Highlight matches and inspect hidden match sources](45-highlight-matches-and-inspect-hidden-match-sources.md), [46: Navigate scrollbar match marks using measured geometry](46-navigate-scrollbar-match-marks-using-measured-geometry.md)
 **GitHub:** https://github.com/maksimgurenko/freelens-json-logs/issues/47
 

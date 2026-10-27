@@ -1,3 +1,4 @@
+import { scratch, evidence, ticket } from './config.mjs';
 // Test driver for #42's private graphical session. Never targets the user host.
 import { readFileSync } from 'node:fs';
 import assert from 'node:assert/strict';
@@ -6,9 +7,9 @@ import WebSocket from 'ws'; // Already locked in the SDK development tree.
 
 export async function connect(port) {
   assert([9241, 9242].includes(port));
-  const session = JSON.parse(readFileSync('.scratch/find/42-host/session.json', 'utf8'));
-  const integration = readFileSync('.scratch/find/42-host/integration-path', 'utf8');
-  const hostPid = Number(readFileSync('.scratch/find/42-host/host-pid', 'utf8'));
+  const session = JSON.parse(readFileSync(`${scratch}/session.json`, 'utf8'));
+  const integration = readFileSync(`${scratch}/integration-path`, 'utf8');
+  const hostPid = Number(readFileSync(`${scratch}/host-pid`, 'utf8'));
   assert(session.runtime.startsWith('/tmp/fd-'));
   assert.notEqual(session.instance, process.env.HYPRLAND_INSTANCE_SIGNATURE);
   assert(readFileSync(`/proc/${hostPid}/environ`, 'utf8').split('\0').includes(`WAYLAND_DISPLAY=${session.environment.WAYLAND_DISPLAY}`));

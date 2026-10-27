@@ -1,0 +1,55 @@
+{
+  "session": {
+    "pid": 1206666,
+    "privateInstance": "efb50993780079460b0cbed1363e2166a2de1d9f_1793081242_1601798328",
+    "privateRuntime": "/tmp/fd-7itpyv80",
+    "owned": [
+      {
+        "address": "0x5583fe7fdba0",
+        "mapped": true,
+        "hidden": false,
+        "visible": true,
+        "acceptsInput": true,
+        "at": [
+          21,
+          21
+        ],
+        "size": [
+          -42,
+          -42
+        ],
+        "workspace": {
+          "id": 7,
+          "name": "7"
+        },
+        "floating": false,
+        "monitor": 0,
+        "class": "freelens",
+        "title": "Freelens",
+        "initialClass": "freelens",
+        "initialTitle": "Freelens",
+        "pid": 1206666,
+        "xwayland": false,
+        "pinned": false,
+        "pinFullscreened": false,
+        "fullscreen": 0,
+        "fullscreenClient": 0,
+        "fullscreenHandler": "default",
+        "allowedOverFullscreen": true,
+        "grouped": [],
+        "tags": [],
+        "swallowing": "0x0",
+        "focusHistoryID": 0,
+        "inhibitingIdle": false,
+        "xdgTag": "",
+        "xdgDescription": "",
+        "contentType": "none",
+        "tearingHint": false,
+        "stableId": "18000003"
+      }
+    ]
+  },
+  "samples": [],
+  "limits": "Short 20-cycle samples per bound; SDK/worker resources only, not long-duration or mounted DOM/input responsiveness.",
+  "error": "Error: ENOENT: no such file or directory, stat '/tmp/freelens-production-find-48-moft1ixc/Freelens/SingletonCookie'\n    at statSync (node:fs:1734:25)\n    at footprint (file:///home/max/work/freelens-json-logs/scripts/find-production-host/soak.mjs:12:111)\n    at footprint (file:///home/max/work/freelens-json-logs/scripts/find-production-host/soak.mjs:12:157)\n    at sample (file:///home/max/work/freelens-json-logs/scripts/find-production-host/soak.mjs:20:259)\n    at async file:///home/max/work/freelens-json-logs/scripts/find-production-host/soak.mjs:38:19"
+}

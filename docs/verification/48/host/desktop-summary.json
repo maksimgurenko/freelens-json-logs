@@ -1,0 +1,110 @@
+[
+  {
+    "file": "initial-real-desktop.json",
+    "before": {
+      "address": "0x5637f33d1230",
+      "class": "kitty",
+      "workspace": {
+        "id": 2,
+        "name": "2"
+      }
+    },
+    "after": {
+      "address": "0x5637f33d1230",
+      "class": "kitty",
+      "workspace": {
+        "id": 2,
+        "name": "2"
+      }
+    },
+    "workspaceEqual": true,
+    "pointerEqual": true,
+    "clientsEqual": true,
+    "events": 3317,
+    "distinctActiveEventPayloads": [
+      "activewindowv2>>5637f33d1230"
+    ],
+    "workspaceEvents": [],
+    "error": null
+  },
+  {
+    "file": "amd-initial-real-desktop.json",
+    "before": {
+      "address": "0x5637f33d1230",
+      "class": "kitty",
+      "workspace": {
+        "id": 2,
+        "name": "2"
+      }
+    },
+    "after": {
+      "address": "0x5637f33d1230",
+      "class": "kitty",
+      "workspace": {
+        "id": 2,
+        "name": "2"
+      }
+    },
+    "workspaceEqual": true,
+    "pointerEqual": true,
+    "clientsEqual": true,
+    "events": 0,
+    "distinctActiveEventPayloads": [],
+    "workspaceEvents": [],
+    "error": "Nested Hyprland IPC did not become ready"
+  },
+  {
+    "file": "mesa-attempt-real-desktop.json",
+    "before": {
+      "address": "0x5637f33d1230",
+      "class": "kitty",
+      "workspace": {
+        "id": 2,
+        "name": "2"
+      }
+    },
+    "after": {
+      "address": "0x5637f33d1230",
+      "class": "kitty",
+      "workspace": {
+        "id": 2,
+        "name": "2"
+      }
+    },
+    "workspaceEqual": true,
+    "pointerEqual": true,
+    "clientsEqual": true,
+    "events": 0,
+    "distinctActiveEventPayloads": [],
+    "workspaceEvents": [],
+    "error": "Nested Hyprland IPC did not become ready"
+  },
+  {
+    "file": "real-desktop.json",
+    "before": {
+      "address": "0x5637f33d1230",
+      "class": "kitty",
+      "workspace": {
+        "id": 2,
+        "name": "2"
+      }
+    },
+    "after": {
+      "address": "0x5637f33d1230",
+      "class": "kitty",
+      "workspace": {
+        "id": 2,
+        "name": "2"
+      }
+    },
+    "workspaceEqual": true,
+    "pointerEqual": true,
+    "clientsEqual": true,
+    "events": 6835,
+    "distinctActiveEventPayloads": [
+      "activewindowv2>>5637f33d1230"
+    ],
+    "workspaceEvents": [],
+    "error": null
+  }
+]

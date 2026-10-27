@@ -6,8 +6,11 @@ import os
 import subprocess
 import tempfile
 
+ticket = os.environ.get('FIND_HOST_TICKET', '42')
+assert ticket in ('42', '48')
+
 root = Path(__file__).resolve().parents[2]
-scratch = root / '.scratch/find/42-host'
+scratch = root / f'.scratch/find/{ticket}-host'
 scratch.mkdir(parents=True, exist_ok=True)
 pid = scratch / 'host-pid'
 if pid.exists() and Path('/proc/' + pid.read_text()).exists():
@@ -21,7 +24,7 @@ for record in records:
         subprocess.run(['curl', '-fsSL', '--max-time', '40', record['url'], '-o', str(package)], check=True)
     assert hashlib.sha256(package.read_bytes()).hexdigest() == record['sha256']
     subprocess.run(['bsdtar', '-xf', str(package), '-C', str(prefix)], check=True)
-integration = Path(tempfile.mkdtemp(prefix='freelens-production-find-42-'))
+integration = Path(tempfile.mkdtemp(prefix=f'freelens-production-find-{ticket}-'))
 (scratch / 'integration-path').write_text(str(integration))
 profile = integration / 'Freelens'
 kubeconfigs = profile / 'kubeconfigs'

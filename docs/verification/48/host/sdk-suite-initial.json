@@ -1,0 +1,125 @@
+{
+  "steps": [],
+  "root": {
+    "id": "/tmp/freelens-production-find-48-moft1ixc/Freelens/node_modules/freelens-readable-logs/package.json",
+    "url": "https://renderer.freelens.app:32817/cluster/afe6260428cecd9e4803507b42d77f82"
+  },
+  "cluster": {
+    "id": "/tmp/freelens-production-find-48-moft1ixc/Freelens/node_modules/freelens-readable-logs/package.json",
+    "url": "https://afe6260428cecd9e4803507b42d77f82.renderer.freelens.app:32817/extension/freelens-readable-logs/readable-logs?namespace=readable-logs-spike&pod=single-json&podUid=0035d4f0-23c6-4e7d-93b2-c1d13a41cb92&clusterId=afe6260428cecd9e4803507b42d77f82"
+  },
+  "before": {
+    "starts": 1,
+    "exits": 0,
+    "live": 1,
+    "peak": 1,
+    "resources": [
+      "TCPServerWrap",
+      "StatWatcher",
+      "StatWatcher",
+      "StatWatcher",
+      "StatWatcher",
+      "StatWatcher",
+      "StatWatcher",
+      "PipeWrap",
+      "PipeWrap",
+      "PipeWrap",
+      "ProcessWrap",
+      "TCPSocketWrap",
+      "TCPSocketWrap",
+      "TCPSocketWrap",
+      "TCPSocketWrap",
+      "TCPSocketWrap",
+      "TCPSocketWrap",
+      "MessagePort",
+      "Timeout",
+      "Timeout",
+      "Timeout",
+      "Timeout",
+      "Timeout",
+      "Timeout",
+      "Timeout",
+      "Timeout",
+      "Timeout",
+      "Timeout",
+      "Timeout",
+      "Timeout",
+      "Timeout",
+      "Timeout",
+      "Timeout",
+      "Timeout",
+      "Timeout",
+      "Timeout",
+      "Timeout",
+      "Timeout",
+      "Timeout",
+      "Timeout",
+      "Timeout",
+      "Timeout",
+      "Timeout",
+      "Timeout",
+      "Timeout",
+      "Timeout"
+    ],
+    "beforeQuit": 1,
+    "handlers": [
+      "extensions@a5a466ae19047197d3026787cca1fb416c177a5e8ffb70284441040a8689cc6f:find-open",
+      "extensions@a5a466ae19047197d3026787cca1fb416c177a5e8ffb70284441040a8689cc6f:find-request",
+      "extensions@a5a466ae19047197d3026787cca1fb416c177a5e8ffb70284441040a8689cc6f:find-control"
+    ],
+    "windows": [
+      {
+        "id": 2,
+        "pid": 1182038,
+        "frames": [
+          {
+            "processId": 5,
+            "routingId": 1,
+            "url": "https://renderer.freelens.app:32817/cluster/afe6260428cecd9e4803507b42d77f82"
+          },
+          {
+            "processId": 5,
+            "routingId": 4,
+            "url": "https://afe6260428cecd9e4803507b42d77f82.renderer.freelens.app:32817/extension/freelens-readable-logs/readable-logs?namespace=readable-logs-spike&pod=single-json&podUid=0035d4f0-23c6-4e7d-93b2-c1d13a41cb92&clusterId=afe6260428cecd9e4803507b42d77f82"
+          }
+        ],
+        "listeners": [
+          [
+            "destroyed",
+            2
+          ],
+          [
+            "render-process-gone",
+            2
+          ],
+          [
+            "did-frame-navigate",
+            1
+          ]
+        ]
+      }
+    ],
+    "service": {
+      "owners": 1,
+      "retiring": 0,
+      "opening": 0,
+      "senders": 1,
+      "watch": true,
+      "executions": [
+        {
+          "viewer": "2edd0274-d07f-4391-ab4e-941a2b983a53",
+          "sender": 2,
+          "processId": 5,
+          "routingId": 4,
+          "active": true,
+          "running": false,
+          "pending": false,
+          "slot": true,
+          "ready": true,
+          "stopping": false
+        }
+      ]
+    }
+  },
+  "error": "AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:\n\n1 !== 0\n\n    at file:///home/max/work/freelens-json-logs/scripts/find-production-host/suite.mjs:9:10\n    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)"
+}

@@ -2,13 +2,16 @@
 from pathlib import Path
 import json, os, select, socket, subprocess, tempfile, time
 
+ticket = os.environ.get('FIND_HOST_TICKET', '42')
+assert ticket in ('42', '48')
+
 root = Path(__file__).resolve().parents[2]
-scratch = root / '.scratch/find/42-host'
+scratch = root / f'.scratch/find/{ticket}-host'
 (scratch / 'stop').unlink(missing_ok=True)
 prefix = scratch / 'prefix'
 runtime = Path(tempfile.mkdtemp(prefix='fd-', dir='/tmp'))
 runtime.chmod(0o700)
-evidence = root / 'docs/verification/42/host'
+evidence = root / f'docs/verification/{ticket}/host'
 evidence.mkdir(parents=True, exist_ok=True)
 user_environment = subprocess.check_output(['systemctl', '--user', 'show-environment'], text=True)
 user_instance = next(line.split('=', 1)[1] for line in user_environment.splitlines() if line.startswith('HYPRLAND_INSTANCE_SIGNATURE='))

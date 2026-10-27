@@ -1,3 +1,4 @@
+import { scratch, evidence, ticket } from './config.mjs';
 import { connect } from './cdp.mjs';
 import { readFileSync, writeFileSync } from 'node:fs';
 import assert from 'node:assert/strict';
@@ -5,7 +6,7 @@ import assert from 'node:assert/strict';
 export const sleep = ms => new Promise(resolve => setTimeout(resolve, ms));
 export async function driver() {
   const main = await connect(9242), page = await connect(9241);
-  const integration = readFileSync('.scratch/find/42-host/integration-path', 'utf8');
+  const integration = readFileSync(`${scratch}/integration-path`, 'utf8');
   assert.equal(await main.evaluate('process.env.FREELENS_INTEGRATION_TESTING_DIR'), integration);
   const bindMain = async () => {
     const proto = await main.send('Runtime.evaluate', { expression: 'global.__findProductionPrototype' });
@@ -44,7 +45,7 @@ export const request = (requestId, text = 'σ', records = [{ ref: { context: 'ho
   requestId, key: { viewerEpoch: 1, targetEpoch: 1, instanceEpoch: 1, windowRevision: 1, messageRevision: 1, queryRevision: requestId },
   query: { text, matchCase: false, wholeWords: true, ...flags }, records, work: 'match',
 });
-export function report(name, value) { writeFileSync(`docs/verification/42/host/${name}.json`, JSON.stringify(value, null, 2) + '\n'); }
+export function report(name, value) { writeFileSync(`${evidence}/${name}.json`, JSON.stringify(value, null, 2) + '\n'); }
 
 export async function installPackage(page, context) {
   return page.evaluate(`(async()=>{
