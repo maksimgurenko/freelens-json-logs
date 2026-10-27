@@ -1,6 +1,19 @@
 # Integrated production Find acceptance matrix
 
-Latest continuation: [exact retention boundary and pre-heap listeners](exact-listeners.md).
+Latest continuation: [weak viewer roots and natural idle](weak-idle.md).
+The corrected 120-cycle-per-bound installed run still **fails**, with 27 long
+violations peaking +203 nodes/+36 listeners. Some spikes clean up during natural
+idle; later growth remains +182/+27 after 15 seconds and a separately labelled GC.
+A timing control captures one detached viewer (1,436 subtree nodes/24 listeners)
+in four undrained long samples; it collects naturally by 15 seconds. This related
+control does **not** establish the original +1,551/+26 sample's cause. Plain
+30-cycle repetition passes without clearing failures. Later native paths identify
+request/timer leads, not exclusive attribution. Original thresholds and failed
+samples remain. Desktop endpoints changed during monitor/workspace activity;
+there is no unchanged-desktop claim. Native/platform gates and original unchecked
+criteria remain open. Package SHA-256 is unchanged.
+
+Previous continuation: [exact retention boundary and pre-heap listeners](exact-listeners.md).
 Current unchanged package's installed controlled-response checks pass at 5 MiB
 exactly, one byte under/over, over-budget predecessor omission and the 1,001-line
 suffix. Exact full-source DOM selection and late-source highlight pass. These

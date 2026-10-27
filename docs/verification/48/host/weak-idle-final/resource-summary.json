@@ -1,0 +1,3842 @@
+[
+  {
+    "run": "weak-idle",
+    "pass": true,
+    "lifecyclePass": true,
+    "peakGrowth": [
+      {
+        "name": "dense",
+        "nodes": 29,
+        "listeners": 0,
+        "documents": 0,
+        "mainThreads": 0,
+        "rendererThreads": 0,
+        "rendererHeap": 1919396,
+        "rendererRss": 17838080
+      },
+      {
+        "name": "long",
+        "nodes": 29,
+        "listeners": 0,
+        "documents": 0,
+        "mainThreads": 0,
+        "rendererThreads": 0,
+        "rendererHeap": 918296,
+        "rendererRss": 2949120
+      }
+    ],
+    "violations": [],
+    "elapsedMs": 113013,
+    "bounds": [
+      {
+        "name": "dense",
+        "cycles": 30,
+        "baselineDom": {
+          "documents": 4,
+          "nodes": 522,
+          "jsEventListeners": 731
+        },
+        "lastDom": {
+          "documents": 4,
+          "nodes": 551,
+          "jsEventListeners": 731
+        },
+        "mainMemoryGrowth": {
+          "rss": 2109440,
+          "heapTotal": 1048576,
+          "heapUsed": 902832,
+          "external": -2216,
+          "arrayBuffers": 0
+        },
+        "rendererMemoryGrowth": {
+          "rss": 17281024,
+          "heapTotal": 786432,
+          "heapUsed": 1919396,
+          "external": 0,
+          "arrayBuffers": 0
+        },
+        "diskBytesGrowth": 11487,
+        "diskFilesGrowth": 0,
+        "settingsEqual": true,
+        "inactivityThroughObservedActualExitMs": {
+          "n": 30,
+          "min": 76.87423200000194,
+          "max": 102.99106500000198,
+          "scope": "Root navigation to inactivity plus observed execution/actual exit; not pure worker termination latency."
+        },
+        "pauseInputThroughCountMs": {
+          "n": 30,
+          "min": 417.6422590000002,
+          "max": 456.6606849999989,
+          "scope": "Pause/input dispatch, SDK/worker and count observation combined. Not pure worker or native input latency; no sum of stage medians."
+        }
+      },
+      {
+        "name": "long",
+        "cycles": 30,
+        "baselineDom": {
+          "documents": 4,
+          "nodes": 555,
+          "jsEventListeners": 731
+        },
+        "lastDom": {
+          "documents": 4,
+          "nodes": 584,
+          "jsEventListeners": 731
+        },
+        "mainMemoryGrowth": {
+          "rss": -503808,
+          "heapTotal": 1835008,
+          "heapUsed": 856140,
+          "external": 36580,
+          "arrayBuffers": 0
+        },
+        "rendererMemoryGrowth": {
+          "rss": 2625536,
+          "heapTotal": 524288,
+          "heapUsed": 918296,
+          "external": 104308,
+          "arrayBuffers": 0
+        },
+        "diskBytesGrowth": 11487,
+        "diskFilesGrowth": 0,
+        "settingsEqual": true,
+        "inactivityThroughObservedActualExitMs": {
+          "n": 30,
+          "min": 15.251422000001185,
+          "max": 17.12048299999151,
+          "scope": "Root navigation to inactivity plus observed execution/actual exit; not pure worker termination latency."
+        },
+        "pauseInputThroughCountMs": {
+          "n": 30,
+          "min": 48.671805000005406,
+          "max": 75.92285000000265,
+          "scope": "Pause/input dispatch, SDK/worker and count observation combined. Not pure worker or native input latency; no sum of stage medians."
+        }
+      }
+    ],
+    "cases": [],
+    "control": false
+  },
+  {
+    "run": "weak-idle-extended",
+    "pass": false,
+    "lifecyclePass": true,
+    "peakGrowth": [
+      {
+        "name": "dense",
+        "nodes": 119,
+        "listeners": 0,
+        "documents": 0,
+        "mainThreads": 0,
+        "rendererThreads": 1,
+        "rendererHeap": 1200248,
+        "rendererRss": 5181440
+      },
+      {
+        "name": "long",
+        "nodes": 119,
+        "listeners": 10,
+        "documents": 0,
+        "mainThreads": 0,
+        "rendererThreads": 0,
+        "rendererHeap": 1138808,
+        "rendererRss": 8777728
+      }
+    ],
+    "violations": [
+      {
+        "name": "long",
+        "cycle": 119,
+        "nodes": 119,
+        "listeners": 10,
+        "documents": 0,
+        "mainThreads": 0,
+        "rendererThreads": 0,
+        "rendererHeap": 741564,
+        "rendererRss": 3051520
+      }
+    ],
+    "elapsedMs": 431568,
+    "bounds": [
+      {
+        "name": "dense",
+        "cycles": 120,
+        "baselineDom": {
+          "documents": 4,
+          "nodes": 663,
+          "jsEventListeners": 752
+        },
+        "lastDom": {
+          "documents": 4,
+          "nodes": 782,
+          "jsEventListeners": 752
+        },
+        "mainMemoryGrowth": {
+          "rss": -24576,
+          "heapTotal": -524288,
+          "heapUsed": -431612,
+          "external": -40308,
+          "arrayBuffers": 0
+        },
+        "rendererMemoryGrowth": {
+          "rss": 3031040,
+          "heapTotal": 786432,
+          "heapUsed": 1161436,
+          "external": 0,
+          "arrayBuffers": 0
+        },
+        "diskBytesGrowth": 46930,
+        "diskFilesGrowth": 0,
+        "settingsEqual": true,
+        "inactivityThroughObservedActualExitMs": {
+          "n": 120,
+          "min": 76.40841100001126,
+          "max": 103.67178999999305,
+          "scope": "Root navigation to inactivity plus observed execution/actual exit; not pure worker termination latency."
+        },
+        "pauseInputThroughCountMs": {
+          "n": 120,
+          "min": 416.95602099999815,
+          "max": 441.15620599999966,
+          "scope": "Pause/input dispatch, SDK/worker and count observation combined. Not pure worker or native input latency; no sum of stage medians."
+        }
+      },
+      {
+        "name": "long",
+        "cycles": 120,
+        "baselineDom": {
+          "documents": 4,
+          "nodes": 786,
+          "jsEventListeners": 752
+        },
+        "lastDom": {
+          "documents": 4,
+          "nodes": 905,
+          "jsEventListeners": 762
+        },
+        "mainMemoryGrowth": {
+          "rss": -249856,
+          "heapTotal": 786432,
+          "heapUsed": 705140,
+          "external": -103447,
+          "arrayBuffers": 0
+        },
+        "rendererMemoryGrowth": {
+          "rss": 3051520,
+          "heapTotal": 524288,
+          "heapUsed": 741564,
+          "external": -3870,
+          "arrayBuffers": 0
+        },
+        "diskBytesGrowth": 46653,
+        "diskFilesGrowth": 0,
+        "settingsEqual": true,
+        "inactivityThroughObservedActualExitMs": {
+          "n": 120,
+          "min": 14.333641999983229,
+          "max": 16.572436000045855,
+          "scope": "Root navigation to inactivity plus observed execution/actual exit; not pure worker termination latency."
+        },
+        "pauseInputThroughCountMs": {
+          "n": 120,
+          "min": 47.306144000031054,
+          "max": 78.63128600001801,
+          "scope": "Pause/input dispatch, SDK/worker and count observation combined. Not pure worker or native input latency; no sum of stage medians."
+        }
+      }
+    ],
+    "cases": [
+      {
+        "bound": "long",
+        "cycle": 119,
+        "failed": {
+          "documents": 4,
+          "nodes": 905,
+          "jsEventListeners": 762
+        },
+        "delta": {
+          "nodes": 119,
+          "listeners": 10,
+          "documents": 0,
+          "rendererHeap": 741564
+        },
+        "initialCensus": null,
+        "idle": [
+          {
+            "offsetMs": 0,
+            "elapsedMs": 2.827473999990616,
+            "dom": {
+              "documents": 4,
+              "nodes": 905,
+              "jsEventListeners": 762
+            },
+            "reachableWrappers": 0
+          },
+          {
+            "offsetMs": 250,
+            "elapsedMs": 249.44996100000571,
+            "dom": {
+              "documents": 4,
+              "nodes": 905,
+              "jsEventListeners": 762
+            },
+            "reachableWrappers": 0
+          },
+          {
+            "offsetMs": 1000,
+            "elapsedMs": 999.6583690000116,
+            "dom": {
+              "documents": 4,
+              "nodes": 905,
+              "jsEventListeners": 762
+            },
+            "reachableWrappers": 0
+          },
+          {
+            "offsetMs": 5000,
+            "elapsedMs": 5002.711003000033,
+            "dom": {
+              "documents": 4,
+              "nodes": 905,
+              "jsEventListeners": 762
+            },
+            "reachableWrappers": 0
+          },
+          {
+            "offsetMs": 15000,
+            "elapsedMs": 15001.556813000003,
+            "dom": {
+              "documents": 4,
+              "nodes": 883,
+              "jsEventListeners": 753
+            },
+            "reachableWrappers": 0
+          }
+        ],
+        "postIdleGc": null
+      }
+    ],
+    "control": false
+  },
+  {
+    "run": "weak-idle-final",
+    "pass": false,
+    "lifecyclePass": true,
+    "peakGrowth": [
+      {
+        "name": "dense",
+        "nodes": 50,
+        "listeners": 0,
+        "documents": 0,
+        "mainThreads": 0,
+        "rendererThreads": 0,
+        "rendererHeap": 703896,
+        "rendererRss": 8073216
+      },
+      {
+        "name": "long",
+        "nodes": 203,
+        "listeners": 36,
+        "documents": 0,
+        "mainThreads": 0,
+        "rendererThreads": 0,
+        "rendererHeap": 1127884,
+        "rendererRss": 6692864
+      }
+    ],
+    "violations": [
+      {
+        "name": "long",
+        "cycle": 88,
+        "nodes": 98,
+        "listeners": 9,
+        "documents": 0,
+        "mainThreads": 0,
+        "rendererThreads": 0,
+        "rendererHeap": 646776,
+        "rendererRss": 106496
+      },
+      {
+        "name": "long",
+        "cycle": 90,
+        "nodes": 100,
+        "listeners": 9,
+        "documents": 0,
+        "mainThreads": 0,
+        "rendererThreads": 0,
+        "rendererHeap": 648444,
+        "rendererRss": -696320
+      },
+      {
+        "name": "long",
+        "cycle": 91,
+        "nodes": 101,
+        "listeners": 9,
+        "documents": 0,
+        "mainThreads": 0,
+        "rendererThreads": 0,
+        "rendererHeap": 659316,
+        "rendererRss": -3235840
+      },
+      {
+        "name": "long",
+        "cycle": 94,
+        "nodes": 104,
+        "listeners": 9,
+        "documents": 0,
+        "mainThreads": 0,
+        "rendererThreads": 0,
+        "rendererHeap": 666116,
+        "rendererRss": -2142208
+      },
+      {
+        "name": "long",
+        "cycle": 96,
+        "nodes": 106,
+        "listeners": 9,
+        "documents": 0,
+        "mainThreads": 0,
+        "rendererThreads": 0,
+        "rendererHeap": 672380,
+        "rendererRss": 163840
+      },
+      {
+        "name": "long",
+        "cycle": 97,
+        "nodes": 107,
+        "listeners": 9,
+        "documents": 0,
+        "mainThreads": 0,
+        "rendererThreads": 0,
+        "rendererHeap": 695284,
+        "rendererRss": -118784
+      },
+      {
+        "name": "long",
+        "cycle": 98,
+        "nodes": 108,
+        "listeners": 9,
+        "documents": 0,
+        "mainThreads": 0,
+        "rendererThreads": 0,
+        "rendererHeap": 679620,
+        "rendererRss": 3424256
+      },
+      {
+        "name": "long",
+        "cycle": 100,
+        "nodes": 110,
+        "listeners": 9,
+        "documents": 0,
+        "mainThreads": 0,
+        "rendererThreads": 0,
+        "rendererHeap": 666540,
+        "rendererRss": 114688
+      },
+      {
+        "name": "long",
+        "cycle": 101,
+        "nodes": 111,
+        "listeners": 15,
+        "documents": 0,
+        "mainThreads": 0,
+        "rendererThreads": 0,
+        "rendererHeap": 589108,
+        "rendererRss": -1224704
+      },
+      {
+        "name": "long",
+        "cycle": 102,
+        "nodes": 112,
+        "listeners": 11,
+        "documents": 0,
+        "mainThreads": 0,
+        "rendererThreads": 0,
+        "rendererHeap": 633500,
+        "rendererRss": -2150400
+      },
+      {
+        "name": "long",
+        "cycle": 103,
+        "nodes": 113,
+        "listeners": 15,
+        "documents": 0,
+        "mainThreads": 0,
+        "rendererThreads": 0,
+        "rendererHeap": 638696,
+        "rendererRss": 442368
+      },
+      {
+        "name": "long",
+        "cycle": 104,
+        "nodes": 114,
+        "listeners": 11,
+        "documents": 0,
+        "mainThreads": 0,
+        "rendererThreads": 0,
+        "rendererHeap": 623752,
+        "rendererRss": 77824
+      },
+      {
+        "name": "long",
+        "cycle": 105,
+        "nodes": 115,
+        "listeners": 11,
+        "documents": 0,
+        "mainThreads": 0,
+        "rendererThreads": 0,
+        "rendererHeap": 637248,
+        "rendererRss": -1736704
+      },
+      {
+        "name": "long",
+        "cycle": 106,
+        "nodes": 116,
+        "listeners": 15,
+        "documents": 0,
+        "mainThreads": 0,
+        "rendererThreads": 0,
+        "rendererHeap": 661388,
+        "rendererRss": -1855488
+      },
+      {
+        "name": "long",
+        "cycle": 107,
+        "nodes": 117,
+        "listeners": 15,
+        "documents": 0,
+        "mainThreads": 0,
+        "rendererThreads": 0,
+        "rendererHeap": 655912,
+        "rendererRss": -1515520
+      },
+      {
+        "name": "long",
+        "cycle": 108,
+        "nodes": 118,
+        "listeners": 15,
+        "documents": 0,
+        "mainThreads": 0,
+        "rendererThreads": 0,
+        "rendererHeap": 651284,
+        "rendererRss": 1204224
+      },
+      {
+        "name": "long",
+        "cycle": 109,
+        "nodes": 119,
+        "listeners": 15,
+        "documents": 0,
+        "mainThreads": 0,
+        "rendererThreads": 0,
+        "rendererHeap": 679888,
+        "rendererRss": 8192
+      },
+      {
+        "name": "long",
+        "cycle": 110,
+        "nodes": 120,
+        "listeners": 15,
+        "documents": 0,
+        "mainThreads": 0,
+        "rendererThreads": 0,
+        "rendererHeap": 662120,
+        "rendererRss": 6692864
+      },
+      {
+        "name": "long",
+        "cycle": 111,
+        "nodes": 196,
+        "listeners": 36,
+        "documents": 0,
+        "mainThreads": 0,
+        "rendererThreads": 0,
+        "rendererHeap": 1090868,
+        "rendererRss": 5115904
+      },
+      {
+        "name": "long",
+        "cycle": 112,
+        "nodes": 197,
+        "listeners": 36,
+        "documents": 0,
+        "mainThreads": 0,
+        "rendererThreads": 0,
+        "rendererHeap": 779696,
+        "rendererRss": 3870720
+      },
+      {
+        "name": "long",
+        "cycle": 113,
+        "nodes": 198,
+        "listeners": 36,
+        "documents": 0,
+        "mainThreads": 0,
+        "rendererThreads": 0,
+        "rendererHeap": 1127884,
+        "rendererRss": 3358720
+      },
+      {
+        "name": "long",
+        "cycle": 114,
+        "nodes": 191,
+        "listeners": 35,
+        "documents": 0,
+        "mainThreads": 0,
+        "rendererThreads": 0,
+        "rendererHeap": 630224,
+        "rendererRss": 2629632
+      },
+      {
+        "name": "long",
+        "cycle": 115,
+        "nodes": 191,
+        "listeners": 31,
+        "documents": 0,
+        "mainThreads": 0,
+        "rendererThreads": 0,
+        "rendererHeap": 970448,
+        "rendererRss": 2916352
+      },
+      {
+        "name": "long",
+        "cycle": 116,
+        "nodes": 201,
+        "listeners": 36,
+        "documents": 0,
+        "mainThreads": 0,
+        "rendererThreads": 0,
+        "rendererHeap": 846932,
+        "rendererRss": 778240
+      },
+      {
+        "name": "long",
+        "cycle": 117,
+        "nodes": 202,
+        "listeners": 36,
+        "documents": 0,
+        "mainThreads": 0,
+        "rendererThreads": 0,
+        "rendererHeap": 849908,
+        "rendererRss": 4579328
+      },
+      {
+        "name": "long",
+        "cycle": 118,
+        "nodes": 203,
+        "listeners": 36,
+        "documents": 0,
+        "mainThreads": 0,
+        "rendererThreads": 0,
+        "rendererHeap": 855572,
+        "rendererRss": 1429504
+      },
+      {
+        "name": "long",
+        "cycle": 119,
+        "nodes": 194,
+        "listeners": 35,
+        "documents": 0,
+        "mainThreads": 0,
+        "rendererThreads": 0,
+        "rendererHeap": 649832,
+        "rendererRss": 4444160
+      }
+    ],
+    "elapsedMs": 825830,
+    "bounds": [
+      {
+        "name": "dense",
+        "cycles": 120,
+        "baselineDom": {
+          "documents": 4,
+          "nodes": 909,
+          "jsEventListeners": 762
+        },
+        "lastDom": {
+          "documents": 4,
+          "nodes": 953,
+          "jsEventListeners": 741
+        },
+        "mainMemoryGrowth": {
+          "rss": -204800,
+          "heapTotal": 262144,
+          "heapUsed": 207888,
+          "external": 64383,
+          "arrayBuffers": 0
+        },
+        "rendererMemoryGrowth": {
+          "rss": 3899392,
+          "heapTotal": 1572864,
+          "heapUsed": 687456,
+          "external": 69416,
+          "arrayBuffers": 0
+        },
+        "diskBytesGrowth": 51685,
+        "diskFilesGrowth": 0,
+        "settingsEqual": true,
+        "inactivityThroughObservedActualExitMs": {
+          "n": 120,
+          "min": 76.86811799998395,
+          "max": 101.52452599999378,
+          "scope": "Root navigation to inactivity plus observed execution/actual exit; not pure worker termination latency."
+        },
+        "pauseInputThroughCountMs": {
+          "n": 120,
+          "min": 415.2914080000046,
+          "max": 467.20732000000135,
+          "scope": "Pause/input dispatch, SDK/worker and count observation combined. Not pure worker or native input latency; no sum of stage medians."
+        }
+      },
+      {
+        "name": "long",
+        "cycles": 120,
+        "baselineDom": {
+          "documents": 4,
+          "nodes": 947,
+          "jsEventListeners": 736
+        },
+        "lastDom": {
+          "documents": 4,
+          "nodes": 1141,
+          "jsEventListeners": 771
+        },
+        "mainMemoryGrowth": {
+          "rss": -1368064,
+          "heapTotal": 0,
+          "heapUsed": 57448,
+          "external": 0,
+          "arrayBuffers": 0
+        },
+        "rendererMemoryGrowth": {
+          "rss": 4444160,
+          "heapTotal": 786432,
+          "heapUsed": 649832,
+          "external": 79,
+          "arrayBuffers": 0
+        },
+        "diskBytesGrowth": 51278,
+        "diskFilesGrowth": 0,
+        "settingsEqual": true,
+        "inactivityThroughObservedActualExitMs": {
+          "n": 120,
+          "min": 14.650097999954596,
+          "max": 18.81649599998491,
+          "scope": "Root navigation to inactivity plus observed execution/actual exit; not pure worker termination latency."
+        },
+        "pauseInputThroughCountMs": {
+          "n": 120,
+          "min": 46.784293000004254,
+          "max": 76.55941299995175,
+          "scope": "Pause/input dispatch, SDK/worker and count observation combined. Not pure worker or native input latency; no sum of stage medians."
+        }
+      }
+    ],
+    "cases": [
+      {
+        "bound": "long",
+        "cycle": 88,
+        "failed": {
+          "documents": 4,
+          "nodes": 1045,
+          "jsEventListeners": 745
+        },
+        "delta": {
+          "nodes": 98,
+          "listeners": 9,
+          "documents": 0,
+          "mainThreads": 0,
+          "rendererThreads": 0,
+          "rendererHeap": 646776,
+          "rendererRss": 106496
+        },
+        "initialCensus": {
+          "before": {
+            "documents": 4,
+            "nodes": 1045,
+            "jsEventListeners": 745
+          },
+          "after": {
+            "documents": 4,
+            "nodes": 1045,
+            "jsEventListeners": 745
+          },
+          "captured": 215,
+          "reachable": 0,
+          "roots": []
+        },
+        "idle": [
+          {
+            "offsetMs": 0,
+            "elapsedMs": 2.6883050000178628,
+            "dom": {
+              "documents": 4,
+              "nodes": 1045,
+              "jsEventListeners": 745
+            },
+            "reachableWrappers": 0
+          },
+          {
+            "offsetMs": 250,
+            "elapsedMs": 250.08713300002273,
+            "dom": {
+              "documents": 4,
+              "nodes": 1045,
+              "jsEventListeners": 745
+            },
+            "reachableWrappers": 0
+          },
+          {
+            "offsetMs": 1000,
+            "elapsedMs": 1000.6192860000301,
+            "dom": {
+              "documents": 4,
+              "nodes": 1045,
+              "jsEventListeners": 745
+            },
+            "reachableWrappers": 0
+          },
+          {
+            "offsetMs": 5000,
+            "elapsedMs": 5001.766483000014,
+            "dom": {
+              "documents": 4,
+              "nodes": 1045,
+              "jsEventListeners": 745
+            },
+            "reachableWrappers": 0
+          },
+          {
+            "offsetMs": 15000,
+            "elapsedMs": 15009.566373999987,
+            "dom": {
+              "documents": 4,
+              "nodes": 1023,
+              "jsEventListeners": 736
+            },
+            "reachableWrappers": 0
+          }
+        ],
+        "postIdleGc": {
+          "documents": 4,
+          "nodes": 1023,
+          "jsEventListeners": 736
+        }
+      },
+      {
+        "bound": "long",
+        "cycle": 90,
+        "failed": {
+          "documents": 4,
+          "nodes": 1047,
+          "jsEventListeners": 745
+        },
+        "delta": {
+          "nodes": 100,
+          "listeners": 9,
+          "documents": 0,
+          "mainThreads": 0,
+          "rendererThreads": 0,
+          "rendererHeap": 648444,
+          "rendererRss": -696320
+        },
+        "initialCensus": {
+          "before": {
+            "documents": 4,
+            "nodes": 1047,
+            "jsEventListeners": 745
+          },
+          "after": {
+            "documents": 4,
+            "nodes": 1047,
+            "jsEventListeners": 745
+          },
+          "captured": 217,
+          "reachable": 0,
+          "roots": []
+        },
+        "idle": [
+          {
+            "offsetMs": 0,
+            "elapsedMs": 2.498366999963764,
+            "dom": {
+              "documents": 4,
+              "nodes": 1047,
+              "jsEventListeners": 745
+            },
+            "reachableWrappers": 0
+          },
+          {
+            "offsetMs": 250,
+            "elapsedMs": 249.77739000000292,
+            "dom": {
+              "documents": 4,
+              "nodes": 1047,
+              "jsEventListeners": 745
+            },
+            "reachableWrappers": 0
+          },
+          {
+            "offsetMs": 1000,
+            "elapsedMs": 999.9473069999949,
+            "dom": {
+              "documents": 4,
+              "nodes": 1047,
+              "jsEventListeners": 745
+            },
+            "reachableWrappers": 0
+          },
+          {
+            "offsetMs": 5000,
+            "elapsedMs": 5002.826617999992,
+            "dom": {
+              "documents": 4,
+              "nodes": 1047,
+              "jsEventListeners": 745
+            },
+            "reachableWrappers": 0
+          },
+          {
+            "offsetMs": 15000,
+            "elapsedMs": 15009.491862999974,
+            "dom": {
+              "documents": 4,
+              "nodes": 1025,
+              "jsEventListeners": 736
+            },
+            "reachableWrappers": 0
+          }
+        ],
+        "postIdleGc": {
+          "documents": 4,
+          "nodes": 1025,
+          "jsEventListeners": 736
+        }
+      },
+      {
+        "bound": "long",
+        "cycle": 91,
+        "failed": {
+          "documents": 4,
+          "nodes": 1048,
+          "jsEventListeners": 745
+        },
+        "delta": {
+          "nodes": 101,
+          "listeners": 9,
+          "documents": 0,
+          "mainThreads": 0,
+          "rendererThreads": 0,
+          "rendererHeap": 659316,
+          "rendererRss": -3235840
+        },
+        "initialCensus": {
+          "before": {
+            "documents": 4,
+            "nodes": 1048,
+            "jsEventListeners": 745
+          },
+          "after": {
+            "documents": 4,
+            "nodes": 1048,
+            "jsEventListeners": 745
+          },
+          "captured": 218,
+          "reachable": 0,
+          "roots": []
+        },
+        "idle": [
+          {
+            "offsetMs": 0,
+            "elapsedMs": 2.6207670000148937,
+            "dom": {
+              "documents": 4,
+              "nodes": 1048,
+              "jsEventListeners": 745
+            },
+            "reachableWrappers": 0
+          },
+          {
+            "offsetMs": 250,
+            "elapsedMs": 249.94982999999775,
+            "dom": {
+              "documents": 4,
+              "nodes": 1048,
+              "jsEventListeners": 745
+            },
+            "reachableWrappers": 0
+          },
+          {
+            "offsetMs": 1000,
+            "elapsedMs": 1000.1556989999954,
+            "dom": {
+              "documents": 4,
+              "nodes": 1048,
+              "jsEventListeners": 745
+            },
+            "reachableWrappers": 0
+          },
+          {
+            "offsetMs": 5000,
+            "elapsedMs": 5003.9531190000125,
+            "dom": {
+              "documents": 4,
+              "nodes": 1048,
+              "jsEventListeners": 745
+            },
+            "reachableWrappers": 0
+          },
+          {
+            "offsetMs": 15000,
+            "elapsedMs": 15009.210951999994,
+            "dom": {
+              "documents": 4,
+              "nodes": 1026,
+              "jsEventListeners": 736
+            },
+            "reachableWrappers": 0
+          }
+        ],
+        "postIdleGc": {
+          "documents": 4,
+          "nodes": 1026,
+          "jsEventListeners": 736
+        }
+      },
+      {
+        "bound": "long",
+        "cycle": 94,
+        "failed": {
+          "documents": 4,
+          "nodes": 1051,
+          "jsEventListeners": 745
+        },
+        "delta": {
+          "nodes": 104,
+          "listeners": 9,
+          "documents": 0,
+          "mainThreads": 0,
+          "rendererThreads": 0,
+          "rendererHeap": 666116,
+          "rendererRss": -2142208
+        },
+        "initialCensus": {
+          "before": {
+            "documents": 4,
+            "nodes": 1051,
+            "jsEventListeners": 745
+          },
+          "after": {
+            "documents": 4,
+            "nodes": 1051,
+            "jsEventListeners": 745
+          },
+          "captured": 221,
+          "reachable": 0,
+          "roots": []
+        },
+        "idle": [
+          {
+            "offsetMs": 0,
+            "elapsedMs": 2.5589770000078715,
+            "dom": {
+              "documents": 4,
+              "nodes": 1051,
+              "jsEventListeners": 745
+            },
+            "reachableWrappers": 0
+          },
+          {
+            "offsetMs": 250,
+            "elapsedMs": 250.01544400001876,
+            "dom": {
+              "documents": 4,
+              "nodes": 1051,
+              "jsEventListeners": 745
+            },
+            "reachableWrappers": 0
+          },
+          {
+            "offsetMs": 1000,
+            "elapsedMs": 1000.308674000029,
+            "dom": {
+              "documents": 4,
+              "nodes": 1061,
+              "jsEventListeners": 746
+            },
+            "reachableWrappers": 0
+          },
+          {
+            "offsetMs": 5000,
+            "elapsedMs": 5002.567452999996,
+            "dom": {
+              "documents": 4,
+              "nodes": 1061,
+              "jsEventListeners": 746
+            },
+            "reachableWrappers": 0
+          },
+          {
+            "offsetMs": 15000,
+            "elapsedMs": 15008.609532000031,
+            "dom": {
+              "documents": 4,
+              "nodes": 1029,
+              "jsEventListeners": 736
+            },
+            "reachableWrappers": 0
+          }
+        ],
+        "postIdleGc": {
+          "documents": 4,
+          "nodes": 1029,
+          "jsEventListeners": 736
+        }
+      },
+      {
+        "bound": "long",
+        "cycle": 96,
+        "failed": {
+          "documents": 4,
+          "nodes": 1053,
+          "jsEventListeners": 745
+        },
+        "delta": {
+          "nodes": 106,
+          "listeners": 9,
+          "documents": 0,
+          "mainThreads": 0,
+          "rendererThreads": 0,
+          "rendererHeap": 672380,
+          "rendererRss": 163840
+        },
+        "initialCensus": {
+          "before": {
+            "documents": 4,
+            "nodes": 1053,
+            "jsEventListeners": 745
+          },
+          "after": {
+            "documents": 4,
+            "nodes": 1053,
+            "jsEventListeners": 745
+          },
+          "captured": 223,
+          "reachable": 0,
+          "roots": []
+        },
+        "idle": [
+          {
+            "offsetMs": 0,
+            "elapsedMs": 2.6305869999923743,
+            "dom": {
+              "documents": 4,
+              "nodes": 1053,
+              "jsEventListeners": 745
+            },
+            "reachableWrappers": 0
+          },
+          {
+            "offsetMs": 250,
+            "elapsedMs": 249.8976159999729,
+            "dom": {
+              "documents": 4,
+              "nodes": 1053,
+              "jsEventListeners": 745
+            },
+            "reachableWrappers": 0
+          },
+          {
+            "offsetMs": 1000,
+            "elapsedMs": 1000.0783919999958,
+            "dom": {
+              "documents": 4,
+              "nodes": 1053,
+              "jsEventListeners": 745
+            },
+            "reachableWrappers": 0
+          },
+          {
+            "offsetMs": 5000,
+            "elapsedMs": 5003.049683999969,
+            "dom": {
+              "documents": 4,
+              "nodes": 1053,
+              "jsEventListeners": 745
+            },
+            "reachableWrappers": 0
+          },
+          {
+            "offsetMs": 15000,
+            "elapsedMs": 15009.446762999985,
+            "dom": {
+              "documents": 4,
+              "nodes": 1031,
+              "jsEventListeners": 736
+            },
+            "reachableWrappers": 0
+          }
+        ],
+        "postIdleGc": {
+          "documents": 4,
+          "nodes": 1031,
+          "jsEventListeners": 736
+        }
+      },
+      {
+        "bound": "long",
+        "cycle": 97,
+        "failed": {
+          "documents": 4,
+          "nodes": 1054,
+          "jsEventListeners": 745
+        },
+        "delta": {
+          "nodes": 107,
+          "listeners": 9,
+          "documents": 0,
+          "mainThreads": 0,
+          "rendererThreads": 0,
+          "rendererHeap": 695284,
+          "rendererRss": -118784
+        },
+        "initialCensus": {
+          "before": {
+            "documents": 4,
+            "nodes": 1054,
+            "jsEventListeners": 745
+          },
+          "after": {
+            "documents": 4,
+            "nodes": 1054,
+            "jsEventListeners": 745
+          },
+          "captured": 224,
+          "reachable": 0,
+          "roots": []
+        },
+        "idle": [
+          {
+            "offsetMs": 0,
+            "elapsedMs": 2.5317769999965094,
+            "dom": {
+              "documents": 4,
+              "nodes": 1054,
+              "jsEventListeners": 745
+            },
+            "reachableWrappers": 0
+          },
+          {
+            "offsetMs": 250,
+            "elapsedMs": 249.82481600000756,
+            "dom": {
+              "documents": 4,
+              "nodes": 1054,
+              "jsEventListeners": 745
+            },
+            "reachableWrappers": 0
+          },
+          {
+            "offsetMs": 1000,
+            "elapsedMs": 999.9871189999976,
+            "dom": {
+              "documents": 4,
+              "nodes": 1054,
+              "jsEventListeners": 745
+            },
+            "reachableWrappers": 0
+          },
+          {
+            "offsetMs": 5000,
+            "elapsedMs": 5003.867729999998,
+            "dom": {
+              "documents": 4,
+              "nodes": 1054,
+              "jsEventListeners": 745
+            },
+            "reachableWrappers": 0
+          },
+          {
+            "offsetMs": 15000,
+            "elapsedMs": 15009.871962000034,
+            "dom": {
+              "documents": 4,
+              "nodes": 1032,
+              "jsEventListeners": 736
+            },
+            "reachableWrappers": 0
+          }
+        ],
+        "postIdleGc": {
+          "documents": 4,
+          "nodes": 1032,
+          "jsEventListeners": 736
+        }
+      },
+      {
+        "bound": "long",
+        "cycle": 98,
+        "failed": {
+          "documents": 4,
+          "nodes": 1055,
+          "jsEventListeners": 745
+        },
+        "delta": {
+          "nodes": 108,
+          "listeners": 9,
+          "documents": 0,
+          "mainThreads": 0,
+          "rendererThreads": 0,
+          "rendererHeap": 679620,
+          "rendererRss": 3424256
+        },
+        "initialCensus": {
+          "before": {
+            "documents": 4,
+            "nodes": 1055,
+            "jsEventListeners": 745
+          },
+          "after": {
+            "documents": 4,
+            "nodes": 1055,
+            "jsEventListeners": 745
+          },
+          "captured": 225,
+          "reachable": 0,
+          "roots": []
+        },
+        "idle": [
+          {
+            "offsetMs": 0,
+            "elapsedMs": 2.5027680000057444,
+            "dom": {
+              "documents": 4,
+              "nodes": 1055,
+              "jsEventListeners": 745
+            },
+            "reachableWrappers": 0
+          },
+          {
+            "offsetMs": 250,
+            "elapsedMs": 249.65891599998577,
+            "dom": {
+              "documents": 4,
+              "nodes": 1055,
+              "jsEventListeners": 745
+            },
+            "reachableWrappers": 0
+          },
+          {
+            "offsetMs": 1000,
+            "elapsedMs": 1000.1954639999894,
+            "dom": {
+              "documents": 4,
+              "nodes": 1055,
+              "jsEventListeners": 745
+            },
+            "reachableWrappers": 0
+          },
+          {
+            "offsetMs": 5000,
+            "elapsedMs": 5003.218078000005,
+            "dom": {
+              "documents": 4,
+              "nodes": 1055,
+              "jsEventListeners": 745
+            },
+            "reachableWrappers": 0
+          },
+          {
+            "offsetMs": 15000,
+            "elapsedMs": 15009.187580000027,
+            "dom": {
+              "documents": 4,
+              "nodes": 1043,
+              "jsEventListeners": 737
+            },
+            "reachableWrappers": 0
+          }
+        ],
+        "postIdleGc": {
+          "documents": 4,
+          "nodes": 1033,
+          "jsEventListeners": 736
+        }
+      },
+      {
+        "bound": "long",
+        "cycle": 100,
+        "failed": {
+          "documents": 4,
+          "nodes": 1057,
+          "jsEventListeners": 745
+        },
+        "delta": {
+          "nodes": 110,
+          "listeners": 9,
+          "documents": 0,
+          "mainThreads": 0,
+          "rendererThreads": 0,
+          "rendererHeap": 666540,
+          "rendererRss": 114688
+        },
+        "initialCensus": {
+          "before": {
+            "documents": 4,
+            "nodes": 1057,
+            "jsEventListeners": 745
+          },
+          "after": {
+            "documents": 4,
+            "nodes": 1057,
+            "jsEventListeners": 745
+          },
+          "captured": 227,
+          "reachable": 0,
+          "roots": []
+        },
+        "idle": [
+          {
+            "offsetMs": 0,
+            "elapsedMs": 2.51818800001638,
+            "dom": {
+              "documents": 4,
+              "nodes": 1057,
+              "jsEventListeners": 745
+            },
+            "reachableWrappers": 0
+          },
+          {
+            "offsetMs": 250,
+            "elapsedMs": 249.82914300000994,
+            "dom": {
+              "documents": 4,
+              "nodes": 1057,
+              "jsEventListeners": 745
+            },
+            "reachableWrappers": 0
+          },
+          {
+            "offsetMs": 1000,
+            "elapsedMs": 1000.2325600000331,
+            "dom": {
+              "documents": 4,
+              "nodes": 1057,
+              "jsEventListeners": 745
+            },
+            "reachableWrappers": 0
+          },
+          {
+            "offsetMs": 5000,
+            "elapsedMs": 5003.3710010000505,
+            "dom": {
+              "documents": 4,
+              "nodes": 1057,
+              "jsEventListeners": 745
+            },
+            "reachableWrappers": 0
+          },
+          {
+            "offsetMs": 15000,
+            "elapsedMs": 15005.547038000019,
+            "dom": {
+              "documents": 4,
+              "nodes": 1035,
+              "jsEventListeners": 748
+            },
+            "reachableWrappers": 0
+          }
+        ],
+        "postIdleGc": {
+          "documents": 4,
+          "nodes": 1035,
+          "jsEventListeners": 742
+        }
+      },
+      {
+        "bound": "long",
+        "cycle": 101,
+        "failed": {
+          "documents": 4,
+          "nodes": 1058,
+          "jsEventListeners": 751
+        },
+        "delta": {
+          "nodes": 111,
+          "listeners": 15,
+          "documents": 0,
+          "mainThreads": 0,
+          "rendererThreads": 0,
+          "rendererHeap": 589108,
+          "rendererRss": -1224704
+        },
+        "initialCensus": {
+          "before": {
+            "documents": 4,
+            "nodes": 1058,
+            "jsEventListeners": 751
+          },
+          "after": {
+            "documents": 4,
+            "nodes": 1058,
+            "jsEventListeners": 751
+          },
+          "captured": 228,
+          "reachable": 0,
+          "roots": []
+        },
+        "idle": [
+          {
+            "offsetMs": 0,
+            "elapsedMs": 2.552298000024166,
+            "dom": {
+              "documents": 4,
+              "nodes": 1058,
+              "jsEventListeners": 751
+            },
+            "reachableWrappers": 0
+          },
+          {
+            "offsetMs": 250,
+            "elapsedMs": 250.06244900001911,
+            "dom": {
+              "documents": 4,
+              "nodes": 1058,
+              "jsEventListeners": 751
+            },
+            "reachableWrappers": 0
+          },
+          {
+            "offsetMs": 1000,
+            "elapsedMs": 999.8495709999697,
+            "dom": {
+              "documents": 4,
+              "nodes": 1058,
+              "jsEventListeners": 751
+            },
+            "reachableWrappers": 0
+          },
+          {
+            "offsetMs": 5000,
+            "elapsedMs": 5003.805974000017,
+            "dom": {
+              "documents": 4,
+              "nodes": 1058,
+              "jsEventListeners": 751
+            },
+            "reachableWrappers": 0
+          },
+          {
+            "offsetMs": 15000,
+            "elapsedMs": 15009.46494200005,
+            "dom": {
+              "documents": 4,
+              "nodes": 1036,
+              "jsEventListeners": 742
+            },
+            "reachableWrappers": 0
+          }
+        ],
+        "postIdleGc": {
+          "documents": 4,
+          "nodes": 1036,
+          "jsEventListeners": 742
+        }
+      },
+      {
+        "bound": "long",
+        "cycle": 102,
+        "failed": {
+          "documents": 4,
+          "nodes": 1059,
+          "jsEventListeners": 747
+        },
+        "delta": {
+          "nodes": 112,
+          "listeners": 11,
+          "documents": 0,
+          "mainThreads": 0,
+          "rendererThreads": 0,
+          "rendererHeap": 633500,
+          "rendererRss": -2150400
+        },
+        "initialCensus": {
+          "before": {
+            "documents": 4,
+            "nodes": 1059,
+            "jsEventListeners": 747
+          },
+          "after": {
+            "documents": 4,
+            "nodes": 1059,
+            "jsEventListeners": 747
+          },
+          "captured": 229,
+          "reachable": 0,
+          "roots": []
+        },
+        "idle": [
+          {
+            "offsetMs": 0,
+            "elapsedMs": 2.3790590000571683,
+            "dom": {
+              "documents": 4,
+              "nodes": 1059,
+              "jsEventListeners": 747
+            },
+            "reachableWrappers": 0
+          },
+          {
+            "offsetMs": 250,
+            "elapsedMs": 249.49496899999212,
+            "dom": {
+              "documents": 4,
+              "nodes": 1059,
+              "jsEventListeners": 751
+            },
+            "reachableWrappers": 0
+          },
+          {
+            "offsetMs": 1000,
+            "elapsedMs": 1000.4936740000267,
+            "dom": {
+              "documents": 4,
+              "nodes": 1059,
+              "jsEventListeners": 751
+            },
+            "reachableWrappers": 0
+          },
+          {
+            "offsetMs": 5000,
+            "elapsedMs": 5003.856631000061,
+            "dom": {
+              "documents": 4,
+              "nodes": 1059,
+              "jsEventListeners": 751
+            },
+            "reachableWrappers": 0
+          },
+          {
+            "offsetMs": 15000,
+            "elapsedMs": 15003.487933999975,
+            "dom": {
+              "documents": 4,
+              "nodes": 1037,
+              "jsEventListeners": 742
+            },
+            "reachableWrappers": 0
+          }
+        ],
+        "postIdleGc": {
+          "documents": 4,
+          "nodes": 1037,
+          "jsEventListeners": 742
+        }
+      },
+      {
+        "bound": "long",
+        "cycle": 103,
+        "failed": {
+          "documents": 4,
+          "nodes": 1060,
+          "jsEventListeners": 751
+        },
+        "delta": {
+          "nodes": 113,
+          "listeners": 15,
+          "documents": 0,
+          "mainThreads": 0,
+          "rendererThreads": 0,
+          "rendererHeap": 638696,
+          "rendererRss": 442368
+        },
+        "initialCensus": {
+          "before": {
+            "documents": 4,
+            "nodes": 1060,
+            "jsEventListeners": 751
+          },
+          "after": {
+            "documents": 4,
+            "nodes": 1060,
+            "jsEventListeners": 751
+          },
+          "captured": 230,
+          "reachable": 0,
+          "roots": []
+        },
+        "idle": [
+          {
+            "offsetMs": 0,
+            "elapsedMs": 2.497588000027463,
+            "dom": {
+              "documents": 4,
+              "nodes": 1060,
+              "jsEventListeners": 751
+            },
+            "reachableWrappers": 0
+          },
+          {
+            "offsetMs": 250,
+            "elapsedMs": 249.93507200002205,
+            "dom": {
+              "documents": 4,
+              "nodes": 1060,
+              "jsEventListeners": 751
+            },
+            "reachableWrappers": 0
+          },
+          {
+            "offsetMs": 1000,
+            "elapsedMs": 999.949450999964,
+            "dom": {
+              "documents": 4,
+              "nodes": 1070,
+              "jsEventListeners": 752
+            },
+            "reachableWrappers": 0
+          },
+          {
+            "offsetMs": 5000,
+            "elapsedMs": 5003.62090400001,
+            "dom": {
+              "documents": 4,
+              "nodes": 1070,
+              "jsEventListeners": 752
+            },
+            "reachableWrappers": 0
+          },
+          {
+            "offsetMs": 15000,
+            "elapsedMs": 15008.69057700003,
+            "dom": {
+              "documents": 4,
+              "nodes": 1038,
+              "jsEventListeners": 742
+            },
+            "reachableWrappers": 0
+          }
+        ],
+        "postIdleGc": {
+          "documents": 4,
+          "nodes": 1038,
+          "jsEventListeners": 742
+        }
+      },
+      {
+        "bound": "long",
+        "cycle": 104,
+        "failed": {
+          "documents": 4,
+          "nodes": 1061,
+          "jsEventListeners": 747
+        },
+        "delta": {
+          "nodes": 114,
+          "listeners": 11,
+          "documents": 0,
+          "mainThreads": 0,
+          "rendererThreads": 0,
+          "rendererHeap": 623752,
+          "rendererRss": 77824
+        },
+        "initialCensus": {
+          "before": {
+            "documents": 4,
+            "nodes": 1061,
+            "jsEventListeners": 751
+          },
+          "after": {
+            "documents": 4,
+            "nodes": 1061,
+            "jsEventListeners": 751
+          },
+          "captured": 231,
+          "reachable": 0,
+          "roots": []
+        },
+        "idle": [
+          {
+            "offsetMs": 0,
+            "elapsedMs": 2.487449000007473,
+            "dom": {
+              "documents": 4,
+              "nodes": 1061,
+              "jsEventListeners": 751
+            },
+            "reachableWrappers": 0
+          },
+          {
+            "offsetMs": 250,
+            "elapsedMs": 249.89549899997655,
+            "dom": {
+              "documents": 4,
+              "nodes": 1061,
+              "jsEventListeners": 751
+            },
+            "reachableWrappers": 0
+          },
+          {
+            "offsetMs": 1000,
+            "elapsedMs": 1000.1694619999034,
+            "dom": {
+              "documents": 4,
+              "nodes": 1061,
+              "jsEventListeners": 751
+            },
+            "reachableWrappers": 0
+          },
+          {
+            "offsetMs": 5000,
+            "elapsedMs": 5003.8043520000065,
+            "dom": {
+              "documents": 4,
+              "nodes": 1061,
+              "jsEventListeners": 751
+            },
+            "reachableWrappers": 0
+          },
+          {
+            "offsetMs": 15000,
+            "elapsedMs": 15009.371288999915,
+            "dom": {
+              "documents": 4,
+              "nodes": 1039,
+              "jsEventListeners": 742
+            },
+            "reachableWrappers": 0
+          }
+        ],
+        "postIdleGc": {
+          "documents": 4,
+          "nodes": 1039,
+          "jsEventListeners": 742
+        }
+      },
+      {
+        "bound": "long",
+        "cycle": 105,
+        "failed": {
+          "documents": 4,
+          "nodes": 1062,
+          "jsEventListeners": 747
+        },
+        "delta": {
+          "nodes": 115,
+          "listeners": 11,
+          "documents": 0,
+          "mainThreads": 0,
+          "rendererThreads": 0,
+          "rendererHeap": 637248,
+          "rendererRss": -1736704
+        },
+        "initialCensus": {
+          "before": {
+            "documents": 4,
+            "nodes": 1062,
+            "jsEventListeners": 747
+          },
+          "after": {
+            "documents": 4,
+            "nodes": 1062,
+            "jsEventListeners": 747
+          },
+          "captured": 232,
+          "reachable": 0,
+          "roots": []
+        },
+        "idle": [
+          {
+            "offsetMs": 0,
+            "elapsedMs": 2.445828999974765,
+            "dom": {
+              "documents": 4,
+              "nodes": 1062,
+              "jsEventListeners": 751
+            },
+            "reachableWrappers": 0
+          },
+          {
+            "offsetMs": 250,
+            "elapsedMs": 249.8703530000057,
+            "dom": {
+              "documents": 4,
+              "nodes": 1062,
+              "jsEventListeners": 751
+            },
+            "reachableWrappers": 0
+          },
+          {
+            "offsetMs": 1000,
+            "elapsedMs": 1000.4347800000105,
+            "dom": {
+              "documents": 4,
+              "nodes": 1062,
+              "jsEventListeners": 751
+            },
+            "reachableWrappers": 0
+          },
+          {
+            "offsetMs": 5000,
+            "elapsedMs": 5002.510194999981,
+            "dom": {
+              "documents": 4,
+              "nodes": 1062,
+              "jsEventListeners": 751
+            },
+            "reachableWrappers": 0
+          },
+          {
+            "offsetMs": 15000,
+            "elapsedMs": 15004.779261999996,
+            "dom": {
+              "documents": 4,
+              "nodes": 1040,
+              "jsEventListeners": 742
+            },
+            "reachableWrappers": 0
+          }
+        ],
+        "postIdleGc": {
+          "documents": 4,
+          "nodes": 1040,
+          "jsEventListeners": 742
+        }
+      },
+      {
+        "bound": "long",
+        "cycle": 106,
+        "failed": {
+          "documents": 4,
+          "nodes": 1063,
+          "jsEventListeners": 751
+        },
+        "delta": {
+          "nodes": 116,
+          "listeners": 15,
+          "documents": 0,
+          "mainThreads": 0,
+          "rendererThreads": 0,
+          "rendererHeap": 661388,
+          "rendererRss": -1855488
+        },
+        "initialCensus": {
+          "before": {
+            "documents": 4,
+            "nodes": 1063,
+            "jsEventListeners": 751
+          },
+          "after": {
+            "documents": 4,
+            "nodes": 1063,
+            "jsEventListeners": 751
+          },
+          "captured": 233,
+          "reachable": 0,
+          "roots": []
+        },
+        "idle": [
+          {
+            "offsetMs": 0,
+            "elapsedMs": 2.6486390000209212,
+            "dom": {
+              "documents": 4,
+              "nodes": 1063,
+              "jsEventListeners": 751
+            },
+            "reachableWrappers": 0
+          },
+          {
+            "offsetMs": 250,
+            "elapsedMs": 249.8236190000316,
+            "dom": {
+              "documents": 4,
+              "nodes": 1063,
+              "jsEventListeners": 751
+            },
+            "reachableWrappers": 0
+          },
+          {
+            "offsetMs": 1000,
+            "elapsedMs": 999.8008210000116,
+            "dom": {
+              "documents": 4,
+              "nodes": 1063,
+              "jsEventListeners": 751
+            },
+            "reachableWrappers": 0
+          },
+          {
+            "offsetMs": 5000,
+            "elapsedMs": 5002.802952000056,
+            "dom": {
+              "documents": 4,
+              "nodes": 1063,
+              "jsEventListeners": 751
+            },
+            "reachableWrappers": 0
+          },
+          {
+            "offsetMs": 15000,
+            "elapsedMs": 15008.80335000006,
+            "dom": {
+              "documents": 4,
+              "nodes": 1051,
+              "jsEventListeners": 743
+            },
+            "reachableWrappers": 0
+          }
+        ],
+        "postIdleGc": {
+          "documents": 4,
+          "nodes": 1041,
+          "jsEventListeners": 742
+        }
+      },
+      {
+        "bound": "long",
+        "cycle": 107,
+        "failed": {
+          "documents": 4,
+          "nodes": 1064,
+          "jsEventListeners": 751
+        },
+        "delta": {
+          "nodes": 117,
+          "listeners": 15,
+          "documents": 0,
+          "mainThreads": 0,
+          "rendererThreads": 0,
+          "rendererHeap": 655912,
+          "rendererRss": -1515520
+        },
+        "initialCensus": {
+          "before": {
+            "documents": 4,
+            "nodes": 1064,
+            "jsEventListeners": 751
+          },
+          "after": {
+            "documents": 4,
+            "nodes": 1064,
+            "jsEventListeners": 751
+          },
+          "captured": 234,
+          "reachable": 0,
+          "roots": []
+        },
+        "idle": [
+          {
+            "offsetMs": 0,
+            "elapsedMs": 2.3959389999508858,
+            "dom": {
+              "documents": 4,
+              "nodes": 1064,
+              "jsEventListeners": 751
+            },
+            "reachableWrappers": 0
+          },
+          {
+            "offsetMs": 250,
+            "elapsedMs": 249.6161419999553,
+            "dom": {
+              "documents": 4,
+              "nodes": 1064,
+              "jsEventListeners": 751
+            },
+            "reachableWrappers": 0
+          },
+          {
+            "offsetMs": 1000,
+            "elapsedMs": 999.972015999956,
+            "dom": {
+              "documents": 4,
+              "nodes": 1064,
+              "jsEventListeners": 751
+            },
+            "reachableWrappers": 0
+          },
+          {
+            "offsetMs": 5000,
+            "elapsedMs": 5003.604106999934,
+            "dom": {
+              "documents": 4,
+              "nodes": 1064,
+              "jsEventListeners": 751
+            },
+            "reachableWrappers": 0
+          },
+          {
+            "offsetMs": 15000,
+            "elapsedMs": 15003.317473999923,
+            "dom": {
+              "documents": 4,
+              "nodes": 1042,
+              "jsEventListeners": 742
+            },
+            "reachableWrappers": 0
+          }
+        ],
+        "postIdleGc": {
+          "documents": 4,
+          "nodes": 1042,
+          "jsEventListeners": 742
+        }
+      },
+      {
+        "bound": "long",
+        "cycle": 108,
+        "failed": {
+          "documents": 4,
+          "nodes": 1065,
+          "jsEventListeners": 751
+        },
+        "delta": {
+          "nodes": 118,
+          "listeners": 15,
+          "documents": 0,
+          "mainThreads": 0,
+          "rendererThreads": 0,
+          "rendererHeap": 651284,
+          "rendererRss": 1204224
+        },
+        "initialCensus": {
+          "before": {
+            "documents": 4,
+            "nodes": 1065,
+            "jsEventListeners": 751
+          },
+          "after": {
+            "documents": 4,
+            "nodes": 1065,
+            "jsEventListeners": 751
+          },
+          "captured": 235,
+          "reachable": 0,
+          "roots": []
+        },
+        "idle": [
+          {
+            "offsetMs": 0,
+            "elapsedMs": 2.377420000033453,
+            "dom": {
+              "documents": 4,
+              "nodes": 1065,
+              "jsEventListeners": 751
+            },
+            "reachableWrappers": 0
+          },
+          {
+            "offsetMs": 250,
+            "elapsedMs": 249.6866259999806,
+            "dom": {
+              "documents": 4,
+              "nodes": 1065,
+              "jsEventListeners": 751
+            },
+            "reachableWrappers": 0
+          },
+          {
+            "offsetMs": 1000,
+            "elapsedMs": 999.8271109999623,
+            "dom": {
+              "documents": 4,
+              "nodes": 1065,
+              "jsEventListeners": 751
+            },
+            "reachableWrappers": 0
+          },
+          {
+            "offsetMs": 5000,
+            "elapsedMs": 5003.399368999992,
+            "dom": {
+              "documents": 4,
+              "nodes": 1065,
+              "jsEventListeners": 751
+            },
+            "reachableWrappers": 0
+          },
+          {
+            "offsetMs": 15000,
+            "elapsedMs": 15009.960369999986,
+            "dom": {
+              "documents": 4,
+              "nodes": 1043,
+              "jsEventListeners": 742
+            },
+            "reachableWrappers": 0
+          }
+        ],
+        "postIdleGc": {
+          "documents": 4,
+          "nodes": 1043,
+          "jsEventListeners": 742
+        }
+      },
+      {
+        "bound": "long",
+        "cycle": 109,
+        "failed": {
+          "documents": 4,
+          "nodes": 1066,
+          "jsEventListeners": 751
+        },
+        "delta": {
+          "nodes": 119,
+          "listeners": 15,
+          "documents": 0,
+          "mainThreads": 0,
+          "rendererThreads": 0,
+          "rendererHeap": 679888,
+          "rendererRss": 8192
+        },
+        "initialCensus": {
+          "before": {
+            "documents": 4,
+            "nodes": 1066,
+            "jsEventListeners": 751
+          },
+          "after": {
+            "documents": 4,
+            "nodes": 1066,
+            "jsEventListeners": 751
+          },
+          "captured": 236,
+          "reachable": 0,
+          "roots": []
+        },
+        "idle": [
+          {
+            "offsetMs": 0,
+            "elapsedMs": 2.4409799999557436,
+            "dom": {
+              "documents": 4,
+              "nodes": 1066,
+              "jsEventListeners": 751
+            },
+            "reachableWrappers": 0
+          },
+          {
+            "offsetMs": 250,
+            "elapsedMs": 249.61578999995254,
+            "dom": {
+              "documents": 4,
+              "nodes": 1066,
+              "jsEventListeners": 751
+            },
+            "reachableWrappers": 0
+          },
+          {
+            "offsetMs": 1000,
+            "elapsedMs": 999.6508240000112,
+            "dom": {
+              "documents": 4,
+              "nodes": 1066,
+              "jsEventListeners": 751
+            },
+            "reachableWrappers": 0
+          },
+          {
+            "offsetMs": 5000,
+            "elapsedMs": 5003.330120999948,
+            "dom": {
+              "documents": 4,
+              "nodes": 1066,
+              "jsEventListeners": 751
+            },
+            "reachableWrappers": 0
+          },
+          {
+            "offsetMs": 15000,
+            "elapsedMs": 15008.640812000027,
+            "dom": {
+              "documents": 4,
+              "nodes": 1044,
+              "jsEventListeners": 742
+            },
+            "reachableWrappers": 0
+          }
+        ],
+        "postIdleGc": {
+          "documents": 4,
+          "nodes": 1044,
+          "jsEventListeners": 742
+        }
+      },
+      {
+        "bound": "long",
+        "cycle": 110,
+        "failed": {
+          "documents": 4,
+          "nodes": 1067,
+          "jsEventListeners": 751
+        },
+        "delta": {
+          "nodes": 120,
+          "listeners": 15,
+          "documents": 0,
+          "mainThreads": 0,
+          "rendererThreads": 0,
+          "rendererHeap": 662120,
+          "rendererRss": 6692864
+        },
+        "initialCensus": {
+          "before": {
+            "documents": 4,
+            "nodes": 1067,
+            "jsEventListeners": 751
+          },
+          "after": {
+            "documents": 4,
+            "nodes": 1067,
+            "jsEventListeners": 751
+          },
+          "captured": 237,
+          "reachable": 0,
+          "roots": []
+        },
+        "idle": [
+          {
+            "offsetMs": 0,
+            "elapsedMs": 2.542418999946676,
+            "dom": {
+              "documents": 4,
+              "nodes": 1067,
+              "jsEventListeners": 751
+            },
+            "reachableWrappers": 0
+          },
+          {
+            "offsetMs": 250,
+            "elapsedMs": 249.81222199997865,
+            "dom": {
+              "documents": 4,
+              "nodes": 1067,
+              "jsEventListeners": 751
+            },
+            "reachableWrappers": 0
+          },
+          {
+            "offsetMs": 1000,
+            "elapsedMs": 999.7730159999337,
+            "dom": {
+              "documents": 4,
+              "nodes": 1067,
+              "jsEventListeners": 751
+            },
+            "reachableWrappers": 0
+          },
+          {
+            "offsetMs": 5000,
+            "elapsedMs": 5002.7661949999165,
+            "dom": {
+              "documents": 4,
+              "nodes": 1077,
+              "jsEventListeners": 752
+            },
+            "reachableWrappers": 0
+          },
+          {
+            "offsetMs": 15000,
+            "elapsedMs": 15007.902372999932,
+            "dom": {
+              "documents": 4,
+              "nodes": 1045,
+              "jsEventListeners": 742
+            },
+            "reachableWrappers": 0
+          }
+        ],
+        "postIdleGc": {
+          "documents": 4,
+          "nodes": 1045,
+          "jsEventListeners": 742
+        }
+      },
+      {
+        "bound": "long",
+        "cycle": 111,
+        "failed": {
+          "documents": 4,
+          "nodes": 1143,
+          "jsEventListeners": 772
+        },
+        "delta": {
+          "nodes": 196,
+          "listeners": 36,
+          "documents": 0,
+          "mainThreads": 0,
+          "rendererThreads": 0,
+          "rendererHeap": 1090868,
+          "rendererRss": 5115904
+        },
+        "initialCensus": {
+          "before": {
+            "documents": 4,
+            "nodes": 1143,
+            "jsEventListeners": 772
+          },
+          "after": {
+            "documents": 4,
+            "nodes": 1143,
+            "jsEventListeners": 772
+          },
+          "captured": 238,
+          "reachable": 0,
+          "roots": []
+        },
+        "idle": [
+          {
+            "offsetMs": 0,
+            "elapsedMs": 2.427519000018947,
+            "dom": {
+              "documents": 4,
+              "nodes": 1143,
+              "jsEventListeners": 772
+            },
+            "reachableWrappers": 0
+          },
+          {
+            "offsetMs": 250,
+            "elapsedMs": 249.4978650000412,
+            "dom": {
+              "documents": 4,
+              "nodes": 1143,
+              "jsEventListeners": 772
+            },
+            "reachableWrappers": 0
+          },
+          {
+            "offsetMs": 1000,
+            "elapsedMs": 1000.6369209999684,
+            "dom": {
+              "documents": 4,
+              "nodes": 1143,
+              "jsEventListeners": 772
+            },
+            "reachableWrappers": 0
+          },
+          {
+            "offsetMs": 5000,
+            "elapsedMs": 5003.5406270000385,
+            "dom": {
+              "documents": 4,
+              "nodes": 1143,
+              "jsEventListeners": 772
+            },
+            "reachableWrappers": 0
+          },
+          {
+            "offsetMs": 15000,
+            "elapsedMs": 15008.088321999996,
+            "dom": {
+              "documents": 4,
+              "nodes": 1121,
+              "jsEventListeners": 763
+            },
+            "reachableWrappers": 0
+          }
+        ],
+        "postIdleGc": {
+          "documents": 4,
+          "nodes": 1121,
+          "jsEventListeners": 763
+        }
+      },
+      {
+        "bound": "long",
+        "cycle": 112,
+        "failed": {
+          "documents": 4,
+          "nodes": 1144,
+          "jsEventListeners": 772
+        },
+        "delta": {
+          "nodes": 197,
+          "listeners": 36,
+          "documents": 0,
+          "mainThreads": 0,
+          "rendererThreads": 0,
+          "rendererHeap": 779696,
+          "rendererRss": 3870720
+        },
+        "initialCensus": {
+          "before": {
+            "documents": 4,
+            "nodes": 1144,
+            "jsEventListeners": 772
+          },
+          "after": {
+            "documents": 4,
+            "nodes": 1144,
+            "jsEventListeners": 772
+          },
+          "captured": 239,
+          "reachable": 0,
+          "roots": []
+        },
+        "idle": [
+          {
+            "offsetMs": 0,
+            "elapsedMs": 2.4524700000183657,
+            "dom": {
+              "documents": 4,
+              "nodes": 1144,
+              "jsEventListeners": 772
+            },
+            "reachableWrappers": 0
+          },
+          {
+            "offsetMs": 250,
+            "elapsedMs": 249.3789579999866,
+            "dom": {
+              "documents": 4,
+              "nodes": 1144,
+              "jsEventListeners": 772
+            },
+            "reachableWrappers": 0
+          },
+          {
+            "offsetMs": 1000,
+            "elapsedMs": 1000.396660999977,
+            "dom": {
+              "documents": 4,
+              "nodes": 1144,
+              "jsEventListeners": 772
+            },
+            "reachableWrappers": 0
+          },
+          {
+            "offsetMs": 5000,
+            "elapsedMs": 5003.634068000014,
+            "dom": {
+              "documents": 4,
+              "nodes": 1144,
+              "jsEventListeners": 772
+            },
+            "reachableWrappers": 0
+          },
+          {
+            "offsetMs": 15000,
+            "elapsedMs": 15009.634569999995,
+            "dom": {
+              "documents": 4,
+              "nodes": 1122,
+              "jsEventListeners": 763
+            },
+            "reachableWrappers": 0
+          }
+        ],
+        "postIdleGc": {
+          "documents": 4,
+          "nodes": 1122,
+          "jsEventListeners": 763
+        }
+      },
+      {
+        "bound": "long",
+        "cycle": 113,
+        "failed": {
+          "documents": 4,
+          "nodes": 1145,
+          "jsEventListeners": 772
+        },
+        "delta": {
+          "nodes": 198,
+          "listeners": 36,
+          "documents": 0,
+          "mainThreads": 0,
+          "rendererThreads": 0,
+          "rendererHeap": 1127884,
+          "rendererRss": 3358720
+        },
+        "initialCensus": {
+          "before": {
+            "documents": 4,
+            "nodes": 1145,
+            "jsEventListeners": 772
+          },
+          "after": {
+            "documents": 4,
+            "nodes": 1145,
+            "jsEventListeners": 772
+          },
+          "captured": 240,
+          "reachable": 0,
+          "roots": []
+        },
+        "idle": [
+          {
+            "offsetMs": 0,
+            "elapsedMs": 2.36850000009872,
+            "dom": {
+              "documents": 4,
+              "nodes": 1145,
+              "jsEventListeners": 772
+            },
+            "reachableWrappers": 0
+          },
+          {
+            "offsetMs": 250,
+            "elapsedMs": 249.56626900006086,
+            "dom": {
+              "documents": 4,
+              "nodes": 1145,
+              "jsEventListeners": 772
+            },
+            "reachableWrappers": 0
+          },
+          {
+            "offsetMs": 1000,
+            "elapsedMs": 1000.7218760000542,
+            "dom": {
+              "documents": 4,
+              "nodes": 1145,
+              "jsEventListeners": 772
+            },
+            "reachableWrappers": 0
+          },
+          {
+            "offsetMs": 5000,
+            "elapsedMs": 5002.739755000104,
+            "dom": {
+              "documents": 4,
+              "nodes": 1145,
+              "jsEventListeners": 772
+            },
+            "reachableWrappers": 0
+          },
+          {
+            "offsetMs": 15000,
+            "elapsedMs": 15006.293087000027,
+            "dom": {
+              "documents": 4,
+              "nodes": 1123,
+              "jsEventListeners": 763
+            },
+            "reachableWrappers": 0
+          }
+        ],
+        "postIdleGc": {
+          "documents": 4,
+          "nodes": 1123,
+          "jsEventListeners": 763
+        }
+      },
+      {
+        "bound": "long",
+        "cycle": 114,
+        "failed": {
+          "documents": 4,
+          "nodes": 1138,
+          "jsEventListeners": 771
+        },
+        "delta": {
+          "nodes": 191,
+          "listeners": 35,
+          "documents": 0,
+          "mainThreads": 0,
+          "rendererThreads": 0,
+          "rendererHeap": 630224,
+          "rendererRss": 2629632
+        },
+        "initialCensus": {
+          "before": {
+            "documents": 4,
+            "nodes": 1138,
+            "jsEventListeners": 771
+          },
+          "after": {
+            "documents": 4,
+            "nodes": 1138,
+            "jsEventListeners": 771
+          },
+          "captured": 241,
+          "reachable": 0,
+          "roots": []
+        },
+        "idle": [
+          {
+            "offsetMs": 0,
+            "elapsedMs": 2.592648999998346,
+            "dom": {
+              "documents": 4,
+              "nodes": 1138,
+              "jsEventListeners": 771
+            },
+            "reachableWrappers": 0
+          },
+          {
+            "offsetMs": 250,
+            "elapsedMs": 250.03247799992096,
+            "dom": {
+              "documents": 4,
+              "nodes": 1138,
+              "jsEventListeners": 771
+            },
+            "reachableWrappers": 0
+          },
+          {
+            "offsetMs": 1000,
+            "elapsedMs": 1000.4679130000295,
+            "dom": {
+              "documents": 4,
+              "nodes": 1138,
+              "jsEventListeners": 771
+            },
+            "reachableWrappers": 0
+          },
+          {
+            "offsetMs": 5000,
+            "elapsedMs": 5003.477167999954,
+            "dom": {
+              "documents": 4,
+              "nodes": 1138,
+              "jsEventListeners": 771
+            },
+            "reachableWrappers": 0
+          },
+          {
+            "offsetMs": 15000,
+            "elapsedMs": 15008.486059000017,
+            "dom": {
+              "documents": 4,
+              "nodes": 1124,
+              "jsEventListeners": 763
+            },
+            "reachableWrappers": 0
+          }
+        ],
+        "postIdleGc": {
+          "documents": 4,
+          "nodes": 1124,
+          "jsEventListeners": 763
+        }
+      },
+      {
+        "bound": "long",
+        "cycle": 115,
+        "failed": {
+          "documents": 4,
+          "nodes": 1138,
+          "jsEventListeners": 767
+        },
+        "delta": {
+          "nodes": 191,
+          "listeners": 31,
+          "documents": 0,
+          "mainThreads": 0,
+          "rendererThreads": 0,
+          "rendererHeap": 970448,
+          "rendererRss": 2916352
+        },
+        "initialCensus": {
+          "before": {
+            "documents": 4,
+            "nodes": 1138,
+            "jsEventListeners": 767
+          },
+          "after": {
+            "documents": 4,
+            "nodes": 1138,
+            "jsEventListeners": 771
+          },
+          "captured": 242,
+          "reachable": 0,
+          "roots": []
+        },
+        "idle": [
+          {
+            "offsetMs": 0,
+            "elapsedMs": 3.09179800003767,
+            "dom": {
+              "documents": 4,
+              "nodes": 1138,
+              "jsEventListeners": 771
+            },
+            "reachableWrappers": 0
+          },
+          {
+            "offsetMs": 250,
+            "elapsedMs": 250.29529899999034,
+            "dom": {
+              "documents": 4,
+              "nodes": 1147,
+              "jsEventListeners": 772
+            },
+            "reachableWrappers": 0
+          },
+          {
+            "offsetMs": 1000,
+            "elapsedMs": 999.616611000034,
+            "dom": {
+              "documents": 4,
+              "nodes": 1147,
+              "jsEventListeners": 772
+            },
+            "reachableWrappers": 0
+          },
+          {
+            "offsetMs": 5000,
+            "elapsedMs": 5003.082608000026,
+            "dom": {
+              "documents": 4,
+              "nodes": 1147,
+              "jsEventListeners": 772
+            },
+            "reachableWrappers": 0
+          },
+          {
+            "offsetMs": 15000,
+            "elapsedMs": 15000.478019000031,
+            "dom": {
+              "documents": 4,
+              "nodes": 1125,
+              "jsEventListeners": 763
+            },
+            "reachableWrappers": 0
+          }
+        ],
+        "postIdleGc": {
+          "documents": 4,
+          "nodes": 1125,
+          "jsEventListeners": 763
+        }
+      },
+      {
+        "bound": "long",
+        "cycle": 116,
+        "failed": {
+          "documents": 4,
+          "nodes": 1148,
+          "jsEventListeners": 772
+        },
+        "delta": {
+          "nodes": 201,
+          "listeners": 36,
+          "documents": 0,
+          "mainThreads": 0,
+          "rendererThreads": 0,
+          "rendererHeap": 846932,
+          "rendererRss": 778240
+        },
+        "initialCensus": {
+          "before": {
+            "documents": 4,
+            "nodes": 1148,
+            "jsEventListeners": 772
+          },
+          "after": {
+            "documents": 4,
+            "nodes": 1148,
+            "jsEventListeners": 772
+          },
+          "captured": 243,
+          "reachable": 0,
+          "roots": []
+        },
+        "idle": [
+          {
+            "offsetMs": 0,
+            "elapsedMs": 2.4338100000750273,
+            "dom": {
+              "documents": 4,
+              "nodes": 1148,
+              "jsEventListeners": 772
+            },
+            "reachableWrappers": 0
+          },
+          {
+            "offsetMs": 250,
+            "elapsedMs": 249.60276100004558,
+            "dom": {
+              "documents": 4,
+              "nodes": 1148,
+              "jsEventListeners": 772
+            },
+            "reachableWrappers": 0
+          },
+          {
+            "offsetMs": 1000,
+            "elapsedMs": 999.8579710000195,
+            "dom": {
+              "documents": 4,
+              "nodes": 1148,
+              "jsEventListeners": 772
+            },
+            "reachableWrappers": 0
+          },
+          {
+            "offsetMs": 5000,
+            "elapsedMs": 5003.756622000015,
+            "dom": {
+              "documents": 4,
+              "nodes": 1148,
+              "jsEventListeners": 772
+            },
+            "reachableWrappers": 0
+          },
+          {
+            "offsetMs": 15000,
+            "elapsedMs": 15004.55223000003,
+            "dom": {
+              "documents": 4,
+              "nodes": 1126,
+              "jsEventListeners": 763
+            },
+            "reachableWrappers": 0
+          }
+        ],
+        "postIdleGc": {
+          "documents": 4,
+          "nodes": 1126,
+          "jsEventListeners": 763
+        }
+      },
+      {
+        "bound": "long",
+        "cycle": 117,
+        "failed": {
+          "documents": 4,
+          "nodes": 1149,
+          "jsEventListeners": 772
+        },
+        "delta": {
+          "nodes": 202,
+          "listeners": 36,
+          "documents": 0,
+          "mainThreads": 0,
+          "rendererThreads": 0,
+          "rendererHeap": 849908,
+          "rendererRss": 4579328
+        },
+        "initialCensus": {
+          "before": {
+            "documents": 4,
+            "nodes": 1149,
+            "jsEventListeners": 772
+          },
+          "after": {
+            "documents": 4,
+            "nodes": 1149,
+            "jsEventListeners": 772
+          },
+          "captured": 244,
+          "reachable": 0,
+          "roots": []
+        },
+        "idle": [
+          {
+            "offsetMs": 0,
+            "elapsedMs": 2.4065499999560416,
+            "dom": {
+              "documents": 4,
+              "nodes": 1149,
+              "jsEventListeners": 772
+            },
+            "reachableWrappers": 0
+          },
+          {
+            "offsetMs": 250,
+            "elapsedMs": 249.638520999928,
+            "dom": {
+              "documents": 4,
+              "nodes": 1149,
+              "jsEventListeners": 772
+            },
+            "reachableWrappers": 0
+          },
+          {
+            "offsetMs": 1000,
+            "elapsedMs": 1000.0729619999183,
+            "dom": {
+              "documents": 4,
+              "nodes": 1149,
+              "jsEventListeners": 772
+            },
+            "reachableWrappers": 0
+          },
+          {
+            "offsetMs": 5000,
+            "elapsedMs": 5001.148978999932,
+            "dom": {
+              "documents": 4,
+              "nodes": 1149,
+              "jsEventListeners": 772
+            },
+            "reachableWrappers": 0
+          },
+          {
+            "offsetMs": 15000,
+            "elapsedMs": 15009.90875199996,
+            "dom": {
+              "documents": 4,
+              "nodes": 1137,
+              "jsEventListeners": 764
+            },
+            "reachableWrappers": 0
+          }
+        ],
+        "postIdleGc": {
+          "documents": 4,
+          "nodes": 1127,
+          "jsEventListeners": 763
+        }
+      },
+      {
+        "bound": "long",
+        "cycle": 118,
+        "failed": {
+          "documents": 4,
+          "nodes": 1150,
+          "jsEventListeners": 772
+        },
+        "delta": {
+          "nodes": 203,
+          "listeners": 36,
+          "documents": 0,
+          "mainThreads": 0,
+          "rendererThreads": 0,
+          "rendererHeap": 855572,
+          "rendererRss": 1429504
+        },
+        "initialCensus": {
+          "before": {
+            "documents": 4,
+            "nodes": 1150,
+            "jsEventListeners": 772
+          },
+          "after": {
+            "documents": 4,
+            "nodes": 1150,
+            "jsEventListeners": 772
+          },
+          "captured": 245,
+          "reachable": 0,
+          "roots": []
+        },
+        "idle": [
+          {
+            "offsetMs": 0,
+            "elapsedMs": 2.4641099999425933,
+            "dom": {
+              "documents": 4,
+              "nodes": 1150,
+              "jsEventListeners": 772
+            },
+            "reachableWrappers": 0
+          },
+          {
+            "offsetMs": 250,
+            "elapsedMs": 249.70919099997263,
+            "dom": {
+              "documents": 4,
+              "nodes": 1150,
+              "jsEventListeners": 772
+            },
+            "reachableWrappers": 0
+          },
+          {
+            "offsetMs": 1000,
+            "elapsedMs": 1000.4171189999906,
+            "dom": {
+              "documents": 4,
+              "nodes": 1150,
+              "jsEventListeners": 772
+            },
+            "reachableWrappers": 0
+          },
+          {
+            "offsetMs": 5000,
+            "elapsedMs": 5003.4387080000015,
+            "dom": {
+              "documents": 4,
+              "nodes": 1150,
+              "jsEventListeners": 772
+            },
+            "reachableWrappers": 0
+          },
+          {
+            "offsetMs": 15000,
+            "elapsedMs": 15002.353029999998,
+            "dom": {
+              "documents": 4,
+              "nodes": 1128,
+              "jsEventListeners": 763
+            },
+            "reachableWrappers": 0
+          }
+        ],
+        "postIdleGc": {
+          "documents": 4,
+          "nodes": 1128,
+          "jsEventListeners": 763
+        }
+      },
+      {
+        "bound": "long",
+        "cycle": 119,
+        "failed": {
+          "documents": 4,
+          "nodes": 1141,
+          "jsEventListeners": 771
+        },
+        "delta": {
+          "nodes": 194,
+          "listeners": 35,
+          "documents": 0,
+          "mainThreads": 0,
+          "rendererThreads": 0,
+          "rendererHeap": 649832,
+          "rendererRss": 4444160
+        },
+        "initialCensus": {
+          "before": {
+            "documents": 4,
+            "nodes": 1141,
+            "jsEventListeners": 771
+          },
+          "after": {
+            "documents": 4,
+            "nodes": 1141,
+            "jsEventListeners": 771
+          },
+          "captured": 246,
+          "reachable": 0,
+          "roots": []
+        },
+        "idle": [
+          {
+            "offsetMs": 0,
+            "elapsedMs": 2.377371000009589,
+            "dom": {
+              "documents": 4,
+              "nodes": 1141,
+              "jsEventListeners": 771
+            },
+            "reachableWrappers": 0
+          },
+          {
+            "offsetMs": 250,
+            "elapsedMs": 249.76448100002017,
+            "dom": {
+              "documents": 4,
+              "nodes": 1141,
+              "jsEventListeners": 771
+            },
+            "reachableWrappers": 0
+          },
+          {
+            "offsetMs": 1000,
+            "elapsedMs": 999.8929709999356,
+            "dom": {
+              "documents": 4,
+              "nodes": 1141,
+              "jsEventListeners": 771
+            },
+            "reachableWrappers": 0
+          },
+          {
+            "offsetMs": 5000,
+            "elapsedMs": 5003.631646999973,
+            "dom": {
+              "documents": 4,
+              "nodes": 1141,
+              "jsEventListeners": 771
+            },
+            "reachableWrappers": 0
+          },
+          {
+            "offsetMs": 15000,
+            "elapsedMs": 15009.414634999936,
+            "dom": {
+              "documents": 4,
+              "nodes": 1129,
+              "jsEventListeners": 763
+            },
+            "reachableWrappers": 0
+          }
+        ],
+        "postIdleGc": {
+          "documents": 4,
+          "nodes": 1129,
+          "jsEventListeners": 763
+        }
+      }
+    ],
+    "control": false
+  },
+  {
+    "run": "weak-queue-control",
+    "pass": false,
+    "lifecyclePass": true,
+    "peakGrowth": [
+      {
+        "name": "dense",
+        "nodes": 5,
+        "listeners": 0,
+        "documents": 0,
+        "mainThreads": 0,
+        "rendererThreads": 0,
+        "rendererHeap": 388264,
+        "rendererRss": 0
+      },
+      {
+        "name": "long",
+        "nodes": 1524,
+        "listeners": 25,
+        "documents": 0,
+        "mainThreads": 0,
+        "rendererThreads": 0,
+        "rendererHeap": 1249876,
+        "rendererRss": 14458880
+      }
+    ],
+    "violations": [
+      {
+        "name": "long",
+        "cycle": 1,
+        "nodes": 1520,
+        "listeners": 25,
+        "documents": 0,
+        "mainThreads": 0,
+        "rendererThreads": 0,
+        "rendererHeap": 1084096,
+        "rendererRss": 14458880
+      },
+      {
+        "name": "long",
+        "cycle": 2,
+        "nodes": 1521,
+        "listeners": 25,
+        "documents": 0,
+        "mainThreads": 0,
+        "rendererThreads": 0,
+        "rendererHeap": 1120860,
+        "rendererRss": 10461184
+      },
+      {
+        "name": "long",
+        "cycle": 4,
+        "nodes": 1524,
+        "listeners": 25,
+        "documents": 0,
+        "mainThreads": 0,
+        "rendererThreads": 0,
+        "rendererHeap": 1249876,
+        "rendererRss": 9986048
+      },
+      {
+        "name": "long",
+        "cycle": 5,
+        "nodes": 1524,
+        "listeners": 25,
+        "documents": 0,
+        "mainThreads": 0,
+        "rendererThreads": 0,
+        "rendererHeap": 1092660,
+        "rendererRss": 7962624
+      }
+    ],
+    "elapsedMs": 92966,
+    "bounds": [
+      {
+        "name": "dense",
+        "cycles": 6,
+        "baselineDom": {
+          "documents": 4,
+          "nodes": 1155,
+          "jsEventListeners": 772
+        },
+        "lastDom": {
+          "documents": 4,
+          "nodes": 1160,
+          "jsEventListeners": 772
+        },
+        "mainMemoryGrowth": {
+          "rss": 1429504,
+          "heapTotal": 1572864,
+          "heapUsed": 173404,
+          "external": 7892,
+          "arrayBuffers": 0
+        },
+        "rendererMemoryGrowth": {
+          "rss": -2740224,
+          "heapTotal": -1048576,
+          "heapUsed": 388264,
+          "external": 38768,
+          "arrayBuffers": 0
+        },
+        "diskBytesGrowth": 1885,
+        "diskFilesGrowth": 0,
+        "settingsEqual": true,
+        "inactivityThroughObservedActualExitMs": {
+          "n": 6,
+          "min": 78.00186899999972,
+          "max": 100.11801600000035,
+          "scope": "Root navigation to inactivity plus observed execution/actual exit; not pure worker termination latency."
+        },
+        "pauseInputThroughCountMs": {
+          "n": 6,
+          "min": 425.75327599999946,
+          "max": 472.2405949999993,
+          "scope": "Pause/input dispatch, SDK/worker and count observation combined. Not pure worker or native input latency; no sum of stage medians."
+        }
+      },
+      {
+        "name": "long",
+        "cycles": 6,
+        "baselineDom": {
+          "documents": 4,
+          "nodes": 1164,
+          "jsEventListeners": 772
+        },
+        "lastDom": {
+          "documents": 4,
+          "nodes": 2688,
+          "jsEventListeners": 797
+        },
+        "mainMemoryGrowth": {
+          "rss": -548864,
+          "heapTotal": 0,
+          "heapUsed": -70092,
+          "external": 20831,
+          "arrayBuffers": 0
+        },
+        "rendererMemoryGrowth": {
+          "rss": 7962624,
+          "heapTotal": 1048576,
+          "heapUsed": 1092660,
+          "external": 5284586,
+          "arrayBuffers": 0
+        },
+        "diskBytesGrowth": 2311,
+        "diskFilesGrowth": 0,
+        "settingsEqual": true,
+        "inactivityThroughObservedActualExitMs": {
+          "n": 6,
+          "min": 15.414064000004146,
+          "max": 15.755963000003248,
+          "scope": "Root navigation to inactivity plus observed execution/actual exit; not pure worker termination latency."
+        },
+        "pauseInputThroughCountMs": {
+          "n": 6,
+          "min": 47.99505499999941,
+          "max": 74.76538499999879,
+          "scope": "Pause/input dispatch, SDK/worker and count observation combined. Not pure worker or native input latency; no sum of stage medians."
+        }
+      }
+    ],
+    "cases": [
+      {
+        "bound": "long",
+        "cycle": 1,
+        "failed": {
+          "documents": 4,
+          "nodes": 2684,
+          "jsEventListeners": 797
+        },
+        "delta": {
+          "nodes": 1520,
+          "listeners": 25,
+          "documents": 0,
+          "mainThreads": 0,
+          "rendererThreads": 0,
+          "rendererHeap": 1084096,
+          "rendererRss": 14458880
+        },
+        "initialCensus": {
+          "before": {
+            "documents": 4,
+            "nodes": 2684,
+            "jsEventListeners": 797
+          },
+          "after": {
+            "documents": 4,
+            "nodes": 2693,
+            "jsEventListeners": 802
+          },
+          "captured": 14,
+          "reachable": 1,
+          "roots": [
+            {
+              "id": 14,
+              "connected": false,
+              "nodes": 1436,
+              "listeners": 24
+            }
+          ]
+        },
+        "idle": [
+          {
+            "offsetMs": 0,
+            "elapsedMs": 2.5308700000023236,
+            "dom": {
+              "documents": 4,
+              "nodes": 2693,
+              "jsEventListeners": 802
+            },
+            "reachableWrappers": 1
+          },
+          {
+            "offsetMs": 250,
+            "elapsedMs": 249.98929200000202,
+            "dom": {
+              "documents": 4,
+              "nodes": 2693,
+              "jsEventListeners": 802
+            },
+            "reachableWrappers": 1
+          },
+          {
+            "offsetMs": 1000,
+            "elapsedMs": 1000.5240880000019,
+            "dom": {
+              "documents": 4,
+              "nodes": 2693,
+              "jsEventListeners": 802
+            },
+            "reachableWrappers": 1
+          },
+          {
+            "offsetMs": 5000,
+            "elapsedMs": 5003.130712000002,
+            "dom": {
+              "documents": 4,
+              "nodes": 2693,
+              "jsEventListeners": 802
+            },
+            "reachableWrappers": 1
+          },
+          {
+            "offsetMs": 15000,
+            "elapsedMs": 15000.526318,
+            "dom": {
+              "documents": 4,
+              "nodes": 1143,
+              "jsEventListeners": 763
+            },
+            "reachableWrappers": 0
+          }
+        ],
+        "postIdleGc": {
+          "documents": 4,
+          "nodes": 1143,
+          "jsEventListeners": 763
+        }
+      },
+      {
+        "bound": "long",
+        "cycle": 2,
+        "failed": {
+          "documents": 4,
+          "nodes": 2685,
+          "jsEventListeners": 797
+        },
+        "delta": {
+          "nodes": 1521,
+          "listeners": 25,
+          "documents": 0,
+          "mainThreads": 0,
+          "rendererThreads": 0,
+          "rendererHeap": 1120860,
+          "rendererRss": 10461184
+        },
+        "initialCensus": {
+          "before": {
+            "documents": 4,
+            "nodes": 2685,
+            "jsEventListeners": 797
+          },
+          "after": {
+            "documents": 4,
+            "nodes": 2694,
+            "jsEventListeners": 802
+          },
+          "captured": 15,
+          "reachable": 1,
+          "roots": [
+            {
+              "id": 15,
+              "connected": false,
+              "nodes": 1436,
+              "listeners": 24
+            }
+          ]
+        },
+        "idle": [
+          {
+            "offsetMs": 0,
+            "elapsedMs": 2.3873509999975795,
+            "dom": {
+              "documents": 4,
+              "nodes": 2694,
+              "jsEventListeners": 802
+            },
+            "reachableWrappers": 1
+          },
+          {
+            "offsetMs": 250,
+            "elapsedMs": 249.35864299999957,
+            "dom": {
+              "documents": 4,
+              "nodes": 2694,
+              "jsEventListeners": 802
+            },
+            "reachableWrappers": 1
+          },
+          {
+            "offsetMs": 1000,
+            "elapsedMs": 1000.6417409999995,
+            "dom": {
+              "documents": 4,
+              "nodes": 2694,
+              "jsEventListeners": 802
+            },
+            "reachableWrappers": 1
+          },
+          {
+            "offsetMs": 5000,
+            "elapsedMs": 5003.357173999997,
+            "dom": {
+              "documents": 4,
+              "nodes": 2694,
+              "jsEventListeners": 802
+            },
+            "reachableWrappers": 1
+          },
+          {
+            "offsetMs": 15000,
+            "elapsedMs": 15000.232842999998,
+            "dom": {
+              "documents": 4,
+              "nodes": 1144,
+              "jsEventListeners": 763
+            },
+            "reachableWrappers": 0
+          }
+        ],
+        "postIdleGc": {
+          "documents": 4,
+          "nodes": 1144,
+          "jsEventListeners": 763
+        }
+      },
+      {
+        "bound": "long",
+        "cycle": 4,
+        "failed": {
+          "documents": 4,
+          "nodes": 2688,
+          "jsEventListeners": 797
+        },
+        "delta": {
+          "nodes": 1524,
+          "listeners": 25,
+          "documents": 0,
+          "mainThreads": 0,
+          "rendererThreads": 0,
+          "rendererHeap": 1249876,
+          "rendererRss": 9986048
+        },
+        "initialCensus": {
+          "before": {
+            "documents": 4,
+            "nodes": 2688,
+            "jsEventListeners": 797
+          },
+          "after": {
+            "documents": 4,
+            "nodes": 2688,
+            "jsEventListeners": 797
+          },
+          "captured": 17,
+          "reachable": 1,
+          "roots": [
+            {
+              "id": 17,
+              "connected": false,
+              "nodes": 1436,
+              "listeners": 24
+            }
+          ]
+        },
+        "idle": [
+          {
+            "offsetMs": 0,
+            "elapsedMs": 2.3949609999981476,
+            "dom": {
+              "documents": 4,
+              "nodes": 2688,
+              "jsEventListeners": 797
+            },
+            "reachableWrappers": 1
+          },
+          {
+            "offsetMs": 250,
+            "elapsedMs": 249.9172899999976,
+            "dom": {
+              "documents": 4,
+              "nodes": 2688,
+              "jsEventListeners": 801
+            },
+            "reachableWrappers": 1
+          },
+          {
+            "offsetMs": 1000,
+            "elapsedMs": 1000.013337999997,
+            "dom": {
+              "documents": 4,
+              "nodes": 2688,
+              "jsEventListeners": 801
+            },
+            "reachableWrappers": 1
+          },
+          {
+            "offsetMs": 5000,
+            "elapsedMs": 5000.170830999996,
+            "dom": {
+              "documents": 4,
+              "nodes": 2688,
+              "jsEventListeners": 801
+            },
+            "reachableWrappers": 1
+          },
+          {
+            "offsetMs": 15000,
+            "elapsedMs": 14999.999375,
+            "dom": {
+              "documents": 4,
+              "nodes": 1146,
+              "jsEventListeners": 763
+            },
+            "reachableWrappers": 0
+          }
+        ],
+        "postIdleGc": {
+          "documents": 4,
+          "nodes": 1146,
+          "jsEventListeners": 763
+        }
+      },
+      {
+        "bound": "long",
+        "cycle": 5,
+        "failed": {
+          "documents": 4,
+          "nodes": 2688,
+          "jsEventListeners": 797
+        },
+        "delta": {
+          "nodes": 1524,
+          "listeners": 25,
+          "documents": 0,
+          "mainThreads": 0,
+          "rendererThreads": 0,
+          "rendererHeap": 1092660,
+          "rendererRss": 7962624
+        },
+        "initialCensus": {
+          "before": {
+            "documents": 4,
+            "nodes": 2688,
+            "jsEventListeners": 797
+          },
+          "after": {
+            "documents": 4,
+            "nodes": 2697,
+            "jsEventListeners": 802
+          },
+          "captured": 18,
+          "reachable": 1,
+          "roots": [
+            {
+              "id": 18,
+              "connected": false,
+              "nodes": 1436,
+              "listeners": 24
+            }
+          ]
+        },
+        "idle": [
+          {
+            "offsetMs": 0,
+            "elapsedMs": 2.409012000003713,
+            "dom": {
+              "documents": 4,
+              "nodes": 2697,
+              "jsEventListeners": 802
+            },
+            "reachableWrappers": 1
+          },
+          {
+            "offsetMs": 250,
+            "elapsedMs": 250.19187700000475,
+            "dom": {
+              "documents": 4,
+              "nodes": 2697,
+              "jsEventListeners": 802
+            },
+            "reachableWrappers": 1
+          },
+          {
+            "offsetMs": 1000,
+            "elapsedMs": 1000.3995880000002,
+            "dom": {
+              "documents": 4,
+              "nodes": 2697,
+              "jsEventListeners": 802
+            },
+            "reachableWrappers": 1
+          },
+          {
+            "offsetMs": 5000,
+            "elapsedMs": 5001.366219000003,
+            "dom": {
+              "documents": 4,
+              "nodes": 2697,
+              "jsEventListeners": 802
+            },
+            "reachableWrappers": 1
+          },
+          {
+            "offsetMs": 15000,
+            "elapsedMs": 15002.364337000006,
+            "dom": {
+              "documents": 4,
+              "nodes": 1147,
+              "jsEventListeners": 763
+            },
+            "reachableWrappers": 0
+          }
+        ],
+        "postIdleGc": {
+          "documents": 4,
+          "nodes": 1147,
+          "jsEventListeners": 763
+        }
+      }
+    ],
+    "control": true
+  },
+  {
+    "run": "weak-idle-plain",
+    "pass": true,
+    "lifecyclePass": true,
+    "peakGrowth": [
+      {
+        "name": "dense",
+        "nodes": 29,
+        "listeners": 6,
+        "documents": 0,
+        "mainThreads": 0,
+        "rendererThreads": 0,
+        "rendererHeap": 219784,
+        "rendererRss": 7172096
+      },
+      {
+        "name": "long",
+        "nodes": 29,
+        "listeners": 0,
+        "documents": 0,
+        "mainThreads": 0,
+        "rendererThreads": 0,
+        "rendererHeap": 195552,
+        "rendererRss": 1495040
+      }
+    ],
+    "violations": [],
+    "elapsedMs": 114512,
+    "bounds": [
+      {
+        "name": "dense",
+        "cycles": 30,
+        "baselineDom": {
+          "documents": 4,
+          "nodes": 1248,
+          "jsEventListeners": 797
+        },
+        "lastDom": {
+          "documents": 4,
+          "nodes": 1277,
+          "jsEventListeners": 803
+        },
+        "mainMemoryGrowth": {
+          "rss": -335872,
+          "heapTotal": -262144,
+          "heapUsed": -239128,
+          "external": 55692,
+          "arrayBuffers": 0
+        },
+        "rendererMemoryGrowth": {
+          "rss": -3031040,
+          "heapTotal": 786432,
+          "heapUsed": 102248,
+          "external": -67675,
+          "arrayBuffers": 0
+        },
+        "diskBytesGrowth": 11487,
+        "diskFilesGrowth": 0,
+        "settingsEqual": true,
+        "inactivityThroughObservedActualExitMs": {
+          "n": 30,
+          "min": 77.56086499999947,
+          "max": 102.36663799999951,
+          "scope": "Root navigation to inactivity plus observed execution/actual exit; not pure worker termination latency."
+        },
+        "pauseInputThroughCountMs": {
+          "n": 30,
+          "min": 420.6852839999992,
+          "max": 483.0862320000015,
+          "scope": "Pause/input dispatch, SDK/worker and count observation combined. Not pure worker or native input latency; no sum of stage medians."
+        }
+      },
+      {
+        "name": "long",
+        "cycles": 30,
+        "baselineDom": {
+          "documents": 4,
+          "nodes": 1281,
+          "jsEventListeners": 803
+        },
+        "lastDom": {
+          "documents": 4,
+          "nodes": 1310,
+          "jsEventListeners": 803
+        },
+        "mainMemoryGrowth": {
+          "rss": -4116480,
+          "heapTotal": 262144,
+          "heapUsed": 160928,
+          "external": -57488,
+          "arrayBuffers": 0
+        },
+        "rendererMemoryGrowth": {
+          "rss": -1433600,
+          "heapTotal": 524288,
+          "heapUsed": 195552,
+          "external": 0,
+          "arrayBuffers": 0
+        },
+        "diskBytesGrowth": 11210,
+        "diskFilesGrowth": 0,
+        "settingsEqual": true,
+        "inactivityThroughObservedActualExitMs": {
+          "n": 30,
+          "min": 15.335160999995423,
+          "max": 16.84082599999965,
+          "scope": "Root navigation to inactivity plus observed execution/actual exit; not pure worker termination latency."
+        },
+        "pauseInputThroughCountMs": {
+          "n": 30,
+          "min": 48.32785299999523,
+          "max": 77.1858210000064,
+          "scope": "Pause/input dispatch, SDK/worker and count observation combined. Not pure worker or native input latency; no sum of stage medians."
+        }
+      }
+    ],
+    "cases": [],
+    "control": false
+  }
+]

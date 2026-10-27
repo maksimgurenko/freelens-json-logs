@@ -1,0 +1,7 @@
+{"name":"dense","cycles":6}
+{"name":"long","cycle":1,"violatingDelta":{"nodes":1520,"listeners":25,"documents":0,"mainThreads":0,"rendererThreads":0,"rendererHeap":1084096,"rendererRss":14458880}}
+{"name":"long","cycle":2,"violatingDelta":{"nodes":1521,"listeners":25,"documents":0,"mainThreads":0,"rendererThreads":0,"rendererHeap":1120860,"rendererRss":10461184}}
+{"name":"long","cycle":4,"violatingDelta":{"nodes":1524,"listeners":25,"documents":0,"mainThreads":0,"rendererThreads":0,"rendererHeap":1249876,"rendererRss":9986048}}
+{"name":"long","cycle":5,"violatingDelta":{"nodes":1524,"listeners":25,"documents":0,"mainThreads":0,"rendererThreads":0,"rendererHeap":1092660,"rendererRss":7962624}}
+{"name":"long","cycles":6}
+{"pass":false}

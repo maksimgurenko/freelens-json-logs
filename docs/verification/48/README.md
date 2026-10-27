@@ -1,6 +1,19 @@
 # #48 production Find verification checkpoint
 
-Latest checkpoint: [exact retention boundaries and pre-heap listener observations](exact-listeners.md).
+Latest continuation: [weak viewer roots and natural idle](weak-idle.md).
+The corrected 120-cycle-per-bound installed run still **fails**, with 27 long
+violations peaking +203 nodes/+36 listeners. Some spikes clean up during natural
+idle; later growth remains +182/+27 after 15 seconds and a separately labelled GC.
+A timing control captures one detached viewer (1,436 subtree nodes/24 listeners)
+in four undrained long samples; it collects naturally by 15 seconds. This related
+control does **not** establish the original +1,551/+26 sample's cause. Plain
+30-cycle repetition passes without clearing failures. Later native paths identify
+request/timer leads, not exclusive attribution. Original thresholds and failed
+samples remain. Desktop endpoints changed during monitor/workspace activity;
+there is no unchanged-desktop claim. Native/platform gates and original unchecked
+criteria remain open. Package SHA-256 is unchanged.
+
+Previous checkpoint: [exact retention boundaries and pre-heap listener observations](exact-listeners.md).
 Six controlled installed-viewer retention checks pass. A captured diagnostic
 sample still fails +1,551 nodes/+26 listeners; stable AbortSignal listeners and
 passing plain/all-target repetitions do not clear the failed gate. Native and

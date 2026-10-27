@@ -338,3 +338,46 @@ restoration and empty lifecycle state, then observes 3/3 actual worker starts/
 exits. Final Spec follow-up confirms those raw values/asset identity. No remaining
 hard Standards or Spec finding; optional legacy diagnostic naming is deferred.
 Both owned host intervals are cleaned, with zero observed desktop transitions.
+
+
+### Continuation from 863db9d
+
+Reclaimed #48 before work; [live authority](../../../docs/verification/48/host/weak-idle/authority.json)
+matches cached complete decisions/accepted plan. [Weak-root and idle report](../../../docs/verification/48/weak-idle.md)
+records a bounded weak viewer-root census including assigned handlers, immediate
+pre-trace capture, released handles and a five-sample 15-second natural-idle
+comparison without forced GC. Self-checks cover connected/detached/removed
+handlers and tracing cleanup. Review's initial census-ordering finding is fixed;
+older loaded harness/results remain separate. No product or package bytes change.
+
+The corrected 120-cycle-per-bound run **fails 27 long samples**, peaks +203 nodes/
++36 listeners. No captured root wrapper is reachable at those immediate censuses;
+that is not a global native-DOM inventory. Early listener spikes collect during
+natural idle, but later +182 nodes/+27 listeners remain at 15 seconds and a
+separate post-idle GC. Every failing original sample and unchanged threshold is
+preserved. An earlier 120-cycle run has a +10 spike that cleans up by 15 seconds.
+
+A separately labelled timing control omits the normal post-unmount frame drain
+for five measured cycles per bound. Four long samples capture one detached viewer,
+1,436 subtree nodes/24 listeners, with larger global deltas. Its weak root and
+most of the spike collect naturally by 15 seconds. This supports eventual cleanup
+in that control, not exclusive native-queue attribution or the original +1,551/
++26 failure's cause. The plain 30-cycle repetition passes; it clears no failure.
+Later native heap paths show no viewer DOM, 643 host ClusterView nodes and 120
+AbortSignal listener paths through timers/requests. Exact ownership remains open.
+
+Pinned locked install/typecheck, 249 tests, six UI guards, mounted production
+browser, actual workers, original resource smoke, strict package checks and two
+matching builds pass. Same installed SHA-256
+`995f1cf5e3ac81f377b16cf8dea24c15237824cd31dd1a066acde26bf868f904`.
+Shutdown observes 1,031 actual starts/exits, peak one, zero live worker/service
+maps. Owned profile/runtime/UID-checked namespace are removed; fresh user/settings
+hashes match. No physical/native/clipboard check or host patch occurred.
+
+The real-desktop observer retains monitor/focus/workspace activity and differing
+focus/workspace/pointer endpoints, with identical client sets and no mapped test
+window. No unchanged-desktop claim is made, and no native input, pointer/clipboard
+operation, activation, restoration or fake focus was issued. Original acceptance
+text/checkboxes remain unchanged. Remaining resource/Host/native/platform gates
+stay open; [NEXT.md](../../../docs/verification/48/NEXT.md) specifies concrete
+request/timer/native-owner attribution rather than repeating passing subsets.

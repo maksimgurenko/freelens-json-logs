@@ -1,0 +1,22 @@
+{
+  "scope": "Later native heap after all completed idle comparisons and the plain repetition. Collection is explicit here and cannot replace an earlier failed sample.",
+  "before": {
+    "documents": 4,
+    "nodes": 1318,
+    "jsEventListeners": 797
+  },
+  "heap": {
+    "label": "post-plain",
+    "count": 794,
+    "dom": {
+      "documents": 4,
+      "nodes": 1288,
+      "jsEventListeners": 794
+    }
+  },
+  "after": {
+    "documents": 4,
+    "nodes": 1288,
+    "jsEventListeners": 794
+  }
+}

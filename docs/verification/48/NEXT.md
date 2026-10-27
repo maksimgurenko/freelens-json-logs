@@ -2,76 +2,84 @@
 
 Branch `implementation/find`. Original ticket pin:
 `3fb33db5f5ded3523bcf66c1145f0af967ec0bf3`. This continuation began at
-`3555efc4bb3d5fbd5775bf0c405f31c37c857747`; record the **new current HEAD**
-before subsequent implementation/review. Reclaim #48 and fetch live corrections.
-Read the original ticket, accepted plan, full #36/#37/#38/#40 comments,
-[exact-listeners.md](exact-listeners.md), [matrix.md](matrix.md) and relevant prior
-state reports. No issue comments/closure, push, PR, merge, release or host patch.
+`863db9d74786a2ee4e689bf0fe3e464c47597cd5`; record the **new current HEAD**
+before implementation/review. Reclaim #48 and fetch live corrections. Read the
+original ticket/accepted plan/full #36/#37/#38/#40 comments, [weak-idle.md](weak-idle.md),
+[resource summary](host/weak-idle-final/resource-summary.json), [matrix](matrix.md)
+and relevant earlier state reports. No issue comments/closure, push, PR, merge,
+release or pinned-host patch.
 
-1. **Artifact remains unchanged.** `freelens-readable-logs@0.1.34`, SHA-256
+1. **Artifact unchanged.** `freelens-readable-logs@0.1.34`, SHA-256
    `995f1cf5e3ac81f377b16cf8dea24c15237824cd31dd1a066acde26bf868f904`.
-   Main/renderer/worker, stable package/store/page/config/schema 3 remain.
-   Keep the compact stable highlight-status reserve. Use project-local Node
-   24.18.0/npm 11.16.0, preserving original dirty glossary/docs and unrelated data.
-2. **Exact installed-response gap is now covered.** `retention-boundary.mjs`
-   supplies target-scoped controlled HTTP bodies through the installed production
-   adapter/session/viewer/SDK/worker. Six checks pass: 5 MiB exactly, one byte
-   under/over, complete full-source DOM selection/hashes and terminal highlight,
-   older predecessor omission, newest 1,000 of 1,001 lines. These are not naturally
-   emitted exact kubelet byte sizes, physical selection or clipboard evidence.
-   The incorrect initial notice-text oracle and corrected pass remain separate.
-3. **Resource gate still fails.** The abort-only pre-heap diagnostic captured a
-   long-source failure at cycle 22: **+1,551 nodes/+26 listeners**, unchanged at
-   census entry. Seven traced AbortSignals have 17 actual attached listeners at
-   baseline and failure. This subset does not explain the extra global listeners.
-   Activity continues during census (756→761 global listeners), explicitly
-   recorded. Never substitute a later heap result for that failed sample.
-4. **Concrete next autonomous task: minimal weak viewer-root capture.** Keep a
-   bounded list of WeakRefs to owned `.readable-logs` roots captured while each
-   viewer is mounted. Immediately after a violating retained-resource sample,
-   dereference the roots and use non-piercing `DOMDebugger.getEventListeners` on
-   their detached subtrees, recording safe node classes, handler locations,
-   counts and pre/post DOM counters. Release all temporary handles before the
-   next sample. This observes assigned DOM handlers too, without wrapping every
-   registration; do not strongly retain callbacks/targets between samples.
-   Compare the failing node/listener delta with those roots, then run plain again.
-   The all-target trace in this continuation passed and thus did not identify the
-   failed sample. Its stable covered subset has 359 cluster/29 root listeners,
-   including host drawer/icon detached targets. It cannot exclude a missed
-   retained viewer or establish exclusive attribution. Reuse/extract the bounded
-   census logic only if useful; no speculative production lifetime change.
-5. **Keep every-sample verdicts.** No threshold relaxation or endpoint-only pass.
-   This continuation's plain 30-cycle-per-bound repetition passes (dense +28
-   nodes/zero listeners, long +29/zero); the broader trace also passes (+29/zero,
-   +39/+1). Both follow the failed diagnostic in the same long-lived host. They
-   do not erase any previous failed plain/diagnostic result. Prior host-only
-   inactivity retains 14 ClusterView nodes/15 samples, without a viewer; that
-   evidence remains specific to that symptom. If a host-only limitation needs
-   a measurement-policy decision, state the exact planning question locally.
-6. **Other evidence/gates remain scoped.** Previous current-package subsets pass
-   state/held/source/geometry/dense cadence/following/Pause, maintenance, SDK/frame,
-   timeout and newest-only bursts at their named layers. Full remaining target/
-   viewer stale-success/failure and independent-anchor/inspector-eviction
-   counterparts remain distinct from older artifact evidence. Physical editing,
-   selection/copy/clipboard, OS shortcuts/IME/AltGraph/menus/focus/windows,
-   stock-output and long-duration resources, Windows/macOS remain unverified.
-   Complete independent autonomous work before asking for dedicated human gates.
-7. **Environment and cleanup.** All three soaks use three warmups/30 measured
-   cycles per bound with natural private-output frames and 100 ms inactive waits.
-   Separate private labwc→Hyprland workspace 7 uses the documented private
-   Aquamarine diagnostic; not stock compositor acceptance. Fresh profile/fixture
-   required: the host/profile/runtime/UID-checked namespace from this continuation
-   are gone. Shutdown observes 318 actual starts/exits, peak one, zero service
-   maps/watch. User-settings/glossary/docs hashes match fresh before-run hashes.
-   The desktop observer records zero focus/workspace/window transitions and equal
-   pointer endpoints (endpoint-only). No native input, activation, clipboard,
-   focus restoration or fake focus was used. Keep FREELENS_UI_MODE unset and all
-   shared guards intact. Preserve private build/cache and unrelated user data.
-8. **Finish correctly.** Full pinned locked/typecheck/tests/UI guards/browser/
-   actual workers/original smoke/strict package/two-build checks and independent
-   Standards/Spec review are recorded in the continuation report. Pin the next
-   review to the new baseline plus original requirements, fork_turns=none.
-   Commit only #48 implementation/evidence before reporting. Preserve original
-   acceptance text; check only wholly satisfied criteria. Retry with concrete
-   autonomous work; blocked for precise missing human/access/decision/evidence;
+   Preserve versioned main/renderer/worker, stable package/store/page/config,
+   schema 3 and stable highlight-feedback reserve. Use local Node 24.18.0/npm
+   11.16.0; preserve dirty glossary/docs and unrelated setup/scratch/build/cache.
+2. **Resources still fail; do not erase samples.** Normal corrected 120-cycle
+   per-bound run fails 27 long samples, peak **+203 nodes/+36 listeners**. Early
+   +9 spikes can collect during natural idle; later growth remains **+182/+27**
+   after 15 seconds and separate GC. Immediate weak-root censuses have no reachable
+   captured wrapper; that is not a global native-DOM inventory. Before/after
+   counters preserve activity during census. Original +128/+8/zero-document/
+   +8-MiB-heap every-sample limits remain. Plain 30-cycle repetition passes but
+   clears no failure. All actual worker/lifecycle assertions pass.
+3. **The supervisor hypothesis is tested, not adopted as cause.** The undrained
+   timing control omits only the normal post-unmount two-frame wait after its
+   warm baseline. Four of five undrained long samples capture one disconnected
+   viewer root: **1,436 subtree nodes/24 listeners**, global +1,520–1,524/+25.
+   The root alone does not explain all global objects. Weak roots remain through
+   5 seconds and collect by 15 without forced GC in that comparison; native
+   scroll/lifecycle processing and natural MajorGC are observed, no target-specific
+   queue-emptiness or scrollend proof. The original normal-workload **+1,551/+26**
+   sample remains unattributed. Never substitute the control or later heap for it.
+4. **Concrete next autonomous investigation: request/timer/native ownership.**
+   The later [native heap](host/weak-idle-plain/listener-heap-post-plain.json.gz)
+   has zero viewer DOM, **643 host ClusterView nodes and 120 EventListener paths
+   through AbortSignals**. Shortest paths include HTTPParser/ClientRequest and
+   native DOMTimer/AbortController chains. Prior seven-signal/17-listener tracing
+   was only a subset. Inspect these sanitized paths and pinned SDK/host source;
+   capture bounded weak request/controller origins and actually attached listeners
+   around the specific global violation, with a matched no-Find/host control.
+   Keep callbacks/targets weak, release inspector handles, preserve pre/post
+   counters, and retain no-GC idle observations. Do not repeat already-passing
+   state matrices or run another long soak without a discriminating observation.
+   Native backend IDs captured while mounted (before queue-critical scroll) may
+   help census native-only roots when WeakRefs are empty, but first verify their
+   non-owning behavior and release handles. Do not infer a native inventory from
+   empty WeakRefs. A demonstrated host-only limitation may need the precise local
+   planning question: must the whole-host every-sample gate still pass unchanged,
+   or what explicitly approved ownership/quiescence policy can separate pinned-host
+   retention? No policy change or host workaround is authorized by these results.
+5. **Reusable harness.** `FIND_SOAK_VIEWER_ROOTS=1` captures weak roots inside the
+   existing active-state evaluation. Violations first get `violatingViewerRoots`,
+   then `FIND_SOAK_IDLE_COMPARE=1` observes 0/250/1,000/5,000/15,000 ms without
+   forced GC. Optional `FIND_SOAK_IDLE_TRACE=1` traces only after that first census.
+   `FIND_SOAK_POST_IDLE_GC=1` adds a separate later collectibility check, never a
+   replacement verdict. `FIND_SOAK_UNDRAINED_CONTROL=1` is attribution-only and
+   requires natural frames/roots/idle comparison. Self-check with
+   `FIND_ROOTS_CHECK_IDLE=1 ... viewer-roots-check.mjs`. Use fresh evidence names.
+   Raw JSON is losslessly gzipped. Older loaded harness snapshots stay separate.
+6. **Other gates retain their exact scopes.** Current package's controlled exact
+   5-MiB/±1-byte/1,001-line retention checks and previous state/held/source/geometry/
+   dense-cadence/following/Pause/SDK/frame/maintenance subsets pass at their named
+   layers. Full target/viewer stale-success/failure and independent B surviving
+   inspected-A eviction counterparts remain distinct from older evidence. Physical
+   editing/selection/copy/clipboard/IME/AltGraph/shortcuts/menus/focus/window,
+   stock-output/long-duration resources and Windows/macOS remain unverified.
+7. **Environment gone; establish fresh ownership.** One long-lived private
+   labwc→Hyprland workspace-7 host used the modified Aquamarine diagnostic, not
+   stock acceptance. Its profile/runtime/PIDs and UID-checked fixture namespace
+   are removed; build/cache remains. Shutdown: **1,031 starts/exits**, peak one,
+   zero live workers/owner maps/watch. Three SDK handlers were still listed at
+   will-quit; do not claim zero there. Fresh user/settings/glossary/docs hashes
+   match. The desktop observer records monitor/FALLBACK/focus/workspace activity
+   and differing pointer/focus/workspace endpoints, same client sets and no real
+   window open/close. **No unchanged-desktop claim.** No native input/clipboard,
+   activation, focus restoration, pointer movement or fake focus was used. Keep
+   FREELENS_UI_MODE unset and all shared guards intact; never restore the desktop.
+8. **Finish correctly.** Pinned locked/typecheck/249 tests/six UI guards/browser/
+   real workers/original smoke/strict package/two-build checks and independent
+   Standards/Spec reviews are recorded. Next review uses the new baseline plus
+   original requirements with `fork_turns=none`. Commit only #48 work/evidence,
+   preserve original criteria and check only wholly satisfied items. Retry for
+   concrete autonomous work; blocked for precise missing access/decision/evidence;
    done only after every original criterion and its evidence are committed.

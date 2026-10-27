@@ -10,11 +10,24 @@ import { checkFrameCadence } from './frame-cadence.mjs';
 import { listenerCensus } from './listener-census.mjs';
 import { listenerHeap } from './listener-heap.mjs';
 import { traceAbortListeners } from './listener-signals.mjs';
+import { weakViewerRoots } from './viewer-roots.mjs';
+import { retainedIdle } from './retained-idle.mjs';
 const cleanInspector=process.env.FIND_SOAK_INSPECTOR_CLEAN==='1';
 const captureListeners=process.env.FIND_SOAK_LISTENERS==='1';
 const captureHeap=process.env.FIND_SOAK_LISTENER_HEAPS==='1';
 const noFind=process.env.FIND_SOAK_NO_FIND==='1';
 const naturalFrames=process.env.FIND_SOAK_NATURAL_FRAMES==='1';
+const compareIdle=process.env.FIND_SOAK_IDLE_COMPARE==='1';
+const captureRoots=process.env.FIND_SOAK_VIEWER_ROOTS==='1';
+const queueControl=process.env.FIND_SOAK_UNDRAINED_CONTROL==='1';
+assert(!(compareIdle||captureRoots)||naturalFrames,'Idle/root diagnostics require natural frames');
+assert(!queueControl||(naturalFrames&&compareIdle&&captureRoots),'Undrained queue control requires natural frames, weak roots and idle comparison');
+const withinLimits=g=>g.nodes<=128&&g.listeners<=8&&g.documents<=0&&g.rendererHeap<=8*1024*1024;
+const growthFrom=(sample,baseline)=>({
+  nodes:sample.dom.nodes-baseline.dom.nodes,listeners:sample.dom.jsEventListeners-baseline.dom.jsEventListeners,documents:sample.dom.documents-baseline.dom.documents,
+  mainThreads:sample.threads-baseline.threads,rendererThreads:sample.rendererThreads-baseline.rendererThreads,
+  rendererHeap:sample.cleanup.memory.heapUsed-baseline.cleanup.memory.heapUsed,rendererRss:sample.cleanup.memory.rss-baseline.cleanup.memory.rss,
+});
 const measuredCycles=Number(process.env.FIND_SOAK_CYCLES??6);
 assert(Number.isSafeInteger(measuredCycles)&&measuredCycles>=6&&measuredCycles<=120,'Expected 6–120 measured cycles');
 const idleMs=Number(process.env.FIND_SOAK_IDLE_MS??0);
@@ -28,11 +41,18 @@ const footprint=(path,hash=false)=>Object.fromEntries(readdirSync(path).flatMap(
 const startedAt=Date.now();
 const d=await driver(),result={session:privateSession(),samples:[],measuredCycles,idleMs,startedAt,noFind,limits:`Three warmups and ${measuredCycles} measured cycles per bound. ${naturalFrames?'Natural private-output frames; no screenshots.':'Background CDP screenshots drive frames.'} ${noFind?'Attribution control with Find unopened; not Find acceptance.':''} Native input cadence remains unverified.`};
 let pumping=false;const pump=naturalFrames?null:setInterval(async()=>{if(pumping)return;pumping=true;try{await d.page.send('Page.captureScreenshot',{format:'png'});}catch{}finally{pumping=false;}},150);
-let signalTrace;
+let signalTrace,viewerRoots;
+result.idleComparison=compareIdle;
+result.weakViewerRoots=captureRoots;
+result.idleNativeTrace=process.env.FIND_SOAK_IDLE_TRACE==='1';
+result.postIdleGc=process.env.FIND_SOAK_POST_IDLE_GC==='1';
+result.undrainedQueueControl=queueControl;
+if(queueControl)result.controlScope='Timing attribution control only: normal frame drain for warmups/baseline, omitted after unmount for later measured cycles. Not the original resource workload or acceptance.';
 const until=async(predicate)=>{for(let i=0;i<400;i++){if(await predicate())return;await sleep(25);}throw Error('Mounted soak did not settle');};
 try {
   if(naturalFrames)result.frameCadence=await checkFrameCadence(d);
   await d.bind(d.cluster());
+  if(captureRoots)viewerRoots=await weakViewerRoots(d.page,d.cluster());
   if(process.env.FIND_SOAK_SIGNAL_TRACE==='1'){
     const allTargets=process.env.FIND_SOAK_EVENT_TARGETS==='1';
     signalTrace=await traceAbortListeners(d.page,{allTargets});
@@ -58,7 +78,7 @@ try {
       const matchObservedMs=noFind?null:performance.now()-started;
       if(name==='long')await d.page.evaluate(`(async()=>{const root=document.querySelector('.readable-logs');root.querySelector('.rl-display-options').open=true;[...root.querySelectorAll('.rl-display-panel label')].find(e=>e.textContent.includes('Word wrap')).querySelector('input').click();root.querySelector('.rl-display-options').open=false;await new Promise(resolve=>requestAnimationFrame(()=>requestAnimationFrame(resolve)));[...root.querySelectorAll('button')].find(b=>b.textContent.trim()==='To bottom').click();return true;})()`,d.cluster());
       if(!noFind)await until(()=>d.page.evaluate('[...CSS.highlights].some(([,h])=>h.size>0)',d.cluster()));
-      const active=await d.page.evaluate(`({rows:document.querySelectorAll('.rl-record').length,sourceUnits:[...document.querySelectorAll('.rl-message')].reduce((n,e)=>n+e.textContent.length,0),highlights:[...CSS.highlights].reduce((n,[,h])=>n+h.size,0),highlightStarts:[...CSS.highlights].flatMap(([,h])=>[...h].map(r=>Number(r.startContainer.parentElement.dataset.sourceStart)+r.startOffset)),marks:document.querySelectorAll('.rl-find-mark').length,status:document.querySelector('.rl-highlight-status')?.textContent,query:document.querySelector('#rl-find')?.value??null,findHidden:document.querySelector('#rl-findbar')?.hidden,paused:document.querySelector('.rl-update-status').textContent})`,d.cluster());
+      const active=await d.page.evaluate(`(global.__findViewerRoots?.capture(),{rows:document.querySelectorAll('.rl-record').length,sourceUnits:[...document.querySelectorAll('.rl-message')].reduce((n,e)=>n+e.textContent.length,0),highlights:[...CSS.highlights].reduce((n,[,h])=>n+h.size,0),highlightStarts:[...CSS.highlights].flatMap(([,h])=>[...h].map(r=>Number(r.startContainer.parentElement.dataset.sourceStart)+r.startOffset)),marks:document.querySelectorAll('.rl-find-mark').length,status:document.querySelector('.rl-highlight-status')?.textContent,query:document.querySelector('#rl-find')?.value??null,findHidden:document.querySelector('#rl-findbar')?.hidden,paused:document.querySelector('.rl-update-status').textContent})`,d.cluster());
       if(noFind){assert.equal(active.highlights,0);assert.equal(active.marks,0);assert.equal(active.query,'');assert.equal(active.findHidden,true);}
       else{assert(active.highlights>0&&active.highlights<=1024);assert(active.marks>0);}
       assert.equal(active.paused,'Paused');
@@ -73,16 +93,35 @@ try {
       await d.page.evaluate("global.LensExtensions.Renderer.Navigation.navigate('/overview');true",d.cluster());await d.wait(s=>!s.live&&!s.service.owners&&!s.service.retiring);
       // Let native scroll/lifecycle queues drain after unmount before measuring
       // retained objects. The natural-frame precondition is checked above.
-      if(naturalFrames)await d.page.evaluate('new Promise(resolve=>requestAnimationFrame(()=>requestAnimationFrame(resolve)))',d.cluster());
+      if(naturalFrames&&(!queueControl||cycle<=0))await d.page.evaluate('new Promise(resolve=>requestAnimationFrame(()=>requestAnimationFrame(resolve)))',d.cluster());
       if(cleanInspector){await d.page.send('Runtime.discardConsoleEntries');await d.main.send('Runtime.discardConsoleEntries');}
       await d.main.send('HeapProfiler.collectGarbage');await d.page.send('HeapProfiler.collectGarbage');
       const cleanup=await d.page.evaluate('({highlights:CSS.highlights.size,rows:document.querySelectorAll(".rl-record").length,memory:process.memoryUsage(),pid:process.pid})',d.cluster());
       assert.equal(cleanup.highlights,0);assert.equal(cleanup.rows,0);
       const status=await d.status();assert.equal(status.starts,status.exits);assert.equal(status.service.senders,0);assert.equal(status.service.watch,false);
       const sample={at:Date.now(),cycle,matchObservedMs,inactiveMs,active,cleanup,main:await d.main.evaluate('process.memoryUsage()'),dom:await d.page.send('Memory.getDOMCounters'),threads:readdirSync(`/proc/${result.session.pid}/task`).length,rendererThreads:readdirSync(`/proc/${cleanup.pid}/task`).length,disk:footprint(integration),settings:footprint(join(integration,'Freelens/extension-store/freelens-readable-logs'),true),status};
-      if(signalTrace)sample.abortSignals=await signalTrace.sample();
       if(cycle>=0){
         samples.push(sample);
+        const delta=growthFrom(sample,samples[0]);
+        if((compareIdle||viewerRoots)&&!withinLimits(delta)){
+          // Preserve the original violating counters and verdict. No new GC or
+          // workload may intervene before this exact sample's idle comparison.
+          console.log(JSON.stringify({name,cycle,violatingDelta:delta}));
+          sample.violatingDelta=delta;
+          if(viewerRoots)sample.violatingViewerRoots=await viewerRoots.census();
+          sample.retainedIdle=await retainedIdle(d.page,d.cluster(),{initial:sample.dom,roots:viewerRoots,nativeTrace:process.env.FIND_SOAK_IDLE_TRACE==='1'});
+          assert(!sample.retainedIdle.error&&!sample.retainedIdle.cleanupError,'Retained idle diagnostic failed; partial observations preserved');
+          if(result.postIdleGc){
+            // Outside the completed no-forced-GC idle comparison. This later
+            // collection can test collectibility, never replace its failure.
+            sample.postIdleGc={before:await d.page.send('Memory.getDOMCounters')};
+            await d.page.send('HeapProfiler.collectGarbage');
+            sample.postIdleGc.after=await d.page.send('Memory.getDOMCounters');
+            if(viewerRoots)sample.postIdleGc.viewerRoots=await viewerRoots.census();
+          }
+        }
+        if(viewerRoots&&(cycle===0||cycle===measuredCycles-1))sample.viewerRoots=await viewerRoots.census();
+        if(signalTrace)sample.abortSignals=await signalTrace.sample();
         const earlier=samples.slice(0,-1).map(s=>s.dom.jsEventListeners);
         if(signalTrace && process.env.FIND_SOAK_SIGNAL_CENSUS==='1' && (cycle===0 || cycle===measuredCycles-1 || sample.dom.jsEventListeners>Math.max(...earlier))) {
           sample.attachedAbortSignals=await signalTrace.attached();
@@ -100,21 +139,26 @@ try {
   result.sampleGrowth=result.samples.map(bound=>{
     const first=bound.cycles[0];
     assert(bound.cycles.every(sample=>JSON.stringify(sample.settings)===JSON.stringify(first.settings)),'Viewing changed extension settings/disk');
-    return {name:bound.name,cycles:bound.cycles.map(sample=>({cycle:sample.cycle,
-      nodes:sample.dom.nodes-first.dom.nodes,listeners:sample.dom.jsEventListeners-first.dom.jsEventListeners,documents:sample.dom.documents-first.dom.documents,
-      mainThreads:sample.threads-first.threads,rendererThreads:sample.rendererThreads-first.rendererThreads,
-      rendererHeap:sample.cleanup.memory.heapUsed-first.cleanup.memory.heapUsed,rendererRss:sample.cleanup.memory.rss-first.cleanup.memory.rss}))};
+    return {name:bound.name,cycles:bound.cycles.map(sample=>({cycle:sample.cycle,...growthFrom(sample,first)}))};
   });
   result.growth=result.sampleGrowth.map(bound=>({name:bound.name,...bound.cycles.at(-1)}));
   result.peakGrowth=result.sampleGrowth.map(bound=>({name:bound.name,...Object.fromEntries(
     ['nodes','listeners','documents','mainThreads','rendererThreads','rendererHeap','rendererRss'].map(metric=>[metric,Math.max(...bound.cycles.map(sample=>sample[metric]))]))}));
   // Same conservative retained-object limits as docs/resource-smoke.md. Failure
   // is an investigation gate, not attribution to extension vs host/inspector.
-  const withinLimits=g=>g.nodes<=128&&g.listeners<=8&&g.documents<=0&&g.rendererHeap<=8*1024*1024;
   result.resourceViolations=result.sampleGrowth.flatMap(bound=>bound.cycles.filter(sample=>!withinLimits(sample)).map(sample=>({name:bound.name,...sample})));
   result.resourcePass=result.resourceViolations.length===0;
   result.elapsedMs=Date.now()-startedAt;
   result.pass=result.lifecyclePass&&result.resourcePass;
   if(!result.pass)process.exitCode=1;
 }catch(error){result.error=error.stack;process.exitCode=1;}
-finally{clearInterval(pump);try{if(signalTrace){await signalTrace.dispose();result.abortTraceRestored=true;}}finally{report(cleanInspector?'mounted-soak-clean-inspector':'mounted-soak',result);console.log(JSON.stringify({pass:result.pass,error:result.error}));d.close();}}
+finally{
+  clearInterval(pump);
+  for(const [name,diagnostic]of [['abortTrace',signalTrace],['viewerRoots',viewerRoots]]){
+    if(!diagnostic)continue;
+    try{await diagnostic.dispose();result[name+'Restored']=true;}
+    catch(error){(result.cleanupErrors??=[]).push({name,error:error.stack});result.pass=false;process.exitCode=1;}
+  }
+  report(cleanInspector?'mounted-soak-clean-inspector':'mounted-soak',result);
+  console.log(JSON.stringify({pass:result.pass,error:result.error,cleanupErrors:result.cleanupErrors}));d.close();
+}

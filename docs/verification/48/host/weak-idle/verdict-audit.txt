@@ -1,0 +1,5 @@
+{
+  "reportedResourcePass": true,
+  "expectedEverySamplePass": true,
+  "violations": []
+}

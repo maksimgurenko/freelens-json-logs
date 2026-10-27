@@ -1,0 +1,1373 @@
+{
+  "pass": true,
+  "connected": {
+    "before": {
+      "documents": 4,
+      "nodes": 612,
+      "jsEventListeners": 724
+    },
+    "after": {
+      "documents": 4,
+      "nodes": 612,
+      "jsEventListeners": 724
+    },
+    "captured": 2,
+    "reachable": 2,
+    "roots": [
+      {
+        "id": 1,
+        "connected": true,
+        "target": "SECTION.readable-logs",
+        "nodes": 160,
+        "backendNodeId": 66,
+        "listeners": [
+          {
+            "type": "scroll",
+            "capture": true,
+            "once": false,
+            "passive": false,
+            "backendNodeId": 66,
+            "target": "SECTION.readable-logs",
+            "scriptId": "276",
+            "line": 1564,
+            "column": 13
+          },
+          {
+            "type": "keydown",
+            "capture": true,
+            "once": false,
+            "passive": false,
+            "backendNodeId": 66,
+            "target": "SECTION.readable-logs",
+            "scriptId": "276",
+            "line": 1147,
+            "column": 18
+          },
+          {
+            "type": "compositionstart",
+            "capture": true,
+            "once": false,
+            "passive": false,
+            "backendNodeId": 66,
+            "target": "SECTION.readable-logs",
+            "scriptId": "276",
+            "line": 1141,
+            "column": 27
+          },
+          {
+            "type": "compositionstart",
+            "capture": true,
+            "once": false,
+            "passive": false,
+            "backendNodeId": 66,
+            "target": "SECTION.readable-logs",
+            "scriptId": "276",
+            "line": 2393,
+            "column": 16
+          },
+          {
+            "type": "compositionend",
+            "capture": true,
+            "once": false,
+            "passive": false,
+            "backendNodeId": 66,
+            "target": "SECTION.readable-logs",
+            "scriptId": "276",
+            "line": 1144,
+            "column": 25
+          },
+          {
+            "type": "compositionend",
+            "capture": true,
+            "once": false,
+            "passive": false,
+            "backendNodeId": 66,
+            "target": "SECTION.readable-logs",
+            "scriptId": "276",
+            "line": 2396,
+            "column": 14
+          },
+          {
+            "type": "pointerdown",
+            "capture": true,
+            "once": false,
+            "passive": false,
+            "backendNodeId": 66,
+            "target": "SECTION.readable-logs",
+            "scriptId": "276",
+            "line": 2747,
+            "column": 15
+          },
+          {
+            "type": "auxclick",
+            "capture": true,
+            "once": false,
+            "passive": false,
+            "backendNodeId": 66,
+            "target": "SECTION.readable-logs",
+            "scriptId": "276",
+            "line": 2761,
+            "column": 19
+          },
+          {
+            "type": "mouseup",
+            "capture": true,
+            "once": false,
+            "passive": false,
+            "backendNodeId": 66,
+            "target": "SECTION.readable-logs",
+            "scriptId": "276",
+            "line": 2769,
+            "column": 13
+          },
+          {
+            "type": "pointercancel",
+            "capture": true,
+            "once": false,
+            "passive": false,
+            "backendNodeId": 66,
+            "target": "SECTION.readable-logs",
+            "scriptId": "276",
+            "line": 2774,
+            "column": 17
+          },
+          {
+            "type": "pointerleave",
+            "capture": false,
+            "once": false,
+            "passive": false,
+            "backendNodeId": 66,
+            "target": "SECTION.readable-logs",
+            "scriptId": "276",
+            "line": 2774,
+            "column": 17
+          },
+          {
+            "type": "toggle",
+            "capture": false,
+            "once": false,
+            "passive": false,
+            "backendNodeId": 67,
+            "target": "DETAILS.rl-target-context",
+            "scriptId": "234",
+            "line": 381978,
+            "column": 398
+          },
+          {
+            "type": "invalid",
+            "capture": false,
+            "once": false,
+            "passive": false,
+            "backendNodeId": 68,
+            "target": "SELECT",
+            "scriptId": "234",
+            "line": 381978,
+            "column": 308
+          },
+          {
+            "type": "invalid",
+            "capture": false,
+            "once": false,
+            "passive": false,
+            "backendNodeId": 69,
+            "target": "SELECT",
+            "scriptId": "234",
+            "line": 381978,
+            "column": 308
+          },
+          {
+            "type": "click",
+            "capture": false,
+            "once": false,
+            "passive": false,
+            "backendNodeId": 70,
+            "target": "BUTTON.rl-edit-profiles",
+            "scriptId": "234",
+            "line": 382019,
+            "column": 309
+          },
+          {
+            "type": "click",
+            "capture": false,
+            "once": false,
+            "passive": false,
+            "backendNodeId": 71,
+            "target": "BUTTON",
+            "scriptId": "234",
+            "line": 382019,
+            "column": 309
+          },
+          {
+            "type": "click",
+            "capture": false,
+            "once": false,
+            "passive": false,
+            "backendNodeId": 72,
+            "target": "BUTTON",
+            "scriptId": "234",
+            "line": 382019,
+            "column": 309
+          },
+          {
+            "type": "click",
+            "capture": false,
+            "once": false,
+            "passive": false,
+            "backendNodeId": 73,
+            "target": "BUTTON",
+            "scriptId": "234",
+            "line": 382019,
+            "column": 309
+          },
+          {
+            "type": "toggle",
+            "capture": false,
+            "once": false,
+            "passive": false,
+            "backendNodeId": 74,
+            "target": "DETAILS.rl-display-options",
+            "scriptId": "234",
+            "line": 381978,
+            "column": 398
+          },
+          {
+            "type": "click",
+            "capture": false,
+            "once": false,
+            "passive": false,
+            "backendNodeId": 75,
+            "target": "BUTTON",
+            "scriptId": "234",
+            "line": 382019,
+            "column": 309
+          },
+          {
+            "type": "click",
+            "capture": false,
+            "once": false,
+            "passive": false,
+            "backendNodeId": 76,
+            "target": "BUTTON",
+            "scriptId": "234",
+            "line": 382019,
+            "column": 309
+          },
+          {
+            "type": "invalid",
+            "capture": false,
+            "once": false,
+            "passive": false,
+            "backendNodeId": 77,
+            "target": "INPUT",
+            "scriptId": "234",
+            "line": 381978,
+            "column": 308
+          },
+          {
+            "type": "invalid",
+            "capture": false,
+            "once": false,
+            "passive": false,
+            "backendNodeId": 78,
+            "target": "INPUT",
+            "scriptId": "234",
+            "line": 381978,
+            "column": 308
+          },
+          {
+            "type": "invalid",
+            "capture": false,
+            "once": false,
+            "passive": false,
+            "backendNodeId": 79,
+            "target": "SELECT",
+            "scriptId": "234",
+            "line": 381978,
+            "column": 308
+          },
+          {
+            "type": "click",
+            "capture": false,
+            "once": false,
+            "passive": false,
+            "backendNodeId": 80,
+            "target": "BUTTON",
+            "scriptId": "234",
+            "line": 382019,
+            "column": 309
+          },
+          {
+            "type": "invalid",
+            "capture": false,
+            "once": false,
+            "passive": false,
+            "backendNodeId": 81,
+            "target": "INPUT",
+            "scriptId": "234",
+            "line": 381978,
+            "column": 308
+          },
+          {
+            "type": "beforeinput",
+            "capture": false,
+            "once": false,
+            "passive": false,
+            "backendNodeId": 81,
+            "target": "INPUT",
+            "scriptId": "276",
+            "line": 3110,
+            "column": 24
+          },
+          {
+            "type": "click",
+            "capture": false,
+            "once": false,
+            "passive": false,
+            "backendNodeId": 82,
+            "target": "BUTTON",
+            "scriptId": "234",
+            "line": 382019,
+            "column": 309
+          },
+          {
+            "type": "click",
+            "capture": false,
+            "once": false,
+            "passive": false,
+            "backendNodeId": 83,
+            "target": "BUTTON.rl-find-direction",
+            "scriptId": "234",
+            "line": 382019,
+            "column": 309
+          },
+          {
+            "type": "click",
+            "capture": false,
+            "once": false,
+            "passive": false,
+            "backendNodeId": 84,
+            "target": "BUTTON.rl-find-direction",
+            "scriptId": "234",
+            "line": 382019,
+            "column": 309
+          },
+          {
+            "type": "click",
+            "capture": false,
+            "once": false,
+            "passive": false,
+            "backendNodeId": 85,
+            "target": "BUTTON",
+            "scriptId": "234",
+            "line": 382019,
+            "column": 309
+          },
+          {
+            "type": "click",
+            "capture": false,
+            "once": false,
+            "passive": false,
+            "backendNodeId": 86,
+            "target": "BUTTON.rl-find-words",
+            "scriptId": "234",
+            "line": 382019,
+            "column": 309
+          },
+          {
+            "type": "click",
+            "capture": false,
+            "once": false,
+            "passive": false,
+            "backendNodeId": 87,
+            "target": "BUTTON.rl-find-clock",
+            "scriptId": "234",
+            "line": 382019,
+            "column": 309
+          },
+          {
+            "type": "click",
+            "capture": false,
+            "once": false,
+            "passive": false,
+            "backendNodeId": 88,
+            "target": "BUTTON",
+            "scriptId": "234",
+            "line": 382019,
+            "column": 309
+          },
+          {
+            "type": "scroll",
+            "capture": false,
+            "once": false,
+            "passive": false,
+            "backendNodeId": 89,
+            "target": "DIV.rl-records",
+            "scriptId": "276",
+            "line": 2121,
+            "column": 13
+          },
+          {
+            "type": "click",
+            "capture": false,
+            "once": false,
+            "passive": false,
+            "backendNodeId": 90,
+            "target": "DIV.rl-row",
+            "scriptId": "234",
+            "line": 382019,
+            "column": 309
+          },
+          {
+            "type": "click",
+            "capture": false,
+            "once": false,
+            "passive": false,
+            "backendNodeId": 63,
+            "target": "BUTTON",
+            "scriptId": "234",
+            "line": 382019,
+            "column": 309
+          }
+        ]
+      },
+      {
+        "id": 2,
+        "connected": true,
+        "target": "SECTION.readable-logs.diagnostic-owned",
+        "nodes": 2,
+        "backendNodeId": 97,
+        "listeners": [
+          {
+            "type": "click",
+            "capture": false,
+            "once": false,
+            "passive": false,
+            "backendNodeId": 97,
+            "target": "SECTION.readable-logs.diagnostic-owned",
+            "scriptId": "314",
+            "line": 3,
+            "column": 17
+          },
+          {
+            "type": "diagnostic-owned-event",
+            "capture": false,
+            "once": false,
+            "passive": false,
+            "backendNodeId": 98,
+            "target": "DIV.diagnostic-child",
+            "scriptId": "314",
+            "line": 3,
+            "column": 72
+          }
+        ]
+      }
+    ],
+    "scope": "Weakly captured mounted viewer roots and non-piercing subtrees only. Assigned and registered attached handlers; no heap capture or explicit GC. Temporary inspector handles released before return."
+  },
+  "detached": {
+    "before": {
+      "documents": 4,
+      "nodes": 612,
+      "jsEventListeners": 724
+    },
+    "after": {
+      "documents": 4,
+      "nodes": 612,
+      "jsEventListeners": 724
+    },
+    "captured": 2,
+    "reachable": 2,
+    "roots": [
+      {
+        "id": 1,
+        "connected": true,
+        "target": "SECTION.readable-logs",
+        "nodes": 160,
+        "backendNodeId": 66,
+        "listeners": [
+          {
+            "type": "scroll",
+            "capture": true,
+            "once": false,
+            "passive": false,
+            "backendNodeId": 66,
+            "target": "SECTION.readable-logs",
+            "scriptId": "276",
+            "line": 1564,
+            "column": 13
+          },
+          {
+            "type": "keydown",
+            "capture": true,
+            "once": false,
+            "passive": false,
+            "backendNodeId": 66,
+            "target": "SECTION.readable-logs",
+            "scriptId": "276",
+            "line": 1147,
+            "column": 18
+          },
+          {
+            "type": "compositionstart",
+            "capture": true,
+            "once": false,
+            "passive": false,
+            "backendNodeId": 66,
+            "target": "SECTION.readable-logs",
+            "scriptId": "276",
+            "line": 1141,
+            "column": 27
+          },
+          {
+            "type": "compositionstart",
+            "capture": true,
+            "once": false,
+            "passive": false,
+            "backendNodeId": 66,
+            "target": "SECTION.readable-logs",
+            "scriptId": "276",
+            "line": 2393,
+            "column": 16
+          },
+          {
+            "type": "compositionend",
+            "capture": true,
+            "once": false,
+            "passive": false,
+            "backendNodeId": 66,
+            "target": "SECTION.readable-logs",
+            "scriptId": "276",
+            "line": 1144,
+            "column": 25
+          },
+          {
+            "type": "compositionend",
+            "capture": true,
+            "once": false,
+            "passive": false,
+            "backendNodeId": 66,
+            "target": "SECTION.readable-logs",
+            "scriptId": "276",
+            "line": 2396,
+            "column": 14
+          },
+          {
+            "type": "pointerdown",
+            "capture": true,
+            "once": false,
+            "passive": false,
+            "backendNodeId": 66,
+            "target": "SECTION.readable-logs",
+            "scriptId": "276",
+            "line": 2747,
+            "column": 15
+          },
+          {
+            "type": "auxclick",
+            "capture": true,
+            "once": false,
+            "passive": false,
+            "backendNodeId": 66,
+            "target": "SECTION.readable-logs",
+            "scriptId": "276",
+            "line": 2761,
+            "column": 19
+          },
+          {
+            "type": "mouseup",
+            "capture": true,
+            "once": false,
+            "passive": false,
+            "backendNodeId": 66,
+            "target": "SECTION.readable-logs",
+            "scriptId": "276",
+            "line": 2769,
+            "column": 13
+          },
+          {
+            "type": "pointercancel",
+            "capture": true,
+            "once": false,
+            "passive": false,
+            "backendNodeId": 66,
+            "target": "SECTION.readable-logs",
+            "scriptId": "276",
+            "line": 2774,
+            "column": 17
+          },
+          {
+            "type": "pointerleave",
+            "capture": false,
+            "once": false,
+            "passive": false,
+            "backendNodeId": 66,
+            "target": "SECTION.readable-logs",
+            "scriptId": "276",
+            "line": 2774,
+            "column": 17
+          },
+          {
+            "type": "toggle",
+            "capture": false,
+            "once": false,
+            "passive": false,
+            "backendNodeId": 67,
+            "target": "DETAILS.rl-target-context",
+            "scriptId": "234",
+            "line": 381978,
+            "column": 398
+          },
+          {
+            "type": "invalid",
+            "capture": false,
+            "once": false,
+            "passive": false,
+            "backendNodeId": 68,
+            "target": "SELECT",
+            "scriptId": "234",
+            "line": 381978,
+            "column": 308
+          },
+          {
+            "type": "invalid",
+            "capture": false,
+            "once": false,
+            "passive": false,
+            "backendNodeId": 69,
+            "target": "SELECT",
+            "scriptId": "234",
+            "line": 381978,
+            "column": 308
+          },
+          {
+            "type": "click",
+            "capture": false,
+            "once": false,
+            "passive": false,
+            "backendNodeId": 70,
+            "target": "BUTTON.rl-edit-profiles",
+            "scriptId": "234",
+            "line": 382019,
+            "column": 309
+          },
+          {
+            "type": "click",
+            "capture": false,
+            "once": false,
+            "passive": false,
+            "backendNodeId": 71,
+            "target": "BUTTON",
+            "scriptId": "234",
+            "line": 382019,
+            "column": 309
+          },
+          {
+            "type": "click",
+            "capture": false,
+            "once": false,
+            "passive": false,
+            "backendNodeId": 72,
+            "target": "BUTTON",
+            "scriptId": "234",
+            "line": 382019,
+            "column": 309
+          },
+          {
+            "type": "click",
+            "capture": false,
+            "once": false,
+            "passive": false,
+            "backendNodeId": 73,
+            "target": "BUTTON",
+            "scriptId": "234",
+            "line": 382019,
+            "column": 309
+          },
+          {
+            "type": "toggle",
+            "capture": false,
+            "once": false,
+            "passive": false,
+            "backendNodeId": 74,
+            "target": "DETAILS.rl-display-options",
+            "scriptId": "234",
+            "line": 381978,
+            "column": 398
+          },
+          {
+            "type": "click",
+            "capture": false,
+            "once": false,
+            "passive": false,
+            "backendNodeId": 75,
+            "target": "BUTTON",
+            "scriptId": "234",
+            "line": 382019,
+            "column": 309
+          },
+          {
+            "type": "click",
+            "capture": false,
+            "once": false,
+            "passive": false,
+            "backendNodeId": 76,
+            "target": "BUTTON",
+            "scriptId": "234",
+            "line": 382019,
+            "column": 309
+          },
+          {
+            "type": "invalid",
+            "capture": false,
+            "once": false,
+            "passive": false,
+            "backendNodeId": 77,
+            "target": "INPUT",
+            "scriptId": "234",
+            "line": 381978,
+            "column": 308
+          },
+          {
+            "type": "invalid",
+            "capture": false,
+            "once": false,
+            "passive": false,
+            "backendNodeId": 78,
+            "target": "INPUT",
+            "scriptId": "234",
+            "line": 381978,
+            "column": 308
+          },
+          {
+            "type": "invalid",
+            "capture": false,
+            "once": false,
+            "passive": false,
+            "backendNodeId": 79,
+            "target": "SELECT",
+            "scriptId": "234",
+            "line": 381978,
+            "column": 308
+          },
+          {
+            "type": "click",
+            "capture": false,
+            "once": false,
+            "passive": false,
+            "backendNodeId": 80,
+            "target": "BUTTON",
+            "scriptId": "234",
+            "line": 382019,
+            "column": 309
+          },
+          {
+            "type": "invalid",
+            "capture": false,
+            "once": false,
+            "passive": false,
+            "backendNodeId": 81,
+            "target": "INPUT",
+            "scriptId": "234",
+            "line": 381978,
+            "column": 308
+          },
+          {
+            "type": "beforeinput",
+            "capture": false,
+            "once": false,
+            "passive": false,
+            "backendNodeId": 81,
+            "target": "INPUT",
+            "scriptId": "276",
+            "line": 3110,
+            "column": 24
+          },
+          {
+            "type": "click",
+            "capture": false,
+            "once": false,
+            "passive": false,
+            "backendNodeId": 82,
+            "target": "BUTTON",
+            "scriptId": "234",
+            "line": 382019,
+            "column": 309
+          },
+          {
+            "type": "click",
+            "capture": false,
+            "once": false,
+            "passive": false,
+            "backendNodeId": 83,
+            "target": "BUTTON.rl-find-direction",
+            "scriptId": "234",
+            "line": 382019,
+            "column": 309
+          },
+          {
+            "type": "click",
+            "capture": false,
+            "once": false,
+            "passive": false,
+            "backendNodeId": 84,
+            "target": "BUTTON.rl-find-direction",
+            "scriptId": "234",
+            "line": 382019,
+            "column": 309
+          },
+          {
+            "type": "click",
+            "capture": false,
+            "once": false,
+            "passive": false,
+            "backendNodeId": 85,
+            "target": "BUTTON",
+            "scriptId": "234",
+            "line": 382019,
+            "column": 309
+          },
+          {
+            "type": "click",
+            "capture": false,
+            "once": false,
+            "passive": false,
+            "backendNodeId": 86,
+            "target": "BUTTON.rl-find-words",
+            "scriptId": "234",
+            "line": 382019,
+            "column": 309
+          },
+          {
+            "type": "click",
+            "capture": false,
+            "once": false,
+            "passive": false,
+            "backendNodeId": 87,
+            "target": "BUTTON.rl-find-clock",
+            "scriptId": "234",
+            "line": 382019,
+            "column": 309
+          },
+          {
+            "type": "click",
+            "capture": false,
+            "once": false,
+            "passive": false,
+            "backendNodeId": 88,
+            "target": "BUTTON",
+            "scriptId": "234",
+            "line": 382019,
+            "column": 309
+          },
+          {
+            "type": "scroll",
+            "capture": false,
+            "once": false,
+            "passive": false,
+            "backendNodeId": 89,
+            "target": "DIV.rl-records",
+            "scriptId": "276",
+            "line": 2121,
+            "column": 13
+          },
+          {
+            "type": "click",
+            "capture": false,
+            "once": false,
+            "passive": false,
+            "backendNodeId": 90,
+            "target": "DIV.rl-row",
+            "scriptId": "234",
+            "line": 382019,
+            "column": 309
+          },
+          {
+            "type": "click",
+            "capture": false,
+            "once": false,
+            "passive": false,
+            "backendNodeId": 63,
+            "target": "BUTTON",
+            "scriptId": "234",
+            "line": 382019,
+            "column": 309
+          }
+        ]
+      },
+      {
+        "id": 2,
+        "connected": false,
+        "target": "SECTION.readable-logs.diagnostic-owned",
+        "nodes": 2,
+        "backendNodeId": 97,
+        "listeners": [
+          {
+            "type": "click",
+            "capture": false,
+            "once": false,
+            "passive": false,
+            "backendNodeId": 97,
+            "target": "SECTION.readable-logs.diagnostic-owned",
+            "scriptId": "314",
+            "line": 3,
+            "column": 17
+          },
+          {
+            "type": "diagnostic-owned-event",
+            "capture": false,
+            "once": false,
+            "passive": false,
+            "backendNodeId": 98,
+            "target": "DIV.diagnostic-child",
+            "scriptId": "314",
+            "line": 3,
+            "column": 72
+          }
+        ]
+      }
+    ],
+    "scope": "Weakly captured mounted viewer roots and non-piercing subtrees only. Assigned and registered attached handlers; no heap capture or explicit GC. Temporary inspector handles released before return."
+  },
+  "removed": {
+    "before": {
+      "documents": 4,
+      "nodes": 612,
+      "jsEventListeners": 724
+    },
+    "after": {
+      "documents": 4,
+      "nodes": 612,
+      "jsEventListeners": 724
+    },
+    "captured": 2,
+    "reachable": 2,
+    "roots": [
+      {
+        "id": 1,
+        "connected": true,
+        "target": "SECTION.readable-logs",
+        "nodes": 160,
+        "backendNodeId": 66,
+        "listeners": [
+          {
+            "type": "scroll",
+            "capture": true,
+            "once": false,
+            "passive": false,
+            "backendNodeId": 66,
+            "target": "SECTION.readable-logs",
+            "scriptId": "276",
+            "line": 1564,
+            "column": 13
+          },
+          {
+            "type": "keydown",
+            "capture": true,
+            "once": false,
+            "passive": false,
+            "backendNodeId": 66,
+            "target": "SECTION.readable-logs",
+            "scriptId": "276",
+            "line": 1147,
+            "column": 18
+          },
+          {
+            "type": "compositionstart",
+            "capture": true,
+            "once": false,
+            "passive": false,
+            "backendNodeId": 66,
+            "target": "SECTION.readable-logs",
+            "scriptId": "276",
+            "line": 1141,
+            "column": 27
+          },
+          {
+            "type": "compositionstart",
+            "capture": true,
+            "once": false,
+            "passive": false,
+            "backendNodeId": 66,
+            "target": "SECTION.readable-logs",
+            "scriptId": "276",
+            "line": 2393,
+            "column": 16
+          },
+          {
+            "type": "compositionend",
+            "capture": true,
+            "once": false,
+            "passive": false,
+            "backendNodeId": 66,
+            "target": "SECTION.readable-logs",
+            "scriptId": "276",
+            "line": 1144,
+            "column": 25
+          },
+          {
+            "type": "compositionend",
+            "capture": true,
+            "once": false,
+            "passive": false,
+            "backendNodeId": 66,
+            "target": "SECTION.readable-logs",
+            "scriptId": "276",
+            "line": 2396,
+            "column": 14
+          },
+          {
+            "type": "pointerdown",
+            "capture": true,
+            "once": false,
+            "passive": false,
+            "backendNodeId": 66,
+            "target": "SECTION.readable-logs",
+            "scriptId": "276",
+            "line": 2747,
+            "column": 15
+          },
+          {
+            "type": "auxclick",
+            "capture": true,
+            "once": false,
+            "passive": false,
+            "backendNodeId": 66,
+            "target": "SECTION.readable-logs",
+            "scriptId": "276",
+            "line": 2761,
+            "column": 19
+          },
+          {
+            "type": "mouseup",
+            "capture": true,
+            "once": false,
+            "passive": false,
+            "backendNodeId": 66,
+            "target": "SECTION.readable-logs",
+            "scriptId": "276",
+            "line": 2769,
+            "column": 13
+          },
+          {
+            "type": "pointercancel",
+            "capture": true,
+            "once": false,
+            "passive": false,
+            "backendNodeId": 66,
+            "target": "SECTION.readable-logs",
+            "scriptId": "276",
+            "line": 2774,
+            "column": 17
+          },
+          {
+            "type": "pointerleave",
+            "capture": false,
+            "once": false,
+            "passive": false,
+            "backendNodeId": 66,
+            "target": "SECTION.readable-logs",
+            "scriptId": "276",
+            "line": 2774,
+            "column": 17
+          },
+          {
+            "type": "toggle",
+            "capture": false,
+            "once": false,
+            "passive": false,
+            "backendNodeId": 67,
+            "target": "DETAILS.rl-target-context",
+            "scriptId": "234",
+            "line": 381978,
+            "column": 398
+          },
+          {
+            "type": "invalid",
+            "capture": false,
+            "once": false,
+            "passive": false,
+            "backendNodeId": 68,
+            "target": "SELECT",
+            "scriptId": "234",
+            "line": 381978,
+            "column": 308
+          },
+          {
+            "type": "invalid",
+            "capture": false,
+            "once": false,
+            "passive": false,
+            "backendNodeId": 69,
+            "target": "SELECT",
+            "scriptId": "234",
+            "line": 381978,
+            "column": 308
+          },
+          {
+            "type": "click",
+            "capture": false,
+            "once": false,
+            "passive": false,
+            "backendNodeId": 70,
+            "target": "BUTTON.rl-edit-profiles",
+            "scriptId": "234",
+            "line": 382019,
+            "column": 309
+          },
+          {
+            "type": "click",
+            "capture": false,
+            "once": false,
+            "passive": false,
+            "backendNodeId": 71,
+            "target": "BUTTON",
+            "scriptId": "234",
+            "line": 382019,
+            "column": 309
+          },
+          {
+            "type": "click",
+            "capture": false,
+            "once": false,
+            "passive": false,
+            "backendNodeId": 72,
+            "target": "BUTTON",
+            "scriptId": "234",
+            "line": 382019,
+            "column": 309
+          },
+          {
+            "type": "click",
+            "capture": false,
+            "once": false,
+            "passive": false,
+            "backendNodeId": 73,
+            "target": "BUTTON",
+            "scriptId": "234",
+            "line": 382019,
+            "column": 309
+          },
+          {
+            "type": "toggle",
+            "capture": false,
+            "once": false,
+            "passive": false,
+            "backendNodeId": 74,
+            "target": "DETAILS.rl-display-options",
+            "scriptId": "234",
+            "line": 381978,
+            "column": 398
+          },
+          {
+            "type": "click",
+            "capture": false,
+            "once": false,
+            "passive": false,
+            "backendNodeId": 75,
+            "target": "BUTTON",
+            "scriptId": "234",
+            "line": 382019,
+            "column": 309
+          },
+          {
+            "type": "click",
+            "capture": false,
+            "once": false,
+            "passive": false,
+            "backendNodeId": 76,
+            "target": "BUTTON",
+            "scriptId": "234",
+            "line": 382019,
+            "column": 309
+          },
+          {
+            "type": "invalid",
+            "capture": false,
+            "once": false,
+            "passive": false,
+            "backendNodeId": 77,
+            "target": "INPUT",
+            "scriptId": "234",
+            "line": 381978,
+            "column": 308
+          },
+          {
+            "type": "invalid",
+            "capture": false,
+            "once": false,
+            "passive": false,
+            "backendNodeId": 78,
+            "target": "INPUT",
+            "scriptId": "234",
+            "line": 381978,
+            "column": 308
+          },
+          {
+            "type": "invalid",
+            "capture": false,
+            "once": false,
+            "passive": false,
+            "backendNodeId": 79,
+            "target": "SELECT",
+            "scriptId": "234",
+            "line": 381978,
+            "column": 308
+          },
+          {
+            "type": "click",
+            "capture": false,
+            "once": false,
+            "passive": false,
+            "backendNodeId": 80,
+            "target": "BUTTON",
+            "scriptId": "234",
+            "line": 382019,
+            "column": 309
+          },
+          {
+            "type": "invalid",
+            "capture": false,
+            "once": false,
+            "passive": false,
+            "backendNodeId": 81,
+            "target": "INPUT",
+            "scriptId": "234",
+            "line": 381978,
+            "column": 308
+          },
+          {
+            "type": "beforeinput",
+            "capture": false,
+            "once": false,
+            "passive": false,
+            "backendNodeId": 81,
+            "target": "INPUT",
+            "scriptId": "276",
+            "line": 3110,
+            "column": 24
+          },
+          {
+            "type": "click",
+            "capture": false,
+            "once": false,
+            "passive": false,
+            "backendNodeId": 82,
+            "target": "BUTTON",
+            "scriptId": "234",
+            "line": 382019,
+            "column": 309
+          },
+          {
+            "type": "click",
+            "capture": false,
+            "once": false,
+            "passive": false,
+            "backendNodeId": 83,
+            "target": "BUTTON.rl-find-direction",
+            "scriptId": "234",
+            "line": 382019,
+            "column": 309
+          },
+          {
+            "type": "click",
+            "capture": false,
+            "once": false,
+            "passive": false,
+            "backendNodeId": 84,
+            "target": "BUTTON.rl-find-direction",
+            "scriptId": "234",
+            "line": 382019,
+            "column": 309
+          },
+          {
+            "type": "click",
+            "capture": false,
+            "once": false,
+            "passive": false,
+            "backendNodeId": 85,
+            "target": "BUTTON",
+            "scriptId": "234",
+            "line": 382019,
+            "column": 309
+          },
+          {
+            "type": "click",
+            "capture": false,
+            "once": false,
+            "passive": false,
+            "backendNodeId": 86,
+            "target": "BUTTON.rl-find-words",
+            "scriptId": "234",
+            "line": 382019,
+            "column": 309
+          },
+          {
+            "type": "click",
+            "capture": false,
+            "once": false,
+            "passive": false,
+            "backendNodeId": 87,
+            "target": "BUTTON.rl-find-clock",
+            "scriptId": "234",
+            "line": 382019,
+            "column": 309
+          },
+          {
+            "type": "click",
+            "capture": false,
+            "once": false,
+            "passive": false,
+            "backendNodeId": 88,
+            "target": "BUTTON",
+            "scriptId": "234",
+            "line": 382019,
+            "column": 309
+          },
+          {
+            "type": "scroll",
+            "capture": false,
+            "once": false,
+            "passive": false,
+            "backendNodeId": 89,
+            "target": "DIV.rl-records",
+            "scriptId": "276",
+            "line": 2121,
+            "column": 13
+          },
+          {
+            "type": "click",
+            "capture": false,
+            "once": false,
+            "passive": false,
+            "backendNodeId": 90,
+            "target": "DIV.rl-row",
+            "scriptId": "234",
+            "line": 382019,
+            "column": 309
+          },
+          {
+            "type": "click",
+            "capture": false,
+            "once": false,
+            "passive": false,
+            "backendNodeId": 63,
+            "target": "BUTTON",
+            "scriptId": "234",
+            "line": 382019,
+            "column": 309
+          }
+        ]
+      },
+      {
+        "id": 2,
+        "connected": false,
+        "target": "SECTION.readable-logs.diagnostic-owned",
+        "nodes": 1,
+        "backendNodeId": 97,
+        "listeners": []
+      }
+    ],
+    "scope": "Weakly captured mounted viewer roots and non-piercing subtrees only. Assigned and registered attached handlers; no heap capture or explicit GC. Temporary inspector handles released before return."
+  },
+  "restored": true
+}
