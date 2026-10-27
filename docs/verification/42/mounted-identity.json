@@ -1,0 +1,25 @@
+{
+  "browser": {
+    "protocolVersion": "1.3",
+    "product": "Chrome/154.0.8037.97",
+    "revision": "@b510e9d7cd3a2fbd78d0ddc42234103206c5f78d",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/154.0.0.0 Safari/537.36",
+    "jsVersion": "15.4.80.20"
+  },
+  "package": "freelens-readable-logs@0.1.34",
+  "results": {
+    "checks": [
+      "duplicate overlap: inspection, Find and DOM identity agree",
+      "identical complete window retains actual DOM focus and selection",
+      "eviction/zero overlap expire references permanently without selecting substitutes",
+      "maintenance updates newly gained match counts without choosing a result",
+      "mounted viewport keeps retained pixel anchor; To bottom preserves Pause",
+      "repeated same-container paused restarts reset Find; missing metadata and later ID do not",
+      "copy adapter receives exact originals including spaces, escapes and timestamp precision",
+      "mounted session rejects old-instance log successes and failures",
+      "container resets context; Pod UID replacement retains terminal/outdated old target"
+    ],
+    "reads": 15,
+    "errors": []
+  }
+}

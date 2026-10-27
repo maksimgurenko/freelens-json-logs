@@ -1,6 +1,6 @@
 # 41: Preserve record identity across refreshes and restarts
 
-**Status:** ready-for-agent
+**Status:** done
 **Blocked by:** None (can start immediately)
 **GitHub:** https://github.com/maksimgurenko/freelens-json-logs/issues/41
 
