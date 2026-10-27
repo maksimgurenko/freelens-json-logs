@@ -1,5 +1,26 @@
 # Integrated production Find acceptance matrix
 
+Latest continuation: [state boundaries and bounded dense diagnosis](state-completion.md),
+same package SHA-256 `d19f826bc8496a6ae3ca5afaeb79fab73753ceeebde62747174b8d4ead6dfcb3`.
+New current-package evidence is scoped below; historical rows retain their original
+artifact/environment limits:
+
+| Case/trace | Added evidence | Remaining limit |
+| --- | --- | --- |
+| D01 / traces 1, 3, 4 | [20 installed state-boundary assertions](host/state-completion/state-boundaries.json): origin 64/73/82; explicit DOM Tab/focusin reading row 90 independent of inspector 64; hidden-source action/programmatic focus return preserve it | Real keyboard/OS focus delivery unverified; explicit focusin is a DOM boundary probe |
+| D05/D13/D14 / trace 6 | Held real worker successes and injected transport failures across proven newer window/message revisions leave current result/count/query/scroll unchanged | Controlled SDK delivery, not natural failures/native interaction |
+| D13/D15 / traces 9, 12, 13 | [State boundaries](host/state-completion/state-boundaries.json): still-matching saved-profile candidate. [31 real snapshot assertions](host/state-completion/snapshot-acceptance.json): both flags enabled then reset across two actual restarts; following status and real appended-bottom movement; independent Pause/manual profile | Physical wheel/selection remains unverified |
+| D13 / traces 8, 12 | [19 controlled adapter/SDK assertions](host/instance-review/controlled-snapshots.json): identical full-transport overlap and identical windows, zero overlap, DOM node/selection; missing/first-known/count-then-ID/known-ID metadata; old-instance success/error and old log completion/error rejection | Target-scoped HTTP response-body/delivery controls; not naturally repeated timestamps, natural kubelet ordering or atomic UID-bound reads |
+| D14 / trace 7 | Profiles entry cancels held selection/reveal; return keeps count and fresh navigation can reveal | DOM controls/SDK delivery; native focus not verified |
+| D10/D12/D16 / trace 11 | Exactly seven zero-hit MRU tuples, same text/different flags; empty-input seed preserves both flags | Focus-dependent Escape/shortcut/menu/foreign-editor delivery remains unverified |
+| Dense execution/resource gates | [40-second CPU replay](host/dense-diagnostic/dense-diagnostic.json) completes only seven activations; [mounted soak](host/dense-diagnostic/mounted-soak-clean-inspector.json) passes lifecycle but **fails +15 listeners against +8 limit** | Attribution unresolved; diagnostic compositor and short samples; no responsiveness/resource acceptance |
+
+Fresh second-namespace [33 DOM-state assertions](host/dense-diagnostic/state-acceptance.json),
+[13 held deliveries](host/dense-diagnostic/held-replies.json), SDK/frame, startup timeout
+and cancellation pass. Controls and failures are described in the continuation;
+none changes a physical/native/platform verdict or satisfies a full remaining
+original acceptance criterion. Focus is never manufactured to fill an evidence cell.
+
 Latest artifact: [geometry/cycling continuation](geometry.md), SHA-256
 `d19f826bc8496a6ae3ca5afaeb79fab73753ceeebde62747174b8d4ead6dfcb3`.
 Its [192 installed source/geometry assertions](host/group-final/surfaces.json)
@@ -70,18 +91,18 @@ by the private compositor's 0×0 output; native presentation cadence is unverifi
 | D02 | Host DOM pass: deselection clears origin, new query finds first retained hit despite scrolling | Physical deselection/focus return |
 | D03 | Current Host DOM: actual row-zero match ([snapshots](host/snapshots/snapshot-acceptance.json)); initial Previous without active result and wrap ([state](host/snapshots/state-acceptance.json)) | Real repeat shortcuts |
 | D04 | Host DOM pass: progressive `up` through `upstream` remains at 73 | Native editing/IME |
-| D05 | Current Host DOM: Next → 82, zero-hit correction restores candidate; [held SDK query successes/failures](host/snapshots/held-replies.json) reject obsolete delivery | Other stale window/message/context dimensions; native navigation |
+| D05 | Current Host DOM: Next → 82 and retained candidate; [held query](host/dense-diagnostic/held-replies.json), [window/message](host/state-completion/state-boundaries.json) and [controlled instance](host/instance-review/controlled-snapshots.json) successes/failures reject obsolete delivery | Full target/viewer and native navigation scope remains separate |
 | D06 | Host DOM pass: full replacement, partial paste, cut/Undo/Redo, select-all composition and Clear during async dispatch | Native paste/Undo/IME delivery; stale composition completion at Host |
 | D07 | Current Host: terminal-Q Custom Highlight with natural frames; retained row/source node and DOM Range across real append. Earlier full highlight/appearance checks keep their historical scope | Full current rendering/contrast matrix; physical selection/copy |
 | D08 | Host DOM pass: hidden original → exact Application text; Raw decoded-only → exact Extracted message | Full inspector layout/profile matrix, physical original-copy/clipboard |
 | D09 | Host DOM pass: empty, zero/one-hit feedback and wrap; no-scroll after explicit DOM scroll event | Natural scroll-event delivery and native shortcuts |
 | D10 | Real SDK four combinations; 33-check settled/paused Host run verifies mode refinement, candidate retention and history recall with flags | Full host range/mark agreement across modes; platform modifiers |
 | D11 | Current [startup-inclusive timeout/actual exit](host/snapshots/startup-timeout.json), [held mounted timeout/edit/Retry/decorations](host/snapshots/held-replies.json), and Clear during async dispatch pass | Native edit responsiveness; additional stale-key/owner combinations |
-| D12 | Host DOM partial: message Range seeds empty Find; existing query, labels and multi-record rejection pass | Full host inspector/foreign/multiline/Unicode-length matrix; physical selection isolation |
-| D13 | Current [real append/retention/eviction, retained DOM selection, no-fetch profile changes and two restarts including Pause](host/snapshots/snapshot-acceptance.json) pass for the assertions scoped in snapshots.md | Identical-transport duplicate mapping, missing/count-then-ID metadata, Whole words reset and still-matching profile candidate; physical selection |
-| D14 | Current [held actual success after inspector dismissal and old-query success/injected transport failure](host/snapshots/held-replies.json) pass | Additional snapshot/message/context held races; native focus return |
-| D15 | Current mounted bounds/Pause/active-idle sampling and held manual-scroll cancellation; unpaused restart restores automatic current logs, without a following-movement assertion | Full measured host resize/geometry/group cycling/following including restart; physical wheel/native windows |
-| D16 | Host DOM partial: navigation and valid zero-hit Close commit history; recall restores query/flags | Complete host one-layer dismissal; physical menus/IME/AltGraph/focus |
+| D12 | [Current source/geometry](host/group-final/surfaces.json) covers inspector sources, foreign/multiline and Unicode limits; [new state boundaries](host/state-completion/state-boundaries.json) preserve seed flags | Physical selection/copy isolation |
+| D13 | [Real snapshot/restarts](host/state-completion/snapshot-acceptance.json), [still-matching profile candidate](host/state-completion/state-boundaries.json) and [controlled duplicate/metadata/old-instance boundaries](host/instance-review/controlled-snapshots.json) pass at their named layers | Controlled bodies do not establish natural kubelet ordering; physical selection remains unverified |
+| D14 | [Held inspector/query replies](host/dense-diagnostic/held-replies.json), [held window/message replies and Profiles cancellation](host/state-completion/state-boundaries.json), [controlled instance replies](host/instance-review/controlled-snapshots.json) pass | Full target/viewer/native focus scope |
+| D15 | [192 source/geometry assertions](host/group-final/surfaces.json), [37 grouped activations](host/review-oracle/marks-following.json), [append/following/Pause](host/bounded-final/following.json) and [restart following movement](host/state-completion/snapshot-acceptance.json) pass at DOM/acquisition layer | Dense cadence remains failed; long resource plateau, physical wheel/native windows unverified |
+| D16 | Current [seven-entry MRU, tuple distinctions](host/state-completion/state-boundaries.json), [zero-hit Close/history recall](host/dense-diagnostic/state-acceptance.json) pass | Focus-dependent one-layer Escape/shortcut/menu/foreign-editor delivery and physical IME/AltGraph/focus remain unverified |
 
 Host DOM results: [28 original integrated assertions](host/integrated-acceptance.json), [33 continuation state assertions](host/dom-continuation/state-acceptance.json).
 SDK/frame/deadline results: [SDK suite](host/sdk-suite.json),
@@ -93,17 +114,17 @@ SDK/frame/deadline results: [SDK suite](host/sdk-suite.json),
 | --- | --- |
 | 1 refinement/origin | Host DOM pass for 64/73/82 trace and full replacement |
 | 2 edges/wrap | Current Host: actual row zero, initial Previous without active result, zero/one-hit/wrap pass; native repeat delivery pending |
-| 3 deliberate keyboard row focus | Unperformed; pure/Chromium evidence only |
-| 4 independent inspector/anchor | Partial: hidden-source action observed; A/B keyboard and eviction pending |
+| 3 deliberate keyboard row focus | [Current explicit DOM Tab/focusin](host/state-completion/state-boundaries.json) updates reading row without inspection; real keyboard/OS focus remains unverified |
+| 4 independent inspector/anchor | [Current A/B/close/hidden-source preservation](host/state-completion/state-boundaries.json) and prior live inspector/result eviction pass; independent B surviving A eviction is not separately asserted |
 | 5 delayed completion after dismissal | Current Host: held completed worker response after inspector dismissal updates counts without restoring origin/inspector/result; native focus remains pending |
-| 6 stale complete success/failure keys | Current SDK foreign/retired tokens and latest-only bursts; held mounted old-query success/injected transport error rejected. Held window/message/context counterparts remain pending |
-| 7 manual scroll/dismissal cancellation | Current Host: held success respects manual scroll and Close/return; inactive disposal/query retention repeats in mounted soak. Profiles counterpart remains pending |
-| 8 duplicate/zero overlap | Current real repeated application content preserves retained occurrence/DOM; eviction expires live inspector/result. Identical full transport-line duplicate mapping remains unperformed at Host |
-| 9 maintenance without seek | Current Host: actual append retains result; zero-hit gains wait; saved extraction changes use zero log fetches and never choose a substitute. Still-matching profile candidate remains pending |
+| 6 stale complete success/failure keys | Current held query/window/message and controlled instance successes/injected failures pass; [SDK foreign/retired owner checks](host/dense-diagnostic/sdk-suite.json) and latest-only bursts pass. Full target/viewer counterpart scope remains separate |
+| 7 manual scroll/dismissal cancellation | Current held manual scroll/Close/return pass; [Profiles cancellation/return/fresh navigation](host/state-completion/state-boundaries.json) passes; active-idle/disposal query retention passes in mounted samples |
+| 8 duplicate/zero overlap | Current real repeated application/eviction passes; [controlled exact-transport overlap/identical windows/zero overlap](host/instance-review/controlled-snapshots.json) preserve/expire shared refs and DOM selection. Natural identical timestamps are not claimed |
+| 9 maintenance without seek | Current actual append/zero-hit gains/no-fetch extraction changes pass; [still-matching profile candidate](host/state-completion/state-boundaries.json) is retained |
 | 10 input transactions | Partial: identical full replacement; DOM partial paste/cut/Undo/Redo/select-all composition pass in continuation; native delivery pending |
-| 11 seed/history/Escape | Partial: source Range seed and history commitment; complete host/native matrix pending |
-| 12 observed restarts | Current Host: two real same-container restarts, paused and unpaused, reset query/Match case/active result/history and preserve manual profile/Pause. Whole words reset, following status/movement, missing/count-then-ID metadata and held old-instance replies remain pending |
-| 13 geometry/selection/following | Partial: Custom Highlights/source selection/bound workloads; resize/follow/reveal/current geometry matrix pending |
+| 11 seed/history/Escape | Current source eligibility/Unicode/layout/flag and seven-tuple MRU evidence passes; focus-dependent Escape/native delivery remains unverified |
+| 12 observed restarts | [Two actual restarts](host/state-completion/snapshot-acceptance.json) reset query/both flags/result/history and preserve manual profile/Pause/explicit following with real appended-bottom movement. [Controlled metadata ordering/old-instance matching/log replies](host/instance-review/controlled-snapshots.json) pass; natural partial-status ordering remains distinct |
+| 13 geometry/selection/following | Current source/geometry, grouped membership/cycling, append/Pause/following and restart movement pass at DOM/acquisition layer. Dense cadence, full resource and physical input remain open |
 
 Additional mandatory regressions: Unicode (including U+0345), punctuation,
 16,384/16,385 limits, non-overlap, all stale identities and capped/failed ranges

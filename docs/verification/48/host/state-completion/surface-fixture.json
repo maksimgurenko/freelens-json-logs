@@ -1,0 +1,8 @@
+{
+  "namespace": "find-verification-48-1821612",
+  "namespaceUid": "a96d961c-7486-421a-8799-b58ed1da7d5c",
+  "pod": "find-surfaces",
+  "podUid": "ddb96700-5914-48f1-aa0f-6d2d1be4c3cf",
+  "image": "busybox:1.37.0@sha256:bdf57e528e45e4433820e045b29b4597825a1c9e38353532d90a01445013f82e",
+  "records": 180
+}

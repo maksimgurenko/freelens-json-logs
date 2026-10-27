@@ -1,91 +1,84 @@
 # Continue only Find #48
 
-Branch `implementation/find`. Original ticket fixed point:
-`3fb33db5f5ded3523bcf66c1145f0af967ec0bf3`; latest continuation/review baseline:
-`f8d7643e8d6cda3abac8ee4769403d49b0278818`. Record the new current HEAD before
-any next implementation/review. Reclaim #48 and fetch live full corrections.
-Read the local ticket, accepted cached plan/full #36/#37/#38/#40 decisions,
-[geometry.md](geometry.md), [matrix.md](matrix.md) and [snapshots.md](snapshots.md).
-No other ticket, comments, closure, push, PR, merge or release is authorized.
+Branch `implementation/find`. Original ticket pin:
+`3fb33db5f5ded3523bcf66c1145f0af967ec0bf3`; this continuation/review baseline:
+`9280757b9c79b4f5d3944ea8bcc92699f67dda8c`. Record the next current HEAD, reclaim
+#48 and fetch full live corrections. Read the local ticket, accepted cached plan,
+full #36/#37/#38/#40 decisions, [state-completion.md](state-completion.md),
+[matrix.md](matrix.md), [geometry.md](geometry.md) and [cadence.md](cadence.md).
+Only #48 is authorized; no comments, closure, push, PR, merge or release.
 
-1. **Current artifact and implementation.** Package SHA-256 is
-   `d19f826bc8496a6ae3ca5afaeb79fab73753ceeebde62747174b8d4ead6dfcb3`,
-   `freelens-readable-logs@0.1.34`. The existing clipping fix remains. New
-   `FindMarks` cycling progress survives regrouping and pending maintenance while
-   its occurrence survives. Query revision/context changes reset it; no matching,
-   worker, source/copy, parsing, profile, acquisition, Pause or following contract
-   is changed. Two production-browser red/green regressions cover resize and
-   maintenance. Do not merge prototype/research code or introduce a fallback.
-2. **The earlier dense cadence/stalled run still needs diagnosis.** The earlier
-   `host/group-final` run advances through 0–9, stalls, observes about 96% renderer
-   CPU and fails natural cadence (**9/61** frames in three seconds). It requires
-   a forced private-host stop. This remains failed evidence; attribution to
-   product/layout/host/private compositor is unresolved. A separate bounded
-   `host/bounded-final` run failed at click19 because its *oracle* was wrong:
-   previous row 18 is absent from the current group 0–17, so actual 0 is correct.
-   Never reinterpret that as a confirmed product mismatch. Independent review
-   corrected the oracle to use current ordered membership; the fresh corrected
-   run under `host/review-oracle` passes six scoped DOM assertions with 37
-   activations. That does not erase the earlier cadence failure. Its exact old
-   async-rAF harness is retained as `host/group-final/stalled-harness.mjs.gz` with
-   a source identity; expand it beside the driver under a new owned filename for
-   reproduction, never overwrite the current harness. Inspect all limits first.
-   Node-side polling replaces an unbounded async rAF test loop; atomic readiness/
-   click observations avoid earlier pending/null-control races. This is a driver
-   correction, not a change to production timing or native evidence.
-3. **Other autonomous Host matrix gates remain.** Exact identical-transport-line
-   duplicate windows; missing/count-then-ID metadata; held stale window/message/
-   instance successes and failures; still-matching profile candidates and Profiles
-   pending-reveal cancellation; Whole words enabled before restart and both flags
-   reset afterward; explicit following status/movement across restart; complete
-   host history/one-layer dismissal/foreign-editor/seed-mode preservation. Recheck
-   current-package original inclusive-origin/row-zero and independent keyboard
-   reading-row/inspector traces where only older artifacts have Host evidence.
-   DOM-delivery checks remain distinct from real physical input.
-4. **Current positive subsets are explicit, not whole-ticket acceptance.**
-   `host/group-final/surfaces.json` passes 192 assertions (including fixture and
-   Range preconditions) for inspector sources in Inline/Side/Bottom, Unicode
-   length/separators, provenance, CSS widths 260/390/700/1440, fonts, expanded/hidden
-   rows, current geometry and retained selection. `host/bounded-final` passes six
-   independent real append/following/Pause checks; state 33, held delivery 13,
-   terminal-Q, SDK/frame 10, startup timeout/actual exit, cancellation 20,
-   fresh-main Disable/Uninstall/reactivation, normal startup shutdown and short
-   mounted resources. Dense/long soaks have three warmups/six measured cycles per
-   bound with +5 nodes/zero listener growth each. These do not establish long
-   RAM/disk plateau, dense interaction/native latency or stock-display acceptance.
-5. **Private environment remains diagnostic.** Stock NVIDIA nested output is 0×0;
-   stock Mesa failed readiness. `cadence.md` records the private Aquamarine v0.15.1
-   patch/build and checksum-verified private prerequisites. It provides a real
-   1280×720 output in a separate labwc→Hyprland workspace 7, but is not a stock
-   compositor acceptance environment. Reuse the exact documented private build
-   for autonomous Host DOM work, or establish an unmodified suitable output.
-   Do not fake focus, pump screenshots into native evidence or operate the user's
-   desktop. Keep `FREELENS_UI_MODE` unset and obey UI guards.
-6. **Physical/platform gates are unverified.** Fresh explicitly attended agreement
-   or appropriate separate graphical access is needed for physical selection,
-   clipboard, editing/paste/Undo/Redo/IME/AltGraph, modifiers, menus, OS focus and
-   physical window-button delivery. Windows/macOS matching/worker/package and
-   native checks remain unverified. Earlier approval never carries forward.
-   Finish independent Host work first; when only missing human/access/evidence
-   gates remain, report blocked precisely. Background DOM is not a substitute.
-7. **Checks/review/commit.** Use project-local Node 24.18.0/npm 11.16.0. TDD remains
-   authorized at matching/state/session/production-renderer seams for proven
-   defects. Preserve the accepted literal-only, occurrence/epoch, separate intent,
-   complete count/exact copy and Pause/following contracts. Final results and
-   commands are in `host/bounded-final/checks.json`; earlier failed browser logs
-   remain. Browser tests permit current covering-range reuse and await current
-   measured geometry while retaining late-source/membership/coordinate assertions.
-   Run appropriate focused/full checks after new changes. Independent two-axis
-   code-review is authorized with `fork_turns=none`, original requirements and
-   recorded baseline plus current diff. Commit only #48 work/evidence. Retry while
-   concrete autonomous work remains; done requires every original criterion.
+1. **Current artifact is unchanged.** `freelens-readable-logs@0.1.34`, SHA-256
+   `d19f826bc8496a6ae3ca5afaeb79fab73753ceeebde62747174b8d4ead6dfcb3`.
+   This continuation changes acceptance drivers/evidence only. Existing clipping
+   and mark-cycle fixes remain. Installed main/renderer/worker assets match the
+   build; schema 3/stable identities remain. No fallback or prototype/research merge.
+2. **Concrete autonomous next task: minimise dense cadence failure.**
+   `node scripts/find-production-host/dense-profile.mjs` in a prepared private host
+   SHA-verifies/replays the preserved old harness, samples CPU for ~40 seconds,
+   stops the owned driver and observes page/worker disposal. Only seven activations
+   complete. Its old regrouping oracle is known wrong; this is diagnostic evidence,
+   not acceptance. Raw `host/dense-diagnostic/dense-cpu-profile.json.gz` includes
+   native/program time, highlight projection, timestamp rendering, viewport restore
+   and clipping; individual profiler nodes do not establish the cause. Read the
+   diagnosing-bugs skill. Build a faster red-capable natural-cadence loop comparing
+   dense wrapped rows with no query, zero-hit query and capped dense query, then
+   a few mark activations. Change one variable at a time and retain layout/profiler
+   evidence. TDD is authorized at existing production-renderer/state/session seams
+   once a product defect is isolated. Do not invent a native latency bound.
+3. **Resource gate remains open.** The long-lived host's three warmups/six dense
+   cycles pass actual lifecycle cleanup but fail +15 listeners (828→843) against
+   +8, with +27 nodes/+862,544 B heap/+696,320 B RSS; long is +5 nodes/0 listeners.
+   See `host/dense-diagnostic/mounted-soak-clean-inspector.json`. Preceding state,
+   controlled-delivery and profiler workloads require fresh-process comparison
+   before attribution. The separate `host/resource-control` result is in the latest
+   report. Keep the failed run even if the control passes. Short samples/private
+   compositor do not establish a long RAM/disk plateau or stock-display acceptance.
+4. **New state subsets and their limits.** `host/state-completion` passes 20 state
+   assertions and 31 real snapshot/restart assertions: independent reading/inspection
+   via explicit DOM Tab/focusin, still-matching profile candidate, stale window/message
+   successes/failures, Profiles cancellation, seven-entry MRU and seed flags; both
+   flags reset across two actual restarts, with Pause/manual profile/history and
+   explicit following/real appended-bottom movement. `host/dense-diagnostic` repeats
+   33-state/13-held/SDK-frame/startup-timeout/20-burst checks. Earlier reruns failed
+   their 120-row fixture precondition after the new append workload; fresh namespace
+   passes are separate. Explicit focusin is not physical keyboard delivery.
+5. **Controlled Host cases now pass at the boundary layer.**
+   `controlled-snapshots.mjs` passes 19 assertions through the actual installed
+   SDK adapter/session/viewer/main-worker with target-scoped HTTP bodies/delivery:
+   exact identical-transport overlap, identical/zero-overlap windows, node/DOM
+   selection, missing/first-known/count-then-ID/known-ID metadata, stale-instance
+   matching success/error with increasing epochs and old log success/error.
+   All descriptors/gates are restored. This is not naturally identical timestamps,
+   natural kubelet ordering, physical selection or atomic UID-bound snapshot proof.
+   Use the final `host/instance-review/controlled-snapshots.json`: independent review
+   strengthened old-instance errors to require exact empty Find status/no Retry
+   before any new edit. The earlier `dense-diagnostic` file proves less and stays
+   historical. Fresh corrected 19-check evidence, matching assets and shutdown pass.
+6. **Private/native/platform limits.** Stock NVIDIA nested output is 0×0; stock
+   Mesa readiness failed. Reuse only the documented private Aquamarine diagnostic
+   build for autonomous DOM work, or establish an unmodified suitable output.
+   Use private labwc→Hyprland workspace 7, `FREELENS_UI_MODE` unset and the UI guards.
+   Never fake focus, inject native input, operate clipboard or activate/restore/
+   restart user windows. Background document focus is false: focus-dependent
+   Escape/shortcuts/menu/foreign-editor delivery stays unverified. Fresh attended
+   agreement or appropriate separate native/platform access is needed for physical
+   selection/copy/clipboard, editing/paste/Undo/Redo/IME/AltGraph, modifiers, menus,
+   OS focus and window buttons. Windows/macOS remain unverified. Finish independent
+   work first; report blocked precisely when only human/access/evidence gates remain.
+7. **Checks/review/commit.** Use local Node 24.18.0/npm 11.16.0. The latest report
+   links locked install/typecheck, 249 tests, six UI guards, production browser,
+   built workers/resource smoke, strict package and deterministic two-build checks.
+   Independent two-axis review uses the recorded baseline plus scoped current diff
+   and original requirements, with `fork_turns=none`. Commit only #48 work/evidence.
+   Retry while a fresh context can finish concrete autonomous work; done requires
+   every original criterion and committed ticket/evidence.
 
-Use `FIND_HOST_TICKET=48`, a **new** safe `FIND_HOST_RUN` and new owned fixtures.
-Scratch remains `.scratch/find/48-host`; old run names/PIDs/profiles/namespaces are
-not reusable ownership. Prepare a fresh private profile and install once through
-Extensions **before any cluster**, then attach the passive Worker observer.
-Changed product bytes at the same version require a fresh process/profile.
-`marks-following.mjs` supports `FIND_HOST_SCENARIO=groups|following|both`; following
-appends to its owned surface fixture, so recreate it before repeating that case.
-Only remove resources whose stored ownership/UID checks still match. Preserve
-user configuration, package installation, shared fixtures and unrelated work.
+Use a new safe `FIND_HOST_RUN`, fresh profile/fixtures and `FIND_HOST_TICKET=48`.
+`state-boundaries` appends to traces: unchanged state/held/mounted suites need a
+new 120-row namespace afterward. `controlled-snapshots` restores the HTTP descriptor
+and SDK handler. `identity.mjs` compares installed assets/build and reads the private
+schema. Install once through Extensions before any cluster; changed bytes at the
+same version require a new process/profile. Remove only still-owned UID-matching
+resources. Preserve user configuration/installation, shared fixtures and unrelated
+checkout work. Review and cleanup outcomes are in the latest report.

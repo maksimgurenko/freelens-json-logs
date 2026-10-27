@@ -1,0 +1,138 @@
+{
+  "session": {
+    "pid": 1822651,
+    "privateInstance": "efb50993780079460b0cbed1363e2166a2de1d9f_1793092579_733028668",
+    "privateRuntime": "/tmp/fd-qzz_3dcb",
+    "owned": [
+      {
+        "address": "0x55839054bc40",
+        "mapped": true,
+        "hidden": false,
+        "visible": true,
+        "acceptsInput": true,
+        "at": [
+          21,
+          21
+        ],
+        "size": [
+          1238,
+          678
+        ],
+        "workspace": {
+          "id": 7,
+          "name": "7"
+        },
+        "floating": false,
+        "monitor": 0,
+        "class": "freelens",
+        "title": "Freelens",
+        "initialClass": "freelens",
+        "initialTitle": "Freelens",
+        "pid": 1822651,
+        "xwayland": false,
+        "pinned": false,
+        "pinFullscreened": false,
+        "fullscreen": 0,
+        "fullscreenClient": 0,
+        "fullscreenHandler": "default",
+        "allowedOverFullscreen": true,
+        "grouped": [],
+        "tags": [],
+        "swallowing": "0x0",
+        "focusHistoryID": 0,
+        "inhibitingIdle": false,
+        "xdgTag": "",
+        "xdgDescription": "",
+        "contentType": "none",
+        "tearingHint": false,
+        "stableId": "18000003"
+      }
+    ]
+  },
+  "checks": [
+    "Trace 1 current packed query from reading row 64 reaches 73 then 82"
+  ],
+  "deliveries": [],
+  "scope": "Installed packed renderer, real Kubernetes snapshots/profiles and held real SDK replies. DOM focus/events only; no native input, clipboard or fake document focus.",
+  "error": "AssertionError [ERR_ASSERTION]: Trace 3 DOM Tab intent focuses reading row 90 without changing inspector 64 or count\n    at check (file:///home/max/work/freelens-json-logs/scripts/find-production-host/state-boundaries.mjs:13:35)\n    at file:///home/max/work/freelens-json-logs/scripts/find-production-host/state-boundaries.mjs:50:3",
+  "closed": {
+    "starts": 1,
+    "exits": 1,
+    "live": 0,
+    "peak": 1,
+    "resources": [
+      "TCPServerWrap",
+      "StatWatcher",
+      "StatWatcher",
+      "StatWatcher",
+      "StatWatcher",
+      "StatWatcher",
+      "StatWatcher",
+      "PipeWrap",
+      "PipeWrap",
+      "PipeWrap",
+      "ProcessWrap",
+      "TCPSocketWrap",
+      "TCPSocketWrap",
+      "TCPSocketWrap",
+      "TCPSocketWrap",
+      "TCPSocketWrap",
+      "TCPSocketWrap",
+      "TCPSocketWrap",
+      "TCPSocketWrap",
+      "TCPSocketWrap",
+      "TCPSocketWrap",
+      "TCPSocketWrap",
+      "TCPSocketWrap",
+      "Timeout",
+      "Timeout",
+      "Timeout"
+    ],
+    "beforeQuit": 1,
+    "handlers": [
+      "extensions@8b3db3b6f5cd46217aaefd7caa1857349c703c83022f56397a39cdc8c84eef67:find-open",
+      "extensions@8b3db3b6f5cd46217aaefd7caa1857349c703c83022f56397a39cdc8c84eef67:find-request",
+      "extensions@8b3db3b6f5cd46217aaefd7caa1857349c703c83022f56397a39cdc8c84eef67:find-control"
+    ],
+    "windows": [
+      {
+        "id": 2,
+        "pid": 1823076,
+        "frames": [
+          {
+            "processId": 5,
+            "routingId": 1,
+            "url": "https://renderer.freelens.app:45341/cluster/6675000cb8f7a5ef070fb684c2634d8b"
+          },
+          {
+            "processId": 5,
+            "routingId": 4,
+            "url": "https://6675000cb8f7a5ef070fb684c2634d8b.renderer.freelens.app:45341/overview"
+          }
+        ],
+        "listeners": [
+          [
+            "destroyed",
+            1
+          ],
+          [
+            "render-process-gone",
+            1
+          ],
+          [
+            "did-frame-navigate",
+            0
+          ]
+        ]
+      }
+    ],
+    "service": {
+      "owners": 0,
+      "retiring": 0,
+      "opening": 0,
+      "senders": 0,
+      "watch": false,
+      "executions": []
+    }
+  }
+}

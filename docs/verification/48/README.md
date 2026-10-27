@@ -1,6 +1,8 @@
 # #48 production Find verification checkpoint
 
-Latest: [source/geometry checks and grouped-mark cycling fix](geometry.md).
+Latest: [state boundaries, controlled snapshot delivery and dense diagnosis](state-completion.md).
+The [source/geometry checks and grouped-mark cycling fix](geometry.md) retain their
+recorded scope. Current dense interaction/resource and all native/platform gates remain open.
 The earlier [snapshot/delivery](snapshots.md) and [clipping/cadence](cadence.md)
 checkpoints below remain history; #48 remains unfinished and is not release accepted.
 

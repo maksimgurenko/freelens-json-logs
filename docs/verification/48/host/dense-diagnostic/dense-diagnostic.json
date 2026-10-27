@@ -1,0 +1,436 @@
+{
+  "session": {
+    "pid": 1822651,
+    "privateInstance": "efb50993780079460b0cbed1363e2166a2de1d9f_1793092579_733028668",
+    "privateRuntime": "/tmp/fd-qzz_3dcb",
+    "owned": [
+      {
+        "address": "0x55839054bc40",
+        "mapped": true,
+        "hidden": false,
+        "visible": true,
+        "acceptsInput": true,
+        "at": [
+          21,
+          21
+        ],
+        "size": [
+          1238,
+          678
+        ],
+        "workspace": {
+          "id": 7,
+          "name": "7"
+        },
+        "floating": false,
+        "monitor": 0,
+        "class": "freelens",
+        "title": "Freelens",
+        "initialClass": "freelens",
+        "initialTitle": "Freelens",
+        "pid": 1822651,
+        "xwayland": false,
+        "pinned": false,
+        "pinFullscreened": false,
+        "fullscreen": 0,
+        "fullscreenClient": 0,
+        "fullscreenHandler": "default",
+        "allowedOverFullscreen": true,
+        "grouped": [],
+        "tags": [],
+        "swallowing": "0x0",
+        "focusHistoryID": 0,
+        "inhibitingIdle": false,
+        "xdgTag": "",
+        "xdgDescription": "",
+        "contentType": "none",
+        "tearingHint": false,
+        "stableId": "18000003"
+      }
+    ]
+  },
+  "scope": "Bounded diagnostic with DevTools CPU sampling; exact historical harness, known old oracle, privately modified compositor. Not native latency or acceptance.",
+  "elapsedMs": 40063.841104,
+  "driverBudgetMs": 40000,
+  "sourceSha256": "eb43adfbdf8d77ac25c4777abdf74a7b7aa5a1e6c357c251098f5bbce1ac6810",
+  "profile": {
+    "samples": 38439,
+    "durationUs": 40251601,
+    "hottest": [
+      {
+        "functionName": "(program)",
+        "scriptId": "0",
+        "url": "",
+        "lineNumber": -1,
+        "columnNumber": -1,
+        "selfUs": 21127091
+      },
+      {
+        "functionName": "",
+        "scriptId": "277",
+        "url": "/tmp/freelens-production-find-48-i7t_2o96/Freelens/home/.freelens/extensions/freelens-readable-logs/out/renderer-0.1.34.js",
+        "lineNumber": 1657,
+        "columnNumber": 96,
+        "selfUs": 2708229
+      },
+      {
+        "functionName": "displayTimestamp",
+        "scriptId": "277",
+        "url": "/tmp/freelens-production-find-48-i7t_2o96/Freelens/home/.freelens/extensions/freelens-readable-logs/out/renderer-0.1.34.js",
+        "lineNumber": 315,
+        "columnNumber": 25,
+        "selfUs": 2051340
+      },
+      {
+        "functionName": "restore",
+        "scriptId": "277",
+        "url": "/tmp/freelens-production-find-48-i7t_2o96/Freelens/home/.freelens/extensions/freelens-readable-logs/out/renderer-0.1.34.js",
+        "lineNumber": 2144,
+        "columnNumber": 9,
+        "selfUs": 1344765
+      },
+      {
+        "functionName": "clip",
+        "scriptId": "277",
+        "url": "/tmp/freelens-production-find-48-i7t_2o96/Freelens/home/.freelens/extensions/freelens-readable-logs/out/renderer-0.1.34.js",
+        "lineNumber": 1578,
+        "columnNumber": 6,
+        "selfUs": 1228609
+      },
+      {
+        "functionName": "",
+        "scriptId": "277",
+        "url": "/tmp/freelens-production-find-48-i7t_2o96/Freelens/home/.freelens/extensions/freelens-readable-logs/out/renderer-0.1.34.js",
+        "lineNumber": 1565,
+        "columnNumber": 39,
+        "selfUs": 928494
+      },
+      {
+        "functionName": "remove",
+        "scriptId": "0",
+        "url": "",
+        "lineNumber": -1,
+        "columnNumber": -1,
+        "selfUs": 721872
+      },
+      {
+        "functionName": "measure",
+        "scriptId": "277",
+        "url": "/tmp/freelens-production-find-48-i7t_2o96/Freelens/home/.freelens/extensions/freelens-readable-logs/out/renderer-0.1.34.js",
+        "lineNumber": 1591,
+        "columnNumber": 9,
+        "selfUs": 663550
+      },
+      {
+        "functionName": "",
+        "scriptId": "277",
+        "url": "/tmp/freelens-production-find-48-i7t_2o96/Freelens/home/.freelens/extensions/freelens-readable-logs/out/renderer-0.1.34.js",
+        "lineNumber": 1657,
+        "columnNumber": 96,
+        "selfUs": 517843
+      },
+      {
+        "functionName": "clippingParents",
+        "scriptId": "277",
+        "url": "/tmp/freelens-production-find-48-i7t_2o96/Freelens/home/.freelens/extensions/freelens-readable-logs/out/renderer-0.1.34.js",
+        "lineNumber": 1570,
+        "columnNumber": 17,
+        "selfUs": 451388
+      },
+      {
+        "functionName": "displayTimestamp",
+        "scriptId": "277",
+        "url": "/tmp/freelens-production-find-48-i7t_2o96/Freelens/home/.freelens/extensions/freelens-readable-logs/out/renderer-0.1.34.js",
+        "lineNumber": 315,
+        "columnNumber": 25,
+        "selfUs": 437931
+      },
+      {
+        "functionName": "displayTimestamp",
+        "scriptId": "277",
+        "url": "/tmp/freelens-production-find-48-i7t_2o96/Freelens/home/.freelens/extensions/freelens-readable-logs/out/renderer-0.1.34.js",
+        "lineNumber": 315,
+        "columnNumber": 25,
+        "selfUs": 411750
+      },
+      {
+        "functionName": "getBoundingClientRect",
+        "scriptId": "0",
+        "url": "",
+        "lineNumber": -1,
+        "columnNumber": -1,
+        "selfUs": 403319
+      },
+      {
+        "functionName": "getBoundingClientRect",
+        "scriptId": "0",
+        "url": "",
+        "lineNumber": -1,
+        "columnNumber": -1,
+        "selfUs": 394508
+      },
+      {
+        "functionName": "restore",
+        "scriptId": "277",
+        "url": "/tmp/freelens-production-find-48-i7t_2o96/Freelens/home/.freelens/extensions/freelens-readable-logs/out/renderer-0.1.34.js",
+        "lineNumber": 2144,
+        "columnNumber": 9,
+        "selfUs": 394464
+      },
+      {
+        "functionName": "displayTimestamp",
+        "scriptId": "277",
+        "url": "/tmp/freelens-production-find-48-i7t_2o96/Freelens/home/.freelens/extensions/freelens-readable-logs/out/renderer-0.1.34.js",
+        "lineNumber": 315,
+        "columnNumber": 25,
+        "selfUs": 381944
+      },
+      {
+        "functionName": "(garbage collector)",
+        "scriptId": "0",
+        "url": "",
+        "lineNumber": -1,
+        "columnNumber": -1,
+        "selfUs": 341644
+      },
+      {
+        "functionName": "displayTimestamp",
+        "scriptId": "277",
+        "url": "/tmp/freelens-production-find-48-i7t_2o96/Freelens/home/.freelens/extensions/freelens-readable-logs/out/renderer-0.1.34.js",
+        "lineNumber": 315,
+        "columnNumber": 25,
+        "selfUs": 335889
+      },
+      {
+        "functionName": "(idle)",
+        "scriptId": "0",
+        "url": "",
+        "lineNumber": -1,
+        "columnNumber": -1,
+        "selfUs": 330732
+      },
+      {
+        "functionName": "displayTimestamp",
+        "scriptId": "277",
+        "url": "/tmp/freelens-production-find-48-i7t_2o96/Freelens/home/.freelens/extensions/freelens-readable-logs/out/renderer-0.1.34.js",
+        "lineNumber": 315,
+        "columnNumber": 25,
+        "selfUs": 326170
+      },
+      {
+        "functionName": "",
+        "scriptId": "277",
+        "url": "/tmp/freelens-production-find-48-i7t_2o96/Freelens/home/.freelens/extensions/freelens-readable-logs/out/renderer-0.1.34.js",
+        "lineNumber": 1659,
+        "columnNumber": 34,
+        "selfUs": 296747
+      },
+      {
+        "functionName": "restore",
+        "scriptId": "277",
+        "url": "/tmp/freelens-production-find-48-i7t_2o96/Freelens/home/.freelens/extensions/freelens-readable-logs/out/renderer-0.1.34.js",
+        "lineNumber": 2144,
+        "columnNumber": 9,
+        "selfUs": 224962
+      },
+      {
+        "functionName": "displayTimestamp",
+        "scriptId": "277",
+        "url": "/tmp/freelens-production-find-48-i7t_2o96/Freelens/home/.freelens/extensions/freelens-readable-logs/out/renderer-0.1.34.js",
+        "lineNumber": 315,
+        "columnNumber": 25,
+        "selfUs": 166202
+      },
+      {
+        "functionName": "draw",
+        "scriptId": "277",
+        "url": "/tmp/freelens-production-find-48-i7t_2o96/Freelens/home/.freelens/extensions/freelens-readable-logs/out/renderer-0.1.34.js",
+        "lineNumber": 1647,
+        "columnNumber": 6,
+        "selfUs": 163619
+      },
+      {
+        "functionName": "measure",
+        "scriptId": "277",
+        "url": "/tmp/freelens-production-find-48-i7t_2o96/Freelens/home/.freelens/extensions/freelens-readable-logs/out/renderer-0.1.34.js",
+        "lineNumber": 1791,
+        "columnNumber": 9,
+        "selfUs": 155712
+      }
+    ]
+  },
+  "progress": {
+    "trace": [
+      {
+        "i": 0,
+        "active": 0,
+        "expected": 0,
+        "liveMembers": 19,
+        "connected": false,
+        "label": "Find 19 matching records, starting at 1 of 1000; activate to cycle",
+        "currentFirst": "<button type=\"button\" class=\"rl-find-mark\" aria-label=\"Find 19 matching records, starting at 1 of 1000; activate to cycle\" title=\"Find 19 matching records, starting at 1 of 1000; activate to cycle\" aria-current=\"true\" style=\"top: 0px;\"></button>",
+        "client": 383,
+        "status": "Highlighting incomplete: visible text exceeds the decoration limit. Exact matches remain available."
+      },
+      {
+        "i": 1,
+        "active": 1,
+        "expected": 1,
+        "liveMembers": 19,
+        "connected": false,
+        "label": "Find 19 matching records, starting at 1 of 1000; activate to cycle",
+        "currentFirst": "<button type=\"button\" class=\"rl-find-mark\" aria-label=\"Find 19 matching records, starting at 1 of 1000; activate to cycle\" title=\"Find 19 matching records, starting at 1 of 1000; activate to cycle\" aria-current=\"true\" style=\"top: 0px;\"></button>",
+        "client": 383,
+        "status": "Highlighting incomplete: visible text exceeds the decoration limit. Exact matches remain available."
+      },
+      {
+        "i": 2,
+        "active": 2,
+        "expected": 2,
+        "liveMembers": 19,
+        "connected": true,
+        "label": "Find 19 matching records, starting at 1 of 1000; activate to cycle",
+        "currentFirst": "<button type=\"button\" class=\"rl-find-mark\" aria-label=\"Find 19 matching records, starting at 1 of 1000; activate to cycle\" title=\"Find 19 matching records, starting at 1 of 1000; activate to cycle\" aria-current=\"true\" style=\"top: 0px;\"></button>",
+        "client": 383,
+        "status": "Highlighting incomplete: visible text exceeds the decoration limit. Exact matches remain available."
+      },
+      {
+        "i": 3,
+        "active": 3,
+        "expected": 3,
+        "liveMembers": 19,
+        "connected": false,
+        "label": "Find 19 matching records, starting at 1 of 1000; activate to cycle",
+        "currentFirst": "<button type=\"button\" class=\"rl-find-mark\" aria-label=\"Find 19 matching records, starting at 1 of 1000; activate to cycle\" title=\"Find 19 matching records, starting at 1 of 1000; activate to cycle\" aria-current=\"true\" style=\"top: 0px;\"></button>",
+        "client": 383,
+        "status": "Highlighting incomplete: visible text exceeds the decoration limit. Exact matches remain available."
+      },
+      {
+        "i": 4,
+        "active": 4,
+        "expected": 4,
+        "liveMembers": 19,
+        "connected": false,
+        "label": "Find 19 matching records, starting at 1 of 1000; activate to cycle",
+        "currentFirst": "<button type=\"button\" class=\"rl-find-mark\" aria-label=\"Find 19 matching records, starting at 1 of 1000; activate to cycle\" title=\"Find 19 matching records, starting at 1 of 1000; activate to cycle\" aria-current=\"true\" style=\"top: 0px;\"></button>",
+        "client": 383,
+        "status": "Highlighting incomplete: visible text exceeds the decoration limit. Exact matches remain available."
+      },
+      {
+        "i": 5,
+        "active": 5,
+        "expected": 5,
+        "liveMembers": 19,
+        "connected": true,
+        "label": "Find 19 matching records, starting at 1 of 1000; activate to cycle",
+        "currentFirst": "<button type=\"button\" class=\"rl-find-mark\" aria-label=\"Find 19 matching records, starting at 1 of 1000; activate to cycle\" title=\"Find 19 matching records, starting at 1 of 1000; activate to cycle\" aria-current=\"true\" style=\"top: 0px;\"></button>",
+        "client": 383,
+        "status": "Highlighting incomplete: visible text exceeds the decoration limit. Exact matches remain available."
+      },
+      {
+        "i": 6,
+        "active": 6,
+        "expected": 6,
+        "liveMembers": 19,
+        "connected": false,
+        "label": "Find 19 matching records, starting at 1 of 1000; activate to cycle",
+        "currentFirst": "<button type=\"button\" class=\"rl-find-mark\" aria-label=\"Find 19 matching records, starting at 1 of 1000; activate to cycle\" title=\"Find 19 matching records, starting at 1 of 1000; activate to cycle\" aria-current=\"true\" style=\"top: 0px;\"></button>",
+        "client": 383,
+        "status": "Highlighting incomplete: visible text exceeds the decoration limit. Exact matches remain available."
+      }
+    ],
+    "count": "8 of 1000 matching records",
+    "highlight": "Highlighting incomplete: visible text exceeds the decoration limit. Exact matches remain available.",
+    "focused": false
+  },
+  "childBeforeStop": null,
+  "childAfterStop": {
+    "code": null,
+    "signal": "SIGTERM"
+  },
+  "output": "",
+  "closed": {
+    "starts": 5,
+    "exits": 5,
+    "live": 0,
+    "peak": 1,
+    "resources": [
+      "TCPServerWrap",
+      "StatWatcher",
+      "StatWatcher",
+      "StatWatcher",
+      "StatWatcher",
+      "StatWatcher",
+      "StatWatcher",
+      "PipeWrap",
+      "PipeWrap",
+      "PipeWrap",
+      "ProcessWrap",
+      "TCPSocketWrap",
+      "TCPSocketWrap",
+      "TCPSocketWrap",
+      "TCPSocketWrap",
+      "TCPSocketWrap",
+      "TCPSocketWrap",
+      "TCPSocketWrap",
+      "TCPSocketWrap",
+      "TCPSocketWrap",
+      "TCPSocketWrap",
+      "TCPSocketWrap",
+      "TCPSocketWrap",
+      "TCPSocketWrap",
+      "TCPSocketWrap",
+      "TCPSocketWrap",
+      "Timeout",
+      "Timeout",
+      "Timeout"
+    ],
+    "beforeQuit": 1,
+    "handlers": [
+      "extensions@8b3db3b6f5cd46217aaefd7caa1857349c703c83022f56397a39cdc8c84eef67:find-open",
+      "extensions@8b3db3b6f5cd46217aaefd7caa1857349c703c83022f56397a39cdc8c84eef67:find-request",
+      "extensions@8b3db3b6f5cd46217aaefd7caa1857349c703c83022f56397a39cdc8c84eef67:find-control"
+    ],
+    "windows": [
+      {
+        "id": 2,
+        "pid": 1823076,
+        "frames": [
+          {
+            "processId": 5,
+            "routingId": 1,
+            "url": "https://renderer.freelens.app:45341/cluster/6675000cb8f7a5ef070fb684c2634d8b"
+          },
+          {
+            "processId": 5,
+            "routingId": 4,
+            "url": "https://6675000cb8f7a5ef070fb684c2634d8b.renderer.freelens.app:45341/overview"
+          }
+        ],
+        "listeners": [
+          [
+            "destroyed",
+            1
+          ],
+          [
+            "render-process-gone",
+            1
+          ],
+          [
+            "did-frame-navigate",
+            0
+          ]
+        ]
+      }
+    ],
+    "service": {
+      "owners": 0,
+      "retiring": 0,
+      "opening": 0,
+      "senders": 0,
+      "watch": false,
+      "executions": []
+    }
+  },
+  "diagnosticCompleted": true
+}

@@ -107,7 +107,11 @@ try {
     if (iteration === 1) await button('Resume');
     await button('Match case');
     await until(`!document.querySelector('[aria-label="Next match"]').disabled`, 'Mode matching not ready');
+    await button('Whole words');
+    await until(`!document.querySelector('[aria-label="Next match"]').disabled`, 'Whole-word matching not ready');
     await button('Next match');
+    await button('To bottom');
+    check(await evaluate(`["Match case","Whole words"].every(name=>document.querySelector('[aria-label="'+name+'"]').getAttribute('aria-pressed')==='true') && document.querySelector('.rl-follow-status').textContent==='Following output'`), `Restart ${iteration + 1} precondition enables both flags and following`);
     const before = JSON.parse(kubectl(['get', 'pod', 'find-sequence', '-o', 'json'])).status.containerStatuses[0];
     kubectl(['exec', 'find-sequence', '--', 'touch', '/tmp/restart']);
     for (let i = 0; i < 700; i++) {
@@ -116,7 +120,8 @@ try {
       assert(i < 699, 'Owned restart not observed'); await sleep(100);
     }
     await until('document.querySelector("#rl-find").value==="" && document.querySelector(".rl-notice")?.textContent.includes("restart observed")', 'Find did not reset on real observed restart');
-    check(await evaluate(`!document.querySelector('.rl-find-current') && document.querySelector('[aria-label="Match case"]').getAttribute('aria-pressed')==='false' && document.querySelector('[aria-label="Profile"]').value==='default'`), `Trace 12 real restart ${iteration + 1} resets query/Match case/result and preserves manual profile`);
+    check(await evaluate(`!document.querySelector('.rl-find-current') && ["Match case","Whole words"].every(name=>document.querySelector('[aria-label="'+name+'"]').getAttribute('aria-pressed')==='false') && document.querySelector('[aria-label="Profile"]').value==='default'`), `Trace 12 real restart ${iteration + 1} resets query/both flags/result and preserves manual profile`);
+    check(await evaluate(`document.querySelector('.rl-follow-status').textContent==='Following output'`), `Restart ${iteration + 1} preserves explicit following status`);
     await button('Search history');
     check(await evaluate('document.querySelectorAll(".rl-history-entry").length===0'), `Restart ${iteration + 1} resets temporary history`);
     await button('Close search history');
@@ -128,6 +133,16 @@ try {
       await until('__snapshot48.rows().length===5', 'Automatic current-instance snapshot not ready');
       check(await evaluate('document.querySelector(".rl-update-status").textContent==="Automatic updates"'), 'Unpaused restart resumes ordinary current-instance snapshots');
     }
+    const priorTop = await evaluate('document.querySelector(".rl-records").scrollTop');
+    append(Array.from({ length: 50 }, (_, i) => JSON.stringify({ message: `restart ${iteration + 1} appended ${i}` })));
+    if (iteration === 0) {
+      await sleep(3200);
+      check(await evaluate('__snapshot48.rows().length===5 && document.querySelector(".rl-update-status").textContent==="Paused"'), 'Restart preserves Pause during actual new output');
+      await button('Refresh');
+    }
+    await until('__snapshot48.rows().length===55', 'Post-restart append not accepted');
+    await until(`(()=>{const s=document.querySelector('.rl-records');return document.querySelector('.rl-follow-status').textContent==='Following output' && s.scrollTop>${priorTop} && s.scrollHeight-s.clientHeight-s.scrollTop<=2})()`, 'Post-restart following did not reach appended bottom');
+    check(true, `Restart ${iteration + 1} follows real appended output at bottom while preserving refresh mode`);
   }
   result.pass = true;
 } catch (error) { result.error = error.stack; process.exitCode = 1; }

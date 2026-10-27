@@ -186,3 +186,44 @@ the f8d7643 continuation baseline; two harness findings are corrected, none rema
 actionable. Final pinned typecheck/249 tests/six UI guards/browser/worker/resource/
 strict package/two-build SHA-256 all pass; earlier failed attempts stay separate.
 No full acceptance/release claim. Continue only #48 using NEXT.md.
+
+### Continuation from 9280757
+
+Reclaimed #48; [live full bodies/comments](../../../docs/verification/48/host/state-completion/authority.json)
+equal cached authority. [State-boundary report](../../../docs/verification/48/state-completion.md)
+records **20 installed state assertions**, **31 real snapshot/restart assertions**
+and **19 controlled HTTP/SDK snapshot assertions**. New subsets include independent
+DOM keyboard reading/inspection, still-matching profile retention, stale window/
+message successes/failures, Profiles cancellation, seven-entry history and seed
+flags. Both flags demonstrably reset across two actual restarts, with Pause and
+following status/real appended-bottom movement preserved.
+
+Controlled target-scoped HTTP bodies exercise identical complete transport-line
+duplicates/zero overlap, missing/count-then-ID/known-ID metadata, stale instance
+success/error and stale snapshot completion/error. They run the actual installed
+adapter/session/viewer/worker, but do not claim natural kubelet ordering or physical
+input. All wrappers/gates are restored. Initial harness failures stay separate.
+
+Same package SHA-256 `d19f826bc8496a6ae3ca5afaeb79fab73753ceeebde62747174b8d4ead6dfcb3`;
+no production bytes/contract change. Fresh 33-state/13-held/SDK-frame/startup-timeout/
+20-burst subsets pass. Full pinned locked/typecheck/249 tests/six UI guards/browser/
+worker/resource-smoke/strict-package/deterministic two-build checks pass.
+
+Dense gates remain unfinished. Exact old-harness CPU replay completes only seven
+activations in 40 seconds. The long-lived installed mounted soak passes actual
+worker/lifecycle cleanup but fails dense listener growth **+15 against limit +8**.
+The fresh-process comparison and final review/cleanup are recorded in the report.
+No whole unfinished original criterion is checked; native/clipboard, Windows/macOS,
+stock/long-resource and dense responsiveness limits remain explicit. Continue
+only #48 via NEXT.md; no release acceptance is claimed.
+
+The fresh-profile resource control passes (+1 dense listener, zero long listeners)
+without clearing the failed +15 long-lived result. Independent Standards review
+finds zero hard violations/one optional duplication smell. Spec review's stale
+matrix and weak old-instance-error assertion are corrected: a third fresh installed
+run repeats 19 controlled assertions and proves exact empty Find status/no Retry
+before any new edit. [Final independent review](../../../docs/verification/48/review-state-completion.md)
+leaves zero unresolved findings. All three owned hosts, profiles/runtimes and
+UID-checked fixtures are cleaned; user/config hashes are unchanged. Raw failures
+remain historical evidence. The concrete next autonomous task is a minimal dense
+cadence loop and listener-attribution/long-resource checks in NEXT.md.
