@@ -5,6 +5,7 @@ import ReactDOM from 'react-dom';
 import * as Mobx from 'mobx';
 import { verifyFindPresentation } from './find-presentation-browser.jsx';
 import { verifyFindMarks } from './find-marks-browser.jsx';
+import { verifyFindIntegration } from './find-integration-browser.jsx';
 
 const check = (condition, message) => { if (!condition) throw new Error(message); };
 const sleep = ms => new Promise(resolve => setTimeout(resolve, ms));
@@ -32,6 +33,7 @@ let status = { name: 'app', restartCount: 0, containerID: 'run-0' };
 let uid = 'uid';
 let heldReply, failNext = false, requestCount = 0;
 let failNextRange = false;
+let rpcSequence = 0;
 const rangeRequests = [];
 const holdNext = text => { let release; const promise = new Promise(resolve => { release = resolve; }); heldReply = { promise, release, text }; return heldReply; };
 const ipc = {
@@ -45,7 +47,7 @@ const ipc = {
       rangeRequests.push(args[1]);
       if (failNextRange) { failNextRange = false; throw new Error('Controlled decoration SDK failure'); }
     }
-    const result = await (await fetch('/find-rpc', { method: 'POST', body: JSON.stringify({ channel: name, args }) })).json();
+    const result = await (await fetch('/find-rpc', { method: 'POST', body: JSON.stringify({ sequence: ++rpcSequence, channel: name, args }) })).json();
     if (gate) await gate.promise;
     if (result.error) throw new Error(result.error); return result.value;
   },
@@ -522,6 +524,7 @@ globalThis.verifyIdentity = async () => {
     await verifyPresentation();
     await verifyFindPresentation({ root, rows, button, query, refresh, until, check, turn, results, rangeRequests, failRanges: () => { failNextRange = true; } });
     await verifyFindMarks({ root, rows, button, query, refresh, until, check, turn, results, failRanges: () => { failNextRange = true; } });
+    await verifyFindIntegration({ root, rows, button, query, refresh, until, check, turn, results, failRanges: () => { failNextRange = true; }, selectText, copies });
     await verifySelectionHistory();
     await verifyAsync();
     await verifyPosition();
@@ -541,8 +544,9 @@ globalThis.verifyIdentity = async () => {
     await refresh('x\nend\nx');
     check(rows()[0] === oldX && document.activeElement === focusedRow && document.getSelection().toString() === 'x', 'Identical snapshot lost observed identity/focus/selection');
     results.push('identical complete window retains actual DOM focus and selection');
+    const beforeCopies = copies.length;
     button('Copy application text'); button('Copy transport line');
-    check(copies.length === 2 && copies.every(value => value === 'x'), 'Original copy payload changed');
+    check(copies.length === beforeCopies + 2 && copies.slice(beforeCopies).every(value => value === 'x'), 'Original copy payload changed');
     await refresh('different\nx');
     check(!root.querySelector('.rl-selected') && !root.querySelector('.rl-detail'), 'Zero overlap did not expire inspection');
     check(!root.querySelector('.rl-find-current') && input().value === 'x', 'Eviction substituted another Find result or cleared the query');

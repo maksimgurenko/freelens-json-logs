@@ -1,0 +1,113 @@
+(node:1112493) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///home/max/work/freelens-json-logs/src/core/snapshot.ts is not specified and it doesn't parse as CommonJS.
+Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+To eliminate this warning, add "type": "module" to /home/max/work/freelens-json-logs/package.json.
+(Use `node --trace-warnings ...` to show where the warning was created)
+{
+  "check": "production main/worker retention and resource churn",
+  "cycles": 20,
+  "limits": {
+    "heapUsed": 12582912,
+    "external": 8388608,
+    "rss": 100663296
+  },
+  "samples": [
+    {
+      "heapUsed": 15921336,
+      "external": 8865711,
+      "rss": 186126336,
+      "timers": 0,
+      "ports": 0,
+      "threads": 7
+    },
+    {
+      "heapUsed": 15920032,
+      "external": 8865751,
+      "rss": 186937344,
+      "timers": 0,
+      "ports": 0,
+      "threads": 7
+    },
+    {
+      "heapUsed": 11238688,
+      "external": 8861100,
+      "rss": 214609920,
+      "timers": 0,
+      "ports": 0,
+      "threads": 7
+    },
+    {
+      "heapUsed": 11246344,
+      "external": 8861100,
+      "rss": 218382336,
+      "timers": 0,
+      "ports": 0,
+      "threads": 7
+    },
+    {
+      "heapUsed": 11262072,
+      "external": 8861100,
+      "rss": 219066368,
+      "timers": 0,
+      "ports": 0,
+      "threads": 7
+    }
+  ],
+  "lifecycle": {
+    "starts": 60,
+    "exits": 60,
+    "live": 0,
+    "peak": 1,
+    "owners": 0,
+    "inflight": 0,
+    "peakInflight": 13,
+    "workerListenersAfterExit": 0,
+    "maxStopToExitMs": 75.537642,
+    "senderListeners": 0,
+    "appListeners": 0
+  },
+  "stopToExitMs": [
+    0.5433590000000095,
+    0.5866889999999785,
+    0.4980000000000473,
+    0.43297900000004574,
+    0.45315000000005057,
+    0.5055899999999838,
+    0.4718689999999697,
+    0.4001499999999396,
+    0.4574699999998302,
+    0.48444000000017695,
+    0.5272989999998572,
+    0.4446290000000772,
+    0.4558790000000954,
+    0.5065289999997731,
+    0.6019799999999123,
+    0.5180500000001302,
+    0.48480000000017753,
+    0.41762999999991735,
+    0.40967000000000553,
+    0.5249899999998888
+  ],
+  "matchingAndRangeMs": [
+    102.242967,
+    98.17769099999998,
+    67.77221799999995,
+    96.362303,
+    67.10882900000001,
+    95.23220300000003,
+    68.34350799999993,
+    95.66088300000001,
+    67.1142890000001,
+    97.14813200000026,
+    70.27634699999999,
+    99.106851,
+    69.0432780000001,
+    96.0635540000003,
+    67.66014899999982,
+    96.00830300000007,
+    65.41932100000031,
+    95.92713300000014,
+    69.2250570000001,
+    96.60193300000083
+  ],
+  "scope": "Real built workers and production SDK handlers; host/frame tree are stand-ins, not installed-host soak or native input"
+}

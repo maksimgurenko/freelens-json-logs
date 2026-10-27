@@ -18,7 +18,10 @@
   "packageManager": "npm@11.16.0",
   "scripts": {
     "typecheck": "tsc --noEmit",
-    "test": "node --experimental-strip-types --test tests/*.test.ts",
+    "test": "node --experimental-strip-types --test tests/*.test.ts tests/*.test.mjs",
+    "test:browser": "node scripts/verify-find-identity.mjs",
+    "test:workers": "node scripts/verify-find-execution.mjs",
+    "test:smoke": "node scripts/resource-smoke.mjs",
     "build": "node scripts/build.mjs",
     "package": "npm run build && npm pack --pack-destination dist",
     "check:package": "node scripts/check-package.mjs"
@@ -29,6 +32,7 @@
     "@types/react": "17.0.93",
     "esbuild": "0.28.2",
     "react": "17.0.2",
+    "react-dom": "17.0.2",
     "typescript": "5.9.3",
     "mobx": "6.13.7",
     "mobx-react": "7.6.0"

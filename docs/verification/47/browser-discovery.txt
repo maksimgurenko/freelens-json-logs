@@ -1,0 +1,3 @@
+Chrome name fallback: /tmp/find-browser-discovery-ZZZAYs/google-chrome
+Chromium 154.0.8037.97 Arch Linux
+Explicit missing CHROME_BIN fails; no check is skipped.

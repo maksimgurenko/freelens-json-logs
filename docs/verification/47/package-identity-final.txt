@@ -1,0 +1,4 @@
+dist/freelens-readable-logs-0.1.34.tgz: OK
+out/main-0.1.34.js: OK
+out/renderer-0.1.34.js: OK
+out/find-worker-0.1.34.js: OK

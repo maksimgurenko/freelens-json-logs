@@ -1,0 +1,190 @@
+
+> freelens-readable-logs@0.1.34 test:smoke
+> node scripts/resource-smoke.mjs
+
+(node:1124889) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///home/max/work/freelens-json-logs/src/core/session.ts is not specified and it doesn't parse as CommonJS.
+Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+To eliminate this warning, add "type": "module" to /home/max/work/freelens-json-logs/package.json.
+(Use `node --trace-warnings ...` to show where the warning was created)
+{
+  "check": "core/main RAM and disk",
+  "cycles": 40,
+  "samples": [
+    {
+      "heapUsed": 21837512,
+      "external": 8928244,
+      "rss": 289890304
+    },
+    {
+      "heapUsed": 21942136,
+      "external": 8928284,
+      "rss": 335507456
+    },
+    {
+      "heapUsed": 21970880,
+      "external": 8958491,
+      "rss": 344764416
+    },
+    {
+      "heapUsed": 21996672,
+      "external": 8958491,
+      "rss": 345030656
+    },
+    {
+      "heapUsed": 17282440,
+      "external": 8955075,
+      "rss": 344543232
+    },
+    {
+      "heapUsed": 17302584,
+      "external": 8955075,
+      "rss": 344498176
+    },
+    {
+      "heapUsed": 17311984,
+      "external": 8955075,
+      "rss": 344498176
+    }
+  ],
+  "limits": {
+    "heapUsed": 12582912,
+    "external": 8388608,
+    "rss": 100663296
+  },
+  "disk": [
+    {
+      "path": "extension-store/freelens-readable-logs/readable-logs.json",
+      "bytes": 90,
+      "sha256": "53be5f1acd44c863b46b59c97c93bbc5d73f52fe9d94c1918e78b32e9fd7f9cd"
+    }
+  ]
+}
+(node:1124953) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///home/max/work/freelens-json-logs/src/core/snapshot.ts is not specified and it doesn't parse as CommonJS.
+Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+To eliminate this warning, add "type": "module" to /home/max/work/freelens-json-logs/package.json.
+(Use `node --trace-warnings ...` to show where the warning was created)
+{
+  "check": "production main/worker retention and resource churn",
+  "cycles": 20,
+  "limits": {
+    "heapUsed": 12582912,
+    "external": 8388608,
+    "rss": 100663296
+  },
+  "samples": [
+    {
+      "heapUsed": 15922128,
+      "external": 8865711,
+      "rss": 178774016,
+      "timers": 0,
+      "ports": 0,
+      "threads": 7
+    },
+    {
+      "heapUsed": 15920496,
+      "external": 8865751,
+      "rss": 183148544,
+      "timers": 0,
+      "ports": 0,
+      "threads": 7
+    },
+    {
+      "heapUsed": 11240872,
+      "external": 8861100,
+      "rss": 208039936,
+      "timers": 0,
+      "ports": 0,
+      "threads": 7
+    },
+    {
+      "heapUsed": 11248528,
+      "external": 8861100,
+      "rss": 208056320,
+      "timers": 0,
+      "ports": 0,
+      "threads": 7
+    },
+    {
+      "heapUsed": 11264136,
+      "external": 8861100,
+      "rss": 209956864,
+      "timers": 0,
+      "ports": 0,
+      "threads": 7
+    }
+  ],
+  "lifecycle": {
+    "starts": 60,
+    "exits": 60,
+    "live": 0,
+    "peak": 1,
+    "owners": 0,
+    "inflight": 0,
+    "peakInflight": 13,
+    "workerListenersAfterExit": 0,
+    "maxStopToExitMs": 74.3598,
+    "senderListeners": 0,
+    "appListeners": 0
+  },
+  "stopToExitMs": [
+    0.5393090000000029,
+    0.544889000000012,
+    0.46307899999999336,
+    0.48373000000003685,
+    0.42841999999996005,
+    0.4222899999999754,
+    0.5436789999998837,
+    0.4762789999999768,
+    0.5307999999999993,
+    0.4284090000001015,
+    0.47181000000000495,
+    0.4890099999997801,
+    0.43265999999994165,
+    0.4802089999998316,
+    0.46606999999994514,
+    0.5599299999998948,
+    0.5814289999998437,
+    0.45222999999987223,
+    0.4587490000003527,
+    0.48863900000014837
+  ],
+  "matchingAndRangeMs": [
+    101.565832,
+    98.89123400000005,
+    68.52739399999996,
+    92.75204700000006,
+    65.60915599999998,
+    96.07466499999987,
+    73.26913100000002,
+    93.65695700000015,
+    67.98758399999997,
+    96.79065500000024,
+    79.04537599999958,
+    100.30009199999995,
+    71.91138200000023,
+    95.0900660000002,
+    69.53528299999971,
+    92.14838799999961,
+    66.2737360000001,
+    95.9180550000001,
+    71.44799199999989,
+    93.1986079999997
+  ],
+  "scope": "Real built workers and production SDK handlers; host/frame tree are stand-ins, not installed-host soak or native input"
+}
+node:internal/modules/run_main:107
+    triggerUncaughtException(
+    ^
+
+AssertionError [ERR_ASSERTION]: {"exceptionId":1,"text":"Uncaught (in promise) Error: Profile churn lost current matching: FindFind could not complete. Edit the query or Retry.Clearkeyboard_arrow_upkeyboard_arrow_downAaabhistoryRetryCloseFind could not complete. Edit the query or Retry.","lineNumber":0,"columnNumber":0,"exception":{"type":"object","subtype":"error","className":"Error","description":"Error: Profile churn lost current matching: FindFind could not complete. Edit the query or Retry.Clearkeyboard_arrow_upkeyboard_arrow_downAaabhistoryRetryCloseFind could not complete. Edit the query or Retry.\n    at until (http://127.0.0.1:32883/fixture.js:11807:11)\n    at async cycle (http://127.0.0.1:32883/fixture.js:11852:5)\n    at async Object.batch (http://127.0.0.1:32883/fixture.js:11908:51)","objectId":"-1648858442513408415.2.1"}}
+    at evaluate (file:///home/max/work/freelens-json-logs/scripts/resource-smoke.mjs:114:5)
+    at async file:///home/max/work/freelens-json-logs/scripts/resource-smoke.mjs:142:16 {
+  generatedMessage: false,
+  code: 'ERR_ASSERTION',
+  actual: false,
+  expected: true,
+  operator: '==',
+  diff: 'simple'
+}
+
+Node.js v24.18.0

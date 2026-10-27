@@ -1,0 +1,156 @@
+[
+  {
+    "check": "core/main RAM and disk",
+    "cycles": 40,
+    "disk": [
+      {
+        "path": "extension-store/freelens-readable-logs/readable-logs.json",
+        "bytes": 90,
+        "sha256": "53be5f1acd44c863b46b59c97c93bbc5d73f52fe9d94c1918e78b32e9fd7f9cd"
+      }
+    ],
+    "limits": {
+      "heapUsed": 12582912,
+      "external": 8388608,
+      "rss": 100663296
+    },
+    "baseline": {
+      "heapUsed": 21837440,
+      "external": 8928244,
+      "rss": 291721216
+    },
+    "final": {
+      "heapUsed": 17312512,
+      "external": 8955075,
+      "rss": 344768512
+    },
+    "maxGrowth": {
+      "heapUsed": 159160,
+      "external": 30247,
+      "rss": 57311232
+    }
+  },
+  {
+    "check": "production main/worker retention and resource churn",
+    "cycles": 20,
+    "lifecycle": {
+      "starts": 60,
+      "exits": 60,
+      "live": 0,
+      "peak": 1,
+      "owners": 0,
+      "inflight": 0,
+      "peakInflight": 13,
+      "workerListenersAfterExit": 0,
+      "maxStopToExitMs": 74.569278,
+      "queuedTransport": 0,
+      "senderListeners": 0,
+      "appListeners": 0
+    },
+    "limits": {
+      "heapUsed": 12582912,
+      "external": 8388608,
+      "rss": 100663296
+    },
+    "baseline": {
+      "heapUsed": 15927976,
+      "external": 8865711,
+      "rss": 182075392,
+      "timers": 0,
+      "ports": 0,
+      "threads": 7
+    },
+    "final": {
+      "heapUsed": 11275336,
+      "external": 8861100,
+      "rss": 215851008,
+      "timers": 0,
+      "ports": 0,
+      "threads": 7
+    },
+    "maxGrowth": {
+      "heapUsed": 0,
+      "external": 40,
+      "rss": 34623488
+    },
+    "stopToExitMs": {
+      "sampleCount": 20,
+      "max": 0.6271999999999025
+    }
+  },
+  {
+    "check": "production renderer RAM, DOM and disk",
+    "cycles": 40,
+    "limits": {
+      "heapUsed": 8388608,
+      "nodes": 128,
+      "jsEventListeners": 8,
+      "documents": 0,
+      "diskBytes": 8388608,
+      "diskFiles": 128
+    },
+    "writes": 0,
+    "reads": 320,
+    "observers": 0,
+    "frames": 0,
+    "timers": 0,
+    "highlights": 0,
+    "baseline": {
+      "heapUsed": 9825212,
+      "documents": 1,
+      "nodes": 2817,
+      "jsEventListeners": 416,
+      "disk": {
+        "bytes": 3015366,
+        "files": 183
+      },
+      "lifecycle": {
+        "starts": 4,
+        "exits": 4,
+        "live": 0,
+        "peak": 1,
+        "owners": 0,
+        "inflight": 0,
+        "peakInflight": 2,
+        "workerListenersAfterExit": 0,
+        "maxStopToExitMs": 0.7912190000006376,
+        "queuedTransport": 0,
+        "senderListeners": 0,
+        "appListeners": 1
+      }
+    },
+    "final": {
+      "heapUsed": 10652916,
+      "documents": 1,
+      "nodes": 2818,
+      "jsEventListeners": 416,
+      "disk": {
+        "bytes": 2924754,
+        "files": 190
+      },
+      "lifecycle": {
+        "starts": 40,
+        "exits": 40,
+        "live": 0,
+        "peak": 1,
+        "owners": 0,
+        "inflight": 0,
+        "peakInflight": 2,
+        "workerListenersAfterExit": 0,
+        "maxStopToExitMs": 1.0507999999972526,
+        "queuedTransport": 0,
+        "senderListeners": 0,
+        "appListeners": 1
+      }
+    },
+    "maxGrowth": {
+      "heapUsed": 827704,
+      "nodes": 1,
+      "jsEventListeners": 0,
+      "documents": 0
+    }
+  },
+  {
+    "check": "Find worker lifecycle after smoke"
+  }
+]

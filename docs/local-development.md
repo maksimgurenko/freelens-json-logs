@@ -23,6 +23,9 @@ npm --version
 npm ci --ignore-scripts --no-audit --no-fund
 npm run typecheck
 npm test
+npm run test:browser
+npm run test:workers
+npm run test:smoke
 npm run package
 npm run check:package
 tar -tzf dist/freelens-readable-logs-0.1.34.tgz
@@ -39,6 +42,15 @@ real host verification is recorded separately under `docs/verification/11/` and
 `docs/verification/12/`. Ticket 13 records automated checks, earlier installation failures and the
 production lifecycle matrix separately under `docs/verification/13/`.
 Running the same build twice yields the same tarball bytes with this toolchain.
+
+Run `npm run test:smoke` with Chromium/Chrome on PATH to check retained RAM and disk
+growth across repeated refresh, close and renderer unmount cycles. It uses isolated
+processes and a headless browser, leaving the installed Freelens session alone.
+See [the resource smoke test](resource-smoke.md) for workloads, thresholds and scope.
+`test:browser` mounts the actual production Find renderer in headless Chromium
+with the real main-owned worker and explicit SDK/OS stand-ins. `test:workers`
+separately checks actual built-worker cancellation, reuse and exit. These checks
+do not operate the installed Freelens or establish physical/native acceptance.
 
 On this development machine the existing toolchain is project-local. The scratch
 `.bin` directory alone does not select Node 24. Use the Node binary directory and

@@ -1,0 +1,8 @@
+{
+  "browserSharedDiscovery": "browser-portable.txt: completed JSON, zero errors/remaining workers",
+  "resourceSharedDiscovery": "resource-smoke-portable.txt: all workloads passed",
+  "chromeNamesAndOverride": "browser-discovery.txt: fallback selected, invalid explicit override rejected",
+  "typecheck": "typecheck-end.txt",
+  "fullTests": "full-tests-end.txt: 246 passed, zero failed",
+  "packageAndBundles": "package-identity-final.txt: all four SHA-256 checks OK"
+}

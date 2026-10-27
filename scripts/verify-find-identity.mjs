@@ -7,6 +7,7 @@ import { createServer } from 'node:http';
 import { tmpdir } from 'node:os';
 import { join, resolve } from 'node:path';
 import { packedFindBridge } from './find-test-bridge.mjs';
+import { chromePath } from './test-chromium.mjs';
 import { build } from 'esbuild';
 
 const directory = await mkdtemp(join(tmpdir(), 'find-identity-'));
@@ -31,7 +32,7 @@ try {
       : '<!doctype html><meta charset="utf-8"><style>@font-face{font-family:Roboto;src:url(/Roboto-Regular.ttf)}@font-face{font-family:MaterialIcons;src:url(/MaterialIcons-Regular.ttf)}html,body,#root{height:100%;margin:0}body{font:14px Roboto,sans-serif;background:#1e2124}.Icon.material-icons{font-family:MaterialIcons;font-weight:normal;font-style:normal;line-height:1;white-space:nowrap;font-feature-settings:"liga"}</style><div id="root"></div><script src="/fixture.js"></script>');
   });
   server.listen(0, '127.0.0.1'); await once(server, 'listening');
-  browser = spawn(process.env.CHROME_BIN || 'chromium', ['--headless=new', '--no-first-run', '--no-default-browser-check',
+  browser = spawn(await chromePath(), ['--headless=new', '--no-first-run', '--no-default-browser-check',
     '--disable-background-networking', '--disable-extensions', '--disable-sync', '--disable-gpu', '--disable-dev-shm-usage',
     '--remote-debugging-port=0', `--user-data-dir=${directory}`, '--window-size=1440,900',
     ...(process.getuid?.() === 0 ? ['--no-sandbox'] : []), 'about:blank'], { detached: true, stdio: ['ignore', 'ignore', 'pipe'] });
