@@ -264,3 +264,35 @@ reports only repeated notifications of the same focused kitty, no address/worksp
 window transitions; pointer equality is endpoint-only. No native input/focus/clipboard
 operation was sent. No unfinished original criterion is newly checked. Resource,
 remaining full Host, stock/native/clipboard and Windows/macOS gates remain open.
+
+### Continuation from a098a21
+
+Reclaimed #48; [live full authority](../../../docs/verification/48/host/listener-attribution/authority.json)
+still matches cached sources/accepted plan. [Resource attribution report](../../../docs/verification/48/listener-attribution.md)
+corrects a verification defect: the installed soak checked only its endpoint.
+A known +8 endpoint false pass contains +9 earlier; the saved independent audit
+fails before correction and agrees with the corrected live failed verdict.
+Every measured sample now enforces unchanged node/listener/heap limits and zero
+document growth. The corrected uninstrumented long-source run still **fails
++1,543 nodes/+26 listeners**; neither passing controls nor later GC clears it.
+
+Four attached censuses have identical 666 listener details; eight post-heap
+captures each have 724 native listeners, with no sampled Find-viewer paths.
+Host-only route changes can independently spike listeners. A host-only inactivity
+control retains exactly **14 host ClusterView nodes/15 samples** with no extension
+viewer, repeated without census/heap capture. Weak abort traces narrow host/Node
+call sites but perturb collection; exact failed-sample listener attribution stays
+open. Temporary trace methods are restored and raw private heaps removed.
+
+No production bytes change: same package SHA-256
+`995f1cf5e3ac81f377b16cf8dea24c15237824cd31dd1a066acde26bf868f904`.
+Final pinned locked install/typecheck/249 tests/six UI guards/production browser/
+actual workers/original resource smoke/strict package/two-build SHA pass.
+Actual installed shutdown observes **466/466** starts/exits, peak one, zero service
+maps/watch. User/config hashes match fresh before-run captures; owned host,
+profile/runtime and UID-checked namespace are removed. Desktop observation has
+zero focus/workspace/window transitions; pointer equality is endpoint-only.
+[Independent reviews](../../../docs/verification/48/review-listener-attribution.md)
+and [NEXT.md](../../../docs/verification/48/NEXT.md) retain concrete continuation.
+No unfinished original criterion is newly checked; full Host/resource, stock/
+long-duration, native/clipboard and Windows/macOS gates remain open.

@@ -1,6 +1,10 @@
 # #48 production Find verification checkpoint
 
-Latest checkpoint: [stable dense highlight feedback, final package and verification](dense-cadence.md).
+Latest checkpoint: [all-sample resource verdicts and host retention attribution](listener-attribution.md).
+The same installed package is unchanged. The uninstrumented resource gate stays
+failed; endpoint-only historical passes do not establish an all-sample pass.
+
+Previous checkpoint: [stable dense highlight feedback, final package and verification](dense-cadence.md).
 Its original ticket/continuation review pins, intermediate failures, final evidence
 and remaining gates are recorded separately. #48 and release acceptance remain open.
 

@@ -1,76 +1,78 @@
 # Continue only Find #48
 
 Branch `implementation/find`. Original ticket pin:
-`3fb33db5f5ded3523bcf66c1145f0af967ec0bf3`. Latest continuation/review baseline:
-`0f39b79dc27076323a53f47f7aab209801b8022f`; record the **new current HEAD** before
-any next implementation and use it for that continuation review. Reclaim #48 and
-fetch full live corrections. Read the local ticket, cached accepted plan and full
-#36/#37/#38/#40 decisions, [dense-cadence.md](dense-cadence.md), [matrix.md](matrix.md)
-and earlier state reports. Only #48 is authorized. No comments/closure, push,
-PR, merge or release. Do not work on another ticket.
+`3fb33db5f5ded3523bcf66c1145f0af967ec0bf3`. This continuation was implemented and
+reviewed from `a098a2105e3223fd435dbb7eef3b09c05ffd93b1`; record the **new current
+HEAD** before next implementation and use it for that continuation review.
+Reclaim #48 and fetch full live corrections. Read its local ticket, accepted plan,
+full #36/#37/#38/#40 comments, [listener-attribution.md](listener-attribution.md),
+[matrix.md](matrix.md) and prior state reports. Only #48 is authorized. No issue
+comments/closure, push, PR, merge, release or unrelated host patch.
 
-1. **Current artifact/fix.** `freelens-readable-logs@0.1.34`, SHA-256
+1. **Current artifact is unchanged.** `freelens-readable-logs@0.1.34`, SHA-256
    `995f1cf5e3ac81f377b16cf8dea24c15237824cd31dd1a066acde26bf868f904`.
-   Stable package/store, page/config and schema 3 remain. Main/worker unchanged;
-   renderer now reserves a compact, responsive highlight-status footprint while
-   Find is open. Pending/completed/capped feedback cannot drive the prior clip
-   oscillation. Source nodes, exact matching/counts, copy, retention and lifecycle
-   contracts are unchanged. Do not revert the fix or merge research/prototypes.
-2. **Concrete next autonomous task: attribute the repeated +9 listener failure.**
-   Final actual-host `host/feedback-final/mounted-soak-clean-inspector.json.gz` has
-   three warmups and 30 measured cycles per bound, natural frames, 100 ms inactive
-   waits. Lifecycle/actual exits/settings pass, but dense post-GC listener growth
-   is **+9 against +8**, nodes +51 and heap +1,862,708 B. Long +19 nodes/-1 listener.
-   An earlier long-reserve package independently fails +9; intermediate compact
-   package passes 30 cycles. Raw runs, summaries and commands remain separate.
-   Read diagnosing-bugs. Capture sanitized listener **types/targets/retainers at
-   the actual low/high samples**, not just totals. Add one-variable controls:
-   root/cluster inactivity with a viewer but no Find, then host-only inactivity
-   without an extension viewer. Compare with the existing stationary/host-route/
-   viewer-no-Find/viewer-Find/viewer-Find-idle controls. No threshold relaxation,
-   speculative lifetime change or claim that a passing control clears a failure.
-3. **Node control is a lead, not yet a deterministic leak.** Intermediate
-   `host/compact-final/navigation-control.json.gz` has +14 DOM nodes/15 Find-idle
-   cycles and zero listener growth; stationary/route/no-Find/Find are flat.
-   Final repetition is 0/-2/+9/-9/+5 nodes, listeners 0/0/+1/-1/-1. Transient host
-   objects remain a competing explanation. Earlier sanitized heap capture finds
-   zero detached viewer sections, which does not rule out other retained nodes.
-   Remove raw private heaps after extracting sanitized paths. Do not preserve
-   credentials or source-text heaps in Git. Existing controlled state/session/
-   renderer seams are authorized for TDD once a real defect is isolated.
-4. **Current artifact evidence.** `host/feedback-final` passes 33 DOM state,
-   13 held-delivery, 192 source/geometry assertions (including 260px usable log
-   height), terminal-Q, no-query/zero-hit/dense natural cadence (~186 ms/12 dense
-   frames, two layouts), three initial group members, six append/following/Pause
-   assertions, fresh-main Disable/Uninstall/reinstall, SDK/frame ownership,
-   startup-inclusive timeout, 20 latest-only bursts and startup shutdown. Actual
-   worker starts/exits **219/219**, peak one, zero maps/watch at shutdown. These
-   are scoped DOM/SDK checks, not native delivery. Full current-package snapshot/
-   profile/restart/duplicate and stale target/viewer counterparts remain separate
-   from older named-artifact runs; do not relabel those as this package.
-5. **Tools/checks/review.** Use project-local Node 24.18.0/npm 11.16.0. Latest full
-   locked install/typecheck, 249 tests, six UI guards, production browser, actual
-   built workers, original resource smoke, strict package and two-build SHA pass.
-   Focused range tests also pass. Independent two-axis review uses the recorded
-   baseline plus current scoped diff, original requirements first, `fork_turns=none`.
-   Existing optional host-control duplication does not require an unrelated refactor.
-6. **Private/native/platform gates.** Use the documented private labwc→Hyprland
-   workspace 7 and private Aquamarine diagnostic build only for autonomous DOM
-   work. Stock output remains unestablished. Keep `FREELENS_UI_MODE` unset and
-   shared guards intact; no user-window activation/restart/restore/minimize, native
-   input, pointer movement, clipboard operation, bringToFront or fake focus.
-   Background document focus is false. Focus-dependent Escape/shortcuts/menu/
-   foreign-editor delivery remains unverified, as do physical selection/copy,
-   paste/Undo/Redo/IME/AltGraph/modifiers/focus/window delivery and all listed
-   Windows/macOS checks. Finish independent work before seeking fresh attended or
-   suitable separate native/platform evidence. No release acceptance is implied.
-7. **Ownership and reporting.** All four test hosts/profiles, private runtime and
-   both UID-checked namespaces are removed; private build/cache and unrelated
-   scratch/user work remain. Create a fresh safe `FIND_HOST_RUN`, profile and
-   owned fixtures. Install once through Extensions before opening any cluster;
-   same-version changed bytes require a fresh process/profile. Following appends
-   to the surface fixture, so rerun surface tests only with new owned data.
-   Preserve original acceptance text and check only whole satisfied criteria.
-   Commit only #48 implementation/evidence. Report retry while concrete autonomous
-   work remains; blocked when only precise human/access/evidence gates remain;
-   done requires every original criterion and committed evidence.
+   Main/renderer/worker, stable package/store/page/config and schema 3 remain.
+   Keep the compact stable highlight-status reserve from the prior checkpoint.
+2. **Do not trust endpoint-only soak verdicts.** `mounted-soak.mjs` now checks
+   every measured sample and documents peak/sample growth and actual violations,
+   including zero document growth. Old baseline stdout says pass at +8 endpoint
+   listeners but has +9 earlier. The independent saved policy audit catches this;
+   the corrected new run truthfully fails at long cycle 24 (+1,543 nodes/+26
+   listeners), with later listener violations too. Raw stdout/failed runs remain
+   separate. No threshold was relaxed. Optional instrumented passes cannot clear
+   failed uninstrumented production resource gates.
+3. **Concrete next autonomous resource task.** Capture the exact extra listeners
+   at a failed *pre-heap* sample. Four attached censuses are identical at 666;
+   eight later heap captures each have 724 native listeners. Heap GC removes the
+   transient difference, so it does not identify the failed sample's extra nine.
+   Host-only route control has a +31 transient listener peak with no extension
+   viewer; abort traces show host-renderer/Node call sites but change collection
+   behavior. Use those source line/column groups and a bounded diagnostic that
+   does not strongly retain targets/callbacks. The weak trace records reachability,
+   not whether a listener was removed. Do not claim exclusive attribution or
+   change product lifetime from these samples. Reproduce plain failures afterward.
+4. **Node symptom has an independent host control.** Fifteen host-only inactivity
+   samples retain exactly 14 additional `ClusterView` DOM nodes, no other sampled
+   DOM class growth and no listener growth. An uninstrumented repetition has the
+   same +14 nodes. Some paths pass through NonInjectedClusterView/MobX computed
+   observers, others through the host iframe tree. No extension viewer is mounted
+   in that control. This identifies host-side retention for that per-inactivity
+   node symptom, not all RSS/listener growth. Do not patch the pinned host or
+   subtract host growth from a failed acceptance sample without an accepted
+   measurement decision. If the remaining host-only limitation requires a policy
+   change, record the exact planning question locally instead of adopting one.
+5. **Tools and evidence.** `listener-census.mjs` captures types/target classes and
+   handler script locations without source/values; `listener-heap.mjs` captures
+   sanitized native IDs/counts/paths and always deletes raw private heaps;
+   `listener-signals.mjs` optionally traces new AbortSignal registrations with
+   weak refs and restores methods. Caps fail rather than silently dropping data.
+   `FIND_CONTROL_SCENARIOS=host-idle` minimizes navigation. Capture labels repeat:
+   use a fresh evidence run name and owned profile/fixture, or a separate evidence
+   directory for controls in the same proven host, as the report describes.
+6. **Other Host/native gates remain.** The prior current-package subset passes
+   33 state, 13 held, 192 source/geometry, terminal-Q/dense cadence, following/Pause,
+   actual extension maintenance, SDK/frame ownership, timeout and bursts. An exact full-5-MiB installed response fixture is also still distinct from
+   this continuation's near-bound single source. Full
+   remaining snapshot/profile/restart/duplicate/stale-target/viewer counterparts
+   remain distinct from older named-artifact evidence. Native editing/selection/
+   clipboard, OS shortcuts/IME/AltGraph/menus/focus/windows, stock-output and long
+   duration plateau, and all Windows/macOS gates stay unverified. Background
+   probes and composition stand-ins do not close them. No release acceptance.
+7. **Checks and ownership.** Final pinned locked install/typecheck, 249 tests, six
+   UI guards, production browser, actual workers, original resource smoke, strict
+   package checks and equal two-build SHA pass. Independent reviews use the new
+   recorded baseline and original requirements first (`fork_turns=none`). This
+   host has 466 actual starts/exits, peak one and zero service maps/watch at
+   shutdown. The host/profile/private runtime and UID-checked namespace are gone;
+   user settings/glossary/docs hashes match fresh before-run hashes. Private
+   build/cache and unrelated scratch/user work stay. Create new owned resources.
+8. **Desktop and reporting.** Use private labwc→Hyprland workspace 7 and the
+   documented private Aquamarine diagnostic only for autonomous DOM work. Leave
+   FREELENS_UI_MODE unset and guards intact: no user window maintenance, native
+   input, pointer/clipboard operations, bringToFront or fake focus. Current real
+   observer has zero focus/workspace/window transitions; pointer equality is
+   endpoint-only. Complete independent work before fresh native/platform gates.
+   Preserve original acceptance text; check only wholly satisfied criteria.
+   Commit only #48 work/evidence before reporting. Retry while concrete autonomous
+   work remains; blocked for precise missing human/access/decision/evidence gates;
+   done requires every original criterion and its committed evidence.

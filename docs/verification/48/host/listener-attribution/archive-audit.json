@@ -1,0 +1,22 @@
+[
+  {
+    "command": [
+      "python3",
+      "docs/verification/48/host/listener-attribution/check-soak-peaks.py",
+      "docs/verification/48/host/listener-attribution/baseline-soak.json.gz"
+    ],
+    "expectedExit": 1,
+    "actualExit": 1,
+    "scope": "Baseline is a known false pass and must be rejected; corrected resource failure must agree with underlying samples."
+  },
+  {
+    "command": [
+      "python3",
+      "docs/verification/48/host/listener-attribution/check-soak-peaks.py",
+      "docs/verification/48/host/listener-attribution/corrected-soak.json.gz"
+    ],
+    "expectedExit": 0,
+    "actualExit": 0,
+    "scope": "Baseline is a known false pass and must be rejected; corrected resource failure must agree with underlying samples."
+  }
+]

@@ -1,0 +1,32 @@
+{
+  "head": "a098a2105e3223fd435dbb7eef3b09c05ffd93b1",
+  "at": "2026-10-27T10:35:30.937515+00:00",
+  "issues": {
+    "36": {
+      "bodyEqual": true,
+      "commentsEqual": true,
+      "title": "Choose Find matching semantics and resource budgets"
+    },
+    "37": {
+      "bodyEqual": true,
+      "commentsEqual": true,
+      "title": "Define Find state, reading anchors and occurrence identity"
+    },
+    "38": {
+      "bodyEqual": true,
+      "commentsEqual": true,
+      "title": "Validate text-safe highlights, hidden matches and scrollbar marks"
+    },
+    "40": {
+      "bodyEqual": true,
+      "commentsEqual": true,
+      "title": "Prove main-owned Find execution in an isolated Freelens host"
+    },
+    "48": {
+      "bodyEqual": true,
+      "commentsEqual": true,
+      "title": "Verify production Find against the acceptance matrix"
+    }
+  },
+  "acceptedPlanSha256": "a26cd0495293ddc97d4c39dcf93eebac3228fc2be63b4328c3a0efc70d3d4472"
+}

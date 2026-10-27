@@ -1,6 +1,15 @@
 # Integrated production Find acceptance matrix
 
-Latest continuation: [dense cadence and stable highlight feedback](dense-cadence.md).
+Latest continuation: [resource verdict correction and host-only retainers](listener-attribution.md).
+Fresh installed uninstrumented resources remain **failed**. The soak now checks
+every post-warmup sample: an endpoint pass cannot hide a failed earlier sample.
+Attached listener detail is stable in the sampled captures; exact failed-sample
+listener attribution remains unfinished. Host-only inactivity independently
+retains 14 host ClusterView nodes in 15 samples, including without heap/census
+instrumentation. Passing controls do not clear the failed gate. No whole
+unfinished criterion is newly satisfied and no native/platform coverage is added.
+
+Previous continuation: [dense cadence and stable highlight feedback](dense-cadence.md).
 Final package SHA-256 `995f1cf5e3ac81f377b16cf8dea24c15237824cd31dd1a066acde26bf868f904`.
 The final installed subset repeats 33 state, 13 held-delivery, 192 source/geometry
 assertions, terminal-Q, natural dense frames, real extension maintenance, SDK/frame
@@ -16,7 +25,8 @@ geometry stable, with the 260px log viewport still usable. No matcher, retention
 copy, following/Pause or worker contract changes.
 
 Resource results are kept by artifact: `dense-fixed` **fails +9 listeners**;
-`compact-final` passes its 30-cycle limits but its inactivity control retains
+`compact-final` records an endpoint-only 30-cycle pass (its all-sample verdict
+has not been audited here), but its inactivity control retains
 **14 DOM nodes/15 cycles**. Final `feedback-final` again **fails +9 dense listeners**;
 its node-control repetition is variable (+5 Find-idle nodes/-1 listener). Passing controls cannot erase the failed run.
 [Final resource/control evidence and limits](dense-cadence.md#resource-evidence-and-attribution-limits)
