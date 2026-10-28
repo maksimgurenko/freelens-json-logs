@@ -1,6 +1,6 @@
 # 48: Verify production Find against the acceptance matrix
 
-**Status:** ready-for-agent
+**Status:** done
 **Blocked by:** [47: Integrate package, regression and resource checks](47-integrate-package-regression-and-resource-checks.md)
 **GitHub:** https://github.com/maksimgurenko/freelens-json-logs/issues/48
 
@@ -9,7 +9,10 @@ and [scenario ledger](../../../docs/verification/48/native-completion-ledger.md)
 complete the four remaining Linux groups, with final reviewed package `15f99148`, using a
 fresh genuinely separate graphical session. Native actions never targeted the user
 desktop; its observer records unrelated activity and makes no unchanged-interval
-claim. Resources remain accepted/deferred; Windows/macOS explicitly unverified.
+claim. The resource follow-up is accepted/closed; Windows/macOS tests are planned
+soon in a future task, with both platforms explicitly unverified. The
+[specification TLDR](../../../docs/design/find-implementation-plan.md#resource-investigation-tldr)
+replaces the removed standalone investigation summary.
 Original failed observations and exact input/IME/artifact limits are retained.
 
 ## Parent
@@ -393,7 +396,7 @@ request/timer/native-owner attribution rather than repeating passing subsets.
 ### User acceptance of deferred resource issue on 2026-10-27
 
 The user explicitly accepted the DOM/listener resource issue documented in
-[Find resource investigation](../../../docs/find-resource-investigation.md) for
+[the resource summary now retained in the specification](../../../docs/design/find-implementation-plan.md#resource-investigation-tldr) for
 now and deferred further work. The resource execution/reporting criterion is
 accepted under that decision. Existing failing measurements, original thresholds
 and original criterion text remain unchanged; this is not a passing resource
@@ -406,7 +409,7 @@ physical-input/clipboard and actual Windows/macOS coverage are not waived.
 ### Scoped functional checkpoint from 27e4d82
 
 The user resource acceptance/deferral above is included in this checkpoint with
-[the scoped decision summary](../../../docs/find-resource-investigation.md).
+[the resource summary now retained in the specification](../../../docs/design/find-implementation-plan.md#resource-investigation-tldr).
 Original acceptance text and checkbox meanings remain intact. Resource failures
 stay failed measurements; no further resource attribution, related stock-display
 investigation, timing control or soak followed the decision.

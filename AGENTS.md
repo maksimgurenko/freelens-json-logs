@@ -24,3 +24,7 @@ after a test still interrupts the user.
 
 Before any UI verification, read `docs/agents/ui-verification.md` for the background
 workflow and the explicit opt-in required for attended native input checks.
+
+Windows and macOS test coverage is planned soon, in a future task. Keep both
+platforms explicitly unverified and defer adding or running their test suites
+for this implementation increment. Existing Linux Find acceptance is complete.

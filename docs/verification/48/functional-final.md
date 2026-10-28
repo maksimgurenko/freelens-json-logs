@@ -7,7 +7,7 @@ with `gh issue edit 48 --add-assignee @me` before work. [Live complete authority
 matches cached #36/#37/#38/#40/#48 decisions and the exact accepted plan.
 
 On 2026-10-27 the user explicitly accepted and deferred the DOM/listener issue
-covered by [Find resource investigation](../../find-resource-investigation.md#accepted-deferral).
+covered by the [resource summary now retained in the specification](../../design/find-implementation-plan.md#resource-investigation-tldr).
 This checkpoint commits that scoped decision, preserving the original criterion
 text and the user's resource execution/reporting checkbox. **No resource
 attribution, request/timer/queue probe, timing control, further soak or related

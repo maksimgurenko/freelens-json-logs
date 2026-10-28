@@ -19,10 +19,14 @@ used the private compositor. The read-only user desktop observer includes unrela
 activity and different endpoints; no unchanged interval is claimed. Unrelated real
 window titles are redacted. Dirty work is preserved.
 
-All original #48 criteria are reconciled in the local ticket. Resources remain
-accepted/deferred, with historical failures/thresholds intact. Windows/macOS remain
-explicitly excluded/unverified, as allowed by the original marking criterion.
-No publication, push, PR, issue comment/closure or release is authorized. No further
-native/resource work is scheduled by this ticket.
+All original #48 criteria are reconciled in the local ticket. The resource
+follow-up is closed as an accepted host limitation; the
+[specification TLDR](../../design/find-implementation-plan.md#resource-investigation-tldr)
+summarizes the watch-timer finding, clean viewer comparison and attribution limits.
+Historical failures and thresholds remain intact. Windows/macOS test coverage is
+planned soon in a future task; both platforms remain explicitly unverified.
+Implementation and agreed acceptance are complete, so the Find implementation
+tickets are eligible for closure. Publication, push, PR and release remain
+separate work. No further native/resource work is scheduled by this ticket.
 
 [Review corrections](native-review-corrections.md) record the CSS contrast regression/fix, final package relationship, stronger native IME replacements and failure-path cleanup checks.

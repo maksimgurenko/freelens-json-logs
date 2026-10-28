@@ -4,8 +4,9 @@
 > cover the four remaining groups; final package is `15f99148` after a CSS-only contrast fix. The [report](native-completion-20261028.md)
 > records private routes, preserved failures/oracle corrections, IME trust/late-event
 > limits and observed user activity. No unchanged real-desktop interval or physical
-> hardware provenance is claimed. Resources remain accepted/deferred; Windows/macOS
-> remain excluded/unverified. Historical checkpoint descriptions below retain their
+> hardware provenance is claimed. The resource follow-up is closed as an accepted
+> host limitation; Windows/macOS tests are deferred to a future task and remain
+> unverified. Historical checkpoint descriptions below retain their
 > original artifact scope; current native verdicts are in the D01-D16 column.
 
 
@@ -27,17 +28,18 @@ current-package native click/wheel, single-source drag/exact copy/Find seed and
 refresh-retention evidence. The user authorized this fresh session on workspace 7;
 it has ended. Those then-remaining Linux permutations are now covered by the completion ledger; Windows/macOS stay unverified.
 
-**User decision, 2026-10-27: the DOM/listener resource issue is accepted for now
-and deferred.** [Accepted deferral](../../find-resource-investigation.md#accepted-deferral)
-includes request/timer/queue attribution, timing controls, further soaks and related
-stock-display investigation. Failed measurements and original thresholds remain;
-none is relabelled passed. This overrides historical instructions to continue
-that investigation. Native/clipboard and actual Windows/macOS coverage are not waived.
+**Current decision, 2026-10-28: the resource follow-up is closed as an accepted
+host limitation.** The [specification TLDR](../../design/find-implementation-plan.md#resource-investigation-tldr)
+links the confirmed host watch-timer defect and the passing 100-cycle viewer
+comparison. No production host fix or complete attribution of historical spikes
+is claimed; failed measurements and original thresholds remain. Windows/macOS
+tests are future work, with both platforms explicitly unverified. These decisions
+supersede the earlier resource deferral and pending platform gates for this increment.
 
 ## Evidence layers and artifact scope
 
 The accepted plan at `d02b7e7c19c8e48b1cde714f0a23813b40374824` and full
-#36/#37/#38/#40 decisions govern, with the explicit resource deferral above.
+#36/#37/#38/#40 decisions govern, with the completion decisions above.
 [Live revalidation](host/functional-final/authority.json) matches cached authority.
 [Core/browser coverage by case](../47/coverage.md) remains the source mapping;
 the prior functional checkpoint passed [249 tests](host/functional-final/tests-output.txt),
@@ -62,8 +64,8 @@ matching/range/highlight/mark agreement. Earlier `cbc903f5`, `1775d0f0` and
 pinned host and main worker, with explicit DOM events, Range selection or controlled
 response delivery. It never means physical input or clipboard delivery. The private
 labwc → Hyprland workspace-7 session uses the documented modified Aquamarine
-diagnostic. Its stock/native limits remain; investigating the display for the
-accepted resource issue is deferred. Those functional probes used no fake document focus or native input. The separate
+diagnostic. Its stock/native limits remain; the resource follow-up is now closed
+as an accepted host limitation. Those functional probes used no fake document focus or native input. The separate
 [bounded native pass](native-isolated.md) labels every virtual/native API route.
 
 ## D01–D16
@@ -112,7 +114,7 @@ native. The final column below records the previous checkpoint for comparison.
 | 10 input transactions | [DOM transactions](host/feedback-final/state-acceptance.json), [late Clear](host/functional-final/composition-clear.json); [virtual keyboard paste/Undo/Redo](host/native-isolated/native-keyboard.json) | Full trusted native IME/Enter/clear/cancel unverified |
 | 11 seed/history/Escape | [Sources/Unicode/layout eligibility](host/feedback-final/surfaces.json), [flags/seven-tuple MRU](host/functional-final/state-boundaries.json), [Close/recall](host/feedback-final/state-acceptance.json); Escape ownership at browser layer | Focus-dependent physical Escape/menus/AltGraph |
 | 12 observed restarts | [Two actual restarts](host/functional-final/snapshot-acceptance.json) reset query/both flags/result/history, preserve manual profile/Pause/following with appended-bottom movement; [controlled metadata/old-instance/log delivery](host/functional-final/controlled-snapshots.json) covers missing/count-then-ID/known-ID cases | Controlled ordering is distinct from non-atomic natural metadata/log acquisition |
-| 13 geometry/selection/following | [Measured source geometry](host/feedback-final/surfaces.json), [append/Pause/following](host/feedback-final/marks-following.json), [restart movement](host/functional-final/snapshot-acceptance.json), current browser cap-boundary regression | Physical selection/window input; resources accepted/deferred |
+| 13 geometry/selection/following | [Measured source geometry](host/feedback-final/surfaces.json), [append/Pause/following](host/feedback-final/marks-following.json), [restart movement](host/functional-final/snapshot-acceptance.json), current browser cap-boundary regression | Physical selection/window input; resource follow-up accepted/closed |
 
 ## Additional mandatory regressions and lifecycle
 
@@ -124,7 +126,7 @@ native. The final column below records the previous checkpoint for comparison.
 | Full stale keys/worker generation/range interest; priority/latest-only/deadlines/explicit recovery | Pure/browser pass; installed query/window/message/instance/target/viewer successes and failures linked above; [SDK/frame](host/feedback-final/sdk-suite.json), [startup timeout](host/feedback-final/startup-timeout.json), [20 bursts](host/feedback-final/latest-only-bursts-output.txt), [held range failure](host/feedback-final/held-replies.json) |
 | Root/cluster share webContents, reject foreign tokens, remove frame, replace same-frame owner, active/startup/idle inactivity, close, Disable/Uninstall/reactivation | Passed at real SDK/lifecycle layer: [SDK suite](host/feedback-final/sdk-suite.json), [extension maintenance](host/feedback-final/extension-lifecycle.json), [fresh context teardown](host/functional-context-reviewed/context-boundaries.json); actual exits and empty owner maps observed. Physical native-window delivery remains unverified |
 | Shutdown/owned execution cleanup | [Fresh shutdown](host/functional-final/shutdown-clean.json); actual worker exits and empty service maps/watch. SDK handlers listed at will-quit are reported honestly; zero there is not claimed |
-| DOM/listener/RAM/disk/thread/resource/stock-display investigation | **Accepted for now and deferred by user.** [Resource summary/decision](../../find-resource-investigation.md). Failed every-sample runs, including +1,551/+26 and +203/+36, stay failed; original thresholds are preserved. No further investigation or soak was run for this checkpoint |
+| DOM/listener/RAM/disk/thread/resource/stock-display investigation | **Closed as an accepted host limitation.** [Resource TLDR and evidence](../../design/find-implementation-plan.md#resource-investigation-tldr). The host watch-timer control establishes a contribution; the separate 100-cycle-per-viewer comparison passes. Historical failed runs, including +1,551/+26 and +203/+36, stay failed; original thresholds are preserved. No production fix or complete attribution is claimed |
 
 ## Historical native pass and then-remaining gates
 
@@ -145,4 +147,4 @@ use the exact owned BrowserWindow API. None establishes physical hardware proven
 | Windows matching/worker/package/primary modifier/IME/selection/copy/focus/lifecycle | **Excluded/unverified.** Actual Windows session needed; explicit reporting is satisfied, coverage is not claimed |
 | macOS matching/worker/package/primary modifier/IME/selection/copy/focus/lifecycle | **Excluded/unverified.** Actual macOS session needed; Linux/virtual-device evidence is not coverage |
 
-The current Linux completion ledger supersedes the historical remaining native gates above. Original criteria are reconciled in the local ticket. Windows/macOS remain explicitly unverified; resources remain accepted/deferred. No publication or issue closure is authorized.
+The current Linux completion ledger supersedes the historical remaining native gates above. Original criteria are reconciled in the local ticket. Windows/macOS remain explicitly unverified and their tests are deferred to a future task; the resource follow-up is accepted/closed. The implementation tickets are eligible for closure within this scope. Publication and release remain separate work.

@@ -1,6 +1,6 @@
 # #48 production Find verification checkpoint
 
-Current Linux acceptance: [native completion](native-completion-20261028.md), [scenario ledger](native-completion-ledger.md), [review corrections](native-review-corrections.md) and [matrix](matrix.md). The user-authorized four remaining groups are complete in a separate session. Resources remain accepted/deferred and Windows/macOS explicitly unverified. Earlier checkpoint text below retains its original scope.
+Current Linux acceptance: [native completion](native-completion-20261028.md), [scenario ledger](native-completion-ledger.md), [review corrections](native-review-corrections.md) and [matrix](matrix.md). The user-authorized four remaining groups are complete in a separate session. The resource follow-up is accepted/closed; Windows/macOS tests are future work and both platforms remain explicitly unverified. The [specification TLDR](../../design/find-implementation-plan.md#resource-investigation-tldr) records the resource conclusion. Earlier checkpoint text below retains its original scope.
 
 Latest evidence: [2026-10-28 attended pointer checks](attended-hyprland-20261028.md)
 on the current `0648bbe5` artifact. Native clicks, wheel movement, source drag/copy,
@@ -10,7 +10,7 @@ their artifact identities and historical verdicts.
 
 **User decision, 2026-10-27: resource issue accepted for now and deferred.**
 The DOM/listener resource investigation in
-[the accepted issue summary](../../find-resource-investigation.md#accepted-deferral)
+[the resource summary now retained in the specification](../../design/find-implementation-plan.md#resource-investigation-tldr)
 no longer blocks this Find increment. Stop further resource/related stock-display
 investigation and soaks. The failed verdicts below remain historical measurements,
 not passing tests. Native/platform and remaining non-resource host checks are
