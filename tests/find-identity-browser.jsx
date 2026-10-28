@@ -32,6 +32,7 @@ let text = 'start\nx\nend', reads = 0, pendingRead, copies = [];
 let status = { name: 'app', restartCount: 0, containerID: 'run-0' };
 let uid = 'uid';
 let heldReply, failNext = false, requestCount = 0;
+const debugExact = [];
 let failNextRange = false;
 let rpcSequence = 0;
 const rangeRequests = [];
@@ -42,6 +43,8 @@ const ipc = {
     if (name === 'viewer-visibility-request') { callbacks.get(args[1])?.({}, args[0]); return; }
     const exact = name === 'find-request' && args[1].work === 'match';
     const gate = exact && (!heldReply?.text || heldReply.text === args[1].query.text) ? heldReply : undefined;
+    const trace = exact ? { text: args[1].query.text.slice(0, 32), key: args[1].key, gate: !!gate, start: performance.now() } : undefined;
+    if (trace) debugExact.push(trace);
     if (exact) { requestCount++; if (gate) heldReply = undefined; if (failNext) { failNext = false; throw new Error('Controlled SDK failure'); } }
     if (name === 'find-request' && !exact) {
       rangeRequests.push(args[1]);
@@ -49,6 +52,7 @@ const ipc = {
     }
     const result = await (await fetch('/find-rpc', { method: 'POST', body: JSON.stringify({ sequence: ++rpcSequence, channel: name, args }) })).json();
     if (gate) await gate.promise;
+    if (trace) Object.assign(trace, { end: performance.now(), result: result.value?.kind });
     if (result.error) throw new Error(result.error); return result.value;
   },
   broadcast() {},
@@ -668,6 +672,8 @@ globalThis.verifyIdentity = async () => {
     check(getComputedStyle(scroller).backgroundColor === 'rgb(0, 0, 0)', 'Black canvas changed');
     check(!root.querySelector('.rl-line-number'), 'Line counters introduced');
     check(localStorage.length === 0 && sessionStorage.length === 0 && !(await indexedDB.databases()).length, 'Find wrote browser storage');
+  } catch (error) {
+    throw new Error(`${error.message} [DEBUG-find-ci] ${JSON.stringify({ checks: results.slice(-3), input: input()?.value.slice(0, 32), count: root.querySelector('.rl-find-count')?.textContent, highlight: root.querySelector('.rl-highlight-status')?.textContent, current: root.querySelector('.rl-find-current')?.dataset.recordIndex, reading: root.querySelector('.rl-reading-row')?.dataset.recordIndex, exact: debugExact.slice(-12) })}`);
   } finally {
     ReactDOM.unmountComponentAtNode(root); await extension.onDeactivate(); await turn();
   }
