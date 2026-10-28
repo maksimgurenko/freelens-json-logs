@@ -1,0 +1,168 @@
+{
+  "before": {
+    "active": {
+      "address": "0x5637f3589950",
+      "mapped": true,
+      "hidden": false,
+      "visible": true,
+      "acceptsInput": true,
+      "at": [
+        1204,
+        694
+      ],
+      "size": [
+        1192,
+        652
+      ],
+      "workspace": {
+        "id": 2,
+        "name": "2"
+      },
+      "floating": false,
+      "monitor": 1,
+      "class": "freelens",
+      "title": "Freelens",
+      "initialClass": "freelens",
+      "initialTitle": "Freelens",
+      "pid": 1381364,
+      "xwayland": false,
+      "pinned": false,
+      "pinFullscreened": false,
+      "fullscreen": 0,
+      "fullscreenClient": 0,
+      "fullscreenHandler": "default",
+      "allowedOverFullscreen": true,
+      "grouped": [],
+      "tags": [],
+      "swallowing": "0x0",
+      "focusHistoryID": 0,
+      "inhibitingIdle": false,
+      "xdgTag": "",
+      "xdgDescription": "",
+      "contentType": "none",
+      "tearingHint": false,
+      "stableId": "18000054"
+    },
+    "workspace": {
+      "id": 2,
+      "name": "2",
+      "monitor": "HDMI-A-2",
+      "monitorID": 1,
+      "windows": 3,
+      "hasfullscreen": false,
+      "lastwindow": "0x5637f3589950",
+      "lastwindowtitle": "Freelens",
+      "ispersistent": false,
+      "tiledLayout": "dwindle"
+    },
+    "cursor": {
+      "x": 1843,
+      "y": 1259
+    }
+  },
+  "after": {
+    "active": {
+      "address": "0x5637f3589950",
+      "mapped": true,
+      "hidden": false,
+      "visible": true,
+      "acceptsInput": true,
+      "at": [
+        485,
+        33
+      ],
+      "size": [
+        1911,
+        1313
+      ],
+      "workspace": {
+        "id": 7,
+        "name": "7"
+      },
+      "floating": false,
+      "monitor": 1,
+      "class": "freelens",
+      "title": "Freelens",
+      "initialClass": "freelens",
+      "initialTitle": "Freelens",
+      "pid": 1381364,
+      "xwayland": false,
+      "pinned": false,
+      "pinFullscreened": false,
+      "fullscreen": 0,
+      "fullscreenClient": 0,
+      "fullscreenHandler": "scrolling",
+      "allowedOverFullscreen": true,
+      "grouped": [],
+      "tags": [],
+      "swallowing": "0x0",
+      "focusHistoryID": 0,
+      "inhibitingIdle": false,
+      "xdgTag": "",
+      "xdgDescription": "",
+      "contentType": "none",
+      "tearingHint": false,
+      "stableId": "18000054"
+    },
+    "workspace": {
+      "id": 7,
+      "name": "7",
+      "monitor": "HDMI-A-2",
+      "monitorID": 1,
+      "windows": 3,
+      "hasfullscreen": false,
+      "lastwindow": "0x5637f3589950",
+      "lastwindowtitle": "Freelens",
+      "ispersistent": false,
+      "tiledLayout": "scrolling"
+    },
+    "cursor": {
+      "x": 1440,
+      "y": 689
+    }
+  },
+  "window": {
+    "address": "0x5637f3589950",
+    "mapped": true,
+    "hidden": false,
+    "visible": true,
+    "acceptsInput": true,
+    "at": [
+      485,
+      33
+    ],
+    "size": [
+      1911,
+      1313
+    ],
+    "workspace": {
+      "id": 7,
+      "name": "7"
+    },
+    "floating": false,
+    "monitor": 1,
+    "class": "freelens",
+    "title": "Freelens",
+    "initialClass": "freelens",
+    "initialTitle": "Freelens",
+    "pid": 1381364,
+    "xwayland": false,
+    "pinned": false,
+    "pinFullscreened": false,
+    "fullscreen": 0,
+    "fullscreenClient": 0,
+    "fullscreenHandler": "scrolling",
+    "allowedOverFullscreen": true,
+    "grouped": [],
+    "tags": [],
+    "swallowing": "0x0",
+    "focusHistoryID": 0,
+    "inhibitingIdle": false,
+    "xdgTag": "",
+    "xdgDescription": "",
+    "contentType": "none",
+    "tearingHint": false,
+    "stableId": "18000054"
+  },
+  "reason": "grandchild wrapper did not inherit requested initial silent workspace; explicitly moved only owned test window"
+}

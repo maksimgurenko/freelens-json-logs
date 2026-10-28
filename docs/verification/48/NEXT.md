@@ -1,4 +1,11 @@
-# Find #48: bounded native attempt finished; partial acceptance
+# Find #48: attended pointer checks passed; partial acceptance
+
+Latest evidence, 2026-10-28: [attended user-session pointer checks](attended-hyprland-20261028.md)
+pass native Find clicks, wheel movement, source drag/exact copy, selected-text
+Ctrl+F and native-selection retention through a real refresh on current `0648bbe5`.
+An installation toast covered the first click target; dismissing it allowed trusted
+pointer delivery. The older isolated virtual-pointer run was not rerun. This fresh
+attended session is finished; it grants no continuing desktop-input permission.
 
 Branch `implementation/find`; review baseline
 `5982a321d720669f0272e09f272499a79eb9c8fc`. Ticket #48 only. The user's
@@ -31,9 +38,10 @@ OS blur alone is not viewer inactivity under the accepted contract.
 
 Exact remaining Linux evidence:
 
-- Pointer-delivered control actions, drag source selection/copy/selected-text seed,
-  source selection retained through refresh, wheel/manual-scroll behavior and
-  selection/mark preservation through native resize.
+- Remaining pointer permutations (multiline/foreign/oversized selections and other
+  sources/layouts), pending/manual-scroll variants, and selection/mark preservation
+  through native resize. Basic clicks/wheel/drag/copy/seed/refresh retention now pass
+  in the attended report above; those results do not cover every native case.
 - Full trusted native IME composition/commit/Enter/clear/cancel/late completion.
   Input-method-v2 activated with trusted preedit and query commit, but observed
   composition-end was untrusted; full acceptance was not established.

@@ -1,0 +1,22 @@
+{
+  "hostPid": 1381364,
+  "namespace": "find-attended-48-1381131",
+  "namespaceUid": "10b5dfef-430a-48d6-9501-17c8873f4cc0",
+  "focusedTestBeforeCleanup": true,
+  "hostExit": "0",
+  "namespaceDeleted": true,
+  "profileRemoved": true,
+  "originalFocusRestored": true,
+  "after": {
+    "workspace": 2,
+    "window": {
+      "address": "0x5637f33d1230",
+      "class": "kitty",
+      "pid": 3065834
+    },
+    "pointer": {
+      "x": 1800,
+      "y": 689
+    }
+  }
+}

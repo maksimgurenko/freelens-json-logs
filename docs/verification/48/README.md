@@ -1,5 +1,11 @@
 # #48 production Find verification checkpoint
 
+Latest evidence: [2026-10-28 attended pointer checks](attended-hyprland-20261028.md)
+on the current `0648bbe5` artifact. Native clicks, wheel movement, source drag/copy,
+selected-text Find and refresh retention pass in the user's real Hyprland session.
+Full native/platform acceptance remains partial. Earlier checkpoints below retain
+their artifact identities and historical verdicts.
+
 **User decision, 2026-10-27: resource issue accepted for now and deferred.**
 The DOM/listener resource investigation in
 [the accepted issue summary](../../find-resource-investigation.md#accepted-deferral)
@@ -9,7 +15,7 @@ not passing tests. Native/platform and remaining non-resource host checks are
 not waived. This decision supersedes older instructions below to continue the
 resource investigation.
 
-Latest scoped checkpoint: [non-deferred functional acceptance](functional-final.md).
+Earlier scoped checkpoint: [non-deferred functional acceptance](functional-final.md).
 The unchanged final `995f1cf5` package passes 16 new installed target/viewer/anchor
 assertions, 20 state-boundary assertions, 19 controlled instance/snapshot assertions,
 31 actual snapshot/restart assertions and a late-composition-after-Clear probe.

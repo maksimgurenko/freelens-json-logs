@@ -1,0 +1,273 @@
+{
+  "desktop": {
+    "workspace": {
+      "id": 7,
+      "name": "7",
+      "monitor": "HDMI-A-2",
+      "monitorID": 1,
+      "windows": 3,
+      "hasfullscreen": false,
+      "lastwindow": "0x5637f3589950",
+      "lastwindowtitle": "Freelens",
+      "ispersistent": false,
+      "tiledLayout": "scrolling"
+    },
+    "window": {
+      "address": "0x5637f3589950",
+      "mapped": true,
+      "hidden": false,
+      "visible": true,
+      "acceptsInput": true,
+      "at": [
+        485,
+        33
+      ],
+      "size": [
+        1911,
+        1313
+      ],
+      "workspace": {
+        "id": 7,
+        "name": "7"
+      },
+      "floating": false,
+      "monitor": 1,
+      "class": "freelens",
+      "title": "Freelens",
+      "initialClass": "freelens",
+      "initialTitle": "Freelens",
+      "pid": 1381364,
+      "xwayland": false,
+      "pinned": false,
+      "pinFullscreened": false,
+      "fullscreen": 0,
+      "fullscreenClient": 0,
+      "fullscreenHandler": "scrolling",
+      "allowedOverFullscreen": true,
+      "grouped": [],
+      "tags": [],
+      "swallowing": "0x0",
+      "focusHistoryID": 0,
+      "inhibitingIdle": false,
+      "xdgTag": "",
+      "xdgDescription": "",
+      "contentType": "none",
+      "tearingHint": false,
+      "stableId": "18000054"
+    },
+    "cursor": {
+      "x": 1441,
+      "y": 688
+    },
+    "clients": [
+      {
+        "address": "0x5637f3589950",
+        "mapped": true,
+        "hidden": false,
+        "visible": true,
+        "acceptsInput": true,
+        "at": [
+          485,
+          33
+        ],
+        "size": [
+          1911,
+          1313
+        ],
+        "workspace": {
+          "id": 7,
+          "name": "7"
+        },
+        "floating": false,
+        "monitor": 1,
+        "class": "freelens",
+        "title": "Freelens",
+        "initialClass": "freelens",
+        "initialTitle": "Freelens",
+        "pid": 1381364,
+        "xwayland": false,
+        "pinned": false,
+        "pinFullscreened": false,
+        "fullscreen": 0,
+        "fullscreenClient": 0,
+        "fullscreenHandler": "scrolling",
+        "allowedOverFullscreen": true,
+        "grouped": [],
+        "tags": [],
+        "swallowing": "0x0",
+        "focusHistoryID": 0,
+        "inhibitingIdle": false,
+        "xdgTag": "",
+        "xdgDescription": "",
+        "contentType": "none",
+        "tearingHint": false,
+        "stableId": "18000054"
+      }
+    ],
+    "monitors": [
+      {
+        "id": 1,
+        "name": "HDMI-A-2",
+        "description": "LG Electronics LG TV SSCR2 0x01010101",
+        "make": "LG Electronics",
+        "model": "LG TV SSCR2",
+        "serial": "0x01010101",
+        "width": 3840,
+        "height": 2160,
+        "physicalWidth": 1600,
+        "physicalHeight": 900,
+        "refreshRate": 119.88,
+        "x": 0,
+        "y": 0,
+        "activeWorkspace": {
+          "id": 7,
+          "name": "7"
+        },
+        "specialWorkspace": {
+          "id": 0,
+          "name": ""
+        },
+        "reserved": [
+          0,
+          29,
+          0,
+          0
+        ],
+        "scale": 1.6,
+        "transform": 0,
+        "focused": true,
+        "dpmsStatus": true,
+        "vrr": false,
+        "solitary": "0",
+        "solitaryBlockedBy": [
+          "WINDOWED",
+          "CANDIDATE"
+        ],
+        "activelyTearing": false,
+        "tearingBlockedBy": [
+          "NOT_TORN",
+          "USER",
+          "CANDIDATE",
+          "HW_CURSOR"
+        ],
+        "directScanoutTo": "0",
+        "directScanoutBlockedBy": [
+          "USER",
+          "CANDIDATE"
+        ],
+        "disabled": false,
+        "currentFormat": "XRGB8888",
+        "mirrorOf": "none",
+        "availableModes": [
+          "3840x2160@60.00Hz",
+          "4096x2160@119.88Hz",
+          "4096x2160@100.00Hz",
+          "4096x2160@59.94Hz",
+          "4096x2160@50.00Hz",
+          "4096x2160@29.97Hz",
+          "4096x2160@25.00Hz",
+          "4096x2160@24.00Hz",
+          "4096x2160@23.98Hz",
+          "3840x2160@119.88Hz",
+          "3840x2160@100.00Hz",
+          "3840x2160@59.94Hz",
+          "3840x2160@50.00Hz",
+          "3840x2160@29.97Hz",
+          "3840x2160@25.00Hz",
+          "3840x2160@23.98Hz",
+          "2560x1440@120.00Hz",
+          "1920x1080@119.88Hz",
+          "1920x1080@100.00Hz",
+          "1920x1080@60.00Hz",
+          "1920x1080@59.94Hz",
+          "1920x1080@50.00Hz",
+          "1920x1080@29.97Hz",
+          "1920x1080@25.00Hz",
+          "1920x1080@23.98Hz",
+          "1280x1024@60.02Hz",
+          "1152x864@60.00Hz",
+          "1280x720@59.94Hz",
+          "1280x720@50.00Hz",
+          "1024x768@60.00Hz",
+          "800x600@60.32Hz",
+          "720x576@50.00Hz",
+          "720x480@59.94Hz",
+          "640x480@59.95Hz",
+          "640x480@59.94Hz"
+        ],
+        "colorManagementPreset": "srgb",
+        "sdrBrightness": 1,
+        "sdrSaturation": 1,
+        "sdrMinLuminance": 0.2,
+        "sdrMaxLuminance": 80,
+        "hardwareCursorsInUse": true
+      }
+    ]
+  },
+  "root": {
+    "focus": true,
+    "active": "<body><div id=\"app\"><div class=\"ClusterManager\"><div class=\"top-bar-module__topBar--GHsrg\"><div class=\"top-bar-module__items--kYOnW\"><div class=\"top-bar-module__preventedDragging--G0Qce\"><div class=\"t",
+    "width": 1911,
+    "height": 1313,
+    "dpr": 1.600000023841858,
+    "frames": [
+      {
+        "src": "https://e2622e636e2ae728ca733a120a994406.renderer.freelens.app:44291/",
+        "r": {
+          "x": 75,
+          "y": 40,
+          "width": 1836.25,
+          "height": 1252.12890625,
+          "top": 40,
+          "right": 1911.25,
+          "bottom": 1292.12890625,
+          "left": 75
+        }
+      }
+    ]
+  },
+  "cluster": {
+    "focus": false,
+    "active": "<body><div id=\"app\"><div class=\"main-layout-module__mainLayout--LIGm3\" style=\"--sidebar-width: 200px;\"><div class=\"main-layout-module__sidebar--suvQ_\"><div class=\"flex flex-col\" data-testid=\"cluster-s",
+    "opener": {
+      "x": 1648.935546875,
+      "y": 5.99609375,
+      "width": 43.994140625,
+      "height": 32.255859375,
+      "top": 5.99609375,
+      "right": 1692.9296875,
+      "bottom": 38.251953125,
+      "left": 1648.935546875
+    },
+    "scroller": {
+      "x": 200,
+      "y": 44.873046875,
+      "width": 1636.25,
+      "height": 1136.5234375,
+      "top": 44.873046875,
+      "right": 1836.25,
+      "bottom": 1181.396484375,
+      "left": 200
+    }
+  },
+  "native": [
+    {
+      "id": 2,
+      "bounds": {
+        "x": 0,
+        "y": 0,
+        "width": 1911,
+        "height": 1313
+      },
+      "contentBounds": {
+        "x": 0,
+        "y": 0,
+        "width": 1911,
+        "height": 1313
+      },
+      "focused": true,
+      "visible": true,
+      "webFocused": true
+    }
+  ]
+}

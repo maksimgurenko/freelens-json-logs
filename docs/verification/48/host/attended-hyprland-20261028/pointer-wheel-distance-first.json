@@ -1,0 +1,343 @@
+{
+  "at": "2026-10-28T15:05:27.385Z",
+  "hostPid": 1381364,
+  "route": "owned Linux uinput -> current Hyprland/Wayland -> pinned Freelens 1.10.3; no hardware provenance claim",
+  "checks": [
+    {
+      "name": "Native pointer click reaches Find opener and Close",
+      "before": {
+        "focus": false,
+        "query": "",
+        "open": false,
+        "selection": "",
+        "inspected": -1,
+        "scroll": 1733.125,
+        "events": []
+      },
+      "pass": true,
+      "after": {
+        "focus": true,
+        "query": "",
+        "open": false,
+        "selection": "",
+        "inspected": -1,
+        "scroll": 1733.125,
+        "events": [
+          {
+            "type": "pointerdown",
+            "trusted": true,
+            "button": 0,
+            "target": ""
+          },
+          {
+            "type": "pointerup",
+            "trusted": true,
+            "button": 0,
+            "target": ""
+          },
+          {
+            "type": "click",
+            "trusted": true,
+            "button": 0,
+            "target": ""
+          },
+          {
+            "type": "pointerdown",
+            "trusted": true,
+            "button": 0,
+            "target": ""
+          },
+          {
+            "type": "pointerup",
+            "trusted": true,
+            "button": 0,
+            "target": ""
+          },
+          {
+            "type": "click",
+            "trusted": true,
+            "button": 0,
+            "target": ""
+          }
+        ]
+      }
+    },
+    {
+      "name": "Native wheel scroll changes viewport and reaches retained beginning",
+      "before": {
+        "focus": true,
+        "query": "",
+        "open": false,
+        "selection": "",
+        "inspected": -1,
+        "scroll": 1733.125,
+        "events": [
+          {
+            "type": "pointerdown",
+            "trusted": true,
+            "button": 0,
+            "target": ""
+          },
+          {
+            "type": "pointerup",
+            "trusted": true,
+            "button": 0,
+            "target": ""
+          },
+          {
+            "type": "click",
+            "trusted": true,
+            "button": 0,
+            "target": ""
+          },
+          {
+            "type": "pointerdown",
+            "trusted": true,
+            "button": 0,
+            "target": ""
+          },
+          {
+            "type": "pointerup",
+            "trusted": true,
+            "button": 0,
+            "target": ""
+          },
+          {
+            "type": "click",
+            "trusted": true,
+            "button": 0,
+            "target": ""
+          }
+        ]
+      },
+      "pass": false,
+      "error": "Error: Wheel reaches beginning: {\"focus\":true,\"query\":\"\",\"open\":false,\"selection\":\"\",\"inspected\":-1,\"scroll\":596.875,\"events\":[{\"type\":\"pointerdown\",\"trusted\":true,\"button\":0,\"target\":\"\"},{\"type\":\"pointerup\",\"trusted\":true,\"button\":0,\"target\":\"\"},{\"type\":\"click\",\"trusted\":true,\"button\":0,\"target\":\"\"},{\"type\":\"pointerdown\",\"trusted\":true,\"button\":0,\"target\":\"\"},{\"type\":\"pointerup\",\"trusted\":true,\"button\":0,\"target\":\"\"},{\"type\":\"click\",\"trusted\":true,\"button\":0,\"target\":\"\"},{\"type\":\"wheel\",\"trusted\":true,\"button\":0,\"target\":\"rl-row\",\"deltaY\":-3599.9999463558206}]}\n    at waitFor (file:///home/max/work/freelens-json-logs/.scratch/find/48-attended-20261028/pointer.mjs:13:124)\n    at async file:///home/max/work/freelens-json-logs/.scratch/find/48-attended-20261028/pointer.mjs:33:277\n    at async run (file:///home/max/work/freelens-json-logs/.scratch/find/48-attended-20261028/pointer.mjs:20:93)\n    at async file:///home/max/work/freelens-json-logs/.scratch/find/48-attended-20261028/pointer.mjs:33:2",
+      "after": {
+        "focus": true,
+        "query": "",
+        "open": false,
+        "selection": "",
+        "inspected": -1,
+        "scroll": 596.875,
+        "events": [
+          {
+            "type": "pointerdown",
+            "trusted": true,
+            "button": 0,
+            "target": ""
+          },
+          {
+            "type": "pointerup",
+            "trusted": true,
+            "button": 0,
+            "target": ""
+          },
+          {
+            "type": "click",
+            "trusted": true,
+            "button": 0,
+            "target": ""
+          },
+          {
+            "type": "pointerdown",
+            "trusted": true,
+            "button": 0,
+            "target": ""
+          },
+          {
+            "type": "pointerup",
+            "trusted": true,
+            "button": 0,
+            "target": ""
+          },
+          {
+            "type": "click",
+            "trusted": true,
+            "button": 0,
+            "target": ""
+          },
+          {
+            "type": "wheel",
+            "trusted": true,
+            "button": 0,
+            "target": "rl-row",
+            "deltaY": -3599.9999463558206
+          }
+        ]
+      }
+    }
+  ],
+  "start": {
+    "workspace": {
+      "id": 7,
+      "name": "7",
+      "monitor": "HDMI-A-2",
+      "monitorID": 1,
+      "windows": 3,
+      "hasfullscreen": false,
+      "lastwindow": "0x5637f3589950",
+      "lastwindowtitle": "Freelens",
+      "ispersistent": false,
+      "tiledLayout": "scrolling"
+    },
+    "window": {
+      "address": "0x5637f3589950",
+      "mapped": true,
+      "hidden": false,
+      "visible": true,
+      "acceptsInput": true,
+      "at": [
+        485,
+        33
+      ],
+      "size": [
+        1911,
+        1313
+      ],
+      "workspace": {
+        "id": 7,
+        "name": "7"
+      },
+      "floating": false,
+      "monitor": 1,
+      "class": "freelens",
+      "title": "Freelens",
+      "initialClass": "freelens",
+      "initialTitle": "Freelens",
+      "pid": 1381364,
+      "xwayland": false,
+      "pinned": false,
+      "pinFullscreened": false,
+      "fullscreen": 0,
+      "fullscreenClient": 0,
+      "fullscreenHandler": "scrolling",
+      "allowedOverFullscreen": true,
+      "grouped": [],
+      "tags": [],
+      "swallowing": "0x0",
+      "focusHistoryID": 0,
+      "inhibitingIdle": false,
+      "xdgTag": "",
+      "xdgDescription": "",
+      "contentType": "none",
+      "tearingHint": false,
+      "stableId": "18000054"
+    },
+    "cursor": {
+      "x": 1441,
+      "y": 688
+    }
+  },
+  "package": {
+    "version": "0.1.34",
+    "assets": {
+      "out/main-0.1.34.js": "de73e78a1ab23b4f1c6ddeccb3601f6eeeab23a24f0e386bfaa1baae3b051b13",
+      "out/renderer-0.1.34.js": "3c95dc2d5ccf6a08aab0c757f16a1c0fe21cfe3930608f0c95e34208b772fcaf",
+      "out/find-worker-0.1.34.js": "4d00cf5686789bd37b72b4cee6ca0c5fa461f98c86ee8cdfb024f01e6878c5b3"
+    },
+    "versions": {
+      "node": "24.18.0",
+      "acorn": "8.16.0",
+      "ada": "3.4.4",
+      "amaro": "1.1.9",
+      "ares": "1.34.6",
+      "brotli": "1.0.9",
+      "cldr": "47.0",
+      "icu": "77.1",
+      "llhttp": "9.4.2",
+      "merve": "1.2.2",
+      "modules": "145",
+      "napi": "10",
+      "nbytes": "0.1.4",
+      "ncrypto": "0.0.1",
+      "nghttp2": "1.69.0",
+      "nghttp3": "",
+      "ngtcp2": "",
+      "openssl": "0.0.0",
+      "simdjson": "4.6.4",
+      "simdutf": "7.7.0",
+      "sqlite": "3.53.1",
+      "tz": "2025b",
+      "undici": "7.28.0",
+      "unicode": "16.0",
+      "uv": "1.52.1",
+      "uvwasi": "0.0.23",
+      "v8": "14.6.202.34-electron.0",
+      "zlib": "1.3.1",
+      "zstd": "1.6.0",
+      "electron": "41.10.0",
+      "chrome": "146.0.7680.216"
+    },
+    "userData": "/tmp/freelens-production-find-48-attended-4dl0qb63/Freelens"
+  },
+  "tarballSha256": "0648bbe51fcf6eee4f43d0ba0a55f42b870019966df45646d92293762c60a250",
+  "device": {
+    "ready": true,
+    "device": "find-attended-48-native-verification"
+  },
+  "dismissedOwnedInstallationToast": true,
+  "error": "Error: Wheel reaches beginning: {\"focus\":true,\"query\":\"\",\"open\":false,\"selection\":\"\",\"inspected\":-1,\"scroll\":596.875,\"events\":[{\"type\":\"pointerdown\",\"trusted\":true,\"button\":0,\"target\":\"\"},{\"type\":\"pointerup\",\"trusted\":true,\"button\":0,\"target\":\"\"},{\"type\":\"click\",\"trusted\":true,\"button\":0,\"target\":\"\"},{\"type\":\"pointerdown\",\"trusted\":true,\"button\":0,\"target\":\"\"},{\"type\":\"pointerup\",\"trusted\":true,\"button\":0,\"target\":\"\"},{\"type\":\"click\",\"trusted\":true,\"button\":0,\"target\":\"\"},{\"type\":\"wheel\",\"trusted\":true,\"button\":0,\"target\":\"rl-row\",\"deltaY\":-3599.9999463558206}]}\n    at waitFor (file:///home/max/work/freelens-json-logs/.scratch/find/48-attended-20261028/pointer.mjs:13:124)\n    at async file:///home/max/work/freelens-json-logs/.scratch/find/48-attended-20261028/pointer.mjs:33:277\n    at async run (file:///home/max/work/freelens-json-logs/.scratch/find/48-attended-20261028/pointer.mjs:20:93)\n    at async file:///home/max/work/freelens-json-logs/.scratch/find/48-attended-20261028/pointer.mjs:33:2",
+  "clipboardRestored": false,
+  "finish": {
+    "workspace": {
+      "id": 7,
+      "name": "7",
+      "monitor": "HDMI-A-2",
+      "monitorID": 1,
+      "windows": 3,
+      "hasfullscreen": false,
+      "lastwindow": "0x5637f3589950",
+      "lastwindowtitle": "Freelens",
+      "ispersistent": false,
+      "tiledLayout": "scrolling"
+    },
+    "window": {
+      "address": "0x5637f3589950",
+      "mapped": true,
+      "hidden": false,
+      "visible": true,
+      "acceptsInput": true,
+      "at": [
+        485,
+        33
+      ],
+      "size": [
+        1911,
+        1313
+      ],
+      "workspace": {
+        "id": 7,
+        "name": "7"
+      },
+      "floating": false,
+      "monitor": 1,
+      "class": "freelens",
+      "title": "Freelens",
+      "initialClass": "freelens",
+      "initialTitle": "Freelens",
+      "pid": 1381364,
+      "xwayland": false,
+      "pinned": false,
+      "pinFullscreened": false,
+      "fullscreen": 0,
+      "fullscreenClient": 0,
+      "fullscreenHandler": "scrolling",
+      "allowedOverFullscreen": true,
+      "grouped": [],
+      "tags": [],
+      "swallowing": "0x0",
+      "focusHistoryID": 0,
+      "inhibitingIdle": false,
+      "xdgTag": "",
+      "xdgDescription": "",
+      "contentType": "none",
+      "tearingHint": false,
+      "stableId": "18000054"
+    },
+    "cursor": {
+      "x": 1442,
+      "y": 688
+    },
+    "pointerRestored": true
+  }
+}

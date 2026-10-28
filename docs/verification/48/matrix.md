@@ -1,6 +1,6 @@
 # Integrated production Find acceptance matrix
 
-Reconciled 2026-10-27. Current `freelens-readable-logs@0.1.34` package is
+Reconciled 2026-10-28. Current `freelens-readable-logs@0.1.34` package is
 SHA-256 `0648bbe51fcf6eee4f43d0ba0a55f42b870019966df45646d92293762c60a250`.
 [Fresh installed identity](host/native-close-fixed/package-identity.json) and
 [bounded native pass / visibility-disposal fix](native-isolated.md) record the
@@ -8,6 +8,11 @@ current checkpoint. Earlier functional and keyboard/copy evidence belongs to
 `995f1cf5e3ac81f377b16cf8dea24c15237824cd31dd1a066acde26bf868f904`.
 [Asset comparison](host/native-close-fixed/asset-comparison.json) proves identical
 renderer/worker bytes; only main changed. Prior results retain their artifact scope.
+
+[Attended user-session pointer checks](attended-hyprland-20261028.md) now add
+current-package native click/wheel, single-source drag/exact copy/Find seed and
+refresh-retention evidence. The user authorized this fresh session on workspace 7;
+it has ended. Remaining native permutations and platform coverage stay unverified.
 
 **User decision, 2026-10-27: the DOM/listener resource issue is accepted for now
 and deferred.** [Accepted deferral](../../find-resource-investigation.md#accepted-deferral)
@@ -62,15 +67,15 @@ results use the fixed main package. Physical hardware is not claimed.
 | D04 progressive refinement | Pass: [state boundaries](host/functional-final/state-boundaries.json), [DOM state](host/feedback-final/state-acceptance.json); still-matching candidates stay current | Virtual native typing/refinement pass; full IME unverified |
 | D05 correction and stale replies | Pass: [held query replies](host/feedback-final/held-replies.json), [window/message replies](host/functional-final/state-boundaries.json), [instance replies](host/functional-final/controlled-snapshots.json), [target/viewer replacement](host/functional-context-reviewed/context-boundaries.json); stale actual success and injected transport failure cannot change the new state | Virtual replacement/refinement/no-match correction pass; stale-reply controls retain their functional layer |
 | D06 replacement/clear/Undo/IME | Pass: [DOM transactions](host/feedback-final/state-acceptance.json); [late composition after Clear](host/functional-final/composition-clear.json) stays empty without input/highlight resurrection | Private paste/cut/Undo/Redo pass; full trusted IME commit/clear/cancel/Enter transactions unverified |
-| D07 text-safe marks | Pass: [192 source/geometry assertions](host/feedback-final/surfaces.json), [real append node/Range preservation](host/functional-final/snapshot-acceptance.json), [late terminal highlight](host/feedback-final/long-source.json) | Exact native inspector clipboard actions pass; drag selection/retention and physical contrast review unverified |
+| D07 text-safe marks | Pass: [192 source/geometry assertions](host/feedback-final/surfaces.json), [real append node/Range preservation](host/functional-final/snapshot-acceptance.json), [late terminal highlight](host/feedback-final/long-source.json) | Native inspector copy plus [single-source drag/copy and refresh retention](attended-hyprland-20261028.md) pass; remaining mark/selection/contrast permutations unverified |
 | D08 hidden/or decoded-only hits | Pass: [exact source representations/layouts](host/feedback-final/surfaces.json), [actual saved extraction changes](host/functional-final/snapshot-acceptance.json); original-copy arguments preserve exact sources at browser layer | Exact Application text/Transport line private clipboard actions pass; native hidden-source activation/selection unverified |
 | D09 empty/zero/one/wrap | Pass: [DOM state](host/feedback-final/state-acceptance.json); Clear/zero-hit do not scroll; one hit and wrapping remain explicit | Virtual shortcuts pass; native wheel/manual scroll and all edge variants unverified |
 | D10 modes/history | Pass: [four SDK modes](host/feedback-final/sdk-suite.json), [DOM mode/candidate/history flags](host/feedback-final/state-acceptance.json), [seven exact MRU tuples](host/functional-final/state-boundaries.json); [installed four-mode agreement](host/functional-modes-reviewed/mode-agreement.json) verifies identical match/range keys, highlighted rows and activated mark membership | Linux Ctrl shortcuts/history Escape pass; native mode toggles/history recall subcases unperformed; Windows/macOS excluded |
 | D11 async cancellation/recovery | Pass: [startup-inclusive timeout/actual exit](host/feedback-final/startup-timeout.json), [Clear/current/stale replies, latch, Retry and failed decoration](host/feedback-final/held-replies.json), [target/viewer replies](host/functional-context-reviewed/context-boundaries.json) | Virtual typing/edit transactions pass; no hardware latency claim or timing-control run |
-| D12 selected text | Pass: [all inspector sources, foreign/multiline and Unicode limits](host/feedback-final/surfaces.json); [seed preserves flags](host/functional-final/state-boundaries.json) | Private original-copy buttons pass; source drag selection/selected-text seed unverified |
-| D13 snapshots/repeats/maintenance | Pass: [real append/retention/profile/restarts](host/functional-final/snapshot-acceptance.json), [exact complete-transport overlap/zero overlap/metadata](host/functional-final/controlled-snapshots.json), [independent B survives inspected-A eviction](host/functional-context-reviewed/context-boundaries.json) | Native retained source selection through refresh unperformed; controlled ordering retains its prior scope |
+| D12 selected text | Pass: [all inspector sources, foreign/multiline and Unicode limits](host/feedback-final/surfaces.json); [seed preserves flags](host/functional-final/state-boundaries.json) | Private original-copy buttons and [native single-line drag/selected-text seed](attended-hyprland-20261028.md) pass; foreign/multiline/oversized and other-source native variants unverified |
+| D13 snapshots/repeats/maintenance | Pass: [real append/retention/profile/restarts](host/functional-final/snapshot-acceptance.json), [exact complete-transport overlap/zero overlap/metadata](host/functional-final/controlled-snapshots.json), [independent B survives inspected-A eviction](host/functional-context-reviewed/context-boundaries.json) | [Native source selection survives an actual refresh](host/attended-hyprland-20261028/native-selection-refresh.json), with identical nodes/offsets; other native maintenance variants remain unverified |
 | D14 dismissed inspector/pending | Pass: [held inspector/query completion](host/feedback-final/held-replies.json), [window/message/Profiles](host/functional-final/state-boundaries.json), [instance](host/functional-final/controlled-snapshots.json), [target/viewer](host/functional-context-reviewed/context-boundaries.json); no stale resurrection/error | Native inspector Escape and Find opener return pass; pending-completion native focus variant unperformed |
-| D15 geometry/following/Pause | Pass: [measured source/geometry](host/feedback-final/surfaces.json), [actual appended following/Pause](host/feedback-final/marks-following.json), [two actual restarts with bottom movement](host/functional-final/snapshot-acceptance.json), [stable dense cadence](host/feedback-final/dense-cadence-wrap-baseline.json) | Current native API resize/return, hide/show, minimize/restore and close→quit pass; wheel and selection/mark preservation through resize unverified |
+| D15 geometry/following/Pause | Pass: [measured source/geometry](host/feedback-final/surfaces.json), [actual appended following/Pause](host/feedback-final/marks-following.json), [two actual restarts with bottom movement](host/functional-final/snapshot-acceptance.json), [stable dense cadence](host/feedback-final/dense-cadence-wrap-baseline.json) | Current native API resize/return, hide/show, minimize/restore and close→quit pass; [basic native wheel movement](attended-hyprland-20261028.md) passes; pending-scroll and selection/mark preservation through resize remain unverified |
 | D16 dismissal/history/ownership | Pass for non-focus DOM state: [Close/zero-hit/history recall](host/feedback-final/state-acceptance.json), [seven-entry history and Profiles return](host/functional-final/state-boundaries.json); focus-dependent ownership guards pass in production browser | Virtual history/Find Escape, actual profile sample-editor ownership and AltGraph guard pass; full IME, foreign host menus and shortcut exclusion in another native window unverified |
 
 ## All 13 state traces
@@ -105,7 +110,9 @@ results use the fixed main package. Physical hardware is not claimed.
 
 ## Native pass and exact remaining gates
 
-[Bounded report, provenance, failures and commands](native-isolated.md). Keyboard
+[Attended current-package pointer results](attended-hyprland-20261028.md) use the user's actual Hyprland session and an owned uinput device. The earlier
+[bounded report, provenance, failures and commands](native-isolated.md) retains its
+private-session scope. Keyboard
 and clipboard actions use private compositor virtual devices; native window actions
 use the exact owned BrowserWindow API. None establishes physical hardware provenance.
 
@@ -114,7 +121,7 @@ use the exact owned BrowserWindow API. None establishes physical hardware proven
 | Linux keyboard editing/clipboard/shortcuts | [Five groups pass](host/native-isolated/native-keyboard.json): typing/replacement/refinement/correction, private paste/cut/Undo/Redo, Ctrl+F/G/Shift+G/Enter variants, exact modifiers/virtual AltGraph, history/Find Escape and opener return. Initial-package evidence, identical renderer/worker bytes in current package |
 | Exact original clipboard and actual non-Find editor | [Two groups pass](host/native-isolated/native-copy-editor.json): real production inspector Application text/Transport line actions match independent originals on private clipboard; actual Profiles Sample logs editor owns Ctrl+F/G. No native source drag selection claim |
 | Linux native window lifecycle | [Current-package API route passes](host/native-close-fixed/native-window-lifecycle.json): hide/show, minimize/restore, auxiliary focus/resize/return, close. [Close→quit](host/native-close-fixed/shutdown-clean.json) exits normally with 7/7 workers and empty closed service ownership/watch. Initial failed shutdown is retained; narrow disposal fix has red-before-green regression |
-| Linux pointer/source selection/wheel | **Unverified.** Protocol cursor movement did not establish delivered control clicks. Drag source selection/copy/seeding and retained selection through refresh were not reached; wheel/manual-scroll and selection/marks through resize remain unperformed |
+| Linux pointer/source selection/wheel | [Attended current-package basic checks pass](attended-hyprland-20261028.md): native clicks, wheel movement, single-source drag/exact clipboard copy, selected-text Ctrl+F and selection retention through a real refresh. Older isolated failures remain historical. Other selection sources/permutations, pending-scroll behavior and selection/marks through resize remain unverified |
 | Linux full IME | **Unverified.** Real input-method-v2 activation/trusted preedit and committed query are observed, but composition-end is untrusted. Enter commit, clear/cancel and late native completion remain unperformed |
 | Linux other ownership/edge variants | **Unverified:** foreign host-menu/transient Escape, shortcut exclusion while another native window owns focus, native mode/history recall and edge-direction variants, pending-completion focus return. DOM/browser evidence retains its own layer |
 | Windows matching/worker/package/primary modifier/IME/selection/copy/focus/lifecycle | **Excluded/unverified.** Actual Windows session needed; explicit reporting is satisfied, coverage is not claimed |

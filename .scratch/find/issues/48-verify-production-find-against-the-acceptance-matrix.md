@@ -1,15 +1,18 @@
 # 48: Verify production Find against the acceptance matrix
 
-**Status:** ready-for-agent
+**Status:** blocked
 **Blocked by:** [47: Integrate package, regression and resource checks](47-integrate-package-regression-and-resource-checks.md)
 **GitHub:** https://github.com/maksimgurenko/freelens-json-logs/issues/48
 
-Current checkpoint (2026-10-27): bounded unattended native pass and narrow
-close→quit visibility-disposal fix are complete. See [native report](../../../docs/verification/48/native-isolated.md),
-[matrix](../../../docs/verification/48/matrix.md) and [NEXT](../../../docs/verification/48/NEXT.md).
-Current artifact SHA-256 is `0648bbe51fcf6eee4f43d0ba0a55f42b870019966df45646d92293762c60a250`.
-Pointer/full IME and the exact remaining ownership/edge subchecks stay unverified;
-broad criteria below remain unchecked. Original failed evidence is retained.
+Current checkpoint (2026-10-28): [attended native pointer checks](../../../docs/verification/48/attended-hyprland-20261028.md)
+pass clicks, basic wheel movement, single-source drag/exact copy/Find seeding and
+selection retention through a real refresh. Only the owned test instance/fixture
+was used and cleaned. Native input permission for that session has ended.
+The `b7d4a60` visibility-disposal fix and artifact SHA-256
+`0648bbe51fcf6eee4f43d0ba0a55f42b870019966df45646d92293762c60a250` are unchanged.
+Other native permutations, full IME and remaining ownership/edge cases stay
+unverified, so broad criteria below remain unchecked. Original failed evidence
+is retained; resource work remains accepted/deferred.
 
 ## Parent
 
