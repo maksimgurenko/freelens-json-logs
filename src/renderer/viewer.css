@@ -57,7 +57,9 @@
 .readable-logs .rl-find-mark[aria-current]::before { inset-block: 0; border: 1px solid #fff; }
 .readable-logs .rl-find-mark:focus-visible { outline-offset: -2px; }
 .readable-logs .rl-records { flex: 1; min-width: 0; min-height: 0; overflow: auto; overflow-anchor: none; background: #000; padding: 8px 12px; font: 12px/1.65 var(--font-monospace, monospace); tab-size: 2; }
-.readable-logs .rl-row { display: flex; gap: 12px; min-height: 1.65em; width: max-content; min-width: 100%; }
+/* Rows live on a black canvas even when host controls use a light theme.
+ * Keep this palette on rows so Inline inspectors retain the host theme. */
+.readable-logs .rl-row { --textColorAccent: #e3e5e8; --textColorSecondary: #a6adb5; --mainBackground: #000; --tableBgcSelected: #263737; --tableBgcStripe: #2a2d33; color: var(--textColorAccent); display: flex; gap: 12px; min-height: 1.65em; width: max-content; min-width: 100%; }
 .readable-logs .rl-row[role="button"] { cursor: pointer; padding: 2px 4px; }
 .readable-logs .rl-row:focus-visible { outline-offset: -2px; }
 .readable-logs .rl-selected > .rl-row { background: var(--tableBgcSelected, #263737); }

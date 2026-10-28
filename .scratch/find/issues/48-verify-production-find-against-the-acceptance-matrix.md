@@ -1,18 +1,16 @@
 # 48: Verify production Find against the acceptance matrix
 
-**Status:** blocked
+**Status:** ready-for-agent
 **Blocked by:** [47: Integrate package, regression and resource checks](47-integrate-package-regression-and-resource-checks.md)
 **GitHub:** https://github.com/maksimgurenko/freelens-json-logs/issues/48
 
-Current checkpoint (2026-10-28): [attended native pointer checks](../../../docs/verification/48/attended-hyprland-20261028.md)
-pass clicks, basic wheel movement, single-source drag/exact copy/Find seeding and
-selection retention through a real refresh. Only the owned test instance/fixture
-was used and cleaned. Native input permission for that session has ended.
-The `b7d4a60` visibility-disposal fix and artifact SHA-256
-`0648bbe51fcf6eee4f43d0ba0a55f42b870019966df45646d92293762c60a250` are unchanged.
-Other native permutations, full IME and remaining ownership/edge cases stay
-unverified, so broad criteria below remain unchecked. Original failed evidence
-is retained; resource work remains accepted/deferred.
+Current checkpoint (2026-10-28): [Linux native completion](../../../docs/verification/48/native-completion-20261028.md)
+and [scenario ledger](../../../docs/verification/48/native-completion-ledger.md)
+complete the four remaining Linux groups, with final reviewed package `15f99148`, using a
+fresh genuinely separate graphical session. Native actions never targeted the user
+desktop; its observer records unrelated activity and makes no unchanged-interval
+claim. Resources remain accepted/deferred; Windows/macOS explicitly unverified.
+Original failed observations and exact input/IME/artifact limits are retained.
 
 ## Parent
 
@@ -28,11 +26,11 @@ Canonical decisions for this slice: [Actual-host feasibility evidence and its li
 
 ## Acceptance criteria
 
-- [ ] Verify the actual integrated packed extension in pinned Freelens 1.10.3 and record package identity, runtime, environment and reproducible evidence. Cover all in-scope D01-D16 cases, the 13 state traces and the handoff's additional matching/execution/rendering regressions; link each to its evidence layer and verdict.
-- [ ] Background host checks use workspace 7 and preserve the user's focus, workspace and pointer throughout, following current repository UI-verification guidance. Observe actual production Custom Highlights, source/geometry, snapshot/profile/restart state, following/Pause and SDK ownership. Never manufacture background focus or claim a restored desktop was uninterrupted.
-- [ ] Exercise root/cluster frames sharing webContents, foreign tokens, removed frames, same-frame owner replacement, startup/idle/active cancellation, inactivity, viewer close, disable/uninstall, reactivation and shutdown. Verify actual worker exit and complete owner/listener/timer/observer cleanup.
+- [x] Verify the actual integrated packed extension in pinned Freelens 1.10.3 and record package identity, runtime, environment and reproducible evidence. Cover all in-scope D01-D16 cases, the 13 state traces and the handoff's additional matching/execution/rendering regressions; link each to its evidence layer and verdict.
+- [x] Background host checks use workspace 7 and preserve the user's focus, workspace and pointer throughout, following current repository UI-verification guidance. Observe actual production Custom Highlights, source/geometry, snapshot/profile/restart state, following/Pause and SDK ownership. Never manufacture background focus or claim a restored desktop was uninterrupted.
+- [x] Exercise root/cluster frames sharing webContents, foreign tokens, removed frames, same-frame owner replacement, startup/idle/active cancellation, inactivity, viewer close, disable/uninstall, reactivation and shutdown. Verify actual worker exit and complete owner/listener/timer/observer cleanup.
 - [x] Run installed-host active/idle lifecycle soaks at both retention bounds, recording warm baselines and retained RAM/disk/thread/listener growth plus actual stop-to-exit behavior. Separate startup, IPC, worker, DOM and input responsiveness observations; keep sample limits explicit and remove only owned test data/processes.
-- [ ] Arrange a fresh explicitly attended check or separate graphical session for physical selection/copy/clipboard, native editing/paste/Undo/Redo/IME/AltGraph, modifier shortcuts, menus, focus and window lifecycle. Earlier attended approval does not carry forward, and background DOM checks cannot substitute for physical-input evidence.
+- [x] Arrange a fresh explicitly attended check or separate graphical session for physical selection/copy/clipboard, native editing/paste/Undo/Redo/IME/AltGraph, modifier shortcuts, menus, focus and window lifecycle. Earlier attended approval does not carry forward, and background DOM checks cannot substitute for physical-input evidence.
 - [x] Perform or explicitly mark unverified the corresponding Windows and macOS matching/worker/package, primary-modifier, IME, selection/copy, focus and lifecycle checks. Linux/prototype results cannot be relabelled as platform coverage.
 - [x] Record passed, failed and unperformed checks separately, with evidence and resulting release limits. Failed/unperformed production gates remain visible and cannot be treated as release acceptance. If implementation evidence invalidates an accepted mechanism or behavior, raise a precise planning question rather than silently changing the contract or substituting a fallback.
 
@@ -493,3 +491,48 @@ No user-desktop native input/window/clipboard activity; original dirty files and
 settings are preserved. Independent review precedes the current-branch commit.
 No publication. This checkpoint remains **blocked** on the precise unperformed
 Linux evidence, with broad criteria unchecked; stop after the requested attempt.
+
+### Linux native completion from e41520e
+
+The user superseded the earlier operator time cap and authorized the four remaining
+Linux groups in a genuinely separate graphical session. [Report](../../../docs/verification/48/native-completion-20261028.md),
+[ledger](../../../docs/verification/48/native-completion-ledger.md), [matrix](../../../docs/verification/48/matrix.md)
+and [independent review](../../../docs/verification/48/review-native-completion.md)
+reconcile all original criteria. No original acceptance wording was removed.
+
+1. Integrated packed/runtime/artifact and D01-D16/13-trace/additional regression
+   evidence is indexed by the matrix. Current fresh identity is `0648bbe5`; previous
+   functional layers retain their exact artifact scopes and unchanged renderer/worker relationship.
+2. Background/private host actions preserve user desktop ownership by routing every
+   native operation to the proven private session. Real desktop observer activity is
+   retained/redacted separately, not claimed zero or unchanged.
+3. Existing actual SDK/frame/extension/visibility/shutdown coverage plus fresh normal
+   exit 0, 19 worker starts/exits and closed/empty ownership/watch satisfy lifecycle
+   evidence. Will-quit SDK handlers are not claimed absent at that instant.
+4. Resource criterion remains accepted/deferred under the user's explicit decision,
+   preserving original failures and thresholds. No new resource work was performed.
+5. All four remaining Linux native groups have exact scenario evidence, including
+   source selection/copy/seeding, pending manual scroll/dismissal, native resize,
+   Menu/editor/auxiliary-window ownership/history/edges and actual native IME. Native
+   late cancellation and DOM late composition-end remain honestly distinguished;
+   no physical-hardware requirement is invented for the separate-session route.
+6. Windows/macOS remain excluded/unverified, satisfying the original explicit-marking alternative.
+7. Failed setups/oracles, passes, exclusions and limits remain separate and reviewable.
+   Owned profile/runtime/UID-checked namespace/processes are cleaned; dirty glossary,
+   docs/README and manifest/lock hashes are preserved. No publication or GitHub message.
+
+Typecheck, 250 tests, six UI guards, C compilation and all new JavaScript syntax
+checks pass. Package/source bytes are unchanged. Completion is local acceptance
+with the accepted resource deferral and explicitly unverified Windows/macOS scope;
+no release publication is claimed. Runner owns Status after the final report.
+
+Independent review found weak native selected-IME replacement oracles and an actual
+light-host contrast failure. [Corrections](../../../docs/verification/48/native-review-corrections.md)
+add native whole replacement (candidate82 → reading64/result73) and genuinely selected
+partial replacement (retain82), a failing production-browser contrast regression
+before a row-scoped palette fix, and fresh native contrast/copy/selection verification.
+Final package SHA-256 `15f99148d56a5b6100b929ff79c5d9b3680c9186a36dc5d5e08706bfed67749b`;
+main/worker and renderer except embedded CSS are byte-identical to `0648bbe5`.
+Final typecheck, 250 tests, complete production-browser suite, six UI guards, strict
+packed checks and reproducible builds pass. Setup/final-probe failure cleanup is
+also exercised. All prior artifact scopes, failures and deferrals remain intact.

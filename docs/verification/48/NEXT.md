@@ -1,65 +1,28 @@
-# Find #48: attended pointer checks passed; partial acceptance
+# Find #48: Linux native groups completed
 
-Latest evidence, 2026-10-28: [attended user-session pointer checks](attended-hyprland-20261028.md)
-pass native Find clicks, wheel movement, source drag/exact copy, selected-text
-Ctrl+F and native-selection retention through a real refresh on current `0648bbe5`.
-An installation toast covered the first click target; dismissing it allowed trusted
-pointer delivery. The older isolated virtual-pointer run was not rerun. This fresh
-attended session is finished; it grants no continuing desktop-input permission.
+Current checkpoint: [report](native-completion-20261028.md),
+[scenario ledger and review corrections](native-completion-ledger.md), [matrix](matrix.md) and
+[independent review](review-native-completion.md). Review baseline
+`e41520ea01e1badaa07c4adc731e080db9f8aca6`, branch `implementation/find`.
 
-Branch `implementation/find`; review baseline
-`5982a321d720669f0272e09f272499a79eb9c8fc`. Ticket #48 only. The user's
-2026-10-27 direction authorized a bounded unattended Linux pass in a genuinely
-separate session. It did not authorize native activity on the user's desktop.
-The attempt and the explicitly requested narrow lifecycle fix are finished;
-do not automatically repeat native capability setup/checks.
+The four requested remaining Linux native groups are covered on current package
+`15f99148d56a5b6100b929ff79c5d9b3680c9186a36dc5d5e08706bfed67749b`:
+selection/source/layout variants; pending scroll/dismissal and native resize;
+Menu/editor/auxiliary-focus/history/shortcut/edge behavior; actual native IME.
+Read the report for preserved failed preconditions/oracles, IME trust flags and
+the distinction between native delayed cancellation, fresh insertText and the
+existing late DOM composition-end regression. No physical-hardware gate is added.
 
-[Current report](native-isolated.md), [matrix](matrix.md), and
-[review](review-native-isolated.md) record the evidence and limits.
-Current package: `freelens-readable-logs@0.1.34`, SHA-256
-`0648bbe51fcf6eee4f43d0ba0a55f42b870019966df45646d92293762c60a250`.
-The previous `995f1cf5` artifact/results are preserved. Only main changed;
-renderer and worker hashes match. Do not silently promote old whole-package results.
+The fresh private host exited normally; all owned processes, profile, runtime and
+UID/label-checked namespace are gone. Every native input/window/clipboard operation
+used the private compositor. The read-only user desktop observer includes unrelated
+activity and different endpoints; no unchanged interval is claimed. Unrelated real
+window titles are redacted. Dirty work is preserved.
 
-Private virtual keyboard groups pass typing/refinement/replacement/correction,
-paste/cut/Undo/Redo, exact modifiers/AltGraph, Ctrl+F/G/Shift+G/Enter variants,
-history/Find Escape and opener return. Real inspector copy buttons produce exact
-Application text/Transport line on the private clipboard; the actual Profiles
-sample editor retains shortcut ownership. No physical hardware claim.
+All original #48 criteria are reconciled in the local ticket. Resources remain
+accepted/deferred, with historical failures/thresholds intact. Windows/macOS remain
+explicitly excluded/unverified, as allowed by the original marking criterion.
+No publication, push, PR, issue comment/closure or release is authorized. No further
+native/resource work is scheduled by this ticket.
 
-Native BrowserWindow API hide/show, minimize/restore, auxiliary focus/resize/return
-and close pass. Close→quit initially failed because visibility disposal re-read
-`window.webContents` after native destruction. A narrow retained-emitter fix has
-red-before-green public-boundary regression, typecheck, 250 tests, packed checks
-and reproducible builds. The new package's isolated close→quit exits normally:
-7 worker starts/exits, peak one, zero live, closed/empty service ownership/watch.
-The original failure and erroneous blur-worker oracle remain recorded separately.
-OS blur alone is not viewer inactivity under the accepted contract.
-
-Exact remaining Linux evidence:
-
-- Remaining pointer permutations (multiline/foreign/oversized selections and other
-  sources/layouts), pending/manual-scroll variants, and selection/mark preservation
-  through native resize. Basic clicks/wheel/drag/copy/seed/refresh retention now pass
-  in the attended report above; those results do not cover every native case.
-- Full trusted native IME composition/commit/Enter/clear/cancel/late completion.
-  Input-method-v2 activated with trusted preedit and query commit, but observed
-  composition-end was untrusted; full acceptance was not established.
-- Foreign host-menu/transient Escape ownership, shortcut exclusion while another
-  native window owns focus, native mode/history recall and edge-direction variants,
-  and native pending-completion focus return.
-- Physical-device/contrast evidence is not established by the virtual devices.
-
-Windows/macOS are excluded and explicitly unverified. The DOM/listener resource
-issue remains [accepted/deferred](../../find-resource-investigation.md#accepted-deferral):
-no resource attribution, timing controls, stock-display investigation or soaks.
-Historical failed measurements and thresholds are intact.
-
-Both private hosts/displays/profiles/runtimes and the owned UID-checked namespace
-are cleaned. User desktop observers record repeated notifications of one unchanged
-focus address, no observed focus-address/workspace/window transition and equal
-pointer endpoints; no user-desktop native input/window/clipboard activity.
-Original dirty files/settings and unrelated fixtures are preserved.
-
-Report **blocked** for the remaining evidence, keeping broad original criteria
-unchecked. No automatic retry, push, PR, merge, GitHub message/closure or release.
+[Review corrections](native-review-corrections.md) record the CSS contrast regression/fix, final package relationship, stronger native IME replacements and failure-path cleanup checks.

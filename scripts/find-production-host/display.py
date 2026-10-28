@@ -89,7 +89,10 @@ try:
             data = watcher.recv(65536)
             if not data: raise RuntimeError('Real desktop observer disconnected')
             for event in data.decode().splitlines():
-                if event.startswith(('activewindowv2>>', 'workspace>>', 'focusedmon>>', 'openwindow>>', 'closewindow>>')): events.append({'ms': (time.monotonic() - started) * 1000, 'event': event})
+                if event.startswith(('activewindowv2>>', 'workspace>>', 'focusedmon>>', 'openwindow>>', 'closewindow>>')):
+                    if event.startswith('openwindow>>'):
+                        event = ','.join(event.split(',', 3)[:3]) + ',<redacted unrelated title>'
+                    events.append({'ms': (time.monotonic() - started) * 1000, 'event': event})
         if time.monotonic() - started > 7200: raise RuntimeError('Private display exceeded two hours')
 except Exception as error:
     result['error'] = str(error)

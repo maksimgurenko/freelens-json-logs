@@ -113,6 +113,38 @@ function selectText(node, start = 0, end = node.textContent.length) {
   const range = document.createRange(); range.setStart(...point(start)); range.setEnd(...point(end));
   document.getSelection().removeAllRanges(); document.getSelection().addRange(range);
 }
+// Production renderer/CSS seam: the canvas stays black even in a light host.
+async function verifyCanvasContrast() {
+  const colors = ['--textColorAccent', '--textColorSecondary', '--tableBgcSelected', '--tableBgcStripe', '--mainBackground'];
+  const previous = colors.map(name => [name, root.style.getPropertyValue(name)]);
+  const luminance = color => {
+    const rgb = color.match(/[\d.]+/g).slice(0, 3).map(Number).map(value => {
+      value /= 255; return value <= .04045 ? value / 12.92 : ((value + .055) / 1.055) ** 2.4;
+    });
+    return rgb[0] * .2126 + rgb[1] * .7152 + rgb[2] * .0722;
+  };
+  const contrast = (foreground, background) => {
+    const values = [luminance(foreground), luminance(background)].sort((a, b) => b - a);
+    return (values[0] + .05) / (values[1] + .05);
+  };
+  try {
+    for (const [theme, values] of [['light', ['#222', '#555', '#e4e4e4', '#eee', '#fff']],
+      ['dark', ['#e3e5e8', '#a6adb5', '#263737', '#2a2d33', '#1e2124']]]) {
+      colors.forEach((name, index) => root.style.setProperty(name, values[index]));
+      const row = rows()[0].querySelector('.rl-row'), canvas = root.querySelector('.rl-records');
+      check(getComputedStyle(canvas).backgroundColor === 'rgb(0, 0, 0)', `${theme}: canvas must stay black`);
+      check(contrast(getComputedStyle(row).color, getComputedStyle(canvas).backgroundColor) >= 4.5,
+        `${theme}: ordinary log text lacks contrast on black canvas`);
+      row.click(); await turn();
+      check(contrast(getComputedStyle(row).color, getComputedStyle(row).backgroundColor) >= 4.5,
+        `${theme}: inspected row text lacks contrast`);
+      const selected = getComputedStyle(row, '::selection');
+      check(contrast(selected.color, selected.backgroundColor) >= 4.5, `${theme}: native selection text lacks contrast`);
+      row.click(); await turn();
+    }
+    results.push('D07: ordinary/inspected/native-selection text retains contrast on black canvas under light and dark host colors');
+  } finally { for (const [name, value] of previous) { if (value) root.style.setProperty(name, value); else root.style.removeProperty(name); } }
+}
 async function verifyPresentation() {
   await refresh('first needle\n{"message":"visible","hidden":"needle"}\n{"message":"\\u03a3"}');
   rows()[0].querySelector('.rl-row').click(); button('Find'); await query('needle');
@@ -521,6 +553,7 @@ globalThis.verifyIdentity = async () => {
   ReactDOM.render(<Page params={params} />, root);
   try {
     await until(() => rows().length === 3, 'No initial rows'); button('Pause');
+    await verifyCanvasContrast();
     await verifyPresentation();
     await verifyFindPresentation({ root, rows, button, query, refresh, until, check, turn, results, rangeRequests, failRanges: () => { failNextRange = true; } });
     await verifyFindMarks({ root, rows, button, query, refresh, until, check, turn, results, failRanges: () => { failNextRange = true; } });

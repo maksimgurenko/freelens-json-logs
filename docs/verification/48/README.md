@@ -1,5 +1,7 @@
 # #48 production Find verification checkpoint
 
+Current Linux acceptance: [native completion](native-completion-20261028.md), [scenario ledger](native-completion-ledger.md), [review corrections](native-review-corrections.md) and [matrix](matrix.md). The user-authorized four remaining groups are complete in a separate session. Resources remain accepted/deferred and Windows/macOS explicitly unverified. Earlier checkpoint text below retains its original scope.
+
 Latest evidence: [2026-10-28 attended pointer checks](attended-hyprland-20261028.md)
 on the current `0648bbe5` artifact. Native clicks, wheel movement, source drag/copy,
 selected-text Find and refresh retention pass in the user's real Hyprland session.

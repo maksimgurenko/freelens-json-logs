@@ -1,0 +1,29 @@
+{
+  "sources": {
+    "scripts/find-production-host/native-completion-pending.mjs": "68bb527756fe173f41ccfc140cb804251b39e28476cfe51a49694906aa15a8b2",
+    "scripts/find-production-host/native-completion-hidden.mjs": "6fb59067a944163678a3255837d055894fb61aba37b6d6e771eda2e0caaf4f3c",
+    "scripts/find-production-host/native-completion-ime.mjs": "83e696d296a88ab543f37a60e5c648a9543715cc09ebb24b8b9373c6f32bd6ed",
+    "scripts/find-production-host/native-completion-selection-boundaries.mjs": "8ecd8058d630f14b18a750e4cb31345f26c4f14f1130ca76ee568c95eadee50f",
+    "scripts/find-production-host/native-completion-final-edges.mjs": "7fce8276f35392da4df0bda9bf335f4ef36538e9ed66700f79ba37b587e8d081",
+    "scripts/find-production-host/native-completion-selection.mjs": "d8ba880ea2b1e3dc6005cf36b2b0d15144e047613737ec04e1baca67f6a55c74",
+    "scripts/find-production-host/native-completion-common.mjs": "0732ea0bbb7327b743f7caf70c574fef500abe29279146ec75ba7255e86bdc85",
+    "scripts/find-production-host/native-completion-edges.mjs": "8448f0d454b598928bca3cac972d5ce7d33cfa684c0f6bf542c2da2822789eec",
+    "scripts/find-production-host/native-completion-selection-repair.mjs": "0f80a0a077de3b35711e51dabab2b9f3e74e985659938bfd689e06bb42a346f8",
+    "scripts/find-production-host/native-completion-menu.mjs": "bee5e579d2ebf8744b89d7fce9519cb267d3f591052ce13255206cc10cbe9828",
+    "scripts/find-production-host/native-input.mjs": "a07b989e99ae424c4dd05df1d3572f55211a62518a20adb22e7ede84823abced",
+    "docs/verification/48/native-pointer-session.c": "044049bd25b8f9ab0935c0d1dbd2e91d6b1c00a5c3f09050c37f97c3471f46a7",
+    "docs/verification/48/native-ime-transactions.c": "828b29ead300157b67b2ec43fe51b4c8e2ef4334d5be3790c6364e44f2deb471"
+  },
+  "binaries": {
+    "/usr/bin/wtype": "d760e193e31b65f6158462fdb295c101780495ae760852301a42cfb907357bc5",
+    "/usr/bin/wl-copy": "22638b83ecbbe4d639cb47f3c6680d41df2a86e7aa82fdd99609cc26b5fd9c3a",
+    "/usr/bin/wl-paste": "768ae8582276c178d6c3d413ce803535318e164604f8b85411f24108d65b63b2",
+    ".scratch/find/48-host/native-pointer-session": "b73041a93f60e043998a5ed56e876b2e45d01f0f4ccc17165a99f8aaaac92ad1",
+    ".scratch/find/48-host/native-ime-transactions": "f72a01d441937100af8265dfd506d6a1a6082fd484dbad563852388756770cfe"
+  },
+  "build": [
+    "cc -Wall -Wextra -I.scratch/find/48-host docs/verification/48/native-pointer-session.c .scratch/find/48-host/virtual-pointer-code.c -o .scratch/find/48-host/native-pointer-session -lwayland-client",
+    "cc -Wall -Wextra -I.scratch/compact-view/30 docs/verification/48/native-ime-transactions.c .scratch/compact-view/30/input-method-code.c -o .scratch/find/48-host/native-ime-transactions -lwayland-client -lxkbcommon"
+  ],
+  "scope": "Final source/binary hashes. Earlier failed setups/oracles remain separate JSON evidence; these hashes do not relabel their drivers as unchanged."
+}

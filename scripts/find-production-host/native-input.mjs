@@ -6,10 +6,12 @@ import { privateSession } from './private-session.mjs';
 import { scratch, evidence, run } from './config.mjs';
 
 export function isolatedInput() {
-  assert(['native-isolated', 'native-close-fixed'].includes(run));
+  assert(['native-isolated', 'native-close-fixed', 'native-completion-20261028', 'native-ime-replacement-20261028'].includes(run));
   assert.equal(process.env.FREELENS_UI_MODE, undefined);
-  const budget = JSON.parse(readFileSync(`${evidence}/budget.json`));
-  assert(Date.now() / 1000 < budget.deadlineUnix, 'Native pass budget expired');
+  const legacyBudget = ['native-isolated', 'native-close-fixed'].includes(run);
+  const budget = JSON.parse(readFileSync(`${evidence}/${legacyBudget ? 'budget' : 'isolation'}.json`));
+  if (legacyBudget)
+    assert(Date.now() / 1000 < budget.deadlineUnix, 'Native pass budget expired');
   const session = privateSession();
   const info = JSON.parse(readFileSync(`${scratch}/session.json`));
   assert.equal(info.runtime, budget.runtime);

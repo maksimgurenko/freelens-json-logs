@@ -1,0 +1,9 @@
+{
+  "before": [],
+  "setupError": "Error: ENOENT: no such file or directory, open 'docs/verification/48/host/native-ime-replacement-20261028/package-identity.json'",
+  "afterSetup": [],
+  "finalProbeError": "Error: Private CDP target closed",
+  "childrenGone": true,
+  "afterFinalProbe": [],
+  "pass": true
+}

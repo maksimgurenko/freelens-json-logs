@@ -1,0 +1,2373 @@
+{
+  "route": "private Wayland virtual keyboard/pointer and private clipboard; native BrowserWindow API where stated",
+  "physicalHardware": false,
+  "packageSha256": "0648bbe51fcf6eee4f43d0ba0a55f42b870019966df45646d92293762c60a250",
+  "session": {
+    "pid": 2548140,
+    "privateInstance": "efb50993780079460b0cbed1363e2166a2de1d9f_1793223512_847746527",
+    "privateRuntime": "/tmp/fd-14yhcw_r",
+    "owned": [
+      {
+        "address": "0x5591ef4fb0e0",
+        "mapped": true,
+        "hidden": false,
+        "visible": true,
+        "acceptsInput": true,
+        "at": [
+          21,
+          21
+        ],
+        "size": [
+          1238,
+          678
+        ],
+        "workspace": {
+          "id": 7,
+          "name": "7"
+        },
+        "floating": false,
+        "monitor": 0,
+        "class": "freelens",
+        "title": "Freelens",
+        "initialClass": "freelens",
+        "initialTitle": "Freelens",
+        "pid": 2548140,
+        "xwayland": false,
+        "pinned": false,
+        "pinFullscreened": false,
+        "fullscreen": 0,
+        "fullscreenClient": 0,
+        "fullscreenHandler": "default",
+        "allowedOverFullscreen": true,
+        "grouped": [],
+        "tags": [],
+        "swallowing": "0x0",
+        "focusHistoryID": 0,
+        "inhibitingIdle": false,
+        "xdgTag": "",
+        "xdgDescription": "",
+        "contentType": "none",
+        "tearingHint": false,
+        "stableId": "18000003"
+      }
+    ]
+  },
+  "checks": [
+    {
+      "id": "whole-preedit-commit",
+      "requirement": "D04/D06 trace10: native select-all composition suspends matching/navigation; full replacement seeks from beginning and commits once",
+      "before": {
+        "query": "upstream",
+        "open": true,
+        "focus": true,
+        "focused": "<input id=\"rl-find\" type=\"search\" aria-label=\"Find in logs\" placeholder=\"Search retained logs\" title=\"Next: Enter or Ctrl+G; previous: Shift+Enter or Ctrl+Shift+G\" value=\"upstream\">",
+        "active": 2,
+        "inspected": -1,
+        "count": "1 of 4 matching records",
+        "selection": "upstream",
+        "scroll": 56,
+        "update": "Paused",
+        "history": false,
+        "flags": [
+          "false",
+          "false"
+        ],
+        "events": [
+          {
+            "type": "keydown",
+            "trusted": true,
+            "key": "r",
+            "composing": false,
+            "target": "rl-find",
+            "value": "upst"
+          },
+          {
+            "type": "beforeinput",
+            "trusted": true,
+            "data": "r",
+            "inputType": "insertText",
+            "composing": false,
+            "target": "rl-find",
+            "value": "upst"
+          },
+          {
+            "type": "input",
+            "trusted": true,
+            "data": "r",
+            "inputType": "insertText",
+            "composing": false,
+            "target": "rl-find",
+            "value": "upstr"
+          },
+          {
+            "type": "keydown",
+            "trusted": true,
+            "key": "e",
+            "composing": false,
+            "target": "rl-find",
+            "value": "upstr"
+          },
+          {
+            "type": "beforeinput",
+            "trusted": true,
+            "data": "e",
+            "inputType": "insertText",
+            "composing": false,
+            "target": "rl-find",
+            "value": "upstr"
+          },
+          {
+            "type": "input",
+            "trusted": true,
+            "data": "e",
+            "inputType": "insertText",
+            "composing": false,
+            "target": "rl-find",
+            "value": "upstre"
+          },
+          {
+            "type": "keydown",
+            "trusted": true,
+            "key": "a",
+            "composing": false,
+            "target": "rl-find",
+            "value": "upstre"
+          },
+          {
+            "type": "beforeinput",
+            "trusted": true,
+            "data": "a",
+            "inputType": "insertText",
+            "composing": false,
+            "target": "rl-find",
+            "value": "upstre"
+          },
+          {
+            "type": "input",
+            "trusted": true,
+            "data": "a",
+            "inputType": "insertText",
+            "composing": false,
+            "target": "rl-find",
+            "value": "upstrea"
+          },
+          {
+            "type": "keydown",
+            "trusted": true,
+            "key": "m",
+            "composing": false,
+            "target": "rl-find",
+            "value": "upstrea"
+          },
+          {
+            "type": "beforeinput",
+            "trusted": true,
+            "data": "m",
+            "inputType": "insertText",
+            "composing": false,
+            "target": "rl-find",
+            "value": "upstrea"
+          },
+          {
+            "type": "input",
+            "trusted": true,
+            "data": "m",
+            "inputType": "insertText",
+            "composing": false,
+            "target": "rl-find",
+            "value": "upstream"
+          },
+          {
+            "type": "keydown",
+            "trusted": true,
+            "key": "Tab",
+            "composing": false,
+            "target": "rl-find",
+            "value": "upstream"
+          },
+          {
+            "type": "focusin",
+            "trusted": true,
+            "target": "",
+            "value": ""
+          },
+          {
+            "type": "keydown",
+            "trusted": true,
+            "key": "Tab",
+            "composing": false,
+            "target": "",
+            "value": ""
+          },
+          {
+            "type": "focusin",
+            "trusted": true,
+            "target": "rl-find",
+            "value": "upstream"
+          }
+        ]
+      },
+      "preedit": {
+        "query": "up",
+        "open": true,
+        "focus": true,
+        "focused": "<input id=\"rl-find\" type=\"search\" aria-label=\"Find in logs\" placeholder=\"Search retained logs\" title=\"Next: Enter or Ctrl+G; previous: Shift+Enter or Ctrl+Shift+G\" value=\"up\">",
+        "active": -1,
+        "inspected": -1,
+        "count": "Matching pending",
+        "selection": "",
+        "scroll": 56,
+        "update": "Paused",
+        "history": false,
+        "flags": [
+          "false",
+          "false"
+        ],
+        "events": [
+          {
+            "type": "input",
+            "trusted": true,
+            "data": "e",
+            "inputType": "insertText",
+            "composing": false,
+            "target": "rl-find",
+            "value": "upstre"
+          },
+          {
+            "type": "keydown",
+            "trusted": true,
+            "key": "a",
+            "composing": false,
+            "target": "rl-find",
+            "value": "upstre"
+          },
+          {
+            "type": "beforeinput",
+            "trusted": true,
+            "data": "a",
+            "inputType": "insertText",
+            "composing": false,
+            "target": "rl-find",
+            "value": "upstre"
+          },
+          {
+            "type": "input",
+            "trusted": true,
+            "data": "a",
+            "inputType": "insertText",
+            "composing": false,
+            "target": "rl-find",
+            "value": "upstrea"
+          },
+          {
+            "type": "keydown",
+            "trusted": true,
+            "key": "m",
+            "composing": false,
+            "target": "rl-find",
+            "value": "upstrea"
+          },
+          {
+            "type": "beforeinput",
+            "trusted": true,
+            "data": "m",
+            "inputType": "insertText",
+            "composing": false,
+            "target": "rl-find",
+            "value": "upstrea"
+          },
+          {
+            "type": "input",
+            "trusted": true,
+            "data": "m",
+            "inputType": "insertText",
+            "composing": false,
+            "target": "rl-find",
+            "value": "upstream"
+          },
+          {
+            "type": "keydown",
+            "trusted": true,
+            "key": "Tab",
+            "composing": false,
+            "target": "rl-find",
+            "value": "upstream"
+          },
+          {
+            "type": "focusin",
+            "trusted": true,
+            "target": "",
+            "value": ""
+          },
+          {
+            "type": "keydown",
+            "trusted": true,
+            "key": "Tab",
+            "composing": false,
+            "target": "",
+            "value": ""
+          },
+          {
+            "type": "focusin",
+            "trusted": true,
+            "target": "rl-find",
+            "value": "upstream"
+          },
+          {
+            "type": "keydown",
+            "trusted": true,
+            "key": "a",
+            "composing": false,
+            "target": "rl-find",
+            "value": "upstream"
+          },
+          {
+            "type": "compositionstart",
+            "trusted": true,
+            "data": "upstream",
+            "target": "rl-find",
+            "value": "upstream"
+          },
+          {
+            "type": "compositionupdate",
+            "trusted": true,
+            "data": "up",
+            "target": "rl-find",
+            "value": "upstream"
+          },
+          {
+            "type": "beforeinput",
+            "trusted": true,
+            "data": "up",
+            "inputType": "insertCompositionText",
+            "composing": true,
+            "target": "rl-find",
+            "value": "upstream"
+          },
+          {
+            "type": "input",
+            "trusted": true,
+            "data": "up",
+            "inputType": "insertCompositionText",
+            "composing": true,
+            "target": "rl-find",
+            "value": "up"
+          }
+        ]
+      },
+      "pass": false,
+      "error": "Error: SyntaxError: missing ) after argument list\n    at Object.evaluate (file:///home/max/work/freelens-json-logs/scripts/find-production-host/cdp.mjs:54:40)\n    at async file:///home/max/work/freelens-json-logs/scripts/find-production-host/native-completion-ime.mjs:14:110\n    at async test (file:///home/max/work/freelens-json-logs/scripts/find-production-host/native-completion-common.mjs:24:113)\n    at async file:///home/max/work/freelens-json-logs/scripts/find-production-host/native-completion-ime.mjs:13:2",
+      "after": {
+        "query": "up",
+        "open": true,
+        "focus": true,
+        "focused": "<input id=\"rl-find\" type=\"search\" aria-label=\"Find in logs\" placeholder=\"Search retained logs\" title=\"Next: Enter or Ctrl+G; previous: Shift+Enter or Ctrl+Shift+G\" value=\"up\">",
+        "active": -1,
+        "inspected": -1,
+        "count": "Matching pending",
+        "selection": "",
+        "scroll": 56,
+        "update": "Paused",
+        "history": false,
+        "flags": [
+          "false",
+          "false"
+        ],
+        "events": [
+          {
+            "type": "input",
+            "trusted": true,
+            "data": "e",
+            "inputType": "insertText",
+            "composing": false,
+            "target": "rl-find",
+            "value": "upstre"
+          },
+          {
+            "type": "keydown",
+            "trusted": true,
+            "key": "a",
+            "composing": false,
+            "target": "rl-find",
+            "value": "upstre"
+          },
+          {
+            "type": "beforeinput",
+            "trusted": true,
+            "data": "a",
+            "inputType": "insertText",
+            "composing": false,
+            "target": "rl-find",
+            "value": "upstre"
+          },
+          {
+            "type": "input",
+            "trusted": true,
+            "data": "a",
+            "inputType": "insertText",
+            "composing": false,
+            "target": "rl-find",
+            "value": "upstrea"
+          },
+          {
+            "type": "keydown",
+            "trusted": true,
+            "key": "m",
+            "composing": false,
+            "target": "rl-find",
+            "value": "upstrea"
+          },
+          {
+            "type": "beforeinput",
+            "trusted": true,
+            "data": "m",
+            "inputType": "insertText",
+            "composing": false,
+            "target": "rl-find",
+            "value": "upstrea"
+          },
+          {
+            "type": "input",
+            "trusted": true,
+            "data": "m",
+            "inputType": "insertText",
+            "composing": false,
+            "target": "rl-find",
+            "value": "upstream"
+          },
+          {
+            "type": "keydown",
+            "trusted": true,
+            "key": "Tab",
+            "composing": false,
+            "target": "rl-find",
+            "value": "upstream"
+          },
+          {
+            "type": "focusin",
+            "trusted": true,
+            "target": "",
+            "value": ""
+          },
+          {
+            "type": "keydown",
+            "trusted": true,
+            "key": "Tab",
+            "composing": false,
+            "target": "",
+            "value": ""
+          },
+          {
+            "type": "focusin",
+            "trusted": true,
+            "target": "rl-find",
+            "value": "upstream"
+          },
+          {
+            "type": "keydown",
+            "trusted": true,
+            "key": "a",
+            "composing": false,
+            "target": "rl-find",
+            "value": "upstream"
+          },
+          {
+            "type": "compositionstart",
+            "trusted": true,
+            "data": "upstream",
+            "target": "rl-find",
+            "value": "upstream"
+          },
+          {
+            "type": "compositionupdate",
+            "trusted": true,
+            "data": "up",
+            "target": "rl-find",
+            "value": "upstream"
+          },
+          {
+            "type": "beforeinput",
+            "trusted": true,
+            "data": "up",
+            "inputType": "insertCompositionText",
+            "composing": true,
+            "target": "rl-find",
+            "value": "upstream"
+          },
+          {
+            "type": "input",
+            "trusted": true,
+            "data": "up",
+            "inputType": "insertCompositionText",
+            "composing": true,
+            "target": "rl-find",
+            "value": "up"
+          }
+        ]
+      }
+    },
+    {
+      "id": "partial-replacement",
+      "requirement": "D06 trace10: partial native composition refines candidate rather than whole-input replacement",
+      "before": {
+        "query": "up",
+        "open": true,
+        "focus": true,
+        "focused": "<input id=\"rl-find\" type=\"search\" aria-label=\"Find in logs\" placeholder=\"Search retained logs\" title=\"Next: Enter or Ctrl+G; previous: Shift+Enter or Ctrl+Shift+G\" value=\"up\">",
+        "active": -1,
+        "inspected": -1,
+        "count": "Matching pending",
+        "selection": "",
+        "scroll": 56,
+        "update": "Paused",
+        "history": false,
+        "flags": [
+          "false",
+          "false"
+        ],
+        "events": [
+          {
+            "type": "input",
+            "trusted": true,
+            "data": "e",
+            "inputType": "insertText",
+            "composing": false,
+            "target": "rl-find",
+            "value": "upstre"
+          },
+          {
+            "type": "keydown",
+            "trusted": true,
+            "key": "a",
+            "composing": false,
+            "target": "rl-find",
+            "value": "upstre"
+          },
+          {
+            "type": "beforeinput",
+            "trusted": true,
+            "data": "a",
+            "inputType": "insertText",
+            "composing": false,
+            "target": "rl-find",
+            "value": "upstre"
+          },
+          {
+            "type": "input",
+            "trusted": true,
+            "data": "a",
+            "inputType": "insertText",
+            "composing": false,
+            "target": "rl-find",
+            "value": "upstrea"
+          },
+          {
+            "type": "keydown",
+            "trusted": true,
+            "key": "m",
+            "composing": false,
+            "target": "rl-find",
+            "value": "upstrea"
+          },
+          {
+            "type": "beforeinput",
+            "trusted": true,
+            "data": "m",
+            "inputType": "insertText",
+            "composing": false,
+            "target": "rl-find",
+            "value": "upstrea"
+          },
+          {
+            "type": "input",
+            "trusted": true,
+            "data": "m",
+            "inputType": "insertText",
+            "composing": false,
+            "target": "rl-find",
+            "value": "upstream"
+          },
+          {
+            "type": "keydown",
+            "trusted": true,
+            "key": "Tab",
+            "composing": false,
+            "target": "rl-find",
+            "value": "upstream"
+          },
+          {
+            "type": "focusin",
+            "trusted": true,
+            "target": "",
+            "value": ""
+          },
+          {
+            "type": "keydown",
+            "trusted": true,
+            "key": "Tab",
+            "composing": false,
+            "target": "",
+            "value": ""
+          },
+          {
+            "type": "focusin",
+            "trusted": true,
+            "target": "rl-find",
+            "value": "upstream"
+          },
+          {
+            "type": "keydown",
+            "trusted": true,
+            "key": "a",
+            "composing": false,
+            "target": "rl-find",
+            "value": "upstream"
+          },
+          {
+            "type": "compositionstart",
+            "trusted": true,
+            "data": "upstream",
+            "target": "rl-find",
+            "value": "upstream"
+          },
+          {
+            "type": "compositionupdate",
+            "trusted": true,
+            "data": "up",
+            "target": "rl-find",
+            "value": "upstream"
+          },
+          {
+            "type": "beforeinput",
+            "trusted": true,
+            "data": "up",
+            "inputType": "insertCompositionText",
+            "composing": true,
+            "target": "rl-find",
+            "value": "upstream"
+          },
+          {
+            "type": "input",
+            "trusted": true,
+            "data": "up",
+            "inputType": "insertCompositionText",
+            "composing": true,
+            "target": "rl-find",
+            "value": "up"
+          }
+        ]
+      },
+      "pass": false,
+      "error": "Error: Navigate 73: {\"query\":\"up\",\"open\":true,\"focus\":true,\"focused\":\"<input id=\\\"rl-find\\\" type=\\\"search\\\" aria-label=\\\"Find in logs\\\" placeholder=\\\"Search retained logs\\\" title=\\\"Next: Enter or Ctrl+G; previous: Shift+Enter or Ctrl+Shift+G\\\" value=\\\"up\\\">\",\"active\":-1,\"inspected\":-1,\"count\":\"Matching pending\",\"selection\":\"\",\"scroll\":56,\"update\":\"Paused\",\"history\":false,\"flags\":[\"false\",\"false\"],\"events\":[{\"type\":\"keydown\",\"trusted\":true,\"key\":\"a\",\"composing\":false,\"target\":\"rl-find\",\"value\":\"upstre\"},{\"type\":\"beforeinput\",\"trusted\":true,\"data\":\"a\",\"inputType\":\"insertText\",\"composing\":false,\"target\":\"rl-find\",\"value\":\"upstre\"},{\"type\":\"input\",\"trusted\":true,\"data\":\"a\",\"inputType\":\"insertText\",\"composing\":false,\"target\":\"rl-find\",\"value\":\"upstrea\"},{\"type\":\"keydown\",\"trusted\":true,\"key\":\"m\",\"composing\":false,\"target\":\"rl-find\",\"value\":\"upstrea\"},{\"type\":\"beforeinput\",\"trusted\":true,\"data\":\"m\",\"inputType\":\"insertText\",\"composing\":false,\"target\":\"rl-find\",\"value\":\"upstrea\"},{\"type\":\"input\",\"trusted\":true,\"data\":\"m\",\"inputType\":\"insertText\",\"composing\":false,\"target\":\"rl-find\",\"value\":\"upstream\"},{\"type\":\"keydown\",\"trusted\":true,\"key\":\"Tab\",\"composing\":false,\"target\":\"rl-find\",\"value\":\"upstream\"},{\"type\":\"focusin\",\"trusted\":true,\"target\":\"\",\"value\":\"\"},{\"type\":\"keydown\",\"trusted\":true,\"key\":\"Tab\",\"composing\":false,\"target\":\"\",\"value\":\"\"},{\"type\":\"focusin\",\"trusted\":true,\"target\":\"rl-find\",\"value\":\"upstream\"},{\"type\":\"keydown\",\"trusted\":true,\"key\":\"a\",\"composing\":false,\"target\":\"rl-find\",\"value\":\"upstream\"},{\"type\":\"compositionstart\",\"trusted\":true,\"data\":\"upstream\",\"target\":\"rl-find\",\"value\":\"upstream\"},{\"type\":\"compositionupdate\",\"trusted\":true,\"data\":\"up\",\"target\":\"rl-find\",\"value\":\"upstream\"},{\"type\":\"beforeinput\",\"trusted\":true,\"data\":\"up\",\"inputType\":\"insertCompositionText\",\"composing\":true,\"target\":\"rl-find\",\"value\":\"upstream\"},{\"type\":\"input\",\"trusted\":true,\"data\":\"up\",\"inputType\":\"insertCompositionText\",\"composing\":true,\"target\":\"rl-find\",\"value\":\"up\"},{\"type\":\"keydown\",\"trusted\":true,\"key\":\"g\",\"composing\":true,\"target\":\"rl-find\",\"value\":\"up\"}]}\n    at Object.until (file:///home/max/work/freelens-json-logs/scripts/find-production-host/native-completion-common.mjs:23:124)\n    at async file:///home/max/work/freelens-json-logs/scripts/find-production-host/native-completion-ime.mjs:18:13\n    at async test (file:///home/max/work/freelens-json-logs/scripts/find-production-host/native-completion-common.mjs:24:113)\n    at async file:///home/max/work/freelens-json-logs/scripts/find-production-host/native-completion-ime.mjs:17:2",
+      "after": {
+        "query": "up",
+        "open": true,
+        "focus": true,
+        "focused": "<input id=\"rl-find\" type=\"search\" aria-label=\"Find in logs\" placeholder=\"Search retained logs\" title=\"Next: Enter or Ctrl+G; previous: Shift+Enter or Ctrl+Shift+G\" value=\"up\">",
+        "active": -1,
+        "inspected": -1,
+        "count": "Matching pending",
+        "selection": "",
+        "scroll": 56,
+        "update": "Paused",
+        "history": false,
+        "flags": [
+          "false",
+          "false"
+        ],
+        "events": [
+          {
+            "type": "keydown",
+            "trusted": true,
+            "key": "a",
+            "composing": false,
+            "target": "rl-find",
+            "value": "upstre"
+          },
+          {
+            "type": "beforeinput",
+            "trusted": true,
+            "data": "a",
+            "inputType": "insertText",
+            "composing": false,
+            "target": "rl-find",
+            "value": "upstre"
+          },
+          {
+            "type": "input",
+            "trusted": true,
+            "data": "a",
+            "inputType": "insertText",
+            "composing": false,
+            "target": "rl-find",
+            "value": "upstrea"
+          },
+          {
+            "type": "keydown",
+            "trusted": true,
+            "key": "m",
+            "composing": false,
+            "target": "rl-find",
+            "value": "upstrea"
+          },
+          {
+            "type": "beforeinput",
+            "trusted": true,
+            "data": "m",
+            "inputType": "insertText",
+            "composing": false,
+            "target": "rl-find",
+            "value": "upstrea"
+          },
+          {
+            "type": "input",
+            "trusted": true,
+            "data": "m",
+            "inputType": "insertText",
+            "composing": false,
+            "target": "rl-find",
+            "value": "upstream"
+          },
+          {
+            "type": "keydown",
+            "trusted": true,
+            "key": "Tab",
+            "composing": false,
+            "target": "rl-find",
+            "value": "upstream"
+          },
+          {
+            "type": "focusin",
+            "trusted": true,
+            "target": "",
+            "value": ""
+          },
+          {
+            "type": "keydown",
+            "trusted": true,
+            "key": "Tab",
+            "composing": false,
+            "target": "",
+            "value": ""
+          },
+          {
+            "type": "focusin",
+            "trusted": true,
+            "target": "rl-find",
+            "value": "upstream"
+          },
+          {
+            "type": "keydown",
+            "trusted": true,
+            "key": "a",
+            "composing": false,
+            "target": "rl-find",
+            "value": "upstream"
+          },
+          {
+            "type": "compositionstart",
+            "trusted": true,
+            "data": "upstream",
+            "target": "rl-find",
+            "value": "upstream"
+          },
+          {
+            "type": "compositionupdate",
+            "trusted": true,
+            "data": "up",
+            "target": "rl-find",
+            "value": "upstream"
+          },
+          {
+            "type": "beforeinput",
+            "trusted": true,
+            "data": "up",
+            "inputType": "insertCompositionText",
+            "composing": true,
+            "target": "rl-find",
+            "value": "upstream"
+          },
+          {
+            "type": "input",
+            "trusted": true,
+            "data": "up",
+            "inputType": "insertCompositionText",
+            "composing": true,
+            "target": "rl-find",
+            "value": "up"
+          },
+          {
+            "type": "keydown",
+            "trusted": true,
+            "key": "g",
+            "composing": true,
+            "target": "rl-find",
+            "value": "up"
+          }
+        ]
+      }
+    },
+    {
+      "id": "enter-commit",
+      "requirement": "D06 trace10: compositor keyboard Enter is consumed by actual input-method grab to commit; Find does not navigate",
+      "before": {
+        "query": "up",
+        "open": true,
+        "focus": true,
+        "focused": "<input id=\"rl-find\" type=\"search\" aria-label=\"Find in logs\" placeholder=\"Search retained logs\" title=\"Next: Enter or Ctrl+G; previous: Shift+Enter or Ctrl+Shift+G\" value=\"up\">",
+        "active": -1,
+        "inspected": -1,
+        "count": "Matching pending",
+        "selection": "",
+        "scroll": 56,
+        "update": "Paused",
+        "history": false,
+        "flags": [
+          "false",
+          "false"
+        ],
+        "events": [
+          {
+            "type": "keydown",
+            "trusted": true,
+            "key": "a",
+            "composing": false,
+            "target": "rl-find",
+            "value": "upstre"
+          },
+          {
+            "type": "beforeinput",
+            "trusted": true,
+            "data": "a",
+            "inputType": "insertText",
+            "composing": false,
+            "target": "rl-find",
+            "value": "upstre"
+          },
+          {
+            "type": "input",
+            "trusted": true,
+            "data": "a",
+            "inputType": "insertText",
+            "composing": false,
+            "target": "rl-find",
+            "value": "upstrea"
+          },
+          {
+            "type": "keydown",
+            "trusted": true,
+            "key": "m",
+            "composing": false,
+            "target": "rl-find",
+            "value": "upstrea"
+          },
+          {
+            "type": "beforeinput",
+            "trusted": true,
+            "data": "m",
+            "inputType": "insertText",
+            "composing": false,
+            "target": "rl-find",
+            "value": "upstrea"
+          },
+          {
+            "type": "input",
+            "trusted": true,
+            "data": "m",
+            "inputType": "insertText",
+            "composing": false,
+            "target": "rl-find",
+            "value": "upstream"
+          },
+          {
+            "type": "keydown",
+            "trusted": true,
+            "key": "Tab",
+            "composing": false,
+            "target": "rl-find",
+            "value": "upstream"
+          },
+          {
+            "type": "focusin",
+            "trusted": true,
+            "target": "",
+            "value": ""
+          },
+          {
+            "type": "keydown",
+            "trusted": true,
+            "key": "Tab",
+            "composing": false,
+            "target": "",
+            "value": ""
+          },
+          {
+            "type": "focusin",
+            "trusted": true,
+            "target": "rl-find",
+            "value": "upstream"
+          },
+          {
+            "type": "keydown",
+            "trusted": true,
+            "key": "a",
+            "composing": false,
+            "target": "rl-find",
+            "value": "upstream"
+          },
+          {
+            "type": "compositionstart",
+            "trusted": true,
+            "data": "upstream",
+            "target": "rl-find",
+            "value": "upstream"
+          },
+          {
+            "type": "compositionupdate",
+            "trusted": true,
+            "data": "up",
+            "target": "rl-find",
+            "value": "upstream"
+          },
+          {
+            "type": "beforeinput",
+            "trusted": true,
+            "data": "up",
+            "inputType": "insertCompositionText",
+            "composing": true,
+            "target": "rl-find",
+            "value": "upstream"
+          },
+          {
+            "type": "input",
+            "trusted": true,
+            "data": "up",
+            "inputType": "insertCompositionText",
+            "composing": true,
+            "target": "rl-find",
+            "value": "up"
+          },
+          {
+            "type": "keydown",
+            "trusted": true,
+            "key": "g",
+            "composing": true,
+            "target": "rl-find",
+            "value": "up"
+          }
+        ]
+      },
+      "pass": false,
+      "error": "Error: Enter IME commit: {\"query\":\"upstream\",\"open\":true,\"focus\":true,\"focused\":\"<input id=\\\"rl-find\\\" type=\\\"search\\\" aria-label=\\\"Find in logs\\\" placeholder=\\\"Search retained logs\\\" title=\\\"Next: Enter or Ctrl+G; previous: Shift+Enter or Ctrl+Shift+G\\\" value=\\\"upstream\\\">\",\"active\":-1,\"inspected\":-1,\"count\":\"Matching pending\",\"selection\":\"\",\"scroll\":56,\"update\":\"Paused\",\"history\":false,\"flags\":[\"false\",\"false\"],\"events\":[{\"type\":\"input\",\"trusted\":true,\"data\":\"m\",\"inputType\":\"insertText\",\"composing\":false,\"target\":\"rl-find\",\"value\":\"upstream\"},{\"type\":\"keydown\",\"trusted\":true,\"key\":\"Tab\",\"composing\":false,\"target\":\"rl-find\",\"value\":\"upstream\"},{\"type\":\"focusin\",\"trusted\":true,\"target\":\"\",\"value\":\"\"},{\"type\":\"keydown\",\"trusted\":true,\"key\":\"Tab\",\"composing\":false,\"target\":\"\",\"value\":\"\"},{\"type\":\"focusin\",\"trusted\":true,\"target\":\"rl-find\",\"value\":\"upstream\"},{\"type\":\"keydown\",\"trusted\":true,\"key\":\"a\",\"composing\":false,\"target\":\"rl-find\",\"value\":\"upstream\"},{\"type\":\"compositionstart\",\"trusted\":true,\"data\":\"upstream\",\"target\":\"rl-find\",\"value\":\"upstream\"},{\"type\":\"compositionupdate\",\"trusted\":true,\"data\":\"up\",\"target\":\"rl-find\",\"value\":\"upstream\"},{\"type\":\"beforeinput\",\"trusted\":true,\"data\":\"up\",\"inputType\":\"insertCompositionText\",\"composing\":true,\"target\":\"rl-find\",\"value\":\"upstream\"},{\"type\":\"input\",\"trusted\":true,\"data\":\"up\",\"inputType\":\"insertCompositionText\",\"composing\":true,\"target\":\"rl-find\",\"value\":\"up\"},{\"type\":\"keydown\",\"trusted\":true,\"key\":\"g\",\"composing\":true,\"target\":\"rl-find\",\"value\":\"up\"},{\"type\":\"keydown\",\"trusted\":true,\"key\":\"f\",\"composing\":true,\"target\":\"rl-find\",\"value\":\"up\"},{\"type\":\"keydown\",\"trusted\":true,\"key\":\"a\",\"composing\":true,\"target\":\"rl-find\",\"value\":\"up\"},{\"type\":\"compositionupdate\",\"trusted\":true,\"data\":\"upstream\",\"target\":\"rl-find\",\"value\":\"up\"},{\"type\":\"beforeinput\",\"trusted\":true,\"data\":\"upstream\",\"inputType\":\"insertCompositionText\",\"composing\":true,\"target\":\"rl-find\",\"value\":\"up\"},{\"type\":\"input\",\"trusted\":true,\"data\":\"upstream\",\"inputType\":\"insertCompositionText\",\"composing\":true,\"target\":\"rl-find\",\"value\":\"upstream\"}]}\n    at Object.until (file:///home/max/work/freelens-json-logs/scripts/find-production-host/native-completion-common.mjs:23:124)\n    at async file:///home/max/work/freelens-json-logs/scripts/find-production-host/native-completion-ime.mjs:22:128\n    at async test (file:///home/max/work/freelens-json-logs/scripts/find-production-host/native-completion-common.mjs:24:113)\n    at async file:///home/max/work/freelens-json-logs/scripts/find-production-host/native-completion-ime.mjs:21:2",
+      "after": {
+        "query": "upstream",
+        "open": true,
+        "focus": true,
+        "focused": "<input id=\"rl-find\" type=\"search\" aria-label=\"Find in logs\" placeholder=\"Search retained logs\" title=\"Next: Enter or Ctrl+G; previous: Shift+Enter or Ctrl+Shift+G\" value=\"upstream\">",
+        "active": -1,
+        "inspected": -1,
+        "count": "Matching pending",
+        "selection": "",
+        "scroll": 56,
+        "update": "Paused",
+        "history": false,
+        "flags": [
+          "false",
+          "false"
+        ],
+        "events": [
+          {
+            "type": "input",
+            "trusted": true,
+            "data": "m",
+            "inputType": "insertText",
+            "composing": false,
+            "target": "rl-find",
+            "value": "upstream"
+          },
+          {
+            "type": "keydown",
+            "trusted": true,
+            "key": "Tab",
+            "composing": false,
+            "target": "rl-find",
+            "value": "upstream"
+          },
+          {
+            "type": "focusin",
+            "trusted": true,
+            "target": "",
+            "value": ""
+          },
+          {
+            "type": "keydown",
+            "trusted": true,
+            "key": "Tab",
+            "composing": false,
+            "target": "",
+            "value": ""
+          },
+          {
+            "type": "focusin",
+            "trusted": true,
+            "target": "rl-find",
+            "value": "upstream"
+          },
+          {
+            "type": "keydown",
+            "trusted": true,
+            "key": "a",
+            "composing": false,
+            "target": "rl-find",
+            "value": "upstream"
+          },
+          {
+            "type": "compositionstart",
+            "trusted": true,
+            "data": "upstream",
+            "target": "rl-find",
+            "value": "upstream"
+          },
+          {
+            "type": "compositionupdate",
+            "trusted": true,
+            "data": "up",
+            "target": "rl-find",
+            "value": "upstream"
+          },
+          {
+            "type": "beforeinput",
+            "trusted": true,
+            "data": "up",
+            "inputType": "insertCompositionText",
+            "composing": true,
+            "target": "rl-find",
+            "value": "upstream"
+          },
+          {
+            "type": "input",
+            "trusted": true,
+            "data": "up",
+            "inputType": "insertCompositionText",
+            "composing": true,
+            "target": "rl-find",
+            "value": "up"
+          },
+          {
+            "type": "keydown",
+            "trusted": true,
+            "key": "g",
+            "composing": true,
+            "target": "rl-find",
+            "value": "up"
+          },
+          {
+            "type": "keydown",
+            "trusted": true,
+            "key": "f",
+            "composing": true,
+            "target": "rl-find",
+            "value": "up"
+          },
+          {
+            "type": "keydown",
+            "trusted": true,
+            "key": "a",
+            "composing": true,
+            "target": "rl-find",
+            "value": "up"
+          },
+          {
+            "type": "compositionupdate",
+            "trusted": true,
+            "data": "upstream",
+            "target": "rl-find",
+            "value": "up"
+          },
+          {
+            "type": "beforeinput",
+            "trusted": true,
+            "data": "upstream",
+            "inputType": "insertCompositionText",
+            "composing": true,
+            "target": "rl-find",
+            "value": "up"
+          },
+          {
+            "type": "input",
+            "trusted": true,
+            "data": "upstream",
+            "inputType": "insertCompositionText",
+            "composing": true,
+            "target": "rl-find",
+            "value": "upstream"
+          }
+        ]
+      }
+    },
+    {
+      "id": "cancel",
+      "requirement": "D06: native preedit cancellation restores prior committed query and does not advance result",
+      "before": {
+        "query": "upstream",
+        "open": true,
+        "focus": true,
+        "focused": "<input id=\"rl-find\" type=\"search\" aria-label=\"Find in logs\" placeholder=\"Search retained logs\" title=\"Next: Enter or Ctrl+G; previous: Shift+Enter or Ctrl+Shift+G\" value=\"upstream\">",
+        "active": -1,
+        "inspected": -1,
+        "count": "Matching pending",
+        "selection": "",
+        "scroll": 56,
+        "update": "Paused",
+        "history": false,
+        "flags": [
+          "false",
+          "false"
+        ],
+        "events": [
+          {
+            "type": "input",
+            "trusted": true,
+            "data": "m",
+            "inputType": "insertText",
+            "composing": false,
+            "target": "rl-find",
+            "value": "upstream"
+          },
+          {
+            "type": "keydown",
+            "trusted": true,
+            "key": "Tab",
+            "composing": false,
+            "target": "rl-find",
+            "value": "upstream"
+          },
+          {
+            "type": "focusin",
+            "trusted": true,
+            "target": "",
+            "value": ""
+          },
+          {
+            "type": "keydown",
+            "trusted": true,
+            "key": "Tab",
+            "composing": false,
+            "target": "",
+            "value": ""
+          },
+          {
+            "type": "focusin",
+            "trusted": true,
+            "target": "rl-find",
+            "value": "upstream"
+          },
+          {
+            "type": "keydown",
+            "trusted": true,
+            "key": "a",
+            "composing": false,
+            "target": "rl-find",
+            "value": "upstream"
+          },
+          {
+            "type": "compositionstart",
+            "trusted": true,
+            "data": "upstream",
+            "target": "rl-find",
+            "value": "upstream"
+          },
+          {
+            "type": "compositionupdate",
+            "trusted": true,
+            "data": "up",
+            "target": "rl-find",
+            "value": "upstream"
+          },
+          {
+            "type": "beforeinput",
+            "trusted": true,
+            "data": "up",
+            "inputType": "insertCompositionText",
+            "composing": true,
+            "target": "rl-find",
+            "value": "upstream"
+          },
+          {
+            "type": "input",
+            "trusted": true,
+            "data": "up",
+            "inputType": "insertCompositionText",
+            "composing": true,
+            "target": "rl-find",
+            "value": "up"
+          },
+          {
+            "type": "keydown",
+            "trusted": true,
+            "key": "g",
+            "composing": true,
+            "target": "rl-find",
+            "value": "up"
+          },
+          {
+            "type": "keydown",
+            "trusted": true,
+            "key": "f",
+            "composing": true,
+            "target": "rl-find",
+            "value": "up"
+          },
+          {
+            "type": "keydown",
+            "trusted": true,
+            "key": "a",
+            "composing": true,
+            "target": "rl-find",
+            "value": "up"
+          },
+          {
+            "type": "compositionupdate",
+            "trusted": true,
+            "data": "upstream",
+            "target": "rl-find",
+            "value": "up"
+          },
+          {
+            "type": "beforeinput",
+            "trusted": true,
+            "data": "upstream",
+            "inputType": "insertCompositionText",
+            "composing": true,
+            "target": "rl-find",
+            "value": "up"
+          },
+          {
+            "type": "input",
+            "trusted": true,
+            "data": "upstream",
+            "inputType": "insertCompositionText",
+            "composing": true,
+            "target": "rl-find",
+            "value": "upstream"
+          }
+        ]
+      },
+      "pass": false,
+      "error": "Error: Composition cancel: {\"query\":\"\",\"open\":true,\"focus\":true,\"focused\":\"<input id=\\\"rl-find\\\" type=\\\"search\\\" aria-label=\\\"Find in logs\\\" placeholder=\\\"Search retained logs\\\" title=\\\"Next: Enter or Ctrl+G; previous: Shift+Enter or Ctrl+Shift+G\\\" value=\\\"\\\">\",\"active\":-1,\"inspected\":-1,\"count\":\"Enter text to find\",\"selection\":\"\",\"scroll\":56,\"update\":\"Paused\",\"history\":false,\"flags\":[\"false\",\"false\"],\"events\":[{\"type\":\"compositionupdate\",\"trusted\":true,\"data\":\"up\",\"target\":\"rl-find\",\"value\":\"upstream\"},{\"type\":\"beforeinput\",\"trusted\":true,\"data\":\"up\",\"inputType\":\"insertCompositionText\",\"composing\":true,\"target\":\"rl-find\",\"value\":\"upstream\"},{\"type\":\"input\",\"trusted\":true,\"data\":\"up\",\"inputType\":\"insertCompositionText\",\"composing\":true,\"target\":\"rl-find\",\"value\":\"up\"},{\"type\":\"keydown\",\"trusted\":true,\"key\":\"g\",\"composing\":true,\"target\":\"rl-find\",\"value\":\"up\"},{\"type\":\"keydown\",\"trusted\":true,\"key\":\"f\",\"composing\":true,\"target\":\"rl-find\",\"value\":\"up\"},{\"type\":\"keydown\",\"trusted\":true,\"key\":\"a\",\"composing\":true,\"target\":\"rl-find\",\"value\":\"up\"},{\"type\":\"compositionupdate\",\"trusted\":true,\"data\":\"upstream\",\"target\":\"rl-find\",\"value\":\"up\"},{\"type\":\"beforeinput\",\"trusted\":true,\"data\":\"upstream\",\"inputType\":\"insertCompositionText\",\"composing\":true,\"target\":\"rl-find\",\"value\":\"up\"},{\"type\":\"input\",\"trusted\":true,\"data\":\"upstream\",\"inputType\":\"insertCompositionText\",\"composing\":true,\"target\":\"rl-find\",\"value\":\"upstream\"},{\"type\":\"compositionupdate\",\"trusted\":true,\"data\":\"x\",\"target\":\"rl-find\",\"value\":\"upstream\"},{\"type\":\"beforeinput\",\"trusted\":true,\"data\":\"x\",\"inputType\":\"insertCompositionText\",\"composing\":true,\"target\":\"rl-find\",\"value\":\"upstream\"},{\"type\":\"input\",\"trusted\":true,\"data\":\"x\",\"inputType\":\"insertCompositionText\",\"composing\":true,\"target\":\"rl-find\",\"value\":\"x\"},{\"type\":\"compositionupdate\",\"trusted\":true,\"data\":\"\",\"target\":\"rl-find\",\"value\":\"x\"},{\"type\":\"beforeinput\",\"trusted\":true,\"data\":\"\",\"inputType\":\"insertCompositionText\",\"composing\":true,\"target\":\"rl-find\",\"value\":\"x\"},{\"type\":\"input\",\"trusted\":true,\"data\":null,\"inputType\":\"insertCompositionText\",\"composing\":true,\"target\":\"rl-find\",\"value\":\"\"},{\"type\":\"compositionend\",\"trusted\":false,\"data\":\"\",\"target\":\"rl-find\",\"value\":\"\"}]}\n    at Object.until (file:///home/max/work/freelens-json-logs/scripts/find-production-host/native-completion-common.mjs:23:124)\n    at async file:///home/max/work/freelens-json-logs/scripts/find-production-host/native-completion-ime.mjs:25:80\n    at async test (file:///home/max/work/freelens-json-logs/scripts/find-production-host/native-completion-common.mjs:24:113)\n    at async file:///home/max/work/freelens-json-logs/scripts/find-production-host/native-completion-ime.mjs:24:2",
+      "after": {
+        "query": "",
+        "open": true,
+        "focus": true,
+        "focused": "<input id=\"rl-find\" type=\"search\" aria-label=\"Find in logs\" placeholder=\"Search retained logs\" title=\"Next: Enter or Ctrl+G; previous: Shift+Enter or Ctrl+Shift+G\" value=\"\">",
+        "active": -1,
+        "inspected": -1,
+        "count": "Enter text to find",
+        "selection": "",
+        "scroll": 56,
+        "update": "Paused",
+        "history": false,
+        "flags": [
+          "false",
+          "false"
+        ],
+        "events": [
+          {
+            "type": "compositionupdate",
+            "trusted": true,
+            "data": "up",
+            "target": "rl-find",
+            "value": "upstream"
+          },
+          {
+            "type": "beforeinput",
+            "trusted": true,
+            "data": "up",
+            "inputType": "insertCompositionText",
+            "composing": true,
+            "target": "rl-find",
+            "value": "upstream"
+          },
+          {
+            "type": "input",
+            "trusted": true,
+            "data": "up",
+            "inputType": "insertCompositionText",
+            "composing": true,
+            "target": "rl-find",
+            "value": "up"
+          },
+          {
+            "type": "keydown",
+            "trusted": true,
+            "key": "g",
+            "composing": true,
+            "target": "rl-find",
+            "value": "up"
+          },
+          {
+            "type": "keydown",
+            "trusted": true,
+            "key": "f",
+            "composing": true,
+            "target": "rl-find",
+            "value": "up"
+          },
+          {
+            "type": "keydown",
+            "trusted": true,
+            "key": "a",
+            "composing": true,
+            "target": "rl-find",
+            "value": "up"
+          },
+          {
+            "type": "compositionupdate",
+            "trusted": true,
+            "data": "upstream",
+            "target": "rl-find",
+            "value": "up"
+          },
+          {
+            "type": "beforeinput",
+            "trusted": true,
+            "data": "upstream",
+            "inputType": "insertCompositionText",
+            "composing": true,
+            "target": "rl-find",
+            "value": "up"
+          },
+          {
+            "type": "input",
+            "trusted": true,
+            "data": "upstream",
+            "inputType": "insertCompositionText",
+            "composing": true,
+            "target": "rl-find",
+            "value": "upstream"
+          },
+          {
+            "type": "compositionupdate",
+            "trusted": true,
+            "data": "x",
+            "target": "rl-find",
+            "value": "upstream"
+          },
+          {
+            "type": "beforeinput",
+            "trusted": true,
+            "data": "x",
+            "inputType": "insertCompositionText",
+            "composing": true,
+            "target": "rl-find",
+            "value": "upstream"
+          },
+          {
+            "type": "input",
+            "trusted": true,
+            "data": "x",
+            "inputType": "insertCompositionText",
+            "composing": true,
+            "target": "rl-find",
+            "value": "x"
+          },
+          {
+            "type": "compositionupdate",
+            "trusted": true,
+            "data": "",
+            "target": "rl-find",
+            "value": "x"
+          },
+          {
+            "type": "beforeinput",
+            "trusted": true,
+            "data": "",
+            "inputType": "insertCompositionText",
+            "composing": true,
+            "target": "rl-find",
+            "value": "x"
+          },
+          {
+            "type": "input",
+            "trusted": true,
+            "data": null,
+            "inputType": "insertCompositionText",
+            "composing": true,
+            "target": "rl-find",
+            "value": ""
+          },
+          {
+            "type": "compositionend",
+            "trusted": false,
+            "data": "",
+            "target": "rl-find",
+            "value": ""
+          }
+        ]
+      }
+    },
+    {
+      "id": "clear-late-completion",
+      "requirement": "D06/D11 trace10: Clear during native composition keeps empty Find and rejects late native composition completion",
+      "before": {
+        "query": "",
+        "open": true,
+        "focus": true,
+        "focused": "<input id=\"rl-find\" type=\"search\" aria-label=\"Find in logs\" placeholder=\"Search retained logs\" title=\"Next: Enter or Ctrl+G; previous: Shift+Enter or Ctrl+Shift+G\" value=\"\">",
+        "active": -1,
+        "inspected": -1,
+        "count": "Enter text to find",
+        "selection": "",
+        "scroll": 56,
+        "update": "Paused",
+        "history": false,
+        "flags": [
+          "false",
+          "false"
+        ],
+        "events": [
+          {
+            "type": "compositionupdate",
+            "trusted": true,
+            "data": "up",
+            "target": "rl-find",
+            "value": "upstream"
+          },
+          {
+            "type": "beforeinput",
+            "trusted": true,
+            "data": "up",
+            "inputType": "insertCompositionText",
+            "composing": true,
+            "target": "rl-find",
+            "value": "upstream"
+          },
+          {
+            "type": "input",
+            "trusted": true,
+            "data": "up",
+            "inputType": "insertCompositionText",
+            "composing": true,
+            "target": "rl-find",
+            "value": "up"
+          },
+          {
+            "type": "keydown",
+            "trusted": true,
+            "key": "g",
+            "composing": true,
+            "target": "rl-find",
+            "value": "up"
+          },
+          {
+            "type": "keydown",
+            "trusted": true,
+            "key": "f",
+            "composing": true,
+            "target": "rl-find",
+            "value": "up"
+          },
+          {
+            "type": "keydown",
+            "trusted": true,
+            "key": "a",
+            "composing": true,
+            "target": "rl-find",
+            "value": "up"
+          },
+          {
+            "type": "compositionupdate",
+            "trusted": true,
+            "data": "upstream",
+            "target": "rl-find",
+            "value": "up"
+          },
+          {
+            "type": "beforeinput",
+            "trusted": true,
+            "data": "upstream",
+            "inputType": "insertCompositionText",
+            "composing": true,
+            "target": "rl-find",
+            "value": "up"
+          },
+          {
+            "type": "input",
+            "trusted": true,
+            "data": "upstream",
+            "inputType": "insertCompositionText",
+            "composing": true,
+            "target": "rl-find",
+            "value": "upstream"
+          },
+          {
+            "type": "compositionupdate",
+            "trusted": true,
+            "data": "x",
+            "target": "rl-find",
+            "value": "upstream"
+          },
+          {
+            "type": "beforeinput",
+            "trusted": true,
+            "data": "x",
+            "inputType": "insertCompositionText",
+            "composing": true,
+            "target": "rl-find",
+            "value": "upstream"
+          },
+          {
+            "type": "input",
+            "trusted": true,
+            "data": "x",
+            "inputType": "insertCompositionText",
+            "composing": true,
+            "target": "rl-find",
+            "value": "x"
+          },
+          {
+            "type": "compositionupdate",
+            "trusted": true,
+            "data": "",
+            "target": "rl-find",
+            "value": "x"
+          },
+          {
+            "type": "beforeinput",
+            "trusted": true,
+            "data": "",
+            "inputType": "insertCompositionText",
+            "composing": true,
+            "target": "rl-find",
+            "value": "x"
+          },
+          {
+            "type": "input",
+            "trusted": true,
+            "data": null,
+            "inputType": "insertCompositionText",
+            "composing": true,
+            "target": "rl-find",
+            "value": ""
+          },
+          {
+            "type": "compositionend",
+            "trusted": false,
+            "data": "",
+            "target": "rl-find",
+            "value": ""
+          }
+        ]
+      },
+      "after": {
+        "query": "",
+        "open": true,
+        "focus": true,
+        "focused": "<input id=\"rl-find\" type=\"search\" aria-label=\"Find in logs\" placeholder=\"Search retained logs\" title=\"Next: Enter or Ctrl+G; previous: Shift+Enter or Ctrl+Shift+G\" value=\"\">",
+        "active": -1,
+        "inspected": -1,
+        "count": "Enter text to find",
+        "selection": "",
+        "scroll": 56,
+        "update": "Paused",
+        "history": false,
+        "flags": [
+          "false",
+          "false"
+        ],
+        "events": [
+          {
+            "type": "beforeinput",
+            "trusted": true,
+            "data": "x",
+            "inputType": "insertCompositionText",
+            "composing": true,
+            "target": "rl-find",
+            "value": "upstream"
+          },
+          {
+            "type": "input",
+            "trusted": true,
+            "data": "x",
+            "inputType": "insertCompositionText",
+            "composing": true,
+            "target": "rl-find",
+            "value": "x"
+          },
+          {
+            "type": "compositionupdate",
+            "trusted": true,
+            "data": "",
+            "target": "rl-find",
+            "value": "x"
+          },
+          {
+            "type": "beforeinput",
+            "trusted": true,
+            "data": "",
+            "inputType": "insertCompositionText",
+            "composing": true,
+            "target": "rl-find",
+            "value": "x"
+          },
+          {
+            "type": "input",
+            "trusted": true,
+            "data": null,
+            "inputType": "insertCompositionText",
+            "composing": true,
+            "target": "rl-find",
+            "value": ""
+          },
+          {
+            "type": "compositionend",
+            "trusted": false,
+            "data": "",
+            "target": "rl-find",
+            "value": ""
+          },
+          {
+            "type": "compositionstart",
+            "trusted": true,
+            "data": "",
+            "target": "rl-find",
+            "value": ""
+          },
+          {
+            "type": "compositionupdate",
+            "trusted": true,
+            "data": "stale",
+            "target": "rl-find",
+            "value": ""
+          },
+          {
+            "type": "beforeinput",
+            "trusted": true,
+            "data": "stale",
+            "inputType": "insertCompositionText",
+            "composing": true,
+            "target": "rl-find",
+            "value": ""
+          },
+          {
+            "type": "input",
+            "trusted": true,
+            "data": "stale",
+            "inputType": "insertCompositionText",
+            "composing": true,
+            "target": "rl-find",
+            "value": "stale"
+          },
+          {
+            "type": "compositionend",
+            "trusted": false,
+            "data": "stale",
+            "target": "rl-find",
+            "value": "stale"
+          },
+          {
+            "type": "pointerdown",
+            "trusted": true,
+            "target": "",
+            "value": ""
+          },
+          {
+            "type": "focusin",
+            "trusted": true,
+            "target": "",
+            "value": ""
+          },
+          {
+            "type": "pointerup",
+            "trusted": true,
+            "target": "",
+            "value": ""
+          },
+          {
+            "type": "click",
+            "trusted": true,
+            "target": "",
+            "value": ""
+          },
+          {
+            "type": "focusin",
+            "trusted": true,
+            "target": "rl-find",
+            "value": "stale"
+          }
+        ]
+      },
+      "pass": true
+    }
+  ],
+  "matchCalls": [
+    {
+      "work": "match",
+      "text": "stale",
+      "key": {
+        "viewerEpoch": 7,
+        "targetEpoch": 1,
+        "instanceEpoch": 1,
+        "windowRevision": 5,
+        "messageRevision": 8,
+        "queryRevision": 11
+      }
+    }
+  ],
+  "events": [
+    {
+      "type": "pointerdown",
+      "trusted": true,
+      "target": "",
+      "value": ""
+    },
+    {
+      "type": "focusin",
+      "trusted": true,
+      "target": "",
+      "value": ""
+    },
+    {
+      "type": "pointerup",
+      "trusted": true,
+      "target": "",
+      "value": ""
+    },
+    {
+      "type": "click",
+      "trusted": true,
+      "target": "",
+      "value": ""
+    },
+    {
+      "type": "pointerdown",
+      "trusted": true,
+      "target": "",
+      "value": ""
+    },
+    {
+      "type": "focusin",
+      "trusted": true,
+      "target": "",
+      "value": ""
+    },
+    {
+      "type": "pointerup",
+      "trusted": true,
+      "target": "",
+      "value": ""
+    },
+    {
+      "type": "click",
+      "trusted": true,
+      "target": "",
+      "value": ""
+    },
+    {
+      "type": "focusin",
+      "trusted": true,
+      "target": "rl-find",
+      "value": ""
+    },
+    {
+      "type": "keydown",
+      "trusted": true,
+      "key": "a",
+      "composing": false,
+      "target": "rl-find",
+      "value": ""
+    },
+    {
+      "type": "keydown",
+      "trusted": true,
+      "key": "u",
+      "composing": false,
+      "target": "rl-find",
+      "value": ""
+    },
+    {
+      "type": "beforeinput",
+      "trusted": true,
+      "data": "u",
+      "inputType": "insertText",
+      "composing": false,
+      "target": "rl-find",
+      "value": ""
+    },
+    {
+      "type": "input",
+      "trusted": true,
+      "data": "u",
+      "inputType": "insertText",
+      "composing": false,
+      "target": "rl-find",
+      "value": "u"
+    },
+    {
+      "type": "keydown",
+      "trusted": true,
+      "key": "p",
+      "composing": false,
+      "target": "rl-find",
+      "value": "u"
+    },
+    {
+      "type": "beforeinput",
+      "trusted": true,
+      "data": "p",
+      "inputType": "insertText",
+      "composing": false,
+      "target": "rl-find",
+      "value": "u"
+    },
+    {
+      "type": "input",
+      "trusted": true,
+      "data": "p",
+      "inputType": "insertText",
+      "composing": false,
+      "target": "rl-find",
+      "value": "up"
+    },
+    {
+      "type": "keydown",
+      "trusted": true,
+      "key": "s",
+      "composing": false,
+      "target": "rl-find",
+      "value": "up"
+    },
+    {
+      "type": "beforeinput",
+      "trusted": true,
+      "data": "s",
+      "inputType": "insertText",
+      "composing": false,
+      "target": "rl-find",
+      "value": "up"
+    },
+    {
+      "type": "input",
+      "trusted": true,
+      "data": "s",
+      "inputType": "insertText",
+      "composing": false,
+      "target": "rl-find",
+      "value": "ups"
+    },
+    {
+      "type": "keydown",
+      "trusted": true,
+      "key": "t",
+      "composing": false,
+      "target": "rl-find",
+      "value": "ups"
+    },
+    {
+      "type": "beforeinput",
+      "trusted": true,
+      "data": "t",
+      "inputType": "insertText",
+      "composing": false,
+      "target": "rl-find",
+      "value": "ups"
+    },
+    {
+      "type": "input",
+      "trusted": true,
+      "data": "t",
+      "inputType": "insertText",
+      "composing": false,
+      "target": "rl-find",
+      "value": "upst"
+    },
+    {
+      "type": "keydown",
+      "trusted": true,
+      "key": "r",
+      "composing": false,
+      "target": "rl-find",
+      "value": "upst"
+    },
+    {
+      "type": "beforeinput",
+      "trusted": true,
+      "data": "r",
+      "inputType": "insertText",
+      "composing": false,
+      "target": "rl-find",
+      "value": "upst"
+    },
+    {
+      "type": "input",
+      "trusted": true,
+      "data": "r",
+      "inputType": "insertText",
+      "composing": false,
+      "target": "rl-find",
+      "value": "upstr"
+    },
+    {
+      "type": "keydown",
+      "trusted": true,
+      "key": "e",
+      "composing": false,
+      "target": "rl-find",
+      "value": "upstr"
+    },
+    {
+      "type": "beforeinput",
+      "trusted": true,
+      "data": "e",
+      "inputType": "insertText",
+      "composing": false,
+      "target": "rl-find",
+      "value": "upstr"
+    },
+    {
+      "type": "input",
+      "trusted": true,
+      "data": "e",
+      "inputType": "insertText",
+      "composing": false,
+      "target": "rl-find",
+      "value": "upstre"
+    },
+    {
+      "type": "keydown",
+      "trusted": true,
+      "key": "a",
+      "composing": false,
+      "target": "rl-find",
+      "value": "upstre"
+    },
+    {
+      "type": "beforeinput",
+      "trusted": true,
+      "data": "a",
+      "inputType": "insertText",
+      "composing": false,
+      "target": "rl-find",
+      "value": "upstre"
+    },
+    {
+      "type": "input",
+      "trusted": true,
+      "data": "a",
+      "inputType": "insertText",
+      "composing": false,
+      "target": "rl-find",
+      "value": "upstrea"
+    },
+    {
+      "type": "keydown",
+      "trusted": true,
+      "key": "m",
+      "composing": false,
+      "target": "rl-find",
+      "value": "upstrea"
+    },
+    {
+      "type": "beforeinput",
+      "trusted": true,
+      "data": "m",
+      "inputType": "insertText",
+      "composing": false,
+      "target": "rl-find",
+      "value": "upstrea"
+    },
+    {
+      "type": "input",
+      "trusted": true,
+      "data": "m",
+      "inputType": "insertText",
+      "composing": false,
+      "target": "rl-find",
+      "value": "upstream"
+    },
+    {
+      "type": "keydown",
+      "trusted": true,
+      "key": "Tab",
+      "composing": false,
+      "target": "rl-find",
+      "value": "upstream"
+    },
+    {
+      "type": "focusin",
+      "trusted": true,
+      "target": "",
+      "value": ""
+    },
+    {
+      "type": "keydown",
+      "trusted": true,
+      "key": "Tab",
+      "composing": false,
+      "target": "",
+      "value": ""
+    },
+    {
+      "type": "focusin",
+      "trusted": true,
+      "target": "rl-find",
+      "value": "upstream"
+    },
+    {
+      "type": "keydown",
+      "trusted": true,
+      "key": "a",
+      "composing": false,
+      "target": "rl-find",
+      "value": "upstream"
+    },
+    {
+      "type": "compositionstart",
+      "trusted": true,
+      "data": "upstream",
+      "target": "rl-find",
+      "value": "upstream"
+    },
+    {
+      "type": "compositionupdate",
+      "trusted": true,
+      "data": "up",
+      "target": "rl-find",
+      "value": "upstream"
+    },
+    {
+      "type": "beforeinput",
+      "trusted": true,
+      "data": "up",
+      "inputType": "insertCompositionText",
+      "composing": true,
+      "target": "rl-find",
+      "value": "upstream"
+    },
+    {
+      "type": "input",
+      "trusted": true,
+      "data": "up",
+      "inputType": "insertCompositionText",
+      "composing": true,
+      "target": "rl-find",
+      "value": "up"
+    },
+    {
+      "type": "keydown",
+      "trusted": true,
+      "key": "g",
+      "composing": true,
+      "target": "rl-find",
+      "value": "up"
+    },
+    {
+      "type": "keydown",
+      "trusted": true,
+      "key": "f",
+      "composing": true,
+      "target": "rl-find",
+      "value": "up"
+    },
+    {
+      "type": "keydown",
+      "trusted": true,
+      "key": "a",
+      "composing": true,
+      "target": "rl-find",
+      "value": "up"
+    },
+    {
+      "type": "compositionupdate",
+      "trusted": true,
+      "data": "upstream",
+      "target": "rl-find",
+      "value": "up"
+    },
+    {
+      "type": "beforeinput",
+      "trusted": true,
+      "data": "upstream",
+      "inputType": "insertCompositionText",
+      "composing": true,
+      "target": "rl-find",
+      "value": "up"
+    },
+    {
+      "type": "input",
+      "trusted": true,
+      "data": "upstream",
+      "inputType": "insertCompositionText",
+      "composing": true,
+      "target": "rl-find",
+      "value": "upstream"
+    },
+    {
+      "type": "compositionupdate",
+      "trusted": true,
+      "data": "x",
+      "target": "rl-find",
+      "value": "upstream"
+    },
+    {
+      "type": "beforeinput",
+      "trusted": true,
+      "data": "x",
+      "inputType": "insertCompositionText",
+      "composing": true,
+      "target": "rl-find",
+      "value": "upstream"
+    },
+    {
+      "type": "input",
+      "trusted": true,
+      "data": "x",
+      "inputType": "insertCompositionText",
+      "composing": true,
+      "target": "rl-find",
+      "value": "x"
+    },
+    {
+      "type": "compositionupdate",
+      "trusted": true,
+      "data": "",
+      "target": "rl-find",
+      "value": "x"
+    },
+    {
+      "type": "beforeinput",
+      "trusted": true,
+      "data": "",
+      "inputType": "insertCompositionText",
+      "composing": true,
+      "target": "rl-find",
+      "value": "x"
+    },
+    {
+      "type": "input",
+      "trusted": true,
+      "data": null,
+      "inputType": "insertCompositionText",
+      "composing": true,
+      "target": "rl-find",
+      "value": ""
+    },
+    {
+      "type": "compositionend",
+      "trusted": false,
+      "data": "",
+      "target": "rl-find",
+      "value": ""
+    },
+    {
+      "type": "compositionstart",
+      "trusted": true,
+      "data": "",
+      "target": "rl-find",
+      "value": ""
+    },
+    {
+      "type": "compositionupdate",
+      "trusted": true,
+      "data": "stale",
+      "target": "rl-find",
+      "value": ""
+    },
+    {
+      "type": "beforeinput",
+      "trusted": true,
+      "data": "stale",
+      "inputType": "insertCompositionText",
+      "composing": true,
+      "target": "rl-find",
+      "value": ""
+    },
+    {
+      "type": "input",
+      "trusted": true,
+      "data": "stale",
+      "inputType": "insertCompositionText",
+      "composing": true,
+      "target": "rl-find",
+      "value": "stale"
+    },
+    {
+      "type": "compositionend",
+      "trusted": false,
+      "data": "stale",
+      "target": "rl-find",
+      "value": "stale"
+    },
+    {
+      "type": "pointerdown",
+      "trusted": true,
+      "target": "",
+      "value": ""
+    },
+    {
+      "type": "focusin",
+      "trusted": true,
+      "target": "",
+      "value": ""
+    },
+    {
+      "type": "pointerup",
+      "trusted": true,
+      "target": "",
+      "value": ""
+    },
+    {
+      "type": "click",
+      "trusted": true,
+      "target": "",
+      "value": ""
+    },
+    {
+      "type": "focusin",
+      "trusted": true,
+      "target": "rl-find",
+      "value": "stale"
+    }
+  ],
+  "imeOutput": "{\"ready\":true,\"active\":false,\"unavailable\":false}\n{\"ok\":true,\"active\":true,\"serial\":3,\"unavailable\":false}\n{\"ok\":true,\"active\":true,\"serial\":3,\"unavailable\":false}\n{\"ok\":true,\"active\":true,\"serial\":4,\"unavailable\":false}\n{\"ok\":true,\"active\":true,\"serial\":5,\"unavailable\":false}\n{\"grabKey\":1,\"state\":1}\n{\"grabKey\":1,\"state\":0}\n{\"grabKey\":1,\"state\":1}\n{\"grabKey\":1,\"state\":0}\n{\"ok\":true,\"active\":true,\"serial\":5,\"unavailable\":false}\n{\"ok\":true,\"active\":true,\"serial\":6,\"unavailable\":false}\n{\"grabKey\":1,\"state\":1}\n{\"grabKey\":1,\"state\":0}\n{\"grabKey\":1,\"state\":1}\n{\"grabKey\":1,\"state\":0}\n{\"ok\":true,\"active\":true,\"serial\":7,\"unavailable\":false}\n{\"ok\":true,\"active\":true,\"serial\":10,\"unavailable\":false}\n",
+  "handlerRestored": true,
+  "final": {
+    "query": "",
+    "open": true,
+    "focus": true,
+    "focused": "<input id=\"rl-find\" type=\"search\" aria-label=\"Find in logs\" placeholder=\"Search retained logs\" title=\"Next: Enter or Ctrl+G; previous: Shift+Enter or Ctrl+Shift+G\" value=\"\">",
+    "active": -1,
+    "inspected": -1,
+    "count": "Enter text to find",
+    "selection": "",
+    "scroll": 56,
+    "update": "Paused",
+    "history": false,
+    "flags": [
+      "false",
+      "false"
+    ],
+    "events": [
+      {
+        "type": "beforeinput",
+        "trusted": true,
+        "data": "x",
+        "inputType": "insertCompositionText",
+        "composing": true,
+        "target": "rl-find",
+        "value": "upstream"
+      },
+      {
+        "type": "input",
+        "trusted": true,
+        "data": "x",
+        "inputType": "insertCompositionText",
+        "composing": true,
+        "target": "rl-find",
+        "value": "x"
+      },
+      {
+        "type": "compositionupdate",
+        "trusted": true,
+        "data": "",
+        "target": "rl-find",
+        "value": "x"
+      },
+      {
+        "type": "beforeinput",
+        "trusted": true,
+        "data": "",
+        "inputType": "insertCompositionText",
+        "composing": true,
+        "target": "rl-find",
+        "value": "x"
+      },
+      {
+        "type": "input",
+        "trusted": true,
+        "data": null,
+        "inputType": "insertCompositionText",
+        "composing": true,
+        "target": "rl-find",
+        "value": ""
+      },
+      {
+        "type": "compositionend",
+        "trusted": false,
+        "data": "",
+        "target": "rl-find",
+        "value": ""
+      },
+      {
+        "type": "compositionstart",
+        "trusted": true,
+        "data": "",
+        "target": "rl-find",
+        "value": ""
+      },
+      {
+        "type": "compositionupdate",
+        "trusted": true,
+        "data": "stale",
+        "target": "rl-find",
+        "value": ""
+      },
+      {
+        "type": "beforeinput",
+        "trusted": true,
+        "data": "stale",
+        "inputType": "insertCompositionText",
+        "composing": true,
+        "target": "rl-find",
+        "value": ""
+      },
+      {
+        "type": "input",
+        "trusted": true,
+        "data": "stale",
+        "inputType": "insertCompositionText",
+        "composing": true,
+        "target": "rl-find",
+        "value": "stale"
+      },
+      {
+        "type": "compositionend",
+        "trusted": false,
+        "data": "stale",
+        "target": "rl-find",
+        "value": "stale"
+      },
+      {
+        "type": "pointerdown",
+        "trusted": true,
+        "target": "",
+        "value": ""
+      },
+      {
+        "type": "focusin",
+        "trusted": true,
+        "target": "",
+        "value": ""
+      },
+      {
+        "type": "pointerup",
+        "trusted": true,
+        "target": "",
+        "value": ""
+      },
+      {
+        "type": "click",
+        "trusted": true,
+        "target": "",
+        "value": ""
+      },
+      {
+        "type": "focusin",
+        "trusted": true,
+        "target": "rl-find",
+        "value": "stale"
+      }
+    ]
+  },
+  "pass": false
+}

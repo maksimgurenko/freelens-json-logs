@@ -1,0 +1,2513 @@
+{
+  "route": "private Wayland virtual keyboard/pointer and private clipboard; native BrowserWindow API where stated",
+  "physicalHardware": false,
+  "packageSha256": "0648bbe51fcf6eee4f43d0ba0a55f42b870019966df45646d92293762c60a250",
+  "session": {
+    "pid": 2548140,
+    "privateInstance": "efb50993780079460b0cbed1363e2166a2de1d9f_1793223512_847746527",
+    "privateRuntime": "/tmp/fd-14yhcw_r",
+    "owned": [
+      {
+        "address": "0x5591ef4fb0e0",
+        "mapped": true,
+        "hidden": false,
+        "visible": true,
+        "acceptsInput": true,
+        "at": [
+          21,
+          21
+        ],
+        "size": [
+          1238,
+          678
+        ],
+        "workspace": {
+          "id": 7,
+          "name": "7"
+        },
+        "floating": false,
+        "monitor": 0,
+        "class": "freelens",
+        "title": "Freelens",
+        "initialClass": "freelens",
+        "initialTitle": "Freelens",
+        "pid": 2548140,
+        "xwayland": false,
+        "pinned": false,
+        "pinFullscreened": false,
+        "fullscreen": 0,
+        "fullscreenClient": 0,
+        "fullscreenHandler": "default",
+        "allowedOverFullscreen": true,
+        "grouped": [],
+        "tags": [],
+        "swallowing": "0x0",
+        "focusHistoryID": 0,
+        "inhibitingIdle": false,
+        "xdgTag": "",
+        "xdgDescription": "",
+        "contentType": "none",
+        "tearingHint": false,
+        "stableId": "18000003"
+      }
+    ]
+  },
+  "checks": [
+    {
+      "id": "sources-bottom",
+      "requirement": "D07/08/12: Bottom inspector sources, with actual selected interval scrolled into its clipping pane",
+      "before": {
+        "query": "",
+        "open": false,
+        "focus": true,
+        "focused": "<summary>Display options</summary>",
+        "active": -1,
+        "inspected": -1,
+        "count": "Enter text to find",
+        "selection": "",
+        "scroll": 8355,
+        "update": "Paused",
+        "history": false,
+        "flags": [
+          "false",
+          "false"
+        ],
+        "events": [
+          {
+            "type": "focusin",
+            "trusted": true,
+            "target": "",
+            "value": ""
+          },
+          {
+            "type": "pointerup",
+            "trusted": true,
+            "target": "",
+            "value": ""
+          },
+          {
+            "type": "click",
+            "trusted": true,
+            "target": "",
+            "value": ""
+          },
+          {
+            "type": "pointerdown",
+            "trusted": true,
+            "target": ""
+          },
+          {
+            "type": "focusin",
+            "trusted": true,
+            "target": ""
+          },
+          {
+            "type": "pointerup",
+            "trusted": true,
+            "target": ""
+          },
+          {
+            "type": "click",
+            "trusted": true,
+            "target": ""
+          },
+          {
+            "type": "pointerdown",
+            "trusted": true,
+            "target": "",
+            "value": "on"
+          },
+          {
+            "type": "focusin",
+            "trusted": true,
+            "target": "",
+            "value": "on"
+          },
+          {
+            "type": "pointerup",
+            "trusted": true,
+            "target": "",
+            "value": "on"
+          },
+          {
+            "type": "click",
+            "trusted": true,
+            "target": "",
+            "value": "on"
+          },
+          {
+            "type": "input",
+            "trusted": true,
+            "target": "",
+            "value": "on"
+          },
+          {
+            "type": "pointerdown",
+            "trusted": true,
+            "target": ""
+          },
+          {
+            "type": "focusin",
+            "trusted": true,
+            "target": ""
+          },
+          {
+            "type": "pointerup",
+            "trusted": true,
+            "target": ""
+          },
+          {
+            "type": "click",
+            "trusted": true,
+            "target": ""
+          }
+        ]
+      },
+      "sources": [
+        {
+          "tab": "Application text",
+          "text": "message",
+          "expected": "message"
+        },
+        {
+          "tab": "Transport line",
+          "text": "message",
+          "expected": "message"
+        },
+        {
+          "tab": "Extracted message",
+          "text": "Σ decoded",
+          "expected": "Σ decoded"
+        }
+      ],
+      "pass": false,
+      "error": "AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:\n+ actual - expected\n\n+ 'needle\"\\n}'\n- 'needle'\n         ^\n\n    at select (file:///home/max/work/freelens-json-logs/scripts/find-production-host/native-completion-selection-repair.mjs:4:258)\n    at async seed (file:///home/max/work/freelens-json-logs/scripts/find-production-host/native-completion-selection-repair.mjs:5:130)\n    at async file:///home/max/work/freelens-json-logs/scripts/find-production-host/native-completion-selection-repair.mjs:10:245\n    at async test (file:///home/max/work/freelens-json-logs/scripts/find-production-host/native-completion-common.mjs:24:113)\n    at async file:///home/max/work/freelens-json-logs/scripts/find-production-host/native-completion-selection-repair.mjs:8:2",
+      "after": {
+        "query": "",
+        "open": false,
+        "focus": true,
+        "focused": "<section class=\"rl-detail\" aria-label=\"Selected record\" tabindex=\"-1\"><header class=\"rl-detail-head\"><strong>Record</strong><button type=\"button\" aria-label=\"Close record inspector\">Close</button></header><div role=\"grou",
+        "active": -1,
+        "inspected": 162,
+        "count": "Enter text to find",
+        "selection": "needle\"\n}",
+        "scroll": 8160,
+        "update": "Paused",
+        "history": false,
+        "flags": [
+          "false",
+          "false"
+        ],
+        "events": [
+          {
+            "type": "focusin",
+            "trusted": true,
+            "target": "",
+            "value": ""
+          },
+          {
+            "type": "pointerup",
+            "trusted": true,
+            "target": "",
+            "value": ""
+          },
+          {
+            "type": "click",
+            "trusted": true,
+            "target": "",
+            "value": ""
+          },
+          {
+            "type": "focusin",
+            "trusted": true,
+            "target": "rl-find",
+            "value": "Σ decoded"
+          },
+          {
+            "type": "keydown",
+            "trusted": true,
+            "key": "a",
+            "composing": false,
+            "target": "rl-find",
+            "value": "Σ decoded"
+          },
+          {
+            "type": "keydown",
+            "trusted": true,
+            "key": "Backspace",
+            "composing": false,
+            "target": "rl-find",
+            "value": "Σ decoded"
+          },
+          {
+            "type": "beforeinput",
+            "trusted": true,
+            "data": null,
+            "inputType": "deleteContentBackward",
+            "composing": false,
+            "target": "rl-find",
+            "value": "Σ decoded"
+          },
+          {
+            "type": "input",
+            "trusted": true,
+            "data": null,
+            "inputType": "deleteContentBackward",
+            "composing": false,
+            "target": "rl-find",
+            "value": ""
+          },
+          {
+            "type": "pointerdown",
+            "trusted": true,
+            "target": "",
+            "value": ""
+          },
+          {
+            "type": "focusin",
+            "trusted": true,
+            "target": "",
+            "value": ""
+          },
+          {
+            "type": "pointerup",
+            "trusted": true,
+            "target": "",
+            "value": ""
+          },
+          {
+            "type": "click",
+            "trusted": true,
+            "target": "",
+            "value": ""
+          },
+          {
+            "type": "focusin",
+            "trusted": true,
+            "target": "rl-detail"
+          },
+          {
+            "type": "pointerdown",
+            "trusted": true,
+            "target": ""
+          },
+          {
+            "type": "pointerup",
+            "trusted": true,
+            "target": "rl-detail-body"
+          },
+          {
+            "type": "click",
+            "trusted": true,
+            "target": "rl-detail-body"
+          }
+        ]
+      }
+    },
+    {
+      "id": "oversized",
+      "requirement": "D12: native 300-code-point source selection rejected, eligible selection never overwrites prior query",
+      "before": {
+        "query": "",
+        "open": false,
+        "focus": true,
+        "focused": "<section class=\"rl-detail\" aria-label=\"Selected record\" tabindex=\"-1\"><header class=\"rl-detail-head\"><strong>Record</strong><button type=\"button\" aria-label=\"Close record inspector\">Close</button></header><div role=\"grou",
+        "active": -1,
+        "inspected": 162,
+        "count": "Enter text to find",
+        "selection": "needle\"\n}",
+        "scroll": 8160,
+        "update": "Paused",
+        "history": false,
+        "flags": [
+          "false",
+          "false"
+        ],
+        "events": [
+          {
+            "type": "focusin",
+            "trusted": true,
+            "target": "",
+            "value": ""
+          },
+          {
+            "type": "pointerup",
+            "trusted": true,
+            "target": "",
+            "value": ""
+          },
+          {
+            "type": "click",
+            "trusted": true,
+            "target": "",
+            "value": ""
+          },
+          {
+            "type": "focusin",
+            "trusted": true,
+            "target": "rl-find",
+            "value": "Σ decoded"
+          },
+          {
+            "type": "keydown",
+            "trusted": true,
+            "key": "a",
+            "composing": false,
+            "target": "rl-find",
+            "value": "Σ decoded"
+          },
+          {
+            "type": "keydown",
+            "trusted": true,
+            "key": "Backspace",
+            "composing": false,
+            "target": "rl-find",
+            "value": "Σ decoded"
+          },
+          {
+            "type": "beforeinput",
+            "trusted": true,
+            "data": null,
+            "inputType": "deleteContentBackward",
+            "composing": false,
+            "target": "rl-find",
+            "value": "Σ decoded"
+          },
+          {
+            "type": "input",
+            "trusted": true,
+            "data": null,
+            "inputType": "deleteContentBackward",
+            "composing": false,
+            "target": "rl-find",
+            "value": ""
+          },
+          {
+            "type": "pointerdown",
+            "trusted": true,
+            "target": "",
+            "value": ""
+          },
+          {
+            "type": "focusin",
+            "trusted": true,
+            "target": "",
+            "value": ""
+          },
+          {
+            "type": "pointerup",
+            "trusted": true,
+            "target": "",
+            "value": ""
+          },
+          {
+            "type": "click",
+            "trusted": true,
+            "target": "",
+            "value": ""
+          },
+          {
+            "type": "focusin",
+            "trusted": true,
+            "target": "rl-detail"
+          },
+          {
+            "type": "pointerdown",
+            "trusted": true,
+            "target": ""
+          },
+          {
+            "type": "pointerup",
+            "trusted": true,
+            "target": "rl-detail-body"
+          },
+          {
+            "type": "click",
+            "trusted": true,
+            "target": "rl-detail-body"
+          }
+        ]
+      },
+      "points": 300,
+      "pass": true,
+      "after": {
+        "query": "prior",
+        "open": true,
+        "focus": true,
+        "focused": "<input id=\"rl-find\" type=\"search\" aria-label=\"Find in logs\" placeholder=\"Search retained logs\" title=\"Next: Enter or Ctrl+G; previous: Shift+Enter or Ctrl+Shift+G\" value=\"prior\">",
+        "active": -1,
+        "inspected": 162,
+        "count": "0 of 0 matching records",
+        "selection": "prior",
+        "scroll": 13762,
+        "update": "Paused",
+        "history": false,
+        "flags": [
+          "false",
+          "false"
+        ],
+        "events": [
+          {
+            "type": "keydown",
+            "trusted": true,
+            "key": "o",
+            "composing": false,
+            "target": "rl-find",
+            "value": "pri"
+          },
+          {
+            "type": "beforeinput",
+            "trusted": true,
+            "data": "o",
+            "inputType": "insertText",
+            "composing": false,
+            "target": "rl-find",
+            "value": "pri"
+          },
+          {
+            "type": "input",
+            "trusted": true,
+            "data": "o",
+            "inputType": "insertText",
+            "composing": false,
+            "target": "rl-find",
+            "value": "prio"
+          },
+          {
+            "type": "keydown",
+            "trusted": true,
+            "key": "r",
+            "composing": false,
+            "target": "rl-find",
+            "value": "prio"
+          },
+          {
+            "type": "beforeinput",
+            "trusted": true,
+            "data": "r",
+            "inputType": "insertText",
+            "composing": false,
+            "target": "rl-find",
+            "value": "prio"
+          },
+          {
+            "type": "input",
+            "trusted": true,
+            "data": "r",
+            "inputType": "insertText",
+            "composing": false,
+            "target": "rl-find",
+            "value": "prior"
+          },
+          {
+            "type": "pointerdown",
+            "trusted": true,
+            "target": "",
+            "value": ""
+          },
+          {
+            "type": "focusin",
+            "trusted": true,
+            "target": "",
+            "value": ""
+          },
+          {
+            "type": "pointerup",
+            "trusted": true,
+            "target": "",
+            "value": ""
+          },
+          {
+            "type": "click",
+            "trusted": true,
+            "target": "",
+            "value": ""
+          },
+          {
+            "type": "focusin",
+            "trusted": true,
+            "target": "rl-row"
+          },
+          {
+            "type": "pointerdown",
+            "trusted": true,
+            "target": ""
+          },
+          {
+            "type": "focusin",
+            "trusted": true,
+            "target": "rl-row"
+          },
+          {
+            "type": "pointerup",
+            "trusted": true,
+            "target": ""
+          },
+          {
+            "type": "click",
+            "trusted": true,
+            "target": ""
+          },
+          {
+            "type": "focusin",
+            "trusted": true,
+            "target": "rl-find",
+            "value": "prior"
+          }
+        ]
+      }
+    },
+    {
+      "id": "outside-viewer",
+      "requirement": "D12: native selection from explicitly foreign non-source fixture outside viewer is ignored for empty/existing query",
+      "before": {
+        "query": "prior",
+        "open": true,
+        "focus": true,
+        "focused": "<input id=\"rl-find\" type=\"search\" aria-label=\"Find in logs\" placeholder=\"Search retained logs\" title=\"Next: Enter or Ctrl+G; previous: Shift+Enter or Ctrl+Shift+G\" value=\"prior\">",
+        "active": -1,
+        "inspected": 162,
+        "count": "0 of 0 matching records",
+        "selection": "prior",
+        "scroll": 13762,
+        "update": "Paused",
+        "history": false,
+        "flags": [
+          "false",
+          "false"
+        ],
+        "events": [
+          {
+            "type": "keydown",
+            "trusted": true,
+            "key": "o",
+            "composing": false,
+            "target": "rl-find",
+            "value": "pri"
+          },
+          {
+            "type": "beforeinput",
+            "trusted": true,
+            "data": "o",
+            "inputType": "insertText",
+            "composing": false,
+            "target": "rl-find",
+            "value": "pri"
+          },
+          {
+            "type": "input",
+            "trusted": true,
+            "data": "o",
+            "inputType": "insertText",
+            "composing": false,
+            "target": "rl-find",
+            "value": "prio"
+          },
+          {
+            "type": "keydown",
+            "trusted": true,
+            "key": "r",
+            "composing": false,
+            "target": "rl-find",
+            "value": "prio"
+          },
+          {
+            "type": "beforeinput",
+            "trusted": true,
+            "data": "r",
+            "inputType": "insertText",
+            "composing": false,
+            "target": "rl-find",
+            "value": "prio"
+          },
+          {
+            "type": "input",
+            "trusted": true,
+            "data": "r",
+            "inputType": "insertText",
+            "composing": false,
+            "target": "rl-find",
+            "value": "prior"
+          },
+          {
+            "type": "pointerdown",
+            "trusted": true,
+            "target": "",
+            "value": ""
+          },
+          {
+            "type": "focusin",
+            "trusted": true,
+            "target": "",
+            "value": ""
+          },
+          {
+            "type": "pointerup",
+            "trusted": true,
+            "target": "",
+            "value": ""
+          },
+          {
+            "type": "click",
+            "trusted": true,
+            "target": "",
+            "value": ""
+          },
+          {
+            "type": "focusin",
+            "trusted": true,
+            "target": "rl-row"
+          },
+          {
+            "type": "pointerdown",
+            "trusted": true,
+            "target": ""
+          },
+          {
+            "type": "focusin",
+            "trusted": true,
+            "target": "rl-row"
+          },
+          {
+            "type": "pointerup",
+            "trusted": true,
+            "target": ""
+          },
+          {
+            "type": "click",
+            "trusted": true,
+            "target": ""
+          },
+          {
+            "type": "focusin",
+            "trusted": true,
+            "target": "rl-find",
+            "value": "prior"
+          }
+        ]
+      },
+      "precondition": "A selectable foreign span adjacent to production viewer; removed in finally. Not a production editor claim.",
+      "pass": false,
+      "error": "Error: Expected seed: {\"query\":\"\",\"open\":false,\"focus\":true,\"focused\":\"<body class=\\\"theme-light\\\"><div id=\\\"app\\\"><div class=\\\"main-layout-module__mainLayout--LIGm3\\\" style=\\\"--sidebar-width: 200px;\\\"><div class=\\\"main-layout-module__sidebar--suvQ_\\\"><div class=\\\"flex flex-col\\\" data-testid=\\\"cluster-s\",\"active\":-1,\"inspected\":162,\"count\":\"Enter text to find\",\"selection\":\"foreign needle\",\"scroll\":13762,\"update\":\"Paused\",\"history\":false,\"flags\":[\"false\",\"false\"],\"events\":[{\"type\":\"click\",\"trusted\":true,\"target\":\"\"},{\"type\":\"focusin\",\"trusted\":true,\"target\":\"rl-find\",\"value\":\"prior\"},{\"type\":\"keydown\",\"trusted\":true,\"key\":\"a\",\"composing\":false,\"target\":\"rl-find\",\"value\":\"prior\"},{\"type\":\"keydown\",\"trusted\":true,\"key\":\"Backspace\",\"composing\":false,\"target\":\"rl-find\",\"value\":\"prior\"},{\"type\":\"beforeinput\",\"trusted\":true,\"data\":null,\"inputType\":\"deleteContentBackward\",\"composing\":false,\"target\":\"rl-find\",\"value\":\"prior\"},{\"type\":\"input\",\"trusted\":true,\"data\":null,\"inputType\":\"deleteContentBackward\",\"composing\":false,\"target\":\"rl-find\",\"value\":\"\"},{\"type\":\"pointerdown\",\"trusted\":true,\"target\":\"\",\"value\":\"\"},{\"type\":\"focusin\",\"trusted\":true,\"target\":\"\",\"value\":\"\"},{\"type\":\"pointerup\",\"trusted\":true,\"target\":\"\",\"value\":\"\"},{\"type\":\"click\",\"trusted\":true,\"target\":\"\",\"value\":\"\"},{\"type\":\"focusin\",\"trusted\":true,\"target\":\"rl-row\"},{\"type\":\"pointerdown\",\"trusted\":true,\"target\":\"native-foreign\"},{\"type\":\"pointerup\",\"trusted\":true,\"target\":\"native-foreign\"},{\"type\":\"click\",\"trusted\":true,\"target\":\"native-foreign\"},{\"type\":\"keydown\",\"trusted\":true,\"key\":\"c\",\"composing\":false,\"target\":\"theme-light\"},{\"type\":\"keydown\",\"trusted\":true,\"key\":\"f\",\"composing\":false,\"target\":\"theme-light\"}]}\n    at Object.until (file:///home/max/work/freelens-json-logs/scripts/find-production-host/native-completion-common.mjs:23:124)\n    at async seed (file:///home/max/work/freelens-json-logs/scripts/find-production-host/native-completion-selection-repair.mjs:5:299)\n    at async file:///home/max/work/freelens-json-logs/scripts/find-production-host/native-completion-selection-repair.mjs:21:7\n    at async test (file:///home/max/work/freelens-json-logs/scripts/find-production-host/native-completion-common.mjs:24:113)\n    at async file:///home/max/work/freelens-json-logs/scripts/find-production-host/native-completion-selection-repair.mjs:18:2",
+      "after": {
+        "query": "",
+        "open": false,
+        "focus": true,
+        "focused": "<body class=\"theme-light\"><div id=\"app\"><div class=\"main-layout-module__mainLayout--LIGm3\" style=\"--sidebar-width: 200px;\"><div class=\"main-layout-module__sidebar--suvQ_\"><div class=\"flex flex-col\" data-testid=\"cluster-s",
+        "active": -1,
+        "inspected": 162,
+        "count": "Enter text to find",
+        "selection": "",
+        "scroll": 13762,
+        "update": "Paused",
+        "history": false,
+        "flags": [
+          "false",
+          "false"
+        ],
+        "events": [
+          {
+            "type": "click",
+            "trusted": true,
+            "target": ""
+          },
+          {
+            "type": "focusin",
+            "trusted": true,
+            "target": "rl-find",
+            "value": "prior"
+          },
+          {
+            "type": "keydown",
+            "trusted": true,
+            "key": "a",
+            "composing": false,
+            "target": "rl-find",
+            "value": "prior"
+          },
+          {
+            "type": "keydown",
+            "trusted": true,
+            "key": "Backspace",
+            "composing": false,
+            "target": "rl-find",
+            "value": "prior"
+          },
+          {
+            "type": "beforeinput",
+            "trusted": true,
+            "data": null,
+            "inputType": "deleteContentBackward",
+            "composing": false,
+            "target": "rl-find",
+            "value": "prior"
+          },
+          {
+            "type": "input",
+            "trusted": true,
+            "data": null,
+            "inputType": "deleteContentBackward",
+            "composing": false,
+            "target": "rl-find",
+            "value": ""
+          },
+          {
+            "type": "pointerdown",
+            "trusted": true,
+            "target": "",
+            "value": ""
+          },
+          {
+            "type": "focusin",
+            "trusted": true,
+            "target": "",
+            "value": ""
+          },
+          {
+            "type": "pointerup",
+            "trusted": true,
+            "target": "",
+            "value": ""
+          },
+          {
+            "type": "click",
+            "trusted": true,
+            "target": "",
+            "value": ""
+          },
+          {
+            "type": "focusin",
+            "trusted": true,
+            "target": "rl-row"
+          },
+          {
+            "type": "pointerdown",
+            "trusted": true,
+            "target": "native-foreign"
+          },
+          {
+            "type": "pointerup",
+            "trusted": true,
+            "target": "native-foreign"
+          },
+          {
+            "type": "click",
+            "trusted": true,
+            "target": "native-foreign"
+          },
+          {
+            "type": "keydown",
+            "trusted": true,
+            "key": "c",
+            "composing": false,
+            "target": "theme-light"
+          },
+          {
+            "type": "keydown",
+            "trusted": true,
+            "key": "f",
+            "composing": false,
+            "target": "theme-light"
+          }
+        ]
+      }
+    },
+    {
+      "id": "generated-label",
+      "requirement": "D12: generated inspector heading is copied exactly, never seeds query or changes inspection",
+      "before": {
+        "query": "",
+        "open": false,
+        "focus": true,
+        "focused": "<body class=\"theme-light\"><div id=\"app\"><div class=\"main-layout-module__mainLayout--LIGm3\" style=\"--sidebar-width: 200px;\"><div class=\"main-layout-module__sidebar--suvQ_\"><div class=\"flex flex-col\" data-testid=\"cluster-s",
+        "active": -1,
+        "inspected": 162,
+        "count": "Enter text to find",
+        "selection": "",
+        "scroll": 13762,
+        "update": "Paused",
+        "history": false,
+        "flags": [
+          "false",
+          "false"
+        ],
+        "events": [
+          {
+            "type": "click",
+            "trusted": true,
+            "target": ""
+          },
+          {
+            "type": "focusin",
+            "trusted": true,
+            "target": "rl-find",
+            "value": "prior"
+          },
+          {
+            "type": "keydown",
+            "trusted": true,
+            "key": "a",
+            "composing": false,
+            "target": "rl-find",
+            "value": "prior"
+          },
+          {
+            "type": "keydown",
+            "trusted": true,
+            "key": "Backspace",
+            "composing": false,
+            "target": "rl-find",
+            "value": "prior"
+          },
+          {
+            "type": "beforeinput",
+            "trusted": true,
+            "data": null,
+            "inputType": "deleteContentBackward",
+            "composing": false,
+            "target": "rl-find",
+            "value": "prior"
+          },
+          {
+            "type": "input",
+            "trusted": true,
+            "data": null,
+            "inputType": "deleteContentBackward",
+            "composing": false,
+            "target": "rl-find",
+            "value": ""
+          },
+          {
+            "type": "pointerdown",
+            "trusted": true,
+            "target": "",
+            "value": ""
+          },
+          {
+            "type": "focusin",
+            "trusted": true,
+            "target": "",
+            "value": ""
+          },
+          {
+            "type": "pointerup",
+            "trusted": true,
+            "target": "",
+            "value": ""
+          },
+          {
+            "type": "click",
+            "trusted": true,
+            "target": "",
+            "value": ""
+          },
+          {
+            "type": "focusin",
+            "trusted": true,
+            "target": "rl-row"
+          },
+          {
+            "type": "pointerdown",
+            "trusted": true,
+            "target": "native-foreign"
+          },
+          {
+            "type": "pointerup",
+            "trusted": true,
+            "target": "native-foreign"
+          },
+          {
+            "type": "click",
+            "trusted": true,
+            "target": "native-foreign"
+          },
+          {
+            "type": "keydown",
+            "trusted": true,
+            "key": "c",
+            "composing": false,
+            "target": "theme-light"
+          },
+          {
+            "type": "keydown",
+            "trusted": true,
+            "key": "f",
+            "composing": false,
+            "target": "theme-light"
+          }
+        ]
+      },
+      "label": "Record",
+      "pass": true,
+      "after": {
+        "query": "",
+        "open": true,
+        "focus": true,
+        "focused": "<input id=\"rl-find\" type=\"search\" aria-label=\"Find in logs\" placeholder=\"Search retained logs\" title=\"Next: Enter or Ctrl+G; previous: Shift+Enter or Ctrl+Shift+G\" value=\"\">",
+        "active": -1,
+        "inspected": 64,
+        "count": "Enter text to find",
+        "selection": "",
+        "scroll": 11193,
+        "update": "Paused",
+        "history": false,
+        "flags": [
+          "false",
+          "false"
+        ],
+        "events": [
+          {
+            "type": "click",
+            "trusted": true,
+            "target": "",
+            "value": ""
+          },
+          {
+            "type": "focusin",
+            "trusted": true,
+            "target": "rl-find",
+            "value": ""
+          },
+          {
+            "type": "keydown",
+            "trusted": true,
+            "key": "a",
+            "composing": false,
+            "target": "rl-find",
+            "value": ""
+          },
+          {
+            "type": "keydown",
+            "trusted": true,
+            "key": "Backspace",
+            "composing": false,
+            "target": "rl-find",
+            "value": ""
+          },
+          {
+            "type": "beforeinput",
+            "trusted": true,
+            "data": null,
+            "inputType": "deleteContentBackward",
+            "composing": false,
+            "target": "rl-find",
+            "value": ""
+          },
+          {
+            "type": "pointerdown",
+            "trusted": true,
+            "target": "",
+            "value": ""
+          },
+          {
+            "type": "focusin",
+            "trusted": true,
+            "target": "",
+            "value": ""
+          },
+          {
+            "type": "pointerup",
+            "trusted": true,
+            "target": "",
+            "value": ""
+          },
+          {
+            "type": "click",
+            "trusted": true,
+            "target": "",
+            "value": ""
+          },
+          {
+            "type": "focusin",
+            "trusted": true,
+            "target": "",
+            "value": ""
+          },
+          {
+            "type": "pointerdown",
+            "trusted": true,
+            "target": ""
+          },
+          {
+            "type": "focusin",
+            "trusted": true,
+            "target": "rl-detail"
+          },
+          {
+            "type": "pointerup",
+            "trusted": true,
+            "target": ""
+          },
+          {
+            "type": "click",
+            "trusted": true,
+            "target": ""
+          },
+          {
+            "type": "keydown",
+            "trusted": true,
+            "key": "c",
+            "composing": false,
+            "target": "rl-detail"
+          },
+          {
+            "type": "focusin",
+            "trusted": true,
+            "target": "rl-find",
+            "value": ""
+          }
+        ]
+      }
+    }
+  ],
+  "events": [
+    {
+      "type": "pointerdown",
+      "trusted": true,
+      "target": "",
+      "value": ""
+    },
+    {
+      "type": "focusin",
+      "trusted": true,
+      "target": "",
+      "value": ""
+    },
+    {
+      "type": "pointerup",
+      "trusted": true,
+      "target": "",
+      "value": ""
+    },
+    {
+      "type": "click",
+      "trusted": true,
+      "target": "",
+      "value": ""
+    },
+    {
+      "type": "pointerdown",
+      "trusted": true,
+      "target": ""
+    },
+    {
+      "type": "focusin",
+      "trusted": true,
+      "target": ""
+    },
+    {
+      "type": "pointerup",
+      "trusted": true,
+      "target": ""
+    },
+    {
+      "type": "click",
+      "trusted": true,
+      "target": ""
+    },
+    {
+      "type": "pointerdown",
+      "trusted": true,
+      "target": "",
+      "value": "on"
+    },
+    {
+      "type": "focusin",
+      "trusted": true,
+      "target": "",
+      "value": "on"
+    },
+    {
+      "type": "pointerup",
+      "trusted": true,
+      "target": "",
+      "value": "on"
+    },
+    {
+      "type": "click",
+      "trusted": true,
+      "target": "",
+      "value": "on"
+    },
+    {
+      "type": "input",
+      "trusted": true,
+      "target": "",
+      "value": "on"
+    },
+    {
+      "type": "pointerdown",
+      "trusted": true,
+      "target": ""
+    },
+    {
+      "type": "focusin",
+      "trusted": true,
+      "target": ""
+    },
+    {
+      "type": "pointerup",
+      "trusted": true,
+      "target": ""
+    },
+    {
+      "type": "click",
+      "trusted": true,
+      "target": ""
+    },
+    {
+      "type": "pointerdown",
+      "trusted": true,
+      "target": ""
+    },
+    {
+      "type": "pointerup",
+      "trusted": true,
+      "target": ""
+    },
+    {
+      "type": "click",
+      "trusted": true,
+      "target": ""
+    },
+    {
+      "type": "pointerdown",
+      "trusted": true,
+      "target": "",
+      "value": "side"
+    },
+    {
+      "type": "focusin",
+      "trusted": true,
+      "target": "",
+      "value": "side"
+    },
+    {
+      "type": "input",
+      "trusted": true,
+      "target": "",
+      "value": "bottom"
+    },
+    {
+      "type": "click",
+      "trusted": true,
+      "target": "",
+      "value": "bottom"
+    },
+    {
+      "type": "pointerdown",
+      "trusted": true,
+      "target": ""
+    },
+    {
+      "type": "focusin",
+      "trusted": true,
+      "target": ""
+    },
+    {
+      "type": "pointerup",
+      "trusted": true,
+      "target": ""
+    },
+    {
+      "type": "click",
+      "trusted": true,
+      "target": ""
+    },
+    {
+      "type": "pointerdown",
+      "trusted": true,
+      "target": "rl-row"
+    },
+    {
+      "type": "focusin",
+      "trusted": true,
+      "target": "rl-row"
+    },
+    {
+      "type": "pointerup",
+      "trusted": true,
+      "target": "rl-row"
+    },
+    {
+      "type": "click",
+      "trusted": true,
+      "target": "rl-row"
+    },
+    {
+      "type": "pointerdown",
+      "trusted": true,
+      "target": "",
+      "value": ""
+    },
+    {
+      "type": "focusin",
+      "trusted": true,
+      "target": "",
+      "value": ""
+    },
+    {
+      "type": "pointerup",
+      "trusted": true,
+      "target": "",
+      "value": ""
+    },
+    {
+      "type": "click",
+      "trusted": true,
+      "target": "",
+      "value": ""
+    },
+    {
+      "type": "pointerdown",
+      "trusted": true,
+      "target": "",
+      "value": ""
+    },
+    {
+      "type": "focusin",
+      "trusted": true,
+      "target": "",
+      "value": ""
+    },
+    {
+      "type": "pointerup",
+      "trusted": true,
+      "target": "",
+      "value": ""
+    },
+    {
+      "type": "click",
+      "trusted": true,
+      "target": "",
+      "value": ""
+    },
+    {
+      "type": "focusin",
+      "trusted": true,
+      "target": "rl-find",
+      "value": ""
+    },
+    {
+      "type": "keydown",
+      "trusted": true,
+      "key": "a",
+      "composing": false,
+      "target": "rl-find",
+      "value": ""
+    },
+    {
+      "type": "keydown",
+      "trusted": true,
+      "key": "Backspace",
+      "composing": false,
+      "target": "rl-find",
+      "value": ""
+    },
+    {
+      "type": "beforeinput",
+      "trusted": true,
+      "data": null,
+      "inputType": "deleteContentBackward",
+      "composing": false,
+      "target": "rl-find",
+      "value": ""
+    },
+    {
+      "type": "pointerdown",
+      "trusted": true,
+      "target": "",
+      "value": ""
+    },
+    {
+      "type": "focusin",
+      "trusted": true,
+      "target": "",
+      "value": ""
+    },
+    {
+      "type": "pointerup",
+      "trusted": true,
+      "target": "",
+      "value": ""
+    },
+    {
+      "type": "click",
+      "trusted": true,
+      "target": "",
+      "value": ""
+    },
+    {
+      "type": "focusin",
+      "trusted": true,
+      "target": "",
+      "value": ""
+    },
+    {
+      "type": "pointerdown",
+      "trusted": true,
+      "target": ""
+    },
+    {
+      "type": "focusin",
+      "trusted": true,
+      "target": "rl-detail"
+    },
+    {
+      "type": "pointerup",
+      "trusted": true,
+      "target": ""
+    },
+    {
+      "type": "click",
+      "trusted": true,
+      "target": ""
+    },
+    {
+      "type": "keydown",
+      "trusted": true,
+      "key": "c",
+      "composing": false,
+      "target": "rl-detail"
+    },
+    {
+      "type": "focusin",
+      "trusted": true,
+      "target": "rl-find",
+      "value": "message"
+    },
+    {
+      "type": "pointerdown",
+      "trusted": true,
+      "target": "",
+      "value": ""
+    },
+    {
+      "type": "focusin",
+      "trusted": true,
+      "target": "",
+      "value": ""
+    },
+    {
+      "type": "pointerup",
+      "trusted": true,
+      "target": "",
+      "value": ""
+    },
+    {
+      "type": "click",
+      "trusted": true,
+      "target": "",
+      "value": ""
+    },
+    {
+      "type": "focusin",
+      "trusted": true,
+      "target": "rl-find",
+      "value": "message"
+    },
+    {
+      "type": "keydown",
+      "trusted": true,
+      "key": "a",
+      "composing": false,
+      "target": "rl-find",
+      "value": "message"
+    },
+    {
+      "type": "keydown",
+      "trusted": true,
+      "key": "Backspace",
+      "composing": false,
+      "target": "rl-find",
+      "value": "message"
+    },
+    {
+      "type": "beforeinput",
+      "trusted": true,
+      "data": null,
+      "inputType": "deleteContentBackward",
+      "composing": false,
+      "target": "rl-find",
+      "value": "message"
+    },
+    {
+      "type": "input",
+      "trusted": true,
+      "data": null,
+      "inputType": "deleteContentBackward",
+      "composing": false,
+      "target": "rl-find",
+      "value": ""
+    },
+    {
+      "type": "pointerdown",
+      "trusted": true,
+      "target": "",
+      "value": ""
+    },
+    {
+      "type": "focusin",
+      "trusted": true,
+      "target": "",
+      "value": ""
+    },
+    {
+      "type": "pointerup",
+      "trusted": true,
+      "target": "",
+      "value": ""
+    },
+    {
+      "type": "click",
+      "trusted": true,
+      "target": "",
+      "value": ""
+    },
+    {
+      "type": "focusin",
+      "trusted": true,
+      "target": "rl-detail"
+    },
+    {
+      "type": "pointerdown",
+      "trusted": true,
+      "target": ""
+    },
+    {
+      "type": "pointerup",
+      "trusted": true,
+      "target": ""
+    },
+    {
+      "type": "click",
+      "trusted": true,
+      "target": ""
+    },
+    {
+      "type": "keydown",
+      "trusted": true,
+      "key": "c",
+      "composing": false,
+      "target": "rl-detail"
+    },
+    {
+      "type": "focusin",
+      "trusted": true,
+      "target": "rl-find",
+      "value": "message"
+    },
+    {
+      "type": "pointerdown",
+      "trusted": true,
+      "target": "",
+      "value": ""
+    },
+    {
+      "type": "focusin",
+      "trusted": true,
+      "target": "",
+      "value": ""
+    },
+    {
+      "type": "pointerup",
+      "trusted": true,
+      "target": "",
+      "value": ""
+    },
+    {
+      "type": "click",
+      "trusted": true,
+      "target": "",
+      "value": ""
+    },
+    {
+      "type": "focusin",
+      "trusted": true,
+      "target": "rl-find",
+      "value": "message"
+    },
+    {
+      "type": "keydown",
+      "trusted": true,
+      "key": "a",
+      "composing": false,
+      "target": "rl-find",
+      "value": "message"
+    },
+    {
+      "type": "keydown",
+      "trusted": true,
+      "key": "Backspace",
+      "composing": false,
+      "target": "rl-find",
+      "value": "message"
+    },
+    {
+      "type": "beforeinput",
+      "trusted": true,
+      "data": null,
+      "inputType": "deleteContentBackward",
+      "composing": false,
+      "target": "rl-find",
+      "value": "message"
+    },
+    {
+      "type": "input",
+      "trusted": true,
+      "data": null,
+      "inputType": "deleteContentBackward",
+      "composing": false,
+      "target": "rl-find",
+      "value": ""
+    },
+    {
+      "type": "pointerdown",
+      "trusted": true,
+      "target": "",
+      "value": ""
+    },
+    {
+      "type": "focusin",
+      "trusted": true,
+      "target": "",
+      "value": ""
+    },
+    {
+      "type": "pointerup",
+      "trusted": true,
+      "target": "",
+      "value": ""
+    },
+    {
+      "type": "click",
+      "trusted": true,
+      "target": "",
+      "value": ""
+    },
+    {
+      "type": "focusin",
+      "trusted": true,
+      "target": "rl-detail"
+    },
+    {
+      "type": "pointerdown",
+      "trusted": true,
+      "target": ""
+    },
+    {
+      "type": "pointerup",
+      "trusted": true,
+      "target": ""
+    },
+    {
+      "type": "click",
+      "trusted": true,
+      "target": ""
+    },
+    {
+      "type": "keydown",
+      "trusted": true,
+      "key": "c",
+      "composing": false,
+      "target": "rl-detail"
+    },
+    {
+      "type": "focusin",
+      "trusted": true,
+      "target": "rl-find",
+      "value": "Σ decoded"
+    },
+    {
+      "type": "pointerdown",
+      "trusted": true,
+      "target": "",
+      "value": ""
+    },
+    {
+      "type": "focusin",
+      "trusted": true,
+      "target": "",
+      "value": ""
+    },
+    {
+      "type": "pointerup",
+      "trusted": true,
+      "target": "",
+      "value": ""
+    },
+    {
+      "type": "click",
+      "trusted": true,
+      "target": "",
+      "value": ""
+    },
+    {
+      "type": "focusin",
+      "trusted": true,
+      "target": "rl-find",
+      "value": "Σ decoded"
+    },
+    {
+      "type": "keydown",
+      "trusted": true,
+      "key": "a",
+      "composing": false,
+      "target": "rl-find",
+      "value": "Σ decoded"
+    },
+    {
+      "type": "keydown",
+      "trusted": true,
+      "key": "Backspace",
+      "composing": false,
+      "target": "rl-find",
+      "value": "Σ decoded"
+    },
+    {
+      "type": "beforeinput",
+      "trusted": true,
+      "data": null,
+      "inputType": "deleteContentBackward",
+      "composing": false,
+      "target": "rl-find",
+      "value": "Σ decoded"
+    },
+    {
+      "type": "input",
+      "trusted": true,
+      "data": null,
+      "inputType": "deleteContentBackward",
+      "composing": false,
+      "target": "rl-find",
+      "value": ""
+    },
+    {
+      "type": "pointerdown",
+      "trusted": true,
+      "target": "",
+      "value": ""
+    },
+    {
+      "type": "focusin",
+      "trusted": true,
+      "target": "",
+      "value": ""
+    },
+    {
+      "type": "pointerup",
+      "trusted": true,
+      "target": "",
+      "value": ""
+    },
+    {
+      "type": "click",
+      "trusted": true,
+      "target": "",
+      "value": ""
+    },
+    {
+      "type": "focusin",
+      "trusted": true,
+      "target": "rl-detail"
+    },
+    {
+      "type": "pointerdown",
+      "trusted": true,
+      "target": ""
+    },
+    {
+      "type": "pointerup",
+      "trusted": true,
+      "target": "rl-detail-body"
+    },
+    {
+      "type": "click",
+      "trusted": true,
+      "target": "rl-detail-body"
+    },
+    {
+      "type": "pointerdown",
+      "trusted": true,
+      "target": ""
+    },
+    {
+      "type": "focusin",
+      "trusted": true,
+      "target": ""
+    },
+    {
+      "type": "pointerup",
+      "trusted": true,
+      "target": ""
+    },
+    {
+      "type": "click",
+      "trusted": true,
+      "target": ""
+    },
+    {
+      "type": "pointerdown",
+      "trusted": true,
+      "target": "",
+      "value": "bottom"
+    },
+    {
+      "type": "focusin",
+      "trusted": true,
+      "target": "",
+      "value": "bottom"
+    },
+    {
+      "type": "input",
+      "trusted": true,
+      "target": "",
+      "value": "side"
+    },
+    {
+      "type": "click",
+      "trusted": true,
+      "target": "",
+      "value": "side"
+    },
+    {
+      "type": "pointerdown",
+      "trusted": true,
+      "target": ""
+    },
+    {
+      "type": "focusin",
+      "trusted": true,
+      "target": ""
+    },
+    {
+      "type": "pointerup",
+      "trusted": true,
+      "target": ""
+    },
+    {
+      "type": "click",
+      "trusted": true,
+      "target": ""
+    },
+    {
+      "type": "pointerdown",
+      "trusted": true,
+      "target": "",
+      "value": ""
+    },
+    {
+      "type": "focusin",
+      "trusted": true,
+      "target": "",
+      "value": ""
+    },
+    {
+      "type": "pointerup",
+      "trusted": true,
+      "target": "",
+      "value": ""
+    },
+    {
+      "type": "click",
+      "trusted": true,
+      "target": "",
+      "value": ""
+    },
+    {
+      "type": "focusin",
+      "trusted": true,
+      "target": "rl-find",
+      "value": ""
+    },
+    {
+      "type": "keydown",
+      "trusted": true,
+      "key": "a",
+      "composing": false,
+      "target": "rl-find",
+      "value": ""
+    },
+    {
+      "type": "keydown",
+      "trusted": true,
+      "key": "Backspace",
+      "composing": false,
+      "target": "rl-find",
+      "value": ""
+    },
+    {
+      "type": "beforeinput",
+      "trusted": true,
+      "data": null,
+      "inputType": "deleteContentBackward",
+      "composing": false,
+      "target": "rl-find",
+      "value": ""
+    },
+    {
+      "type": "pointerdown",
+      "trusted": true,
+      "target": "",
+      "value": ""
+    },
+    {
+      "type": "focusin",
+      "trusted": true,
+      "target": "",
+      "value": ""
+    },
+    {
+      "type": "pointerup",
+      "trusted": true,
+      "target": "",
+      "value": ""
+    },
+    {
+      "type": "click",
+      "trusted": true,
+      "target": "",
+      "value": ""
+    },
+    {
+      "type": "focusin",
+      "trusted": true,
+      "target": "",
+      "value": ""
+    },
+    {
+      "type": "pointerdown",
+      "trusted": true,
+      "target": ""
+    },
+    {
+      "type": "focusin",
+      "trusted": true,
+      "target": "rl-row"
+    },
+    {
+      "type": "pointerup",
+      "trusted": true,
+      "target": ""
+    },
+    {
+      "type": "click",
+      "trusted": true,
+      "target": ""
+    },
+    {
+      "type": "keydown",
+      "trusted": true,
+      "key": "c",
+      "composing": false,
+      "target": "rl-row"
+    },
+    {
+      "type": "focusin",
+      "trusted": true,
+      "target": "rl-find",
+      "value": ""
+    },
+    {
+      "type": "keydown",
+      "trusted": true,
+      "key": "a",
+      "composing": false,
+      "target": "rl-find",
+      "value": ""
+    },
+    {
+      "type": "keydown",
+      "trusted": true,
+      "key": "p",
+      "composing": false,
+      "target": "rl-find",
+      "value": ""
+    },
+    {
+      "type": "beforeinput",
+      "trusted": true,
+      "data": "p",
+      "inputType": "insertText",
+      "composing": false,
+      "target": "rl-find",
+      "value": ""
+    },
+    {
+      "type": "input",
+      "trusted": true,
+      "data": "p",
+      "inputType": "insertText",
+      "composing": false,
+      "target": "rl-find",
+      "value": "p"
+    },
+    {
+      "type": "keydown",
+      "trusted": true,
+      "key": "r",
+      "composing": false,
+      "target": "rl-find",
+      "value": "p"
+    },
+    {
+      "type": "beforeinput",
+      "trusted": true,
+      "data": "r",
+      "inputType": "insertText",
+      "composing": false,
+      "target": "rl-find",
+      "value": "p"
+    },
+    {
+      "type": "input",
+      "trusted": true,
+      "data": "r",
+      "inputType": "insertText",
+      "composing": false,
+      "target": "rl-find",
+      "value": "pr"
+    },
+    {
+      "type": "keydown",
+      "trusted": true,
+      "key": "i",
+      "composing": false,
+      "target": "rl-find",
+      "value": "pr"
+    },
+    {
+      "type": "beforeinput",
+      "trusted": true,
+      "data": "i",
+      "inputType": "insertText",
+      "composing": false,
+      "target": "rl-find",
+      "value": "pr"
+    },
+    {
+      "type": "input",
+      "trusted": true,
+      "data": "i",
+      "inputType": "insertText",
+      "composing": false,
+      "target": "rl-find",
+      "value": "pri"
+    },
+    {
+      "type": "keydown",
+      "trusted": true,
+      "key": "o",
+      "composing": false,
+      "target": "rl-find",
+      "value": "pri"
+    },
+    {
+      "type": "beforeinput",
+      "trusted": true,
+      "data": "o",
+      "inputType": "insertText",
+      "composing": false,
+      "target": "rl-find",
+      "value": "pri"
+    },
+    {
+      "type": "input",
+      "trusted": true,
+      "data": "o",
+      "inputType": "insertText",
+      "composing": false,
+      "target": "rl-find",
+      "value": "prio"
+    },
+    {
+      "type": "keydown",
+      "trusted": true,
+      "key": "r",
+      "composing": false,
+      "target": "rl-find",
+      "value": "prio"
+    },
+    {
+      "type": "beforeinput",
+      "trusted": true,
+      "data": "r",
+      "inputType": "insertText",
+      "composing": false,
+      "target": "rl-find",
+      "value": "prio"
+    },
+    {
+      "type": "input",
+      "trusted": true,
+      "data": "r",
+      "inputType": "insertText",
+      "composing": false,
+      "target": "rl-find",
+      "value": "prior"
+    },
+    {
+      "type": "pointerdown",
+      "trusted": true,
+      "target": "",
+      "value": ""
+    },
+    {
+      "type": "focusin",
+      "trusted": true,
+      "target": "",
+      "value": ""
+    },
+    {
+      "type": "pointerup",
+      "trusted": true,
+      "target": "",
+      "value": ""
+    },
+    {
+      "type": "click",
+      "trusted": true,
+      "target": "",
+      "value": ""
+    },
+    {
+      "type": "focusin",
+      "trusted": true,
+      "target": "rl-row"
+    },
+    {
+      "type": "pointerdown",
+      "trusted": true,
+      "target": ""
+    },
+    {
+      "type": "focusin",
+      "trusted": true,
+      "target": "rl-row"
+    },
+    {
+      "type": "pointerup",
+      "trusted": true,
+      "target": ""
+    },
+    {
+      "type": "click",
+      "trusted": true,
+      "target": ""
+    },
+    {
+      "type": "focusin",
+      "trusted": true,
+      "target": "rl-find",
+      "value": "prior"
+    },
+    {
+      "type": "keydown",
+      "trusted": true,
+      "key": "a",
+      "composing": false,
+      "target": "rl-find",
+      "value": "prior"
+    },
+    {
+      "type": "keydown",
+      "trusted": true,
+      "key": "Backspace",
+      "composing": false,
+      "target": "rl-find",
+      "value": "prior"
+    },
+    {
+      "type": "beforeinput",
+      "trusted": true,
+      "data": null,
+      "inputType": "deleteContentBackward",
+      "composing": false,
+      "target": "rl-find",
+      "value": "prior"
+    },
+    {
+      "type": "input",
+      "trusted": true,
+      "data": null,
+      "inputType": "deleteContentBackward",
+      "composing": false,
+      "target": "rl-find",
+      "value": ""
+    },
+    {
+      "type": "pointerdown",
+      "trusted": true,
+      "target": "",
+      "value": ""
+    },
+    {
+      "type": "focusin",
+      "trusted": true,
+      "target": "",
+      "value": ""
+    },
+    {
+      "type": "pointerup",
+      "trusted": true,
+      "target": "",
+      "value": ""
+    },
+    {
+      "type": "click",
+      "trusted": true,
+      "target": "",
+      "value": ""
+    },
+    {
+      "type": "focusin",
+      "trusted": true,
+      "target": "rl-row"
+    },
+    {
+      "type": "pointerdown",
+      "trusted": true,
+      "target": "native-foreign"
+    },
+    {
+      "type": "pointerup",
+      "trusted": true,
+      "target": "native-foreign"
+    },
+    {
+      "type": "click",
+      "trusted": true,
+      "target": "native-foreign"
+    },
+    {
+      "type": "keydown",
+      "trusted": true,
+      "key": "c",
+      "composing": false,
+      "target": "theme-light"
+    },
+    {
+      "type": "keydown",
+      "trusted": true,
+      "key": "f",
+      "composing": false,
+      "target": "theme-light"
+    },
+    {
+      "type": "pointerdown",
+      "trusted": true,
+      "target": ""
+    },
+    {
+      "type": "focusin",
+      "trusted": true,
+      "target": ""
+    },
+    {
+      "type": "pointerup",
+      "trusted": true,
+      "target": ""
+    },
+    {
+      "type": "click",
+      "trusted": true,
+      "target": ""
+    },
+    {
+      "type": "pointerdown",
+      "trusted": true,
+      "target": "",
+      "value": "side"
+    },
+    {
+      "type": "focusin",
+      "trusted": true,
+      "target": "",
+      "value": "side"
+    },
+    {
+      "type": "click",
+      "trusted": true,
+      "target": "",
+      "value": "side"
+    },
+    {
+      "type": "pointerdown",
+      "trusted": true,
+      "target": ""
+    },
+    {
+      "type": "focusin",
+      "trusted": true,
+      "target": ""
+    },
+    {
+      "type": "pointerup",
+      "trusted": true,
+      "target": ""
+    },
+    {
+      "type": "click",
+      "trusted": true,
+      "target": ""
+    },
+    {
+      "type": "pointerdown",
+      "trusted": true,
+      "target": "rl-fields"
+    },
+    {
+      "type": "focusin",
+      "trusted": true,
+      "target": "rl-row"
+    },
+    {
+      "type": "pointerup",
+      "trusted": true,
+      "target": "rl-fields"
+    },
+    {
+      "type": "click",
+      "trusted": true,
+      "target": "rl-fields"
+    },
+    {
+      "type": "pointerdown",
+      "trusted": true,
+      "target": "",
+      "value": ""
+    },
+    {
+      "type": "focusin",
+      "trusted": true,
+      "target": "",
+      "value": ""
+    },
+    {
+      "type": "pointerup",
+      "trusted": true,
+      "target": "",
+      "value": ""
+    },
+    {
+      "type": "click",
+      "trusted": true,
+      "target": "",
+      "value": ""
+    },
+    {
+      "type": "focusin",
+      "trusted": true,
+      "target": "rl-find",
+      "value": ""
+    },
+    {
+      "type": "keydown",
+      "trusted": true,
+      "key": "a",
+      "composing": false,
+      "target": "rl-find",
+      "value": ""
+    },
+    {
+      "type": "keydown",
+      "trusted": true,
+      "key": "Backspace",
+      "composing": false,
+      "target": "rl-find",
+      "value": ""
+    },
+    {
+      "type": "beforeinput",
+      "trusted": true,
+      "data": null,
+      "inputType": "deleteContentBackward",
+      "composing": false,
+      "target": "rl-find",
+      "value": ""
+    },
+    {
+      "type": "pointerdown",
+      "trusted": true,
+      "target": "",
+      "value": ""
+    },
+    {
+      "type": "focusin",
+      "trusted": true,
+      "target": "",
+      "value": ""
+    },
+    {
+      "type": "pointerup",
+      "trusted": true,
+      "target": "",
+      "value": ""
+    },
+    {
+      "type": "click",
+      "trusted": true,
+      "target": "",
+      "value": ""
+    },
+    {
+      "type": "focusin",
+      "trusted": true,
+      "target": "",
+      "value": ""
+    },
+    {
+      "type": "pointerdown",
+      "trusted": true,
+      "target": ""
+    },
+    {
+      "type": "focusin",
+      "trusted": true,
+      "target": "rl-detail"
+    },
+    {
+      "type": "pointerup",
+      "trusted": true,
+      "target": ""
+    },
+    {
+      "type": "click",
+      "trusted": true,
+      "target": ""
+    },
+    {
+      "type": "keydown",
+      "trusted": true,
+      "key": "c",
+      "composing": false,
+      "target": "rl-detail"
+    },
+    {
+      "type": "focusin",
+      "trusted": true,
+      "target": "rl-find",
+      "value": ""
+    }
+  ],
+  "final": {
+    "query": "",
+    "open": true,
+    "focus": true,
+    "focused": "<input id=\"rl-find\" type=\"search\" aria-label=\"Find in logs\" placeholder=\"Search retained logs\" title=\"Next: Enter or Ctrl+G; previous: Shift+Enter or Ctrl+Shift+G\" value=\"\">",
+    "active": -1,
+    "inspected": 64,
+    "count": "Enter text to find",
+    "selection": "",
+    "scroll": 11193,
+    "update": "Paused",
+    "history": false,
+    "flags": [
+      "false",
+      "false"
+    ],
+    "events": [
+      {
+        "type": "click",
+        "trusted": true,
+        "target": "",
+        "value": ""
+      },
+      {
+        "type": "focusin",
+        "trusted": true,
+        "target": "rl-find",
+        "value": ""
+      },
+      {
+        "type": "keydown",
+        "trusted": true,
+        "key": "a",
+        "composing": false,
+        "target": "rl-find",
+        "value": ""
+      },
+      {
+        "type": "keydown",
+        "trusted": true,
+        "key": "Backspace",
+        "composing": false,
+        "target": "rl-find",
+        "value": ""
+      },
+      {
+        "type": "beforeinput",
+        "trusted": true,
+        "data": null,
+        "inputType": "deleteContentBackward",
+        "composing": false,
+        "target": "rl-find",
+        "value": ""
+      },
+      {
+        "type": "pointerdown",
+        "trusted": true,
+        "target": "",
+        "value": ""
+      },
+      {
+        "type": "focusin",
+        "trusted": true,
+        "target": "",
+        "value": ""
+      },
+      {
+        "type": "pointerup",
+        "trusted": true,
+        "target": "",
+        "value": ""
+      },
+      {
+        "type": "click",
+        "trusted": true,
+        "target": "",
+        "value": ""
+      },
+      {
+        "type": "focusin",
+        "trusted": true,
+        "target": "",
+        "value": ""
+      },
+      {
+        "type": "pointerdown",
+        "trusted": true,
+        "target": ""
+      },
+      {
+        "type": "focusin",
+        "trusted": true,
+        "target": "rl-detail"
+      },
+      {
+        "type": "pointerup",
+        "trusted": true,
+        "target": ""
+      },
+      {
+        "type": "click",
+        "trusted": true,
+        "target": ""
+      },
+      {
+        "type": "keydown",
+        "trusted": true,
+        "key": "c",
+        "composing": false,
+        "target": "rl-detail"
+      },
+      {
+        "type": "focusin",
+        "trusted": true,
+        "target": "rl-find",
+        "value": ""
+      }
+    ]
+  },
+  "pass": false
+}

@@ -1,0 +1,17 @@
+{
+  "inference": "Observed native compositionend uses Chromium scoped dispatch rather than JavaScript dispatchEvent. Exact-version source constructs and queues the event without SetTrusted in these functions. Runtime wrapper observed zero JS dispatchEvent calls; no isTrusted override, fake focus or DOM composition injection.",
+  "sources": [
+    {
+      "url": "https://chromium.googlesource.com/chromium/src/+/146.0.7680.216/third_party/blink/renderer/core/editing/ime/input_method_controller.cc",
+      "excerpt": "void InputMethodController::DispatchCompositionEndEvent(LocalFrame& frame,\n                                                        const String& text) {\n  // Verify that the caller is using an EventQueueScope to suppress the input\n  // event from being fired until the proper time (e.g. after applying an IME\n  // selection update, if necessary).\n  DCHECK(ScopedEventQueue::Instance()->ShouldQueueEvents());\n\n  Element* target = frame.GetDocument()->FocusedElement();\n  if (!target)\n    return;\n\n  auto* event = MakeGarbageCollected<CompositionEvent>(\n      event_type_names::kCompositionend, frame.DomWindow(), text);\n  EventDispatcher::DispatchScopedEvent(*target, *event);\n}"
+    },
+    {
+      "url": "https://chromium.googlesource.com/chromium/src/+/146.0.7680.216/third_party/blink/renderer/core/dom/events/event_dispatcher.cc",
+      "excerpt": "void EventDispatcher::DispatchScopedEvent(Node& node, Event& event) {\n  // We need to set the target here because it can go away by the time we\n  // actually fire the event.\n  event.SetTarget(&EventPath::EventTargetRespectingTargetRules(node));\n  ScopedEventQueue::Instance()->EnqueueEvent(event);\n}"
+    },
+    {
+      "url": "https://chromium.googlesource.com/chromium/src/+/146.0.7680.216/third_party/blink/renderer/core/dom/events/scoped_event_queue.cc",
+      "excerpt": "void ScopedEventQueue::DispatchEvent(Event& event) const {\n  DCHECK(event.RawTarget());\n  Node* node = event.RawTarget()->ToNode();\n  EventDispatcher::DispatchEvent(*node, event);\n}"
+    }
+  ]
+}
