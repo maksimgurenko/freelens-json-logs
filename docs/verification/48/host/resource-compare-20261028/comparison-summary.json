@@ -1,0 +1,136 @@
+{
+  "independentRawSampleAudit": true,
+  "samePodUid": true,
+  "viewers": {
+    "readable": {
+      "sampleCount": 100,
+      "violations": [],
+      "baseline": {
+        "documents": 4,
+        "nodes": 437,
+        "jsEventListeners": 700
+      },
+      "final": {
+        "documents": 4,
+        "nodes": 437,
+        "jsEventListeners": 700
+      },
+      "peakDomDelta": {
+        "nodes": 0,
+        "listeners": 0,
+        "documents": 0
+      },
+      "memory": {
+        "rendererHeap": {
+          "baselineMiB": 69.26906204223633,
+          "finalMiB": 60.06780242919922,
+          "deltaMiB": -9.20125961303711,
+          "peakDeltaMiB": -4.523807525634766
+        },
+        "rendererRss": {
+          "baselineMiB": 433.15234375,
+          "finalMiB": 421.671875,
+          "deltaMiB": -11.48046875,
+          "peakDeltaMiB": -3.99609375
+        },
+        "rendererExternal": {
+          "baselineMiB": 41.949212074279785,
+          "finalMiB": 41.94778823852539,
+          "deltaMiB": -0.0014238357543945312,
+          "peakDeltaMiB": 0.061061859130859375
+        },
+        "mainHeap": {
+          "baselineMiB": 31.000064849853516,
+          "finalMiB": 32.014930725097656,
+          "deltaMiB": 1.0148658752441406,
+          "peakDeltaMiB": 1.0154342651367188
+        },
+        "mainRss": {
+          "baselineMiB": 359.09375,
+          "finalMiB": 358.796875,
+          "deltaMiB": -0.296875,
+          "peakDeltaMiB": 1.30078125
+        }
+      },
+      "threads": {
+        "mainBaseline": 36,
+        "mainFinal": 37,
+        "rendererBaseline": 27,
+        "rendererFinal": 27
+      },
+      "workersStarted": 0,
+      "fixtureSequence": {
+        "firstMeasured": 2406,
+        "lastMeasured": 3483,
+        "activeControlInitial": 3494,
+        "activeControlFinal": 3589
+      },
+      "elapsedMs": 126007
+    },
+    "default": {
+      "sampleCount": 100,
+      "violations": [],
+      "baseline": {
+        "documents": 4,
+        "nodes": 671,
+        "jsEventListeners": 751
+      },
+      "final": {
+        "documents": 4,
+        "nodes": 671,
+        "jsEventListeners": 751
+      },
+      "peakDomDelta": {
+        "nodes": 0,
+        "listeners": 0,
+        "documents": 0
+      },
+      "memory": {
+        "rendererHeap": {
+          "baselineMiB": 70.25260543823242,
+          "finalMiB": 73.78045654296875,
+          "deltaMiB": 3.527851104736328,
+          "peakDeltaMiB": 3.527851104736328
+        },
+        "rendererRss": {
+          "baselineMiB": 426.9296875,
+          "finalMiB": 428.78125,
+          "deltaMiB": 1.8515625,
+          "peakDeltaMiB": 4.953125
+        },
+        "rendererExternal": {
+          "baselineMiB": 42.115118980407715,
+          "finalMiB": 46.93119239807129,
+          "deltaMiB": 4.816073417663574,
+          "peakDeltaMiB": 4.816073417663574
+        },
+        "mainHeap": {
+          "baselineMiB": 31.107303619384766,
+          "finalMiB": 31.597606658935547,
+          "deltaMiB": 0.49030303955078125,
+          "peakDeltaMiB": 0.49030303955078125
+        },
+        "mainRss": {
+          "baselineMiB": 361.63671875,
+          "finalMiB": 357.84765625,
+          "deltaMiB": -3.7890625,
+          "peakDeltaMiB": 0.28125
+        }
+      },
+      "threads": {
+        "mainBaseline": 39,
+        "mainFinal": 38,
+        "rendererBaseline": 26,
+        "rendererFinal": 27
+      },
+      "workersStarted": 0,
+      "fixtureSequence": {
+        "firstMeasured": 3789,
+        "lastMeasured": 4641,
+        "activeControlInitial": 4649,
+        "activeControlFinal": 4749
+      },
+      "elapsedMs": 102160
+    }
+  }
+}

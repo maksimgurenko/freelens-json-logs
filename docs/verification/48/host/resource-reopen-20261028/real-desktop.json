@@ -1,0 +1,3438 @@
+{
+  "before": {
+    "active": {
+      "address": "0x5637f339a3f0",
+      "class": "brave-origin-nightly",
+      "workspace": {
+        "id": 1,
+        "name": "1"
+      }
+    },
+    "workspace": 1,
+    "pointer": {
+      "x": 1952,
+      "y": 623
+    },
+    "clients": [
+      {
+        "address": "0x5637f31e4f40",
+        "class": "kitty",
+        "pid": 3061766,
+        "workspace": {
+          "id": -98,
+          "name": "special:scratchpad"
+        }
+      },
+      {
+        "address": "0x5637f2672cf0",
+        "class": "md.obsidian.Obsidian",
+        "pid": 3061765,
+        "workspace": {
+          "id": -98,
+          "name": "special:scratchpad"
+        }
+      },
+      {
+        "address": "0x5637f336d250",
+        "class": "com.mastermindzh.tidal-hifi",
+        "pid": 3061987,
+        "workspace": {
+          "id": -98,
+          "name": "special:scratchpad"
+        }
+      },
+      {
+        "address": "0x5637f3401520",
+        "class": "kitty",
+        "pid": 3096901,
+        "workspace": {
+          "id": 5,
+          "name": "5"
+        }
+      },
+      {
+        "address": "0x5637f33fa4a0",
+        "class": "kitty",
+        "pid": 3070218,
+        "workspace": {
+          "id": 4,
+          "name": "4"
+        }
+      },
+      {
+        "address": "0x5637f314b8a0",
+        "class": "freelens",
+        "pid": 3858775,
+        "workspace": {
+          "id": 3,
+          "name": "3"
+        }
+      },
+      {
+        "address": "0x5637f425e490",
+        "class": "kitty",
+        "pid": 4099030,
+        "workspace": {
+          "id": 7,
+          "name": "7"
+        }
+      },
+      {
+        "address": "0x5637f4279410",
+        "class": "tmux-tiling",
+        "pid": 4116818,
+        "workspace": {
+          "id": 5,
+          "name": "5"
+        }
+      },
+      {
+        "address": "0x5637f230f980",
+        "class": "kitty",
+        "pid": 4095427,
+        "workspace": {
+          "id": 7,
+          "name": "7"
+        }
+      },
+      {
+        "address": "0x5637f327d1a0",
+        "class": "md.obsidian.Obsidian",
+        "pid": 3061765,
+        "workspace": {
+          "id": 5,
+          "name": "5"
+        }
+      },
+      {
+        "address": "0x5637f268f8d0",
+        "class": "md.obsidian.Obsidian",
+        "pid": 3061765,
+        "workspace": {
+          "id": 5,
+          "name": "5"
+        }
+      },
+      {
+        "address": "0x5637f339a3f0",
+        "class": "brave-origin-nightly",
+        "pid": 2534276,
+        "workspace": {
+          "id": 1,
+          "name": "1"
+        }
+      },
+      {
+        "address": "0x5637f33d1230",
+        "class": "kitty",
+        "pid": 3065834,
+        "workspace": {
+          "id": 2,
+          "name": "2"
+        }
+      },
+      {
+        "address": "0x5637f3497bb0",
+        "class": "tmux-tiling",
+        "pid": 2764820,
+        "workspace": {
+          "id": 2,
+          "name": "2"
+        }
+      },
+      {
+        "address": "0x5637f22ddcd0",
+        "class": "org.telegram.desktop",
+        "pid": 3061988,
+        "workspace": {
+          "id": -97,
+          "name": "special:T"
+        }
+      }
+    ]
+  },
+  "userInstance": "efb50993780079460b0cbed1363e2166a2de1d9f_1793028605_396795238",
+  "outerCommand": [
+    "/home/max/.codex/worktrees/6c50/freelens-json-logs/.scratch/find/48-host/prefix/usr/bin/labwc",
+    "--config-dir",
+    "/home/max/.codex/worktrees/6c50/freelens-json-logs/.scratch/find/48-host/labwc"
+  ],
+  "runtime": "/tmp/fd-2se05yps",
+  "renderer": "mesa",
+  "rendererEnvironment": {
+    "__EGL_VENDOR_LIBRARY_FILENAMES": "/usr/share/glvnd/egl_vendor.d/50_mesa.json",
+    "WLR_RENDER_DRM_DEVICE": "/dev/dri/renderD128"
+  },
+  "after": {
+    "active": {
+      "address": "0x5637f339a3f0",
+      "class": "brave-origin-nightly",
+      "workspace": {
+        "id": 1,
+        "name": "1"
+      }
+    },
+    "workspace": 1,
+    "pointer": {
+      "x": 1591,
+      "y": 529
+    },
+    "clients": [
+      {
+        "address": "0x5637f31e4f40",
+        "class": "kitty",
+        "pid": 3061766,
+        "workspace": {
+          "id": -98,
+          "name": "special:scratchpad"
+        }
+      },
+      {
+        "address": "0x5637f2672cf0",
+        "class": "md.obsidian.Obsidian",
+        "pid": 3061765,
+        "workspace": {
+          "id": -98,
+          "name": "special:scratchpad"
+        }
+      },
+      {
+        "address": "0x5637f336d250",
+        "class": "com.mastermindzh.tidal-hifi",
+        "pid": 3061987,
+        "workspace": {
+          "id": -98,
+          "name": "special:scratchpad"
+        }
+      },
+      {
+        "address": "0x5637f3401520",
+        "class": "kitty",
+        "pid": 3096901,
+        "workspace": {
+          "id": 5,
+          "name": "5"
+        }
+      },
+      {
+        "address": "0x5637f33fa4a0",
+        "class": "kitty",
+        "pid": 3070218,
+        "workspace": {
+          "id": 4,
+          "name": "4"
+        }
+      },
+      {
+        "address": "0x5637f4279410",
+        "class": "tmux-tiling",
+        "pid": 4116818,
+        "workspace": {
+          "id": 5,
+          "name": "5"
+        }
+      },
+      {
+        "address": "0x5637f327d1a0",
+        "class": "md.obsidian.Obsidian",
+        "pid": 3061765,
+        "workspace": {
+          "id": 5,
+          "name": "5"
+        }
+      },
+      {
+        "address": "0x5637f268f8d0",
+        "class": "md.obsidian.Obsidian",
+        "pid": 3061765,
+        "workspace": {
+          "id": 5,
+          "name": "5"
+        }
+      },
+      {
+        "address": "0x5637f33d1230",
+        "class": "kitty",
+        "pid": 3065834,
+        "workspace": {
+          "id": 2,
+          "name": "2"
+        }
+      },
+      {
+        "address": "0x5637f3497bb0",
+        "class": "tmux-tiling",
+        "pid": 2764820,
+        "workspace": {
+          "id": 2,
+          "name": "2"
+        }
+      },
+      {
+        "address": "0x5637f314b8a0",
+        "class": "freelens",
+        "pid": 3858775,
+        "workspace": {
+          "id": 3,
+          "name": "3"
+        }
+      },
+      {
+        "address": "0x5637f230f980",
+        "class": "kitty",
+        "pid": 2918388,
+        "workspace": {
+          "id": -96,
+          "name": "special:search"
+        }
+      },
+      {
+        "address": "0x5637f22ddcd0",
+        "class": "org.telegram.desktop",
+        "pid": 3061988,
+        "workspace": {
+          "id": -97,
+          "name": "special:T"
+        }
+      },
+      {
+        "address": "0x5637f339a3f0",
+        "class": "brave-origin-nightly",
+        "pid": 2534276,
+        "workspace": {
+          "id": 1,
+          "name": "1"
+        }
+      }
+    ]
+  },
+  "events": [
+    {
+      "ms": 2937.0200650009792,
+      "event": "activewindowv2>>5637f339a3f0"
+    },
+    {
+      "ms": 6501.639827998588,
+      "event": "activewindowv2>>5637f339a3f0"
+    },
+    {
+      "ms": 7534.152243984863,
+      "event": "activewindowv2>>5637f339a3f0"
+    },
+    {
+      "ms": 8309.816622990184,
+      "event": "activewindowv2>>5637f339a3f0"
+    },
+    {
+      "ms": 12323.307796992594,
+      "event": "activewindowv2>>5637f339a3f0"
+    },
+    {
+      "ms": 13997.690201998921,
+      "event": "activewindowv2>>5637f339a3f0"
+    },
+    {
+      "ms": 14233.399764983915,
+      "event": "activewindowv2>>5637f339a3f0"
+    },
+    {
+      "ms": 20072.686622006586,
+      "event": "activewindowv2>>5637f339a3f0"
+    },
+    {
+      "ms": 21345.59317000094,
+      "event": "activewindowv2>>5637f339a3f0"
+    },
+    {
+      "ms": 21900.637818005634,
+      "event": "activewindowv2>>5637f339a3f0"
+    },
+    {
+      "ms": 233066.86130200978,
+      "event": "activewindowv2>>5637f339a3f0"
+    },
+    {
+      "ms": 234436.8974659883,
+      "event": "activewindowv2>>5637f339a3f0"
+    },
+    {
+      "ms": 236348.46780300722,
+      "event": "activewindowv2>>5637f339a3f0"
+    },
+    {
+      "ms": 237742.17528500594,
+      "event": "activewindowv2>>5637f339a3f0"
+    },
+    {
+      "ms": 240310.701178998,
+      "event": "activewindowv2>>5637f339a3f0"
+    },
+    {
+      "ms": 240563.43786400976,
+      "event": "activewindowv2>>5637f339a3f0"
+    },
+    {
+      "ms": 244348.32643400296,
+      "event": "activewindowv2>>5637f3497bb0"
+    },
+    {
+      "ms": 244348.36419299245,
+      "event": "workspace>>2"
+    },
+    {
+      "ms": 247370.41167798452,
+      "event": "activewindowv2>>5637f314b8a0"
+    },
+    {
+      "ms": 247370.45939799282,
+      "event": "workspace>>3"
+    },
+    {
+      "ms": 247848.33165898453,
+      "event": "activewindowv2>>5637f3497bb0"
+    },
+    {
+      "ms": 247848.3643780055,
+      "event": "workspace>>2"
+    },
+    {
+      "ms": 248752.33463398763,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 249124.27165798726,
+      "event": "activewindowv2>>5637f3497bb0"
+    },
+    {
+      "ms": 271433.3575000055,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 284244.14148100186,
+      "event": "activewindowv2>>5637f339a3f0"
+    },
+    {
+      "ms": 284244.17519100825,
+      "event": "workspace>>1"
+    },
+    {
+      "ms": 287338.20567899966,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 287338.2375589863,
+      "event": "workspace>>2"
+    },
+    {
+      "ms": 311380.89303299785,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 311415.8286849852,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 311515.776618995,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 311616.3533900108,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 311716.8081710115,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 311815.8733290038,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 311916.0292209999,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 312016.2245639949,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 312116.6003870021,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 312216.4002119971,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 312316.4614159905,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 312415.556352993,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 312514.98728001025,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 312615.04699400393,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 312715.3228769894,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 312814.6501139854,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 312840.03975300584,
+      "event": "activewindowv2>>5637f22ddcd0"
+    },
+    {
+      "ms": 313650.1616809983,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 313718.5036909941,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 313818.92551400233,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 313911.8421470048,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 314012.13849999476,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 314113.28870098805,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 314218.59273599694,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 314352.6619769982,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 314407.9567989975,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 314508.2886730088,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 314608.6840170028,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 314709.17481099605,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 314809.54720498994,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 314910.10866800207,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 315010.4925330088,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 315110.9459869913,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 315211.09858198906,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 315311.0382790037,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 315410.99666498485,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 315511.10395099386,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 315611.49336598464,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 315711.7422709998,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 315812.1545749891,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 315911.6158039833,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 316011.87131900224,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 316112.4242240039,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 316212.4482310028,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 316312.6801259932,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 316411.1066100013,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 316510.651538003,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 316609.1647509893,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 316709.33181699365,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 316809.6855529875,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 316923.5609550087,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 317023.40865301085,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 317123.58477999805,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 317223.65949698724,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 317310.53059600526,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 317428.4788329969,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 317528.51805099635,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 317628.8861770008,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 317729.1333040048,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 317832.2758789873,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 317932.4831159902,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 318032.6875419996,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 318132.99121998716,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 318233.4262660006,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 318333.7546529947,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 318432.1431769931,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 318532.76159398956,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 318633.1532500044,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 318733.7152560067,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 318834.14619299583,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 318934.59249899024,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 319034.56957798335,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 319134.38368801144,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 319234.52656599693,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 319252.1034569945,
+      "event": "activewindowv2>>5637f22ddcd0"
+    },
+    {
+      "ms": 322534.19220400974,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 322634.95574198896,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 322735.1939420041,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 322835.6881510117,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 322934.73585598986,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 323034.6511869866,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 323134.55881900154,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 323234.6124300093,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 323334.889810998,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 323434.96604199754,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 323535.14729300514,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 323635.3948340111,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 323735.75859400444,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 323834.78920999914,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 323935.2235000115,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 324035.39487099624,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 324135.78914199024,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 324235.8010339958,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 324336.06361498823,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 324436.398625985,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 324536.0107900051,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 324636.3699909998,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 324736.66976200184,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 324837.09367300617,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 324937.4931239872,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 325004.238405003,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 325104.77538598934,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 325204.68402898405,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 325337.18012599275,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 325437.28795900824,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 325504.2059900006,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 325604.1418930108,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 325704.4909349934,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 325804.66582698864,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 325904.72402999876,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 326004.7331629903,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 326136.94155198755,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 326236.8865259923,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 326337.11642900016,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 326437.2096119914,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 326537.5782850024,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 326604.5732559869,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 326704.4298099936,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 326804.47482300224,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 326904.4115669967,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 327036.6138969839,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 327136.54294100706,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 327236.7515449878,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 327336.98615798494,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 327436.0458359879,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 327535.9258709941,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 327635.9843649843,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 327736.3595479983,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 327836.76279100473,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 327936.0496379959,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 328035.9125130053,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 328135.1188609842,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 328235.03020600765,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 328335.01672098646,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 328435.63300400274,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 328535.6803489849,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 328635.9200630104,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 328736.1928370083,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 328836.50566099095,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 328935.4421499884,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 329035.6014739955,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 329135.84490900394,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 329236.01859400515,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 329336.3605290069,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 329436.41609398765,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 329536.4586499927,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 329636.70722401,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 329736.7352400033,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 329837.0916139975,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 329937.60727799963,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 330004.58808100666,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 330137.1709519881,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 330236.07119199005,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 330335.9456989856,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 330435.96170601086,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 330536.25598098733,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 330636.4952060103,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 330736.79053099477,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 330837.2200560116,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 330904.1418400011,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 331004.7558330116,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 331104.8397299892,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 331204.9456269888,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 331305.40698199184,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 331405.7779670111,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 331505.8647140104,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 331606.0067600047,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 331706.2245470006,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 331806.43754301127,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 331906.6469389945,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 332006.4679670031,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 332106.6177340108,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 332206.77710100426,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 332306.8977080111,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 332407.31925400905,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 332507.5163010042,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 332607.69770800835,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 332707.7698459907,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 332806.91487601143,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 332907.4313020101,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 333006.94494199706,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 333106.05979300453,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 333206.116751011,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 333306.3365989947,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 333406.3940269989,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 333506.6333349969,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 333606.83832201175,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 333705.9866540076,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 333806.1960109917,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 333906.23799999594,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 334006.2916780007,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 334105.3300299973,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 334205.3702590056,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 334305.7210969855,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 334405.95784501056,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 334506.51382200886,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 334606.8107399915,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 334707.2260569839,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 334806.54674899415,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 334906.9303459837,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 335007.15036399197,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 335107.3031029955,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 335207.2771829844,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 335307.84081100137,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 335430.7089030044,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 335530.80591300386,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 335631.2085110112,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 335731.59423898323,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 335832.03530698665,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 335932.1905460092,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 336032.37990499474,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 336132.3403249844,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 336232.44893498486,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 336332.9312040005,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 336433.46267199377,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 336533.87401098735,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 336634.02223101,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 336734.3050199852,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 336834.6630290034,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 336934.83172898414,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 337034.7768889915,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 337134.81019000756,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 337234.67014098424,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 337334.5587530057,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 337434.7454329836,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 337533.62591800396,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 337633.53171999916,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 337734.2839879857,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 337833.3748719888,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 337933.4266129881,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 338033.5651130008,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 338133.5361950041,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 338233.5296169913,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 338333.774697996,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 338433.1351419969,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 338533.2225530001,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 338633.38686400675,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 338733.20013599005,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 338833.40630700695,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 338932.36024299404,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 339032.5231339957,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 339132.5338459865,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 339232.463258988,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 339332.87479000865,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 339433.1184109906,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 339533.37203199044,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 339632.61259699357,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 339733.06863798643,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 339833.56111799367,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 339933.7603599997,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 340033.02373498445,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 340132.9716379987,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 340232.1169640054,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 340332.16693700524,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 340432.33279898413,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 340532.766290009,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 340632.9034829978,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 340733.04606598685,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 340833.1819679879,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 340933.42667998513,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 341032.52800600603,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 341132.669359009,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 341232.75611299323,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 341332.80322598876,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 341414.9870169931,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 341514.97340999776,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 341615.4561319854,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 341715.1388670027,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 341815.3800200089,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 341914.4448770094,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 342014.9504689907,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 342115.6705899921,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 342214.73783798865,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 342314.8310020042,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 342415.34569399664,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 342515.81479699234,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 342615.87799098925,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 342715.93534501153,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 342816.4616069989,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 342916.6362909891,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 343016.98969400604,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 343117.53299599513,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 343218.087309011,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 343318.6902120069,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 343418.1407990109,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 343518.1990629935,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 343618.5378670052,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 343718.85753099923,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 343819.32056398364,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 343919.65969698504,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 344020.0839010067,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 344120.5051649886,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 344220.67479000543,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 344320.8867840003,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 344420.95279999194,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 344521.0648950015,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 344621.6490580118,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 344720.9594459855,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 344821.4265810093,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 344921.89516400686,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 345022.23682799377,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 345122.52304298454,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 345222.71206899313,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 345321.9951580104,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 345422.1575630072,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 345522.33093898394,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 345622.6962739893,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 345723.05684900493,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 345823.53566298843,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 345924.2232469842,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 346092.54936801153,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 346158.40550200664,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 346259.8922229954,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 346401.05014599976,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 346502.90053599747,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 346548.88406500686,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 346649.18236999074,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 346709.508334985,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 346810.6626379886,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 346911.7421710107,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 347013.0253029929,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 347114.1459659848,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 347215.3860690014,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 347316.4981119917,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 347417.737234995,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 347518.91494798474,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 347698.2190599956,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 347799.3136839941,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 347823.40779399965,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 347826.09029399464,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 351984.9274639855,
+      "event": "activewindowv2>>5637f3497bb0"
+    },
+    {
+      "ms": 437085.6919079961,
+      "event": "activewindowv2>>5637f22ddcd0"
+    },
+    {
+      "ms": 438361.75762399216,
+      "event": "activewindowv2>>5637f3497bb0"
+    },
+    {
+      "ms": 442496.62523099687,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 456085.5675069906,
+      "event": "activewindowv2>>5637f22ddcd0"
+    },
+    {
+      "ms": 460635.1584359945,
+      "event": "activewindowv2>>5637f22ddcd0"
+    },
+    {
+      "ms": 460635.2470460115,
+      "event": "activewindowv2>>5637f22ddcd0"
+    },
+    {
+      "ms": 464601.6509309993,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 466188.45365400193,
+      "event": "activewindowv2>>5637f3497bb0"
+    },
+    {
+      "ms": 479490.7175539993,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 506146.2613029871,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 506219.6395339852,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 506319.6371399972,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 506419.60533498786,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 506519.53083099215,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 506619.45714600733,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 506719.7651710012,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 506819.99483599793,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 506919.9917509977,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 507020.6721049908,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 507120.5285410106,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 507220.6813560042,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 507321.1590409919,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 507420.5292479892,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 507520.0374760025,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 507619.95529200067,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 507720.47368600033,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 507819.56425498356,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 507919.92149999714,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 508020.2801839914,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 508120.68530000397,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 508221.3042140065,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 508320.4579130106,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 508420.35924998345,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 508520.3116159828,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 508620.20621300326,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 508720.1794589928,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 508820.76607400086,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 508921.21379901073,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 509020.27653800906,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 509120.2994849882,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 509127.4389239843,
+      "event": "activewindowv2>>5637f3497bb0"
+    },
+    {
+      "ms": 546143.2937149948,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 546211.6818430077,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 546311.9720960094,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 546412.308177998,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 546511.9495230028,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 546612.3265349888,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 546712.4727389892,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 546813.1363599969,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 546913.2879140088,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 547013.3260870061,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 547112.4320329982,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 547212.5370569993,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 547313.0553399969,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 547413.4191230114,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 547513.6161959963,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 547614.5394780033,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 547714.5696220105,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 547815.253134002,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 547915.345736983,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 548014.4034239929,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 548114.6177379997,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 548213.8892140065,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 548314.4433170091,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 548414.9772299861,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 548515.475113003,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 548615.6911569997,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 548716.3228600111,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 548816.6058330098,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 548916.9839469832,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 549017.0836109901,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 549081.3877400069,
+      "event": "activewindowv2>>5637f22ddcd0"
+    },
+    {
+      "ms": 549108.6805679952,
+      "event": "activewindowv2>>5637f22ddcd0"
+    },
+    {
+      "ms": 550689.3572600093,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 550727.9010780039,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 550828.1457929988,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 550928.605647001,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 551028.7684219948,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 551128.9390570018,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 551229.1414419888,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 551329.4708770118,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 551429.825751984,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 551530.4413760023,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 551631.4004090091,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 551655.2531360066,
+      "event": "activewindowv2>>5637f314b8a0"
+    },
+    {
+      "ms": 551655.2553559886,
+      "event": "workspace>>3"
+    },
+    {
+      "ms": 552633.2632539852,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 552633.3348139888,
+      "event": "workspace>>2"
+    },
+    {
+      "ms": 552704.6435159864,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 552805.4237900069,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 552905.6440659915,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 553005.736341991,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 553105.9033180063,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 553206.0488940042,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 553306.3631200057,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 553339.2697829986,
+      "event": "activewindowv2>>5637f339a3f0"
+    },
+    {
+      "ms": 553339.3329829851,
+      "event": "workspace>>1"
+    },
+    {
+      "ms": 562176.6453739838,
+      "event": "activewindowv2>>5637f22ddcd0"
+    },
+    {
+      "ms": 562665.2936759929,
+      "event": "activewindowv2>>5637f339a3f0"
+    },
+    {
+      "ms": 563159.2091149942,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 563159.2472050106,
+      "event": "workspace>>2"
+    },
+    {
+      "ms": 563227.5545680022,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 563308.2281689858,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 563418.5134829895,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 563519.4769809896,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 563619.7644209897,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 563720.1457209885,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 563819.7538829991,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 563920.5593419902,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 563968.565076997,
+      "event": "activewindowv2>>5637f22ddcd0"
+    },
+    {
+      "ms": 564225.3059729992,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 564225.8474609989,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 564326.4484009997,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 564427.4714899948,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 564527.5549009966,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 564627.7483419981,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 564728.117021994,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 564828.5417919978,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 564929.4354709855,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 565029.8312910018,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 565130.4099719855,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 565230.7278919907,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 565330.2115249971,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 565430.7343259861,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 565531.441366009,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 565632.0984259946,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 565732.517566008,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 565831.9797189906,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 565932.0423110039,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 566032.2900319879,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 566132.5565630104,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 566232.7513349883,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 566333.4949449927,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 566434.1605259979,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 566534.9476560077,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 566634.784408001,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 566735.2046390006,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 566834.7540819959,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 566935.0899239944,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 567035.330565006,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 567135.2694880043,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 567234.5554619969,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 567334.8236340098,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 567435.2785559895,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 567535.4996869864,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 567635.571789986,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 567735.200413008,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 567835.5159549974,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 567935.8673869865,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 568036.1680790083,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 568136.5483299887,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 568236.6848629899,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 568335.1009000035,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 568435.6901719875,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 568536.3451029989,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 568636.9276740006,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 568737.1511870006,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 568837.6111580001,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 568904.6236060094,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 569005.0657179963,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 569105.9082389984,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 569206.3733809919,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 569306.6679239855,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 569407.4919149862,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 569508.4194160008,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 569608.6245089828,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 569709.1168010083,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 569809.7069229989,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 569910.2372250054,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 570010.8675069932,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 570111.5162589995,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 570211.9114809902,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 570312.3235339881,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 570411.5202399844,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 570511.7121129879,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 570612.2225559957,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 570712.5862689863,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 570813.0055209913,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 570913.6787639873,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 571014.2173960048,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 571114.4115699863,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 571214.4722339872,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 571314.9207769893,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 571414.9466110102,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 571514.0773569874,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 571614.7969200101,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 571714.8994829913,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 571815.2937470004,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 571914.4892029872,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 572014.2506480042,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 572114.9024509941,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 572215.1895239949,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 572315.5871979834,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 572416.5453299938,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 572517.1494329988,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 572617.5324369979,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 572717.7223410108,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 572817.3274669971,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 572918.1072089996,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 573018.1948039972,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 573118.45773799,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 573218.5143429961,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 573318.0637490004,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 573417.4181160051,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 573517.8208099969,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 573617.9191650008,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 573718.1233190058,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 573818.4212129854,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 573918.7699480099,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 574017.935174983,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 574117.8042399988,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 574218.097134988,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 574318.1474409939,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 574417.5496069947,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 574517.4784429837,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 574618.3296270028,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 574718.429792003,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 574819.1658050055,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 574931.0237200116,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 575031.6465040087,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 575122.9488920071,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 575232.1480349929,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 575331.5342919959,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 575432.1058070054,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 575532.9954699846,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 575633.7633240037,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 575734.4940080075,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 575835.15343201,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 575935.5914769985,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 576035.1890939928,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 576135.909087985,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 576235.9521540056,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 576336.7504889902,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 576437.4947930046,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 576504.9095620052,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 576605.1141780044,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 576705.1510940073,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 576805.3969799948,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 576905.6560450117,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 577005.902681005,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 577106.5341359936,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 577206.5745319996,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 577307.2344170068,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 577408.017832,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 577508.4151180054,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 577609.0853129863,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 577709.8075280082,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 577810.2403930097,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 577910.8869080083,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 577977.8286590008,
+      "event": "activewindowv2>>5637f22ddcd0"
+    },
+    {
+      "ms": 578701.2287789839,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 578736.0872209829,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 578836.8295560067,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 578937.4244319915,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 579004.2345229886,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 579104.2698599922,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 579204.3663469958,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 579336.1343739962,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 579436.727029999,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 579537.5172659988,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 579604.5165469986,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 579704.7767940094,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 579804.9734809902,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 579905.4506070097,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 580005.6963239913,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 580137.7867709962,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 580204.7968620027,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 580305.4243579973,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 580404.8807369836,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 580504.5826460118,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 580604.3915839982,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 580704.6273619926,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 580805.2427479997,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 580905.9006040043,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 581005.144513998,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 581104.6226439939,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 581204.8867710109,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 581305.1155889989,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 581405.6073559914,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 581505.7507739984,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 581605.8185820002,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 581606.6508299846,
+      "event": "activewindowv2>>5637f22ddcd0"
+    },
+    {
+      "ms": 584835.2302759886,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 584936.8367819989,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 585036.9544209971,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 585137.1607309848,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 585237.3028800066,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 585304.3358919967,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 585404.5732920058,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 585505.4320800118,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 585605.6338190101,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 585659.2543449951,
+      "event": "activewindowv2>>5637f3497bb0"
+    },
+    {
+      "ms": 585745.1209099963,
+      "event": "activewindowv2>>5637f339a3f0"
+    },
+    {
+      "ms": 585745.1231599844,
+      "event": "workspace>>1"
+    },
+    {
+      "ms": 586617.1809319931,
+      "event": "activewindowv2>>5637f3497bb0"
+    },
+    {
+      "ms": 586617.2409020073,
+      "event": "workspace>>2"
+    },
+    {
+      "ms": 592525.2048039983,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 592625.462305994,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 592726.2148270092,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 592826.3112999848,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 592926.7845109862,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 592997.1579769917,
+      "event": "activewindowv2>>5637f3497bb0"
+    },
+    {
+      "ms": 697946.3702680077,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 704718.3354299923,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 704815.2722489904,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 704915.5468209938,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 705016.4463719993,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 705116.3468160084,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 705216.5301379864,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 705316.9643309957,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 705417.2521129949,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 705517.8329949849,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 705618.2099670114,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 705718.6572490027,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 705818.9911019872,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 705919.4670240104,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 706020.1736660092,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 706120.5866379896,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 706220.6236720085,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 706320.0481369859,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 706420.0796799851,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 706520.6869920075,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 706620.0805469998,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 706719.5887609851,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 706819.8221240018,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 706920.0394369836,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 706987.9800970084,
+      "event": "activewindowv2>>5637f3497bb0"
+    },
+    {
+      "ms": 798650.8317090047,
+      "event": "activewindowv2>>5637f22ddcd0"
+    },
+    {
+      "ms": 799344.785542984,
+      "event": "activewindowv2>>5637f3497bb0"
+    },
+    {
+      "ms": 815804.7595419921,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 819034.7200979886,
+      "event": "activewindowv2>>5637f22ddcd0"
+    },
+    {
+      "ms": 819846.8100430036,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 823960.7191320101,
+      "event": "activewindowv2>>5637f314b8a0"
+    },
+    {
+      "ms": 823960.7649119862,
+      "event": "workspace>>3"
+    },
+    {
+      "ms": 879184.5943240041,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 879184.6374940069,
+      "event": "workspace>>2"
+    },
+    {
+      "ms": 900539.4304340007,
+      "event": "activewindowv2>>5637f3497bb0"
+    },
+    {
+      "ms": 904504.4550040038,
+      "event": "activewindowv2>>5637f3497bb0"
+    },
+    {
+      "ms": 904573.5989869863,
+      "event": "openwindow>>5637f45b0c10,2,swappy,<redacted unrelated title>"
+    },
+    {
+      "ms": 904573.7006069976,
+      "event": "activewindowv2>>5637f45b0c10"
+    },
+    {
+      "ms": 904760.4882390006,
+      "event": "activewindowv2>>5637f3497bb0"
+    },
+    {
+      "ms": 905376.7181900039,
+      "event": "activewindowv2>>5637f45b0c10"
+    },
+    {
+      "ms": 907010.0732280116,
+      "event": "closewindow>>5637f45b0c10"
+    },
+    {
+      "ms": 907010.8554569888,
+      "event": "activewindowv2>>5637f3497bb0"
+    },
+    {
+      "ms": 908016.600692994,
+      "event": "activewindowv2>>5637f314b8a0"
+    },
+    {
+      "ms": 908016.6354230023,
+      "event": "workspace>>3"
+    },
+    {
+      "ms": 908812.5726419967,
+      "event": "activewindowv2>>5637f33fa4a0"
+    },
+    {
+      "ms": 908812.6376020082,
+      "event": "workspace>>4"
+    },
+    {
+      "ms": 910854.7094179958,
+      "event": "activewindowv2>>5637f268f8d0"
+    },
+    {
+      "ms": 910854.7554280085,
+      "event": "workspace>>5"
+    },
+    {
+      "ms": 912984.6260779887,
+      "event": "activewindowv2>>5637f327d1a0"
+    },
+    {
+      "ms": 913308.5231450095,
+      "event": "activewindowv2>>5637f4279410"
+    },
+    {
+      "ms": 914916.6546589986,
+      "event": "activewindowv2>>5637f327d1a0"
+    },
+    {
+      "ms": 915064.5002939855,
+      "event": "activewindowv2>>5637f268f8d0"
+    },
+    {
+      "ms": 915704.5364030055,
+      "event": "activewindowv2>>"
+    },
+    {
+      "ms": 915704.5381430071,
+      "event": "workspace>>6"
+    },
+    {
+      "ms": 916696.5703479946,
+      "event": "activewindowv2>>5637f230f980"
+    },
+    {
+      "ms": 916696.6345880064,
+      "event": "workspace>>7"
+    },
+    {
+      "ms": 917698.547951004,
+      "event": "activewindowv2>>5637f425e490"
+    },
+    {
+      "ms": 918458.5776409949,
+      "event": "activewindowv2>>5637f230f980"
+    },
+    {
+      "ms": 923944.6504680091,
+      "event": "activewindowv2>>5637f425e490"
+    },
+    {
+      "ms": 924634.5842540031,
+      "event": "activewindowv2>>5637f230f980"
+    },
+    {
+      "ms": 926032.7944399905,
+      "event": "closewindow>>5637f230f980"
+    },
+    {
+      "ms": 926033.5231089848,
+      "event": "activewindowv2>>5637f425e490"
+    },
+    {
+      "ms": 926717.1675770078,
+      "event": "closewindow>>5637f425e490"
+    },
+    {
+      "ms": 926717.9337359848,
+      "event": "activewindowv2>>"
+    },
+    {
+      "ms": 927150.4947689828,
+      "event": "workspace>>6"
+    },
+    {
+      "ms": 927448.5055739933,
+      "event": "activewindowv2>>5637f268f8d0"
+    },
+    {
+      "ms": 927448.5558040033,
+      "event": "workspace>>5"
+    },
+    {
+      "ms": 927904.6130339848,
+      "event": "activewindowv2>>5637f33fa4a0"
+    },
+    {
+      "ms": 927904.6579139831,
+      "event": "workspace>>4"
+    },
+    {
+      "ms": 928724.5438809914,
+      "event": "activewindowv2>>5637f314b8a0"
+    },
+    {
+      "ms": 928724.5651810081,
+      "event": "workspace>>3"
+    },
+    {
+      "ms": 928978.6657619989,
+      "event": "activewindowv2>>5637f3497bb0"
+    },
+    {
+      "ms": 928978.7169219926,
+      "event": "workspace>>2"
+    },
+    {
+      "ms": 930228.5677010077,
+      "event": "activewindowv2>>5637f339a3f0"
+    },
+    {
+      "ms": 930228.6568309937,
+      "event": "workspace>>1"
+    },
+    {
+      "ms": 936653.1494589872,
+      "event": "activewindowv2>>5637f339a3f0"
+    },
+    {
+      "ms": 936838.0208459857,
+      "event": "activewindowv2>>5637f339a3f0"
+    },
+    {
+      "ms": 944467.9572700115,
+      "event": "activewindowv2>>5637f339a3f0"
+    },
+    {
+      "ms": 947362.3345670057,
+      "event": "activewindowv2>>5637f339a3f0"
+    },
+    {
+      "ms": 960473.0360519898,
+      "event": "activewindowv2>>5637f339a3f0"
+    },
+    {
+      "ms": 961561.4482910023,
+      "event": "openwindow>>5637f230f980,special:search,kitty,<redacted unrelated title>"
+    },
+    {
+      "ms": 961561.6334899969,
+      "event": "activewindowv2>>5637f230f980"
+    },
+    {
+      "ms": 961725.6148569868,
+      "event": "activewindowv2>>5637f230f980"
+    },
+    {
+      "ms": 961782.834254991,
+      "event": "activewindowv2>>5637f230f980"
+    },
+    {
+      "ms": 961782.8905450006,
+      "event": "activewindowv2>>5637f230f980"
+    },
+    {
+      "ms": 964054.8039739951,
+      "event": "activewindowv2>>5637f230f980"
+    },
+    {
+      "ms": 964057.9410000064,
+      "event": "activewindowv2>>5637f230f980"
+    },
+    {
+      "ms": 966830.8751499862,
+      "event": "activewindowv2>>5637f230f980"
+    },
+    {
+      "ms": 968515.0926600036,
+      "event": "activewindowv2>>5637f230f980"
+    },
+    {
+      "ms": 968676.4499229903,
+      "event": "activewindowv2>>5637f230f980"
+    },
+    {
+      "ms": 968676.4935829851,
+      "event": "activewindowv2>>5637f230f980"
+    },
+    {
+      "ms": 986655.5487989972,
+      "event": "openwindow>>5637f4261010,special:search,/usr/bin/clipse,<redacted unrelated title>"
+    },
+    {
+      "ms": 986655.7255189982,
+      "event": "activewindowv2>>5637f4261010"
+    },
+    {
+      "ms": 986723.0292760069,
+      "event": "activewindowv2>>5637f4261010"
+    },
+    {
+      "ms": 987234.2053320026,
+      "event": "closewindow>>5637f4261010"
+    },
+    {
+      "ms": 987234.281801997,
+      "event": "activewindowv2>>5637f230f980"
+    },
+    {
+      "ms": 988157.453302003,
+      "event": "activewindowv2>>5637f230f980"
+    },
+    {
+      "ms": 989282.526947005,
+      "event": "activewindowv2>>5637f22ddcd0"
+    },
+    {
+      "ms": 991799.0875490068,
+      "event": "activewindowv2>>5637f22ddcd0"
+    },
+    {
+      "ms": 993715.3962510056,
+      "event": "activewindowv2>>5637f22ddcd0"
+    },
+    {
+      "ms": 997198.3373099938,
+      "event": "activewindowv2>>5637f22ddcd0"
+    },
+    {
+      "ms": 998534.9729669979,
+      "event": "activewindowv2>>5637f22ddcd0"
+    },
+    {
+      "ms": 998946.7512989941,
+      "event": "activewindowv2>>5637f339a3f0"
+    },
+    {
+      "ms": 1003256.468876003,
+      "event": "activewindowv2>>5637f3497bb0"
+    },
+    {
+      "ms": 1003256.503705983,
+      "event": "workspace>>2"
+    },
+    {
+      "ms": 1032440.443886997,
+      "event": "activewindowv2>>5637f22ddcd0"
+    },
+    {
+      "ms": 1033512.4548389867,
+      "event": "activewindowv2>>5637f3497bb0"
+    },
+    {
+      "ms": 1036084.4252539973,
+      "event": "activewindowv2>>5637f314b8a0"
+    },
+    {
+      "ms": 1036084.4669539947,
+      "event": "workspace>>3"
+    },
+    {
+      "ms": 1037568.4933910088,
+      "event": "activewindowv2>>5637f33fa4a0"
+    },
+    {
+      "ms": 1037568.5527309834,
+      "event": "workspace>>4"
+    },
+    {
+      "ms": 1038644.4840359909,
+      "event": "activewindowv2>>5637f314b8a0"
+    },
+    {
+      "ms": 1038644.5442359836,
+      "event": "workspace>>3"
+    },
+    {
+      "ms": 1038834.3641719839,
+      "event": "activewindowv2>>5637f3497bb0"
+    },
+    {
+      "ms": 1038834.4240419974,
+      "event": "workspace>>2"
+    },
+    {
+      "ms": 1039152.3481729964,
+      "event": "activewindowv2>>5637f339a3f0"
+    },
+    {
+      "ms": 1039152.3704029969,
+      "event": "workspace>>1"
+    },
+    {
+      "ms": 1043898.2049920014,
+      "event": "activewindowv2>>5637f339a3f0"
+    },
+    {
+      "ms": 1045790.2076879982,
+      "event": "activewindowv2>>5637f339a3f0"
+    }
+  ],
+  "elapsedSeconds": 1121.0528993670014,
+  "outerExit": 0,
+  "hyprlandExit": 0
+}

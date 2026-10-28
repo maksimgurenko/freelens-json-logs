@@ -1,13 +1,46 @@
 # Find resource investigation and remaining acceptance
 
-Updated 2026-10-27. Find implementation tickets #41–47 are complete locally on
-`implementation/find`. Final acceptance ticket [#48](https://github.com/maksimgurenko/freelens-json-logs/issues/48)
-remains unfinished. The feature has passing functional tests. The user has
-accepted deferring the intermittent installed-host resource issue; other
-acceptance checks remain open.
+Updated 2026-10-28. This document preserves the resource failures found during
+Find acceptance [#48](https://github.com/maksimgurenko/freelens-json-logs/issues/48)
+and the 2026-10-27 decision to defer them. The user reopened the investigation on
+2026-10-28. Current functional/native acceptance is tracked separately in the
+[execution handoff](verification/48/NEXT.md) and [matrix](verification/48/matrix.md).
 
-This summary covers reviewed diagnostics through commit `27e4d82`. The measured
-failures remain recorded; their accepted deferral is described below.
+The original summary below covers reviewed diagnostics through commit `27e4d82`.
+Its failed measurements and unchanged thresholds remain recorded.
+
+## Resource follow-up closed: 2026-10-28
+
+After reviewing the findings, the user directed closing this resource issue.
+The resource checklist item in [#48](https://github.com/maksimgurenko/freelens-json-logs/issues/48)
+is closed as an accepted host-side limitation. No further resource work is
+scheduled. The confirmed Freelens watch-timer defect and the passing 100-cycle
+comparison are recorded below; complete ownership of every historical spike
+remains unresolved. Closing the follow-up does not claim a production fix or
+change failed measurements into passes. #48 remains open for Windows/macOS
+validation.
+
+## Reopened investigation: 2026-10-28
+
+A fresh traced Find run reproduced listener failures in 15 samples, peaking at
+**+21 listeners**. A minimized control using actual host Kubernetes watches,
+with neither log viewer mounted, found a concrete host retention defect:
+aborting a watch leaves its **660-second fallback timer** running. Repeated
+watch/abort calls retained **two listeners per watch**. Cancelling only that
+timer prevented the growth; the paired result repeated twice.
+
+This establishes a host contribution, not complete attribution of the original
++1,551-node/+26-listener sample. No production extension or pinned host fix has
+been applied. The [new investigation report](verification/48/resource-reopened-20261028.md)
+contains the causal control, original failure checks and reproduction command.
+
+The requested comparison then completed **100 open/close cycles per viewer** on
+the same Pod continuously producing logs, with a fresh Freelens process/profile
+between viewers and Find unopened. Both retained **zero additional DOM nodes,
+listeners or documents** at every measured sample. Each also received new logs
+automatically in a separate 11-second check. This open/close comparison does not
+exercise the cluster inactive/active transitions in the original failed workload;
+those failures remain recorded.
 
 ## Accepted deferral
 
@@ -15,12 +48,11 @@ On 2026-10-27 the user directed: “if the issue is part of
 docs/find-resource-investigation.md we just skip it for now, mark it accepted.
 we will deal with that later”.
 
-The DOM/listener resource issue described here is **accepted for now and deferred**.
-Stop further resource attribution, timing controls, soak repetitions and related
-stock-display/resource investigations. This issue no longer blocks the current
-Find acceptance work. Preserve the failed measurements and existing thresholds;
-the decision accepts the unresolved issue rather than turning failed tests into
-passes. No root-cause fix is claimed.
+At that checkpoint, the DOM/listener resource issue was **accepted for now and
+deferred**, and attribution, timing controls, soaks and related stock-display
+investigation stopped. The current request reopens diagnosis. The earlier
+acceptance decision did not turn failed measurements into passes, and the
+original thresholds remain unchanged. No root-cause fix is claimed.
 
 The remaining functional host cases, native-input checks and platform coverage
 are not waived by this resource decision. Their status stays explicit below.
@@ -65,7 +97,7 @@ the intermittent resource failure is fully fixed.
 | Preserve mark-cycle progress through regrouping and matching maintenance (`9280757`). | Scrollbar groups could lose their cycling position when layout or matching maintenance rebuilt them. | Mounted regressions and corrected installed grouped-mark checks pass. [Report](verification/48/geometry.md) |
 | Reserve a compact, stable feedback footprint while Find is open (`a098a21`). | “Highlighting incomplete” changed viewport height, moving visible matches across the 1,024-range cap. Feedback then disappeared/reappeared, triggering repeated layout and decoration work. | The old cap-boundary regression fails; the fixed version passes. The installed dense sample delivers 12 natural frames in about 186 ms. This is a small diagnostic sample, not a native-input latency guarantee. [Report](verification/48/dense-cadence.md) |
 
-The final recorded production package is `freelens-readable-logs@0.1.34`, SHA-256
+That checkpoint's production package was `freelens-readable-logs@0.1.34`, SHA-256
 `995f1cf5e3ac81f377b16cf8dea24c15237824cd31dd1a066acde26bf868f904`.
 Pinned typechecking, 249 tests, six UI-policy checks, production-browser tests,
 actual-worker tests, resource smoke, strict package checks and reproducible
@@ -98,7 +130,11 @@ observations**. It does not prove the cause of the original +1,551/+26 failure o
 make the original resource verdict pass. [Investigation](verification/48/weak-idle.md),
 [timing-control data](verification/48/host/weak-queue-control/mounted-soak-clean-inspector.json.gz)
 
-## Acceptance status after the deferral
+## Acceptance status at the deferral (historical)
+
+Later functional/native results are recorded in the current
+[execution handoff](verification/48/NEXT.md); the table below preserves the
+scope of the earlier deferral.
 
 | Area | Remaining check |
 | --- | --- |

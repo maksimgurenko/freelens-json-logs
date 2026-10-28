@@ -1,0 +1,10 @@
+{
+  "namespace": "find-comparison-48-2859570",
+  "namespaceUid": "6064f374-cb94-47f4-8bed-7652ff6c818f",
+  "pod": "comparison-active",
+  "container": "active",
+  "podUid": "cc64aa44-88be-4451-a629-c43545080b46",
+  "image": "busybox:1.37.0@sha256:bdf57e528e45e4433820e045b29b4597825a1c9e38353532d90a01445013f82e",
+  "ratePerSecond": 10,
+  "prefilledLines": 1000
+}

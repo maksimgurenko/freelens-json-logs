@@ -1,0 +1,8 @@
+{
+  "hostPid": 2778399,
+  "hostExit": 0,
+  "profileRemoved": "/tmp/freelens-production-find-48-op8a8jso",
+  "timerMethodsRestored": true,
+  "abortTraceRestored": true,
+  "note": "Private display and UID-owned namespace handed to comparison agent. First probe cleanup failed; methods were explicitly recovered before subsequent runs."
+}

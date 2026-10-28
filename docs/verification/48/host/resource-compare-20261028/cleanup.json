@@ -1,0 +1,28 @@
+{
+  "normalHostExits": [
+    {
+      "pid": 2860716,
+      "exitCode": 0
+    },
+    {
+      "pid": 2878326,
+      "exitCode": 0
+    },
+    {
+      "pid": 2899626,
+      "exitCode": 0
+    }
+  ],
+  "removedProfiles": [
+    "/tmp/freelens-production-find-48-21rc753p",
+    "/tmp/freelens-production-find-48-cwyq2dtc",
+    "/tmp/freelens-production-find-48-szgc4nax"
+  ],
+  "noSurvivingOwnedHosts": true,
+  "comparisonNamespaceDeleted": true,
+  "parentNamespaceDeleted": true,
+  "portsFree": {
+    "9241": true,
+    "9242": true
+  }
+}

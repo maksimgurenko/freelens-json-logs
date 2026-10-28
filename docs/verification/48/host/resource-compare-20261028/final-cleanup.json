@@ -1,0 +1,26 @@
+{
+  "privateDisplayProcessesGone": true,
+  "runtimeRemoved": "/tmp/fd-2se05yps",
+  "scratchRemoved": [
+    ".scratch/find/48-host",
+    ".scratch/find/comparison-source"
+  ],
+  "borrowedToolchainSymlinkRemoved": true,
+  "generatedPythonCachesRemoved": [
+    "docs/verification/25/__pycache__/",
+    "docs/verification/26/__pycache__/",
+    "docs/verification/27/__pycache__/",
+    "docs/verification/28/__pycache__/",
+    "docs/verification/29/__pycache__/",
+    "docs/verification/30/__pycache__/",
+    "scripts/__pycache__/",
+    "scripts/find-production-host/__pycache__/",
+    "tests/__pycache__/"
+  ],
+  "realDesktopObservation": "../resource-reopen-20261028/real-desktop.json",
+  "focusEndpointSame": true,
+  "workspaceEndpointSame": true,
+  "pointerEndpointSame": false,
+  "clientSetEndpointSame": false,
+  "unchangedDesktopClaim": false
+}

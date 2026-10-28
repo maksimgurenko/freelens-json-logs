@@ -1,0 +1,12 @@
+{
+  "bundleSha256": "42cf8fa695df40c9235184b6f60340537eb433af460bd313908e3748ecc2471e",
+  "bundleBytes": 39947520,
+  "source": "Loaded /build/freelens.js bundle, obtained using Debugger.getScriptSource; no page text or private data retained",
+  "method": "KubeApi.watch",
+  "startLineOneBased": 728831,
+  "methodSha256": "b81a80247ebf045932f3bec62223bf3608cecc85cb0b748d04885503ac55918f",
+  "timerExpression": "timeout * 1000 * 1.1",
+  "defaultTimeoutSeconds": 600,
+  "fallbackHandleStored": false,
+  "abortClears": "timedRetry, not fallback timeout"
+}
