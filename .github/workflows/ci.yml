@@ -20,6 +20,8 @@ jobs:
     name: Typecheck, test and package
     runs-on: ubuntu-24.04
     timeout-minutes: 20
+    env:
+      CHROME_BIN: /usr/bin/google-chrome
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
@@ -56,6 +58,23 @@ jobs:
         run: npm run typecheck
       - name: Test
         run: npm test
+      - name: Diagnose headless browser launcher
+        run: |
+          node --input-type=module <<'JS'
+          import { realpathSync } from 'node:fs';
+          import { execFileSync } from 'node:child_process';
+          import { chromePath } from './scripts/test-chromium.mjs';
+          const configured = process.env.CHROME_BIN;
+          delete process.env.CHROME_BIN;
+          const automatic = await chromePath();
+          process.env.CHROME_BIN = configured;
+          const selected = await chromePath();
+          for (const [kind, path] of [['automatic', automatic], ['configured', selected]]) {
+            console.log('[DEBUG-find-ci]', kind, path, realpathSync(path));
+            try { console.log(execFileSync(path, ['--version'], { encoding: 'utf8', timeout: 5000 }).trim()); }
+            catch (error) { console.log('[DEBUG-find-ci]', kind, error.message); }
+          }
+          JS
       - name: Check the mounted production Find renderer in headless Chrome
         run: npm run test:browser
       - name: Check actual Find worker cancellation and exit
