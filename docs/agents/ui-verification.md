@@ -139,13 +139,29 @@ user-session compositor from `systemctl --user show-environment` before targetin
 the real or private session. Keep live IDs and temporary paths in run evidence.
 
 For desktop maintenance, compare focus/workspace and observe transitions through
-the interval. The [read-only event observer](../../scripts/observe-hyprland.md)
-records a bounded interval from an explicitly selected socket; wait for its
-`ready` record before the operation and require `complete` afterward.
-Equal endpoints can hide an interruption. Repeated notifications
-of the same focus address are not focus transitions. Report user activity during
-observation without automatically attributing it to the test; pointer endpoint
-equality is not continuous pointer tracking.
+the interval. Equal endpoints can hide an interruption. Run the
+[read-only event observer](../../scripts/observe-hyprland.py) in a separate
+terminal, passing the verified live instance's event socket explicitly:
+
+```sh
+python3 scripts/observe-hyprland.py \
+  --socket /absolute/path/to/hypr/INSTANCE/.socket2.sock \
+  --duration 60 > /tmp/freelens-desktop-events.jsonl
+```
+
+Wait for the flushed `ready` record before beginning the authorized operation;
+require `complete` afterward. JSONL records contain `activewindowv2`, `workspace`,
+`workspacev2` and `focusedmon` notifications with wall-clock and elapsed
+timestamps, excluding window titles and unrelated events. Repeated notifications
+remain visible; the same focus address repeated is not a focus transition.
+An early disconnect, partial final line, malformed UTF-8 or oversized line exits
+nonzero while preserving already emitted records.
+
+The observer sends no socket data or desktop commands. It does not discover the
+instance or identify focus before connection. It covers neither pointer motion
+nor clipboard preservation; equal pointer endpoints do not prove continuous
+preservation. Report observed user activity without automatically attributing it
+to verification. Pair the event stream with the required before/after state checks.
 
 Reuse the documented recipe while its prerequisites hold. Investigate only a
 concrete failed precondition, helper error or version/API mismatch. Record the
@@ -166,3 +182,12 @@ It checks rejection before desktop reads and before a native probe connects to
 the host. The archived ticket wrappers and their Python tests have been removed.
 Use isolated transport tests for any new desktop helper; unattended checks must
 continue to preserve the user's focus, workspace, pointer and clipboard.
+
+When changing the observer, run its CLI checks against owned fake Unix sockets:
+
+```sh
+python3 -B -m unittest discover -s tests -p hyprland_observer_test.py -v
+```
+
+These checks cover the observer's stream handling and exit behavior, without
+establishing real-compositor acceptance.
