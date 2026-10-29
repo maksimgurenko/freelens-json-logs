@@ -1,0 +1,19 @@
+{
+  "at": "2026-10-29T03:24:56.935Z",
+  "host": "Freelens 1.10.3 on Linux",
+  "packageSha256": "e7f7ada0d9d739c63f328b775a4d84ebad9ab0ef3f9080a3ffa5feb7ed79a192",
+  "productionSourceFilesMatched": 49,
+  "version": "0.1.37-local.84da5f1f",
+  "rows": 1,
+  "inspectionOrdinal": "1 / 1",
+  "flickerFailures": [],
+  "matchingTransitions": [
+    "1 of 1 matching records",
+    "Matching pending",
+    "1 of 1 matching records",
+    "Matching pending",
+    "1 of 1 matching records",
+    "Matching pending",
+    "1 of 1 matching records"
+  ]
+}

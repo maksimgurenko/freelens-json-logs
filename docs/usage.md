@@ -11,6 +11,9 @@ The viewer opens its own page in the current cluster. Check the Pod and namespac
 shown at the top, then use **Container** to select the output you want. Regular,
 init and ephemeral containers are listed separately.
 
+The toolbar uses compact icon buttons. Hover over a button to see its action
+and any available shortcut. The pencil edits profiles; the gear opens Display options.
+
 New views update automatically. **Pause** keeps the current log window;
 **Refresh** fetches once while remaining paused. **Resume** reads fresh logs and
 restores automatic updates. Selecting a record alone keeps updates running.
@@ -62,6 +65,11 @@ scrollbar marks show matches; links beside a row reveal matches in hidden fields
 Select a single line of log text before opening an empty Find to use it as the
 query. **Recent searches** recalls up to seven searches and their mode settings
 for this view. **Clear** empties the query; **Close** keeps it for reopening.
+
+Inspecting the active Find result keeps its ordinal and search position. During
+refresh, unchanged matching rows keep their counter, scrollbar marks and hidden-match
+links while new records are checked. Navigation waits for the complete result;
+hovering over the counter reports when matching is pending.
 
 New views follow the bottom of the output. Scrolling away keeps your reading
 position when the same records survive a refresh. If that position leaves the

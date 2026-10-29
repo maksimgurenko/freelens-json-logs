@@ -28,8 +28,8 @@ npm run test:workers
 npm run test:smoke
 npm run package
 npm run check:package
-tar -tzf dist/freelens-readable-logs-0.1.35.tgz
-sha256sum dist/freelens-readable-logs-0.1.35.tgz
+tar -tzf dist/freelens-readable-logs-0.1.36.tgz
+sha256sum dist/freelens-readable-logs-0.1.36.tgz
 ```
 
 The locked esbuild platform package supplies its binary without install scripts.
@@ -138,7 +138,7 @@ Follow [the accepted procedure](https://github.com/maksimgurenko/freelens-json-l
 2. For an update, **Uninstall** the old package and wait for removal to finish,
    retaining its saved extension settings. Install the new tarball via the form
    **once** and wait. Do not use the overwrite/reinstallation prompt.
-3. Check version **0.1.35** and Enabled, then open the cluster. Open a Pod's details
+3. Check version **0.1.36** and Enabled, then open the cluster. Open a Pod's details
    header and click the **Readable logs** icon beside the native actions. Verify
    cluster, namespace, Pod UID, container, the expected active profile and usable logs.
    Do not restart after installation as a substitute for passing this check.
