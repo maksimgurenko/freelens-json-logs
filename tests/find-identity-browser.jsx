@@ -121,6 +121,45 @@ function selectText(node, start = 0, end = node.textContent.length) {
   document.getSelection().removeAllRanges(); document.getSelection().addRange(range);
 }
 
+async function verifyFindClosing() {
+  button('Find');
+  await refresh('needle\n{"message":"visible","hidden":"needle"}');
+  await query('needle');
+  const ranges = () => [...CSS.highlights].flatMap(([, highlight]) => [...highlight]);
+  const undecorated = () => {
+    check(ranges().length === 0, 'Closing Find left matching text highlighted');
+    check(!root.querySelector('.rl-find-current'), 'Closing Find left the active-result outline');
+    check(!root.querySelector('[aria-label="Match in original text"]'), 'Closing Find left hidden-source hints');
+    check(!root.querySelector('.rl-find-mark'), 'Closing Find left scrollbar marks');
+  };
+  await until(() => ranges().length > 0, 'Close Find setup has no visible highlights');
+  check(root.querySelector('[aria-label="Match in original text"]'), 'Close Find setup has no hidden-source hint');
+  check(root.querySelector('.rl-find-current'), 'Close Find setup has no active result');
+  button('Close Find');
+  await turn();
+  check(root.querySelector('.rl-findbar').hidden, 'Close Find did not hide the bar');
+  undecorated();
+  await refresh('needle\n{"message":"visible","hidden":"needle"}\nneedle again');
+  undecorated();
+  button('Find');
+  await until(() => ranges().length > 0, 'Reopening Find did not restore highlights');
+  check(input().value === 'needle' && root.querySelector('.rl-find-count').textContent === '1 of 3 matching records', 'Closing Find lost the retained query/result');
+  if (document.hasFocus()) {
+    input().focus();
+    input().dispatchEvent(new KeyboardEvent('keydown', { key: 'Escape', bubbles: true }));
+    check(root.querySelector('.rl-findbar').hidden, 'Escape did not close Find');
+    undecorated(); button('Find');
+    await until(() => ranges().length > 0, 'Reopening after Escape did not restore highlights');
+  } else results.push('Find close via Escape requires native focus; background headless document does not own Escape');
+  const gate = holdNextRange(); edit('need');
+  await until(() => gate.dispatched, 'Close Find pending-range setup did not dispatch');
+  button('Close Find'); undecorated();
+  gate.release(); await sleep(50); undecorated();
+  button('Find');
+  await until(() => ranges().some(range => range.toString() === 'need'), 'Reopening after a late range reply did not restore highlights');
+  button('Clear'); button('Close Find'); await refresh('start\nx\nend');
+  results.push('closing Find removes text highlights, active outline, hidden-source hints and scrollbar marks through refresh and late range replies; reopening restores the retained query/result');
+}
 async function verifyInspectionFindState() {
   const closeInspector = () => root.querySelector('[aria-label="Close record inspector"]')?.click();
   const active = () => Number(root.querySelector('.rl-find-current')?.dataset.recordIndex ?? -1);
@@ -632,6 +671,7 @@ globalThis.verifyIdentity = async () => {
       await verifyFindPerformance({ root, rows, button, query, refresh, until, check, results, holdNext, holdNextRange, rangeRequests });
       return results;
     }
+    await verifyFindClosing();
     await verifyFindPerformance({ root, rows, button, query, refresh, until, check, results, holdNext, holdNextRange, rangeRequests });
     button('Clear'); root.querySelector('[aria-label="Close Find"]').click(); await refresh('start\nx\nend');
     button('Find'); await query('x');

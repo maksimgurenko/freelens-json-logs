@@ -205,15 +205,16 @@ export function Viewer({ target, register, visibility, findRpc, preferences, sho
   }, [matching]);
   const mappedCursor = recordIndex(window, findPosition.active);
   const currentMatch = matches.includes(mappedCursor) ? mappedCursor : -1;
+  const findDecorationsVisible = findOpen && !editingProfiles && decorationActive;
   useLayoutEffect(() => {
     const current = new FindHighlights(root.current!, findClient, viewerEpoch, setHighlightStatus);
     highlights.current = current;
     return () => { current.dispose(); highlights.current = undefined; };
   }, []);
   useLayoutEffect(() => {
-    highlights.current?.update(['ready', 'pending'].includes(matching.phase) && !composing.current && !editingProfiles && viewActive.current ? findInputs : undefined,
+    highlights.current?.update(findDecorationsVisible && ['ready', 'pending'].includes(matching.phase) && !composing.current ? findInputs : undefined,
       knownMatches ?? [], findPosition.active, !matchesReady);
-  }, [findInputs, matchesReady, matching.phase, matching.records, editingProfiles, inspection, timestamps, wrap, preference.inspection, currentMatch, decorationActive]);
+  }, [findInputs, matchesReady, matching.phase, matching.records, findDecorationsVisible, inspection, timestamps, wrap, preference.inspection, currentMatch]);
   useLayoutEffect(() => {
     const current = new LogViewport(scroller.current!, setScroll, () => findPosition.cancelReveal());
     viewport.current = current;
@@ -225,8 +226,8 @@ export function Viewer({ target, register, visibility, findRpc, preferences, sho
     return () => { current.dispose(); marks.current = undefined; };
   }, []);
   useLayoutEffect(() => {
-    marks.current?.update(window, findOpen && !editingProfiles && decorationActive ? (knownMatches ?? []).map(match => match.ref) : [], findPosition.active, queryRevision, matchesReady);
-  }, [window, matchesReady, matching.records, findOpen, editingProfiles, decorationActive, currentMatch, inspection, timestamps, wrap, preference.inspection, formattedRecords, queryRevision]);
+    marks.current?.update(window, findDecorationsVisible ? (knownMatches ?? []).map(match => match.ref) : [], findPosition.active, queryRevision, matchesReady);
+  }, [window, matchesReady, matching.records, findDecorationsVisible, currentMatch, inspection, timestamps, wrap, preference.inspection, formattedRecords, queryRevision]);
   useLayoutEffect(() => {
     if (editingProfiles) return;
     viewport.current?.update(window);
@@ -555,10 +556,10 @@ export function Viewer({ target, register, visibility, findRpc, preferences, sho
         const isSelected = recordIndex === index;
         const fields = Object.keys(formatted.additionalFields ?? {}).length;
         const ref = window.refs[recordIndex];
-        const match = matchesByOccurrence.get(ref.occurrence);
+        const match = findDecorationsVisible ? matchesByOccurrence.get(ref.occurrence) : undefined;
         const hiddenSource = inspection.raw ? match?.message && !match.application ? 'message' : undefined
           : match?.application && !match.message ? 'application' : undefined;
-        return <div className={`rl-record${isSelected ? ' rl-selected' : ''}${recordIndex === currentMatch ? ' rl-find-current' : ''}`} key={`${ref.context}:${ref.occurrence}`} data-record-index={recordIndex}>
+        return <div className={`rl-record${isSelected ? ' rl-selected' : ''}${findDecorationsVisible && recordIndex === currentMatch ? ' rl-find-current' : ''}`} key={`${ref.context}:${ref.occurrence}`} data-record-index={recordIndex}>
           <div className="rl-row" role="button" tabIndex={0} aria-pressed={isSelected}
             aria-label={`Inspect record ${recordIndex + 1}: ${formatted.message.slice(0, 100) || 'blank line'}`}
             onClick={event => {
