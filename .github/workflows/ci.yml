@@ -58,6 +58,8 @@ jobs:
         run: npm run typecheck
       - name: Test
         run: npm test
+      - name: Check the read-only desktop observer with fake sockets
+        run: python3 -B -m unittest discover -s tests -p hyprland_observer_test.py -v
       - name: Check the mounted production Find renderer in headless Chrome
         run: npm run test:browser
       - name: Check actual Find worker cancellation and exit

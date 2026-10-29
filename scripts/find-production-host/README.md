@@ -41,7 +41,8 @@ Generated observations go under `.scratch/verification/<ticket>/host/<run>/`;
 profile/display state stays under `.scratch/find/<ticket>-host/`. The renderer
 uses localhost port 9241 and main inspection uses 9242. Native helpers require
 additional isolation manifests and scenario-specific prerequisites; this sequence
-alone does not authorize or prepare native input.
+alone does not authorize or prepare native input. The small native helper binaries
+are rebuilt separately using the [source retrieval and build recipe](native-tools.md).
 
 Check normal host exit, actual worker exit and empty service ownership before
 cleanup. For another install/disable/uninstall scenario, launch a fresh main

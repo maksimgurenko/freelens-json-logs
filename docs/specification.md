@@ -163,9 +163,12 @@ inspection and native text selection distinct:
   Next starts at the first match and Previous at the last, regardless of scroll.
   One match stays active with one-match feedback. Navigation keeps Find focus.
 - Clear removes query, result, decorations and pending reveal, keeping Find open,
-  inspection, scroll position and history. Close hides Find while retaining its
-  query, flags and surviving result; it restores the opener or a surviving local
-  fallback without creating a reading anchor.
+  inspection, scroll position and history. Close hides Find and removes text
+  highlights, the active-result outline, hidden-match links and scrollbar marks
+  while retaining query, flags and surviving result. Refresh and late replies
+  cannot restore decorations while closed; reopening shows current decorations.
+  Closing restores the opener or a surviving local fallback without creating a
+  reading anchor.
 
 ## Find maintenance and bounded work
 
@@ -176,10 +179,10 @@ otherwise clear it without choosing another. Layout, Raw/Readable, timestamps,
 wrap and unchanged metadata/settings do not change matching.
 
 While changed/new records are evaluated, unchanged surviving source text keeps its
-known count membership, active ordinal, hidden-match links, marks and valid connected
-highlights. Navigation waits for complete current results. Retained source nodes,
-selection and focus survive refresh; source/query/mode/context changes and eviction
-invalidate affected data.
+known count membership and active ordinal. Keep its hidden-match links, marks and
+valid connected highlights while Find is open. Navigation waits for complete current
+results. Retained source nodes, selection and focus survive refresh;
+source/query/mode/context changes and eviction invalidate affected data.
 
 Highlight visible text without shading every matching row. Keep active result,
 inspection, native selection and focus distinguishable and readable on the black

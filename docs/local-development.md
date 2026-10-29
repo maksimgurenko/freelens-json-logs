@@ -50,20 +50,18 @@ with the real main-owned worker and explicit SDK/OS stand-ins. `test:workers`
 separately checks actual built-worker cancellation, reuse and exit. These checks
 do not operate the installed Freelens or establish physical/native acceptance.
 
-On this development machine the existing toolchain is project-local. The scratch
-`.bin` directory alone does not select Node 24. Use the Node binary directory and
-invoke the matching npm CLI explicitly:
+On this development machine the supported Node/npm installation is cached
+outside disposable run data. To select it for the commands above:
 
 ```sh
-export PATH="$PWD/.scratch/readable-logs/toolchain/node_modules/node/bin:$PATH"
+freelens_toolchain="${XDG_CACHE_HOME:-$HOME/.cache}/freelens-json-logs/toolchain/node-24.18.0-npm-11.16.0"
+export PATH="$freelens_toolchain/node_modules/node/bin:$freelens_toolchain/node_modules/.bin:$PATH"
 node --version
-node .scratch/readable-logs/toolchain/node_modules/npm/bin/npm-cli.js --version
-node .scratch/readable-logs/toolchain/node_modules/npm/bin/npm-cli.js ci --ignore-scripts --no-audit --no-fund
-node .scratch/readable-logs/toolchain/node_modules/npm/bin/npm-cli.js run typecheck
-node .scratch/readable-logs/toolchain/node_modules/npm/bin/npm-cli.js test
-node .scratch/readable-logs/toolchain/node_modules/npm/bin/npm-cli.js run package
-node .scratch/readable-logs/toolchain/node_modules/npm/bin/npm-cli.js run check:package
+npm --version
 ```
+
+The npm `.bin` directory alone does not select Node 24. On another machine,
+provide the pinned versions on PATH through the local Node installation instead.
 
 Stable package identifier: **freelens-readable-logs**. Stable `storeName`:
 **freelens-readable-logs**. Page ID: **readable-logs**. These identifiers remain

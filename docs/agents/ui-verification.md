@@ -35,12 +35,12 @@ port **9235**. Private-host helpers use **9241** for the renderer and **9242** f
 main-process inspection. A host on another port needs an explicit matching
 transport; a missing endpoint is a transport/setup failure.
 
-From the repository root, with the background host on 9235 already available:
+From the repository root, with the [supported Node toolchain](../local-development.md)
+on PATH and the background host on 9235 already available:
 
 ```sh
-freelens_node="$PWD/.scratch/readable-logs/toolchain/node_modules/node/bin/node"
-"$freelens_node" scripts/host-cdp.mjs contexts
-"$freelens_node" scripts/host-cdp.mjs screenshot /tmp/freelens-ui.png
+node scripts/host-cdp.mjs contexts
+node scripts/host-cdp.mjs screenshot /tmp/freelens-ui.png
 ```
 
 Use a saved renderer probe for the required assertion. Background probes may
@@ -139,7 +139,10 @@ user-session compositor from `systemctl --user show-environment` before targetin
 the real or private session. Keep live IDs and temporary paths in run evidence.
 
 For desktop maintenance, compare focus/workspace and observe transitions through
-the interval. Equal endpoints can hide an interruption. Repeated notifications
+the interval. The [read-only event observer](../../scripts/observe-hyprland.md)
+records a bounded interval from an explicitly selected socket; wait for its
+`ready` record before the operation and require `complete` afterward.
+Equal endpoints can hide an interruption. Repeated notifications
 of the same focus address are not focus transitions. Report user activity during
 observation without automatically attributing it to the test; pointer endpoint
 equality is not continuous pointer tracking.

@@ -41,6 +41,6 @@ try {
     tarball: { path: `dist/${manifest.name}-${manifest.version}.tgz`, sha256: sha256(`dist/${manifest.name}-${manifest.version}.tgz`) },
     assets: comparison, hostExecutable: { path: realpathSync(`/proc/${session.pid}/exe`), sha256: sha256(`/proc/${session.pid}/exe`) },
     display: { library, sha256: sha256(library), scope: 'Privately modified Aquamarine diagnostic; not stock compositor acceptance' },
-    toolchain: { node: process.version, npm: execFileSync(process.execPath, ['.scratch/readable-logs/toolchain/node_modules/npm/bin/npm-cli.js', '--version'], { encoding: 'utf8' }).trim() } });
+    toolchain: { node: process.version, npm: execFileSync('npm', ['--version'], { encoding: 'utf8' }).trim() } });
   console.log(JSON.stringify({ pass: true, assets: assets.length, package: `${manifest.name}@${manifest.version}` }));
 } finally { main.close(); }

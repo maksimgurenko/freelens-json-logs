@@ -1,0 +1,15 @@
+#!/bin/sh
+set -eu
+
+repo=$(CDPATH= cd -- "$(dirname -- "$0")" && pwd)
+ralph_data_home=${XDG_DATA_HOME:-"$HOME/.local/share"}
+ralph_tool_home=${RALPH_TOOL_HOME:-"$ralph_data_home/tmux-ralph-loop"}
+tool="$ralph_tool_home/scripts/ralph.py"
+
+if [ ! -f "$tool" ]; then
+    printf '%s\n' 'Install tmux-ralph-loop with:' >&2
+    printf '  git clone https://github.com/maksimgurenko/tmux-ralph-loop.git "%s"\n' "$ralph_tool_home" >&2
+    exit 1
+fi
+
+exec python3 "$tool" --repo "$repo" "$@"
