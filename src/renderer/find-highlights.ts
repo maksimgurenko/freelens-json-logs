@@ -1,12 +1,12 @@
-import { sameRecordRef, FIND_SCOPE_LIMIT, type FindScope, type FindSource, type MatchingRecord } from '../core/find-protocol.ts';
+import { sameRecordRef, FIND_PENDING_MS, FIND_SCOPE_LIMIT, type FindScope, type FindSource, type MatchingRecord } from '../core/find-protocol.ts';
 import type { RecordRef } from '../core/occurrences.ts';
 import { FindClient, type FindInputs } from './find-client.ts';
 import { FindRanges, type RangeState } from './find-ranges.ts';
 
-interface Fragment { node: Text; start: number }
-interface SourceIndex { element: HTMLElement; ref: RecordRef; source: FindSource; fragments: Fragment[]; visible: FindScope[] }
+interface Fragment { node: Text; start: number; bounds?: Clip; geometry?: number }
+interface SourceIndex { element: HTMLElement; ref: RecordRef; source: FindSource; fragments: Fragment[]; parents: HTMLElement[]; visible: FindScope[]; width?: number; height?: number }
 interface Clip { top: number; right: number; bottom: number; left: number }
-export interface HighlightStatus { message: string; retryable: boolean }
+export interface HighlightStatus { message: string; retryable: boolean; busy: boolean }
 export const HIGHLIGHT_LIMIT_MESSAGE = 'Highlighting incomplete.';
 const intersects = (a: Clip, b: Clip) => a.bottom > b.top && a.top < b.bottom && a.right > b.left && a.left < b.right;
 const inside = (a: Clip, b: Clip) => a.top >= b.top && a.bottom <= b.bottom && a.left >= b.left && a.right <= b.right;
@@ -23,17 +23,21 @@ export class FindHighlights {
   private root: HTMLElement;
   private sources: SourceIndex[] = [];
   private inputs?: FindInputs;
+  private matching = false;
   private matches: readonly MatchingRecord[] = [];
   private active?: RecordRef;
   private revision = 0;
+  private geometry = 0;
   private frame = 0;
+  private pendingFeedback?: ReturnType<typeof setTimeout>;
   private closed = false;
   private resize: ResizeObserver;
+  private observed = new Set<HTMLElement>();
   private ranges: FindRanges;
   private names: string[];
   private style: HTMLStyleElement;
   private interestCapped = false;
-  private status: HighlightStatus = { message: '', retryable: false };
+  private status: HighlightStatus = { message: '', retryable: false, busy: false };
   private changed: (status: HighlightStatus) => void;
   constructor(root: HTMLElement, client: FindClient, identity: number, changed: (status: HighlightStatus) => void) {
     this.root = root; this.changed = changed;
@@ -44,28 +48,67 @@ export class FindHighlights {
     root.append(this.style);
     this.ranges = new FindRanges(client, state => this.draw(state));
     root.addEventListener('scroll', this.schedule, true);
-    root.ownerDocument.defaultView?.addEventListener('resize', this.schedule);
-    root.ownerDocument.fonts.addEventListener('loadingdone', this.schedule);
-    void root.ownerDocument.fonts.ready.then(() => { if (!this.closed) this.schedule(); });
-    this.resize = new ResizeObserver(this.schedule); this.resize.observe(root);
+    root.ownerDocument.defaultView?.addEventListener('resize', this.invalidateGeometry);
+    root.ownerDocument.fonts.addEventListener('loadingdone', this.invalidateGeometry);
+    void root.ownerDocument.fonts.ready.then(() => { if (!this.closed) this.invalidateGeometry(); });
+    this.resize = new ResizeObserver(this.invalidateGeometry); this.resize.observe(root); this.observed.add(root);
   }
-  update(inputs: FindInputs | undefined, matches: readonly MatchingRecord[], active?: RecordRef) {
+  update(inputs: FindInputs | undefined, matches: readonly MatchingRecord[], active?: RecordRef, matching = false) {
     if (this.closed) return;
+    const previous = this.inputs;
+    const reusable = !!inputs && !!previous && inputs.key.viewerEpoch === previous.key.viewerEpoch &&
+      inputs.key.targetEpoch === previous.key.targetEpoch && inputs.key.instanceEpoch === previous.key.instanceEpoch &&
+      inputs.key.queryRevision === previous.key.queryRevision && inputs.query.text === previous.query.text &&
+      inputs.query.matchCase === previous.query.matchCase && inputs.query.wholeWords === previous.query.wholeWords;
+    // A retained occurrence can change its extracted message after formatting.
+    // Keep only native ranges on the same connected, unchanged source nodes.
+    const retained = new Map<Text, RecordRef>();
+    const records = new Map(inputs?.records.map(record => [JSON.stringify(record.ref), record]));
+    const oldRecords = new Map(previous?.records.map(record => [JSON.stringify(record.ref), record]));
+    const unchanged = (source: SourceIndex) => {
+      const key = JSON.stringify(source.ref);
+      return source.element.isConnected && records.has(key) && records.get(key)![source.source] === oldRecords.get(key)?.[source.source];
+    };
+    if (reusable) {
+      for (const source of this.sources) {
+        if (unchanged(source))
+          for (const fragment of source.fragments) if (fragment.node.isConnected) retained.set(fragment.node, source.ref);
+      }
+    }
+    if (reusable && globalThis.Highlight) {
+      const kept = [new Highlight(), new Highlight()]; kept[1].priority = 1;
+      for (const name of this.names) {
+        const highlight = globalThis.CSS?.highlights?.get(name);
+        if (highlight) for (const range of highlight) {
+          const ref = retained.get(range.startContainer as Text);
+          if (ref && retained.has(range.endContainer as Text)) kept[active && sameRecordRef(ref, active) ? 1 : 0].add(range);
+        }
+      }
+      if (globalThis.CSS?.highlights) this.names.forEach((name, index) => CSS.highlights.set(name, kept[index]));
+    } else this.clearHighlights();
     this.revision++; this.inputs = inputs; this.matches = matches; this.active = active;
-    this.resize.disconnect(); this.resize.observe(this.root);
+    this.matching = matching;
+    const indexes = new Map(this.sources.map(source => [source.element, source]));
+    const parents = new Map<HTMLElement, HTMLElement[]>();
     this.sources = inputs ? Array.from(this.root.querySelectorAll<HTMLElement>('[data-find-source]')).map(element => {
-      const source = { element, source: element.dataset.findSource as FindSource,
+      const indexed = indexes.get(element);
+      if (indexed && unchanged(indexed)) { indexed.visible = []; return indexed; }
+      return { element, source: element.dataset.findSource as FindSource,
         ref: { context: element.dataset.findContext!, occurrence: Number(element.dataset.findOccurrence) },
+        parents: this.clippingParents(element, parents),
         visible: [] as FindScope[], fragments: Array.from(element.querySelectorAll<HTMLElement>('[data-source-start]')).map(fragment =>
           ({ node: fragment.firstChild as Text, start: Number(fragment.dataset.sourceStart) })).filter(fragment => !!fragment.node) };
-      this.resize.observe(element);
-      // Local status/toolbar layout can expose text by resizing its clipping
-      // scroller while the root and source keep exactly the same dimensions.
-      for (const parent of this.clippingParents(element)) this.resize.observe(parent);
-      return source;
     }) : [];
-    this.clearHighlights();
+    // Preserve observers for retained sources rather than re-observing every
+    // row (which also queues initial resize callbacks on every snapshot).
+    const observed = new Set([this.root, ...this.sources.flatMap(source => [source.element, ...source.parents])]);
+    for (const element of this.observed) if (!observed.has(element)) this.resize.unobserve(element);
+    for (const element of observed) if (!this.observed.has(element)) this.resize.observe(element);
+    this.observed = observed;
     if (!inputs) { this.ranges.clear(); return; }
+    // Exact matching owns the shared worker until this snapshot is accepted.
+    // Do not dispatch obsolete decoration or erase still-valid source ranges.
+    if (matching) { this.ranges.pause(); return; }
     this.schedule();
   }
   retry() { this.ranges.retry(); }
@@ -74,38 +117,66 @@ export class FindHighlights {
     if (this.closed || this.frame) return;
     this.frame = requestAnimationFrame(() => { this.frame = 0; this.measure(); });
   };
-  private clippingParents(element: HTMLElement): HTMLElement[] {
-    const parents: HTMLElement[] = [];
-    for (let parent = element.parentElement; parent && parent !== this.root; parent = parent.parentElement) {
-      const style = getComputedStyle(parent);
-      if (/(auto|scroll|hidden|clip)/.test(`${style.overflowX} ${style.overflowY}`)) parents.push(parent);
-    }
-    return parents;
+  private invalidateGeometry = () => { this.geometry++; this.schedule(); };
+  private clippingParents(element: HTMLElement, cache: Map<HTMLElement, HTMLElement[]>): HTMLElement[] {
+    const parent = element.parentElement;
+    if (!parent || parent === this.root) return [];
+    const cached = cache.get(parent);
+    if (cached) return cached;
+    const style = getComputedStyle(parent);
+    const parents = this.clippingParents(parent, cache);
+    const result = /(auto|scroll|hidden|clip)/.test(`${style.overflowX} ${style.overflowY}`) ? [parent, ...parents] : parents;
+    cache.set(parent, result); return result;
   }
-  private clip(element: HTMLElement): Clip {
-    let clip: Clip = this.root.getBoundingClientRect();
-    for (const parent of this.clippingParents(element)) {
-      const rect = parent.getBoundingClientRect();
-      clip = intersect(clip, { top: rect.top + parent.clientTop, left: rect.left + parent.clientLeft,
-        right: rect.left + parent.clientLeft + parent.clientWidth, bottom: rect.top + parent.clientTop + parent.clientHeight });
+  private clip(source: SourceIndex, root: Clip, clips: Map<HTMLElement, Clip>): Clip {
+    let clip = root;
+    for (const parent of source.parents) {
+      let bounds = clips.get(parent);
+      if (!bounds) {
+        const rect = parent.getBoundingClientRect();
+        bounds = { top: rect.top + parent.clientTop, left: rect.left + parent.clientLeft,
+          right: rect.left + parent.clientLeft + parent.clientWidth, bottom: rect.top + parent.clientTop + parent.clientHeight };
+        clips.set(parent, bounds);
+      }
+      clip = intersect(clip, bounds);
     }
     return clip;
   }
   private measure() {
-    if (!this.inputs || this.closed) return;
+    if (!this.inputs || this.closed || this.matching) return;
     if (!globalThis.CSS?.highlights || !globalThis.Highlight) {
       this.setStatus('Highlighting unavailable. Exact matches remain available.'); return;
     }
     const scopes: FindScope[] = [];
     this.interestCapped = false;
+    const clips = new Map<HTMLElement, Clip>(), root = this.root.getBoundingClientRect();
+    const matches = new Map(this.matches.map(match => [JSON.stringify(match.ref), match]));
     const ordered = [...this.sources].sort((a, b) => Number(!!this.active && sameRecordRef(b.ref, this.active)) -
       Number(!!this.active && sameRecordRef(a.ref, this.active)));
     for (const source of ordered) {
       source.visible = [];
-      if (!source.element.checkVisibility() || !this.matches.some(match => sameRecordRef(match.ref, source.ref) && match[source.source])) continue;
-      const clip = this.clip(source.element);
-      if (!intersects(source.element.getBoundingClientRect(), clip)) continue;
+      if (!matches.get(JSON.stringify(source.ref))?.[source.source]) continue;
+      const clip = this.clip(source, root, clips);
+      const bounds = source.element.getBoundingClientRect();
+      if (!intersects(bounds, clip)) continue;
+      if (!source.element.checkVisibility()) continue;
+      if (source.width !== bounds.width || source.height !== bounds.height) {
+        for (const fragment of source.fragments) fragment.geometry = undefined;
+        source.width = bounds.width; source.height = bounds.height;
+      }
+      const relativeClip = { top: clip.top - bounds.top, bottom: clip.bottom - bounds.top,
+        left: clip.left - bounds.left, right: clip.right - bounds.left };
       for (const fragment of source.fragments) {
+        // A source can contain hundreds of mounted fragments. Their bounds
+        // relative to the source survive scrolling, including bidi/wrapped
+        // text; size/font/presentation changes invalidate the cache.
+        if (fragment.geometry !== this.geometry) {
+          const rect = fragment.node.parentElement!.getBoundingClientRect();
+          fragment.bounds = { top: rect.top - bounds.top, bottom: rect.bottom - bounds.top,
+            left: rect.left - bounds.left, right: rect.right - bounds.left };
+          fragment.geometry = this.geometry;
+        }
+        if (!intersects(fragment.bounds!, relativeClip)) continue;
         const range = this.root.ownerDocument.createRange();
         const visit = (start: number, end: number) => {
           if (scopes.length === FIND_SCOPE_LIMIT) { this.interestCapped = true; return; }
@@ -126,7 +197,15 @@ export class FindHighlights {
       }
     }
     // Duplicate viewport/inspector presentations can request the same source.
-    const unique = [...new Map(scopes.map(scope => [JSON.stringify(scope), scope])).values()];
+    // Quantize interest to nearby source offsets so small scrolls reuse a
+    // covering reply. Keep the actual visible spans separate for DOM painting.
+    const records = new Map(this.inputs.records.map(record => [JSON.stringify(record.ref), record]));
+    const padded = scopes.map(scope => {
+      const text = records.get(JSON.stringify(scope.ref))![scope.source]!;
+      return { ...scope, start: boundary(text, Math.floor(scope.start / 256) * 256),
+        end: boundary(text, Math.min(text.length, Math.ceil(scope.end / 256) * 256)) };
+    });
+    const unique = [...new Map(padded.map(scope => [JSON.stringify(scope), scope])).values()];
     const previous = this.ranges.state;
     this.ranges.update(this.inputs, unique, this.revision);
     // Covered interest can reuse ready data without publishing a new reply.
@@ -142,16 +221,21 @@ export class FindHighlights {
     return range;
   }
   private draw(state: RangeState) {
-    this.clearHighlights();
     if (this.closed) return;
+    if (state.phase === 'pending') {
+      this.setStatus(this.status.retryable ? '' : this.status.message, false, true);
+      if (!this.pendingFeedback && this.status.message !== 'Highlighting pending.')
+        this.pendingFeedback = setTimeout(() => { this.pendingFeedback = undefined; this.setStatus('Highlighting pending.', false, true); }, FIND_PENDING_MS);
+      return;
+    }
+    clearTimeout(this.pendingFeedback); this.pendingFeedback = undefined;
     if (state.phase !== 'ready') {
-      this.setStatus(state.phase === 'failed' ? 'Highlighting incomplete. Retry highlights to try again; exact matches remain available.'
-        : state.phase === 'pending' ? 'Highlighting pending.' : '', state.phase === 'failed');
+      this.setStatus(state.phase === 'failed' ? 'Highlighting incomplete. Retry highlights to try again; exact matches remain available.' : '', state.phase === 'failed');
       return;
     }
     if (!globalThis.CSS?.highlights || !globalThis.Highlight) return;
     const highlights = [new Highlight(), new Highlight()]; highlights[1].priority = 1;
-    const presentations = this.sources.filter(source => source.element.checkVisibility()).map(source => ({ source,
+    const presentations = this.sources.filter(source => source.visible.length).map(source => ({ source,
       ranges: state.ranges.filter(range => range.source === source.source && sameRecordRef(range.ref, source.ref) &&
         source.visible.some(scope => scope.start < range.end && scope.end > range.start)) }));
     presentations.sort((a, b) => Number(!!this.active && sameRecordRef(b.source.ref, this.active)) -
@@ -176,17 +260,19 @@ export class FindHighlights {
     this.setStatus(incomplete ? HIGHLIGHT_LIMIT_MESSAGE : '');
   }
   private clearHighlights() { this.names.forEach(name => globalThis.CSS?.highlights?.delete(name)); }
-  private setStatus(message: string, retryable = false) {
-    if (message !== this.status.message || retryable !== this.status.retryable) {
-      this.status = { message, retryable }; this.changed(this.status);
+  private setStatus(message: string, retryable = false, busy = false) {
+    if (message !== this.status.message || retryable !== this.status.retryable || busy !== this.status.busy) {
+      this.status = { message, retryable, busy }; this.changed(this.status);
     }
   }
   dispose() {
     if (this.closed) return;
     this.closed = true; cancelAnimationFrame(this.frame); this.frame = 0; this.resize.disconnect();
+    this.observed.clear();
+    clearTimeout(this.pendingFeedback);
     this.root.removeEventListener('scroll', this.schedule, true);
-    this.root.ownerDocument.defaultView?.removeEventListener('resize', this.schedule);
-    this.root.ownerDocument.fonts.removeEventListener('loadingdone', this.schedule);
+    this.root.ownerDocument.defaultView?.removeEventListener('resize', this.invalidateGeometry);
+    this.root.ownerDocument.fonts.removeEventListener('loadingdone', this.invalidateGeometry);
     this.ranges.dispose(); this.clearHighlights(); this.style.remove(); this.sources = []; this.matches = []; this.inputs = undefined;
   }
 }

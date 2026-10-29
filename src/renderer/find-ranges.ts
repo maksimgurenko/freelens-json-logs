@@ -30,9 +30,21 @@ export class FindRanges {
   }) { this.client = client; this.changed = changed; this.clock = clock; }
   update(inputs: FindInputs, scopes: readonly FindScope[], presentation: number) {
     if (this.closed) return;
-    if (this.inputs && sameFindKey(this.inputs.key, inputs.key) && presentation === this.presentation) {
+    const sameKey = !!this.inputs && sameFindKey(this.inputs.key, inputs.key);
+    // Completed coverage belongs to occurrence/source text, rather than row
+    // positions. Appends and layout changes can reuse it without an IPC call.
+    const reusable = this.state.phase === 'ready' && this.state.complete && this.inputs &&
+      this.inputs.key.viewerEpoch === inputs.key.viewerEpoch && this.inputs.key.targetEpoch === inputs.key.targetEpoch &&
+      this.inputs.key.instanceEpoch === inputs.key.instanceEpoch && this.inputs.key.queryRevision === inputs.key.queryRevision &&
+      this.inputs.query.text === inputs.query.text && this.inputs.query.matchCase === inputs.query.matchCase &&
+      this.inputs.query.wholeWords === inputs.query.wholeWords && scopes.every(scope => {
+        const old = this.inputs!.records.find(record => sameRecordRef(record.ref, scope.ref));
+        const current = inputs.records.find(record => sameRecordRef(record.ref, scope.ref));
+        return old && current && old[scope.source] === current[scope.source];
+      });
+    if (sameKey || reusable) {
       if (JSON.stringify(scopes) === JSON.stringify(this.scopes)) {
-        this.coveredInterest = undefined; return;
+        this.coveredInterest = undefined; this.inputs = inputs; this.presentation = presentation; return;
       }
       // Pending feedback can shrink the clip, then completion expands it again.
       // Keep an attempt that already covers that text instead of canceling it
@@ -42,7 +54,7 @@ export class FindRanges {
         scopes.every(scope => this.scopes.some(previous => sameRecordRef(previous.ref, scope.ref) && previous.source === scope.source &&
           previous.start <= scope.start && previous.end >= scope.end))) {
         if (this.state.phase === 'pending') this.coveredInterest = scopes;
-        return;
+        this.inputs = inputs; this.presentation = presentation; return;
       }
     }
     if (inputs.key.queryRevision !== this.queryRevision) this.failedQuery = undefined;
@@ -51,6 +63,7 @@ export class FindRanges {
     if (this.failedQuery !== undefined) this.publish('failed'); else this.start();
   }
   retry() { if (this.closed) return; this.failedQuery = undefined; this.stop(); this.start(); }
+  pause() { if (this.state.phase === 'pending') this.clear(); else this.stop(); }
   clear() { this.stop(); this.inputs = undefined; this.scopes = []; this.presentation = -1; this.publish('empty'); }
   dispose() { this.closed = true; this.stop(); this.inputs = undefined; this.scopes = []; }
   private publish(phase: RangeState['phase'], ranges: readonly FindScope[] = [], complete = phase === 'empty') {

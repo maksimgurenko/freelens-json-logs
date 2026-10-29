@@ -6,6 +6,7 @@ import * as Mobx from 'mobx';
 import { verifyFindPresentation } from './find-presentation-browser.jsx';
 import { verifyFindMarks } from './find-marks-browser.jsx';
 import { verifyFindIntegration } from './find-integration-browser.jsx';
+import { verifyFindPerformance } from './find-performance-browser.jsx';
 
 const check = (condition, message) => { if (!condition) throw new Error(message); };
 const sleep = ms => new Promise(resolve => setTimeout(resolve, ms));
@@ -32,16 +33,20 @@ let text = 'start\nx\nend', reads = 0, podReads = 0, pendingRead, copies = [];
 let status = { name: 'app', restartCount: 0, containerID: 'run-0' };
 let uid = 'uid';
 let heldReply, failNext = false, requestCount = 0;
+let heldRangeReply;
 let failNextRange = false;
 let rpcSequence = 0;
 const rangeRequests = [];
 const holdNext = text => { let release; const promise = new Promise(resolve => { release = resolve; }); heldReply = { promise, release, text }; return heldReply; };
+const holdNextRange = () => { let release; const promise = new Promise(resolve => { release = resolve; }); heldRangeReply = { promise, release, dispatched: false }; return heldRangeReply; };
 const ipc = {
   listen(name, callback) { callbacks.set(name, callback); return () => callbacks.delete(name); },
   async invoke(name, ...args) {
     if (name === 'viewer-visibility-request') { callbacks.get(args[1])?.({}, args[0]); return; }
     const exact = name === 'find-request' && args[1].work === 'match';
     const gate = exact && (!heldReply?.text || heldReply.text === args[1].query.text) ? heldReply : undefined;
+    const rangeGate = name === 'find-request' && !exact ? heldRangeReply : undefined;
+    if (rangeGate) { heldRangeReply = undefined; rangeGate.dispatched = true; }
     if (exact) { requestCount++; if (gate) heldReply = undefined; if (failNext) { failNext = false; throw new Error('Controlled SDK failure'); } }
     if (name === 'find-request' && !exact) {
       rangeRequests.push(args[1]);
@@ -49,6 +54,7 @@ const ipc = {
     }
     const result = await (await fetch('/find-rpc', { method: 'POST', body: JSON.stringify({ sequence: ++rpcSequence, channel: name, args }) })).json();
     if (gate) await gate.promise;
+    if (rangeGate) await rangeGate.promise;
     if (result.error) throw new Error(result.error); return result.value;
   },
   broadcast() {},
@@ -589,6 +595,12 @@ globalThis.verifyIdentity = async () => {
   ReactDOM.render(<Page params={params} />, root);
   try {
     await until(() => rows().length === 3, 'No initial rows'); button('Pause');
+    if (FIND_PERFORMANCE_ONLY) {
+      await verifyFindPerformance({ root, rows, button, query, refresh, until, check, results, holdNext, holdNextRange, rangeRequests });
+      return results;
+    }
+    await verifyFindPerformance({ root, rows, button, query, refresh, until, check, results, holdNext, holdNextRange, rangeRequests });
+    button('Clear'); root.querySelector('[aria-label="Close Find"]').click(); await refresh('start\nx\nend');
     button('Find'); await query('x');
     const beforeMetadata = { reads: podReads, requests: requestCount };
     await until(() => podReads > beforeMetadata.reads, 'No periodic Pod observation'); await turn();

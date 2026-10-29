@@ -17,7 +17,7 @@ export async function verifyFindIntegration({ root, rows, button, query, refresh
   root.querySelector('[aria-label="Match in original text"]').click(); await turn();
   const source = () => root.querySelector('.rl-detail pre');
   check(source().textContent === original, 'Hidden source is not exact application text');
-  await until(() => !root.querySelector('.rl-highlight-status')?.textContent.includes('pending'), 'Hidden inspector decoration did not settle');
+  await until(() => root.querySelector('.rl-highlight-status')?.getAttribute('aria-busy') !== 'true', 'Hidden inspector decoration did not settle');
   button('Clear'); root.querySelector('[aria-label="Close Find"]').click();
   const offset = original.indexOf('needle'); selectText(source(), offset, offset + 6);
   button('Find'); await until(() => root.querySelector('.rl-find-count').textContent.endsWith('of 1000 matching records'), 'Hidden-source selection did not seed complete matching');

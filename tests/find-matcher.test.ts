@@ -1,11 +1,38 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { matchingRecords, sourceRanges } from '../src/core/find-matcher.ts';
+import { FindRecordMatcher, matchingRecords, sourceRanges } from '../src/core/find-matcher.ts';
 import type { FindQuery, FindRecord } from '../src/core/find-protocol.ts';
 
 const query = (text: string, matchCase = false, wholeWords = false): FindQuery => ({ text, matchCase, wholeWords });
 const record = (occurrence: number, application: string, message?: string): FindRecord => ({
   ref: { context: 'viewer/target/instance', occurrence }, application, message,
+});
+
+test('snapshot matching scans only appended or changed sources and evicts old occurrence cache entries', () => {
+  const matcher = new FindRecordMatcher(), scanned: string[] = [], native = RegExp.prototype.test;
+  RegExp.prototype.test = function(text) { scanned.push(text); return native.call(this, text); };
+  try {
+    const first = Array.from({ length: 1000 }, (_, index) => record(index, `needle ${index}`, `needle ${index}`));
+    assert.equal(matcher.match(first, query('needle')).length, 1000);
+    assert.equal(scanned.length, 1000);
+    scanned.length = 0;
+    const next = [...first.slice(1), record(1000, 'appended needle', 'appended needle')];
+    assert.equal(matcher.match(next, query('needle')).length, 1000);
+    assert.deepEqual(scanned, ['appended needle']);
+    scanned.length = 0;
+    const formatted = next.map((value, index) => index === 7 ? { ...value, message: 'new message' } : value);
+    assert.equal(matcher.match(formatted, query('needle'))[7].message, false);
+    assert.deepEqual(scanned, ['new message']);
+    scanned.length = 0;
+    matcher.match(formatted, query('needle', true));
+    assert.equal(scanned.length, 1001, 'Changing a matching control must rescan every source');
+    scanned.length = 0;
+    matcher.match([first[0]], query('needle', true));
+    assert.deepEqual(scanned, [first[0].application], 'An evicted occurrence must not resurrect cached membership');
+    scanned.length = 0;
+    matcher.match([{ ...first[0], ref: { ...first[0].ref, context: 'replacement' } }], query('needle', true));
+    assert.equal(scanned.length, 1, 'A replacement context must not reuse old membership');
+  } finally { RegExp.prototype.test = native; }
 });
 
 test('ranges retain original UTF-16 offsets and whole-source non-overlap across fragments', () => {

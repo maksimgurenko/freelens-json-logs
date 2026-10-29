@@ -3,7 +3,7 @@
 export async function verifyFindPresentation({ root, rows, button, query, refresh, until, check, turn, results, rangeRequests, failRanges }) {
   const scroller = root.querySelector('.rl-records');
   const ranges = () => [...CSS.highlights].flatMap(([, highlight]) => [...highlight]);
-  const decorated = () => !root.querySelector('.rl-highlight-status')?.textContent.includes('pending');
+  const decorated = () => root.querySelector('.rl-highlight-status')?.getAttribute('aria-busy') !== 'true';
   const wait = () => until(decorated, 'Decoration did not settle');
   const closeInspector = () => root.querySelector('[aria-label="Close record inspector"]')?.click();
   const display = name => { root.querySelector('.rl-display-options').open = true; button(name); root.querySelector('.rl-display-options').open = false; };

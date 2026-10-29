@@ -81,7 +81,7 @@ export function Viewer({ target, register, visibility, findRpc, preferences, sho
   const [findMatching] = useState(() => new FindMatching(findClient, setMatching));
   const [viewerEpoch] = useState(() => ++viewerSequence);
   const highlights = useRef<FindHighlights>();
-  const [highlightStatus, setHighlightStatus] = useState<HighlightStatus>({ message: '', retryable: false });
+  const [highlightStatus, setHighlightStatus] = useState<HighlightStatus>({ message: '', retryable: false, busy: false });
   const revisions = useRef({ window: 0, message: 0, query: 0 });
   const composing = useRef(false);
   const [compositionRevision, setCompositionRevision] = useState(0);
@@ -207,9 +207,9 @@ export function Viewer({ target, register, visibility, findRpc, preferences, sho
     return () => { current.dispose(); highlights.current = undefined; };
   }, []);
   useLayoutEffect(() => {
-    highlights.current?.update(matchesReady && !editingProfiles && viewActive.current ? findInputs : undefined,
-      matchesReady ? matching.records : [], findPosition.active);
-  }, [findInputs, matchesReady, matching.records, editingProfiles, inspection, timestamps, wrap, preference.inspection, currentMatch, decorationActive]);
+    highlights.current?.update(['ready', 'pending'].includes(matching.phase) && !composing.current && !editingProfiles && viewActive.current ? findInputs : undefined,
+      matchesReady ? matching.records : [], findPosition.active, !matchesReady);
+  }, [findInputs, matchesReady, matching.phase, matching.records, editingProfiles, inspection, timestamps, wrap, preference.inspection, currentMatch, decorationActive]);
   useLayoutEffect(() => {
     const current = new LogViewport(scroller.current!, setScroll, () => findPosition.cancelReveal());
     viewport.current = current;
@@ -512,7 +512,7 @@ export function Viewer({ target, register, visibility, findRpc, preferences, sho
         {['timeout', 'execution'].includes(matching.phase) && <button type="button" onClick={() => { cancelFindIntents(); findMatching.update(findInputs, 'retry'); }}>Retry</button>}
       </span>}
       {feedback && <span className="rl-find-feedback">{feedback}</span>}
-      <span className="rl-highlight-status" role="status" data-reserve={HIGHLIGHT_LIMIT_MESSAGE}>
+      <span className="rl-highlight-status" role="status" aria-busy={highlightStatus.busy} data-reserve={HIGHLIGHT_LIMIT_MESSAGE}>
         <span>{highlightStatus.message}
         {highlightStatus.retryable && <button type="button" onClick={() => highlights.current?.retry()}>Retry highlights</button>}
         </span>

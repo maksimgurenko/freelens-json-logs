@@ -57,14 +57,33 @@ export function sourceRanges(records: readonly FindRecord[], query: FindQuery, s
 
 /** Complete retained order; counts/provenance are independent of decorations. */
 export function matchingRecords(records: readonly FindRecord[], query: FindQuery): MatchingRecord[] {
-  if (!query.text) return [];
-  const matcher = literalMatcher(query);
-  const hasMatch = (text: string) => { matcher.lastIndex = 0; return matcher.test(text); };
-  const matches: MatchingRecord[] = [];
-  for (const record of records) {
-    const application = hasMatch(record.application);
-    const message = record.message !== undefined && (record.message === record.application ? application : hasMatch(record.message));
-    if (application || message) matches.push({ ref: record.ref, application, message });
+  return new FindRecordMatcher().match(records, query);
+}
+
+/** One worker's latest window only. Reuse each source's membership through
+ * observed occurrence overlap; changed queries/text and evictions invalidate it.
+ * No full text-match index is built for snapshot maintenance.
+ */
+export class FindRecordMatcher {
+  private query?: FindQuery;
+  private retained = new Map<string, { record: FindRecord; application: boolean; message: boolean }>();
+  match(records: readonly FindRecord[], query: FindQuery): MatchingRecord[] {
+    if (this.query?.text !== query.text || this.query.matchCase !== query.matchCase || this.query.wholeWords !== query.wholeWords)
+      this.retained.clear();
+    this.query = { ...query };
+    if (!query.text) { this.retained.clear(); return []; }
+    const matcher = literalMatcher(query);
+    const hasMatch = (text: string) => { matcher.lastIndex = 0; return matcher.test(text); };
+    const next: typeof this.retained = new Map(), matches: MatchingRecord[] = [];
+    for (const record of records) {
+      const key = JSON.stringify(record.ref), previous = this.retained.get(key);
+      const application = previous?.record.application === record.application ? previous.application : hasMatch(record.application);
+      const message = record.message !== undefined && (record.message === record.application ? application
+        : previous?.record.message === record.message ? previous.message : hasMatch(record.message));
+      next.set(key, { record, application, message });
+      if (application || message) matches.push({ ref: record.ref, application, message });
+    }
+    this.retained = next;
+    return matches;
   }
-  return matches;
 }

@@ -20,7 +20,8 @@ try {
   const manifest = JSON.parse(await readFile('package.json', 'utf8'));
   bridge = packedFindBridge(resolve(manifest.main), join(directory, 'settings'));
   const fixture = await build({ entryPoints: ['tests/find-identity-browser.jsx'], bundle: true, write: false, format: 'iife',
-    define: { 'process.env.NODE_ENV': '"production"', PACKED_RENDERER: JSON.stringify(await readFile(manifest.renderer, 'utf8')) } });
+    define: { 'process.env.NODE_ENV': '"production"', FIND_PERFORMANCE_ONLY: JSON.stringify(!!process.env.FIND_PERFORMANCE_ONLY),
+      PACKED_RENDERER: JSON.stringify(await readFile(manifest.renderer, 'utf8')) } });
   const fonts = new Map(await Promise.all(['MaterialIcons-Regular.ttf', 'Roboto-Regular.ttf'].map(async name =>
     [`/${name}`, await readFile(`node_modules/@freelensapp/core/static/build/library/fonts/${name}`)])));
   server = createServer((request, response) => {

@@ -4,6 +4,36 @@ import { FindClient } from '../src/renderer/find-client.ts';
 import { FindRanges } from '../src/renderer/find-ranges.ts';
 import type { FindRequest } from '../src/core/find-protocol.ts';
 
+test('complete visible coverage survives appends and layout changes but changed text is recomputed', async () => {
+  const calls: FindRequest[] = [];
+  const client = new FindClient({ async invoke(channel, ...args) {
+    if (channel === 'find-open') return 'owner';
+    if (channel !== 'find-request') return;
+    const request = args[1] as FindRequest; calls.push(request);
+    return { requestId: request.requestId, key: request.key, workerGeneration: 1, kind: 'ranges', interestId: request.rangeInterest!.id,
+      ranges: request.rangeInterest!.scopes, coverage: request.rangeInterest!.scopes.map(scope => ({ scope, complete: true })) };
+  } }, 'viewer');
+  const ranges = new FindRanges(client, () => {}), ref = { context: 'one', occurrence: 0 };
+  const inputs = { key: { viewerEpoch: 1, targetEpoch: 1, instanceEpoch: 1, windowRevision: 1, messageRevision: 1, queryRevision: 1 },
+    query: { text: 'a', matchCase: false, wholeWords: false }, records: [{ ref, application: 'a a a' }] };
+  const scope = { ref, source: 'application' as const, start: 0, end: 5 };
+  const tick = async () => { for (let i = 0; i < 12; i++) await Promise.resolve(); };
+  try {
+    ranges.update(inputs, [scope], 1); await tick();
+    ranges.pause();
+    const appended = { ...inputs, key: { ...inputs.key, windowRevision: 2, messageRevision: 2 },
+      records: [...inputs.records, { ref: { ...ref, occurrence: 1 }, application: 'new a' }] };
+    ranges.update(appended, [scope], 2); await tick();
+    assert.equal(calls.length, 1, 'Unchanged visible source was sent through the worker again');
+    ranges.update(appended, [scope], 3); await tick(); assert.equal(calls.length, 1);
+    const changed = { ...appended, key: { ...appended.key, messageRevision: 3 },
+      records: [{ ref, application: 'a a b' }, appended.records[1]] };
+    ranges.update(changed, [scope], 4); await tick(); assert.equal(calls.length, 2);
+    ranges.update({ ...changed, key: { ...changed.key, queryRevision: 2 }, query: { ...changed.query, wholeWords: true } }, [scope], 5);
+    await tick(); assert.equal(calls.length, 3);
+  } finally { ranges.dispose(); await client.dispose(); }
+});
+
 test('a clipping resize inside pending coverage completes without restarting decoration', async () => {
   const calls: { request: FindRequest; resolve: (value: unknown) => void }[] = [];
   const client = new FindClient({ async invoke(channel, ...args) {

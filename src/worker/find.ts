@@ -1,10 +1,11 @@
 import { parentPort } from 'node:worker_threads';
-import { matchingRecords, sourceRanges } from '../core/find-matcher.ts';
+import { FindRecordMatcher, sourceRanges } from '../core/find-matcher.ts';
 import { findRequestProblem, type FindReply, type FindRequest } from '../core/find-protocol.ts';
 
 declare const READABLE_LOGS_VERSION: string;
 if (!parentPort) throw new Error('Find must run in its owned worker');
 const port = parentPort;
+const matcher = new FindRecordMatcher();
 
 // The program is trusted build output. Query text and modes arrive only as data.
 port.on('message', (value: unknown) => {
@@ -17,7 +18,7 @@ port.on('message', (value: unknown) => {
   let reply: FindReply;
   try {
     reply = request.work === 'match'
-      ? { ...identity, kind: 'matches', records: matchingRecords(request.records, request.query) }
+      ? { ...identity, kind: 'matches', records: matcher.match(request.records, request.query) }
       : { ...identity, kind: 'ranges', interestId: request.rangeInterest!.id,
         ...sourceRanges(request.records, request.query, request.rangeInterest!.scopes) };
   } catch {
