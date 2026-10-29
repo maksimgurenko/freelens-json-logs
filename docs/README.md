@@ -6,7 +6,7 @@
 - [User guide: reading logs, inspection, Find and formatting profiles](usage.md)
 - [Tested launch, updates and maintenance](local-development.md#supported-local-maintenance)
 - [Settings recovery and backup restoration](local-development.md#recovering-unusable-settings)
-- [Release notes](releases/v0.1.20.md)
+- [Release notes](releases/v0.1.35.md)
 
 ## Develop and verify
 

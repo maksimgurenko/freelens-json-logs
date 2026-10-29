@@ -28,8 +28,8 @@ npm run test:workers
 npm run test:smoke
 npm run package
 npm run check:package
-tar -tzf dist/freelens-readable-logs-0.1.34.tgz
-sha256sum dist/freelens-readable-logs-0.1.34.tgz
+tar -tzf dist/freelens-readable-logs-0.1.35.tgz
+sha256sum dist/freelens-readable-logs-0.1.35.tgz
 ```
 
 The locked esbuild platform package supplies its binary without install scripts.
@@ -138,7 +138,7 @@ Follow [the accepted procedure](https://github.com/maksimgurenko/freelens-json-l
 2. For an update, **Uninstall** the old package and wait for removal to finish,
    retaining its saved extension settings. Install the new tarball via the form
    **once** and wait. Do not use the overwrite/reinstallation prompt.
-3. Check version **0.1.34** and Enabled, then open the cluster. Open a Pod's details
+3. Check version **0.1.35** and Enabled, then open the cluster. Open a Pod's details
    header and click the **Readable logs** icon beside the native actions. Verify
    cluster, namespace, Pod UID, container, the expected active profile and usable logs.
    Do not restart after installation as a substitute for passing this check.
@@ -256,14 +256,20 @@ anchor leaves the recent window; **To bottom** resumes following. No history is
 merged. Equal repeated whole windows cannot reveal unseen additions of identical
 lines without a server cursor; the longest observed suffix/prefix overlap is used.
 
-Find searches the exact application text or the active extracted message using
-case-insensitive literal substrings. The counter and Previous/Next use the same
-record list, once per record, and wrap without filtering rows. Enter moves next;
-Shift+Enter moves previous. The outlined row is the current result, independently
-of inspection selection. Hidden original fields and decoded message escapes are
-searchable; the Kubernetes timestamp prefix is excluded even in Raw mode. When
-a current match leaves the window the counter shows 0 of the new total until
-navigation selects another result. Empty queries have no results.
+Find searches literal text in the original application text or the active
+extracted message. It ignores case by default; **Match case** and **Whole words**
+can narrow the search. The Kubernetes timestamp prefix is excluded, including in
+Raw mode. Results count matching records once, preserve every row and wrap with
+**Next** / **Previous** or Enter / Shift+Enter. Refining a query retains its current
+candidate when possible; navigation follows the current reading/search position.
+
+Highlights preserve the source text. Scrollbar marks locate results, and hidden
+matches provide links to the corresponding inspector source. Selecting eligible
+single-line log text before opening an empty Find seeds the query. **Recent
+searches** keeps up to seven searches with their two mode settings for this view.
+**Clear** empties the query; **Close** retains it. Search and highlight failures
+have separate recovery controls; pending navigation is cancelled by scrolling
+or dismissal so a late result cannot jump the viewport.
 
 Find, timestamps and word wrap stay local to the view and reset on reopening.
 They do not fetch logs or change Pause. Refresh while paused updates once and

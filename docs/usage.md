@@ -51,11 +51,17 @@ controls whether long rows wrap in the log list.
 
 ## Find records and follow output
 
-**Find** searches application text and the extracted message, including fields
-hidden from compact rows. It uses case-insensitive literal text and leaves every
-row visible. The timestamp added by Kubernetes is excluded from the search.
-Use **Next** / **Previous**, or **Enter** / **Shift+Enter**, to move between matches.
-Navigation wraps from the last match to the first.
+**Find** searches literal text in application text and the extracted message,
+including fields hidden from compact rows. It ignores case by default; enable
+**Match case** or **Whole words** to narrow the search. Every row stays visible,
+and the timestamp added by Kubernetes is excluded.
+
+Use **Next** / **Previous**, or **Enter** / **Shift+Enter**, to move between matching
+records. Navigation wraps from the last match to the first. Highlights and
+scrollbar marks show matches; links beside a row reveal matches in hidden fields.
+Select a single line of log text before opening an empty Find to use it as the
+query. **Recent searches** recalls up to seven searches and their mode settings
+for this view. **Clear** empties the query; **Close** keeps it for reopening.
 
 New views follow the bottom of the output. Scrolling away keeps your reading
 position when the same records survive a refresh. If that position leaves the
