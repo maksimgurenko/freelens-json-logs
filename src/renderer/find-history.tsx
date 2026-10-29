@@ -32,7 +32,7 @@ export function FindHistoryPopover({ history, visible, context, dismissal, onRec
     return () => document.removeEventListener('click', outside, true);
   }, [open]);
   return <div ref={root} className="rl-find-history">
-    <button ref={clock} type="button" className="rl-find-clock" aria-label="Search history" title="Search history"
+    <button ref={clock} type="button" className="rl-find-button rl-find-clock" aria-label="Search history" title="Search history"
       aria-expanded={open} aria-haspopup="dialog" onClick={() => { if (visible) open ? close() : setOpen(true); }}>
       <Renderer.Component.Icon material="history" />
     </button>

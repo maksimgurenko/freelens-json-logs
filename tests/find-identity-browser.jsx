@@ -84,7 +84,7 @@ const Page = extension.clusterPages[0].components.Page;
 const root = document.querySelector('#root');
 const rows = () => [...root.querySelectorAll('.rl-record')];
 const button = label => {
-  const node = [...root.querySelectorAll('button')].find(node => node.textContent.trim() === label);
+  const node = [...root.querySelectorAll('button')].find(node => node.textContent.trim() === label || node.getAttribute('aria-label') === (label === 'Clear' ? 'Clear Find' : label));
   check(node && !node.disabled, `Missing enabled ${label}`); node.click();
 };
 const input = () => root.querySelector('#rl-find');
@@ -269,7 +269,7 @@ async function verifySelectionHistory() {
   await refresh('first needle\nsecond needle\nsource needle');
   button('Find'); byName('Match case').click(); byName('Whole words').click(); closeFind();
   selectText(rows()[2].querySelector('.rl-message'), 7, 13);
-  const opener = [...root.querySelectorAll('.rl-toolbar button')].find(node => node.textContent === 'Find');
+  const opener = root.querySelector('.rl-toolbar button[aria-label="Find"]');
   opener.dispatchEvent(new PointerEvent('pointerdown', { bubbles: true, button: 0 }));
   document.getSelection().removeAllRanges(); opener.focus();
   opener.dispatchEvent(new MouseEvent('click', { bubbles: true, detail: 1 })); await until(settled);

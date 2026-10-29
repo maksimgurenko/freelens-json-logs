@@ -98,7 +98,7 @@ const extension = new module.exports.default();
 const Page = extension.clusterPages[0].components.Page;
 const root = document.querySelector('#root');
 const button = label => {
-  const found = [...root.querySelectorAll('button')].find(node => node.textContent.trim() === label);
+  const found = [...root.querySelectorAll('button')].find(node => node.textContent.trim() === label || node.getAttribute('aria-label') === label);
   check(found && !found.disabled, `Missing enabled button: ${label}`); found.click();
 };
 async function until(predicate, message) {

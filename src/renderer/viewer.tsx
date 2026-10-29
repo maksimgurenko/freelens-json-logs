@@ -273,6 +273,7 @@ export function Viewer({ target, register, visibility, findRpc, preferences, sho
     : !query ? 'Enter text to find'
     : !matchesReady ? matching.searching ? 'Searching…' : 'Matching pending'
     : `${currentMatch < 0 ? 0 : matches.indexOf(currentMatch) + 1} of ${matches.length} matching records`;
+  const findError = ['too-long', 'timeout', 'execution'].includes(matching.phase);
   const feedback = findPosition.feedback;
   const [announcement, setAnnouncement] = useState('');
   useEffect(() => {
@@ -389,42 +390,50 @@ export function Viewer({ target, register, visibility, findRpc, preferences, sho
         </div>
       </details>
       <div className="rl-target-group">
-        <label>Container <select aria-label="Container" title={state?.container} value={state?.container ?? ''}
+        <label>Container <span className="rl-toolbar-select"><select aria-label="Container" title={state?.container} value={state?.container ?? ''}
           disabled={!state?.containers.length || state.gone || state.phase === 'closed'}
           onChange={event => { void session?.selectContainer(event.target.value); }}>
           {!state?.container && <option value="" disabled>Select a container</option>}
           {(['regular', 'init', 'ephemeral'] as const).map(kind => <optgroup key={kind} label={kind === 'regular' ? 'Containers' : `${kind} containers`}>
             {state?.containers.filter(container => container.kind === kind).map(container => <option key={container.name} value={container.name}>{container.name}</option>)}
           </optgroup>)}
-        </select></label>
+        </select><Renderer.Component.Icon material="keyboard_arrow_down" /></span></label>
       </div>
       <div className="rl-profile-group">
-        <label>Profile <select aria-label="Profile" title={`${state?.manualProfile ? 'Manual' : 'Auto'} · ${profile.name}`} value={state?.manualProfile ?? ''}
+        <label>Profile <span className="rl-toolbar-select"><select aria-label="Profile" title={`${state?.manualProfile ? 'Manual' : 'Auto'} · ${profile.name}`} value={state?.manualProfile ?? ''}
           disabled={!session || state?.phase === 'closed'} onChange={event => session?.selectProfile(event.target.value || undefined)}>
           <option value="">Auto · {activeProfile(preference.configuration, undefined, profileContext).name}</option>
           {[builtinProfile(), ...preference.configuration.profiles].map(profile => <option key={profile.id} value={profile.id}>{profile.name}</option>)}
-        </select></label>
-        <button ref={profilesButton} type="button" className="rl-edit-profiles" onClick={() => {
+        </select><Renderer.Component.Icon material="keyboard_arrow_down" /></span></label>
+        <button ref={profilesButton} type="button" className="rl-icon-button" aria-label="Edit profiles" title="Edit profiles" onClick={() => {
           if (editingProfiles) backToLogs();
           else { cancelFindIntents(); root.current?.querySelectorAll('details[open]').forEach(node => { (node as HTMLDetailsElement).open = false; }); setEditingProfiles(true); }
         }} aria-expanded={editingProfiles}>
-          <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true" focusable="false"><path d="m15 5 4 4M4 20l4-1L20 7a2.8 2.8 0 0 0-4-4L4 15z" /></svg>
-          Edit profiles
+          <Renderer.Component.Icon material="edit" />
         </button>
       </div>
       <div className="rl-controls" role="group" aria-label="Log updates">
-        <button type="button" disabled={!state?.container || state.gone || state.phase === 'closed'}
-          onClick={() => { if (state?.paused) void session?.resume(); else session?.pause(); }}>{state?.paused ? 'Resume' : 'Pause'}</button>
-        <button type="button" disabled={!state?.container || state.gone || state.phase === 'closed' || state.refreshing || state.waiting}
-          onClick={() => { void session?.refresh(); }}>Refresh</button>
+        <button type="button" className="rl-icon-button" aria-label={state?.paused ? 'Resume' : 'Pause'}
+          title={state?.paused ? 'Resume automatic updates' : 'Pause automatic updates'}
+          disabled={!state?.container || state.gone || state.phase === 'closed'}
+          onClick={() => { if (state?.paused) void session?.resume(); else session?.pause(); }}>
+          <Renderer.Component.Icon material={state?.paused ? 'play_arrow' : 'pause'} />
+        </button>
+        <button type="button" className="rl-icon-button" aria-label="Refresh" title="Refresh logs"
+          disabled={!state?.container || state.gone || state.phase === 'closed' || state.refreshing || state.waiting}
+          onClick={() => { void session?.refresh(); }}><Renderer.Component.Icon material="refresh" /></button>
       </div>
       <div className="rl-presentation" hidden={editingProfiles}>
-        <button ref={findButton} type="button" aria-expanded={findOpen} aria-controls="rl-findbar"
+        <button ref={findButton} type="button" className="rl-icon-button" aria-label="Find" aria-expanded={findOpen} aria-controls="rl-findbar"
           onPointerDown={event => { if (event.button === 0) openingSelection.current = { text: selectedFindSeed(root.current!) }; }}
           onPointerCancel={() => { openingSelection.current = undefined; }}
-          title={`Find (${shortcutHint('F')})`} aria-keyshortcuts={isMac() ? 'Meta+f' : 'Control+f'} onClick={event => openFind(event.detail > 0)}>Find</button>
+          title={`Find (${shortcutHint('F')})`} aria-keyshortcuts={isMac() ? 'Meta+f' : 'Control+f'} onClick={event => openFind(event.detail > 0)}>
+          <Renderer.Component.Icon material="search" />
+        </button>
         <details className="rl-display-options">
-          <summary ref={displaySummary}>Display options</summary>
+          <summary ref={displaySummary} className="rl-icon-button" aria-label="Display options" title="Display options">
+            <Renderer.Component.Icon material="settings" />
+          </summary>
           <div className="rl-display-panel">
             <div role="group" aria-label="Log presentation" className="rl-modes">
               <button type="button" aria-pressed={!inspection.raw} onClick={() => setInspection(previous => ({ ...previous, raw: false }))}>Readable</button>
@@ -461,34 +470,47 @@ export function Viewer({ target, register, visibility, findRpc, preferences, sho
       <p>To bottom follows retained logs without resuming paused updates. Reload ({shortcutHint('R')}) and the command palette ({shortcutHint('Shift+P')}) belong to Freelens.</p>
     </section>}
     <div id="rl-findbar" className="rl-findbar" role="search" aria-label="Find in logs" hidden={editingProfiles || !findOpen}>
-      <label htmlFor="rl-find">Find</label>
-      <input ref={findInput} id="rl-find" type="search" aria-label="Find in logs" placeholder="Search retained logs"
-        title={`Next: Enter or ${shortcutHint('G')}; previous: Shift+Enter or ${shortcutHint('Shift+G')}`} value={query}
-        onCompositionStart={event => {
-          const input = event.currentTarget;
-          findEditing.startComposition(input.value, input.selectionStart, input.selectionEnd);
-          composing.current = true; cancelFindIntents(); findMatching.setComposing(true);
-        }}
-        onCompositionEnd={event => {
-          if (!composing.current) return;
-          composing.current = false; findMatching.setComposing(false);
-          const transaction = findEditing.endComposition(event.currentTarget.value);
-          if (transaction) setQuery(transaction.text);
-          commitEdit(transaction);
-        }} onInput={handleFindInput} onChange={handleFindInput} />
-      <span className="rl-find-count">{findStatus}</span>
-      <button type="button" aria-label="Clear Find" title="Clear search" disabled={!query} onClick={clearFind}>Clear</button>
-      {([-1, 1] as const).map(direction => <button key={direction} type="button" className="rl-find-direction"
-        aria-label={direction === 1 ? 'Next match' : 'Previous match'} title={direction === 1 ? 'Next match (Enter)' : 'Previous match (Shift+Enter)'}
-        disabled={!matchesReady || !matches.length} onClick={() => navigateMatch(direction)}>
-        <Renderer.Component.Icon material={direction === 1 ? 'keyboard_arrow_down' : 'keyboard_arrow_up'} />
-      </button>)}
-      <button type="button" aria-label="Match case" title="Match case" aria-pressed={matchCase} onClick={() => changeMode('case')}>Aa</button>
-      <button type="button" aria-label="Whole words" title="Whole words" className="rl-find-words" aria-pressed={wholeWords} onClick={() => changeMode('words')}>ab</button>
-      <FindHistoryPopover history={history} visible={findOpen && !editingProfiles && viewActive.current}
-        context={context} dismissal={dismissal} onRecall={recallHistory} />
-      {['timeout', 'execution'].includes(matching.phase) && <button type="button" onClick={() => { cancelFindIntents(); findMatching.update(findInputs, 'retry'); }}>Retry</button>}
-      <button type="button" aria-label="Close Find" title="Close Find (Escape)" onClick={closeFind}>Close</button>
+      <label className="rl-sr-only" htmlFor="rl-find">Find</label>
+      <div className="rl-find-input">
+        <input ref={findInput} id="rl-find" type="search" aria-label="Find in logs" aria-describedby="rl-find-status" placeholder="Search retained logs"
+          title={`Next: Enter or ${shortcutHint('G')}; previous: Shift+Enter or ${shortcutHint('Shift+G')}`} value={query}
+          onCompositionStart={event => {
+            const input = event.currentTarget;
+            findEditing.startComposition(input.value, input.selectionStart, input.selectionEnd);
+            composing.current = true; cancelFindIntents(); findMatching.setComposing(true);
+          }}
+          onCompositionEnd={event => {
+            if (!composing.current) return;
+            composing.current = false; findMatching.setComposing(false);
+            const transaction = findEditing.endComposition(event.currentTarget.value);
+            if (transaction) setQuery(transaction.text);
+            commitEdit(transaction);
+          }} onInput={handleFindInput} onChange={handleFindInput} />
+        <span className="rl-find-ordinal" aria-hidden="true" title={findStatus}>
+          {query && matchesReady ? `${currentMatch < 0 ? 0 : matches.indexOf(currentMatch) + 1} / ${matches.length}` : matching.searching ? '…' : '– / –'}
+        </span>
+        <button type="button" className="rl-find-button rl-find-clear" aria-label="Clear Find" title="Clear search" disabled={!query} onClick={clearFind}>
+          <Renderer.Component.Icon material="close" />
+        </button>
+      </div>
+      <div className="rl-find-actions">
+        {([-1, 1] as const).map(direction => <button key={direction} type="button" className="rl-find-button rl-find-direction"
+          aria-label={direction === 1 ? 'Next match' : 'Previous match'} title={direction === 1 ? 'Next match (Enter)' : 'Previous match (Shift+Enter)'}
+          disabled={!matchesReady || !matches.length} onClick={() => navigateMatch(direction)}>
+          <Renderer.Component.Icon material={direction === 1 ? 'keyboard_arrow_down' : 'keyboard_arrow_up'} />
+        </button>)}
+        <button type="button" className="rl-find-button" aria-label="Match case" title="Match case" aria-pressed={matchCase} onClick={() => changeMode('case')}>Aa</button>
+        <button type="button" aria-label="Whole words" title="Whole words" className="rl-find-button rl-find-words" aria-pressed={wholeWords} onClick={() => changeMode('words')}>ab</button>
+        <FindHistoryPopover history={history} visible={findOpen && !editingProfiles && viewActive.current}
+          context={context} dismissal={dismissal} onRecall={recallHistory} />
+        <button type="button" className="rl-find-button" aria-label="Close Find" title="Close Find (Escape)" onClick={closeFind}>
+          <Renderer.Component.Icon material="close" />
+        </button>
+      </div>
+      <span id="rl-find-status" className="rl-find-count rl-sr-only">{findStatus}</span>
+      {findError && <span className="rl-find-feedback">{findStatus}
+        {['timeout', 'execution'].includes(matching.phase) && <button type="button" onClick={() => { cancelFindIntents(); findMatching.update(findInputs, 'retry'); }}>Retry</button>}
+      </span>}
       {feedback && <span className="rl-find-feedback">{feedback}</span>}
       <span className="rl-highlight-status" role="status" data-reserve={HIGHLIGHT_LIMIT_MESSAGE}>
         <span>{highlightStatus.message}
