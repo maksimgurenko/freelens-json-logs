@@ -5,7 +5,7 @@ import { once } from 'node:events';
 import { mkdir, mkdtemp, readFile, readdir, rm, stat } from 'node:fs/promises';
 import { createServer } from 'node:http';
 import { tmpdir } from 'node:os';
-import { join, resolve } from 'node:path';
+import { join, relative, resolve } from 'node:path';
 import { build } from 'esbuild';
 import { packedFindBridge } from './find-test-bridge.mjs';
 import { chromePath } from './test-chromium.mjs';
@@ -27,17 +27,21 @@ function kill(child) {
 const canceled = () => { for (const child of processes) kill(child); process.exitCode = 1; };
 process.once('SIGINT', canceled); process.once('SIGTERM', canceled);
 
-async function disk(directory) {
+async function disk(directory, root = directory) {
   let bytes = 0, files = 0;
+  const largest = [];
   for (const entry of await readdir(directory, { withFileTypes: true })) {
     const path = join(directory, entry.name);
     if (entry.isSymbolicLink()) continue; // Chromium's singleton sockets/locks.
     try {
-      if (entry.isDirectory()) { const result = await disk(path); bytes += result.bytes; files += result.files; }
-      else if (entry.isFile()) { bytes += (await stat(path)).size; files++; }
+      if (entry.isDirectory()) {
+        const result = await disk(path, root); bytes += result.bytes; files += result.files; largest.push(...result.largest);
+      } else if (entry.isFile()) {
+        const size = (await stat(path)).size; bytes += size; files++; largest.push({ path: relative(root, path), bytes: size });
+      }
     } catch (error) { if (error.code !== 'ENOENT') throw error; }
   }
-  return { bytes, files };
+  return { bytes, files, largest: largest.sort((a, b) => b.bytes - a.bytes).slice(0, 8) };
 }
 try {
   const chrome = await chromePath();
