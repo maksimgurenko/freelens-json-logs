@@ -1,0 +1,29 @@
+{
+  "environment": {
+    "FIND_HOST_TICKET": "48",
+    "FIND_HOST_RUN": "native-isolated",
+    "FIND_DISPLAY_RENDERER": "mesa",
+    "LD_LIBRARY_PATH": "/home/max/work/freelens-json-logs/.scratch/find/48-host/aquamarine/build",
+    "FREELENS_UI_MODE": null,
+    "node": "24.18.0",
+    "npm": "11.16.0"
+  },
+  "workingDirectory": "/home/max/work/freelens-json-logs",
+  "commands": [
+    "python3 scripts/find-production-host/prepare.py",
+    "FIND_DISPLAY_RENDERER=mesa LD_LIBRARY_PATH=\"$PWD/.scratch/find/48-host/aquamarine/build\" python3 scripts/find-production-host/display.py",
+    "python3 scripts/find-production-host/launch.py",
+    "node scripts/find-production-host/install.mjs",
+    "node scripts/find-production-host/cdp.mjs 9242 main scripts/find-production-host/observer.cjs",
+    "node scripts/find-production-host/open-view.mjs",
+    "node scripts/find-production-host/identity.mjs",
+    "python3 scripts/find-production-host/fixtures.py",
+    "node scripts/find-production-host/native-keyboard.mjs",
+    "node scripts/find-production-host/native-surfaces.mjs",
+    "node scripts/find-production-host/native-copy-editor.mjs",
+    "node scripts/find-production-host/native-window-lifecycle.mjs (original blur oracle, retained executed copy)",
+    "python3 scripts/find-production-host/fixtures.py delete"
+  ],
+  "perInputCommands": "native-commands.jsonl",
+  "notes": "Native setup failures have separate raw results; no native rerun after cleanup. Main-only follow-up explicitly authorized by supervisor."
+}

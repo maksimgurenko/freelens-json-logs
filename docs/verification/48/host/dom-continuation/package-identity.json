@@ -1,0 +1,16 @@
+{
+  "package": "freelens-readable-logs",
+  "version": "0.1.34",
+  "storeName": "freelens-readable-logs",
+  "engines": {
+    "node": ">=24.18.0 <25",
+    "freelens": "1.10.3"
+  },
+  "assetHashes": {
+    "renderer-0.1.34.js": "ccdff169136e4a9e8e0c9573de538719c8397a03a55f6e6d32e288168704d042",
+    "main-0.1.34.js": "a355bf90dd519f9215407e5ed95e97bc8efe3347926156dbd24095001c904f05",
+    "find-worker-0.1.34.js": "4d00cf5686789bd37b72b4cee6ca0c5fa461f98c86ee8cdfb024f01e6878c5b3"
+  },
+  "matchBuild": true,
+  "tarball": "cbc903f572d5c7b8dc6dfd09e433538dda799803e8e7549f6212bb2634046825"
+}

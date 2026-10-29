@@ -50,12 +50,24 @@
 .readable-logs .rl-recovery [role="group"] { margin-top: 12px; }
 .readable-logs .rl-empty { padding: 32px 24px; }
 .readable-logs .rl-work { display: flex; flex: 1; min-width: 0; min-height: 0; overflow: hidden; background: #000; }
+.readable-logs .rl-log-pane { display: flex; flex: 1; min-width: 0; min-height: 0; overflow: hidden; }
+.readable-logs .rl-find-marks { position: relative; flex: 0 0 12px; background: #000; }
+.readable-logs button.rl-find-mark { position: absolute; inset-inline: 0; height: 7px; min-height: 0; padding: 0; border: 0; border-radius: 0; background: transparent; }
+.readable-logs .rl-find-mark::before { content: ''; position: absolute; inset: 2px 2px; background: #e6b850; }
+.readable-logs .rl-find-mark[aria-current]::before { inset-block: 0; border: 1px solid #fff; }
+.readable-logs .rl-find-mark:focus-visible { outline-offset: -2px; }
 .readable-logs .rl-records { flex: 1; min-width: 0; min-height: 0; overflow: auto; overflow-anchor: none; background: #000; padding: 8px 12px; font: 12px/1.65 var(--font-monospace, monospace); tab-size: 2; }
-.readable-logs .rl-row { display: flex; gap: 12px; min-height: 1.65em; width: max-content; min-width: 100%; }
+/* Rows live on a black canvas even when host controls use a light theme.
+ * Keep this palette on rows so Inline inspectors retain the host theme. */
+.readable-logs .rl-row { --textColorAccent: #e3e5e8; --textColorSecondary: #a6adb5; --mainBackground: #000; --tableBgcSelected: #263737; --tableBgcStripe: #2a2d33; color: var(--textColorAccent); display: flex; gap: 12px; min-height: 1.65em; width: max-content; min-width: 100%; }
 .readable-logs .rl-row[role="button"] { cursor: pointer; padding: 2px 4px; }
 .readable-logs .rl-row:focus-visible { outline-offset: -2px; }
 .readable-logs .rl-selected > .rl-row { background: var(--tableBgcSelected, #263737); }
-.readable-logs .rl-find-current > .rl-row { outline: 1px solid var(--primary, #00a7a0); outline-offset: -1px; background: var(--tableBgcSelected, #263737); }
+.readable-logs .rl-find-current > .rl-row { outline: 1px solid var(--primary, #00a7a0); outline-offset: -1px; }
+.readable-logs .rl-find-current > .rl-row:focus-visible { outline: 2px dashed var(--textColorAccent, #e3e5e8); outline-offset: -3px; }
+.readable-logs .rl-row:has(.rl-match-hint) { flex-wrap: wrap; width: auto; }
+.readable-logs button.rl-match-hint { border: 0; background: transparent; color: var(--textColorSecondary, #a6adb5); padding: 0 4px; text-decoration: underline; text-underline-offset: 3px; font: 12px/1.65 var(--font-main, sans-serif); user-select: none; white-space: nowrap; align-self: baseline; }
+.readable-logs .rl-match-hint::before { content: attr(data-label); }
 .readable-logs .rl-fields { color: var(--textColorSecondary, #a6adb5); white-space: nowrap; font: 11px/1.8 var(--font-main, sans-serif); user-select: none; }
 /* Generated interface metadata stays out of native selection/copy, including ranges crossing the badge. */
 .readable-logs .rl-fields::before { content: attr(data-label); }
@@ -77,6 +89,25 @@
 .readable-logs .rl-findbar input { flex: 1; min-width: 100px; max-width: 480px; padding: 5px 8px; font: inherit; color: inherit; background: var(--contentColor, #262b2f); border: 1px solid var(--borderColor, #4c5053); border-radius: 3px; caret-color: var(--primary, #00a7a0); }
 .readable-logs .rl-findbar input::placeholder { color: var(--textColorSecondary, #a6adb5); opacity: 1; }
 .readable-logs .rl-find-count { min-width: 160px; font-size: 12px; font-variant-numeric: tabular-nums; color: var(--textColorSecondary, #a6adb5); }
+.readable-logs .rl-find-direction, .readable-logs .rl-find-clock { display: inline-flex; align-items: center; justify-content: center; padding: 4px; }
+.readable-logs .rl-find-direction .Icon, .readable-logs .rl-find-clock .Icon { font-size: 21px; width: 21px; height: 21px; }
+.readable-logs .rl-find-words { text-decoration: underline; }
+.readable-logs .rl-find-feedback { font-size: 12px; flex-basis: 100%; }
+/* Reserve the same wrapped status footprint for pending/complete/capped ranges.
+   Otherwise feedback can resize its own clip across the DOM cap indefinitely.
+   The invisible generated reserve is neither live status nor source text. */
+.readable-logs .rl-highlight-status { display: grid; flex-basis: 100%; min-width: 0; }
+.readable-logs .rl-highlight-status::before { content: attr(data-reserve); visibility: hidden; grid-area: 1 / 1; }
+.readable-logs .rl-highlight-status > span { grid-area: 1 / 1; }
+.readable-logs .rl-findbar { position: relative; }
+.readable-logs .rl-history-popover { position: absolute; z-index: 4; inset-block-start: calc(100% + 6px); inset-inline-end: 12px; width: 320px; max-width: calc(100% - 24px); max-height: 60vh; overflow: auto; padding: 12px; box-sizing: border-box; color: var(--textColorPrimary, #e4e4e4); background: var(--contentColor, #262b2f); border: 1px solid var(--borderColor, #4c5053); border-radius: 3px; }
+.readable-logs .rl-history-popover h3 { margin: 0 0 8px; font-size: 14px; }
+.readable-logs .rl-history-popover p { font-size: 12px; line-height: 1.6; }
+.readable-logs .rl-history-popover ul { list-style: none; padding: 0; margin: 0 0 8px; }
+.readable-logs .rl-history-entry { display: flex; flex-direction: column; align-items: start; gap: 2px; width: 100%; text-align: start; margin-block: 4px; }
+.readable-logs .rl-history-text { white-space: pre-wrap; overflow-wrap: anywhere; max-width: 100%; }
+.readable-logs .rl-history-modes { font-size: 11px; color: var(--textColorSecondary, #a6adb5); }
+.readable-logs .rl-sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; border: 0; }
 .readable-logs .rl-modes { display: flex; gap: 4px; }
 .readable-logs button[aria-pressed="true"] { background: var(--tableBgcSelected, #263737); border-color: var(--textColorSecondary, #a6adb5); }
 .readable-logs .rl-inspector { flex: 0 0 38%; min-width: 260px; max-width: 43%; overflow: auto; border-inline-start: 1px solid var(--borderFaintColor, #373a3e); background: var(--contentColor, #262b2f); }

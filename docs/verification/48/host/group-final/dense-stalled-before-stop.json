@@ -1,0 +1,253 @@
+{
+  "reason": "No further cycling progress during minute-spaced probes; cadence check failed 9/61. Stop only the private evaluation, retaining failure.",
+  "state": {
+    "trace": [
+      {
+        "i": 0,
+        "active": 0,
+        "expected": 0,
+        "liveMembers": 19,
+        "connected": false,
+        "label": "Find 19 matching records, starting at 1 of 1000; activate to cycle",
+        "currentFirst": "<button type=\"button\" class=\"rl-find-mark\" aria-label=\"Find 19 matching records, starting at 1 of 1000; activate to cycle\" title=\"Find 19 matching records, starting at 1 of 1000; activate to cycle\" aria-current=\"true\" style=\"top: 0px;\"></button>",
+        "client": 383,
+        "status": "Highlighting incomplete: visible text exceeds the decoration limit. Exact matches remain available."
+      },
+      {
+        "i": 1,
+        "active": 1,
+        "expected": 1,
+        "liveMembers": 19,
+        "connected": false,
+        "label": "Find 19 matching records, starting at 1 of 1000; activate to cycle",
+        "currentFirst": "<button type=\"button\" class=\"rl-find-mark\" aria-label=\"Find 19 matching records, starting at 1 of 1000; activate to cycle\" title=\"Find 19 matching records, starting at 1 of 1000; activate to cycle\" aria-current=\"true\" style=\"top: 0px;\"></button>",
+        "client": 383,
+        "status": "Highlighting incomplete: visible text exceeds the decoration limit. Exact matches remain available."
+      },
+      {
+        "i": 2,
+        "active": 2,
+        "expected": 2,
+        "liveMembers": 19,
+        "connected": true,
+        "label": "Find 19 matching records, starting at 1 of 1000; activate to cycle",
+        "currentFirst": "<button type=\"button\" class=\"rl-find-mark\" aria-label=\"Find 19 matching records, starting at 1 of 1000; activate to cycle\" title=\"Find 19 matching records, starting at 1 of 1000; activate to cycle\" aria-current=\"true\" style=\"top: 0px;\"></button>",
+        "client": 383,
+        "status": "Highlighting incomplete: visible text exceeds the decoration limit. Exact matches remain available."
+      },
+      {
+        "i": 3,
+        "active": 3,
+        "expected": 3,
+        "liveMembers": 19,
+        "connected": false,
+        "label": "Find 19 matching records, starting at 1 of 1000; activate to cycle",
+        "currentFirst": "<button type=\"button\" class=\"rl-find-mark\" aria-label=\"Find 19 matching records, starting at 1 of 1000; activate to cycle\" title=\"Find 19 matching records, starting at 1 of 1000; activate to cycle\" aria-current=\"true\" style=\"top: 0px;\"></button>",
+        "client": 383,
+        "status": "Highlighting incomplete: visible text exceeds the decoration limit. Exact matches remain available."
+      },
+      {
+        "i": 4,
+        "active": 4,
+        "expected": 4,
+        "liveMembers": 19,
+        "connected": false,
+        "label": "Find 19 matching records, starting at 1 of 1000; activate to cycle",
+        "currentFirst": "<button type=\"button\" class=\"rl-find-mark\" aria-label=\"Find 19 matching records, starting at 1 of 1000; activate to cycle\" title=\"Find 19 matching records, starting at 1 of 1000; activate to cycle\" aria-current=\"true\" style=\"top: 0px;\"></button>",
+        "client": 383,
+        "status": "Highlighting incomplete: visible text exceeds the decoration limit. Exact matches remain available."
+      },
+      {
+        "i": 5,
+        "active": 5,
+        "expected": 5,
+        "liveMembers": 19,
+        "connected": true,
+        "label": "Find 19 matching records, starting at 1 of 1000; activate to cycle",
+        "currentFirst": "<button type=\"button\" class=\"rl-find-mark\" aria-label=\"Find 19 matching records, starting at 1 of 1000; activate to cycle\" title=\"Find 19 matching records, starting at 1 of 1000; activate to cycle\" aria-current=\"true\" style=\"top: 0px;\"></button>",
+        "client": 383,
+        "status": "Highlighting incomplete: visible text exceeds the decoration limit. Exact matches remain available."
+      },
+      {
+        "i": 6,
+        "active": 6,
+        "expected": 6,
+        "liveMembers": 19,
+        "connected": false,
+        "label": "Find 19 matching records, starting at 1 of 1000; activate to cycle",
+        "currentFirst": "<button type=\"button\" class=\"rl-find-mark\" aria-label=\"Find 19 matching records, starting at 1 of 1000; activate to cycle\" title=\"Find 19 matching records, starting at 1 of 1000; activate to cycle\" aria-current=\"true\" style=\"top: 0px;\"></button>",
+        "client": 383,
+        "status": "Highlighting incomplete: visible text exceeds the decoration limit. Exact matches remain available."
+      },
+      {
+        "i": 7,
+        "active": 7,
+        "expected": 7,
+        "liveMembers": 19,
+        "connected": true,
+        "label": "Find 19 matching records, starting at 1 of 1000; activate to cycle",
+        "currentFirst": "<button type=\"button\" class=\"rl-find-mark\" aria-label=\"Find 19 matching records, starting at 1 of 1000; activate to cycle\" title=\"Find 19 matching records, starting at 1 of 1000; activate to cycle\" aria-current=\"true\" style=\"top: 0px;\"></button>",
+        "client": 383,
+        "status": "Highlighting incomplete: visible text exceeds the decoration limit. Exact matches remain available."
+      },
+      {
+        "i": 8,
+        "active": 8,
+        "expected": 8,
+        "liveMembers": 19,
+        "connected": false,
+        "label": "Find 19 matching records, starting at 1 of 1000; activate to cycle",
+        "currentFirst": "<button type=\"button\" class=\"rl-find-mark\" aria-label=\"Find 19 matching records, starting at 1 of 1000; activate to cycle\" title=\"Find 19 matching records, starting at 1 of 1000; activate to cycle\" aria-current=\"true\" style=\"top: 0px;\"></button>",
+        "client": 383,
+        "status": "Highlighting incomplete: visible text exceeds the decoration limit. Exact matches remain available."
+      },
+      {
+        "i": 9,
+        "active": 9,
+        "expected": 9,
+        "liveMembers": 19,
+        "connected": true,
+        "label": "Find 19 matching records, starting at 1 of 1000; activate to cycle",
+        "currentFirst": "<button type=\"button\" class=\"rl-find-mark\" aria-label=\"Find 19 matching records, starting at 1 of 1000; activate to cycle\" title=\"Find 19 matching records, starting at 1 of 1000; activate to cycle\" aria-current=\"true\" style=\"top: 0px;\"></button>",
+        "client": 383,
+        "status": "Highlighting incomplete: visible text exceeds the decoration limit. Exact matches remain available."
+      },
+      {
+        "i": 10,
+        "active": 10,
+        "expected": 10,
+        "liveMembers": 19,
+        "connected": false,
+        "label": "Find 19 matching records, starting at 1 of 1000; activate to cycle",
+        "currentFirst": "<button type=\"button\" class=\"rl-find-mark\" aria-label=\"Find 19 matching records, starting at 1 of 1000; activate to cycle\" title=\"Find 19 matching records, starting at 1 of 1000; activate to cycle\" aria-current=\"true\" style=\"top: 0px;\"></button>",
+        "client": 383,
+        "status": "Highlighting incomplete: visible text exceeds the decoration limit. Exact matches remain available."
+      },
+      {
+        "i": 11,
+        "active": 11,
+        "expected": 11,
+        "liveMembers": 19,
+        "connected": true,
+        "label": "Find 19 matching records, starting at 1 of 1000; activate to cycle",
+        "currentFirst": "<button type=\"button\" class=\"rl-find-mark\" aria-label=\"Find 19 matching records, starting at 1 of 1000; activate to cycle\" title=\"Find 19 matching records, starting at 1 of 1000; activate to cycle\" aria-current=\"true\" style=\"top: 0px;\"></button>",
+        "client": 383,
+        "status": "Highlighting incomplete: visible text exceeds the decoration limit. Exact matches remain available."
+      },
+      {
+        "i": 12,
+        "active": 12,
+        "expected": 12,
+        "liveMembers": 19,
+        "connected": false,
+        "label": "Find 19 matching records, starting at 1 of 1000; activate to cycle",
+        "currentFirst": "<button type=\"button\" class=\"rl-find-mark\" aria-label=\"Find 19 matching records, starting at 1 of 1000; activate to cycle\" title=\"Find 19 matching records, starting at 1 of 1000; activate to cycle\" aria-current=\"true\" style=\"top: 0px;\"></button>",
+        "client": 383,
+        "status": "Highlighting incomplete: visible text exceeds the decoration limit. Exact matches remain available."
+      },
+      {
+        "i": 13,
+        "active": 13,
+        "expected": 13,
+        "liveMembers": 19,
+        "connected": true,
+        "label": "Find 19 matching records, starting at 1 of 1000; activate to cycle",
+        "currentFirst": "<button type=\"button\" class=\"rl-find-mark\" aria-label=\"Find 19 matching records, starting at 1 of 1000; activate to cycle\" title=\"Find 19 matching records, starting at 1 of 1000; activate to cycle\" aria-current=\"true\" style=\"top: 0px;\"></button>",
+        "client": 383,
+        "status": "Highlighting incomplete: visible text exceeds the decoration limit. Exact matches remain available."
+      },
+      {
+        "i": 14,
+        "active": 14,
+        "expected": 14,
+        "liveMembers": 19,
+        "connected": false,
+        "label": "Find 19 matching records, starting at 1 of 1000; activate to cycle",
+        "currentFirst": "<button type=\"button\" class=\"rl-find-mark\" aria-label=\"Find 19 matching records, starting at 1 of 1000; activate to cycle\" title=\"Find 19 matching records, starting at 1 of 1000; activate to cycle\" aria-current=\"true\" style=\"top: 0px;\"></button>",
+        "client": 383,
+        "status": "Highlighting incomplete: visible text exceeds the decoration limit. Exact matches remain available."
+      },
+      {
+        "i": 15,
+        "active": 15,
+        "expected": 15,
+        "liveMembers": 19,
+        "connected": true,
+        "label": "Find 19 matching records, starting at 1 of 1000; activate to cycle",
+        "currentFirst": "<button type=\"button\" class=\"rl-find-mark\" aria-label=\"Find 19 matching records, starting at 1 of 1000; activate to cycle\" title=\"Find 19 matching records, starting at 1 of 1000; activate to cycle\" aria-current=\"true\" style=\"top: 0px;\"></button>",
+        "client": 383,
+        "status": "Highlighting incomplete: visible text exceeds the decoration limit. Exact matches remain available."
+      },
+      {
+        "i": 16,
+        "active": 16,
+        "expected": 16,
+        "liveMembers": 19,
+        "connected": false,
+        "label": "Find 19 matching records, starting at 1 of 1000; activate to cycle",
+        "currentFirst": "<button type=\"button\" class=\"rl-find-mark\" aria-label=\"Find 19 matching records, starting at 1 of 1000; activate to cycle\" title=\"Find 19 matching records, starting at 1 of 1000; activate to cycle\" aria-current=\"true\" style=\"top: 0px;\"></button>",
+        "client": 383,
+        "status": "Highlighting incomplete: visible text exceeds the decoration limit. Exact matches remain available."
+      },
+      {
+        "i": 17,
+        "active": 17,
+        "expected": 17,
+        "liveMembers": 19,
+        "connected": true,
+        "label": "Find 19 matching records, starting at 1 of 1000; activate to cycle",
+        "currentFirst": "<button type=\"button\" class=\"rl-find-mark\" aria-label=\"Find 19 matching records, starting at 1 of 1000; activate to cycle\" title=\"Find 19 matching records, starting at 1 of 1000; activate to cycle\" aria-current=\"true\" style=\"top: 0px;\"></button>",
+        "client": 383,
+        "status": "Highlighting incomplete: visible text exceeds the decoration limit. Exact matches remain available."
+      },
+      {
+        "i": 18,
+        "active": 18,
+        "expected": 18,
+        "liveMembers": 19,
+        "connected": false,
+        "label": "Find 19 matching records, starting at 1 of 1000; activate to cycle",
+        "currentFirst": "<button type=\"button\" class=\"rl-find-mark\" aria-label=\"Find 19 matching records, starting at 1 of 1000; activate to cycle\" title=\"Find 19 matching records, starting at 1 of 1000; activate to cycle\" aria-current=\"true\" style=\"top: 0px;\"></button>",
+        "client": 383,
+        "status": "Highlighting incomplete: visible text exceeds the decoration limit. Exact matches remain available."
+      },
+      {
+        "i": 19,
+        "active": 0,
+        "expected": 0,
+        "liveMembers": 19,
+        "connected": true,
+        "label": "Find 19 matching records, starting at 1 of 1000; activate to cycle",
+        "currentFirst": "<button type=\"button\" class=\"rl-find-mark\" aria-label=\"Find 19 matching records, starting at 1 of 1000; activate to cycle\" title=\"Find 19 matching records, starting at 1 of 1000; activate to cycle\" aria-current=\"true\" style=\"top: 0px;\"></button>",
+        "client": 383,
+        "status": "Highlighting incomplete: visible text exceeds the decoration limit. Exact matches remain available."
+      },
+      {
+        "i": 20,
+        "active": 1,
+        "expected": 1,
+        "liveMembers": 19,
+        "connected": false,
+        "label": "Find 19 matching records, starting at 1 of 1000; activate to cycle",
+        "currentFirst": "<button type=\"button\" class=\"rl-find-mark\" aria-label=\"Find 19 matching records, starting at 1 of 1000; activate to cycle\" title=\"Find 19 matching records, starting at 1 of 1000; activate to cycle\" aria-current=\"true\" style=\"top: 0px;\"></button>",
+        "client": 383,
+        "status": "Highlighting incomplete: visible text exceeds the decoration limit. Exact matches remain available."
+      },
+      {
+        "i": 21,
+        "active": 2,
+        "expected": 2,
+        "liveMembers": 19,
+        "connected": true,
+        "label": "Find 19 matching records, starting at 1 of 1000; activate to cycle",
+        "currentFirst": "<button type=\"button\" class=\"rl-find-mark\" aria-label=\"Find 19 matching records, starting at 1 of 1000; activate to cycle\" title=\"Find 19 matching records, starting at 1 of 1000; activate to cycle\" aria-current=\"true\" style=\"top: 0px;\"></button>",
+        "client": 383,
+        "status": "Highlighting incomplete: visible text exceeds the decoration limit. Exact matches remain available."
+      }
+    ],
+    "count": "Matching pending",
+    "visibility": "visible",
+    "focused": false,
+    "at": 485525
+  }
+}

@@ -1,0 +1,127 @@
+[
+  {
+    "name": "toolchain",
+    "command": [
+      "node",
+      "--version"
+    ],
+    "exit": 0,
+    "seconds": 0.002639890997670591
+  },
+  {
+    "name": "npm",
+    "command": [
+      "node",
+      ".scratch/readable-logs/toolchain/node_modules/npm/bin/npm-cli.js",
+      "--version"
+    ],
+    "exit": 0,
+    "seconds": 0.0372864929959178
+  },
+  {
+    "name": "locked-install",
+    "command": [
+      "node",
+      ".scratch/readable-logs/toolchain/node_modules/npm/bin/npm-cli.js",
+      "ci",
+      "--ignore-scripts",
+      "--no-audit",
+      "--no-fund"
+    ],
+    "exit": 0,
+    "seconds": 1.951498812995851
+  },
+  {
+    "name": "typecheck",
+    "command": [
+      "node",
+      ".scratch/readable-logs/toolchain/node_modules/npm/bin/npm-cli.js",
+      "run",
+      "typecheck"
+    ],
+    "exit": 0,
+    "seconds": 1.2611143499962054
+  },
+  {
+    "name": "tests",
+    "command": [
+      "node",
+      ".scratch/readable-logs/toolchain/node_modules/npm/bin/npm-cli.js",
+      "test"
+    ],
+    "exit": 0,
+    "seconds": 0.5773282109876163
+  },
+  {
+    "name": "ui-guards",
+    "command": [
+      "python3",
+      "-B",
+      "-m",
+      "unittest",
+      "discover",
+      "-s",
+      "tests",
+      "-p",
+      "ui_desktop_test.py",
+      "-v"
+    ],
+    "exit": 0,
+    "seconds": 0.12053346197353676
+  },
+  {
+    "name": "browser",
+    "command": [
+      "node",
+      ".scratch/readable-logs/toolchain/node_modules/npm/bin/npm-cli.js",
+      "run",
+      "test:browser"
+    ],
+    "exit": 0,
+    "seconds": 41.62994174097548
+  },
+  {
+    "name": "workers",
+    "command": [
+      "node",
+      ".scratch/readable-logs/toolchain/node_modules/npm/bin/npm-cli.js",
+      "run",
+      "test:workers"
+    ],
+    "exit": 0,
+    "seconds": 0.4301092819951009
+  },
+  {
+    "name": "resources",
+    "command": [
+      "node",
+      ".scratch/readable-logs/toolchain/node_modules/npm/bin/npm-cli.js",
+      "run",
+      "test:smoke"
+    ],
+    "exit": 0,
+    "seconds": 60.77070184701006
+  },
+  {
+    "name": "package",
+    "command": [
+      "node",
+      ".scratch/readable-logs/toolchain/node_modules/npm/bin/npm-cli.js",
+      "run",
+      "package"
+    ],
+    "exit": 0,
+    "seconds": 0.27355087298201397
+  },
+  {
+    "name": "package-check",
+    "command": [
+      "node",
+      ".scratch/readable-logs/toolchain/node_modules/npm/bin/npm-cli.js",
+      "run",
+      "check:package"
+    ],
+    "exit": 0,
+    "seconds": 1.1626708440016955
+  }
+]

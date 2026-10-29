@@ -1,0 +1,96 @@
+(node:3382030) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///tmp/freelens-pr49-verify-za02i3az/tests/pr49-verified.test.ts is not specified and it doesn't parse as CommonJS.
+Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+To eliminate this warning, add "type": "module" to /tmp/freelens-pr49-verify-za02i3az/package.json.
+(Use `node --trace-warnings ...` to show where the warning was created)
+✖ R1: inspector close preserves the successful search position for a later nonmatching refinement (1.039761ms)
+✔ R1 control: close clears a reading-only origin without promoting a pending result (0.112709ms)
+✔ R1 control: closing a different reading row preserves an independent search position (0.153148ms)
+✖ R2: departed document cannot finish pending open through a retargeted WebFrameMain (1.322359ms)
+✖ R2: a sibling owner keeping navigation listeners alive does not authorize a pending old document (0.329958ms)
+✔ R2 control: immutable old numeric identity absent from the frame tree is rejected (0.175209ms)
+✔ R2 control: no navigation and in-page navigation keep the same live document (0.294667ms)
+✖ R2 model: same-ID document navigation also invalidates an in-flight registration (0.230728ms)
+ℹ tests 8
+ℹ suites 0
+ℹ pass 4
+ℹ fail 4
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 58.58513
+
+✖ failing tests:
+
+test at tests/pr49-verified.test.ts:16:1
+✖ R1: inspector close preserves the successful search position for a later nonmatching refinement (1.039761ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+
+  20 !== 70
+
+      at TestContext.<anonymous> (file:///tmp/freelens-pr49-verify-za02i3az/tests/pr49-verified.test.ts:20:43)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1325:25)
+      at Test.start (node:internal/test_runner/test:1191:17)
+      at startSubtestAfterBootstrap (node:internal/test_runner/harness:385:17)
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 20,
+    expected: 70,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests/pr49-verified.test.ts:59:1
+✖ R2: departed document cannot finish pending open through a retargeted WebFrameMain (1.322359ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+
+  true !== false
+
+      at TestContext.<anonymous> (file:///tmp/freelens-pr49-verify-za02i3az/tests/pr49-verified.test.ts:61:10)
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async Test.run (node:internal/test_runner/test:1332:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:911:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: true,
+    expected: false,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests/pr49-verified.test.ts:63:1
+✖ R2: a sibling owner keeping navigation listeners alive does not authorize a pending old document (0.329958ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+
+  true !== false
+
+      at TestContext.<anonymous> (file:///tmp/freelens-pr49-verify-za02i3az/tests/pr49-verified.test.ts:65:10)
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async Test.run (node:internal/test_runner/test:1332:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:911:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: true,
+    expected: false,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests/pr49-verified.test.ts:74:1
+✖ R2 model: same-ID document navigation also invalidates an in-flight registration (0.230728ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+
+  true !== false
+
+      at TestContext.<anonymous> (file:///tmp/freelens-pr49-verify-za02i3az/tests/pr49-verified.test.ts:75:82)
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async Test.run (node:internal/test_runner/test:1332:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:911:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: true,
+    expected: false,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }

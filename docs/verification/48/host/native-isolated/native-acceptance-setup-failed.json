@@ -1,0 +1,578 @@
+{
+  "route": "zwp_virtual_keyboard_v1 (wtype), zwlr_virtual_pointer_v1, private Wayland clipboard",
+  "physicalHardware": false,
+  "checks": [
+    {
+      "name": "Native pointer focuses viewer and opens Find; trusted progressive typing",
+      "before": {
+        "query": "",
+        "open": false,
+        "count": "Enter text to find",
+        "active": -1,
+        "inspected": -1,
+        "focus": false,
+        "focused": "<body class=\"theme-light\"><div id=\"app\"><div class=\"main-layout-module__mainLayout--LIGm3\" style=\"--sidebar-width: 200px;\"><div class=\"main-layout-module__sidebar--suvQ_\"><div class=\"flex flex-col\" data-testid=\"cluster-sidebar\"><div class=\"sidebar-cl",
+        "selection": "",
+        "inputSelection": [
+          0,
+          0
+        ],
+        "scroll": 2414,
+        "viewport": [
+          947,
+          458,
+          2872
+        ],
+        "pause": "Automatic updates",
+        "events": []
+      },
+      "pass": false,
+      "error": "Error: Native focus/open; {\"query\":\"\",\"open\":false,\"count\":\"Enter text to find\",\"active\":-1,\"inspected\":-1,\"focus\":false,\"focused\":\"<body class=\\\"theme-light\\\"><div id=\\\"app\\\"><div class=\\\"main-layout-module__mainLayout--LIGm3\\\" style=\\\"--sidebar-width: 200px;\\\"><div class=\\\"main-layout-module__sidebar--suvQ_\\\"><div class=\\\"flex flex-col\\\" data-testid=\\\"cluster-sidebar\\\"><div class=\\\"sidebar-cl\",\"selection\":\"\",\"inputSelection\":[0,0],\"scroll\":2414,\"viewport\":[947,458,2872],\"pause\":\"Automatic updates\",\"events\":[]}\n    at until (file:///home/max/work/freelens-json-logs/scripts/find-production-host/native-acceptance.mjs:19:9)\n    at async file:///home/max/work/freelens-json-logs/scripts/find-production-host/native-acceptance.mjs:49:5\n    at async test (file:///home/max/work/freelens-json-logs/scripts/find-production-host/native-acceptance.mjs:37:8)\n    at async file:///home/max/work/freelens-json-logs/scripts/find-production-host/native-acceptance.mjs:47:3",
+      "after": {
+        "query": "",
+        "open": false,
+        "count": "Enter text to find",
+        "active": -1,
+        "inspected": -1,
+        "focus": false,
+        "focused": "<body class=\"theme-light\"><div id=\"app\"><div class=\"main-layout-module__mainLayout--LIGm3\" style=\"--sidebar-width: 200px;\"><div class=\"main-layout-module__sidebar--suvQ_\"><div class=\"flex flex-col\" data-testid=\"cluster-sidebar\"><div class=\"sidebar-cl",
+        "selection": "",
+        "inputSelection": [
+          0,
+          0
+        ],
+        "scroll": 2414,
+        "viewport": [
+          947,
+          458,
+          2872
+        ],
+        "pause": "Automatic updates",
+        "events": []
+      }
+    },
+    {
+      "name": "Ctrl+G / Ctrl+Shift+G / Enter / Shift+Enter",
+      "before": {
+        "query": "",
+        "open": false,
+        "count": "Enter text to find",
+        "active": -1,
+        "inspected": -1,
+        "focus": false,
+        "focused": "<body class=\"theme-light\"><div id=\"app\"><div class=\"main-layout-module__mainLayout--LIGm3\" style=\"--sidebar-width: 200px;\"><div class=\"main-layout-module__sidebar--suvQ_\"><div class=\"flex flex-col\" data-testid=\"cluster-sidebar\"><div class=\"sidebar-cl",
+        "selection": "",
+        "inputSelection": [
+          0,
+          0
+        ],
+        "scroll": 2414,
+        "viewport": [
+          947,
+          458,
+          2872
+        ],
+        "pause": "Automatic updates",
+        "events": []
+      },
+      "pass": false,
+      "error": "Error: Ctrl+G; {\"query\":\"\",\"open\":false,\"count\":\"Enter text to find\",\"active\":-1,\"inspected\":-1,\"focus\":false,\"focused\":\"<body class=\\\"theme-light\\\"><div id=\\\"app\\\"><div class=\\\"main-layout-module__mainLayout--LIGm3\\\" style=\\\"--sidebar-width: 200px;\\\"><div class=\\\"main-layout-module__sidebar--suvQ_\\\"><div class=\\\"flex flex-col\\\" data-testid=\\\"cluster-sidebar\\\"><div class=\\\"sidebar-cl\",\"selection\":\"\",\"inputSelection\":[0,0],\"scroll\":2414,\"viewport\":[947,458,2872],\"pause\":\"Automatic updates\",\"events\":[]}\n    at until (file:///home/max/work/freelens-json-logs/scripts/find-production-host/native-acceptance.mjs:19:9)\n    at async file:///home/max/work/freelens-json-logs/scripts/find-production-host/native-acceptance.mjs:55:23\n    at async test (file:///home/max/work/freelens-json-logs/scripts/find-production-host/native-acceptance.mjs:37:8)\n    at async file:///home/max/work/freelens-json-logs/scripts/find-production-host/native-acceptance.mjs:54:3",
+      "after": {
+        "query": "",
+        "open": false,
+        "count": "Enter text to find",
+        "active": -1,
+        "inspected": -1,
+        "focus": false,
+        "focused": "<body class=\"theme-light\"><div id=\"app\"><div class=\"main-layout-module__mainLayout--LIGm3\" style=\"--sidebar-width: 200px;\"><div class=\"main-layout-module__sidebar--suvQ_\"><div class=\"flex flex-col\" data-testid=\"cluster-sidebar\"><div class=\"sidebar-cl",
+        "selection": "",
+        "inputSelection": [
+          0,
+          0
+        ],
+        "scroll": 2414,
+        "viewport": [
+          947,
+          458,
+          2872
+        ],
+        "pause": "Automatic updates",
+        "events": []
+      }
+    },
+    {
+      "name": "Exact modifier rejection and native AltGraph delivery",
+      "before": {
+        "query": "",
+        "open": false,
+        "count": "Enter text to find",
+        "active": -1,
+        "inspected": -1,
+        "focus": false,
+        "focused": "<body class=\"theme-light\"><div id=\"app\"><div class=\"main-layout-module__mainLayout--LIGm3\" style=\"--sidebar-width: 200px;\"><div class=\"main-layout-module__sidebar--suvQ_\"><div class=\"flex flex-col\" data-testid=\"cluster-sidebar\"><div class=\"sidebar-cl",
+        "selection": "",
+        "inputSelection": [
+          0,
+          0
+        ],
+        "scroll": 2414,
+        "viewport": [
+          947,
+          458,
+          2872
+        ],
+        "pause": "Automatic updates",
+        "events": []
+      },
+      "pass": true,
+      "after": {
+        "query": "",
+        "open": false,
+        "count": "Enter text to find",
+        "active": -1,
+        "inspected": -1,
+        "focus": false,
+        "focused": "<body class=\"theme-light\"><div id=\"app\"><div class=\"main-layout-module__mainLayout--LIGm3\" style=\"--sidebar-width: 200px;\"><div class=\"main-layout-module__sidebar--suvQ_\"><div class=\"flex flex-col\" data-testid=\"cluster-sidebar\"><div class=\"sidebar-cl",
+        "selection": "",
+        "inputSelection": [
+          0,
+          0
+        ],
+        "scroll": 2414,
+        "viewport": [
+          947,
+          458,
+          2872
+        ],
+        "pause": "Automatic updates",
+        "events": [
+          {
+            "type": "keydown",
+            "trusted": true,
+            "key": "g",
+            "code": "Escape",
+            "ctrl": true,
+            "shift": false,
+            "alt": false,
+            "meta": false,
+            "altGraph": true,
+            "composing": false,
+            "target": "theme-light"
+          }
+        ]
+      }
+    },
+    {
+      "name": "Native full replacement, refinement, no-match correction",
+      "before": {
+        "query": "",
+        "open": false,
+        "count": "Enter text to find",
+        "active": -1,
+        "inspected": -1,
+        "focus": false,
+        "focused": "<body class=\"theme-light\"><div id=\"app\"><div class=\"main-layout-module__mainLayout--LIGm3\" style=\"--sidebar-width: 200px;\"><div class=\"main-layout-module__sidebar--suvQ_\"><div class=\"flex flex-col\" data-testid=\"cluster-sidebar\"><div class=\"sidebar-cl",
+        "selection": "",
+        "inputSelection": [
+          0,
+          0
+        ],
+        "scroll": 2414,
+        "viewport": [
+          947,
+          458,
+          2872
+        ],
+        "pause": "Automatic updates",
+        "events": [
+          {
+            "type": "keydown",
+            "trusted": true,
+            "key": "g",
+            "code": "Escape",
+            "ctrl": true,
+            "shift": false,
+            "alt": false,
+            "meta": false,
+            "altGraph": true,
+            "composing": false,
+            "target": "theme-light"
+          }
+        ]
+      },
+      "pass": false,
+      "error": "AssertionError [ERR_ASSERTION]: Visible native target\n    at position (file:///home/max/work/freelens-json-logs/scripts/find-production-host/native-acceptance.mjs:31:3)\n    at async click (file:///home/max/work/freelens-json-logs/scripts/find-production-host/native-acceptance.mjs:34:91)\n    at async replace (file:///home/max/work/freelens-json-logs/scripts/find-production-host/native-acceptance.mjs:44:30)\n    at async file:///home/max/work/freelens-json-logs/scripts/find-production-host/native-acceptance.mjs:71:5\n    at async test (file:///home/max/work/freelens-json-logs/scripts/find-production-host/native-acceptance.mjs:37:8)\n    at async file:///home/max/work/freelens-json-logs/scripts/find-production-host/native-acceptance.mjs:70:3",
+      "after": {
+        "query": "",
+        "open": false,
+        "count": "Enter text to find",
+        "active": -1,
+        "inspected": -1,
+        "focus": false,
+        "focused": "<body class=\"theme-light\"><div id=\"app\"><div class=\"main-layout-module__mainLayout--LIGm3\" style=\"--sidebar-width: 200px;\"><div class=\"main-layout-module__sidebar--suvQ_\"><div class=\"flex flex-col\" data-testid=\"cluster-sidebar\"><div class=\"sidebar-cl",
+        "selection": "",
+        "inputSelection": [
+          0,
+          0
+        ],
+        "scroll": 2414,
+        "viewport": [
+          947,
+          458,
+          2872
+        ],
+        "pause": "Automatic updates",
+        "events": [
+          {
+            "type": "keydown",
+            "trusted": true,
+            "key": "g",
+            "code": "Escape",
+            "ctrl": true,
+            "shift": false,
+            "alt": false,
+            "meta": false,
+            "altGraph": true,
+            "composing": false,
+            "target": "theme-light"
+          }
+        ]
+      }
+    },
+    {
+      "name": "Private native paste, Undo, Redo, cut through empty",
+      "before": {
+        "query": "",
+        "open": false,
+        "count": "Enter text to find",
+        "active": -1,
+        "inspected": -1,
+        "focus": false,
+        "focused": "<body class=\"theme-light\"><div id=\"app\"><div class=\"main-layout-module__mainLayout--LIGm3\" style=\"--sidebar-width: 200px;\"><div class=\"main-layout-module__sidebar--suvQ_\"><div class=\"flex flex-col\" data-testid=\"cluster-sidebar\"><div class=\"sidebar-cl",
+        "selection": "",
+        "inputSelection": [
+          0,
+          0
+        ],
+        "scroll": 2414,
+        "viewport": [
+          947,
+          458,
+          2872
+        ],
+        "pause": "Automatic updates",
+        "events": [
+          {
+            "type": "keydown",
+            "trusted": true,
+            "key": "g",
+            "code": "Escape",
+            "ctrl": true,
+            "shift": false,
+            "alt": false,
+            "meta": false,
+            "altGraph": true,
+            "composing": false,
+            "target": "theme-light"
+          }
+        ]
+      },
+      "pass": false,
+      "error": "Error: Full paste origin; {\"query\":\"\",\"open\":false,\"count\":\"Enter text to find\",\"active\":-1,\"inspected\":-1,\"focus\":false,\"focused\":\"<body class=\\\"theme-light\\\"><div id=\\\"app\\\"><div class=\\\"main-layout-module__mainLayout--LIGm3\\\" style=\\\"--sidebar-width: 200px;\\\"><div class=\\\"main-layout-module__sidebar--suvQ_\\\"><div class=\\\"flex flex-col\\\" data-testid=\\\"cluster-sidebar\\\"><div class=\\\"sidebar-cl\",\"selection\":\"\",\"inputSelection\":[0,0],\"scroll\":2414,\"viewport\":[947,458,2872],\"pause\":\"Automatic updates\",\"events\":[{\"type\":\"keydown\",\"trusted\":true,\"key\":\"g\",\"code\":\"Escape\",\"ctrl\":true,\"shift\":false,\"alt\":false,\"meta\":false,\"altGraph\":true,\"composing\":false,\"target\":\"theme-light\"}]}\n    at until (file:///home/max/work/freelens-json-logs/scripts/find-production-host/native-acceptance.mjs:19:9)\n    at async file:///home/max/work/freelens-json-logs/scripts/find-production-host/native-acceptance.mjs:78:47\n    at async test (file:///home/max/work/freelens-json-logs/scripts/find-production-host/native-acceptance.mjs:37:8)\n    at async file:///home/max/work/freelens-json-logs/scripts/find-production-host/native-acceptance.mjs:77:3",
+      "after": {
+        "query": "",
+        "open": false,
+        "count": "Enter text to find",
+        "active": -1,
+        "inspected": -1,
+        "focus": false,
+        "focused": "<body class=\"theme-light\"><div id=\"app\"><div class=\"main-layout-module__mainLayout--LIGm3\" style=\"--sidebar-width: 200px;\"><div class=\"main-layout-module__sidebar--suvQ_\"><div class=\"flex flex-col\" data-testid=\"cluster-sidebar\"><div class=\"sidebar-cl",
+        "selection": "",
+        "inputSelection": [
+          0,
+          0
+        ],
+        "scroll": 2414,
+        "viewport": [
+          947,
+          458,
+          2872
+        ],
+        "pause": "Automatic updates",
+        "events": [
+          {
+            "type": "keydown",
+            "trusted": true,
+            "key": "g",
+            "code": "Escape",
+            "ctrl": true,
+            "shift": false,
+            "alt": false,
+            "meta": false,
+            "altGraph": true,
+            "composing": false,
+            "target": "theme-light"
+          }
+        ]
+      }
+    },
+    {
+      "name": "Native history menu Escape, Find Escape and opener focus return",
+      "before": {
+        "query": "",
+        "open": false,
+        "count": "Enter text to find",
+        "active": -1,
+        "inspected": -1,
+        "focus": false,
+        "focused": "<body class=\"theme-light\"><div id=\"app\"><div class=\"main-layout-module__mainLayout--LIGm3\" style=\"--sidebar-width: 200px;\"><div class=\"main-layout-module__sidebar--suvQ_\"><div class=\"flex flex-col\" data-testid=\"cluster-sidebar\"><div class=\"sidebar-cl",
+        "selection": "",
+        "inputSelection": [
+          0,
+          0
+        ],
+        "scroll": 2414,
+        "viewport": [
+          947,
+          458,
+          2872
+        ],
+        "pause": "Automatic updates",
+        "events": [
+          {
+            "type": "keydown",
+            "trusted": true,
+            "key": "g",
+            "code": "Escape",
+            "ctrl": true,
+            "shift": false,
+            "alt": false,
+            "meta": false,
+            "altGraph": true,
+            "composing": false,
+            "target": "theme-light"
+          }
+        ]
+      },
+      "pass": false,
+      "error": "AssertionError [ERR_ASSERTION]: Visible native target\n    at position (file:///home/max/work/freelens-json-logs/scripts/find-production-host/native-acceptance.mjs:31:3)\n    at async click (file:///home/max/work/freelens-json-logs/scripts/find-production-host/native-acceptance.mjs:34:91)\n    at async replace (file:///home/max/work/freelens-json-logs/scripts/find-production-host/native-acceptance.mjs:44:30)\n    at async file:///home/max/work/freelens-json-logs/scripts/find-production-host/native-acceptance.mjs:86:5\n    at async test (file:///home/max/work/freelens-json-logs/scripts/find-production-host/native-acceptance.mjs:37:8)\n    at async file:///home/max/work/freelens-json-logs/scripts/find-production-host/native-acceptance.mjs:85:3",
+      "after": {
+        "query": "",
+        "open": false,
+        "count": "Enter text to find",
+        "active": -1,
+        "inspected": -1,
+        "focus": false,
+        "focused": "<body class=\"theme-light\"><div id=\"app\"><div class=\"main-layout-module__mainLayout--LIGm3\" style=\"--sidebar-width: 200px;\"><div class=\"main-layout-module__sidebar--suvQ_\"><div class=\"flex flex-col\" data-testid=\"cluster-sidebar\"><div class=\"sidebar-cl",
+        "selection": "",
+        "inputSelection": [
+          0,
+          0
+        ],
+        "scroll": 2414,
+        "viewport": [
+          947,
+          458,
+          2872
+        ],
+        "pause": "Automatic updates",
+        "events": [
+          {
+            "type": "keydown",
+            "trusted": true,
+            "key": "g",
+            "code": "Escape",
+            "ctrl": true,
+            "shift": false,
+            "alt": false,
+            "meta": false,
+            "altGraph": true,
+            "composing": false,
+            "target": "theme-light"
+          }
+        ]
+      }
+    },
+    {
+      "name": "Native wheel scroll and native drag selection/copy of highlighted source",
+      "before": {
+        "query": "",
+        "open": false,
+        "count": "Enter text to find",
+        "active": -1,
+        "inspected": -1,
+        "focus": false,
+        "focused": "<body class=\"theme-light\"><div id=\"app\"><div class=\"main-layout-module__mainLayout--LIGm3\" style=\"--sidebar-width: 200px;\"><div class=\"main-layout-module__sidebar--suvQ_\"><div class=\"flex flex-col\" data-testid=\"cluster-sidebar\"><div class=\"sidebar-cl",
+        "selection": "",
+        "inputSelection": [
+          0,
+          0
+        ],
+        "scroll": 2414,
+        "viewport": [
+          947,
+          458,
+          2872
+        ],
+        "pause": "Automatic updates",
+        "events": [
+          {
+            "type": "keydown",
+            "trusted": true,
+            "key": "g",
+            "code": "Escape",
+            "ctrl": true,
+            "shift": false,
+            "alt": false,
+            "meta": false,
+            "altGraph": true,
+            "composing": false,
+            "target": "theme-light"
+          }
+        ]
+      },
+      "pass": false,
+      "error": "AssertionError [ERR_ASSERTION]: Visible native target\n    at position (file:///home/max/work/freelens-json-logs/scripts/find-production-host/native-acceptance.mjs:31:3)\n    at async click (file:///home/max/work/freelens-json-logs/scripts/find-production-host/native-acceptance.mjs:34:91)\n    at async file:///home/max/work/freelens-json-logs/scripts/find-production-host/native-acceptance.mjs:97:5\n    at async test (file:///home/max/work/freelens-json-logs/scripts/find-production-host/native-acceptance.mjs:37:8)\n    at async file:///home/max/work/freelens-json-logs/scripts/find-production-host/native-acceptance.mjs:96:3",
+      "after": {
+        "query": "",
+        "open": false,
+        "count": "Enter text to find",
+        "active": -1,
+        "inspected": -1,
+        "focus": false,
+        "focused": "<body class=\"theme-light\"><div id=\"app\"><div class=\"main-layout-module__mainLayout--LIGm3\" style=\"--sidebar-width: 200px;\"><div class=\"main-layout-module__sidebar--suvQ_\"><div class=\"flex flex-col\" data-testid=\"cluster-sidebar\"><div class=\"sidebar-cl",
+        "selection": "",
+        "inputSelection": [
+          0,
+          0
+        ],
+        "scroll": 2414,
+        "viewport": [
+          947,
+          458,
+          2872
+        ],
+        "pause": "Automatic updates",
+        "events": [
+          {
+            "type": "keydown",
+            "trusted": true,
+            "key": "g",
+            "code": "Escape",
+            "ctrl": true,
+            "shift": false,
+            "alt": false,
+            "meta": false,
+            "altGraph": true,
+            "composing": false,
+            "target": "theme-light"
+          }
+        ]
+      }
+    }
+  ],
+  "clipboardOwners": [
+    3295916
+  ],
+  "session": {
+    "pid": 3286353,
+    "privateInstance": "efb50993780079460b0cbed1363e2166a2de1d9f_1793121203_1321473513",
+    "privateRuntime": "/tmp/fd-07r3z4rz",
+    "owned": [
+      {
+        "address": "0x55c96d776320",
+        "mapped": true,
+        "hidden": false,
+        "visible": true,
+        "acceptsInput": true,
+        "at": [
+          21,
+          21
+        ],
+        "size": [
+          1238,
+          678
+        ],
+        "workspace": {
+          "id": 7,
+          "name": "7"
+        },
+        "floating": false,
+        "monitor": 0,
+        "class": "freelens",
+        "title": "Freelens",
+        "initialClass": "freelens",
+        "initialTitle": "Freelens",
+        "pid": 3286353,
+        "xwayland": false,
+        "pinned": false,
+        "pinFullscreened": false,
+        "fullscreen": 0,
+        "fullscreenClient": 0,
+        "fullscreenHandler": "default",
+        "allowedOverFullscreen": true,
+        "grouped": [],
+        "tags": [],
+        "swallowing": "0x0",
+        "focusHistoryID": 0,
+        "inhibitingIdle": false,
+        "xdgTag": "",
+        "xdgDescription": "",
+        "contentType": "none",
+        "tearingHint": false,
+        "stableId": "18000003"
+      }
+    ]
+  },
+  "events": [
+    {
+      "type": "keydown",
+      "trusted": true,
+      "key": "g",
+      "code": "Escape",
+      "ctrl": true,
+      "shift": false,
+      "alt": false,
+      "meta": false,
+      "altGraph": true,
+      "composing": false,
+      "target": "theme-light"
+    }
+  ],
+  "final": {
+    "query": "",
+    "open": false,
+    "count": "Enter text to find",
+    "active": -1,
+    "inspected": -1,
+    "focus": false,
+    "focused": "<body class=\"theme-light\"><div id=\"app\"><div class=\"main-layout-module__mainLayout--LIGm3\" style=\"--sidebar-width: 200px;\"><div class=\"main-layout-module__sidebar--suvQ_\"><div class=\"flex flex-col\" data-testid=\"cluster-sidebar\"><div class=\"sidebar-cl",
+    "selection": "",
+    "inputSelection": [
+      0,
+      0
+    ],
+    "scroll": 2414,
+    "viewport": [
+      947,
+      458,
+      2872
+    ],
+    "pause": "Automatic updates",
+    "events": [
+      {
+        "type": "keydown",
+        "trusted": true,
+        "key": "g",
+        "code": "Escape",
+        "ctrl": true,
+        "shift": false,
+        "alt": false,
+        "meta": false,
+        "altGraph": true,
+        "composing": false,
+        "target": "theme-light"
+      }
+    ]
+  }
+}

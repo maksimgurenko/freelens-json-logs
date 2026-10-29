@@ -1,0 +1,338 @@
+{
+  "session": {
+    "pid": 2006958,
+    "privateInstance": "efb50993780079460b0cbed1363e2166a2de1d9f_1793094804_1107866213",
+    "privateRuntime": "/tmp/fd-1o9iv64n",
+    "owned": [
+      {
+        "address": "0x5604ee97f490",
+        "mapped": true,
+        "hidden": false,
+        "visible": true,
+        "acceptsInput": true,
+        "at": [
+          21,
+          21
+        ],
+        "size": [
+          1238,
+          678
+        ],
+        "workspace": {
+          "id": 7,
+          "name": "7"
+        },
+        "floating": false,
+        "monitor": 0,
+        "class": "freelens",
+        "title": "Freelens",
+        "initialClass": "freelens",
+        "initialTitle": "Freelens",
+        "pid": 2006958,
+        "xwayland": false,
+        "pinned": false,
+        "pinFullscreened": false,
+        "fullscreen": 0,
+        "fullscreenClient": 0,
+        "fullscreenHandler": "default",
+        "allowedOverFullscreen": true,
+        "grouped": [],
+        "tags": [],
+        "swallowing": "0x0",
+        "focusHistoryID": 0,
+        "inhibitingIdle": false,
+        "xdgTag": "",
+        "xdgDescription": "",
+        "contentType": "none",
+        "tearingHint": false,
+        "stableId": "18000007"
+      }
+    ]
+  },
+  "samples": [
+    {
+      "elapsedMs": 191.09999999403954,
+      "times": [
+        7153.6,
+        7170.2,
+        7186.9,
+        7203.6,
+        7220.3,
+        7236.9,
+        7253.6,
+        7270.3,
+        7286.9,
+        7303.6,
+        7320.3,
+        7332.6
+      ],
+      "heights": [
+        383,
+        383,
+        383,
+        383,
+        383,
+        383,
+        383,
+        383,
+        383,
+        383,
+        383,
+        383
+      ],
+      "count": "Enter text to find",
+      "feedback": "",
+      "highlights": 0,
+      "rows": 1000,
+      "top": 973680,
+      "scrollHeight": 974063,
+      "clientHeight": 383,
+      "focused": false,
+      "text": "",
+      "callerElapsedMs": 192.4357980000002,
+      "metrics": {
+        "LayoutCount": 0,
+        "LayoutDuration": 0,
+        "RecalcStyleCount": 0,
+        "RecalcStyleDuration": 0,
+        "ScriptDuration": 0.000552,
+        "TaskDuration": 0.002206
+      },
+      "transitions": []
+    },
+    {
+      "elapsedMs": 185.59999999403954,
+      "times": [
+        7532.728,
+        7546.6,
+        7563.3,
+        7580,
+        7598.4,
+        7615.1,
+        7631.7,
+        7648.4,
+        7665.1,
+        7681.7,
+        7698.4,
+        7715.1
+      ],
+      "heights": [
+        383,
+        383,
+        383,
+        383,
+        383,
+        383,
+        383,
+        383,
+        383,
+        383,
+        383,
+        383
+      ],
+      "count": "0 of 0 matching records",
+      "feedback": "",
+      "highlights": 0,
+      "rows": 1000,
+      "top": 973680,
+      "scrollHeight": 974063,
+      "clientHeight": 383,
+      "focused": false,
+      "text": "absent-dense-probe",
+      "callerElapsedMs": 187.03651200000013,
+      "metrics": {
+        "LayoutCount": 1,
+        "LayoutDuration": 0.00015999999999999999,
+        "RecalcStyleCount": 0,
+        "RecalcStyleDuration": 0,
+        "ScriptDuration": 0.029445,
+        "TaskDuration": 0.03601300000000002
+      },
+      "transitions": []
+    },
+    {
+      "elapsedMs": 190,
+      "times": [
+        8456.1,
+        8472.9,
+        8489.5,
+        8513.7,
+        8530.4,
+        8547,
+        8563.7,
+        8580.4,
+        8597,
+        8608.8,
+        8625.4,
+        8642.1
+      ],
+      "heights": [
+        383,
+        383,
+        383,
+        383,
+        383,
+        383,
+        383,
+        383,
+        383,
+        383,
+        383,
+        383
+      ],
+      "count": "1 of 1000 matching records",
+      "feedback": "",
+      "highlights": 984,
+      "rows": 1000,
+      "top": 8,
+      "scrollHeight": 974063,
+      "clientHeight": 383,
+      "focused": false,
+      "text": "a",
+      "callerElapsedMs": 390.8715510000002,
+      "metrics": {
+        "LayoutCount": 2,
+        "LayoutDuration": 0.0009170000000000011,
+        "RecalcStyleCount": 1,
+        "RecalcStyleDuration": 0.00004699999999999995,
+        "ScriptDuration": 0.11124299999999998,
+        "TaskDuration": 0.21463200000000004
+      },
+      "transitions": []
+    }
+  ],
+  "variant": "baseline",
+  "scope": "Private diagnostic compositor, natural DOM frames, installed production renderer/worker. No native input or latency acceptance.",
+  "wrapped": true,
+  "activations": [
+    {
+      "label": "Find 19 matching records, starting at 1 of 1000; activate to cycle",
+      "active": "0",
+      "count": "1 of 1000 matching records",
+      "feedback": "",
+      "callerElapsedMs": 65.6711580000001
+    },
+    {
+      "label": "Find 19 matching records, starting at 1 of 1000; activate to cycle",
+      "active": "1",
+      "count": "2 of 1000 matching records",
+      "feedback": "Highlighting pending; exact matches remain available.",
+      "callerElapsedMs": 125.56928100000005
+    },
+    {
+      "label": "Find 19 matching records, starting at 1 of 1000; activate to cycle",
+      "active": "2",
+      "count": "3 of 1000 matching records",
+      "feedback": "Highlighting pending; exact matches remain available.",
+      "callerElapsedMs": 236.36217299999998
+    }
+  ],
+  "pass": true,
+  "timedOut": false,
+  "closed": {
+    "starts": 4,
+    "exits": 4,
+    "live": 0,
+    "peak": 1,
+    "resources": [
+      "TCPServerWrap",
+      "StatWatcher",
+      "StatWatcher",
+      "StatWatcher",
+      "StatWatcher",
+      "StatWatcher",
+      "StatWatcher",
+      "PipeWrap",
+      "PipeWrap",
+      "PipeWrap",
+      "ProcessWrap",
+      "TCPSocketWrap",
+      "TCPSocketWrap",
+      "TCPSocketWrap",
+      "TCPSocketWrap",
+      "TCPSocketWrap",
+      "TCPSocketWrap",
+      "TCPSocketWrap",
+      "TCPSocketWrap",
+      "TCPSocketWrap",
+      "TCPSocketWrap",
+      "TCPSocketWrap",
+      "TCPSocketWrap",
+      "TCPSocketWrap",
+      "Timeout",
+      "Timeout",
+      "Timeout",
+      "Timeout",
+      "Timeout",
+      "Timeout",
+      "Timeout",
+      "Timeout",
+      "Timeout",
+      "Timeout",
+      "Timeout",
+      "Timeout",
+      "Timeout",
+      "Timeout",
+      "Timeout",
+      "Timeout",
+      "Timeout",
+      "Timeout",
+      "Timeout",
+      "Timeout",
+      "Timeout",
+      "Timeout",
+      "Timeout",
+      "Timeout",
+      "Timeout",
+      "Timeout",
+      "Timeout",
+      "Timeout"
+    ],
+    "beforeQuit": 1,
+    "handlers": [
+      "extensions@52bcb660c8d041a54a070bdd6e17e58f5cf11bd54b272b18828e5cdcfc4ff1c4:find-open",
+      "extensions@52bcb660c8d041a54a070bdd6e17e58f5cf11bd54b272b18828e5cdcfc4ff1c4:find-request",
+      "extensions@52bcb660c8d041a54a070bdd6e17e58f5cf11bd54b272b18828e5cdcfc4ff1c4:find-control"
+    ],
+    "windows": [
+      {
+        "id": 2,
+        "pid": 2007381,
+        "frames": [
+          {
+            "processId": 5,
+            "routingId": 1,
+            "url": "https://renderer.freelens.app:46641/cluster/66d54a72f37fb55d6d07b2455ce71621"
+          },
+          {
+            "processId": 5,
+            "routingId": 4,
+            "url": "https://66d54a72f37fb55d6d07b2455ce71621.renderer.freelens.app:46641/overview"
+          }
+        ],
+        "listeners": [
+          [
+            "destroyed",
+            1
+          ],
+          [
+            "render-process-gone",
+            1
+          ],
+          [
+            "did-frame-navigate",
+            0
+          ]
+        ]
+      }
+    ],
+    "service": {
+      "owners": 0,
+      "retiring": 0,
+      "opening": 0,
+      "senders": 0,
+      "watch": false,
+      "executions": []
+    }
+  }
+}

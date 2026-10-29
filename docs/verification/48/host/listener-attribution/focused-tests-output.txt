@@ -1,0 +1,17 @@
+(node:2102686) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///home/max/work/freelens-json-logs/tests/find-ranges.test.ts is not specified and it doesn't parse as CommonJS.
+Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+To eliminate this warning, add "type": "module" to /home/max/work/freelens-json-logs/package.json.
+(Use `node --trace-warnings ...` to show where the warning was created)
+✔ a clipping resize inside pending coverage completes without restarting decoration (1.353746ms)
+✔ incomplete coverage still requests a narrower late-source interest (0.339312ms)
+✔ a newer covered interest is evaluated after a pending broad reply proves incomplete (0.750394ms)
+✔ decoration failure latches independently of exact matching and explicit retry uses current interest (0.386662ms)
+✔ new visible interest rejects old success/failure and its deadline covers registration and dispatch (0.435212ms)
+ℹ tests 5
+ℹ suites 0
+ℹ pass 5
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 60.361496

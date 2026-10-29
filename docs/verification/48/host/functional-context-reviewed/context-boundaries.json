@@ -1,0 +1,428 @@
+{
+  "session": {
+    "pid": 2525417,
+    "privateInstance": "efb50993780079460b0cbed1363e2166a2de1d9f_1793105654_1279137367",
+    "privateRuntime": "/tmp/fd-n6k5wo_3",
+    "owned": [
+      {
+        "address": "0x5591d39daa40",
+        "mapped": true,
+        "hidden": false,
+        "visible": true,
+        "acceptsInput": true,
+        "at": [
+          21,
+          21
+        ],
+        "size": [
+          1238,
+          678
+        ],
+        "workspace": {
+          "id": 7,
+          "name": "7"
+        },
+        "floating": false,
+        "monitor": 0,
+        "class": "freelens",
+        "title": "Freelens",
+        "initialClass": "freelens",
+        "initialTitle": "Freelens",
+        "pid": 2525417,
+        "xwayland": false,
+        "pinned": false,
+        "pinFullscreened": false,
+        "fullscreen": 0,
+        "fullscreenClient": 0,
+        "fullscreenHandler": "default",
+        "allowedOverFullscreen": true,
+        "grouped": [],
+        "tags": [],
+        "swallowing": "0x0",
+        "focusHistoryID": 0,
+        "inhibitingIdle": false,
+        "xdgTag": "",
+        "xdgDescription": "",
+        "contentType": "none",
+        "tearingHint": false,
+        "stableId": "18000003"
+      }
+    ]
+  },
+  "checks": [
+    "Inspector A and independently DOM-keyboard-chosen reading row B are distinct",
+    "Before eviction a new query starts at independent reading row B, not inspected A",
+    "Evicting inspected A closes only its inspector and preserves the surviving B occurrence/DOM row",
+    "After A eviction a fresh query starts at B; it skips earlier matching C without reopening inspection",
+    "Old target success is pending before replacement",
+    "Replacement target starts with fresh Find state",
+    "Retired target actual worker success cannot alter new count/result/query/flags/scroll or latch Retry",
+    "Old target failure is pending before replacement",
+    "Replacement target starts with fresh Find state",
+    "Retired target injected transport failure cannot alter new count/result/query/flags/scroll or latch Retry",
+    "Old viewer success is pending before replacement",
+    "Replacement viewer starts with fresh Find state",
+    "Retired viewer actual worker success cannot alter new count/result/query/flags/scroll or latch Retry",
+    "Old viewer failure is pending before replacement",
+    "Replacement viewer starts with fresh Find state",
+    "Retired viewer injected transport failure cannot alter new count/result/query/flags/scroll or latch Retry"
+  ],
+  "deliveries": [
+    {
+      "dimension": "target",
+      "fail": false,
+      "heldKey": {
+        "viewerEpoch": 3,
+        "targetEpoch": 1,
+        "instanceEpoch": 1,
+        "windowRevision": 5,
+        "messageRevision": 7,
+        "queryRevision": 2
+      },
+      "heldReply": {
+        "kind": "matches",
+        "matchingRecords": 4
+      },
+      "currentKey": {
+        "viewerEpoch": 4,
+        "targetEpoch": 1,
+        "instanceEpoch": 1,
+        "windowRevision": 5,
+        "messageRevision": 7,
+        "queryRevision": 2
+      },
+      "ownerChanged": true,
+      "before": {
+        "query": "upstream",
+        "count": "1 of 2 matching records",
+        "active": 0,
+        "rows": 3,
+        "top": 0,
+        "inspected": null,
+        "paused": "Paused",
+        "retry": false,
+        "flags": [
+          "false",
+          "false"
+        ]
+      },
+      "after": {
+        "query": "upstream",
+        "count": "1 of 2 matching records",
+        "active": 0,
+        "rows": 3,
+        "top": 0,
+        "inspected": null,
+        "paused": "Paused",
+        "retry": false,
+        "flags": [
+          "false",
+          "false"
+        ]
+      }
+    },
+    {
+      "dimension": "target",
+      "fail": true,
+      "heldKey": {
+        "viewerEpoch": 5,
+        "targetEpoch": 1,
+        "instanceEpoch": 1,
+        "windowRevision": 5,
+        "messageRevision": 7,
+        "queryRevision": 2
+      },
+      "heldReply": {
+        "kind": "matches",
+        "matchingRecords": 4
+      },
+      "currentKey": {
+        "viewerEpoch": 6,
+        "targetEpoch": 1,
+        "instanceEpoch": 1,
+        "windowRevision": 5,
+        "messageRevision": 7,
+        "queryRevision": 2
+      },
+      "ownerChanged": true,
+      "before": {
+        "query": "upstream",
+        "count": "1 of 2 matching records",
+        "active": 0,
+        "rows": 3,
+        "top": 0,
+        "inspected": null,
+        "paused": "Paused",
+        "retry": false,
+        "flags": [
+          "false",
+          "false"
+        ]
+      },
+      "after": {
+        "query": "upstream",
+        "count": "1 of 2 matching records",
+        "active": 0,
+        "rows": 3,
+        "top": 0,
+        "inspected": null,
+        "paused": "Paused",
+        "retry": false,
+        "flags": [
+          "false",
+          "false"
+        ]
+      }
+    },
+    {
+      "dimension": "viewer",
+      "fail": false,
+      "heldKey": {
+        "viewerEpoch": 7,
+        "targetEpoch": 1,
+        "instanceEpoch": 1,
+        "windowRevision": 5,
+        "messageRevision": 7,
+        "queryRevision": 2
+      },
+      "heldReply": {
+        "kind": "matches",
+        "matchingRecords": 4
+      },
+      "currentKey": {
+        "viewerEpoch": 8,
+        "targetEpoch": 1,
+        "instanceEpoch": 1,
+        "windowRevision": 5,
+        "messageRevision": 7,
+        "queryRevision": 2
+      },
+      "ownerChanged": true,
+      "before": {
+        "query": "upstream",
+        "count": "1 of 4 matching records",
+        "active": 2,
+        "rows": 120,
+        "top": 56,
+        "inspected": null,
+        "paused": "Paused",
+        "retry": false,
+        "flags": [
+          "false",
+          "false"
+        ]
+      },
+      "after": {
+        "query": "upstream",
+        "count": "1 of 4 matching records",
+        "active": 2,
+        "rows": 120,
+        "top": 56,
+        "inspected": null,
+        "paused": "Paused",
+        "retry": false,
+        "flags": [
+          "false",
+          "false"
+        ]
+      }
+    },
+    {
+      "dimension": "viewer",
+      "fail": true,
+      "heldKey": {
+        "viewerEpoch": 9,
+        "targetEpoch": 1,
+        "instanceEpoch": 1,
+        "windowRevision": 5,
+        "messageRevision": 7,
+        "queryRevision": 2
+      },
+      "heldReply": {
+        "kind": "matches",
+        "matchingRecords": 4
+      },
+      "currentKey": {
+        "viewerEpoch": 10,
+        "targetEpoch": 1,
+        "instanceEpoch": 1,
+        "windowRevision": 5,
+        "messageRevision": 7,
+        "queryRevision": 2
+      },
+      "ownerChanged": true,
+      "before": {
+        "query": "upstream",
+        "count": "1 of 4 matching records",
+        "active": 2,
+        "rows": 120,
+        "top": 56,
+        "inspected": null,
+        "paused": "Paused",
+        "retry": false,
+        "flags": [
+          "false",
+          "false"
+        ]
+      },
+      "after": {
+        "query": "upstream",
+        "count": "1 of 4 matching records",
+        "active": 2,
+        "rows": 120,
+        "top": 56,
+        "inspected": null,
+        "paused": "Paused",
+        "retry": false,
+        "flags": [
+          "false",
+          "false"
+        ]
+      }
+    }
+  ],
+  "pass": true,
+  "scope": "Actual installed production viewer/session/adapter/SDK/worker. Target-scoped controlled HTTP bodies for eviction; held actual worker replies or injected transport failures for replacement. DOM input/focusin only; no native input, clipboard, focus spoofing, resource attribution or soak.",
+  "eviction": {
+    "query": "upstream",
+    "count": "2 of 4 matching records",
+    "active": 1,
+    "rows": 4,
+    "top": 0,
+    "inspected": null,
+    "paused": "Paused",
+    "retry": false,
+    "flags": [
+      "false",
+      "false"
+    ]
+  },
+  "httpRestored": true,
+  "targets": {
+    "original": {
+      "namespace": "find-verification-48-2524823",
+      "pod": "find-fixtures",
+      "podUid": "1d938e1f-e0aa-4c31-96bc-f716b3d5af3e",
+      "clusterId": "fe40d61ba8fe74cdb9eeb77f1e1e3b91"
+    },
+    "replacement": {
+      "namespace": "find-verification-48-2524823",
+      "pod": "find-second-target-j7vvh",
+      "podUid": "43adba55-db9c-4c9e-beb5-c5bc035e7f0d",
+      "clusterId": "fe40d61ba8fe74cdb9eeb77f1e1e3b91"
+    },
+    "image": "busybox:1.37.0@sha256:bdf57e528e45e4433820e045b29b4597825a1c9e38353532d90a01445013f82e"
+  },
+  "documentHasFocus": false,
+  "sdkRestored": true,
+  "rendererRestored": true,
+  "closed": {
+    "starts": 9,
+    "exits": 9,
+    "live": 0,
+    "peak": 1,
+    "resources": [
+      "TCPServerWrap",
+      "StatWatcher",
+      "StatWatcher",
+      "StatWatcher",
+      "StatWatcher",
+      "StatWatcher",
+      "StatWatcher",
+      "PipeWrap",
+      "PipeWrap",
+      "PipeWrap",
+      "ProcessWrap",
+      "TCPSocketWrap",
+      "TCPSocketWrap",
+      "TCPSocketWrap",
+      "TCPSocketWrap",
+      "TCPSocketWrap",
+      "TCPSocketWrap",
+      "TCPSocketWrap",
+      "TCPSocketWrap",
+      "TCPSocketWrap",
+      "TCPSocketWrap",
+      "TCPSocketWrap",
+      "TCPSocketWrap",
+      "TCPSocketWrap",
+      "TCPSocketWrap",
+      "TCPSocketWrap",
+      "TCPSocketWrap",
+      "Timeout",
+      "Timeout",
+      "Timeout",
+      "Timeout",
+      "Timeout",
+      "Timeout",
+      "Timeout",
+      "Timeout",
+      "Timeout",
+      "Timeout",
+      "Timeout",
+      "Timeout",
+      "Timeout",
+      "Timeout",
+      "Timeout",
+      "Timeout",
+      "Timeout",
+      "Timeout",
+      "Timeout",
+      "Timeout",
+      "Timeout",
+      "Timeout",
+      "Timeout",
+      "Timeout",
+      "Timeout",
+      "Timeout",
+      "Timeout",
+      "Timeout"
+    ],
+    "beforeQuit": 1,
+    "handlers": [
+      "extensions@4c624f5e4ff8c5a1d08fd9b0be983a6e382a0c064af681b73926f296794f5bd5:find-open",
+      "extensions@4c624f5e4ff8c5a1d08fd9b0be983a6e382a0c064af681b73926f296794f5bd5:find-request",
+      "extensions@4c624f5e4ff8c5a1d08fd9b0be983a6e382a0c064af681b73926f296794f5bd5:find-control"
+    ],
+    "windows": [
+      {
+        "id": 2,
+        "pid": 2525944,
+        "frames": [
+          {
+            "processId": 5,
+            "routingId": 1,
+            "url": "https://renderer.freelens.app:34865/cluster/fe40d61ba8fe74cdb9eeb77f1e1e3b91"
+          },
+          {
+            "processId": 5,
+            "routingId": 4,
+            "url": "https://fe40d61ba8fe74cdb9eeb77f1e1e3b91.renderer.freelens.app:34865/overview"
+          }
+        ],
+        "listeners": [
+          [
+            "destroyed",
+            1
+          ],
+          [
+            "render-process-gone",
+            1
+          ],
+          [
+            "did-frame-navigate",
+            0
+          ]
+        ]
+      }
+    ],
+    "service": {
+      "owners": 0,
+      "retiring": 0,
+      "opening": 0,
+      "senders": 0,
+      "watch": false,
+      "executions": []
+    }
+  }
+}

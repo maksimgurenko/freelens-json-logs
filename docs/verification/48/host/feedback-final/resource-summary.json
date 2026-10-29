@@ -1,0 +1,109 @@
+{
+  "source": "mounted-soak-clean-inspector.json.gz",
+  "pass": false,
+  "elapsedMs": 113588,
+  "bounds": [
+    {
+      "bound": "dense",
+      "cycles": 30,
+      "first": {
+        "nodes": 531,
+        "listeners": 727,
+        "documents": 4,
+        "rendererHeap": 63941564,
+        "rendererExternal": 46806646,
+        "rendererRss": 683663360,
+        "mainHeap": 31796260,
+        "mainExternal": 20138086,
+        "mainRss": 404709376,
+        "mainThreads": 36,
+        "rendererThreads": 27,
+        "diskBytes": 128186143,
+        "diskFiles": 113
+      },
+      "lastGrowth": {
+        "nodes": 51,
+        "listeners": 9,
+        "documents": 0,
+        "rendererHeap": 1862708,
+        "rendererExternal": 3052,
+        "rendererRss": 10207232,
+        "mainHeap": 979468,
+        "mainExternal": -58643,
+        "mainRss": 507904,
+        "mainThreads": 1,
+        "rendererThreads": 0,
+        "diskBytes": 11210,
+        "diskFiles": 0
+      },
+      "peakGrowth": {
+        "nodes": 51,
+        "listeners": 9,
+        "documents": 0,
+        "rendererHeap": 1862708,
+        "rendererExternal": 3052,
+        "rendererRss": 10768384,
+        "mainHeap": 1579580,
+        "mainExternal": 47201,
+        "mainRss": 1478656,
+        "mainThreads": 1,
+        "rendererThreads": 0,
+        "diskBytes": 11210,
+        "diskFiles": 0
+      },
+      "settingsUnchanged": true,
+      "maxInactiveToExitObservedMs": 102.74950199999876
+    },
+    {
+      "bound": "long",
+      "cycles": 30,
+      "first": {
+        "nodes": 586,
+        "listeners": 736,
+        "documents": 4,
+        "rendererHeap": 66171172,
+        "rendererExternal": 46809679,
+        "rendererRss": 686895104,
+        "mainHeap": 32946652,
+        "mainExternal": 20189809,
+        "mainRss": 387817472,
+        "mainThreads": 37,
+        "rendererThreads": 27,
+        "diskBytes": 128199138,
+        "diskFiles": 113
+      },
+      "lastGrowth": {
+        "nodes": 19,
+        "listeners": -1,
+        "documents": 0,
+        "rendererHeap": 376312,
+        "rendererExternal": -2975,
+        "rendererRss": -1396736,
+        "mainHeap": -165980,
+        "mainExternal": -117259,
+        "mainRss": 16384,
+        "mainThreads": 0,
+        "rendererThreads": 0,
+        "diskBytes": 11338,
+        "diskFiles": 0
+      },
+      "peakGrowth": {
+        "nodes": 28,
+        "listeners": 0,
+        "documents": 0,
+        "rendererHeap": 939908,
+        "rendererExternal": 52766,
+        "rendererRss": 2113536,
+        "mainHeap": 771108,
+        "mainExternal": 38611,
+        "mainRss": 155648,
+        "mainThreads": 0,
+        "rendererThreads": 0,
+        "diskBytes": 11338,
+        "diskFiles": 0
+      },
+      "settingsUnchanged": true,
+      "maxInactiveToExitObservedMs": 20.54552899999544
+    }
+  ]
+}

@@ -1,0 +1,16 @@
+node:internal/modules/run_main:107
+    triggerUncaughtException(
+    ^
+
+AssertionError [ERR_ASSERTION]: {"exceptionId":1,"text":"Uncaught (in promise) Error: Profile churn lost current matching: FindFind could not complete. Edit the query or Retry.Clearkeyboard_arrow_upkeyboard_arrow_downAaabhistoryRetryCloseFind could not complete. Edit the query or Retry.; SDK errors: ","lineNumber":0,"columnNumber":0,"exception":{"type":"object","subtype":"error","className":"Error","description":"Error: Profile churn lost current matching: FindFind could not complete. Edit the query or Retry.Clearkeyboard_arrow_upkeyboard_arrow_downAaabhistoryRetryCloseFind could not complete. Edit the query or Retry.; SDK errors: \n    at until (http://127.0.0.1:46099/fixture.js:11811:11)\n    at async cycle (http://127.0.0.1:46099/fixture.js:11856:5)\n    at async Object.batch (http://127.0.0.1:46099/fixture.js:11912:51)","objectId":"5809653500842192530.2.1"}}
+    at evaluate (file:///home/max/work/freelens-json-logs/scripts/.find-debug.mjs:114:5)
+    at async file:///home/max/work/freelens-json-logs/scripts/.find-debug.mjs:123:3 {
+  generatedMessage: false,
+  code: 'ERR_ASSERTION',
+  actual: false,
+  expected: true,
+  operator: '==',
+  diff: 'simple'
+}
+
+Node.js v24.18.0

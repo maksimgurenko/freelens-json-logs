@@ -1,0 +1,168 @@
+{
+  "session": {
+    "pid": 1306299,
+    "privateInstance": "efb50993780079460b0cbed1363e2166a2de1d9f_1793083102_1471767239",
+    "privateRuntime": "/tmp/fd-7mo43ulb",
+    "owned": [
+      {
+        "address": "0x55c86af2b6c0",
+        "mapped": true,
+        "hidden": false,
+        "visible": true,
+        "acceptsInput": true,
+        "at": [
+          21,
+          21
+        ],
+        "size": [
+          -42,
+          -42
+        ],
+        "workspace": {
+          "id": 7,
+          "name": "7"
+        },
+        "floating": false,
+        "monitor": 0,
+        "class": "freelens",
+        "title": "Freelens",
+        "initialClass": "freelens",
+        "initialTitle": "Freelens",
+        "pid": 1306299,
+        "xwayland": false,
+        "pinned": false,
+        "pinFullscreened": false,
+        "fullscreen": 0,
+        "fullscreenClient": 0,
+        "fullscreenHandler": "default",
+        "allowedOverFullscreen": true,
+        "grouped": [],
+        "tags": [],
+        "swallowing": "0x0",
+        "focusHistoryID": 0,
+        "inhibitingIdle": false,
+        "xdgTag": "",
+        "xdgDescription": "",
+        "contentType": "none",
+        "tearingHint": false,
+        "stableId": "18000003"
+      }
+    ]
+  },
+  "inputLayer": "DOM events/Range only; native delivery unverified",
+  "error": "Error: SyntaxError: missing ) after argument list\n    at Object.evaluate (file:///home/max/work/freelens-json-logs/scripts/find-production-host/cdp.mjs:46:40)\n    at async file:///home/max/work/freelens-json-logs/scripts/find-production-host/state-acceptance.mjs:15:28",
+  "closed": {
+    "starts": 0,
+    "exits": 0,
+    "live": 0,
+    "peak": 0,
+    "resources": [
+      "ConnectWrap",
+      "FSReqPromise",
+      "TCPServerWrap",
+      "StatWatcher",
+      "StatWatcher",
+      "StatWatcher",
+      "StatWatcher",
+      "StatWatcher",
+      "StatWatcher",
+      "PipeWrap",
+      "PipeWrap",
+      "PipeWrap",
+      "ProcessWrap",
+      "TCPSocketWrap",
+      "TCPSocketWrap",
+      "TCPSocketWrap",
+      "TCPSocketWrap",
+      "TCPSocketWrap",
+      "TCPSocketWrap",
+      "TCPSocketWrap",
+      "TCPSocketWrap",
+      "TCPSocketWrap",
+      "TCPSocketWrap",
+      "TCPSocketWrap",
+      "TCPSocketWrap",
+      "TCPSocketWrap",
+      "TCPSocketWrap",
+      "TCPSocketWrap",
+      "TCPSocketWrap",
+      "TCPSocketWrap",
+      "TCPSocketWrap",
+      "TCPSocketWrap",
+      "Timeout",
+      "Timeout",
+      "Timeout",
+      "Timeout",
+      "Timeout",
+      "Timeout",
+      "Timeout",
+      "Timeout",
+      "Timeout",
+      "Timeout",
+      "Timeout",
+      "Timeout",
+      "Timeout",
+      "Timeout",
+      "Timeout",
+      "Timeout",
+      "Timeout",
+      "Timeout",
+      "Timeout",
+      "Timeout",
+      "Timeout",
+      "Timeout",
+      "Timeout",
+      "Timeout",
+      "Timeout",
+      "Timeout",
+      "Timeout",
+      "Timeout"
+    ],
+    "beforeQuit": 1,
+    "handlers": [
+      "extensions@7bf28943bf3be64608166328ff68e7deed39d3668e501ab1bb67459d06c9bb43:find-open",
+      "extensions@7bf28943bf3be64608166328ff68e7deed39d3668e501ab1bb67459d06c9bb43:find-request",
+      "extensions@7bf28943bf3be64608166328ff68e7deed39d3668e501ab1bb67459d06c9bb43:find-control"
+    ],
+    "windows": [
+      {
+        "id": 2,
+        "pid": 1306814,
+        "frames": [
+          {
+            "processId": 5,
+            "routingId": 1,
+            "url": "https://renderer.freelens.app:45647/cluster/82e42b45b0a644db4967b0b42d61e52f"
+          },
+          {
+            "processId": 5,
+            "routingId": 4,
+            "url": "https://82e42b45b0a644db4967b0b42d61e52f.renderer.freelens.app:45647/overview"
+          }
+        ],
+        "listeners": [
+          [
+            "destroyed",
+            1
+          ],
+          [
+            "render-process-gone",
+            1
+          ],
+          [
+            "did-frame-navigate",
+            0
+          ]
+        ]
+      }
+    ],
+    "service": {
+      "owners": 0,
+      "retiring": 0,
+      "opening": 0,
+      "senders": 0,
+      "watch": false,
+      "executions": []
+    }
+  }
+}

@@ -1,0 +1,205 @@
+{
+  "session": {
+    "pid": 1533710,
+    "privateInstance": "efb50993780079460b0cbed1363e2166a2de1d9f_1793087402_140216434",
+    "privateRuntime": "/tmp/fd-fvlejg1i",
+    "owned": [
+      {
+        "address": "0x5611e3fef1a0",
+        "mapped": true,
+        "hidden": false,
+        "visible": true,
+        "acceptsInput": true,
+        "at": [
+          21,
+          21
+        ],
+        "size": [
+          1238,
+          678
+        ],
+        "workspace": {
+          "id": 7,
+          "name": "7"
+        },
+        "floating": false,
+        "monitor": 0,
+        "class": "freelens",
+        "title": "Freelens",
+        "initialClass": "freelens",
+        "initialTitle": "Freelens",
+        "pid": 1533710,
+        "xwayland": false,
+        "pinned": false,
+        "pinFullscreened": false,
+        "fullscreen": 0,
+        "fullscreenClient": 0,
+        "fullscreenHandler": "default",
+        "allowedOverFullscreen": true,
+        "grouped": [],
+        "tags": [],
+        "swallowing": "0x0",
+        "focusHistoryID": 0,
+        "inhibitingIdle": false,
+        "xdgTag": "",
+        "xdgDescription": "",
+        "contentType": "none",
+        "tearingHint": false,
+        "stableId": "18000003"
+      }
+    ]
+  },
+  "checks": [
+    "D03 real row-zero hit is included",
+    "Repeated application content has a distinct retained occurrence",
+    "Explicit Refresh receives newly appended real Kubernetes logs",
+    "D13 real append preserves retained row/source node identity",
+    "D13 real append preserves DOM text selection",
+    "D13 real append preserves active/inspection occurrence among repeats",
+    "Zero-hit query has no active result",
+    "Explicit Refresh receives newly appended real Kubernetes logs",
+    "Trace 9 zero-hit gains actual log match without choosing a replacement",
+    "Newly gained match waits for explicit navigation",
+    "Default extraction does not find escaped alternate-only payment",
+    "Trace 9 real saved profile re-evaluates decoded-only hit without fetch or seek",
+    "Alternate extracted-only hit navigates original retained occurrence",
+    "Profile removing active decoded hit clears it without fetch or substitute",
+    "Explicit Refresh receives newly appended real Kubernetes logs",
+    "Trace 8 actual 1000-record retention expires old DOM and inspector safely",
+    "Expired reading row cannot redirect new search by text or saved index",
+    "Trace 12 real restart 1 resets query/flags/result and preserves manual profile",
+    "Restart 1 resets temporary history",
+    "Observed restart while paused clears old snapshot without resuming",
+    "Trace 12 real restart 2 resets query/flags/result and preserves manual profile",
+    "Restart 2 resets temporary history",
+    "Unpaused restart resumes ordinary current-instance snapshots"
+  ],
+  "scope": "Real Kubernetes snapshots/restarts and installed DOM/SDK. No physical/native input or clipboard.",
+  "refreshes": [
+    {
+      "before": 28562,
+      "after": 28563,
+      "rows": 7
+    },
+    {
+      "before": 28563,
+      "after": 28564,
+      "rows": 8
+    },
+    {
+      "before": 28564,
+      "after": 28565,
+      "rows": 1000
+    }
+  ],
+  "profileLogRequests": {
+    "before": 28564,
+    "afterAlternate": 28564,
+    "afterDefault": 28564,
+    "scope": "Whole-cluster apiserver log counters; equality rules out fetch by any client during this interval."
+  },
+  "restarts": [
+    {
+      "before": {
+        "count": 0,
+        "id": "containerd://5d47921fc6d020e6829b09659a5a9d6b368c0558eca81d7a036d568326c66393"
+      },
+      "after": {
+        "count": 1,
+        "id": "containerd://3c9a1e35142101b02332b75e9c688e2a1afd90ac69d7a13658baf57356e39302"
+      }
+    },
+    {
+      "before": {
+        "count": 1,
+        "id": "containerd://3c9a1e35142101b02332b75e9c688e2a1afd90ac69d7a13658baf57356e39302"
+      },
+      "after": {
+        "count": 2,
+        "id": "containerd://ba2754176a742d600e403f9256b9a5074d61db8d2ac97d843bea947f4e9ad6cc"
+      }
+    }
+  ],
+  "pass": true,
+  "closed": {
+    "starts": 7,
+    "exits": 7,
+    "live": 0,
+    "peak": 1,
+    "resources": [
+      "TCPServerWrap",
+      "StatWatcher",
+      "StatWatcher",
+      "StatWatcher",
+      "StatWatcher",
+      "StatWatcher",
+      "StatWatcher",
+      "PipeWrap",
+      "PipeWrap",
+      "PipeWrap",
+      "ProcessWrap",
+      "TCPSocketWrap",
+      "TCPSocketWrap",
+      "TCPSocketWrap",
+      "TCPSocketWrap",
+      "TCPSocketWrap",
+      "TCPSocketWrap",
+      "TCPSocketWrap",
+      "TCPSocketWrap",
+      "TCPSocketWrap",
+      "TCPSocketWrap",
+      "TCPSocketWrap",
+      "TCPSocketWrap",
+      "TCPSocketWrap",
+      "Timeout",
+      "Timeout",
+      "Timeout"
+    ],
+    "beforeQuit": 1,
+    "handlers": [
+      "extensions@af9fde264accfab5d4e96fd7544789fdf2c7b20db68b35c367af3f14d7e1233b:find-open",
+      "extensions@af9fde264accfab5d4e96fd7544789fdf2c7b20db68b35c367af3f14d7e1233b:find-request",
+      "extensions@af9fde264accfab5d4e96fd7544789fdf2c7b20db68b35c367af3f14d7e1233b:find-control"
+    ],
+    "windows": [
+      {
+        "id": 2,
+        "pid": 1534132,
+        "frames": [
+          {
+            "processId": 5,
+            "routingId": 1,
+            "url": "https://renderer.freelens.app:41329/cluster/3c12286fea344b5329b38f0e92da5f63"
+          },
+          {
+            "processId": 5,
+            "routingId": 4,
+            "url": "https://3c12286fea344b5329b38f0e92da5f63.renderer.freelens.app:41329/overview"
+          }
+        ],
+        "listeners": [
+          [
+            "destroyed",
+            1
+          ],
+          [
+            "render-process-gone",
+            1
+          ],
+          [
+            "did-frame-navigate",
+            0
+          ]
+        ]
+      }
+    ],
+    "service": {
+      "owners": 0,
+      "retiring": 0,
+      "opening": 0,
+      "senders": 0,
+      "watch": false,
+      "executions": []
+    }
+  }
+}

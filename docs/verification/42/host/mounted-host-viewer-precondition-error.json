@@ -1,0 +1,3 @@
+{
+  "error": "Error: TypeError: Cannot read properties of undefined (reading 'click')\n    at <anonymous>:2:75\n    at <anonymous>:10:5\n    at Object.evaluate (file:///home/max/work/freelens-json-logs/scripts/find-production-host/cdp.mjs:43:40)\n    at async file:///home/max/work/freelens-json-logs/scripts/find-production-host/viewer.mjs:7:18"
+}

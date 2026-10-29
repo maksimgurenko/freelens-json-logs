@@ -1,0 +1,7 @@
+{
+  "gitBlob": "eaa88b5ca6dfd3d2f15f78041a96e218dd5ca277",
+  "sha256": "eb43adfbdf8d77ac25c4777abdf74a7b7aa5a1e6c357c251098f5bbce1ac6810",
+  "source": "Exact earlier staged script object, before Node-side polling replaced its async renderer loop",
+  "pathAtExecution": "scripts/find-production-host/marks-following.mjs",
+  "purpose": "Reproduce earlier stalled diagnostic with the saved package/environment; not an accepted current test"
+}

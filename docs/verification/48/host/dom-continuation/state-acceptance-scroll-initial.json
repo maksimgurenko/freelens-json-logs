@@ -1,0 +1,157 @@
+{
+  "session": {
+    "pid": 1306299,
+    "privateInstance": "efb50993780079460b0cbed1363e2166a2de1d9f_1793083102_1471767239",
+    "privateRuntime": "/tmp/fd-7mo43ulb",
+    "owned": [
+      {
+        "address": "0x55c86af2b6c0",
+        "mapped": true,
+        "hidden": false,
+        "visible": true,
+        "acceptsInput": true,
+        "at": [
+          21,
+          21
+        ],
+        "size": [
+          -42,
+          -42
+        ],
+        "workspace": {
+          "id": 7,
+          "name": "7"
+        },
+        "floating": false,
+        "monitor": 0,
+        "class": "freelens",
+        "title": "Freelens",
+        "initialClass": "freelens",
+        "initialTitle": "Freelens",
+        "pid": 1306299,
+        "xwayland": false,
+        "pinned": false,
+        "pinFullscreened": false,
+        "fullscreen": 0,
+        "fullscreenClient": 0,
+        "fullscreenHandler": "default",
+        "allowedOverFullscreen": true,
+        "grouped": [],
+        "tags": [],
+        "swallowing": "0x0",
+        "focusHistoryID": 0,
+        "inhibitingIdle": false,
+        "xdgTag": "",
+        "xdgDescription": "",
+        "contentType": "none",
+        "tearingHint": false,
+        "stableId": "18000003"
+      }
+    ]
+  },
+  "inputLayer": "DOM events/Range only; native delivery unverified",
+  "error": "Error: Error: D09 Clear has no scroll\n    at check (<anonymous>:3:40)\n    at <anonymous>:20:119\n    at Object.evaluate (file:///home/max/work/freelens-json-logs/scripts/find-production-host/cdp.mjs:46:40)\n    at async file:///home/max/work/freelens-json-logs/scripts/find-production-host/state-acceptance.mjs:16:15",
+  "completedChecks": [
+    "Fixture paused after complete actual snapshot",
+    "D03 initial query includes first retained hit",
+    "D10 stable initial Match case refines and retains candidate",
+    "D10 stable initial Whole words refines and retains candidate",
+    "D10 explicit Next after flags uses current matching list",
+    "D10 mode refinement preserves later matching candidate",
+    "D10 folded query ready",
+    "D10 Match case exact characters excludes uppercase query",
+    "D10 restoring mode restores candidate",
+    "D10 Whole words excludes partial word",
+    "D10 Whole words off searches partial literal",
+    "D03 deselection leaves ready data without anchor or active hit",
+    "D03 initial Previous starts at last match",
+    "D06 transaction fixture at later candidate",
+    "D06 partial paste refines to zero",
+    "D06 Undo refinement restores latest candidate",
+    "D06 Redo refinement returns to zero",
+    "D06 composing input disables navigation",
+    "D06 select-all DOM composition commits one new search",
+    "D06 cut to empty ends sequence",
+    "D06 undo crossing empty starts from beginning"
+  ],
+  "closed": {
+    "starts": 2,
+    "exits": 2,
+    "live": 0,
+    "peak": 1,
+    "resources": [
+      "TCPServerWrap",
+      "StatWatcher",
+      "StatWatcher",
+      "StatWatcher",
+      "StatWatcher",
+      "StatWatcher",
+      "StatWatcher",
+      "PipeWrap",
+      "PipeWrap",
+      "PipeWrap",
+      "ProcessWrap",
+      "TCPSocketWrap",
+      "TCPSocketWrap",
+      "TCPSocketWrap",
+      "TCPSocketWrap",
+      "TCPSocketWrap",
+      "TCPSocketWrap",
+      "TCPSocketWrap",
+      "TCPSocketWrap",
+      "TCPSocketWrap",
+      "TCPSocketWrap",
+      "TCPSocketWrap",
+      "TCPSocketWrap",
+      "Timeout",
+      "Timeout",
+      "Timeout"
+    ],
+    "beforeQuit": 1,
+    "handlers": [
+      "extensions@7bf28943bf3be64608166328ff68e7deed39d3668e501ab1bb67459d06c9bb43:find-open",
+      "extensions@7bf28943bf3be64608166328ff68e7deed39d3668e501ab1bb67459d06c9bb43:find-request",
+      "extensions@7bf28943bf3be64608166328ff68e7deed39d3668e501ab1bb67459d06c9bb43:find-control"
+    ],
+    "windows": [
+      {
+        "id": 2,
+        "pid": 1306814,
+        "frames": [
+          {
+            "processId": 5,
+            "routingId": 1,
+            "url": "https://renderer.freelens.app:45647/cluster/82e42b45b0a644db4967b0b42d61e52f"
+          },
+          {
+            "processId": 5,
+            "routingId": 4,
+            "url": "https://82e42b45b0a644db4967b0b42d61e52f.renderer.freelens.app:45647/overview"
+          }
+        ],
+        "listeners": [
+          [
+            "destroyed",
+            1
+          ],
+          [
+            "render-process-gone",
+            1
+          ],
+          [
+            "did-frame-navigate",
+            0
+          ]
+        ]
+      }
+    ],
+    "service": {
+      "owners": 0,
+      "retiring": 0,
+      "opening": 0,
+      "senders": 0,
+      "watch": false,
+      "executions": []
+    }
+  }
+}

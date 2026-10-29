@@ -1,0 +1,79 @@
+[
+  {
+    "name": "mounted-30",
+    "command": [
+      "node",
+      "scripts/find-production-host/mounted-soak.mjs"
+    ],
+    "environment": {
+      "FIND_SOAK_INSPECTOR_CLEAN": "1",
+      "FIND_SOAK_NATURAL_FRAMES": "1",
+      "FIND_SOAK_CYCLES": "30",
+      "FIND_SOAK_IDLE_MS": "100"
+    },
+    "exit": 0,
+    "elapsedSeconds": 113.71546709997347
+  },
+  {
+    "name": "navigation-control",
+    "command": [
+      "node",
+      "scripts/find-production-host/navigation-control.mjs"
+    ],
+    "environment": {},
+    "exit": 0,
+    "elapsedSeconds": 20.974818742019124
+  },
+  {
+    "name": "following",
+    "command": [
+      "node",
+      "scripts/find-production-host/marks-following.mjs"
+    ],
+    "environment": {
+      "FIND_HOST_SCENARIO": "following"
+    },
+    "exit": 0,
+    "elapsedSeconds": 10.720688530011103
+  },
+  {
+    "name": "sdk-suite",
+    "command": [
+      "node",
+      "scripts/find-production-host/suite.mjs"
+    ],
+    "environment": {},
+    "exit": 0,
+    "elapsedSeconds": 2.5026231660158373
+  },
+  {
+    "name": "startup-timeout",
+    "command": [
+      "node",
+      "scripts/find-production-host/timeout.mjs"
+    ],
+    "environment": {},
+    "exit": 0,
+    "elapsedSeconds": 1.7375070980051532
+  },
+  {
+    "name": "latest-only-bursts",
+    "command": [
+      "node",
+      "scripts/find-production-host/churn.mjs"
+    ],
+    "environment": {},
+    "exit": 0,
+    "elapsedSeconds": 1.1301687139784917
+  },
+  {
+    "name": "shutdown-startup",
+    "command": [
+      "node",
+      "scripts/find-production-host/shutdown.mjs"
+    ],
+    "environment": {},
+    "exit": 0,
+    "elapsedSeconds": 0.8332408879941795
+  }
+]

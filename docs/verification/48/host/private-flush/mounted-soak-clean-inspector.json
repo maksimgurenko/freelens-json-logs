@@ -1,0 +1,1005 @@
+{
+  "session": {
+    "pid": 1377493,
+    "privateInstance": "efb50993780079460b0cbed1363e2166a2de1d9f_1793084474_1968440023",
+    "privateRuntime": "/tmp/fd-vd4v4ee_",
+    "owned": [
+      {
+        "address": "0x55d3bd2c0270",
+        "mapped": true,
+        "hidden": false,
+        "visible": true,
+        "acceptsInput": true,
+        "at": [
+          21,
+          21
+        ],
+        "size": [
+          1238,
+          678
+        ],
+        "workspace": {
+          "id": 7,
+          "name": "7"
+        },
+        "floating": false,
+        "monitor": 0,
+        "class": "freelens",
+        "title": "Freelens",
+        "initialClass": "freelens",
+        "initialTitle": "Freelens",
+        "pid": 1377493,
+        "xwayland": false,
+        "pinned": false,
+        "pinFullscreened": false,
+        "fullscreen": 0,
+        "fullscreenClient": 0,
+        "fullscreenHandler": "default",
+        "allowedOverFullscreen": true,
+        "grouped": [],
+        "tags": [],
+        "swallowing": "0x0",
+        "focusHistoryID": 0,
+        "inhibitingIdle": false,
+        "xdgTag": "",
+        "xdgDescription": "",
+        "contentType": "none",
+        "tearingHint": false,
+        "stableId": "18000003"
+      }
+    ]
+  },
+  "samples": [
+    {
+      "name": "dense",
+      "warmupCycles": 3,
+      "cycles": [
+        {
+          "cycle": 0,
+          "matchObservedMs": 455.85448799999995,
+          "inactiveMs": 78.63269500000024,
+          "active": {
+            "rows": 1000,
+            "sourceUnits": 4800000,
+            "highlights": 896,
+            "marks": 56,
+            "query": "a",
+            "paused": "Paused"
+          },
+          "cleanup": {
+            "highlights": 0,
+            "rows": 0,
+            "memory": {
+              "rss": 454938624,
+              "heapTotal": 65814528,
+              "heapUsed": 63146648,
+              "external": 43961515,
+              "arrayBuffers": 0
+            }
+          },
+          "main": {
+            "rss": 413249536,
+            "heapTotal": 36392960,
+            "heapUsed": 32782436,
+            "external": 20120112,
+            "arrayBuffers": 0
+          },
+          "dom": {
+            "documents": 4,
+            "nodes": 466,
+            "jsEventListeners": 709
+          },
+          "threads": 37,
+          "status": {
+            "starts": 17,
+            "exits": 17,
+            "live": 0,
+            "peak": 1,
+            "resources": [
+              "TCPServerWrap",
+              "StatWatcher",
+              "StatWatcher",
+              "StatWatcher",
+              "StatWatcher",
+              "StatWatcher",
+              "StatWatcher",
+              "PipeWrap",
+              "PipeWrap",
+              "PipeWrap",
+              "ProcessWrap",
+              "TCPSocketWrap",
+              "TCPSocketWrap",
+              "TCPSocketWrap",
+              "TCPSocketWrap",
+              "TCPSocketWrap",
+              "TCPSocketWrap",
+              "TCPSocketWrap",
+              "TCPSocketWrap",
+              "TCPSocketWrap",
+              "TCPSocketWrap",
+              "Timeout",
+              "Timeout",
+              "Timeout"
+            ],
+            "beforeQuit": 1,
+            "handlers": [
+              "extensions@347293d0b4b8f3b49afdb300ad800e8cc3d5f34720d8aa937ff72e238e966385:find-open",
+              "extensions@347293d0b4b8f3b49afdb300ad800e8cc3d5f34720d8aa937ff72e238e966385:find-request",
+              "extensions@347293d0b4b8f3b49afdb300ad800e8cc3d5f34720d8aa937ff72e238e966385:find-control"
+            ],
+            "windows": [
+              {
+                "id": 2,
+                "pid": 1377933,
+                "frames": [
+                  {
+                    "processId": 5,
+                    "routingId": 1,
+                    "url": "https://renderer.freelens.app:46779/cluster/2cb8121942e3cd749887202eec4bb10d"
+                  },
+                  {
+                    "processId": 5,
+                    "routingId": 4,
+                    "url": "https://2cb8121942e3cd749887202eec4bb10d.renderer.freelens.app:46779/overview"
+                  }
+                ],
+                "listeners": [
+                  [
+                    "destroyed",
+                    1
+                  ],
+                  [
+                    "render-process-gone",
+                    1
+                  ],
+                  [
+                    "did-frame-navigate",
+                    0
+                  ]
+                ]
+              }
+            ],
+            "service": {
+              "owners": 0,
+              "retiring": 0,
+              "opening": 0,
+              "senders": 0,
+              "watch": false,
+              "executions": []
+            }
+          }
+        },
+        {
+          "cycle": 1,
+          "matchObservedMs": 458.7947700000004,
+          "inactiveMs": 78.80658500000027,
+          "active": {
+            "rows": 1000,
+            "sourceUnits": 4800000,
+            "highlights": 896,
+            "marks": 56,
+            "query": "a",
+            "paused": "Paused"
+          },
+          "cleanup": {
+            "highlights": 0,
+            "rows": 0,
+            "memory": {
+              "rss": 456638464,
+              "heapTotal": 66076672,
+              "heapUsed": 63184172,
+              "external": 44027051,
+              "arrayBuffers": 0
+            }
+          },
+          "main": {
+            "rss": 415129600,
+            "heapTotal": 36655104,
+            "heapUsed": 32752368,
+            "external": 20185288,
+            "arrayBuffers": 0
+          },
+          "dom": {
+            "documents": 4,
+            "nodes": 467,
+            "jsEventListeners": 709
+          },
+          "threads": 37,
+          "status": {
+            "starts": 19,
+            "exits": 19,
+            "live": 0,
+            "peak": 1,
+            "resources": [
+              "TCPServerWrap",
+              "StatWatcher",
+              "StatWatcher",
+              "StatWatcher",
+              "StatWatcher",
+              "StatWatcher",
+              "StatWatcher",
+              "PipeWrap",
+              "PipeWrap",
+              "PipeWrap",
+              "ProcessWrap",
+              "TCPSocketWrap",
+              "TCPSocketWrap",
+              "TCPSocketWrap",
+              "TCPSocketWrap",
+              "TCPSocketWrap",
+              "TCPSocketWrap",
+              "TCPSocketWrap",
+              "TCPSocketWrap",
+              "TCPSocketWrap",
+              "TCPSocketWrap",
+              "Timeout",
+              "Timeout",
+              "Timeout"
+            ],
+            "beforeQuit": 1,
+            "handlers": [
+              "extensions@347293d0b4b8f3b49afdb300ad800e8cc3d5f34720d8aa937ff72e238e966385:find-open",
+              "extensions@347293d0b4b8f3b49afdb300ad800e8cc3d5f34720d8aa937ff72e238e966385:find-request",
+              "extensions@347293d0b4b8f3b49afdb300ad800e8cc3d5f34720d8aa937ff72e238e966385:find-control"
+            ],
+            "windows": [
+              {
+                "id": 2,
+                "pid": 1377933,
+                "frames": [
+                  {
+                    "processId": 5,
+                    "routingId": 1,
+                    "url": "https://renderer.freelens.app:46779/cluster/2cb8121942e3cd749887202eec4bb10d"
+                  },
+                  {
+                    "processId": 5,
+                    "routingId": 4,
+                    "url": "https://2cb8121942e3cd749887202eec4bb10d.renderer.freelens.app:46779/overview"
+                  }
+                ],
+                "listeners": [
+                  [
+                    "destroyed",
+                    1
+                  ],
+                  [
+                    "render-process-gone",
+                    1
+                  ],
+                  [
+                    "did-frame-navigate",
+                    0
+                  ]
+                ]
+              }
+            ],
+            "service": {
+              "owners": 0,
+              "retiring": 0,
+              "opening": 0,
+              "senders": 0,
+              "watch": false,
+              "executions": []
+            }
+          }
+        },
+        {
+          "cycle": 2,
+          "matchObservedMs": 460.0438300000005,
+          "inactiveMs": 78.70274599999902,
+          "active": {
+            "rows": 1000,
+            "sourceUnits": 4800000,
+            "highlights": 896,
+            "marks": 56,
+            "query": "a",
+            "paused": "Paused"
+          },
+          "cleanup": {
+            "highlights": 0,
+            "rows": 0,
+            "memory": {
+              "rss": 476487680,
+              "heapTotal": 73678848,
+              "heapUsed": 70210104,
+              "external": 52360788,
+              "arrayBuffers": 0
+            }
+          },
+          "main": {
+            "rss": 414904320,
+            "heapTotal": 34820096,
+            "heapUsed": 32059320,
+            "external": 20104270,
+            "arrayBuffers": 0
+          },
+          "dom": {
+            "documents": 4,
+            "nodes": 9699,
+            "jsEventListeners": 1737
+          },
+          "threads": 37,
+          "status": {
+            "starts": 21,
+            "exits": 21,
+            "live": 0,
+            "peak": 1,
+            "resources": [
+              "TCPServerWrap",
+              "StatWatcher",
+              "StatWatcher",
+              "StatWatcher",
+              "StatWatcher",
+              "StatWatcher",
+              "StatWatcher",
+              "PipeWrap",
+              "PipeWrap",
+              "PipeWrap",
+              "ProcessWrap",
+              "TCPSocketWrap",
+              "TCPSocketWrap",
+              "TCPSocketWrap",
+              "TCPSocketWrap",
+              "TCPSocketWrap",
+              "TCPSocketWrap",
+              "TCPSocketWrap",
+              "TCPSocketWrap",
+              "TCPSocketWrap",
+              "Timeout",
+              "Timeout",
+              "Timeout",
+              "Immediate"
+            ],
+            "beforeQuit": 1,
+            "handlers": [
+              "extensions@347293d0b4b8f3b49afdb300ad800e8cc3d5f34720d8aa937ff72e238e966385:find-open",
+              "extensions@347293d0b4b8f3b49afdb300ad800e8cc3d5f34720d8aa937ff72e238e966385:find-request",
+              "extensions@347293d0b4b8f3b49afdb300ad800e8cc3d5f34720d8aa937ff72e238e966385:find-control"
+            ],
+            "windows": [
+              {
+                "id": 2,
+                "pid": 1377933,
+                "frames": [
+                  {
+                    "processId": 5,
+                    "routingId": 1,
+                    "url": "https://renderer.freelens.app:46779/cluster/2cb8121942e3cd749887202eec4bb10d"
+                  },
+                  {
+                    "processId": 5,
+                    "routingId": 4,
+                    "url": "https://2cb8121942e3cd749887202eec4bb10d.renderer.freelens.app:46779/overview"
+                  }
+                ],
+                "listeners": [
+                  [
+                    "destroyed",
+                    1
+                  ],
+                  [
+                    "render-process-gone",
+                    1
+                  ],
+                  [
+                    "did-frame-navigate",
+                    0
+                  ]
+                ]
+              }
+            ],
+            "service": {
+              "owners": 0,
+              "retiring": 0,
+              "opening": 0,
+              "senders": 0,
+              "watch": false,
+              "executions": []
+            }
+          }
+        },
+        {
+          "cycle": 3,
+          "matchObservedMs": 417.25403899999947,
+          "inactiveMs": 198.10901999999987,
+          "active": {
+            "rows": 1000,
+            "sourceUnits": 4800000,
+            "highlights": 896,
+            "marks": 56,
+            "query": "a",
+            "paused": "Paused"
+          },
+          "cleanup": {
+            "highlights": 0,
+            "rows": 0,
+            "memory": {
+              "rss": 459943936,
+              "heapTotal": 66076672,
+              "heapUsed": 62919484,
+              "external": 43924359,
+              "arrayBuffers": 0
+            }
+          },
+          "main": {
+            "rss": 415944704,
+            "heapTotal": 35082240,
+            "heapUsed": 32160428,
+            "external": 20098020,
+            "arrayBuffers": 0
+          },
+          "dom": {
+            "documents": 4,
+            "nodes": 460,
+            "jsEventListeners": 708
+          },
+          "threads": 37,
+          "status": {
+            "starts": 23,
+            "exits": 23,
+            "live": 0,
+            "peak": 1,
+            "resources": [
+              "CloseReq",
+              "CloseReq",
+              "CloseReq",
+              "TCPServerWrap",
+              "StatWatcher",
+              "StatWatcher",
+              "StatWatcher",
+              "StatWatcher",
+              "StatWatcher",
+              "StatWatcher",
+              "PipeWrap",
+              "PipeWrap",
+              "PipeWrap",
+              "ProcessWrap",
+              "TCPSocketWrap",
+              "TCPSocketWrap",
+              "TCPSocketWrap",
+              "TCPSocketWrap",
+              "TCPSocketWrap",
+              "TCPSocketWrap",
+              "TCPSocketWrap",
+              "TCPSocketWrap",
+              "TCPSocketWrap",
+              "TCPSocketWrap",
+              "TCPSocketWrap",
+              "Timeout",
+              "Timeout",
+              "Timeout"
+            ],
+            "beforeQuit": 1,
+            "handlers": [
+              "extensions@347293d0b4b8f3b49afdb300ad800e8cc3d5f34720d8aa937ff72e238e966385:find-open",
+              "extensions@347293d0b4b8f3b49afdb300ad800e8cc3d5f34720d8aa937ff72e238e966385:find-request",
+              "extensions@347293d0b4b8f3b49afdb300ad800e8cc3d5f34720d8aa937ff72e238e966385:find-control"
+            ],
+            "windows": [
+              {
+                "id": 2,
+                "pid": 1377933,
+                "frames": [
+                  {
+                    "processId": 5,
+                    "routingId": 1,
+                    "url": "https://renderer.freelens.app:46779/cluster/2cb8121942e3cd749887202eec4bb10d"
+                  },
+                  {
+                    "processId": 5,
+                    "routingId": 4,
+                    "url": "https://2cb8121942e3cd749887202eec4bb10d.renderer.freelens.app:46779/overview"
+                  }
+                ],
+                "listeners": [
+                  [
+                    "destroyed",
+                    1
+                  ],
+                  [
+                    "render-process-gone",
+                    1
+                  ],
+                  [
+                    "did-frame-navigate",
+                    0
+                  ]
+                ]
+              }
+            ],
+            "service": {
+              "owners": 0,
+              "retiring": 0,
+              "opening": 0,
+              "senders": 0,
+              "watch": false,
+              "executions": []
+            }
+          }
+        },
+        {
+          "cycle": 4,
+          "matchObservedMs": 418.87223000000085,
+          "inactiveMs": 114.60445000000072,
+          "active": {
+            "rows": 1000,
+            "sourceUnits": 4800000,
+            "highlights": 896,
+            "marks": 52,
+            "query": "a",
+            "paused": "Paused"
+          },
+          "cleanup": {
+            "highlights": 0,
+            "rows": 0,
+            "memory": {
+              "rss": 482930688,
+              "heapTotal": 73154560,
+              "heapUsed": 70080996,
+              "external": 52161116,
+              "arrayBuffers": 0
+            }
+          },
+          "main": {
+            "rss": 415801344,
+            "heapTotal": 34820096,
+            "heapUsed": 31953072,
+            "external": 20102054,
+            "arrayBuffers": 0
+          },
+          "dom": {
+            "documents": 4,
+            "nodes": 9701,
+            "jsEventListeners": 1737
+          },
+          "threads": 37,
+          "status": {
+            "starts": 25,
+            "exits": 25,
+            "live": 0,
+            "peak": 1,
+            "resources": [
+              "TCPServerWrap",
+              "StatWatcher",
+              "StatWatcher",
+              "StatWatcher",
+              "StatWatcher",
+              "StatWatcher",
+              "StatWatcher",
+              "PipeWrap",
+              "PipeWrap",
+              "PipeWrap",
+              "ProcessWrap",
+              "TCPSocketWrap",
+              "TCPSocketWrap",
+              "TCPSocketWrap",
+              "TCPSocketWrap",
+              "TCPSocketWrap",
+              "TCPSocketWrap",
+              "TCPSocketWrap",
+              "TCPSocketWrap",
+              "TCPSocketWrap",
+              "Timeout",
+              "Timeout",
+              "Timeout",
+              "Immediate"
+            ],
+            "beforeQuit": 1,
+            "handlers": [
+              "extensions@347293d0b4b8f3b49afdb300ad800e8cc3d5f34720d8aa937ff72e238e966385:find-open",
+              "extensions@347293d0b4b8f3b49afdb300ad800e8cc3d5f34720d8aa937ff72e238e966385:find-request",
+              "extensions@347293d0b4b8f3b49afdb300ad800e8cc3d5f34720d8aa937ff72e238e966385:find-control"
+            ],
+            "windows": [
+              {
+                "id": 2,
+                "pid": 1377933,
+                "frames": [
+                  {
+                    "processId": 5,
+                    "routingId": 1,
+                    "url": "https://renderer.freelens.app:46779/cluster/2cb8121942e3cd749887202eec4bb10d"
+                  },
+                  {
+                    "processId": 5,
+                    "routingId": 4,
+                    "url": "https://2cb8121942e3cd749887202eec4bb10d.renderer.freelens.app:46779/overview"
+                  }
+                ],
+                "listeners": [
+                  [
+                    "destroyed",
+                    1
+                  ],
+                  [
+                    "render-process-gone",
+                    1
+                  ],
+                  [
+                    "did-frame-navigate",
+                    0
+                  ]
+                ]
+              }
+            ],
+            "service": {
+              "owners": 0,
+              "retiring": 0,
+              "opening": 0,
+              "senders": 0,
+              "watch": false,
+              "executions": []
+            }
+          }
+        },
+        {
+          "cycle": 5,
+          "matchObservedMs": 425.5558170000004,
+          "inactiveMs": 80.24677599999995,
+          "active": {
+            "rows": 1000,
+            "sourceUnits": 4800000,
+            "highlights": 896,
+            "marks": 56,
+            "query": "a",
+            "paused": "Paused"
+          },
+          "cleanup": {
+            "highlights": 0,
+            "rows": 0,
+            "memory": {
+              "rss": 465694720,
+              "heapTotal": 66863104,
+              "heapUsed": 63574400,
+              "external": 44027058,
+              "arrayBuffers": 0
+            }
+          },
+          "main": {
+            "rss": 414916608,
+            "heapTotal": 36655104,
+            "heapUsed": 32794988,
+            "external": 20119392,
+            "arrayBuffers": 0
+          },
+          "dom": {
+            "documents": 4,
+            "nodes": 471,
+            "jsEventListeners": 709
+          },
+          "threads": 37,
+          "status": {
+            "starts": 27,
+            "exits": 27,
+            "live": 0,
+            "peak": 1,
+            "resources": [
+              "TCPServerWrap",
+              "StatWatcher",
+              "StatWatcher",
+              "StatWatcher",
+              "StatWatcher",
+              "StatWatcher",
+              "StatWatcher",
+              "PipeWrap",
+              "PipeWrap",
+              "PipeWrap",
+              "ProcessWrap",
+              "TCPSocketWrap",
+              "TCPSocketWrap",
+              "TCPSocketWrap",
+              "TCPSocketWrap",
+              "TCPSocketWrap",
+              "TCPSocketWrap",
+              "TCPSocketWrap",
+              "TCPSocketWrap",
+              "TCPSocketWrap",
+              "TCPSocketWrap",
+              "Timeout",
+              "Timeout",
+              "Timeout"
+            ],
+            "beforeQuit": 1,
+            "handlers": [
+              "extensions@347293d0b4b8f3b49afdb300ad800e8cc3d5f34720d8aa937ff72e238e966385:find-open",
+              "extensions@347293d0b4b8f3b49afdb300ad800e8cc3d5f34720d8aa937ff72e238e966385:find-request",
+              "extensions@347293d0b4b8f3b49afdb300ad800e8cc3d5f34720d8aa937ff72e238e966385:find-control"
+            ],
+            "windows": [
+              {
+                "id": 2,
+                "pid": 1377933,
+                "frames": [
+                  {
+                    "processId": 5,
+                    "routingId": 1,
+                    "url": "https://renderer.freelens.app:46779/cluster/2cb8121942e3cd749887202eec4bb10d"
+                  },
+                  {
+                    "processId": 5,
+                    "routingId": 4,
+                    "url": "https://2cb8121942e3cd749887202eec4bb10d.renderer.freelens.app:46779/overview"
+                  }
+                ],
+                "listeners": [
+                  [
+                    "destroyed",
+                    1
+                  ],
+                  [
+                    "render-process-gone",
+                    1
+                  ],
+                  [
+                    "did-frame-navigate",
+                    0
+                  ]
+                ]
+              }
+            ],
+            "service": {
+              "owners": 0,
+              "retiring": 0,
+              "opening": 0,
+              "senders": 0,
+              "watch": false,
+              "executions": []
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "limits": "Three warmups and six samples per bound. Natural private-output frames; no screenshots. Native input cadence remains unverified.",
+  "frameCadence": {
+    "session": {
+      "pid": 1377493,
+      "privateInstance": "efb50993780079460b0cbed1363e2166a2de1d9f_1793084474_1968440023",
+      "privateRuntime": "/tmp/fd-vd4v4ee_",
+      "owned": [
+        {
+          "address": "0x55d3bd2c0270",
+          "mapped": true,
+          "hidden": false,
+          "visible": true,
+          "acceptsInput": true,
+          "at": [
+            21,
+            21
+          ],
+          "size": [
+            1238,
+            678
+          ],
+          "workspace": {
+            "id": 7,
+            "name": "7"
+          },
+          "floating": false,
+          "monitor": 0,
+          "class": "freelens",
+          "title": "Freelens",
+          "initialClass": "freelens",
+          "initialTitle": "Freelens",
+          "pid": 1377493,
+          "xwayland": false,
+          "pinned": false,
+          "pinFullscreened": false,
+          "fullscreen": 0,
+          "fullscreenClient": 0,
+          "fullscreenHandler": "default",
+          "allowedOverFullscreen": true,
+          "grouped": [],
+          "tags": [],
+          "swallowing": "0x0",
+          "focusHistoryID": 0,
+          "inhibitingIdle": false,
+          "xdgTag": "",
+          "xdgDescription": "",
+          "contentType": "none",
+          "tearingHint": false,
+          "stableId": "18000003"
+        }
+      ]
+    },
+    "scope": "Private output/DOM cadence only; no native input or latency claim.",
+    "monitors": [
+      {
+        "id": 0,
+        "name": "WAYLAND-1",
+        "description": "",
+        "make": "",
+        "model": "",
+        "serial": "",
+        "width": 1280,
+        "height": 720,
+        "physicalWidth": 0,
+        "physicalHeight": 0,
+        "refreshRate": 60,
+        "x": 0,
+        "y": 0,
+        "activeWorkspace": {
+          "id": 7,
+          "name": "7"
+        },
+        "specialWorkspace": {
+          "id": 0,
+          "name": ""
+        },
+        "reserved": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "scale": 1,
+        "transform": 0,
+        "focused": true,
+        "dpmsStatus": true,
+        "vrr": false,
+        "solitary": "0",
+        "solitaryBlockedBy": [
+          "WINDOWED",
+          "CANDIDATE"
+        ],
+        "activelyTearing": false,
+        "tearingBlockedBy": [
+          "NOT_TORN",
+          "USER",
+          "SUPPORT",
+          "CANDIDATE",
+          "HW_CURSOR"
+        ],
+        "directScanoutTo": "0",
+        "directScanoutBlockedBy": [
+          "USER",
+          "CANDIDATE"
+        ],
+        "disabled": false,
+        "currentFormat": "XRGB8888",
+        "mirrorOf": "none",
+        "availableModes": [],
+        "colorManagementPreset": "srgb",
+        "sdrBrightness": 1,
+        "sdrSaturation": 1,
+        "sdrMinLuminance": 0.2,
+        "sdrMaxLuminance": 80,
+        "hardwareCursorsInUse": true
+      }
+    ],
+    "renderer": {
+      "times": [
+        55438.3,
+        55455,
+        55471.6,
+        55488.3,
+        55505,
+        55521.7,
+        55538.4,
+        55555,
+        55571.7,
+        55588.3,
+        55605,
+        55621.7,
+        55638.4,
+        55655,
+        55671.7,
+        55688.3,
+        55705,
+        55721.6,
+        55738.3,
+        55755,
+        55771.6,
+        55788.3,
+        55805,
+        55821.6,
+        55838.3,
+        55855,
+        55871.6,
+        55888.3,
+        55905,
+        55921.7,
+        55938.3,
+        55954.9,
+        55971.6,
+        55988.3,
+        56004.9,
+        56021.7,
+        56038.3,
+        56054.9,
+        56071.6,
+        56088.4,
+        56105,
+        56121.6,
+        56138.3,
+        56155,
+        56171.6,
+        56188.3,
+        56205,
+        56221.6,
+        56238.3,
+        56255,
+        56271.6,
+        56288.3,
+        56304.9,
+        56321.7,
+        56338.3,
+        56355,
+        56371.7,
+        56388.2,
+        56405,
+        56421.7,
+        56438.3
+      ],
+      "visibility": "visible",
+      "focused": false,
+      "width": 1163,
+      "height": 617
+    },
+    "gapsMs": [
+      16.69999999999709,
+      16.599999999998545,
+      16.700000000004366,
+      16.69999999999709,
+      16.69999999999709,
+      16.700000000004366,
+      16.599999999998545,
+      16.69999999999709,
+      16.60000000000582,
+      16.69999999999709,
+      16.69999999999709,
+      16.700000000004366,
+      16.599999999998545,
+      16.69999999999709,
+      16.60000000000582,
+      16.69999999999709,
+      16.599999999998545,
+      16.700000000004366,
+      16.69999999999709,
+      16.599999999998545,
+      16.700000000004366,
+      16.69999999999709,
+      16.599999999998545,
+      16.700000000004366,
+      16.69999999999709,
+      16.599999999998545,
+      16.700000000004366,
+      16.69999999999709,
+      16.69999999999709,
+      16.60000000000582,
+      16.599999999998545,
+      16.69999999999709,
+      16.700000000004366,
+      16.599999999998545,
+      16.799999999995634,
+      16.60000000000582,
+      16.599999999998545,
+      16.69999999999709,
+      16.80000000000291,
+      16.599999999998545,
+      16.599999999998545,
+      16.700000000004366,
+      16.69999999999709,
+      16.599999999998545,
+      16.700000000004366,
+      16.69999999999709,
+      16.599999999998545,
+      16.700000000004366,
+      16.69999999999709,
+      16.599999999998545,
+      16.700000000004366,
+      16.599999999998545,
+      16.799999999995634,
+      16.60000000000582,
+      16.69999999999709,
+      16.69999999999709,
+      16.5,
+      16.80000000000291,
+      16.69999999999709,
+      16.60000000000582
+    ],
+    "pass": true
+  },
+  "error": "Error: Mounted soak did not settle\n    at until (file:///home/max/work/freelens-json-logs/scripts/find-production-host/mounted-soak.mjs:12:106)\n    at async file:///home/max/work/freelens-json-logs/scripts/find-production-host/mounted-soak.mjs:32:7"
+}

@@ -1,0 +1,36 @@
+{
+  "hostPid": 3337439,
+  "hostExit": 0,
+  "displayPids": {
+    "outerPid": 3335285,
+    "hyprlandPid": 3335303
+  },
+  "allOwnedPidsGone": true,
+  "profileRemoved": true,
+  "runtimeRemoved": true,
+  "profile": "/tmp/freelens-production-find-48-3p6kmjw7",
+  "runtime": "/tmp/fd-flt0h7pf",
+  "preserved": {
+    "GLOSSARY.md": {
+      "before": "79ab61253e4d9d0722392053071806534e24b5d5b3b2f8729f5fa5f1c67ecf09",
+      "after": "79ab61253e4d9d0722392053071806534e24b5d5b3b2f8729f5fa5f1c67ecf09"
+    },
+    "docs/README.md": {
+      "before": "68512a5dd9f5f3e29343f7efc25fdbe178a2addf5a2b0212bab31e0d9615a45a",
+      "after": "68512a5dd9f5f3e29343f7efc25fdbe178a2addf5a2b0212bab31e0d9615a45a"
+    },
+    "package.json": {
+      "before": "f7b3b7742ca637c0db7e551971f2782150c0e5f86379164b6eb98274658b08f1",
+      "after": "f7b3b7742ca637c0db7e551971f2782150c0e5f86379164b6eb98274658b08f1"
+    },
+    "package-lock.json": {
+      "before": "96d308041d13497cca2168499cc19879422e4b49cf001453e0f419bed3e2b45a",
+      "after": "96d308041d13497cca2168499cc19879422e4b49cf001453e0f419bed3e2b45a"
+    },
+    "/home/max/.config/Freelens/extension-store/freelens-readable-logs/readable-logs.json": {
+      "before": "5816d46905ad1caf0623c286f6788f2127faf32fd933cbf66019fe91994ac8b7",
+      "after": "5816d46905ad1caf0623c286f6788f2127faf32fd933cbf66019fe91994ac8b7"
+    }
+  },
+  "namespace": "No Kubernetes mutation in fixed-package check; read-only single-json fixture"
+}

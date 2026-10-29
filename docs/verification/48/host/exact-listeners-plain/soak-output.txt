@@ -1,0 +1,3 @@
+{"name":"dense","cycles":30}
+{"name":"long","cycles":30}
+{"pass":true}

@@ -1,0 +1,287 @@
+{
+  "session": {
+    "pid": 1678718,
+    "privateInstance": "efb50993780079460b0cbed1363e2166a2de1d9f_1793088997_266925434",
+    "privateRuntime": "/tmp/fd-w6jo1gmt",
+    "owned": [
+      {
+        "address": "0x5586ce8be2d0",
+        "mapped": true,
+        "hidden": false,
+        "visible": true,
+        "acceptsInput": true,
+        "at": [
+          21,
+          21
+        ],
+        "size": [
+          1238,
+          678
+        ],
+        "workspace": {
+          "id": 7,
+          "name": "7"
+        },
+        "floating": false,
+        "monitor": 0,
+        "class": "freelens",
+        "title": "Freelens",
+        "initialClass": "freelens",
+        "initialTitle": "Freelens",
+        "pid": 1678718,
+        "xwayland": false,
+        "pinned": false,
+        "pinFullscreened": false,
+        "fullscreen": 0,
+        "fullscreenClient": 0,
+        "fullscreenHandler": "default",
+        "allowedOverFullscreen": true,
+        "grouped": [],
+        "tags": [],
+        "swallowing": "0x0",
+        "focusHistoryID": 0,
+        "inhibitingIdle": false,
+        "xdgTag": "",
+        "xdgDescription": "",
+        "contentType": "none",
+        "tearingHint": false,
+        "stableId": "18000007"
+      }
+    ]
+  },
+  "checks": [],
+  "scope": "Installed DOM, actual snapshots and worker exits; diagnostic private compositor. No physical/native input or clipboard.",
+  "error": "Error: Error: Grouped mark skipped member 13: [{\"i\":0,\"active\":0,\"expected\":0,\"liveMembers\":19,\"connected\":false,\"label\":\"Find 19 matching records, starting at 1 of 1000; activate to cycle\",\"currentFirst\":\"<button type=\\\"button\\\" class=\\\"rl-find-mark\\\" aria-label=\\\"Find 19 matching records, starting at 1 of 1000; activate to cycle\\\" title=\\\"Find 19 matching records, starting at 1 of 1000; activate to cycle\\\" aria-current=\\\"true\\\" style=\\\"top: 0px;\\\"></button>\",\"client\":383,\"status\":\"Highlighting incomplete: visible text exceeds the decoration limit. Exact matches remain available.\"},{\"i\":1,\"active\":1,\"expected\":1,\"liveMembers\":19,\"connected\":false,\"label\":\"Find 19 matching records, starting at 1 of 1000; activate to cycle\",\"client\":412},{\"i\":2,\"active\":2,\"expected\":2,\"liveMembers\":19,\"connected\":true,\"label\":\"Find 19 matching records, starting at 1 of 1000; activate to cycle\",\"currentFirst\":\"<button type=\\\"button\\\" class=\\\"rl-find-mark\\\" aria-label=\\\"Find 19 matching records, starting at 1 of 1000; activate to cycle\\\" title=\\\"Find 19 matching records, starting at 1 of 1000; activate to cycle\\\" aria-current=\\\"true\\\" style=\\\"top: 0px;\\\"></button>\",\"client\":383,\"status\":\"Highlighting pending; exact matches remain available.\"},{\"i\":3,\"active\":3,\"expected\":3,\"liveMembers\":19,\"connected\":true,\"label\":\"Find 19 matching records, starting at 1 of 1000; activate to cycle\",\"currentFirst\":\"<button type=\\\"button\\\" class=\\\"rl-find-mark\\\" aria-label=\\\"Find 19 matching records, starting at 1 of 1000; activate to cycle\\\" title=\\\"Find 19 matching records, starting at 1 of 1000; activate to cycle\\\" aria-current=\\\"true\\\" style=\\\"top: 0px;\\\"></button>\",\"client\":383,\"status\":\"Highlighting pending; exact matches remain available.\"},{\"i\":4,\"active\":4,\"expected\":4,\"liveMembers\":19,\"connected\":true,\"label\":\"Find 19 matching records, starting at 1 of 1000; activate to cycle\",\"currentFirst\":\"<button type=\\\"button\\\" class=\\\"rl-find-mark\\\" aria-label=\\\"Find 19 matching records, starting at 1 of 1000; activate to cycle\\\" title=\\\"Find 19 matching records, starting at 1 of 1000; activate to cycle\\\" aria-current=\\\"true\\\" style=\\\"top: 0px;\\\"></button>\",\"client\":383,\"status\":\"Highlighting pending; exact matches remain available.\"},{\"i\":5,\"active\":5,\"expected\":5,\"liveMembers\":19,\"connected\":true,\"label\":\"Find 19 matching records, starting at 1 of 1000; activate to cycle\",\"currentFirst\":\"<button type=\\\"button\\\" class=\\\"rl-find-mark\\\" aria-label=\\\"Find 19 matching records, starting at 1 of 1000; activate to cycle\\\" title=\\\"Find 19 matching records, starting at 1 of 1000; activate to cycle\\\" aria-current=\\\"true\\\" style=\\\"top: 0px;\\\"></button>\",\"client\":383,\"status\":\"Highlighting pending; exact matches remain available.\"},{\"i\":6,\"active\":6,\"expected\":6,\"liveMembers\":19,\"connected\":true,\"label\":\"Find 19 matching records, starting at 1 of 1000; activate to cycle\",\"currentFirst\":\"<button type=\\\"button\\\" class=\\\"rl-find-mark\\\" aria-label=\\\"Find 19 matching records, starting at 1 of 1000; activate to cycle\\\" title=\\\"Find 19 matching records, starting at 1 of 1000; activate to cycle\\\" aria-current=\\\"true\\\" style=\\\"top: 0px;\\\"></button>\",\"client\":383,\"status\":\"Highlighting pending; exact matches remain available.\"},{\"i\":7,\"active\":7,\"expected\":7,\"liveMembers\":19,\"connected\":true,\"label\":\"Find 19 matching records, starting at 1 of 1000; activate to cycle\",\"currentFirst\":\"<button type=\\\"button\\\" class=\\\"rl-find-mark\\\" aria-label=\\\"Find 19 matching records, starting at 1 of 1000; activate to cycle\\\" title=\\\"Find 19 matching records, starting at 1 of 1000; activate to cycle\\\" aria-current=\\\"true\\\" style=\\\"top: 0px;\\\"></button>\",\"client\":383,\"status\":\"Highlighting pending; exact matches remain available.\"},{\"i\":8,\"active\":8,\"expected\":8,\"liveMembers\":19,\"connected\":false,\"label\":\"Find 19 matching records, starting at 1 of 1000; activate to cycle\",\"client\":412},{\"i\":9,\"active\":9,\"expected\":9,\"liveMembers\":19,\"connected\":true,\"label\":\"Find 19 matching records, starting at 1 of 1000; activate to cycle\",\"currentFirst\":\"<button type=\\\"button\\\" class=\\\"rl-find-mark\\\" aria-label=\\\"Find 19 matching records, starting at 1 of 1000; activate to cycle\\\" title=\\\"Find 19 matching records, starting at 1 of 1000; activate to cycle\\\" aria-current=\\\"true\\\" style=\\\"top: 0px;\\\"></button>\",\"client\":383,\"status\":\"Highlighting pending; exact matches remain available.\"},{\"i\":10,\"active\":10,\"expected\":10,\"liveMembers\":19,\"connected\":true,\"label\":\"Find 19 matching records, starting at 1 of 1000; activate to cycle\",\"currentFirst\":\"<button type=\\\"button\\\" class=\\\"rl-find-mark\\\" aria-label=\\\"Find 19 matching records, starting at 1 of 1000; activate to cycle\\\" title=\\\"Find 19 matching records, starting at 1 of 1000; activate to cycle\\\" aria-current=\\\"true\\\" style=\\\"top: 0px;\\\"></button>\",\"client\":383,\"status\":\"Highlighting pending; exact matches remain available.\"},{\"i\":11,\"active\":11,\"expected\":11,\"liveMembers\":19,\"connected\":true,\"label\":\"Find 19 matching records, starting at 1 of 1000; activate to cycle\",\"currentFirst\":\"<button type=\\\"button\\\" class=\\\"rl-find-mark\\\" aria-label=\\\"Find 19 matching records, starting at 1 of 1000; activate to cycle\\\" title=\\\"Find 19 matching records, starting at 1 of 1000; activate to cycle\\\" aria-current=\\\"true\\\" style=\\\"top: 0px;\\\"></button>\",\"client\":383,\"status\":\"Highlighting pending; exact matches remain available.\"},{\"i\":12,\"active\":12,\"expected\":12,\"liveMembers\":19,\"connected\":true,\"label\":\"Find 19 matching records, starting at 1 of 1000; activate to cycle\",\"currentFirst\":\"<button type=\\\"button\\\" class=\\\"rl-find-mark\\\" aria-label=\\\"Find 19 matching records, starting at 1 of 1000; activate to cycle\\\" title=\\\"Find 19 matching records, starting at 1 of 1000; activate to cycle\\\" aria-current=\\\"true\\\" style=\\\"top: 0px;\\\"></button>\",\"client\":383,\"status\":\"Highlighting pending; exact matches remain available.\"},{\"i\":13,\"active\":-1,\"expected\":13,\"liveMembers\":19,\"connected\":false,\"label\":\"Find 19 matching records, starting at 1 of 1000; activate to cycle\",\"client\":412}]\n    at <anonymous>:9:554\n    at Object.evaluate (file:///home/max/work/freelens-json-logs/scripts/find-production-host/cdp.mjs:46:40)\n    at async file:///home/max/work/freelens-json-logs/scripts/find-production-host/marks-following.mjs:41:20",
+  "groupTrace": [
+    {
+      "i": 0,
+      "active": 0,
+      "expected": 0,
+      "liveMembers": 19,
+      "connected": false,
+      "label": "Find 19 matching records, starting at 1 of 1000; activate to cycle",
+      "currentFirst": "<button type=\"button\" class=\"rl-find-mark\" aria-label=\"Find 19 matching records, starting at 1 of 1000; activate to cycle\" title=\"Find 19 matching records, starting at 1 of 1000; activate to cycle\" aria-current=\"true\" style=\"top: 0px;\"></button>",
+      "client": 383,
+      "status": "Highlighting incomplete: visible text exceeds the decoration limit. Exact matches remain available."
+    },
+    {
+      "i": 1,
+      "active": 1,
+      "expected": 1,
+      "liveMembers": 19,
+      "connected": false,
+      "label": "Find 19 matching records, starting at 1 of 1000; activate to cycle",
+      "client": 412
+    },
+    {
+      "i": 2,
+      "active": 2,
+      "expected": 2,
+      "liveMembers": 19,
+      "connected": true,
+      "label": "Find 19 matching records, starting at 1 of 1000; activate to cycle",
+      "currentFirst": "<button type=\"button\" class=\"rl-find-mark\" aria-label=\"Find 19 matching records, starting at 1 of 1000; activate to cycle\" title=\"Find 19 matching records, starting at 1 of 1000; activate to cycle\" aria-current=\"true\" style=\"top: 0px;\"></button>",
+      "client": 383,
+      "status": "Highlighting pending; exact matches remain available."
+    },
+    {
+      "i": 3,
+      "active": 3,
+      "expected": 3,
+      "liveMembers": 19,
+      "connected": true,
+      "label": "Find 19 matching records, starting at 1 of 1000; activate to cycle",
+      "currentFirst": "<button type=\"button\" class=\"rl-find-mark\" aria-label=\"Find 19 matching records, starting at 1 of 1000; activate to cycle\" title=\"Find 19 matching records, starting at 1 of 1000; activate to cycle\" aria-current=\"true\" style=\"top: 0px;\"></button>",
+      "client": 383,
+      "status": "Highlighting pending; exact matches remain available."
+    },
+    {
+      "i": 4,
+      "active": 4,
+      "expected": 4,
+      "liveMembers": 19,
+      "connected": true,
+      "label": "Find 19 matching records, starting at 1 of 1000; activate to cycle",
+      "currentFirst": "<button type=\"button\" class=\"rl-find-mark\" aria-label=\"Find 19 matching records, starting at 1 of 1000; activate to cycle\" title=\"Find 19 matching records, starting at 1 of 1000; activate to cycle\" aria-current=\"true\" style=\"top: 0px;\"></button>",
+      "client": 383,
+      "status": "Highlighting pending; exact matches remain available."
+    },
+    {
+      "i": 5,
+      "active": 5,
+      "expected": 5,
+      "liveMembers": 19,
+      "connected": true,
+      "label": "Find 19 matching records, starting at 1 of 1000; activate to cycle",
+      "currentFirst": "<button type=\"button\" class=\"rl-find-mark\" aria-label=\"Find 19 matching records, starting at 1 of 1000; activate to cycle\" title=\"Find 19 matching records, starting at 1 of 1000; activate to cycle\" aria-current=\"true\" style=\"top: 0px;\"></button>",
+      "client": 383,
+      "status": "Highlighting pending; exact matches remain available."
+    },
+    {
+      "i": 6,
+      "active": 6,
+      "expected": 6,
+      "liveMembers": 19,
+      "connected": true,
+      "label": "Find 19 matching records, starting at 1 of 1000; activate to cycle",
+      "currentFirst": "<button type=\"button\" class=\"rl-find-mark\" aria-label=\"Find 19 matching records, starting at 1 of 1000; activate to cycle\" title=\"Find 19 matching records, starting at 1 of 1000; activate to cycle\" aria-current=\"true\" style=\"top: 0px;\"></button>",
+      "client": 383,
+      "status": "Highlighting pending; exact matches remain available."
+    },
+    {
+      "i": 7,
+      "active": 7,
+      "expected": 7,
+      "liveMembers": 19,
+      "connected": true,
+      "label": "Find 19 matching records, starting at 1 of 1000; activate to cycle",
+      "currentFirst": "<button type=\"button\" class=\"rl-find-mark\" aria-label=\"Find 19 matching records, starting at 1 of 1000; activate to cycle\" title=\"Find 19 matching records, starting at 1 of 1000; activate to cycle\" aria-current=\"true\" style=\"top: 0px;\"></button>",
+      "client": 383,
+      "status": "Highlighting pending; exact matches remain available."
+    },
+    {
+      "i": 8,
+      "active": 8,
+      "expected": 8,
+      "liveMembers": 19,
+      "connected": false,
+      "label": "Find 19 matching records, starting at 1 of 1000; activate to cycle",
+      "client": 412
+    },
+    {
+      "i": 9,
+      "active": 9,
+      "expected": 9,
+      "liveMembers": 19,
+      "connected": true,
+      "label": "Find 19 matching records, starting at 1 of 1000; activate to cycle",
+      "currentFirst": "<button type=\"button\" class=\"rl-find-mark\" aria-label=\"Find 19 matching records, starting at 1 of 1000; activate to cycle\" title=\"Find 19 matching records, starting at 1 of 1000; activate to cycle\" aria-current=\"true\" style=\"top: 0px;\"></button>",
+      "client": 383,
+      "status": "Highlighting pending; exact matches remain available."
+    },
+    {
+      "i": 10,
+      "active": 10,
+      "expected": 10,
+      "liveMembers": 19,
+      "connected": true,
+      "label": "Find 19 matching records, starting at 1 of 1000; activate to cycle",
+      "currentFirst": "<button type=\"button\" class=\"rl-find-mark\" aria-label=\"Find 19 matching records, starting at 1 of 1000; activate to cycle\" title=\"Find 19 matching records, starting at 1 of 1000; activate to cycle\" aria-current=\"true\" style=\"top: 0px;\"></button>",
+      "client": 383,
+      "status": "Highlighting pending; exact matches remain available."
+    },
+    {
+      "i": 11,
+      "active": 11,
+      "expected": 11,
+      "liveMembers": 19,
+      "connected": true,
+      "label": "Find 19 matching records, starting at 1 of 1000; activate to cycle",
+      "currentFirst": "<button type=\"button\" class=\"rl-find-mark\" aria-label=\"Find 19 matching records, starting at 1 of 1000; activate to cycle\" title=\"Find 19 matching records, starting at 1 of 1000; activate to cycle\" aria-current=\"true\" style=\"top: 0px;\"></button>",
+      "client": 383,
+      "status": "Highlighting pending; exact matches remain available."
+    },
+    {
+      "i": 12,
+      "active": 12,
+      "expected": 12,
+      "liveMembers": 19,
+      "connected": true,
+      "label": "Find 19 matching records, starting at 1 of 1000; activate to cycle",
+      "currentFirst": "<button type=\"button\" class=\"rl-find-mark\" aria-label=\"Find 19 matching records, starting at 1 of 1000; activate to cycle\" title=\"Find 19 matching records, starting at 1 of 1000; activate to cycle\" aria-current=\"true\" style=\"top: 0px;\"></button>",
+      "client": 383,
+      "status": "Highlighting pending; exact matches remain available."
+    },
+    {
+      "i": 13,
+      "active": -1,
+      "expected": 13,
+      "liveMembers": 19,
+      "connected": false,
+      "label": "Find 19 matching records, starting at 1 of 1000; activate to cycle",
+      "client": 412
+    }
+  ],
+  "closed": {
+    "starts": 5,
+    "exits": 5,
+    "live": 0,
+    "peak": 1,
+    "resources": [
+      "TCPServerWrap",
+      "StatWatcher",
+      "StatWatcher",
+      "StatWatcher",
+      "StatWatcher",
+      "StatWatcher",
+      "StatWatcher",
+      "PipeWrap",
+      "PipeWrap",
+      "PipeWrap",
+      "ProcessWrap",
+      "TCPSocketWrap",
+      "TCPSocketWrap",
+      "TCPSocketWrap",
+      "TCPSocketWrap",
+      "TCPSocketWrap",
+      "TCPSocketWrap",
+      "TCPSocketWrap",
+      "TCPSocketWrap",
+      "TCPSocketWrap",
+      "TCPSocketWrap",
+      "TCPSocketWrap",
+      "TCPSocketWrap",
+      "TCPSocketWrap",
+      "TCPSocketWrap",
+      "Timeout",
+      "Timeout",
+      "Timeout"
+    ],
+    "beforeQuit": 1,
+    "handlers": [
+      "extensions@5549a8df546ddf94adee61bd4f223ca83fdaa6ca1e81efb97b5cb716e25b8003:find-open",
+      "extensions@5549a8df546ddf94adee61bd4f223ca83fdaa6ca1e81efb97b5cb716e25b8003:find-request",
+      "extensions@5549a8df546ddf94adee61bd4f223ca83fdaa6ca1e81efb97b5cb716e25b8003:find-control"
+    ],
+    "windows": [
+      {
+        "id": 2,
+        "pid": 1679131,
+        "frames": [
+          {
+            "processId": 5,
+            "routingId": 1,
+            "url": "https://renderer.freelens.app:37717/cluster/3fc1e54bffaeb552de4347160966a7e9"
+          },
+          {
+            "processId": 5,
+            "routingId": 4,
+            "url": "https://3fc1e54bffaeb552de4347160966a7e9.renderer.freelens.app:37717/overview"
+          }
+        ],
+        "listeners": [
+          [
+            "destroyed",
+            1
+          ],
+          [
+            "render-process-gone",
+            1
+          ],
+          [
+            "did-frame-navigate",
+            0
+          ]
+        ]
+      }
+    ],
+    "service": {
+      "owners": 0,
+      "retiring": 0,
+      "opening": 0,
+      "senders": 0,
+      "watch": false,
+      "executions": []
+    }
+  }
+}

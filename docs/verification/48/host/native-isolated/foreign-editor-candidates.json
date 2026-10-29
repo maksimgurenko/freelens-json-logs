@@ -1,0 +1,26 @@
+{
+  "cluster": [
+    {
+      "tag": "INPUT",
+      "id": "",
+      "placeholder": null,
+      "visible": true,
+      "outer": "<input type=\"checkbox\" checked=\"\">"
+    },
+    {
+      "tag": "INPUT",
+      "id": "",
+      "placeholder": null,
+      "visible": true,
+      "outer": "<input type=\"checkbox\">"
+    },
+    {
+      "tag": "INPUT",
+      "id": "rl-find",
+      "placeholder": "Search retained logs",
+      "visible": true,
+      "outer": "<input id=\"rl-find\" type=\"search\" aria-label=\"Find in logs\" placeholder=\"Search retained logs\" title=\"Next: Enter or Ctrl+G; previous: Shift+Enter or Ctrl+Shift+G\" value=\"あ\">"
+    }
+  ],
+  "root": []
+}

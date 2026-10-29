@@ -1,0 +1,26 @@
+{
+  "sources": {
+    "scripts/find-production-host/native-completion-pending.mjs": "68bb527756fe173f41ccfc140cb804251b39e28476cfe51a49694906aa15a8b2",
+    "scripts/find-production-host/native-input.mjs": "fc32053edc9996fc1da668a3e6b221e79ffd7d7398cbc48a5dd307aca901a6e4",
+    "scripts/find-production-host/native-completion-hidden.mjs": "6fb59067a944163678a3255837d055894fb61aba37b6d6e771eda2e0caaf4f3c",
+    "scripts/find-production-host/native-completion-ime.mjs": "83e696d296a88ab543f37a60e5c648a9543715cc09ebb24b8b9373c6f32bd6ed",
+    "scripts/find-production-host/native-ime-replacement.mjs": "3aa66a270506b45853d2f920d0520d34cdbb10085a96926828ba4454bc99d8ce",
+    "scripts/find-production-host/native-completion-selection-boundaries.mjs": "8ecd8058d630f14b18a750e4cb31345f26c4f14f1130ca76ee568c95eadee50f",
+    "scripts/find-production-host/native-harness-cleanup.mjs": "1740de0da3fa6d004386811ed7d18222479f949b0ce6d9b618f194d2808a135b",
+    "scripts/find-production-host/native-window-lifecycle.mjs": "1f968e75cfe578e37d038a084f4bf718624dd41f3e709a36770381018eaaeb2f",
+    "scripts/find-production-host/native-completion-final-edges.mjs": "7fce8276f35392da4df0bda9bf335f4ef36538e9ed66700f79ba37b587e8d081",
+    "scripts/find-production-host/native-surfaces.mjs": "abc7267ac3795ed40c1e7b72c3ccc87dc5f73c19cca66584c347eda980304eca",
+    "scripts/find-production-host/native-completion-selection.mjs": "d8ba880ea2b1e3dc6005cf36b2b0d15144e047613737ec04e1baca67f6a55c74",
+    "scripts/find-production-host/native-completion-common.mjs": "15ad25aee844b4414266bd0d57c0b15365f9aeec0a5d6c84f5f8ef0348acac55",
+    "scripts/find-production-host/native-copy-editor.mjs": "38e1b5a730004f07768859669068a071e4f4e655d3ea8c876fb30901b12bd16a",
+    "scripts/find-production-host/native-keyboard.mjs": "fcf1936165b667b33e74c92fbe3f52cc5e23cd12bc4cd2ad615ccea7bb86c406",
+    "scripts/find-production-host/native-completion-edges.mjs": "8448f0d454b598928bca3cac972d5ce7d33cfa684c0f6bf542c2da2822789eec",
+    "scripts/find-production-host/native-completion-selection-repair.mjs": "0f80a0a077de3b35711e51dabab2b9f3e74e985659938bfd689e06bb42a346f8",
+    "scripts/find-production-host/native-completion-menu.mjs": "bee5e579d2ebf8744b89d7fce9519cb267d3f591052ce13255206cc10cbe9828",
+    "scripts/find-production-host/display.py": "aefe176230465a47e683b49201635750cd60d957dbf80ddc77cd03cd60f841ca",
+    "src/renderer/viewer.css": "3756daff76c781f649d6d2f01733810c529cb1a5341a0e6e0c50b79719ea2bf6",
+    "tests/find-identity-browser.jsx": "b97e8fa1f45f693ef35436f9bea8c0db85fded937ea70447e48e7823739a5631",
+    "docs/verification/48/native-ime-transactions.c": "4197b4b88f540a0b735afe354e41ec9f304fcb060f6a534a513a64ef7485594a"
+  },
+  "scope": "Final source hashes after independent review corrections; prior completion tooling.json retains its earlier checkpoint hashes. Final review also awaits the exit event after SIGKILL escalation; recorded failure probes used the normal SIGTERM path."
+}

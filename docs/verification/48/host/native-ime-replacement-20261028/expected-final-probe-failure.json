@@ -1,0 +1,59 @@
+{
+  "route": "private Wayland virtual keyboard/pointer and private clipboard; native BrowserWindow API where stated",
+  "physicalHardware": false,
+  "packageSha256": "15f99148d56a5b6100b929ff79c5d9b3680c9186a36dc5d5e08706bfed67749b",
+  "session": {
+    "pid": 2669806,
+    "privateInstance": "efb50993780079460b0cbed1363e2166a2de1d9f_1793225505_1331692346",
+    "privateRuntime": "/tmp/fd-88mcc3ic",
+    "owned": [
+      {
+        "address": "0x558189954ef0",
+        "mapped": true,
+        "hidden": false,
+        "visible": true,
+        "acceptsInput": true,
+        "at": [
+          21,
+          21
+        ],
+        "size": [
+          1238,
+          678
+        ],
+        "workspace": {
+          "id": 7,
+          "name": "7"
+        },
+        "floating": false,
+        "monitor": 0,
+        "class": "freelens",
+        "title": "Freelens",
+        "initialClass": "freelens",
+        "initialTitle": "Freelens",
+        "pid": 2669806,
+        "xwayland": false,
+        "pinned": false,
+        "pinFullscreened": false,
+        "fullscreen": 0,
+        "fullscreenClient": 0,
+        "fullscreenHandler": "default",
+        "allowedOverFullscreen": true,
+        "grouped": [],
+        "tags": [],
+        "swallowing": "0x0",
+        "focusHistoryID": 0,
+        "inhibitingIdle": false,
+        "xdgTag": "",
+        "xdgDescription": "",
+        "contentType": "none",
+        "tearingHint": false,
+        "stableId": "18000003"
+      }
+    ]
+  },
+  "checks": [],
+  "cleanupError": "Error: Private CDP target closed",
+  "finalProbeError": "Error: Private CDP target closed",
+  "pass": false
+}

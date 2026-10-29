@@ -1,0 +1,26 @@
+[
+  {
+    "original": "host.log",
+    "compressed": "host.log.gz",
+    "bytes": 37667,
+    "sha256": "fee5f72ffe934494e8f345c9c41bac7d6588fea585c7b4830e18db93c06a1fba"
+  },
+  {
+    "original": "hyprland.log",
+    "compressed": "hyprland.log.gz",
+    "bytes": 3685,
+    "sha256": "987d6db5bdf55bafddd7f503e098c934f97ccfa80adda106890978babe926bb8"
+  },
+  {
+    "original": "hyprland-internal.log",
+    "compressed": "hyprland-internal.log.gz",
+    "bytes": 52012,
+    "sha256": "ff09a86e8eb6e128e6b8f6258a3619b9013e0bcc11fb39b9701b40683000d7dc"
+  },
+  {
+    "original": "typecheck-output.txt",
+    "compressed": "typecheck-output.txt.gz",
+    "bytes": 59,
+    "sha256": "ef509b1bd90e36678c2eaff44ae55fd0ec115ff002aefd480e7f602e01fb5f8f"
+  }
+]

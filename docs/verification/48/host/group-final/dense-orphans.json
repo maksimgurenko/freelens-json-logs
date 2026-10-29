@@ -1,0 +1,4 @@
+{
+  "ownedChildPids": [],
+  "reason": "Owned private-process cleanup after forced host stop; not lifecycle acceptance"
+}

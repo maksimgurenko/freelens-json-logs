@@ -1,0 +1,15 @@
+{
+  "change": "Evidence scope and future assertion label only; no assertion behavior or product-byte change",
+  "command": [
+    "node",
+    "--check",
+    "scripts/find-production-host/snapshot-acceptance.mjs"
+  ],
+  "node": "24.18.0",
+  "exit": 0,
+  "originalRawSnapshotResultPreserved": true,
+  "remainingUnverified": [
+    "Whole words enabled/reset across restart",
+    "following status/movement across restart"
+  ]
+}

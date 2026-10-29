@@ -1,0 +1,152 @@
+{
+  "session": {
+    "pid": 2006958,
+    "privateInstance": "efb50993780079460b0cbed1363e2166a2de1d9f_1793094804_1107866213",
+    "privateRuntime": "/tmp/fd-1o9iv64n",
+    "owned": [
+      {
+        "address": "0x5604ee97f490",
+        "mapped": true,
+        "hidden": false,
+        "visible": true,
+        "acceptsInput": true,
+        "at": [
+          21,
+          21
+        ],
+        "size": [
+          1238,
+          678
+        ],
+        "workspace": {
+          "id": 7,
+          "name": "7"
+        },
+        "floating": false,
+        "monitor": 0,
+        "class": "freelens",
+        "title": "Freelens",
+        "initialClass": "freelens",
+        "initialTitle": "Freelens",
+        "pid": 2006958,
+        "xwayland": false,
+        "pinned": false,
+        "pinFullscreened": false,
+        "fullscreen": 0,
+        "fullscreenClient": 0,
+        "fullscreenHandler": "default",
+        "allowedOverFullscreen": true,
+        "grouped": [],
+        "tags": [],
+        "swallowing": "0x0",
+        "focusHistoryID": 0,
+        "inhibitingIdle": false,
+        "xdgTag": "",
+        "xdgDescription": "",
+        "contentType": "none",
+        "tearingHint": false,
+        "stableId": "18000007"
+      }
+    ]
+  },
+  "before": {
+    "starts": 216,
+    "exits": 215,
+    "live": 1,
+    "peak": 1,
+    "resources": [
+      "TCPServerWrap",
+      "StatWatcher",
+      "StatWatcher",
+      "StatWatcher",
+      "StatWatcher",
+      "StatWatcher",
+      "StatWatcher",
+      "PipeWrap",
+      "PipeWrap",
+      "PipeWrap",
+      "ProcessWrap",
+      "TCPSocketWrap",
+      "TCPSocketWrap",
+      "TCPSocketWrap",
+      "TCPSocketWrap",
+      "TCPSocketWrap",
+      "TCPSocketWrap",
+      "TCPSocketWrap",
+      "TCPSocketWrap",
+      "TCPSocketWrap",
+      "TCPSocketWrap",
+      "TCPSocketWrap",
+      "TCPSocketWrap",
+      "TCPSocketWrap",
+      "TCPSocketWrap",
+      "TCPSocketWrap",
+      "TCPSocketWrap",
+      "MessagePort",
+      "Timeout",
+      "Timeout",
+      "Timeout",
+      "Timeout"
+    ],
+    "beforeQuit": 1,
+    "handlers": [
+      "extensions@52bcb660c8d041a54a070bdd6e17e58f5cf11bd54b272b18828e5cdcfc4ff1c4:find-open",
+      "extensions@52bcb660c8d041a54a070bdd6e17e58f5cf11bd54b272b18828e5cdcfc4ff1c4:find-request",
+      "extensions@52bcb660c8d041a54a070bdd6e17e58f5cf11bd54b272b18828e5cdcfc4ff1c4:find-control"
+    ],
+    "windows": [
+      {
+        "id": 2,
+        "pid": 2007381,
+        "frames": [
+          {
+            "processId": 5,
+            "routingId": 1,
+            "url": "https://renderer.freelens.app:46641/cluster/66d54a72f37fb55d6d07b2455ce71621"
+          },
+          {
+            "processId": 5,
+            "routingId": 5,
+            "url": "https://66d54a72f37fb55d6d07b2455ce71621.renderer.freelens.app:46641/overview"
+          }
+        ],
+        "listeners": [
+          [
+            "destroyed",
+            2
+          ],
+          [
+            "render-process-gone",
+            2
+          ],
+          [
+            "did-frame-navigate",
+            1
+          ]
+        ]
+      }
+    ],
+    "service": {
+      "owners": 1,
+      "retiring": 0,
+      "opening": 0,
+      "senders": 1,
+      "watch": true,
+      "executions": [
+        {
+          "viewer": "shutdown-startup",
+          "sender": 2,
+          "processId": 5,
+          "routingId": 1,
+          "active": true,
+          "running": true,
+          "pending": false,
+          "slot": true,
+          "ready": false,
+          "stopping": false
+        }
+      ]
+    }
+  },
+  "scheduled": true
+}

@@ -1,0 +1,322 @@
+{
+  "before": {
+    "active": {
+      "address": "0x5637f3497bb0",
+      "class": "kitty",
+      "workspace": {
+        "id": 2,
+        "name": "2"
+      }
+    },
+    "workspace": 2,
+    "pointer": {
+      "x": 954,
+      "y": 817
+    },
+    "clients": [
+      {
+        "address": "0x5637f31e4f40",
+        "class": "kitty",
+        "pid": 3061766,
+        "workspace": {
+          "id": -98,
+          "name": "special:scratchpad"
+        }
+      },
+      {
+        "address": "0x5637f2672cf0",
+        "class": "md.obsidian.Obsidian",
+        "pid": 3061765,
+        "workspace": {
+          "id": -98,
+          "name": "special:scratchpad"
+        }
+      },
+      {
+        "address": "0x5637f336d250",
+        "class": "com.mastermindzh.tidal-hifi",
+        "pid": 3061987,
+        "workspace": {
+          "id": -98,
+          "name": "special:scratchpad"
+        }
+      },
+      {
+        "address": "0x5637f3401520",
+        "class": "kitty",
+        "pid": 3096901,
+        "workspace": {
+          "id": 5,
+          "name": "5"
+        }
+      },
+      {
+        "address": "0x5637f34e7ff0",
+        "class": "kitty",
+        "pid": 3097413,
+        "workspace": {
+          "id": 6,
+          "name": "6"
+        }
+      },
+      {
+        "address": "0x5637f33fa4a0",
+        "class": "kitty",
+        "pid": 3070218,
+        "workspace": {
+          "id": 4,
+          "name": "4"
+        }
+      },
+      {
+        "address": "0x5637f314b8a0",
+        "class": "freelens",
+        "pid": 3858775,
+        "workspace": {
+          "id": 3,
+          "name": "3"
+        }
+      },
+      {
+        "address": "0x5637f425e490",
+        "class": "kitty",
+        "pid": 4099030,
+        "workspace": {
+          "id": 7,
+          "name": "7"
+        }
+      },
+      {
+        "address": "0x5637f268f8d0",
+        "class": "md.obsidian.Obsidian",
+        "pid": 3061765,
+        "workspace": {
+          "id": 5,
+          "name": "5"
+        }
+      },
+      {
+        "address": "0x5637f4279410",
+        "class": "tmux-tiling",
+        "pid": 4116818,
+        "workspace": {
+          "id": 5,
+          "name": "5"
+        }
+      },
+      {
+        "address": "0x5637f230f980",
+        "class": "kitty",
+        "pid": 4095427,
+        "workspace": {
+          "id": 7,
+          "name": "7"
+        }
+      },
+      {
+        "address": "0x5637f323e610",
+        "class": "brave-origin-nightly",
+        "pid": 3064751,
+        "workspace": {
+          "id": 1,
+          "name": "1"
+        }
+      },
+      {
+        "address": "0x5637f22ddcd0",
+        "class": "org.telegram.desktop",
+        "pid": 3061988,
+        "workspace": {
+          "id": -97,
+          "name": "special:T"
+        }
+      },
+      {
+        "address": "0x5637f3497bb0",
+        "class": "kitty",
+        "pid": 496901,
+        "workspace": {
+          "id": 2,
+          "name": "2"
+        }
+      },
+      {
+        "address": "0x5637f33d1230",
+        "class": "kitty",
+        "pid": 3065834,
+        "workspace": {
+          "id": 2,
+          "name": "2"
+        }
+      }
+    ]
+  },
+  "userInstance": "efb50993780079460b0cbed1363e2166a2de1d9f_1793028605_396795238",
+  "outerCommand": [
+    "/home/max/work/freelens-json-logs/.scratch/find/48-host/prefix/usr/bin/labwc",
+    "--config-dir",
+    "/home/max/work/freelens-json-logs/.scratch/find/48-host/labwc"
+  ],
+  "runtime": "/tmp/fd-9p_xk5a6",
+  "renderer": "mesa",
+  "rendererEnvironment": {
+    "__EGL_VENDOR_LIBRARY_FILENAMES": "/usr/share/glvnd/egl_vendor.d/50_mesa.json",
+    "WLR_RENDER_DRM_DEVICE": "/dev/dri/renderD128"
+  },
+  "after": {
+    "active": {
+      "address": "0x5637f3497bb0",
+      "class": "kitty",
+      "workspace": {
+        "id": 2,
+        "name": "2"
+      }
+    },
+    "workspace": 2,
+    "pointer": {
+      "x": 954,
+      "y": 817
+    },
+    "clients": [
+      {
+        "address": "0x5637f31e4f40",
+        "class": "kitty",
+        "pid": 3061766,
+        "workspace": {
+          "id": -98,
+          "name": "special:scratchpad"
+        }
+      },
+      {
+        "address": "0x5637f2672cf0",
+        "class": "md.obsidian.Obsidian",
+        "pid": 3061765,
+        "workspace": {
+          "id": -98,
+          "name": "special:scratchpad"
+        }
+      },
+      {
+        "address": "0x5637f336d250",
+        "class": "com.mastermindzh.tidal-hifi",
+        "pid": 3061987,
+        "workspace": {
+          "id": -98,
+          "name": "special:scratchpad"
+        }
+      },
+      {
+        "address": "0x5637f3401520",
+        "class": "kitty",
+        "pid": 3096901,
+        "workspace": {
+          "id": 5,
+          "name": "5"
+        }
+      },
+      {
+        "address": "0x5637f34e7ff0",
+        "class": "kitty",
+        "pid": 3097413,
+        "workspace": {
+          "id": 6,
+          "name": "6"
+        }
+      },
+      {
+        "address": "0x5637f33fa4a0",
+        "class": "kitty",
+        "pid": 3070218,
+        "workspace": {
+          "id": 4,
+          "name": "4"
+        }
+      },
+      {
+        "address": "0x5637f314b8a0",
+        "class": "freelens",
+        "pid": 3858775,
+        "workspace": {
+          "id": 3,
+          "name": "3"
+        }
+      },
+      {
+        "address": "0x5637f425e490",
+        "class": "kitty",
+        "pid": 4099030,
+        "workspace": {
+          "id": 7,
+          "name": "7"
+        }
+      },
+      {
+        "address": "0x5637f268f8d0",
+        "class": "md.obsidian.Obsidian",
+        "pid": 3061765,
+        "workspace": {
+          "id": 5,
+          "name": "5"
+        }
+      },
+      {
+        "address": "0x5637f4279410",
+        "class": "tmux-tiling",
+        "pid": 4116818,
+        "workspace": {
+          "id": 5,
+          "name": "5"
+        }
+      },
+      {
+        "address": "0x5637f230f980",
+        "class": "kitty",
+        "pid": 4095427,
+        "workspace": {
+          "id": 7,
+          "name": "7"
+        }
+      },
+      {
+        "address": "0x5637f323e610",
+        "class": "brave-origin-nightly",
+        "pid": 3064751,
+        "workspace": {
+          "id": 1,
+          "name": "1"
+        }
+      },
+      {
+        "address": "0x5637f22ddcd0",
+        "class": "org.telegram.desktop",
+        "pid": 3061988,
+        "workspace": {
+          "id": -97,
+          "name": "special:T"
+        }
+      },
+      {
+        "address": "0x5637f3497bb0",
+        "class": "kitty",
+        "pid": 496901,
+        "workspace": {
+          "id": 2,
+          "name": "2"
+        }
+      },
+      {
+        "address": "0x5637f33d1230",
+        "class": "kitty",
+        "pid": 3065834,
+        "workspace": {
+          "id": 2,
+          "name": "2"
+        }
+      }
+    ]
+  },
+  "events": [],
+  "elapsedSeconds": 470.91264571700594,
+  "outerExit": 0,
+  "hyprlandExit": 0
+}

@@ -1,0 +1,260 @@
+{
+  "session": {
+    "pid": 1946796,
+    "privateInstance": "efb50993780079460b0cbed1363e2166a2de1d9f_1793094804_1107866213",
+    "privateRuntime": "/tmp/fd-1o9iv64n",
+    "owned": [
+      {
+        "address": "0x5604ee970530",
+        "mapped": true,
+        "hidden": false,
+        "visible": true,
+        "acceptsInput": true,
+        "at": [
+          21,
+          21
+        ],
+        "size": [
+          1238,
+          678
+        ],
+        "workspace": {
+          "id": 7,
+          "name": "7"
+        },
+        "floating": false,
+        "monitor": 0,
+        "class": "freelens",
+        "title": "Freelens",
+        "initialClass": "freelens",
+        "initialTitle": "Freelens",
+        "pid": 1946796,
+        "xwayland": false,
+        "pinned": false,
+        "pinFullscreened": false,
+        "fullscreen": 0,
+        "fullscreenClient": 0,
+        "fullscreenHandler": "default",
+        "allowedOverFullscreen": true,
+        "grouped": [],
+        "tags": [],
+        "swallowing": "0x0",
+        "focusHistoryID": 0,
+        "inhibitingIdle": false,
+        "xdgTag": "",
+        "xdgDescription": "",
+        "contentType": "none",
+        "tearingHint": false,
+        "stableId": "18000003"
+      }
+    ]
+  },
+  "samples": [
+    {
+      "elapsedMs": 200.80000001192093,
+      "times": [
+        67644.1,
+        67668.8,
+        67685.5,
+        67702.2,
+        67718.8,
+        67739.4,
+        67756.1,
+        67772.7,
+        67789.4,
+        67806.1,
+        67822.8,
+        67839.3
+      ],
+      "count": "Enter text to find",
+      "highlights": 0,
+      "rows": 1000,
+      "top": 23416,
+      "scrollHeight": 23813,
+      "clientHeight": 397,
+      "focused": false,
+      "text": "",
+      "callerElapsedMs": 202.31176900000014,
+      "metrics": {
+        "LayoutCount": 0,
+        "LayoutDuration": 0,
+        "RecalcStyleCount": 0,
+        "RecalcStyleDuration": 0,
+        "ScriptDuration": 0.000401,
+        "TaskDuration": 0.001767
+      }
+    },
+    {
+      "elapsedMs": 202.2999999821186,
+      "times": [
+        68039.428,
+        68062.5,
+        68079.1,
+        68098.6,
+        68115.3,
+        68132,
+        68148.6,
+        68165.3,
+        68181.9,
+        68198.6,
+        68215.3,
+        68232
+      ],
+      "count": "0 of 0 matching records",
+      "highlights": 0,
+      "rows": 1000,
+      "top": 23416,
+      "scrollHeight": 23813,
+      "clientHeight": 397,
+      "focused": false,
+      "text": "absent-dense-probe",
+      "callerElapsedMs": 203.846589,
+      "metrics": {
+        "LayoutCount": 1,
+        "LayoutDuration": 0.00017900000000000034,
+        "RecalcStyleCount": 0,
+        "RecalcStyleDuration": 0,
+        "ScriptDuration": 0.028123999999999996,
+        "TaskDuration": 0.03170100000000001
+      }
+    },
+    {
+      "elapsedMs": 428.5,
+      "times": [
+        68681.982,
+        68710.3,
+        68835.7,
+        68852.3,
+        68869,
+        68992.6,
+        69009.2,
+        69026,
+        69042.6,
+        69059.2,
+        69075.9,
+        69092.6
+      ],
+      "count": "1 of 1000 matching records",
+      "highlights": 952,
+      "rows": 1000,
+      "top": 8,
+      "scrollHeight": 23813,
+      "clientHeight": 397,
+      "focused": false,
+      "text": "a",
+      "callerElapsedMs": 541.5053969999999,
+      "metrics": {
+        "LayoutCount": 2,
+        "LayoutDuration": 0.006669000000000001,
+        "RecalcStyleCount": 2,
+        "RecalcStyleDuration": 0.0006770000000000001,
+        "ScriptDuration": 0.157084,
+        "TaskDuration": 0.47193299999999994
+      }
+    }
+  ],
+  "scope": "Private diagnostic compositor, natural DOM frames, installed production renderer/worker. No native input or latency acceptance.",
+  "wrapped": false,
+  "activations": [
+    {
+      "label": "Find 18 matching records, starting at 1 of 1000; activate to cycle",
+      "active": "0",
+      "count": "1 of 1000 matching records",
+      "callerElapsedMs": 70.18119999999999
+    },
+    {
+      "label": "Find 18 matching records, starting at 1 of 1000; activate to cycle",
+      "active": "1",
+      "count": "2 of 1000 matching records",
+      "feedback": "Highlighting pending; exact matches remain available.",
+      "callerElapsedMs": 143.61113000000023
+    },
+    {
+      "label": "Find 19 matching records, starting at 1 of 1000; activate to cycle",
+      "active": "2",
+      "count": "3 of 1000 matching records",
+      "feedback": "Highlighting pending; exact matches remain available.",
+      "callerElapsedMs": 254.45251899999994
+    }
+  ],
+  "pass": true,
+  "timedOut": false,
+  "closed": {
+    "starts": 2,
+    "exits": 2,
+    "live": 0,
+    "peak": 1,
+    "resources": [
+      "TCPServerWrap",
+      "StatWatcher",
+      "StatWatcher",
+      "StatWatcher",
+      "StatWatcher",
+      "StatWatcher",
+      "StatWatcher",
+      "PipeWrap",
+      "PipeWrap",
+      "PipeWrap",
+      "ProcessWrap",
+      "TCPSocketWrap",
+      "TCPSocketWrap",
+      "TCPSocketWrap",
+      "TCPSocketWrap",
+      "TCPSocketWrap",
+      "TCPSocketWrap",
+      "TCPSocketWrap",
+      "TCPSocketWrap",
+      "TCPSocketWrap",
+      "TCPSocketWrap",
+      "Timeout",
+      "Timeout",
+      "Timeout"
+    ],
+    "beforeQuit": 1,
+    "handlers": [
+      "extensions@22761b727d8e8df63776cc34bd433fb4469ea23d832353dc9cd149a4e2e8ba0b:find-open",
+      "extensions@22761b727d8e8df63776cc34bd433fb4469ea23d832353dc9cd149a4e2e8ba0b:find-request",
+      "extensions@22761b727d8e8df63776cc34bd433fb4469ea23d832353dc9cd149a4e2e8ba0b:find-control"
+    ],
+    "windows": [
+      {
+        "id": 2,
+        "pid": 1947232,
+        "frames": [
+          {
+            "processId": 5,
+            "routingId": 1,
+            "url": "https://renderer.freelens.app:46373/cluster/043256dcb33d2610d7fabfe4f9b9ebdd"
+          },
+          {
+            "processId": 5,
+            "routingId": 4,
+            "url": "https://043256dcb33d2610d7fabfe4f9b9ebdd.renderer.freelens.app:46373/overview"
+          }
+        ],
+        "listeners": [
+          [
+            "destroyed",
+            1
+          ],
+          [
+            "render-process-gone",
+            1
+          ],
+          [
+            "did-frame-navigate",
+            0
+          ]
+        ]
+      }
+    ],
+    "service": {
+      "owners": 0,
+      "retiring": 0,
+      "opening": 0,
+      "senders": 0,
+      "watch": false,
+      "executions": []
+    }
+  }
+}

@@ -25,6 +25,30 @@ The container output returned by one completed log request for a selected Pod an
 **Recent log window**:
 The bounded set of transport lines available in the viewer from its latest accepted log snapshot.
 
+**Record occurrence**:
+One observed appearance of a transport line, distinct from other appearances of identical text.
+
+**Find text match**:
+A nonempty span in application text or the active extracted message that satisfies the current Find query and matching controls.
+
+**Matching record**:
+A retained record occurrence whose application text or active extracted message contains a Find text match.
+
+**Reading row**:
+A log record deliberately chosen by the user as their reading position, independently of the active Find result.
+
+**Search origin**:
+The position from which a Find query is resolved. It can come from a reading row or a later search position, according to the query action.
+
+**Active Find result**:
+The matching log record currently addressed by Find, independently of the record open for inspection or text selected for copying.
+
+**Refinement candidate**:
+The most recent successful Find result retained as a candidate while the query is edited, including edits that temporarily yield no match.
+
+**Search position**:
+The latest position reached while resolving or navigating a Find query, used when further refinement cannot retain its candidate.
+
 **Paused log view**:
 A log view whose automatic updates are suspended while its current records remain available for inspection and reformatting.
 

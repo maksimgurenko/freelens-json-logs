@@ -1,0 +1,6 @@
+{"scenario":"stationary","growth":{"nodes":0,"listeners":0,"heap":0}}
+{"scenario":"host-route","growth":{"nodes":0,"listeners":0,"heap":534704}}
+{"scenario":"viewer-no-find","growth":{"nodes":0,"listeners":0,"heap":39848}}
+{"scenario":"viewer-find","growth":{"nodes":-1,"listeners":0,"heap":-128120}}
+{"scenario":"viewer-find-idle","growth":{"nodes":14,"listeners":0,"heap":147996}}
+{"completed":true}

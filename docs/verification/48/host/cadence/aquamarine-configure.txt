@@ -1,0 +1,40 @@
+-- The C compiler identification is GNU 16.2.1
+-- The CXX compiler identification is GNU 16.2.1
+-- Detecting C compiler ABI info
+-- Detecting C compiler ABI info - done
+-- Check for working C compiler: /usr/bin/cc - skipped
+-- Detecting C compile features
+-- Detecting C compile features - done
+-- Detecting CXX compiler ABI info
+-- Detecting CXX compiler ABI info - done
+-- Check for working CXX compiler: /usr/bin/c++ - skipped
+-- Detecting CXX compile features
+-- Detecting CXX compile features - done
+-- Found PkgConfig: /usr/bin/pkg-config (found version "3.0.10")
+-- Found OpenGL: /usr/lib/libOpenGL.so  found components: GLES3
+-- Performing Test CMAKE_HAVE_LIBC_PTHREAD
+-- Performing Test CMAKE_HAVE_LIBC_PTHREAD - Success
+-- Found Threads: TRUE
+-- Checking for modules 'libseat>=0.8.0;libinput>=1.26.0;wayland-client;wayland-protocols;hyprutils>=0.8.0;pixman-1;libdrm;gbm;libudev;libdisplay-info;hwdata'
+--   Found libseat, version 0.9.3
+--   Found libinput, version 1.32.0
+--   Found wayland-client, version 1.26.0
+--   Found wayland-protocols, version 1.49
+--   Found hyprutils, version 0.14.2
+--   Found pixman-1, version 0.46.4
+--   Found libdrm, version 2.4.134
+--   Found gbm, version 26.2.5-arch1.1
+--   Found libudev, version 262
+--   Found libdisplay-info, version 0.3.0
+--   Found hwdata, version 0.412
+-- Configuring aquamarine in Release
+-- Looking for sys/timerfd.h
+-- Looking for sys/timerfd.h - found
+-- Checking for module 'epoll-shim'
+--   Package 'epoll-shim' not found
+-- Found wayland-protocols at /usr/share/wayland-protocols
+-- Found wayland-scanner pkgdatadir at /usr/share/wayland
+-- Running /home/max/work/freelens-json-logs/.scratch/find/48-host/aquamarine/data/hwdata.sh < /usr/share/hwdata/pnp.ids
+-- Configuring done (0.6s)
+-- Generating done (0.0s)
+-- Build files have been written to: /home/max/work/freelens-json-logs/.scratch/find/48-host/aquamarine/build

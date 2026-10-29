@@ -1,0 +1,11 @@
+{
+  "tracked_user_work_unchanged": {
+    ".github/workflows/ci.yml": true,
+    "GLOSSARY.md": true,
+    "docs/README.md": true,
+    "docs/local-development.md": true,
+    "package-lock.json": true,
+    "package.json": true
+  },
+  "note": "No user package/lockfile/CI/docs/glossary content staged or edited by ticket 42 checkpoint."
+}

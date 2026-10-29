@@ -1,0 +1,84 @@
+{
+  "package": "freelens-readable-logs",
+  "version": "0.1.34",
+  "storeName": "freelens-readable-logs",
+  "main": "out/main-0.1.34.js",
+  "renderer": "out/renderer-0.1.34.js",
+  "hostPin": "1.10.3",
+  "schema": 3,
+  "tarball": "d19f826bc8496a6ae3ca5afaeb79fab73753ceeebde62747174b8d4ead6dfcb3",
+  "assets": {
+    "out/main-0.1.34.js": "a355bf90dd519f9215407e5ed95e97bc8efe3347926156dbd24095001c904f05",
+    "out/renderer-0.1.34.js": "a66c90bf5deaafdf7c5157c7977649d65b25b8f002fec781e06bc0a9f93ad026",
+    "out/find-worker-0.1.34.js": "4d00cf5686789bd37b72b4cee6ca0c5fa461f98c86ee8cdfb024f01e6878c5b3"
+  },
+  "privateDisplay": {
+    "sourceCommit": "f31c47a1b9d300847d8fc3108ad959448103dfc1",
+    "librarySha256": "20d86f41923bbbffe56d3f96559095f91b18bebbf4e9621e2e5295ba91f2dcb4",
+    "patch": "../cadence/private-aquamarine.patch.gz",
+    "scope": "Privately modified Aquamarine diagnostic; not stock compositor acceptance"
+  },
+  "reviewBaseline": "f8d7643e8d6cda3abac8ee4769403d49b0278818",
+  "originalTicketBaseline": "3fb33db5f5ded3523bcf66c1145f0af967ec0bf3",
+  "environment": {
+    "FREELENS_UI_MODE": "unset",
+    "FIND_HOST_TICKET": "48",
+    "FIND_HOST_RUN": "group-final",
+    "CHOKIDAR_USEPOLLING": "1",
+    "CHOKIDAR_INTERVAL": "100",
+    "hostCwd": "/home/max",
+    "displayRenderer": "mesa",
+    "privateLibraryPath": "/home/max/work/freelens-json-logs/.scratch/find/48-host/aquamarine/build",
+    "Node": "24.18.0",
+    "npm": "11.16.0"
+  },
+  "recordedAt": "2026-10-27T08:32:21.798921+00:00",
+  "runtimeObservedAtInitialObserver": {
+    "node": "24.18.0",
+    "acorn": "8.16.0",
+    "ada": "3.4.4",
+    "amaro": "1.1.9",
+    "ares": "1.34.6",
+    "brotli": "1.0.9",
+    "cldr": "47.0",
+    "icu": "77.1",
+    "llhttp": "9.4.2",
+    "merve": "1.2.2",
+    "modules": "145",
+    "napi": "10",
+    "nbytes": "0.1.4",
+    "ncrypto": "0.0.1",
+    "nghttp2": "1.69.0",
+    "nghttp3": "",
+    "ngtcp2": "",
+    "openssl": "0.0.0",
+    "simdjson": "4.6.4",
+    "simdutf": "7.7.0",
+    "sqlite": "3.53.1",
+    "tz": "2025b",
+    "undici": "7.28.0",
+    "unicode": "16.0",
+    "uv": "1.52.1",
+    "uvwasi": "0.0.23",
+    "v8": "14.6.202.34-electron.0",
+    "zlib": "1.3.1",
+    "zstd": "1.6.0",
+    "electron": "41.10.0",
+    "chrome": "146.0.7680.216"
+  },
+  "hostBinarySha256": "f96b1d54891a78f5072bdcbe66b9bf75d08b8f3fe1c9fae36eac215f22eed11e",
+  "assetComparison": {
+    "out/main-0.1.34.js": {
+      "installed": "a355bf90dd519f9215407e5ed95e97bc8efe3347926156dbd24095001c904f05",
+      "local": "a355bf90dd519f9215407e5ed95e97bc8efe3347926156dbd24095001c904f05"
+    },
+    "out/renderer-0.1.34.js": {
+      "installed": "a66c90bf5deaafdf7c5157c7977649d65b25b8f002fec781e06bc0a9f93ad026",
+      "local": "a66c90bf5deaafdf7c5157c7977649d65b25b8f002fec781e06bc0a9f93ad026"
+    },
+    "out/find-worker-0.1.34.js": {
+      "installed": "4d00cf5686789bd37b72b4cee6ca0c5fa461f98c86ee8cdfb024f01e6878c5b3",
+      "local": "4d00cf5686789bd37b72b4cee6ca0c5fa461f98c86ee8cdfb024f01e6878c5b3"
+    }
+  }
+}

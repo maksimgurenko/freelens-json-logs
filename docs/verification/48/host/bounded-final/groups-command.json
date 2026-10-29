@@ -1,0 +1,18 @@
+{
+  "command": [
+    "timeout",
+    "--signal=TERM",
+    "90s",
+    "node",
+    "scripts/find-production-host/marks-following.mjs"
+  ],
+  "environment": {
+    "FIND_HOST_TICKET": "48",
+    "FIND_HOST_RUN": "bounded-final",
+    "FIND_HOST_SCENARIO": "groups",
+    "FREELENS_UI_MODE": "unset"
+  },
+  "exit": 1,
+  "elapsedSeconds": 39.70724936199258,
+  "limit": "90-second driver budget, not a product deadline or native performance guarantee"
+}

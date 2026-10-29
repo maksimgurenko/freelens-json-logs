@@ -1,0 +1,3 @@
+{"at":1793085376784,"event":"worker-start","threadId":1}
+{"at":1793085380514,"event":"worker-exit","code":1,"live":0}
+{"at":1793085552567,"event":"process-exit","starts":1,"exits":1,"live":0,"peak":1,"resources":["FSReqCallback","TCPServerWrap","PipeWrap","PipeWrap","PipeWrap","ProcessWrap","Timeout","Timeout","Immediate","Immediate","Immediate","Immediate","Immediate"],"beforeQuit":0,"handlers":[],"windows":[]}

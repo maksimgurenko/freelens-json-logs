@@ -1,5 +1,4 @@
-import type { LogRecord } from '../core/records.ts';
-import { retainedIndex } from '../core/navigation.ts';
+import { emptyWindow, recordIndex, recordRef, type OccurrenceWindow, type RecordRef } from '../core/occurrences.ts';
 
 export interface ViewportStatus { following: boolean; lost: boolean }
 
@@ -7,38 +6,39 @@ export interface ViewportStatus { following: boolean; lost: boolean }
  * Capture on user scroll, before a subsequent React commit replaces the rows.
  */
 export class LogViewport {
-  private records: readonly LogRecord[] = [];
-  private anchor = -1;
+  private window = emptyWindow('unopened');
+  private anchor?: RecordRef;
   private offset = 0;
   private status: ViewportStatus = { following: true, lost: false };
   private appliedTop = 0;
   private appliedLeft = 0;
   private resize: ResizeObserver;
   private element: HTMLElement;
+  private manualScroll?: () => void;
   private changed: (status: ViewportStatus) => void;
 
-  constructor(element: HTMLElement, changed: (status: ViewportStatus) => void) {
+  constructor(element: HTMLElement, changed: (status: ViewportStatus) => void, manualScroll?: () => void) {
     this.element = element;
     this.changed = changed;
+    this.manualScroll = manualScroll;
     element.addEventListener('scroll', this.onScroll);
     this.resize = new ResizeObserver(() => this.restore());
     this.resize.observe(element);
   }
   dispose() { this.element.removeEventListener('scroll', this.onScroll); this.resize.disconnect(); }
 
-  update(records: readonly LogRecord[]) {
+  update(window: OccurrenceWindow) {
     const previousStatus = this.status;
-    if (records !== this.records && !this.status.following && this.anchor >= 0) {
-      this.anchor = retainedIndex(this.records, records, this.anchor);
-      if (this.anchor < 0) this.status = { following: false, lost: true };
+    if (window !== this.window && !this.status.following && this.anchor) {
+      if (recordIndex(window, this.anchor) < 0) this.status = { following: false, lost: true };
     }
-    this.records = records;
+    this.window = window;
     this.restore();
     if (previousStatus !== this.status) this.changed(this.status);
   }
   toBottom() { this.setStatus({ following: true, lost: false }); this.restore(); }
-  show(index: number) {
-    const row = this.row(index);
+  show(ref: RecordRef) {
+    const row = this.row(recordIndex(this.window, ref));
     if (!row) return;
     this.element.scrollTop += row.getBoundingClientRect().top - this.top();
     this.capture(true);
@@ -54,19 +54,22 @@ export class LogViewport {
     // Programmatic restore scroll events arrive asynchronously. They must not
     // acknowledge a lost anchor or recapture a different record as its identity.
     if (this.element.scrollTop === this.appliedTop && this.element.scrollLeft === this.appliedLeft) return;
+    this.manualScroll?.();
     this.capture(true);
   };
   private capture(user: boolean) {
     if (!this.element.clientHeight) return;
     const following = this.element.scrollHeight - this.element.clientHeight - this.element.scrollTop <= 2;
-    this.anchor = -1;
+    const previousAnchor = this.anchor;
+    this.anchor = undefined;
     const top = this.top();
     for (const row of Array.from(this.element.querySelectorAll<HTMLElement>('[data-record-index]'))) {
       const rect = row.getBoundingClientRect();
-      if (rect.bottom > top) { this.anchor = Number(row.dataset.recordIndex); this.offset = rect.top - top; break; }
+      if (rect.bottom > top) { this.anchor = recordRef(this.window, Number(row.dataset.recordIndex)); this.offset = rect.top - top; break; }
     }
     this.appliedTop = this.element.scrollTop;
     this.appliedLeft = this.element.scrollLeft;
+    if (this.status.lost && !user) this.anchor = previousAnchor;
     // React 17 may synchronously render from this native scroll listener. Publish
     // only after the complete anchor/offset has been captured for that render.
     this.setStatus({ following: this.status.lost && !user ? false : following, lost: user ? false : this.status.lost });
@@ -75,7 +78,7 @@ export class LogViewport {
     if (!this.element.clientHeight) return;
     if (this.status.following) this.element.scrollTop = this.element.scrollHeight;
     else if (!this.status.lost) {
-      const row = this.row(this.anchor);
+      const row = this.row(recordIndex(this.window, this.anchor));
       if (row) this.element.scrollTop += row.getBoundingClientRect().top - this.top() - this.offset;
     }
     this.capture(false);

@@ -1,0 +1,653 @@
+{
+  "pass": true,
+  "connected": {
+    "startedAt": 1793101869142,
+    "elapsedMs": 4,
+    "before": {
+      "documents": 4,
+      "nodes": 895,
+      "jsEventListeners": 756
+    },
+    "after": {
+      "documents": 4,
+      "nodes": 895,
+      "jsEventListeners": 756
+    },
+    "captured": 1,
+    "reachable": 1,
+    "roots": [
+      {
+        "id": 1,
+        "connected": true,
+        "target": "SECTION.readable-logs.diagnostic-owned",
+        "nodes": 2,
+        "backendNodeId": 3655,
+        "listeners": [
+          {
+            "type": "click",
+            "capture": false,
+            "once": false,
+            "passive": false,
+            "backendNodeId": 3655,
+            "target": "SECTION.readable-logs.diagnostic-owned",
+            "scriptId": "162300",
+            "line": 3,
+            "column": 17
+          },
+          {
+            "type": "diagnostic-owned-event",
+            "capture": false,
+            "once": false,
+            "passive": false,
+            "backendNodeId": 3656,
+            "target": "DIV.diagnostic-child",
+            "scriptId": "162300",
+            "line": 3,
+            "column": 72
+          }
+        ]
+      }
+    ],
+    "scope": "Weakly captured mounted viewer roots and non-piercing subtrees only. Assigned and registered attached handlers; no heap capture or explicit GC. Temporary inspector handles released before return."
+  },
+  "detached": {
+    "startedAt": 1793101869146,
+    "elapsedMs": 2,
+    "before": {
+      "documents": 4,
+      "nodes": 895,
+      "jsEventListeners": 756
+    },
+    "after": {
+      "documents": 4,
+      "nodes": 895,
+      "jsEventListeners": 756
+    },
+    "captured": 1,
+    "reachable": 1,
+    "roots": [
+      {
+        "id": 1,
+        "connected": false,
+        "target": "SECTION.readable-logs.diagnostic-owned",
+        "nodes": 2,
+        "backendNodeId": 3655,
+        "listeners": [
+          {
+            "type": "click",
+            "capture": false,
+            "once": false,
+            "passive": false,
+            "backendNodeId": 3655,
+            "target": "SECTION.readable-logs.diagnostic-owned",
+            "scriptId": "162300",
+            "line": 3,
+            "column": 17
+          },
+          {
+            "type": "diagnostic-owned-event",
+            "capture": false,
+            "once": false,
+            "passive": false,
+            "backendNodeId": 3656,
+            "target": "DIV.diagnostic-child",
+            "scriptId": "162300",
+            "line": 3,
+            "column": 72
+          }
+        ]
+      }
+    ],
+    "scope": "Weakly captured mounted viewer roots and non-piercing subtrees only. Assigned and registered attached handlers; no heap capture or explicit GC. Temporary inspector handles released before return."
+  },
+  "idle": {
+    "startedAt": 1793101869148,
+    "initial": {
+      "documents": 4,
+      "nodes": 895,
+      "jsEventListeners": 756
+    },
+    "nativeTrace": true,
+    "samples": [
+      {
+        "offsetMs": 0,
+        "elapsedMs": 2.5844579999999837,
+        "at": 1793101869151,
+        "dom": {
+          "documents": 4,
+          "nodes": 895,
+          "jsEventListeners": 756
+        },
+        "renderer": {
+          "memory": {
+            "rss": 681005056,
+            "heapTotal": 70017024,
+            "heapUsed": 67442916,
+            "external": 44121275,
+            "arrayBuffers": 0
+          },
+          "timeline": 819930.902,
+          "rows": 0,
+          "highlights": 0
+        },
+        "viewerRoots": {
+          "startedAt": 1793101869151,
+          "elapsedMs": 2,
+          "before": {
+            "documents": 4,
+            "nodes": 895,
+            "jsEventListeners": 756
+          },
+          "after": {
+            "documents": 4,
+            "nodes": 895,
+            "jsEventListeners": 756
+          },
+          "captured": 1,
+          "reachable": 1,
+          "roots": [
+            {
+              "id": 1,
+              "connected": false,
+              "target": "SECTION.readable-logs.diagnostic-owned",
+              "nodes": 2,
+              "backendNodeId": 3655,
+              "listeners": [
+                {
+                  "type": "click",
+                  "capture": false,
+                  "once": false,
+                  "passive": false,
+                  "backendNodeId": 3655,
+                  "target": "SECTION.readable-logs.diagnostic-owned",
+                  "scriptId": "162300",
+                  "line": 3,
+                  "column": 17
+                },
+                {
+                  "type": "diagnostic-owned-event",
+                  "capture": false,
+                  "once": false,
+                  "passive": false,
+                  "backendNodeId": 3656,
+                  "target": "DIV.diagnostic-child",
+                  "scriptId": "162300",
+                  "line": 3,
+                  "column": 72
+                }
+              ]
+            }
+          ],
+          "scope": "Weakly captured mounted viewer roots and non-piercing subtrees only. Assigned and registered attached handlers; no heap capture or explicit GC. Temporary inspector handles released before return."
+        }
+      },
+      {
+        "offsetMs": 250,
+        "elapsedMs": 250.10461000000004,
+        "at": 1793101869398,
+        "dom": {
+          "documents": 4,
+          "nodes": 895,
+          "jsEventListeners": 756
+        },
+        "renderer": {
+          "memory": {
+            "rss": 681005056,
+            "heapTotal": 70017024,
+            "heapUsed": 67448740,
+            "external": 44121275,
+            "arrayBuffers": 0
+          },
+          "timeline": 820180.892,
+          "rows": 0,
+          "highlights": 0
+        },
+        "viewerRoots": {
+          "startedAt": 1793101869399,
+          "elapsedMs": 2,
+          "before": {
+            "documents": 4,
+            "nodes": 895,
+            "jsEventListeners": 756
+          },
+          "after": {
+            "documents": 4,
+            "nodes": 895,
+            "jsEventListeners": 756
+          },
+          "captured": 1,
+          "reachable": 1,
+          "roots": [
+            {
+              "id": 1,
+              "connected": false,
+              "target": "SECTION.readable-logs.diagnostic-owned",
+              "nodes": 2,
+              "backendNodeId": 3655,
+              "listeners": [
+                {
+                  "type": "click",
+                  "capture": false,
+                  "once": false,
+                  "passive": false,
+                  "backendNodeId": 3655,
+                  "target": "SECTION.readable-logs.diagnostic-owned",
+                  "scriptId": "162300",
+                  "line": 3,
+                  "column": 17
+                },
+                {
+                  "type": "diagnostic-owned-event",
+                  "capture": false,
+                  "once": false,
+                  "passive": false,
+                  "backendNodeId": 3656,
+                  "target": "DIV.diagnostic-child",
+                  "scriptId": "162300",
+                  "line": 3,
+                  "column": 72
+                }
+              ]
+            }
+          ],
+          "scope": "Weakly captured mounted viewer roots and non-piercing subtrees only. Assigned and registered attached handlers; no heap capture or explicit GC. Temporary inspector handles released before return."
+        }
+      },
+      {
+        "offsetMs": 1000,
+        "elapsedMs": 1000.6610189999999,
+        "at": 1793101870149,
+        "dom": {
+          "documents": 4,
+          "nodes": 895,
+          "jsEventListeners": 756
+        },
+        "renderer": {
+          "memory": {
+            "rss": 681005056,
+            "heapTotal": 70017024,
+            "heapUsed": 67454032,
+            "external": 44121275,
+            "arrayBuffers": 0
+          },
+          "timeline": 820930.862,
+          "rows": 0,
+          "highlights": 0
+        },
+        "viewerRoots": {
+          "startedAt": 1793101870150,
+          "elapsedMs": 2,
+          "before": {
+            "documents": 4,
+            "nodes": 895,
+            "jsEventListeners": 756
+          },
+          "after": {
+            "documents": 4,
+            "nodes": 895,
+            "jsEventListeners": 756
+          },
+          "captured": 1,
+          "reachable": 1,
+          "roots": [
+            {
+              "id": 1,
+              "connected": false,
+              "target": "SECTION.readable-logs.diagnostic-owned",
+              "nodes": 2,
+              "backendNodeId": 3655,
+              "listeners": [
+                {
+                  "type": "click",
+                  "capture": false,
+                  "once": false,
+                  "passive": false,
+                  "backendNodeId": 3655,
+                  "target": "SECTION.readable-logs.diagnostic-owned",
+                  "scriptId": "162300",
+                  "line": 3,
+                  "column": 17
+                },
+                {
+                  "type": "diagnostic-owned-event",
+                  "capture": false,
+                  "once": false,
+                  "passive": false,
+                  "backendNodeId": 3656,
+                  "target": "DIV.diagnostic-child",
+                  "scriptId": "162300",
+                  "line": 3,
+                  "column": 72
+                }
+              ]
+            }
+          ],
+          "scope": "Weakly captured mounted viewer roots and non-piercing subtrees only. Assigned and registered attached handlers; no heap capture or explicit GC. Temporary inspector handles released before return."
+        }
+      },
+      {
+        "offsetMs": 5000,
+        "elapsedMs": 5001.194484000001,
+        "at": 1793101874149,
+        "dom": {
+          "documents": 4,
+          "nodes": 895,
+          "jsEventListeners": 756
+        },
+        "renderer": {
+          "memory": {
+            "rss": 681005056,
+            "heapTotal": 70017024,
+            "heapUsed": 67459324,
+            "external": 44121275,
+            "arrayBuffers": 0
+          },
+          "timeline": 824930.702,
+          "rows": 0,
+          "highlights": 0
+        },
+        "viewerRoots": {
+          "startedAt": 1793101874150,
+          "elapsedMs": 2,
+          "before": {
+            "documents": 4,
+            "nodes": 895,
+            "jsEventListeners": 756
+          },
+          "after": {
+            "documents": 4,
+            "nodes": 895,
+            "jsEventListeners": 756
+          },
+          "captured": 1,
+          "reachable": 1,
+          "roots": [
+            {
+              "id": 1,
+              "connected": false,
+              "target": "SECTION.readable-logs.diagnostic-owned",
+              "nodes": 2,
+              "backendNodeId": 3655,
+              "listeners": [
+                {
+                  "type": "click",
+                  "capture": false,
+                  "once": false,
+                  "passive": false,
+                  "backendNodeId": 3655,
+                  "target": "SECTION.readable-logs.diagnostic-owned",
+                  "scriptId": "162300",
+                  "line": 3,
+                  "column": 17
+                },
+                {
+                  "type": "diagnostic-owned-event",
+                  "capture": false,
+                  "once": false,
+                  "passive": false,
+                  "backendNodeId": 3656,
+                  "target": "DIV.diagnostic-child",
+                  "scriptId": "162300",
+                  "line": 3,
+                  "column": 72
+                }
+              ]
+            }
+          ],
+          "scope": "Weakly captured mounted viewer roots and non-piercing subtrees only. Assigned and registered attached handlers; no heap capture or explicit GC. Temporary inspector handles released before return."
+        }
+      },
+      {
+        "offsetMs": 15000,
+        "elapsedMs": 15006.684321,
+        "at": 1793101884155,
+        "dom": {
+          "documents": 4,
+          "nodes": 895,
+          "jsEventListeners": 756
+        },
+        "renderer": {
+          "memory": {
+            "rss": 681005056,
+            "heapTotal": 70017024,
+            "heapUsed": 67464616,
+            "external": 44121275,
+            "arrayBuffers": 0
+          },
+          "timeline": 834946.968,
+          "rows": 0,
+          "highlights": 0
+        },
+        "viewerRoots": {
+          "startedAt": 1793101884155,
+          "elapsedMs": 2,
+          "before": {
+            "documents": 4,
+            "nodes": 895,
+            "jsEventListeners": 756
+          },
+          "after": {
+            "documents": 4,
+            "nodes": 895,
+            "jsEventListeners": 756
+          },
+          "captured": 1,
+          "reachable": 1,
+          "roots": [
+            {
+              "id": 1,
+              "connected": false,
+              "target": "SECTION.readable-logs.diagnostic-owned",
+              "nodes": 2,
+              "backendNodeId": 3655,
+              "listeners": [
+                {
+                  "type": "click",
+                  "capture": false,
+                  "once": false,
+                  "passive": false,
+                  "backendNodeId": 3655,
+                  "target": "SECTION.readable-logs.diagnostic-owned",
+                  "scriptId": "162300",
+                  "line": 3,
+                  "column": 17
+                },
+                {
+                  "type": "diagnostic-owned-event",
+                  "capture": false,
+                  "once": false,
+                  "passive": false,
+                  "backendNodeId": 3656,
+                  "target": "DIV.diagnostic-child",
+                  "scriptId": "162300",
+                  "line": 3,
+                  "column": 72
+                }
+              ]
+            }
+          ],
+          "scope": "Weakly captured mounted viewer roots and non-piercing subtrees only. Assigned and registered attached handlers; no heap capture or explicit GC. Temporary inspector handles released before return."
+        }
+      }
+    ],
+    "scope": "Same failed sample; no navigation, new workload, heap snapshot, queryObjects or explicit GC during this comparison. Natural GC may still occur. Reachability without another GC is not proof of sustained retention.",
+    "nativeEvents": [
+      {
+        "name": "Scheduler::BeginFrame",
+        "category": "cc,benchmark",
+        "count": 3,
+        "firstUs": 163405806964,
+        "lastUs": 163405840273
+      },
+      {
+        "name": "auto cc::Scheduler::SendDidNotProduceFrame(const viz::BeginFrameArgs &, FrameSkippedReason)::(lambda)::operator()()::(lambda)::operator()(uint32_t) const",
+        "category": "cc",
+        "count": 8,
+        "firstUs": 163405806981,
+        "lastUs": 163405840295
+      },
+      {
+        "name": "AnimationHost::TickAnimations",
+        "category": "cc",
+        "count": 3,
+        "firstUs": 163405807024,
+        "lastUs": 163405823640
+      },
+      {
+        "name": "ScrollTree::CollectScrollDeltas",
+        "category": "cc",
+        "count": 1,
+        "firstUs": 163405807040,
+        "lastUs": 163405807040
+      },
+      {
+        "name": "PageAnimator::serviceScriptedAnimations",
+        "category": "blink,rail",
+        "count": 1,
+        "firstUs": 163405807289,
+        "lastUs": 163405807289
+      },
+      {
+        "name": "AnimationTimeline::serviceAnimations",
+        "category": "blink",
+        "count": 2,
+        "firstUs": 163405807291,
+        "lastUs": 163405807293
+      },
+      {
+        "name": "WebFrameWidgetImpl::UpdateLifecycle",
+        "category": "blink",
+        "count": 1,
+        "firstUs": 163405807299,
+        "lastUs": 163405807299
+      },
+      {
+        "name": "LocalFrameView::WillStartLifecycleUpdate",
+        "category": "blink",
+        "count": 1,
+        "firstUs": 163405807300,
+        "lastUs": 163405807300
+      },
+      {
+        "name": "LocalFrameView::UpdateLifecyclePhases - start of lifecycle tasks",
+        "category": "blink",
+        "count": 1,
+        "firstUs": 163405807301,
+        "lastUs": 163405807301
+      },
+      {
+        "name": "LocalFrameView::RunStyleAndLayoutLifecyclePhases",
+        "category": "blink,benchmark",
+        "count": 1,
+        "firstUs": 163405807302,
+        "lastUs": 163405807302
+      },
+      {
+        "name": "RootScrollerController::PerformRootScrollerSelection",
+        "category": "blink",
+        "count": 1,
+        "firstUs": 163405807305,
+        "lastUs": 163405807305
+      },
+      {
+        "name": "LocalFrameView::RunCompositingInputsLifecyclePhase",
+        "category": "blink,benchmark",
+        "count": 1,
+        "firstUs": 163405807311,
+        "lastUs": 163405807311
+      },
+      {
+        "name": "LocalFrameView::RunPrePaintLifecyclePhase",
+        "category": "blink,benchmark",
+        "count": 1,
+        "firstUs": 163405807319,
+        "lastUs": 163405807319
+      },
+      {
+        "name": "LocalFrameView::RunPaintLifecyclePhase",
+        "category": "blink,benchmark",
+        "count": 1,
+        "firstUs": 163405807365,
+        "lastUs": 163405807365
+      },
+      {
+        "name": "Blink.CompositingCommit.UpdateTime",
+        "category": "blink",
+        "count": 1,
+        "firstUs": 163405807461,
+        "lastUs": 163405807461
+      },
+      {
+        "name": "LocalFrameView::DidFinishLifecycleUpdate",
+        "category": "blink",
+        "count": 1,
+        "firstUs": 163405807498,
+        "lastUs": 163405807498
+      },
+      {
+        "name": "Scheduler::BeginFrameDropped",
+        "category": "cc",
+        "count": 1,
+        "firstUs": 163405840277,
+        "lastUs": 163405840277
+      },
+      {
+        "name": "AnimationFrame",
+        "category": "devtools.timeline",
+        "count": 4,
+        "firstUs": 163405799720,
+        "lastUs": 163405807552
+      },
+      {
+        "name": "AnimationFrame::Render",
+        "category": "devtools.timeline",
+        "count": 2,
+        "firstUs": 163405807284,
+        "lastUs": 163405807365
+      },
+      {
+        "name": "AnimationFrame::StyleAndLayout",
+        "category": "devtools.timeline",
+        "count": 2,
+        "firstUs": 163405807300,
+        "lastUs": 163405807365
+      },
+      {
+        "name": "AnimationFrame::Presentation",
+        "category": "devtools.timeline",
+        "count": 1,
+        "firstUs": 163405807552,
+        "lastUs": 163405807552
+      }
+    ],
+    "nativeScope": "Sanitized renderer-process trace event names/counts/times only; trace begins after the violation. Scroll or lifecycle events may be observed, but absence does not prove a native queue is empty or identify which viewer it held. Tracing changes timing."
+  },
+  "removed": {
+    "startedAt": 1793101884163,
+    "elapsedMs": 1,
+    "before": {
+      "documents": 4,
+      "nodes": 895,
+      "jsEventListeners": 756
+    },
+    "after": {
+      "documents": 4,
+      "nodes": 895,
+      "jsEventListeners": 756
+    },
+    "captured": 1,
+    "reachable": 1,
+    "roots": [
+      {
+        "id": 1,
+        "connected": false,
+        "target": "SECTION.readable-logs.diagnostic-owned",
+        "nodes": 1,
+        "backendNodeId": 3655,
+        "listeners": []
+      }
+    ],
+    "scope": "Weakly captured mounted viewer roots and non-piercing subtrees only. Assigned and registered attached handlers; no heap capture or explicit GC. Temporary inspector handles released before return."
+  },
+  "restored": true
+}

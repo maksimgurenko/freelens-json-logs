@@ -2,6 +2,7 @@ import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { LogViewport } from '../src/renderer/log-viewport.ts';
 import { parseTransportLine } from '../src/core/records.ts';
+import { emptyWindow, replaceWindow, recordRef, type RecordRef } from '../src/core/occurrences.ts';
 
 class Scroller extends EventTarget {
   scrollTop = 0; scrollLeft = 0; clientHeight = 100; clientTop = 0;
@@ -16,21 +17,21 @@ class Scroller extends EventTarget {
   }
 }
 
-function scenario(run: (element: Scroller, viewer: LogViewport, replace: (lines: string[]) => void, status: () => { following: boolean; lost: boolean }) => void) {
+function scenario(run: (element: Scroller, viewer: LogViewport, replace: (lines: string[]) => void, status: () => { following: boolean; lost: boolean }, ref: (index: number) => RecordRef) => void) {
   const original = globalThis.ResizeObserver;
   globalThis.ResizeObserver = class { observe() {} unobserve() {} disconnect() {} };
   const element = new Scroller();
-  let records = Array.from({ length: 200 }, (_, i) => parseTransportLine(`record ${i}`));
+  let window = replaceWindow(emptyWindow('viewport'), Array.from({ length: 200 }, (_, i) => parseTransportLine(`record ${i}`)));
   let status = { following: true, lost: false };
   // Reproduce React 17's synchronous render from a native event callback.
-  const viewer = new LogViewport(element as unknown as HTMLElement, value => { status = value; viewer.update(records); });
-  const replace = (lines: string[]) => { records = lines.map(parseTransportLine); element.count = records.length; viewer.update(records); };
-  try { viewer.update(records); run(element, viewer, replace, () => status); }
+  const viewer = new LogViewport(element as unknown as HTMLElement, value => { status = value; viewer.update(window); });
+  const replace = (lines: string[]) => { window = replaceWindow(window, lines.map(parseTransportLine)); element.count = window.records.length; viewer.update(window); };
+  try { viewer.update(window); run(element, viewer, replace, () => status, index => recordRef(window, index)!); }
   finally { viewer.dispose(); globalThis.ResizeObserver = original; }
 }
 
 test('a synchronous render during scroll-status publication preserves the newly captured pixel anchor', () => {
-  scenario((element, viewer, replace, status) => {
+  scenario((element, viewer, replace, status, ref) => {
     assert.equal(element.scrollTop, 4000); // Browser clamps to bottom; fake geometry does not.
     element.scrollTop = 507;
     element.dispatchEvent(new Event('scroll'));
@@ -38,10 +39,23 @@ test('a synchronous render during scroll-status publication preserves the newly 
     assert.equal(element.scrollTop, 507);
     replace(Array.from({ length: 200 }, (_, i) => `record ${i + 10}`));
     assert.equal(element.scrollTop, 307);
-    viewer.show(40);
+    viewer.show(ref(40));
     assert.equal(element.scrollTop, 800);
     viewer.toBottom();
     assert.equal(status().following, true);
+  });
+});
+
+test('a delayed reveal resolves a retained occurrence now and never reveals an evicted equal line', () => {
+  scenario((element, viewer, replace, _status, ref) => {
+    const selected = ref(40);
+    replace(Array.from({ length: 200 }, (_, i) => `record ${i + 10}`));
+    viewer.show(selected);
+    assert.equal(element.scrollTop, 600);
+    replace(['elsewhere', 'record 40']);
+    const top = element.scrollTop;
+    viewer.show(selected);
+    assert.equal(element.scrollTop, top);
   });
 });
 

@@ -1,0 +1,10 @@
+{"scenario":"mount","cycle":0,"dom":{"documents":4,"nodes":437,"jsEventListeners":700}}
+{"scenario":"mount","cycle":1,"dom":{"documents":4,"nodes":437,"jsEventListeners":700}}
+{"scenario":"mount","cycle":2,"dom":{"documents":4,"nodes":437,"jsEventListeners":700}}
+{"scenario":"find","cycle":0,"dom":{"documents":4,"nodes":437,"jsEventListeners":700}}
+{"scenario":"find","cycle":1,"dom":{"documents":4,"nodes":437,"jsEventListeners":700}}
+{"scenario":"find","cycle":2,"dom":{"documents":4,"nodes":437,"jsEventListeners":700}}
+{"scenario":"inactive","cycle":0,"dom":{"documents":4,"nodes":438,"jsEventListeners":700}}
+{"scenario":"inactive","cycle":1,"dom":{"documents":4,"nodes":439,"jsEventListeners":700}}
+{"scenario":"inactive","cycle":2,"dom":{"documents":4,"nodes":440,"jsEventListeners":700}}
+{"pass":true}

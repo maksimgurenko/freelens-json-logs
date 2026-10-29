@@ -1,0 +1,8 @@
+{
+  "reason": "Stop stalled owned renderer evaluation after failed cadence diagnostic; not a passing lifecycle/latency run",
+  "pid": 1678718,
+  "signal": "SIGTERM",
+  "forcedKill": true,
+  "hostGone": false,
+  "stalledDriverStopped": 1685954
+}

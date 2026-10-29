@@ -1,0 +1,39 @@
+{
+  "continuation": {
+    "sameActive": true,
+    "sameWorkspace": true,
+    "samePointerEndpoints": true,
+    "sameClients": true,
+    "events": 4624,
+    "workspaceEvents": [],
+    "uniqueActiveAddresses": [
+      "activewindowv2>>5637f33d1230"
+    ],
+    "error": null,
+    "elapsedSeconds": 462.5474354890175
+  },
+  "dom-continuation": {
+    "sameActive": true,
+    "sameWorkspace": true,
+    "samePointerEndpoints": true,
+    "sameClients": true,
+    "events": 5369,
+    "workspaceEvents": [],
+    "uniqueActiveAddresses": [
+      "activewindowv2>>5637f33d1230"
+    ],
+    "error": null,
+    "elapsedSeconds": 537.0948427969997
+  },
+  "mesa-clean": {
+    "sameActive": true,
+    "sameWorkspace": true,
+    "samePointerEndpoints": true,
+    "sameClients": true,
+    "events": 0,
+    "workspaceEvents": [],
+    "uniqueActiveAddresses": [],
+    "error": "Nested Hyprland IPC did not become ready",
+    "elapsedSeconds": 15.835298717982369
+  }
+}

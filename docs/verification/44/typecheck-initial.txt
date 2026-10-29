@@ -1,0 +1,5 @@
+
+> freelens-readable-logs@0.1.34 typecheck
+> tsc --noEmit
+
+tests/find-history.test.ts(38,35): error TS2339: Property 'text' does not exist on type 'never'.

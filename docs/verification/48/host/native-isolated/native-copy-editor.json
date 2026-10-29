@@ -1,0 +1,64 @@
+{
+  "route": "private Wayland virtual keyboard; real production inspector copy actions and profile sample editor",
+  "physicalHardware": false,
+  "checks": [
+    {
+      "name": "Keyboard row activation; exact Application text and Transport line on private compositor clipboard",
+      "before": {
+        "query": "あ",
+        "open": true,
+        "focus": true,
+        "active": -1,
+        "inspected": -1,
+        "editor": false,
+        "focused": "<input id=\"rl-find\" type=\"search\" aria-label=\"Find in logs\" placeholder=\"Search retained logs\" title=\"Next: Enter or Ctrl+G; previous: Shift+Enter or Ctrl+Shift+G\" value=\"あ\">"
+      },
+      "transport": "2026-10-27T17:13:25.534426674Z {\"message\": \"row 0\", \"index\": 0}",
+      "application": "{\"message\": \"row 0\", \"index\": 0}",
+      "applicationClipboard": "{\"message\": \"row 0\", \"index\": 0}",
+      "transportClipboard": "2026-10-27T17:13:25.534426674Z {\"message\": \"row 0\", \"index\": 0}",
+      "pass": true,
+      "after": {
+        "query": "あ",
+        "open": false,
+        "focus": true,
+        "active": -1,
+        "inspected": -1,
+        "editor": false,
+        "focused": "<div class=\"rl-records\" tabindex=\"0\" aria-label=\"Container log records\" aria-busy=\"false\"><div class=\"rl-record\" data-record-index=\"0\"><div class=\"rl-row\" role=\"button\" tabindex=\"0\" aria-pressed=\"false\" aria-label=\"Inspect record 1: row 0\"><time date"
+      }
+    },
+    {
+      "name": "Real profile sample editor retains native Ctrl+F/G ownership and Escape returns to logs",
+      "before": {
+        "query": "あ",
+        "open": false,
+        "focus": true,
+        "active": -1,
+        "inspected": -1,
+        "editor": false,
+        "focused": "<div class=\"rl-records\" tabindex=\"0\" aria-label=\"Container log records\" aria-busy=\"false\"><div class=\"rl-record\" data-record-index=\"0\"><div class=\"rl-row\" role=\"button\" tabindex=\"0\" aria-pressed=\"false\" aria-label=\"Inspect record 1: row 0\"><time date"
+      },
+      "sampleBefore": "",
+      "pass": true,
+      "after": {
+        "query": "あ",
+        "open": false,
+        "focus": true,
+        "active": -1,
+        "inspected": -1,
+        "editor": false,
+        "focused": "<button type=\"button\" class=\"rl-edit-profiles\" aria-expanded=\"false\"><svg viewBox=\"0 0 24 24\" width=\"16\" height=\"16\" aria-hidden=\"true\" focusable=\"false\"><path d=\"m15 5 4 4M4 20l4-1L20 7a2.8 2.8 0 0 0-4-4L4 15z\"></path></svg>Edit profiles</button>"
+      }
+    }
+  ],
+  "final": {
+    "query": "あ",
+    "open": false,
+    "focus": true,
+    "active": -1,
+    "inspected": -1,
+    "editor": false,
+    "focused": "<button type=\"button\" class=\"rl-edit-profiles\" aria-expanded=\"false\"><svg viewBox=\"0 0 24 24\" width=\"16\" height=\"16\" aria-hidden=\"true\" focusable=\"false\"><path d=\"m15 5 4 4M4 20l4-1L20 7a2.8 2.8 0 0 0-4-4L4 15z\"></path></svg>Edit profiles</button>"
+  }
+}

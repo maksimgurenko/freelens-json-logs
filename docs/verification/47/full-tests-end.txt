@@ -1,0 +1,374 @@
+
+> freelens-readable-logs@0.1.34 test
+> node --experimental-strip-types --test tests/*.test.ts tests/*.test.mjs
+
+(node:1168551) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///home/max/work/freelens-json-logs/tests/find-client.test.ts is not specified and it doesn't parse as CommonJS.
+Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+To eliminate this warning, add "type": "module" to /home/max/work/freelens-json-logs/package.json.
+(Use `node --trace-warnings ...` to show where the warning was created)
+✔ pending and the whole-attempt deadline start before SDK registration resolves (2.631567ms)
+✔ superseded successes and failures cannot publish into a newer query/window/message/context (3.315586ms)
+✔ worker failure latches through maintenance; edit and explicit Retry use current records (0.45747ms)
+✔ oversized exact input is preserved without dispatch; empty clears and cancels pending work (0.436149ms)
+✔ inactivity stops work, keeps valid data and only recomputes pending current inputs on return (0.33247ms)
+✔ malformed current replies fail locally and zero-hit exact replies complete normally (0.145819ms)
+✔ closure during registration closes the eventual owner without dispatch or late state updates (0.13355ms)
+✔ composition suspends obsolete matching and evaluates only the committed input once (0.44223ms)
+(node:1168552) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///home/max/work/freelens-json-logs/tests/find-editing.test.ts is not specified and it doesn't parse as CommonJS.
+Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+To eliminate this warning, add "type": "module" to /home/max/work/freelens-json-logs/package.json.
+(Use `node --trace-warnings ...` to show where the warning was created)
+✔ pre-insertion selection distinguishes shared-prefix replacement, partial paste and Undo/Redo (1.061249ms)
+✔ composition captures replacement before insertion, commits once and cannot complete after Clear (0.25658ms)
+(node:1168554) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///home/max/work/freelens-json-logs/tests/find-execution.test.ts is not specified and it doesn't parse as CommonJS.
+Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+To eliminate this warning, add "type": "module" to /home/max/work/freelens-json-logs/package.json.
+(Use `node --trace-warnings ...` to show where the warning was created)
+✔ execution is lazy, reuses a successful worker and awaits actual exit at disposal (2.260147ms)
+✔ supersession during startup keeps only the newest request and waits for late actual exit (2.726257ms)
+✔ the whole attempt expires at 1000ms including startup and time waiting for old exit (0.33657ms)
+✔ oversized and empty inputs cancel obsolete work without allocating another worker (0.617709ms)
+✔ malformed current worker replies fail locally and never apply their data (0.559289ms)
+✔ range-interest churn keeps exact matching running and retains only the newest interest (4.288596ms)
+✔ inactivity releases idle/startup execution; reactivation waits for exit and old request IDs stay obsolete (0.402069ms)
+✔ stale successes and failures cannot fail or finish a newer operation (0.26074ms)
+✔ a reply delivered after the allowance expires cannot win a delayed timer callback (0.15381ms)
+(node:1168559) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///home/max/work/freelens-json-logs/tests/find-fields-selection.test.ts is not specified and it doesn't parse as CommonJS.
+Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+To eliminate this warning, add "type": "module" to /home/max/work/freelens-json-logs/package.json.
+(Use `node --trace-warnings ...` to show where the warning was created)
+✔ pretty fields seed only verified original lexemes, never generated indentation or decoded-only non-message values (0.877769ms)
+✔ reordered keys, duplicate keys and numeric/string normalization cannot be guessed into original source offsets (0.21382ms)
+(node:1168565) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///home/max/work/freelens-json-logs/tests/find-history.test.ts is not specified and it doesn't parse as CommonJS.
+Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+To eliminate this warning, add "type": "module" to /home/max/work/freelens-json-logs/package.json.
+(Use `node --trace-warnings ...` to show where the warning was created)
+✔ history keeps seven exact text/two-flag tuples in MRU order, independently per viewer (1.607888ms)
+✔ close commits valid zero hits; unfinished, composing, oversized, failed and stale inputs never commit (0.247599ms)
+(node:1168566) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///home/max/work/freelens-json-logs/tests/find-marks.test.ts is not specified and it doesn't parse as CommonJS.
+Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+To eliminate this warning, add "type": "module" to /home/max/work/freelens-json-logs/package.json.
+(Use `node --trace-warnings ...` to show where the warning was created)
+✔ seven-pixel slots retain every measured match in retained order, including coincident and end marks (1.120799ms)
+(node:1168572) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///home/max/work/freelens-json-logs/tests/find-matcher.test.ts is not specified and it doesn't parse as CommonJS.
+Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+To eliminate this warning, add "type": "module" to /home/max/work/freelens-json-logs/package.json.
+(Use `node --trace-warnings ...` to show where the warning was created)
+✔ ranges retain original UTF-16 offsets and whole-source non-overlap across fragments (2.802747ms)
+✔ literal Find returns complete ordered records with independent source provenance (0.44587ms)
+✔ Kelvin/simple folding; case=false; words=false (0.248699ms)
+✔ Kelvin/simple folding; case=false; words=true (1.551739ms)
+✔ Kelvin/simple folding; case=true; words=false (0.14326ms)
+✔ Kelvin/simple folding; case=true; words=true (1.264308ms)
+✔ sigma/final sigma; case=false; words=false (0.1877ms)
+✔ sigma/final sigma; case=false; words=true (1.193058ms)
+✔ sigma/final sigma; case=true; words=false (0.39557ms)
+✔ sigma/final sigma; case=true; words=true (1.312969ms)
+✔ sharp-s is not SS; case=false; words=false (0.453489ms)
+✔ sharp-s is not SS; case=false; words=true (1.152289ms)
+✔ sharp-s is not SS; case=true; words=false (0.0682ms)
+✔ sharp-s is not SS; case=true; words=true (1.192428ms)
+✔ sharp-s simple folding; case=false; words=false (0.10016ms)
+✔ sharp-s simple folding; case=false; words=true (1.228859ms)
+✔ sharp-s simple folding; case=true; words=false (0.07631ms)
+✔ sharp-s simple folding; case=true; words=true (1.264458ms)
+✔ no accent normalization; case=false; words=false (0.12556ms)
+✔ no accent normalization; case=false; words=true (1.123269ms)
+✔ no accent normalization; case=true; words=false (0.1431ms)
+✔ no accent normalization; case=true; words=true (1.152269ms)
+✔ no locale tailoring; case=false; words=false (0.110459ms)
+✔ no locale tailoring; case=false; words=true (1.271389ms)
+✔ no locale tailoring; case=true; words=false (0.07321ms)
+✔ no locale tailoring; case=true; words=true (1.438069ms)
+✔ astral offsets and folding; case=false; words=false (0.13722ms)
+✔ astral offsets and folding; case=false; words=true (1.373938ms)
+✔ astral offsets and folding; case=true; words=false (0.07466ms)
+✔ astral offsets and folding; case=true; words=true (1.103339ms)
+✔ lone surrogates stay original; case=false; words=false (0.602599ms)
+✔ lone surrogates stay original; case=false; words=true (1.413389ms)
+✔ lone surrogates stay original; case=true; words=false (0.07618ms)
+✔ lone surrogates stay original; case=true; words=true (1.160729ms)
+✔ lone surrogate literal; case=false; words=false (0.11448ms)
+✔ lone surrogate literal; case=false; words=true (1.093599ms)
+✔ lone surrogate literal; case=true; words=false (0.0954ms)
+✔ lone surrogate literal; case=true; words=true (0.883709ms)
+✔ original U0345 neighbors; case=false; words=false (0.04534ms)
+✔ original U0345 neighbors; case=false; words=true (0.031ms)
+✔ original U0345 neighbors; case=true; words=false (0.02105ms)
+✔ original U0345 neighbors; case=true; words=true (0.01843ms)
+✔ original U0345 after astral; case=false; words=false (0.02228ms)
+✔ original U0345 after astral; case=false; words=true (0.09526ms)
+✔ original U0345 after astral; case=true; words=false (0.04274ms)
+✔ original U0345 after astral; case=true; words=true (0.03891ms)
+✔ U0345 itself folds in query; case=false; words=false (0.09416ms)
+✔ U0345 itself folds in query; case=false; words=true (1.074738ms)
+✔ U0345 itself folds in query; case=true; words=false (0.04784ms)
+✔ U0345 itself folds in query; case=true; words=true (1.169829ms)
+✔ supplementary letter before; case=false; words=false (0.06667ms)
+✔ supplementary letter before; case=false; words=true (0.04228ms)
+✔ supplementary letter before; case=true; words=false (0.02907ms)
+✔ supplementary letter before; case=true; words=true (0.02629ms)
+✔ supplementary letter after; case=false; words=false (0.02658ms)
+✔ supplementary letter after; case=false; words=true (0.023389ms)
+✔ supplementary letter after; case=true; words=false (0.02467ms)
+✔ supplementary letter after; case=true; words=true (0.02271ms)
+✔ Unicode number before; case=false; words=false (0.02876ms)
+✔ Unicode number before; case=false; words=true (0.0248ms)
+✔ Unicode number before; case=true; words=false (0.02349ms)
+✔ Unicode number before; case=true; words=true (0.02307ms)
+✔ underscore after; case=false; words=false (0.04894ms)
+✔ underscore after; case=false; words=true (0.27166ms)
+✔ underscore after; case=true; words=false (0.03435ms)
+✔ underscore after; case=true; words=true (0.26343ms)
+✔ combining mark outside words; case=false; words=false (0.04466ms)
+✔ combining mark outside words; case=false; words=true (0.03002ms)
+✔ combining mark outside words; case=true; words=false (0.03832ms)
+✔ combining mark outside words; case=true; words=true (0.033459ms)
+✔ other connector outside words; case=false; words=false (0.03046ms)
+✔ other connector outside words; case=false; words=true (0.02884ms)
+✔ other connector outside words; case=true; words=false (0.02947ms)
+✔ other connector outside words; case=true; words=true (0.03222ms)
+✔ whitespace untrimmed; case=false; words=false (0.07546ms)
+✔ whitespace untrimmed; case=false; words=true (0.920399ms)
+✔ whitespace untrimmed; case=true; words=false (0.05893ms)
+✔ whitespace untrimmed; case=true; words=true (0.695439ms)
+✔ literal line break; case=false; words=false (0.08364ms)
+✔ literal line break; case=false; words=true (0.588109ms)
+✔ literal line break; case=true; words=false (0.06017ms)
+✔ literal line break; case=true; words=true (0.69656ms)
+✔ dense decoration caps never change exact counts, provenance or late visible access (9.900769ms)
+✔ maximum accepted literal compiles in all modes; oversized literal never executes (16.142192ms)
+✔ actual retained windows bound matching at 1000 records and 5 MiB without searching the transport timestamp (352.595236ms)
+(node:1168583) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///home/max/work/freelens-json-logs/tests/find-presentation.test.ts is not specified and it doesn't parse as CommonJS.
+Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+To eliminate this warning, add "type": "module" to /home/max/work/freelens-json-logs/package.json.
+(Use `node --trace-warnings ...` to show where the warning was created)
+✔ complete source fragments retain UTF-16 offsets without splitting surrogate pairs (0.64082ms)
+(node:1168589) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///home/max/work/freelens-json-logs/tests/find-protocol.test.ts is not specified and it doesn't parse as CommonJS.
+Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+To eliminate this warning, add "type": "module" to /home/max/work/freelens-json-logs/package.json.
+(Use `node --trace-warnings ...` to show where the warning was created)
+✔ the wire boundary rejects malformed/oversized input before execution (8.117371ms)
+✔ replies must match every key dimension, request and worker generation; failures are equally guarded (0.391129ms)
+✔ source ranges and coverage are tied to the current interest and original code-point boundaries (1.813808ms)
+(node:1168595) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///home/max/work/freelens-json-logs/tests/find-ranges.test.ts is not specified and it doesn't parse as CommonJS.
+Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+To eliminate this warning, add "type": "module" to /home/max/work/freelens-json-logs/package.json.
+(Use `node --trace-warnings ...` to show where the warning was created)
+✔ decoration failure latches independently of exact matching and explicit retry uses current interest (3.402226ms)
+✔ new visible interest rejects old success/failure and its deadline covers registration and dispatch (1.282868ms)
+(node:1168596) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///home/max/work/freelens-json-logs/tests/find-selection.test.ts is not specified and it doesn't parse as CommonJS.
+Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+To eliminate this warning, add "type": "module" to /home/max/work/freelens-json-logs/package.json.
+(Use `node --trace-warnings ...` to show where the warning was created)
+✔ selection seeds preserve exact single-line text and count Unicode code points (0.587939ms)
+(node:1168607) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///home/max/work/freelens-json-logs/tests/find-service.test.ts is not specified and it doesn't parse as CommonJS.
+Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+To eliminate this warning, add "type": "module" to /home/max/work/freelens-json-logs/package.json.
+(Use `node --trace-warnings ...` to show where the warning was created)
+✔ SDK ownership rejects foreign frames and foreign webContents, even with a valid token (2.337758ms)
+✔ actual frame membership removes only its owner and releases active or idle workers (0.725469ms)
+✔ same-frame replacement and close/reopen wait for actual old exit before admitting work (0.64616ms)
+✔ inactivity cancels startup and idle owners without forgetting their temporary binding (0.527479ms)
+✔ navigation, renderer loss, shutdown and late registration cannot retain an owner (0.946269ms)
+✔ invalid input is rejected before worker allocation and request membership is rechecked (0.22657ms)
+(node:1168629) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///home/max/work/freelens-json-logs/tests/find-state.test.ts is not specified and it doesn't parse as CommonJS.
+Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+To eliminate this warning, add "type": "module" to /home/max/work/freelens-json-logs/package.json.
+(Use `node --trace-warnings ...` to show where the warning was created)
+✔ reading row 64: refinement stays 73, Next reaches 82, typo correction restores 82, replacement rebases (1.010558ms)
+✔ deliberate reading rebases navigation inclusively; edge and one-hit feedback (0.15671ms)
+✔ scroll cancels only reveal, dismissal/inspection cancels selection; current counts remain useful (0.208429ms)
+✔ maintenance retains surviving hits, never replaces them, and expiry cannot revive equal text (0.18756ms)
+✔ every old input-key dimension is rejected and dismissed counts cannot promote a candidate (0.38898ms)
+✔ a mark addresses exactly its current occurrence through navigation, preserving reading and rejecting expired targets (0.17944ms)
+✔ HTTP stand-in preserves SDK invocation order without waiting for earlier replies (1.730738ms)
+✔ transport rejects stale/invalid sequences and releases missing-message timers on disposal (0.41595ms)
+(node:1168633) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///home/max/work/freelens-json-logs/tests/inspection.test.ts is not specified and it doesn't parse as CommonJS.
+Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+To eliminate this warning, add "type": "module" to /home/max/work/freelens-json-logs/package.json.
+(Use `node --trace-warnings ...` to show where the warning was created)
+✔ all layouts share selection while presentation, originals and complete fields stay independent (1.961258ms)
+✔ exact copy payloads include empty/blank, indentation, Unicode, JSON escapes and precise timestamps (0.31065ms)
+✔ snapshot replacement preserves a surviving exact record and never substitutes a different index (0.21849ms)
+✔ saved schema starts Side and separates profiles from temporary inspection state (0.349229ms)
+✔ host migration metadata alone is a first-use file, not an unsupported user schema (0.17971ms)
+(node:1168663) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///home/max/work/freelens-json-logs/tests/lifecycle.test.ts is not specified and it doesn't parse as CommonJS.
+Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+To eliminate this warning, add "type": "module" to /home/max/work/freelens-json-logs/package.json.
+(Use `node --trace-warnings ...` to show where the warning was created)
+✔ instance epochs publish before replacement reads, survive Pause and reset once per observed boundary (5.939123ms)
+✔ observed restart clears old window, preserves profile/Auto and rejects late success (5.025915ms)
+✔ observed restart clears old window, preserves profile/Pause and rejects late success (0.487229ms)
+✔ deletion permanently stops original target and rejects late success (0.594919ms)
+✔ replacement permanently stops original target and rejects late success (3.960396ms)
+✔ observed restart clears old window, preserves profile/Auto and rejects late failure (1.076259ms)
+✔ observed restart clears old window, preserves profile/Pause and rejects late failure (0.857139ms)
+✔ deletion permanently stops original target and rejects late failure (2.135507ms)
+✔ replacement permanently stops original target and rejects late failure (0.41382ms)
+✔ all container kinds reset context to Auto/unpaused; old result is never reused (0.644239ms)
+✔ instance ID changes detect restarts; absent/unchanged statuses and other containers do not (1.220659ms)
+✔ initial metadata success after hiding is discarded; return starts fresh (0.3544ms)
+✔ initial metadata failure after hiding is discarded; return starts fresh (0.150139ms)
+✔ hidden observer stops; paused return reobserves restart without reading logs; close/reopen resets state (0.48629ms)
+✔ metadata poll never overlaps, and stop rejects late success (0.08318ms)
+✔ metadata poll never overlaps, and stop rejects late failure (0.098129ms)
+✔ native window and route relay stop CSS-hidden cluster polling; focus/blur are ignored (2.242618ms)
+✔ view waits for visibility answer without fetching then opens automatically on first displayed answer (0.1833ms)
+✔ paused refresh after restart waits for the old outstanding read and fetches once (0.267739ms)
+✔ inactive target change clears records/profile/Pause immediately and fetches only on return (0.22701ms)
+✔ new view context clusterId starts clean and independent of old late failure (0.37155ms)
+✔ new view context podName starts clean and independent of old late failure (0.16435ms)
+✔ new view context podUid starts clean and independent of old late failure (0.127079ms)
+✔ metadata failure stops the watcher/log timers, retains outdated records and recovers only on explicit Retry (0.39765ms)
+✔ restart count followed by the new instance ID does not clear the accepted current window twice (0.18496ms)
+✔ first-known metadata and same-container actions preserve the epoch; different known IDs publish before reading (0.272909ms)
+(node:1168664) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///home/max/work/freelens-json-logs/tests/local-back.test.ts is not specified and it doesn't parse as CommonJS.
+Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+To eliminate this warning, add "type": "module" to /home/max/work/freelens-json-logs/package.json.
+(Use `node --trace-warnings ...` to show where the warning was created)
+✔ Back remains owned when a press in Profiles panel space moves focus to BODY (0.981019ms)
+✔ Back can begin in Profiles panel space with BODY focus (0.15501ms)
+✔ foreign focused controls retain Back ownership at press or release (0.15275ms)
+✔ window blur or leaving the root releases a latched Back gesture (0.15785ms)
+(node:1168670) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///home/max/work/freelens-json-logs/tests/local-dismissal.test.ts is not specified and it doesn't parse as CommonJS.
+Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+To eliminate this warning, add "type": "module" to /home/max/work/freelens-json-logs/package.json.
+(Use `node --trace-warnings ...` to show where the warning was created)
+✔ one dismissal resolves the highest eligible layer, then Find, then inspection; disposal removes ownership (1.392168ms)
+(node:1168677) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///home/max/work/freelens-json-logs/tests/matching.test.ts is not specified and it doesn't parse as CommonJS.
+Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+To eliminate this warning, add "type": "module" to /home/max/work/freelens-json-logs/package.json.
+(Use `node --trace-warnings ...` to show where the warning was created)
+✔ exact namespace/label/container conjunction; missing and differently cased keys or values fail (0.808709ms)
+✔ strings are compared literally without wildcard/regex interpretation and unsupported conditions are rejected (0.67873ms)
+✔ manual precedes first enabled match, then global default; conditionless/disabled profiles never auto-match (0.240529ms)
+✔ saved ordering alone controls matching; stable-ID rename preserves order and manual/global references (0.59159ms)
+✔ deleting manual/default/matching profiles returns to ordinary Auto precedence (0.189279ms)
+✔ duplicates own independent matching conditions and invalid matching never replaces saved data (0.38269ms)
+✔ explicit schema 2 migration retains all profiles, identity, order, default and Inspection without modifying source (0.45361ms)
+✔ metadata label changes reevaluate paused retained records with no log IO, preserving originals and manual choice (1.524278ms)
+(node:1168682) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///home/max/work/freelens-json-logs/tests/navigation.test.ts is not specified and it doesn't parse as CommonJS.
+Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+To eliminate this warning, add "type": "module" to /home/max/work/freelens-json-logs/package.json.
+(Use `node --trace-warnings ...` to show where the warning was created)
+✔ ordered overlap preserves the correct repeated occurrence and reports the departed one lost (2.014708ms)
+✔ append, unchanged, lost, empty, invalid index and periodic windows retain only observed overlap (0.218979ms)
+✔ Find shares literal case-insensitive predicate for originals and decoded messages, once per record (1.250209ms)
+✔ Previous/Next visit precisely the counted records and wrap without filtering (0.36136ms)
+✔ window replacement and reformatting recompute Find from originals and the active extracted message (0.19612ms)
+✔ overlap mapping agrees with a simple exhaustive oracle including repeated lines (125.490254ms)
+(node:1168683) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///home/max/work/freelens-json-logs/tests/occurrences.test.ts is not specified and it doesn't parse as CommonJS.
+Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+To eliminate this warning, add "type": "module" to /home/max/work/freelens-json-logs/package.json.
+(Use `node --trace-warnings ...` to show where the warning was created)
+✔ every consumer retains the old x at the beginning, never the newly appended x (1.410218ms)
+✔ eviction, empty and zero-overlap windows expire references permanently, even if text returns (0.332529ms)
+✔ identical windows preserve every observed ID and new contexts reject old references (1.051869ms)
+(node:1168702) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///home/max/work/freelens-json-logs/tests/profiles.test.ts is not specified and it doesn't parse as CommonJS.
+Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+To eliminate this warning, add "type": "module" to /home/max/work/freelens-json-logs/package.json.
+(Use `node --trace-warnings ...` to show where the warning was created)
+✔ exact slash paths decode literal dots, slash, tilde, empty keys and array indexes, without recursion (2.934717ms)
+✔ configured ordered candidates replace defaults; missing/unusable paths and empty lists use role fallbacks (0.22119ms)
+✔ ordered inline fields omit extracted leaves and hidden descendants while retaining all siblings and exact originals (0.406099ms)
+✔ hiding parent objects never suppresses extracted message/time/level, and fallback text is never redacted (0.25116ms)
+✔ arrays retain original indexes and siblings when extracted leaves are omitted from compact objects (0.19255ms)
+✔ numeric application time is explicit, finite and range checked; strings retain zone requirements (0.541849ms)
+✔ numeric/textual severity sources remain distinct; explicit mappings precede built-in normalization (0.23753ms)
+✔ draft validation identifies names, paths, units, targets and duplicate sources; absent fields are valid (0.913518ms)
+✔ Save is atomic for valid drafts; Cancel by discarding a draft never changes saved or independent copies (0.71172ms)
+✔ stable IDs preserve rename references/order; delete returns global and manual choices to Default/Auto (0.352759ms)
+✔ schema 1 migrates valid Inspection explicitly; saved profiles share schema 3 without transient state (0.47731ms)
+✔ profile changes immediately update Find messages without changing exact records (0.204679ms)
+✔ manual choice is per identified target/container, does not fetch, and clears on close/new view (1.711919ms)
+(node:1168710) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///home/max/work/freelens-json-logs/tests/records.test.ts is not specified and it doesn't parse as CommonJS.
+Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+To eliminate this warning, add "type": "module" to /home/max/work/freelens-json-logs/package.json.
+(Use `node --trace-warnings ...` to show where the warning was created)
+✔ authoritative Default examples: message candidates, whitespace and non-object fallbacks (3.199747ms)
+✔ exact original strings, timestamp precision, complete objects and unused aliases survive extraction (0.631099ms)
+✔ time: ordered valid candidates, explicit timezone, no numeric inference, local display (10.902638ms)
+✔ level: canonical names, unknown/numeric precedence, exact literal and nested paths (0.361969ms)
+✔ split only a validated timestamp and one separator; retain CR, spaces, tabs, Unicode and prototype keys (0.33151ms)
+(node:1168713) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///home/max/work/freelens-json-logs/tests/recovery.test.ts is not specified and it doesn't parse as CommonJS.
+Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+To eliminate this warning, add "type": "module" to /home/max/work/freelens-json-logs/package.json.
+(Use `node --trace-warnings ...` to show where the warning was created)
+✔ preflight preserves corrupt, non-object, invalid and future bytes, including host metadata (6.550593ms)
+✔ missing settings use defaults; unreadable settings remain intact and reset cannot back them up (0.683699ms)
+✔ canceled reset does no I/O; failed backup leaves exact original bytes and no temporary replacement (0.34016ms)
+✔ confirmed reset verifies an exclusive exact backup before clearing all saved identities (0.984629ms)
+✔ explicit schema 1 and 2 migrations preserve preferences, full rules, IDs, order and default; future is never migrated (0.66446ms)
+✔ fallback never starts SDK synchronization, rejects incoming data and inhibits every incidental write; reset restores saving (1.877688ms)
+✔ invalid synchronization cannot change the serialized model or restore writes by sending defaults (0.179949ms)
+(node:1168717) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///home/max/work/freelens-json-logs/tests/refresh.test.ts is not specified and it doesn't parse as CommonJS.
+Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+To eliminate this warning, add "type": "module" to /home/max/work/freelens-json-logs/package.json.
+(Use `node --trace-warnings ...` to show where the warning was created)
+✔ immediate fetch, then 3 seconds after settlement; replace window preserving repeated lines (1.924998ms)
+✔ repeated Refresh coalesces, slow/hung reads never time out or overlap (0.339359ms)
+✔ Pause freezes originals and local formatting remains available; paused Refresh fetches once (0.75329ms)
+✔ Resume waits for invalidated success and requests fresh data; no queued Refresh pile (0.447269ms)
+✔ Resume waits for invalidated failure and requests fresh data; no queued Refresh pile (0.34219ms)
+✔ paused Refresh waits for invalidated read and remains paused; pausing again invalidates queued intent (0.406349ms)
+✔ target changes proceed independently and discard old data even after switching back (0.43771ms)
+✔ target changes proceed independently and discard old errors even after switching back (0.374159ms)
+✔ different Pod/cluster/UID is independent; departed same target waits across sessions and reopens fresh (0.3566ms)
+✔ inactive clears timers and rejects late success (0.27444ms)
+✔ inactive clears timers and rejects late failure (0.13563ms)
+✔ dispose clears timers and rejects late success (0.08718ms)
+✔ dispose clears timers and rejects late failure (0.06333ms)
+✔ inactive automatic view refreshes on return; inactive paused view keeps Pause (0.15334ms)
+✔ genuine empty success replaces window and continues automatic mode (0.20339ms)
+✔ failure retains outdated window; failed Retry stops; successful Retry restores automatic mode (0.342109ms)
+✔ failure retains outdated window; failed Retry stops; successful Retry keeps Pause (0.61414ms)
+✔ initial error has no empty success; Retry recovers metadata errors as well as log errors (0.335899ms)
+(node:1168720) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///home/max/work/freelens-json-logs/tests/session.test.ts is not specified and it doesn't parse as CommonJS.
+Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+To eliminate this warning, add "type": "module" to /home/max/work/freelens-json-logs/package.json.
+(Use `node --trace-warnings ...` to show where the warning was created)
+✔ default container annotation applies only to regular containers; no regular means explicit choice (0.48353ms)
+✔ open preserves target, chooses annotated container and accepts one real-shaped snapshot (1.915468ms)
+✔ without regular containers no request is made until an explicit choice (0.36826ms)
+✔ initial failure is an error, empty success is ready, replacement UID is rejected before logs (0.920179ms)
+✔ departure/disable rejects pending successes and failures without claiming cancellation (0.428649ms)
+✔ errors from the host preserve useful raw Status/wrapper messages (0.12806ms)
+(node:1168730) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///home/max/work/freelens-json-logs/tests/shortcuts.test.ts is not specified and it doesn't parse as CommonJS.
+Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+To eliminate this warning, add "type": "module" to /home/max/work/freelens-json-logs/package.json.
+(Use `node --trace-warnings ...` to show where the warning was created)
+✔ platform-primary commands reject wrong and additional modifiers (1.167439ms)
+(node:1168732) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///home/max/work/freelens-json-logs/tests/snapshot.test.ts is not specified and it doesn't parse as CommonJS.
+Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+To eliminate this warning, add "type": "module" to /home/max/work/freelens-json-logs/package.json.
+(Use `node --trace-warnings ...` to show where the warning was created)
+✔ blank-line/terminal separator examples and independent multiline records (1.813438ms)
+✔ latest 1,000-line boundary, over-tail input and repeated identical lines remain in order (5.612454ms)
+✔ UTF-8 exactly/near/over 5 MiB: retain newest complete-line suffix and exact originals (35.925531ms)
+✔ oversized newest record is distinct from empty success; never keep a non-suffix older record (13.645465ms)
+✔ timestamp prefixes count toward budget; parsed Unicode source and whitespace stay exact (0.34525ms)
+(node:1168753) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///home/max/work/freelens-json-logs/tests/ui-policy.test.ts is not specified and it doesn't parse as CommonJS.
+Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+To eliminate this warning, add "type": "module" to /home/max/work/freelens-json-logs/package.json.
+(Use `node --trace-warnings ...` to show where the warning was created)
+✔ native UI gate defers without opt-in before reading the desktop (0.562299ms)
+✔ attended UI gate requires existing focus on Freelens workspace 7 (0.26676ms)
+✔ ticket CDP transports refuse bringToFront before sending it to the host (16.330792ms)
+✔ native window probes defer before the CLI connects to the host (0.582729ms)
+(node:1168760) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///home/max/work/freelens-json-logs/tests/viewport.test.ts is not specified and it doesn't parse as CommonJS.
+Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+To eliminate this warning, add "type": "module" to /home/max/work/freelens-json-logs/package.json.
+(Use `node --trace-warnings ...` to show where the warning was created)
+✔ a synchronous render during scroll-status publication preserves the newly captured pixel anchor (2.568807ms)
+✔ a delayed reveal resolves a retained occurrence now and never reveals an evicted equal line (1.219049ms)
+✔ lost anchor remains visible across programmatic scroll events until To bottom acknowledges it (1.367828ms)
+✔ bottom following and repeated-record anchors survive appended and bounded replacement windows (2.243538ms)
+ℹ tests 246
+ℹ suites 0
+ℹ pass 246
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 504.155251

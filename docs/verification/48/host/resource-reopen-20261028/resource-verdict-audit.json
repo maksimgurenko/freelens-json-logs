@@ -1,0 +1,57 @@
+{
+  "limits": {
+    "nodes": 128,
+    "listeners": 8,
+    "documents": 0,
+    "rendererHeap": 8388608
+  },
+  "runs": [
+    {
+      "run": "resource-reopen-20261028",
+      "samples": 12,
+      "violations": 0,
+      "peaks": [
+        {
+          "name": "dense",
+          "nodes": 5,
+          "listeners": 0,
+          "documents": 0,
+          "rendererHeap": 846832
+        },
+        {
+          "name": "long",
+          "nodes": 5,
+          "listeners": 0,
+          "documents": 0,
+          "rendererHeap": 391520
+        }
+      ],
+      "storedVerdictMatchesEverySample": true,
+      "resourcePass": true
+    },
+    {
+      "run": "resource-reopen-traced-20261028",
+      "samples": 60,
+      "violations": 15,
+      "peaks": [
+        {
+          "name": "dense",
+          "nodes": 104,
+          "listeners": 21,
+          "documents": 0,
+          "rendererHeap": 1391488
+        },
+        {
+          "name": "long",
+          "nodes": 39,
+          "listeners": 1,
+          "documents": 0,
+          "rendererHeap": 1311416
+        }
+      ],
+      "storedVerdictMatchesEverySample": true,
+      "resourcePass": false
+    }
+  ],
+  "pairedWatchControlsVerified": 2
+}

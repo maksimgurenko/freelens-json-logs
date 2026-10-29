@@ -1,0 +1,181 @@
+{
+  "cycles": [
+    {
+      "cycle": 0,
+      "starts": 5,
+      "exits": 5,
+      "live": 0
+    },
+    {
+      "cycle": 1,
+      "starts": 7,
+      "exits": 7,
+      "live": 0
+    },
+    {
+      "cycle": 2,
+      "starts": 9,
+      "exits": 9,
+      "live": 0
+    },
+    {
+      "cycle": 3,
+      "starts": 11,
+      "exits": 11,
+      "live": 0
+    },
+    {
+      "cycle": 4,
+      "starts": 13,
+      "exits": 13,
+      "live": 0
+    },
+    {
+      "cycle": 5,
+      "starts": 15,
+      "exits": 15,
+      "live": 0
+    },
+    {
+      "cycle": 6,
+      "starts": 17,
+      "exits": 17,
+      "live": 0
+    },
+    {
+      "cycle": 7,
+      "starts": 19,
+      "exits": 19,
+      "live": 0
+    },
+    {
+      "cycle": 8,
+      "starts": 21,
+      "exits": 21,
+      "live": 0
+    },
+    {
+      "cycle": 9,
+      "starts": 23,
+      "exits": 23,
+      "live": 0
+    },
+    {
+      "cycle": 10,
+      "starts": 25,
+      "exits": 25,
+      "live": 0
+    },
+    {
+      "cycle": 11,
+      "starts": 27,
+      "exits": 27,
+      "live": 0
+    },
+    {
+      "cycle": 12,
+      "starts": 29,
+      "exits": 29,
+      "live": 0
+    },
+    {
+      "cycle": 13,
+      "starts": 31,
+      "exits": 31,
+      "live": 0
+    },
+    {
+      "cycle": 14,
+      "starts": 33,
+      "exits": 33,
+      "live": 0
+    },
+    {
+      "cycle": 15,
+      "starts": 35,
+      "exits": 35,
+      "live": 0
+    },
+    {
+      "cycle": 16,
+      "starts": 37,
+      "exits": 37,
+      "live": 0
+    },
+    {
+      "cycle": 17,
+      "starts": 39,
+      "exits": 39,
+      "live": 0
+    },
+    {
+      "cycle": 18,
+      "starts": 41,
+      "exits": 41,
+      "live": 0
+    },
+    {
+      "cycle": 19,
+      "starts": 43,
+      "exits": 43,
+      "live": 0
+    }
+  ],
+  "final": {
+    "starts": 43,
+    "exits": 43,
+    "live": 0,
+    "peak": 1,
+    "resources": [
+      "TCPServerWrap",
+      "StatWatcher",
+      "StatWatcher",
+      "StatWatcher",
+      "StatWatcher",
+      "StatWatcher",
+      "StatWatcher"
+    ],
+    "beforeQuit": 1,
+    "handlers": [
+      "extensions@0ae25dc646bc1c739c4928e069199632661d7f20142d97ace7d3e6ae51613302:find-open",
+      "extensions@0ae25dc646bc1c739c4928e069199632661d7f20142d97ace7d3e6ae51613302:find-request",
+      "extensions@0ae25dc646bc1c739c4928e069199632661d7f20142d97ace7d3e6ae51613302:find-control"
+    ],
+    "windows": [
+      {
+        "id": 2,
+        "pid": 793800,
+        "frames": [
+          {
+            "processId": 5,
+            "routingId": 1,
+            "url": "https://renderer.freelens.app:35517/extensions"
+          }
+        ],
+        "listeners": [
+          [
+            "destroyed",
+            1
+          ],
+          [
+            "render-process-gone",
+            1
+          ],
+          [
+            "did-frame-navigate",
+            0
+          ]
+        ]
+      }
+    ],
+    "service": {
+      "owners": 0,
+      "retiring": 0,
+      "opening": 0,
+      "senders": 0,
+      "watch": false,
+      "executions": []
+    }
+  },
+  "pass": true
+}

@@ -1,0 +1,17 @@
+{
+  "counts": {
+    "activewindowv2": 21801
+  },
+  "activeAddresses": [
+    "5637f33d1230"
+  ],
+  "beforeAddress": "0x5637f33d1230",
+  "afterAddress": "0x5637f33d1230",
+  "focusSame": true,
+  "workspaceSame": true,
+  "pointerSame": true,
+  "clientsSame": true,
+  "events": 21801,
+  "error": null,
+  "elapsedSeconds": 2180.2282284979883
+}

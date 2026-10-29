@@ -1,0 +1,25 @@
+{
+  "method": "Offline assertions over retained native-window-lifecycle.json, no native rerun",
+  "originalFailedAssertion": "foreign.workers.live == 0; actual 1",
+  "verdict": "Harness oracle was stricter than accepted contract; visible selected viewer may retain worker on OS blur",
+  "authority": [
+    ".ralph/sources/find/github-36.md: lifetime resolution and execution lifetime",
+    ".ralph/sources/find/github-37.md: focus does not inherently invalidate current matching data",
+    "src/adapter/visibility.ts: selected cluster and !document.hidden",
+    "src/renderer/viewer.tsx: bindVisibility callback sets execution active"
+  ],
+  "checks": {
+    "auxiliaryOwnsOSFocus": true,
+    "actualNativeResize": true,
+    "nativeSizeRestored": true,
+    "nativeFocusReturned": true,
+    "queryPreserved": true,
+    "auxiliaryClosed": true,
+    "visibleViewerWorkerRetained": true,
+    "noActiveResultPreserved": true
+  },
+  "limits": [
+    "Before auxiliary creation the restored main window was already blurred; no focused-to-blurred transition is claimed.",
+    "Native size changed 1238 to 720 to 1238; this does not establish wheel behavior or mark/selection preservation during resize."
+  ]
+}

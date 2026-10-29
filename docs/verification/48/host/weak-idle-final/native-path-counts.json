@@ -1,0 +1,8 @@
+{
+  "listeners": 794,
+  "pathsContainingNativeAbortSignal": 120,
+  "nativeAbortSignalPathNodeOccurrences": 181,
+  "nearestNamedNativeIsAbortSignal": 101,
+  "nearestPredicate": "Walk each path backward; first node with type native excluding EventListener and InternalNode. Count if its name is AbortSignal. This 101 subset is narrower than paths merely containing AbortSignal.",
+  "scope": "Later sanitized shortest paths, not exact failed-sample attachment or exclusive-owner proof."
+}

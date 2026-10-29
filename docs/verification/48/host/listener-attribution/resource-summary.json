@@ -1,0 +1,782 @@
+{
+  "scope": "Whole-host measured resources. Instrumented controls are diagnostics and do not clear failed/unperformed gates. Original stdout/files are retained. Peaks compare each measured sample with that bound first measured baseline.",
+  "runs": [
+    {
+      "name": "baseline-soak",
+      "originalReportedPass": true,
+      "elapsedMs": 114165,
+      "noFind": false,
+      "abortTraceRestored": null,
+      "everySampleResourcePass": false,
+      "bounds": [
+        {
+          "bound": "dense",
+          "cycles": 30,
+          "first": {
+            "nodes": 516,
+            "listeners": 724,
+            "documents": 4,
+            "rendererHeap": 62278980,
+            "rendererExternal": 44051481,
+            "rendererRss": 465547264,
+            "mainHeap": 31568340,
+            "mainExternal": 20138086,
+            "mainRss": 408272896,
+            "mainThreads": 36,
+            "rendererThreads": 26,
+            "diskBytes": 128173013,
+            "diskFiles": 111
+          },
+          "lastGrowth": {
+            "nodes": 41,
+            "listeners": 8,
+            "documents": 0,
+            "rendererHeap": 1811472,
+            "rendererExternal": 67,
+            "rendererRss": -958464,
+            "mainHeap": 948824,
+            "mainExternal": -65536,
+            "mainRss": -1937408,
+            "mainThreads": 0,
+            "rendererThreads": 1,
+            "diskBytes": 12596,
+            "diskFiles": 0
+          },
+          "peakGrowth": {
+            "nodes": 50,
+            "listeners": 9,
+            "documents": 0,
+            "rendererHeap": 1971516,
+            "rendererExternal": 3073,
+            "rendererRss": 9838592,
+            "mainHeap": 1774532,
+            "mainExternal": 50930,
+            "mainRss": 0,
+            "mainThreads": 0,
+            "rendererThreads": 1,
+            "diskBytes": 12596,
+            "diskFiles": 0
+          },
+          "allSampleLimitsPass": false,
+          "globalListenerMin": 724,
+          "globalListenerMax": 733,
+          "settingsUnchanged": true,
+          "maxInactiveToExitObservedMs": 93.12023300000146,
+          "lastWorkerState": {
+            "starts": 66,
+            "exits": 66,
+            "live": 0,
+            "peak": 1
+          }
+        },
+        {
+          "bound": "long",
+          "cycles": 30,
+          "first": {
+            "nodes": 571,
+            "listeners": 733,
+            "documents": 4,
+            "rendererHeap": 64658872,
+            "rendererExternal": 44054554,
+            "rendererRss": 675811328,
+            "mainHeap": 32898040,
+            "mainExternal": 20085983,
+            "mainRss": 386125824,
+            "mainThreads": 37,
+            "rendererThreads": 27,
+            "diskBytes": 128187117,
+            "diskFiles": 111
+          },
+          "lastGrowth": {
+            "nodes": 29,
+            "listeners": 0,
+            "documents": 0,
+            "rendererHeap": 587320,
+            "rendererExternal": -4,
+            "rendererRss": 1212416,
+            "mainHeap": 582788,
+            "mainExternal": 93269,
+            "mainRss": 401408,
+            "mainThreads": 0,
+            "rendererThreads": 1,
+            "diskBytes": 15306,
+            "diskFiles": 2
+          },
+          "peakGrowth": {
+            "nodes": 29,
+            "listeners": 0,
+            "documents": 0,
+            "rendererHeap": 587320,
+            "rendererExternal": 39104,
+            "rendererRss": 4222976,
+            "mainHeap": 634480,
+            "mainExternal": 135337,
+            "mainRss": 1380352,
+            "mainThreads": 0,
+            "rendererThreads": 1,
+            "diskBytes": 15306,
+            "diskFiles": 2
+          },
+          "allSampleLimitsPass": true,
+          "globalListenerMin": 728,
+          "globalListenerMax": 733,
+          "settingsUnchanged": true,
+          "maxInactiveToExitObservedMs": 21.138939999989816,
+          "lastWorkerState": {
+            "starts": 104,
+            "exits": 104,
+            "live": 0,
+            "peak": 1
+          }
+        }
+      ]
+    },
+    {
+      "name": "instrumented-soak",
+      "originalReportedPass": true,
+      "elapsedMs": 143971,
+      "noFind": false,
+      "abortTraceRestored": null,
+      "everySampleResourcePass": true,
+      "bounds": [
+        {
+          "bound": "dense",
+          "cycles": 30,
+          "first": {
+            "nodes": 595,
+            "listeners": 732,
+            "documents": 4,
+            "rendererHeap": 64666688,
+            "rendererExternal": 44051529,
+            "rendererRss": 688365568,
+            "mainHeap": 32706032,
+            "mainExternal": 20075538,
+            "mainRss": 406241280,
+            "mainThreads": 37,
+            "rendererThreads": 27,
+            "diskBytes": 128205295,
+            "diskFiles": 113
+          },
+          "lastGrowth": {
+            "nodes": 28,
+            "listeners": 0,
+            "documents": 0,
+            "rendererHeap": 706480,
+            "rendererExternal": 11,
+            "rendererRss": 82796544,
+            "mainHeap": -89460,
+            "mainExternal": -2988,
+            "mainRss": -577536,
+            "mainThreads": 0,
+            "rendererThreads": 0,
+            "diskBytes": 11615,
+            "diskFiles": 0
+          },
+          "peakGrowth": {
+            "nodes": 36,
+            "listeners": 1,
+            "documents": 0,
+            "rendererHeap": 893408,
+            "rendererExternal": 3017,
+            "rendererRss": 87093248,
+            "mainHeap": 788152,
+            "mainExternal": 142413,
+            "mainRss": 1818624,
+            "mainThreads": 0,
+            "rendererThreads": 0,
+            "diskBytes": 11615,
+            "diskFiles": 0
+          },
+          "allSampleLimitsPass": true,
+          "globalListenerMin": 724,
+          "globalListenerMax": 733,
+          "settingsUnchanged": true,
+          "maxInactiveToExitObservedMs": 231.0010340000008,
+          "lastWorkerState": {
+            "starts": 170,
+            "exits": 170,
+            "live": 0,
+            "peak": 1
+          }
+        },
+        {
+          "bound": "long",
+          "cycles": 30,
+          "first": {
+            "nodes": 637,
+            "listeners": 733,
+            "documents": 4,
+            "rendererHeap": 65652728,
+            "rendererExternal": 44123952,
+            "rendererRss": 763232256,
+            "mainHeap": 32775356,
+            "mainExternal": 20141610,
+            "mainRss": 386412544,
+            "mainThreads": 37,
+            "rendererThreads": 27,
+            "diskBytes": 128218695,
+            "diskFiles": 113
+          },
+          "lastGrowth": {
+            "nodes": 29,
+            "listeners": 0,
+            "documents": 0,
+            "rendererHeap": 263240,
+            "rendererExternal": -65536,
+            "rendererRss": 249856,
+            "mainHeap": 682352,
+            "mainExternal": 42524,
+            "mainRss": 675840,
+            "mainThreads": 0,
+            "rendererThreads": 0,
+            "diskBytes": 11210,
+            "diskFiles": 0
+          },
+          "peakGrowth": {
+            "nodes": 29,
+            "listeners": 0,
+            "documents": 0,
+            "rendererHeap": 553052,
+            "rendererExternal": 38775,
+            "rendererRss": 2510848,
+            "mainHeap": 767596,
+            "mainExternal": 49982,
+            "mainRss": 2592768,
+            "mainThreads": 0,
+            "rendererThreads": 0,
+            "diskBytes": 11210,
+            "diskFiles": 0
+          },
+          "allSampleLimitsPass": true,
+          "globalListenerMin": 728,
+          "globalListenerMax": 733,
+          "settingsUnchanged": true,
+          "maxInactiveToExitObservedMs": 20.673225000005914,
+          "lastWorkerState": {
+            "starts": 209,
+            "exits": 209,
+            "live": 0,
+            "peak": 1
+          }
+        }
+      ]
+    },
+    {
+      "name": "corrected-soak",
+      "originalReportedPass": false,
+      "elapsedMs": 111004,
+      "noFind": false,
+      "abortTraceRestored": null,
+      "everySampleResourcePass": false,
+      "bounds": [
+        {
+          "bound": "dense",
+          "cycles": 30,
+          "first": {
+            "nodes": 714,
+            "listeners": 732,
+            "documents": 4,
+            "rendererHeap": 67820384,
+            "rendererExternal": 44056117,
+            "rendererRss": 700350464,
+            "mainHeap": 32726392,
+            "mainExternal": 20138086,
+            "mainRss": 410361856,
+            "mainThreads": 37,
+            "rendererThreads": 28,
+            "diskBytes": 128261757,
+            "diskFiles": 113
+          },
+          "lastGrowth": {
+            "nodes": 29,
+            "listeners": 0,
+            "documents": 0,
+            "rendererHeap": 128912,
+            "rendererExternal": 65536,
+            "rendererRss": -3190784,
+            "mainHeap": 74928,
+            "mainExternal": 0,
+            "mainRss": -1007616,
+            "mainThreads": 0,
+            "rendererThreads": 0,
+            "diskBytes": 11210,
+            "diskFiles": 0
+          },
+          "peakGrowth": {
+            "nodes": 38,
+            "listeners": 1,
+            "documents": 0,
+            "rendererHeap": 339484,
+            "rendererExternal": 68527,
+            "rendererRss": 4292608,
+            "mainHeap": 868444,
+            "mainExternal": 45688,
+            "mainRss": 679936,
+            "mainThreads": 0,
+            "rendererThreads": 0,
+            "diskBytes": 11210,
+            "diskFiles": 0
+          },
+          "allSampleLimitsPass": true,
+          "globalListenerMin": 732,
+          "globalListenerMax": 733,
+          "settingsUnchanged": true,
+          "maxInactiveToExitObservedMs": 101.19468300000153,
+          "lastWorkerState": {
+            "starts": 329,
+            "exits": 329,
+            "live": 0,
+            "peak": 1
+          }
+        },
+        {
+          "bound": "long",
+          "cycles": 30,
+          "first": {
+            "nodes": 757,
+            "listeners": 733,
+            "documents": 4,
+            "rendererHeap": 68215920,
+            "rendererExternal": 44124644,
+            "rendererRss": 692432896,
+            "mainHeap": 33614568,
+            "mainExternal": 20118238,
+            "mainRss": 391245824,
+            "mainThreads": 37,
+            "rendererThreads": 28,
+            "diskBytes": 128274752,
+            "diskFiles": 113
+          },
+          "lastGrowth": {
+            "nodes": 29,
+            "listeners": 10,
+            "documents": 0,
+            "rendererHeap": 34552,
+            "rendererExternal": 0,
+            "rendererRss": 180224,
+            "mainHeap": -97036,
+            "mainExternal": 57645,
+            "mainRss": 57344,
+            "mainThreads": 0,
+            "rendererThreads": 0,
+            "diskBytes": 11210,
+            "diskFiles": 0
+          },
+          "peakGrowth": {
+            "nodes": 1543,
+            "listeners": 26,
+            "documents": 0,
+            "rendererHeap": 1036412,
+            "rendererExternal": 5215201,
+            "rendererRss": 16494592,
+            "mainHeap": 64924,
+            "mainExternal": 72201,
+            "mainRss": 643072,
+            "mainThreads": 0,
+            "rendererThreads": 0,
+            "diskBytes": 11210,
+            "diskFiles": 0
+          },
+          "allSampleLimitsPass": false,
+          "globalListenerMin": 728,
+          "globalListenerMax": 759,
+          "settingsUnchanged": true,
+          "maxInactiveToExitObservedMs": 17.26124500000151,
+          "lastWorkerState": {
+            "starts": 364,
+            "exits": 364,
+            "live": 0,
+            "peak": 1
+          }
+        }
+      ]
+    },
+    {
+      "name": "no-find-control",
+      "originalReportedPass": true,
+      "elapsedMs": 67821,
+      "noFind": true,
+      "abortTraceRestored": true,
+      "everySampleResourcePass": true,
+      "bounds": [
+        {
+          "bound": "dense",
+          "cycles": 30,
+          "first": {
+            "nodes": 849,
+            "listeners": 765,
+            "documents": 4,
+            "rendererHeap": 67986160,
+            "rendererExternal": 44190191,
+            "rendererRss": 702590976,
+            "mainHeap": 33411600,
+            "mainExternal": 20238667,
+            "mainRss": 387440640,
+            "mainThreads": 37,
+            "rendererThreads": 28,
+            "diskBytes": 128288429,
+            "diskFiles": 113
+          },
+          "lastGrowth": {
+            "nodes": 29,
+            "listeners": 0,
+            "documents": 0,
+            "rendererHeap": 653168,
+            "rendererExternal": 38775,
+            "rendererRss": -4272128,
+            "mainHeap": -177060,
+            "mainExternal": 40280,
+            "mainRss": 565248,
+            "mainThreads": 0,
+            "rendererThreads": 0,
+            "diskBytes": 11210,
+            "diskFiles": 0
+          },
+          "peakGrowth": {
+            "nodes": 29,
+            "listeners": 0,
+            "documents": 0,
+            "rendererHeap": 653168,
+            "rendererExternal": 38775,
+            "rendererRss": 405504,
+            "mainHeap": 281264,
+            "mainExternal": 108140,
+            "mainRss": 1671168,
+            "mainThreads": 0,
+            "rendererThreads": 0,
+            "diskBytes": 11210,
+            "diskFiles": 0
+          },
+          "allSampleLimitsPass": true,
+          "globalListenerMin": 756,
+          "globalListenerMax": 765,
+          "settingsUnchanged": true,
+          "maxInactiveToExitObservedMs": 6.061550000000352,
+          "lastWorkerState": {
+            "starts": 364,
+            "exits": 364,
+            "live": 0,
+            "peak": 1
+          }
+        },
+        {
+          "bound": "long",
+          "cycles": 30,
+          "first": {
+            "nodes": 882,
+            "listeners": 765,
+            "documents": 4,
+            "rendererHeap": 68388352,
+            "rendererExternal": 44190191,
+            "rendererRss": 692981760,
+            "mainHeap": 33245868,
+            "mainExternal": 20286875,
+            "mainRss": 387694592,
+            "mainThreads": 37,
+            "rendererThreads": 28,
+            "diskBytes": 128301147,
+            "diskFiles": 113
+          },
+          "lastGrowth": {
+            "nodes": 29,
+            "listeners": 0,
+            "documents": 0,
+            "rendererHeap": 291364,
+            "rendererExternal": 0,
+            "rendererRss": -1773568,
+            "mainHeap": -193764,
+            "mainExternal": -10380,
+            "mainRss": -258048,
+            "mainThreads": 0,
+            "rendererThreads": 0,
+            "diskBytes": 11210,
+            "diskFiles": 0
+          },
+          "peakGrowth": {
+            "nodes": 29,
+            "listeners": 0,
+            "documents": 0,
+            "rendererHeap": 291364,
+            "rendererExternal": 0,
+            "rendererRss": 778240,
+            "mainHeap": 38816,
+            "mainExternal": 444,
+            "mainRss": 28672,
+            "mainThreads": 0,
+            "rendererThreads": 0,
+            "diskBytes": 11210,
+            "diskFiles": 0
+          },
+          "allSampleLimitsPass": true,
+          "globalListenerMin": 761,
+          "globalListenerMax": 765,
+          "settingsUnchanged": true,
+          "maxInactiveToExitObservedMs": 9.674590999995416,
+          "lastWorkerState": {
+            "starts": 364,
+            "exits": 364,
+            "live": 0,
+            "peak": 1
+          }
+        }
+      ]
+    },
+    {
+      "name": "traced-find-soak",
+      "originalReportedPass": true,
+      "elapsedMs": 111474,
+      "noFind": false,
+      "abortTraceRestored": true,
+      "everySampleResourcePass": true,
+      "bounds": [
+        {
+          "bound": "dense",
+          "cycles": 30,
+          "first": {
+            "nodes": 905,
+            "listeners": 764,
+            "documents": 4,
+            "rendererHeap": 68122104,
+            "rendererExternal": 44187200,
+            "rendererRss": 697708544,
+            "mainHeap": 32772824,
+            "mainExternal": 20269158,
+            "mainRss": 411238400,
+            "mainThreads": 37,
+            "rendererThreads": 28,
+            "diskBytes": 128314547,
+            "diskFiles": 113
+          },
+          "lastGrowth": {
+            "nodes": 39,
+            "listeners": 1,
+            "documents": 0,
+            "rendererHeap": 567860,
+            "rendererExternal": -62545,
+            "rendererRss": 7446528,
+            "mainHeap": 222732,
+            "mainExternal": -59796,
+            "mainRss": -2203648,
+            "mainThreads": 0,
+            "rendererThreads": 0,
+            "diskBytes": 11487,
+            "diskFiles": 0
+          },
+          "peakGrowth": {
+            "nodes": 39,
+            "listeners": 1,
+            "documents": 0,
+            "rendererHeap": 599696,
+            "rendererExternal": 2991,
+            "rendererRss": 7970816,
+            "mainHeap": 891404,
+            "mainExternal": 44535,
+            "mainRss": 0,
+            "mainThreads": 0,
+            "rendererThreads": 0,
+            "diskBytes": 11487,
+            "diskFiles": 0
+          },
+          "allSampleLimitsPass": true,
+          "globalListenerMin": 764,
+          "globalListenerMax": 765,
+          "settingsUnchanged": true,
+          "maxInactiveToExitObservedMs": 101.58984600000258,
+          "lastWorkerState": {
+            "starts": 430,
+            "exits": 430,
+            "live": 0,
+            "peak": 1
+          }
+        },
+        {
+          "bound": "long",
+          "cycles": 30,
+          "first": {
+            "nodes": 948,
+            "listeners": 765,
+            "documents": 4,
+            "rendererHeap": 68716960,
+            "rendererExternal": 44124655,
+            "rendererRss": 697544704,
+            "mainHeap": 33584480,
+            "mainExternal": 20310324,
+            "mainRss": 394125312,
+            "mainThreads": 37,
+            "rendererThreads": 28,
+            "diskBytes": 128327542,
+            "diskFiles": 113
+          },
+          "lastGrowth": {
+            "nodes": 28,
+            "listeners": 0,
+            "documents": 0,
+            "rendererHeap": 144328,
+            "rendererExternal": 130190,
+            "rendererRss": 1060864,
+            "mainHeap": -716188,
+            "mainExternal": -106702,
+            "mainRss": -3158016,
+            "mainThreads": 0,
+            "rendererThreads": 0,
+            "diskBytes": 16093,
+            "diskFiles": 0
+          },
+          "peakGrowth": {
+            "nodes": 28,
+            "listeners": 0,
+            "documents": 0,
+            "rendererHeap": 435692,
+            "rendererExternal": 138162,
+            "rendererRss": 2191360,
+            "mainHeap": 158616,
+            "mainExternal": 38699,
+            "mainRss": 0,
+            "mainThreads": 0,
+            "rendererThreads": 0,
+            "diskBytes": 16093,
+            "diskFiles": 0
+          },
+          "allSampleLimitsPass": true,
+          "globalListenerMin": 760,
+          "globalListenerMax": 765,
+          "settingsUnchanged": true,
+          "maxInactiveToExitObservedMs": 16.208479000008083,
+          "lastWorkerState": {
+            "starts": 465,
+            "exits": 465,
+            "live": 0,
+            "peak": 1
+          }
+        }
+      ]
+    }
+  ],
+  "attachedCensus": {
+    "denseFiles": 4,
+    "counts": [
+      666,
+      666,
+      666,
+      666
+    ],
+    "identicalRows": true,
+    "scope": "Attached document subtree and Window listeners in each default renderer context. Detached/native-only targets require heap paths; this census is not the global listener counter."
+  },
+  "nativeListeners": {
+    "captures": 8,
+    "counts": [
+      724,
+      724,
+      724,
+      724,
+      724,
+      724,
+      724,
+      724
+    ],
+    "viewerPathMatches": 0,
+    "scope": "Sanitized shortest non-weak paths, not dominators. A heap snapshot may collect transient listeners present in the earlier sample; do not equate these counts."
+  },
+  "hostOnlyDomDelta": {
+    "increases": {
+      "<div class=\"ClusterView flex column align-center\">": 14
+    },
+    "decreases": {},
+    "listenerCounts": [
+      756,
+      756
+    ],
+    "samples": [
+      {
+        "documents": 4,
+        "nodes": 977,
+        "jsEventListeners": 756
+      },
+      {
+        "documents": 4,
+        "nodes": 991,
+        "jsEventListeners": 756
+      }
+    ]
+  },
+  "navigationControls": [
+    {
+      "scenario": "stationary",
+      "growth": {
+        "nodes": 0,
+        "listeners": 0,
+        "heap": 0
+      },
+      "listenerPeak": 0
+    },
+    {
+      "scenario": "host-route",
+      "growth": {
+        "nodes": 0,
+        "listeners": 0,
+        "heap": 142648
+      },
+      "listenerPeak": 31
+    },
+    {
+      "scenario": "host-idle",
+      "growth": {
+        "nodes": 14,
+        "listeners": 0,
+        "heap": 100280
+      },
+      "listenerPeak": 0
+    },
+    {
+      "scenario": "viewer-no-find",
+      "growth": {
+        "nodes": -8,
+        "listeners": -1,
+        "heap": -69216
+      },
+      "listenerPeak": 0
+    },
+    {
+      "scenario": "viewer-no-find-idle",
+      "growth": {
+        "nodes": 5,
+        "listeners": -1,
+        "heap": -54232
+      },
+      "listenerPeak": 0
+    },
+    {
+      "scenario": "viewer-find",
+      "growth": {
+        "nodes": 10,
+        "listeners": 1,
+        "heap": 222012
+      },
+      "listenerPeak": 1
+    },
+    {
+      "scenario": "viewer-find-idle",
+      "growth": {
+        "nodes": 14,
+        "listeners": 0,
+        "heap": 154340
+      },
+      "listenerPeak": 0
+    }
+  ],
+  "hostOnlyNoCensus": {
+    "nodes": 14,
+    "listeners": 0,
+    "heap": 37804
+  },
+  "shortTraceSources": {
+    "counts": {
+      "host-renderer": 804,
+      "other": 96,
+      "node-internal": 120
+    },
+    "abortTraceRestored": true,
+    "scope": "Optional private diagnostic wraps addEventListener, never callbacks. Weak references report reachable signals/callbacks registered during this run, not whether a listener was subsequently removed. Bounded to 8,192 registrations per frame. Methods restored at teardown; timing is instrumented."
+  }
+}

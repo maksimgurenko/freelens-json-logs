@@ -1,0 +1,41 @@
+{
+  "eventNotifications": 22379,
+  "transitions": [
+    {
+      "ms": 2055461.9715000154,
+      "event": "focusedmon>>FALLBACK,8"
+    },
+    {
+      "ms": 2055467.5588319951,
+      "event": "activewindowv2>>"
+    },
+    {
+      "ms": 2057830.7262180024,
+      "event": "focusedmon>>HDMI-A-2,2"
+    },
+    {
+      "ms": 2057864.5309279964,
+      "event": "activewindowv2>>5637f33d1230"
+    },
+    {
+      "ms": 2057866.0689429962,
+      "event": "workspace>>9"
+    },
+    {
+      "ms": 2340014.2884240197,
+      "event": "focusedmon>>FALLBACK,8"
+    },
+    {
+      "ms": 2340017.6645140164,
+      "event": "activewindowv2>>"
+    }
+  ],
+  "sameActiveEndpoint": false,
+  "sameWorkspaceEndpoint": false,
+  "samePointerEndpoints": false,
+  "sameClientSet": true,
+  "observedRealOpenCloseEvents": [],
+  "scope": "Desktop activity and differing focus/workspace/pointer endpoints remain explicit; no unchanged-desktop claim. No native input/clipboard/focus/pointer mutation issued and no test window mapped to this desktop. Pointer has endpoint-only observation.",
+  "privateRuntimeRemoved": true,
+  "privateDisplayPidsGone": true
+}

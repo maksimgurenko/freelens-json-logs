@@ -1,0 +1,1 @@
+{"at":1793228460922,"event":"process-exit","starts":0,"exits":0,"live":0,"peak":0,"resources":["FSReqCallback","TCPServerWrap","PipeWrap","PipeWrap","PipeWrap","ProcessWrap","TTYWrap","Timeout","Timeout","Immediate","Immediate","Immediate","Immediate","Immediate"],"beforeQuit":0,"handlers":[],"windows":[]}

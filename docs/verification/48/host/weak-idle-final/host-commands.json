@@ -1,0 +1,357 @@
+{
+  "commands": [
+    {
+      "name": "prepare",
+      "command": [
+        "/usr/bin/python3",
+        "scripts/find-production-host/prepare.py"
+      ],
+      "cwd": "/home/max/work/freelens-json-logs",
+      "environment": {
+        "FIND_HOST_TICKET": "48",
+        "FIND_HOST_RUN": "weak-idle",
+        "FREELENS_UI_MODE": null
+      },
+      "exit": 0
+    },
+    {
+      "name": "fixture-create",
+      "command": [
+        "/usr/bin/python3",
+        "scripts/find-production-host/fixtures.py"
+      ],
+      "cwd": "/home/max/work/freelens-json-logs",
+      "environment": {
+        "FIND_HOST_TICKET": "48",
+        "FIND_HOST_RUN": "weak-idle",
+        "FREELENS_UI_MODE": null
+      },
+      "exit": 0
+    },
+    {
+      "name": "display",
+      "command": [
+        "/usr/bin/python3",
+        "scripts/find-production-host/display.py"
+      ],
+      "cwd": "/home/max/work/freelens-json-logs",
+      "environment": {
+        "FIND_HOST_TICKET": "48",
+        "FIND_HOST_RUN": "weak-idle",
+        "FREELENS_UI_MODE": null,
+        "FIND_DISPLAY_RENDERER": "mesa",
+        "LD_LIBRARY_PATH": "/home/max/work/freelens-json-logs/.scratch/find/48-host/aquamarine/build"
+      },
+      "exit": 0
+    },
+    {
+      "name": "host",
+      "command": [
+        "/usr/bin/python3",
+        "scripts/find-production-host/launch.py"
+      ],
+      "cwd": "/home/max/work/freelens-json-logs",
+      "environment": {
+        "FIND_HOST_TICKET": "48",
+        "FIND_HOST_RUN": "weak-idle",
+        "FREELENS_UI_MODE": null
+      },
+      "exit": 0
+    },
+    {
+      "name": "install",
+      "command": [
+        "/home/max/work/freelens-json-logs/.scratch/readable-logs/toolchain/node_modules/node/bin/node",
+        "scripts/find-production-host/install.mjs"
+      ],
+      "cwd": "/home/max/work/freelens-json-logs",
+      "environment": {
+        "FIND_HOST_TICKET": "48",
+        "FIND_HOST_RUN": "weak-idle",
+        "FREELENS_UI_MODE": null
+      },
+      "exit": 0
+    },
+    {
+      "name": "open-view",
+      "command": [
+        "/home/max/work/freelens-json-logs/.scratch/readable-logs/toolchain/node_modules/node/bin/node",
+        "scripts/find-production-host/open-view.mjs"
+      ],
+      "cwd": "/home/max/work/freelens-json-logs",
+      "environment": {
+        "FIND_HOST_TICKET": "48",
+        "FIND_HOST_RUN": "weak-idle",
+        "FREELENS_UI_MODE": null
+      },
+      "exit": 0
+    },
+    {
+      "name": "identity",
+      "command": [
+        "/home/max/work/freelens-json-logs/.scratch/readable-logs/toolchain/node_modules/node/bin/node",
+        "scripts/find-production-host/identity.mjs"
+      ],
+      "cwd": "/home/max/work/freelens-json-logs",
+      "environment": {
+        "FIND_HOST_TICKET": "48",
+        "FIND_HOST_RUN": "weak-idle",
+        "FREELENS_UI_MODE": null
+      },
+      "exit": 0
+    },
+    {
+      "name": "observer",
+      "command": [
+        "/home/max/work/freelens-json-logs/.scratch/readable-logs/toolchain/node_modules/node/bin/node",
+        "scripts/find-production-host/cdp.mjs",
+        "9242",
+        "main",
+        "scripts/find-production-host/observer.cjs"
+      ],
+      "cwd": "/home/max/work/freelens-json-logs",
+      "environment": {
+        "FIND_HOST_TICKET": "48",
+        "FIND_HOST_RUN": "weak-idle",
+        "FREELENS_UI_MODE": null
+      },
+      "exit": 0
+    },
+    {
+      "name": "self-check-red",
+      "command": [
+        "/home/max/work/freelens-json-logs/.scratch/readable-logs/toolchain/node_modules/node/bin/node",
+        "scripts/find-production-host/viewer-roots-check.mjs"
+      ],
+      "cwd": "/home/max/work/freelens-json-logs",
+      "environment": {
+        "FIND_HOST_TICKET": "48",
+        "FIND_HOST_RUN": "weak-idle",
+        "FREELENS_UI_MODE": null
+      },
+      "exit": 1
+    },
+    {
+      "name": "self-check-green",
+      "command": [
+        "/home/max/work/freelens-json-logs/.scratch/readable-logs/toolchain/node_modules/node/bin/node",
+        "scripts/find-production-host/viewer-roots-check.mjs"
+      ],
+      "cwd": "/home/max/work/freelens-json-logs",
+      "environment": {
+        "FIND_HOST_TICKET": "48",
+        "FIND_HOST_RUN": "weak-idle",
+        "FREELENS_UI_MODE": null
+      },
+      "exit": 0
+    },
+    {
+      "name": "idle-self-check",
+      "command": [
+        "/home/max/work/freelens-json-logs/.scratch/readable-logs/toolchain/node_modules/node/bin/node",
+        "scripts/find-production-host/viewer-roots-check.mjs"
+      ],
+      "cwd": "/home/max/work/freelens-json-logs",
+      "environment": {
+        "FIND_HOST_TICKET": "48",
+        "FIND_HOST_RUN": "weak-idle-check",
+        "FREELENS_UI_MODE": null,
+        "FIND_ROOTS_CHECK_IDLE": "1"
+      },
+      "exit": 0
+    },
+    {
+      "name": "final-self-check",
+      "command": [
+        "/home/max/work/freelens-json-logs/.scratch/readable-logs/toolchain/node_modules/node/bin/node",
+        "scripts/find-production-host/viewer-roots-check.mjs"
+      ],
+      "cwd": "/home/max/work/freelens-json-logs",
+      "environment": {
+        "FIND_HOST_TICKET": "48",
+        "FIND_HOST_RUN": "weak-idle-final",
+        "FREELENS_UI_MODE": null,
+        "FIND_ROOTS_CHECK_IDLE": "1"
+      },
+      "exit": 0
+    },
+    {
+      "name": "weak-idle",
+      "command": [
+        "/home/max/work/freelens-json-logs/.scratch/readable-logs/toolchain/node_modules/node/bin/node",
+        "scripts/find-production-host/mounted-soak.mjs"
+      ],
+      "cwd": "/home/max/work/freelens-json-logs",
+      "environment": {
+        "FIND_HOST_TICKET": "48",
+        "FIND_HOST_RUN": "weak-idle",
+        "FREELENS_UI_MODE": null,
+        "FIND_SOAK_INSPECTOR_CLEAN": "1",
+        "FIND_SOAK_NATURAL_FRAMES": "1",
+        "FIND_SOAK_CYCLES": "30",
+        "FIND_SOAK_IDLE_MS": "100",
+        "FIND_SOAK_IDLE_COMPARE": "1",
+        "FIND_SOAK_VIEWER_ROOTS": "1",
+        "FIND_SOAK_IDLE_TRACE": "1"
+      },
+      "exit": 0
+    },
+    {
+      "name": "weak-idle-extended",
+      "command": [
+        "/home/max/work/freelens-json-logs/.scratch/readable-logs/toolchain/node_modules/node/bin/node",
+        "scripts/find-production-host/mounted-soak.mjs"
+      ],
+      "cwd": "/home/max/work/freelens-json-logs",
+      "environment": {
+        "FIND_HOST_TICKET": "48",
+        "FIND_HOST_RUN": "weak-idle-extended",
+        "FREELENS_UI_MODE": null,
+        "FIND_SOAK_INSPECTOR_CLEAN": "1",
+        "FIND_SOAK_NATURAL_FRAMES": "1",
+        "FIND_SOAK_CYCLES": "120",
+        "FIND_SOAK_IDLE_MS": "100",
+        "FIND_SOAK_IDLE_COMPARE": "1",
+        "FIND_SOAK_VIEWER_ROOTS": "1",
+        "FIND_SOAK_IDLE_TRACE": "1"
+      },
+      "exit": 1
+    },
+    {
+      "name": "weak-idle-final",
+      "command": [
+        "/home/max/work/freelens-json-logs/.scratch/readable-logs/toolchain/node_modules/node/bin/node",
+        "scripts/find-production-host/mounted-soak.mjs"
+      ],
+      "cwd": "/home/max/work/freelens-json-logs",
+      "environment": {
+        "FIND_HOST_TICKET": "48",
+        "FIND_HOST_RUN": "weak-idle-final",
+        "FREELENS_UI_MODE": null,
+        "FIND_SOAK_INSPECTOR_CLEAN": "1",
+        "FIND_SOAK_NATURAL_FRAMES": "1",
+        "FIND_SOAK_CYCLES": "120",
+        "FIND_SOAK_IDLE_MS": "100",
+        "FIND_SOAK_IDLE_COMPARE": "1",
+        "FIND_SOAK_VIEWER_ROOTS": "1",
+        "FIND_SOAK_IDLE_TRACE": "1",
+        "FIND_SOAK_POST_IDLE_GC": "1"
+      },
+      "exit": 1
+    },
+    {
+      "name": "weak-queue-control",
+      "command": [
+        "/home/max/work/freelens-json-logs/.scratch/readable-logs/toolchain/node_modules/node/bin/node",
+        "scripts/find-production-host/mounted-soak.mjs"
+      ],
+      "cwd": "/home/max/work/freelens-json-logs",
+      "environment": {
+        "FIND_HOST_TICKET": "48",
+        "FIND_HOST_RUN": "weak-queue-control",
+        "FREELENS_UI_MODE": null,
+        "FIND_SOAK_INSPECTOR_CLEAN": "1",
+        "FIND_SOAK_NATURAL_FRAMES": "1",
+        "FIND_SOAK_CYCLES": "6",
+        "FIND_SOAK_IDLE_MS": "100",
+        "FIND_SOAK_IDLE_COMPARE": "1",
+        "FIND_SOAK_VIEWER_ROOTS": "1",
+        "FIND_SOAK_IDLE_TRACE": "1",
+        "FIND_SOAK_POST_IDLE_GC": "1",
+        "FIND_SOAK_UNDRAINED_CONTROL": "1"
+      },
+      "exit": 1
+    },
+    {
+      "name": "weak-idle-plain",
+      "command": [
+        "/home/max/work/freelens-json-logs/.scratch/readable-logs/toolchain/node_modules/node/bin/node",
+        "scripts/find-production-host/mounted-soak.mjs"
+      ],
+      "cwd": "/home/max/work/freelens-json-logs",
+      "environment": {
+        "FIND_HOST_TICKET": "48",
+        "FIND_HOST_RUN": "weak-idle-plain",
+        "FREELENS_UI_MODE": null,
+        "FIND_SOAK_INSPECTOR_CLEAN": "1",
+        "FIND_SOAK_NATURAL_FRAMES": "1",
+        "FIND_SOAK_CYCLES": "30",
+        "FIND_SOAK_IDLE_MS": "100",
+        "FIND_SOAK_IDLE_COMPARE": "1"
+      },
+      "exit": 0
+    },
+    {
+      "name": "post-control-heap",
+      "command": [
+        "/home/max/work/freelens-json-logs/.scratch/readable-logs/toolchain/node_modules/node/bin/node",
+        "scripts/find-production-host/heap-retainers.mjs"
+      ],
+      "cwd": "/home/max/work/freelens-json-logs",
+      "environment": {
+        "FIND_HOST_TICKET": "48",
+        "FIND_HOST_RUN": "weak-queue-control",
+        "FREELENS_UI_MODE": null
+      },
+      "exit": 0
+    },
+    {
+      "name": "post-control-attached-census",
+      "command": [
+        "/home/max/work/freelens-json-logs/.scratch/readable-logs/toolchain/node_modules/node/bin/node",
+        ".scratch/find/48-current/weak-idle/post-census.mjs"
+      ],
+      "cwd": "/home/max/work/freelens-json-logs",
+      "environment": {
+        "FIND_HOST_TICKET": "48",
+        "FIND_HOST_RUN": "weak-queue-control",
+        "FREELENS_UI_MODE": null
+      },
+      "exit": 0
+    },
+    {
+      "name": "post-plain-native-heap",
+      "command": [
+        "/home/max/work/freelens-json-logs/.scratch/readable-logs/toolchain/node_modules/node/bin/node",
+        ".scratch/find/48-current/weak-idle/post-heap.mjs"
+      ],
+      "cwd": "/home/max/work/freelens-json-logs",
+      "environment": {
+        "FIND_HOST_TICKET": "48",
+        "FIND_HOST_RUN": "weak-idle-plain",
+        "FREELENS_UI_MODE": null
+      },
+      "exit": 0
+    },
+    {
+      "name": "startup-shutdown",
+      "command": [
+        "/home/max/work/freelens-json-logs/.scratch/readable-logs/toolchain/node_modules/node/bin/node",
+        "scripts/find-production-host/shutdown.mjs"
+      ],
+      "cwd": "/home/max/work/freelens-json-logs",
+      "environment": {
+        "FIND_HOST_TICKET": "48",
+        "FIND_HOST_RUN": "weak-idle-final",
+        "FREELENS_UI_MODE": null
+      },
+      "exit": 0
+    },
+    {
+      "name": "uid-checked-fixture-delete",
+      "command": [
+        "/usr/bin/python3",
+        "scripts/find-production-host/fixtures.py",
+        "delete"
+      ],
+      "cwd": "/home/max/work/freelens-json-logs",
+      "environment": {
+        "FIND_HOST_TICKET": "48",
+        "FIND_HOST_RUN": "weak-idle",
+        "FREELENS_UI_MODE": null
+      },
+      "exit": 0
+    }
+  ],
+  "orderNote": "Commands are grouped by purpose here. Self-checks/soaks were serial; extended and final use earlier loaded harness snapshots as recorded. Run names select evidence only; one long-lived private host/profile/owned fixture throughout. The heap captures occurred only after completed no-forced-GC comparisons. Final automated suite commands are in final-checks.json. PATH selected the project-local Node 24.18.0 and npm 11.16.0; matching npm .bin was also prepended for the final nested package commands."
+}

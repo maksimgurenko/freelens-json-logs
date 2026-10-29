@@ -1,0 +1,899 @@
+{
+  "checks": [
+    "Completed exact matching remains one record; maintenance is honestly pending",
+    "Terminal Q is visible in the real source",
+    "Visible terminal Q has a settled source-safe Custom Highlight"
+  ],
+  "cadence": {
+    "session": {
+      "pid": 1481183,
+      "privateInstance": "efb50993780079460b0cbed1363e2166a2de1d9f_1793086349_889201205",
+      "privateRuntime": "/tmp/fd-77qzpa46",
+      "owned": [
+        {
+          "address": "0x562bdbe07c10",
+          "mapped": true,
+          "hidden": false,
+          "visible": true,
+          "acceptsInput": true,
+          "at": [
+            21,
+            21
+          ],
+          "size": [
+            1238,
+            678
+          ],
+          "workspace": {
+            "id": 7,
+            "name": "7"
+          },
+          "floating": false,
+          "monitor": 0,
+          "class": "freelens",
+          "title": "Freelens",
+          "initialClass": "freelens",
+          "initialTitle": "Freelens",
+          "pid": 1481183,
+          "xwayland": false,
+          "pinned": false,
+          "pinFullscreened": false,
+          "fullscreen": 0,
+          "fullscreenClient": 0,
+          "fullscreenHandler": "default",
+          "allowedOverFullscreen": true,
+          "grouped": [],
+          "tags": [],
+          "swallowing": "0x0",
+          "focusHistoryID": 0,
+          "inhibitingIdle": false,
+          "xdgTag": "",
+          "xdgDescription": "",
+          "contentType": "none",
+          "tearingHint": false,
+          "stableId": "18000003"
+        }
+      ]
+    },
+    "scope": "Private output/DOM cadence only; no native input or latency claim.",
+    "monitors": [
+      {
+        "id": 0,
+        "name": "WAYLAND-1",
+        "description": "",
+        "make": "",
+        "model": "",
+        "serial": "",
+        "width": 1280,
+        "height": 720,
+        "physicalWidth": 0,
+        "physicalHeight": 0,
+        "refreshRate": 60,
+        "x": 0,
+        "y": 0,
+        "activeWorkspace": {
+          "id": 7,
+          "name": "7"
+        },
+        "specialWorkspace": {
+          "id": 0,
+          "name": ""
+        },
+        "reserved": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "scale": 1,
+        "transform": 0,
+        "focused": true,
+        "dpmsStatus": true,
+        "vrr": false,
+        "solitary": "0",
+        "solitaryBlockedBy": [
+          "WINDOWED",
+          "CANDIDATE"
+        ],
+        "activelyTearing": false,
+        "tearingBlockedBy": [
+          "NOT_TORN",
+          "USER",
+          "SUPPORT",
+          "CANDIDATE",
+          "HW_CURSOR"
+        ],
+        "directScanoutTo": "0",
+        "directScanoutBlockedBy": [
+          "USER",
+          "CANDIDATE"
+        ],
+        "disabled": false,
+        "currentFormat": "XRGB8888",
+        "mirrorOf": "none",
+        "availableModes": [],
+        "colorManagementPreset": "srgb",
+        "sdrBrightness": 1,
+        "sdrSaturation": 1,
+        "sdrMinLuminance": 0.2,
+        "sdrMaxLuminance": 80,
+        "hardwareCursorsInUse": true
+      }
+    ],
+    "renderer": {
+      "times": [
+        4812.6,
+        4829.3,
+        4845.9,
+        4862.6,
+        4879.3,
+        4895.9,
+        4912.6,
+        4929.2,
+        4945.9,
+        4962.6,
+        4979.3,
+        4995.9,
+        5012.6,
+        5029.3,
+        5045.9,
+        5062.6,
+        5079.2,
+        5096,
+        5112.6,
+        5129.3,
+        5145.9,
+        5162.6,
+        5179.3,
+        5195.9,
+        5212.6,
+        5229.2,
+        5245.9,
+        5262.6,
+        5283.8,
+        5300.5,
+        5317.2,
+        5333.8,
+        5350.5,
+        5367.2,
+        5383.8,
+        5400.5,
+        5417.2,
+        5433.9,
+        5450.5,
+        5467.2,
+        5483.8,
+        5500.5,
+        5517.2,
+        5533.9,
+        5550.5,
+        5567.2,
+        5583.9,
+        5600.5,
+        5617.2,
+        5633.8,
+        5650.5,
+        5667.1,
+        5683.9,
+        5700.5,
+        5717.2,
+        5733.8,
+        5750.5,
+        5767.2,
+        5783.8,
+        5800.4,
+        5817.2
+      ],
+      "visibility": "visible",
+      "focused": false,
+      "width": 1163,
+      "height": 617
+    },
+    "gapsMs": [
+      16.699999999999818,
+      16.599999999999454,
+      16.700000000000728,
+      16.699999999999818,
+      16.599999999999454,
+      16.700000000000728,
+      16.599999999999454,
+      16.699999999999818,
+      16.700000000000728,
+      16.699999999999818,
+      16.599999999999454,
+      16.700000000000728,
+      16.699999999999818,
+      16.599999999999454,
+      16.700000000000728,
+      16.599999999999454,
+      16.800000000000182,
+      16.600000000000364,
+      16.699999999999818,
+      16.599999999999454,
+      16.700000000000728,
+      16.699999999999818,
+      16.599999999999454,
+      16.700000000000728,
+      16.599999999999454,
+      16.699999999999818,
+      16.700000000000728,
+      21.199999999999818,
+      16.699999999999818,
+      16.699999999999818,
+      16.600000000000364,
+      16.699999999999818,
+      16.699999999999818,
+      16.600000000000364,
+      16.699999999999818,
+      16.699999999999818,
+      16.699999999999818,
+      16.600000000000364,
+      16.699999999999818,
+      16.600000000000364,
+      16.699999999999818,
+      16.699999999999818,
+      16.699999999999818,
+      16.600000000000364,
+      16.699999999999818,
+      16.699999999999818,
+      16.600000000000364,
+      16.699999999999818,
+      16.600000000000364,
+      16.699999999999818,
+      16.600000000000364,
+      16.799999999999272,
+      16.600000000000364,
+      16.699999999999818,
+      16.600000000000364,
+      16.699999999999818,
+      16.699999999999818,
+      16.600000000000364,
+      16.599999999999454,
+      16.800000000000182
+    ],
+    "pass": true
+  },
+  "observations": [
+    {
+      "count": "1 of 1 matching records",
+      "following": "Following output",
+      "text": "Q",
+      "rect": {
+        "x": 744.015625,
+        "y": 516.375,
+        "width": 7.203125,
+        "height": 17,
+        "top": 516.375,
+        "right": 751.21875,
+        "bottom": 533.375,
+        "left": 744.015625
+      },
+      "clip": {
+        "x": 200,
+        "y": 133,
+        "width": 951,
+        "height": 412,
+        "top": 133,
+        "right": 1151,
+        "bottom": 545,
+        "left": 200
+      },
+      "visible": true,
+      "highlights": [
+        "Q"
+      ],
+      "scrollTop": 1058701,
+      "scrollHeight": 1059113,
+      "clientHeight": 412
+    },
+    {
+      "count": "1 of 1 matching records",
+      "following": "Following output",
+      "text": "Q",
+      "rect": {
+        "x": 744.015625,
+        "y": 516.375,
+        "width": 7.203125,
+        "height": 17,
+        "top": 516.375,
+        "right": 751.21875,
+        "bottom": 533.375,
+        "left": 744.015625
+      },
+      "clip": {
+        "x": 200,
+        "y": 133,
+        "width": 951,
+        "height": 412,
+        "top": 133,
+        "right": 1151,
+        "bottom": 545,
+        "left": 200
+      },
+      "visible": true,
+      "highlights": [
+        "Q"
+      ],
+      "scrollTop": 1058701,
+      "scrollHeight": 1059113,
+      "clientHeight": 412
+    },
+    {
+      "count": "1 of 1 matching records",
+      "following": "Following output",
+      "text": "Q",
+      "rect": {
+        "x": 744.015625,
+        "y": 516.375,
+        "width": 7.203125,
+        "height": 17,
+        "top": 516.375,
+        "right": 751.21875,
+        "bottom": 533.375,
+        "left": 744.015625
+      },
+      "clip": {
+        "x": 200,
+        "y": 133,
+        "width": 951,
+        "height": 412,
+        "top": 133,
+        "right": 1151,
+        "bottom": 545,
+        "left": 200
+      },
+      "visible": true,
+      "highlights": [
+        "Q"
+      ],
+      "scrollTop": 1058701,
+      "scrollHeight": 1059113,
+      "clientHeight": 412
+    },
+    {
+      "count": "1 of 1 matching records",
+      "following": "Following output",
+      "text": "Q",
+      "rect": {
+        "x": 744.015625,
+        "y": 516.375,
+        "width": 7.203125,
+        "height": 17,
+        "top": 516.375,
+        "right": 751.21875,
+        "bottom": 533.375,
+        "left": 744.015625
+      },
+      "clip": {
+        "x": 200,
+        "y": 133,
+        "width": 951,
+        "height": 412,
+        "top": 133,
+        "right": 1151,
+        "bottom": 545,
+        "left": 200
+      },
+      "visible": true,
+      "highlights": [
+        "Q"
+      ],
+      "scrollTop": 1058701,
+      "scrollHeight": 1059113,
+      "clientHeight": 412
+    },
+    {
+      "count": "1 of 1 matching records",
+      "following": "Following output",
+      "text": "Q",
+      "rect": {
+        "x": 744.015625,
+        "y": 516.375,
+        "width": 7.203125,
+        "height": 17,
+        "top": 516.375,
+        "right": 751.21875,
+        "bottom": 533.375,
+        "left": 744.015625
+      },
+      "clip": {
+        "x": 200,
+        "y": 133,
+        "width": 951,
+        "height": 412,
+        "top": 133,
+        "right": 1151,
+        "bottom": 545,
+        "left": 200
+      },
+      "visible": true,
+      "highlights": [
+        "Q"
+      ],
+      "scrollTop": 1058701,
+      "scrollHeight": 1059113,
+      "clientHeight": 412
+    },
+    {
+      "count": "1 of 1 matching records",
+      "following": "Following output",
+      "text": "Q",
+      "rect": {
+        "x": 744.015625,
+        "y": 516.375,
+        "width": 7.203125,
+        "height": 17,
+        "top": 516.375,
+        "right": 751.21875,
+        "bottom": 533.375,
+        "left": 744.015625
+      },
+      "clip": {
+        "x": 200,
+        "y": 133,
+        "width": 951,
+        "height": 412,
+        "top": 133,
+        "right": 1151,
+        "bottom": 545,
+        "left": 200
+      },
+      "visible": true,
+      "highlights": [
+        "Q"
+      ],
+      "scrollTop": 1058701,
+      "scrollHeight": 1059113,
+      "clientHeight": 412
+    },
+    {
+      "count": "1 of 1 matching records",
+      "following": "Following output",
+      "text": "Q",
+      "rect": {
+        "x": 744.015625,
+        "y": 516.375,
+        "width": 7.203125,
+        "height": 17,
+        "top": 516.375,
+        "right": 751.21875,
+        "bottom": 533.375,
+        "left": 744.015625
+      },
+      "clip": {
+        "x": 200,
+        "y": 133,
+        "width": 951,
+        "height": 412,
+        "top": 133,
+        "right": 1151,
+        "bottom": 545,
+        "left": 200
+      },
+      "visible": true,
+      "highlights": [
+        "Q"
+      ],
+      "scrollTop": 1058701,
+      "scrollHeight": 1059113,
+      "clientHeight": 412
+    },
+    {
+      "count": "1 of 1 matching records",
+      "following": "Following output",
+      "text": "Q",
+      "rect": {
+        "x": 744.015625,
+        "y": 516.375,
+        "width": 7.203125,
+        "height": 17,
+        "top": 516.375,
+        "right": 751.21875,
+        "bottom": 533.375,
+        "left": 744.015625
+      },
+      "clip": {
+        "x": 200,
+        "y": 133,
+        "width": 951,
+        "height": 412,
+        "top": 133,
+        "right": 1151,
+        "bottom": 545,
+        "left": 200
+      },
+      "visible": true,
+      "highlights": [
+        "Q"
+      ],
+      "scrollTop": 1058701,
+      "scrollHeight": 1059113,
+      "clientHeight": 412
+    },
+    {
+      "count": "1 of 1 matching records",
+      "following": "Following output",
+      "text": "Q",
+      "rect": {
+        "x": 744.015625,
+        "y": 516.375,
+        "width": 7.203125,
+        "height": 17,
+        "top": 516.375,
+        "right": 751.21875,
+        "bottom": 533.375,
+        "left": 744.015625
+      },
+      "clip": {
+        "x": 200,
+        "y": 133,
+        "width": 951,
+        "height": 412,
+        "top": 133,
+        "right": 1151,
+        "bottom": 545,
+        "left": 200
+      },
+      "visible": true,
+      "highlights": [
+        "Q"
+      ],
+      "scrollTop": 1058701,
+      "scrollHeight": 1059113,
+      "clientHeight": 412
+    },
+    {
+      "count": "1 of 1 matching records",
+      "following": "Following output",
+      "text": "Q",
+      "rect": {
+        "x": 744.015625,
+        "y": 516.375,
+        "width": 7.203125,
+        "height": 17,
+        "top": 516.375,
+        "right": 751.21875,
+        "bottom": 533.375,
+        "left": 744.015625
+      },
+      "clip": {
+        "x": 200,
+        "y": 133,
+        "width": 951,
+        "height": 412,
+        "top": 133,
+        "right": 1151,
+        "bottom": 545,
+        "left": 200
+      },
+      "visible": true,
+      "highlights": [
+        "Q"
+      ],
+      "scrollTop": 1058701,
+      "scrollHeight": 1059113,
+      "clientHeight": 412
+    },
+    {
+      "count": "1 of 1 matching records",
+      "following": "Following output",
+      "text": "Q",
+      "rect": {
+        "x": 744.015625,
+        "y": 516.375,
+        "width": 7.203125,
+        "height": 17,
+        "top": 516.375,
+        "right": 751.21875,
+        "bottom": 533.375,
+        "left": 744.015625
+      },
+      "clip": {
+        "x": 200,
+        "y": 133,
+        "width": 951,
+        "height": 412,
+        "top": 133,
+        "right": 1151,
+        "bottom": 545,
+        "left": 200
+      },
+      "visible": true,
+      "highlights": [
+        "Q"
+      ],
+      "scrollTop": 1058701,
+      "scrollHeight": 1059113,
+      "clientHeight": 412
+    },
+    {
+      "count": "1 of 1 matching records",
+      "following": "Following output",
+      "text": "Q",
+      "rect": {
+        "x": 744.015625,
+        "y": 516.375,
+        "width": 7.203125,
+        "height": 17,
+        "top": 516.375,
+        "right": 751.21875,
+        "bottom": 533.375,
+        "left": 744.015625
+      },
+      "clip": {
+        "x": 200,
+        "y": 133,
+        "width": 951,
+        "height": 412,
+        "top": 133,
+        "right": 1151,
+        "bottom": 545,
+        "left": 200
+      },
+      "visible": true,
+      "highlights": [
+        "Q"
+      ],
+      "scrollTop": 1058701,
+      "scrollHeight": 1059113,
+      "clientHeight": 412
+    },
+    {
+      "count": "1 of 1 matching records",
+      "following": "Following output",
+      "text": "Q",
+      "rect": {
+        "x": 744.015625,
+        "y": 516.375,
+        "width": 7.203125,
+        "height": 17,
+        "top": 516.375,
+        "right": 751.21875,
+        "bottom": 533.375,
+        "left": 744.015625
+      },
+      "clip": {
+        "x": 200,
+        "y": 133,
+        "width": 951,
+        "height": 412,
+        "top": 133,
+        "right": 1151,
+        "bottom": 545,
+        "left": 200
+      },
+      "visible": true,
+      "highlights": [
+        "Q"
+      ],
+      "scrollTop": 1058701,
+      "scrollHeight": 1059113,
+      "clientHeight": 412
+    },
+    {
+      "count": "1 of 1 matching records",
+      "following": "Following output",
+      "text": "Q",
+      "rect": {
+        "x": 744.015625,
+        "y": 516.375,
+        "width": 7.203125,
+        "height": 17,
+        "top": 516.375,
+        "right": 751.21875,
+        "bottom": 533.375,
+        "left": 744.015625
+      },
+      "clip": {
+        "x": 200,
+        "y": 133,
+        "width": 951,
+        "height": 412,
+        "top": 133,
+        "right": 1151,
+        "bottom": 545,
+        "left": 200
+      },
+      "visible": true,
+      "highlights": [
+        "Q"
+      ],
+      "scrollTop": 1058701,
+      "scrollHeight": 1059113,
+      "clientHeight": 412
+    },
+    {
+      "count": "1 of 1 matching records",
+      "following": "Following output",
+      "text": "Q",
+      "rect": {
+        "x": 744.015625,
+        "y": 516.375,
+        "width": 7.203125,
+        "height": 17,
+        "top": 516.375,
+        "right": 751.21875,
+        "bottom": 533.375,
+        "left": 744.015625
+      },
+      "clip": {
+        "x": 200,
+        "y": 133,
+        "width": 951,
+        "height": 412,
+        "top": 133,
+        "right": 1151,
+        "bottom": 545,
+        "left": 200
+      },
+      "visible": true,
+      "highlights": [
+        "Q"
+      ],
+      "scrollTop": 1058701,
+      "scrollHeight": 1059113,
+      "clientHeight": 412
+    },
+    {
+      "count": "1 of 1 matching records",
+      "following": "Following output",
+      "text": "Q",
+      "rect": {
+        "x": 744.015625,
+        "y": 516.375,
+        "width": 7.203125,
+        "height": 17,
+        "top": 516.375,
+        "right": 751.21875,
+        "bottom": 533.375,
+        "left": 744.015625
+      },
+      "clip": {
+        "x": 200,
+        "y": 133,
+        "width": 951,
+        "height": 412,
+        "top": 133,
+        "right": 1151,
+        "bottom": 545,
+        "left": 200
+      },
+      "visible": true,
+      "highlights": [
+        "Q"
+      ],
+      "scrollTop": 1058701,
+      "scrollHeight": 1059113,
+      "clientHeight": 412
+    },
+    {
+      "count": "1 of 1 matching records",
+      "following": "Following output",
+      "text": "Q",
+      "rect": {
+        "x": 744.015625,
+        "y": 516.375,
+        "width": 7.203125,
+        "height": 17,
+        "top": 516.375,
+        "right": 751.21875,
+        "bottom": 533.375,
+        "left": 744.015625
+      },
+      "clip": {
+        "x": 200,
+        "y": 133,
+        "width": 951,
+        "height": 412,
+        "top": 133,
+        "right": 1151,
+        "bottom": 545,
+        "left": 200
+      },
+      "visible": true,
+      "highlights": [
+        "Q"
+      ],
+      "scrollTop": 1058701,
+      "scrollHeight": 1059113,
+      "clientHeight": 412
+    },
+    {
+      "count": "1 of 1 matching records",
+      "following": "Following output",
+      "text": "Q",
+      "rect": {
+        "x": 744.015625,
+        "y": 516.375,
+        "width": 7.203125,
+        "height": 17,
+        "top": 516.375,
+        "right": 751.21875,
+        "bottom": 533.375,
+        "left": 744.015625
+      },
+      "clip": {
+        "x": 200,
+        "y": 133,
+        "width": 951,
+        "height": 412,
+        "top": 133,
+        "right": 1151,
+        "bottom": 545,
+        "left": 200
+      },
+      "visible": true,
+      "highlights": [
+        "Q"
+      ],
+      "scrollTop": 1058701,
+      "scrollHeight": 1059113,
+      "clientHeight": 412
+    },
+    {
+      "count": "1 of 1 matching records",
+      "following": "Following output",
+      "text": "Q",
+      "rect": {
+        "x": 744.015625,
+        "y": 516.375,
+        "width": 7.203125,
+        "height": 17,
+        "top": 516.375,
+        "right": 751.21875,
+        "bottom": 533.375,
+        "left": 744.015625
+      },
+      "clip": {
+        "x": 200,
+        "y": 133,
+        "width": 951,
+        "height": 412,
+        "top": 133,
+        "right": 1151,
+        "bottom": 545,
+        "left": 200
+      },
+      "visible": true,
+      "highlights": [
+        "Q"
+      ],
+      "scrollTop": 1058701,
+      "scrollHeight": 1059113,
+      "clientHeight": 412
+    },
+    {
+      "count": "1 of 1 matching records",
+      "following": "Following output",
+      "text": "Q",
+      "rect": {
+        "x": 744.015625,
+        "y": 516.375,
+        "width": 7.203125,
+        "height": 17,
+        "top": 516.375,
+        "right": 751.21875,
+        "bottom": 533.375,
+        "left": 744.015625
+      },
+      "clip": {
+        "x": 200,
+        "y": 133,
+        "width": 951,
+        "height": 412,
+        "top": 133,
+        "right": 1151,
+        "bottom": 545,
+        "left": 200
+      },
+      "visible": true,
+      "highlights": [
+        "Q"
+      ],
+      "scrollTop": 1058701,
+      "scrollHeight": 1059113,
+      "clientHeight": 412
+    }
+  ],
+  "pass": true
+}

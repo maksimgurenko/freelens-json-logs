@@ -1,0 +1,1 @@
+{"pass":false,"error":"Error: SyntaxError: missing ) after argument list\n    at Object.evaluate (file:///home/max/work/freelens-json-logs/scripts/find-production-host/cdp.mjs:54:40)\n    at async file:///home/max/work/freelens-json-logs/scripts/find-production-host/context-boundaries.mjs:106:11","checks":4}

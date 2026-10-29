@@ -1,0 +1,36 @@
+{
+  "pid": 1235378,
+  "workers": {
+    "starts": 1,
+    "exits": 1,
+    "live": 0,
+    "peak": 1,
+    "resources": [
+      "FSReqCallback",
+      "TCPServerWrap",
+      "Timeout",
+      "Immediate",
+      "Immediate",
+      "Immediate",
+      "Immediate",
+      "Immediate",
+      "Immediate",
+      "Immediate"
+    ],
+    "beforeQuit": 0,
+    "handlers": [
+      "extensions@a5a466ae19047197d3026787cca1fb416c177a5e8ffb70284441040a8689cc6f:find-open",
+      "extensions@a5a466ae19047197d3026787cca1fb416c177a5e8ffb70284441040a8689cc6f:find-request",
+      "extensions@a5a466ae19047197d3026787cca1fb416c177a5e8ffb70284441040a8689cc6f:find-control"
+    ],
+    "windows": []
+  },
+  "service": {
+    "closed": true,
+    "owners": 0,
+    "retiring": 0,
+    "opening": 0,
+    "senders": 0,
+    "watch": false
+  }
+}

@@ -1,0 +1,3 @@
+pod/find-surfaces created
+pod/find-surfaces condition met
+/home/max/work/freelens-json-logs/docs/verification/48/host/geometry/surface-fixture.json

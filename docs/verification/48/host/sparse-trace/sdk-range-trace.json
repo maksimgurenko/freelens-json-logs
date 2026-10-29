@@ -1,0 +1,170 @@
+[
+  {
+    "key": {
+      "viewerEpoch": 50,
+      "targetEpoch": 1,
+      "instanceEpoch": 2,
+      "windowRevision": 7,
+      "messageRevision": 9,
+      "queryRevision": 2
+    },
+    "scopes": [
+      {
+        "ref": {
+          "context": "[50,\"2cb8121942e3cd749887202eec4bb10d\",\"find-verification-48-1376280\",\"find-fixtures\",\"0e9afa35-c7e2-4d01-8386-aae46c2d6bae\",2]",
+          "occurrence": 0
+        },
+        "source": "message",
+        "start": 0,
+        "end": 128
+      }
+    ],
+    "Q": {
+      "x": 33554852,
+      "y": 173,
+      "width": 8,
+      "height": 17,
+      "top": 173,
+      "right": 33554860,
+      "bottom": 190,
+      "left": 33554852
+    },
+    "clip": {
+      "x": 200,
+      "y": 162,
+      "width": 963,
+      "height": 383,
+      "top": 162,
+      "right": 1163,
+      "bottom": 545,
+      "left": 200
+    },
+    "scroll": 0
+  },
+  {
+    "key": {
+      "viewerEpoch": 50,
+      "targetEpoch": 1,
+      "instanceEpoch": 2,
+      "windowRevision": 7,
+      "messageRevision": 9,
+      "queryRevision": 2
+    },
+    "scopes": [
+      {
+        "ref": {
+          "context": "[50,\"2cb8121942e3cd749887202eec4bb10d\",\"find-verification-48-1376280\",\"find-fixtures\",\"0e9afa35-c7e2-4d01-8386-aae46c2d6bae\",2]",
+          "occurrence": 0
+        },
+        "source": "message",
+        "start": 5240925,
+        "end": 5242752
+      }
+    ],
+    "Q": {
+      "x": 744.015625,
+      "y": 516.375,
+      "width": 7.203125,
+      "height": 17,
+      "top": 516.375,
+      "right": 751.21875,
+      "bottom": 533.375,
+      "left": 744.015625
+    },
+    "clip": {
+      "x": 200,
+      "y": 162,
+      "width": 951,
+      "height": 383,
+      "top": 162,
+      "right": 1151,
+      "bottom": 545,
+      "left": 200
+    },
+    "scroll": 1058730
+  },
+  {
+    "key": {
+      "viewerEpoch": 50,
+      "targetEpoch": 1,
+      "instanceEpoch": 2,
+      "windowRevision": 7,
+      "messageRevision": 9,
+      "queryRevision": 2
+    },
+    "scopes": [
+      {
+        "ref": {
+          "context": "[50,\"2cb8121942e3cd749887202eec4bb10d\",\"find-verification-48-1376280\",\"find-fixtures\",\"0e9afa35-c7e2-4d01-8386-aae46c2d6bae\",2]",
+          "occurrence": 0
+        },
+        "source": "message",
+        "start": 5240736,
+        "end": 5242752
+      }
+    ],
+    "Q": {
+      "x": 744.015625,
+      "y": 545.375,
+      "width": 7.203125,
+      "height": 17,
+      "top": 545.375,
+      "right": 751.21875,
+      "bottom": 562.375,
+      "left": 744.015625
+    },
+    "clip": {
+      "x": 200,
+      "y": 162,
+      "width": 951,
+      "height": 383,
+      "top": 162,
+      "right": 1151,
+      "bottom": 545,
+      "left": 200
+    },
+    "scroll": 1058701
+  },
+  {
+    "key": {
+      "viewerEpoch": 50,
+      "targetEpoch": 1,
+      "instanceEpoch": 2,
+      "windowRevision": 7,
+      "messageRevision": 9,
+      "queryRevision": 2
+    },
+    "scopes": [
+      {
+        "ref": {
+          "context": "[50,\"2cb8121942e3cd749887202eec4bb10d\",\"find-verification-48-1376280\",\"find-fixtures\",\"0e9afa35-c7e2-4d01-8386-aae46c2d6bae\",2]",
+          "occurrence": 0
+        },
+        "source": "message",
+        "start": 5240736,
+        "end": 5242720
+      }
+    ],
+    "Q": {
+      "x": 744.015625,
+      "y": 545.375,
+      "width": 7.203125,
+      "height": 17,
+      "top": 545.375,
+      "right": 751.21875,
+      "bottom": 562.375,
+      "left": 744.015625
+    },
+    "clip": {
+      "x": 200,
+      "y": 162,
+      "width": 951,
+      "height": 383,
+      "top": 162,
+      "right": 1151,
+      "bottom": 545,
+      "left": 200
+    },
+    "scroll": 1058701
+  }
+]

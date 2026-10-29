@@ -1,0 +1,30 @@
+{
+  "package": "freelens-readable-logs",
+  "version": "0.1.34",
+  "storeName": "freelens-readable-logs",
+  "main": "out/main-0.1.34.js",
+  "renderer": "out/renderer-0.1.34.js",
+  "hostPin": "1.10.3",
+  "schema": 3,
+  "tarball": "cbc903f572d5c7b8dc6dfd09e433538dda799803e8e7549f6212bb2634046825",
+  "assets": {
+    "out/main-0.1.34.js": "a355bf90dd519f9215407e5ed95e97bc8efe3347926156dbd24095001c904f05",
+    "out/renderer-0.1.34.js": "ccdff169136e4a9e8e0c9573de538719c8397a03a55f6e6d32e288168704d042",
+    "out/find-worker-0.1.34.js": "4d00cf5686789bd37b72b4cee6ca0c5fa461f98c86ee8cdfb024f01e6878c5b3"
+  },
+  "privateDisplay": {
+    "sourceCommit": "f31c47a1b9d300847d8fc3108ad959448103dfc1",
+    "librarySha256": "20d86f41923bbbffe56d3f96559095f91b18bebbf4e9621e2e5295ba91f2dcb4",
+    "loadedLibrary": "/home/max/work/freelens-json-logs/.scratch/find/48-host/aquamarine/build/libaquamarine.so.0.15.1",
+    "stockVersions": [
+      "hyprland 0.56.2-4",
+      "aquamarine 0.15.1-1",
+      "mesa 1:26.2.5-1"
+    ],
+    "patch": "../cadence/private-aquamarine.patch.gz"
+  },
+  "toolchain": {
+    "node": "v24.18.0",
+    "npm": "11.16.0"
+  }
+}

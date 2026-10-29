@@ -5,17 +5,24 @@ import { join } from 'node:path';
 import { execFileSync } from 'node:child_process';
 import Module from 'node:module';
 import { createHash } from 'node:crypto';
+import { checkFindWorker } from './check-find-worker.mjs';
+import { checkPackedFindService } from './check-find-service.mjs';
 
 const manifest = JSON.parse(readFileSync('package.json'));
 const tarball = `dist/${manifest.name}-${manifest.version}.tgz`;
 const contents = execFileSync('tar', ['-tzf', tarball], { encoding: 'utf8' }).trim().split('\n').sort();
 assert.equal(manifest.main, `out/main-${manifest.version}.js`);
 assert.equal(manifest.renderer, `out/renderer-${manifest.version}.js`);
-assert.deepEqual(contents, ['package/README.md', 'package/docs/local-development.md', `package/${manifest.main}`, `package/${manifest.renderer}`, 'package/package.json'].sort());
+const workerEntry = `out/find-worker-${manifest.version}.js`;
+assert.deepEqual(contents, ['package/README.md', 'package/docs/local-development.md', `package/${manifest.main}`, `package/${manifest.renderer}`, `package/${workerEntry}`, 'package/package.json'].sort());
 const metadata = JSON.parse(readFileSync('dist/build-meta.json'));
 const inputs = Object.keys(metadata.inputs);
 assert(inputs.every(path => path.startsWith('src/') || path.startsWith('host-global:')), `Unexpected bundled dependency: ${inputs}`);
+const workerMetadata = metadata.outputs[workerEntry];
+assert.deepEqual(workerMetadata.imports.map(entry => entry.path), ['node:worker_threads']);
+assert.deepEqual(Object.keys(workerMetadata.inputs).sort(), ['src/core/find-matcher.ts', 'src/core/find-protocol.ts', 'src/worker/find.ts']);
 const directory = mkdtempSync(join(tmpdir(), 'readable-logs-package-'));
+let workerCheck, serviceCheck;
 try {
   execFileSync('tar', ['-xzf', join(process.cwd(), tarball), '-C', directory]);
   const packed = JSON.parse(readFileSync(join(directory, 'package/package.json')));
@@ -43,5 +50,12 @@ try {
   // Freelens 1.10.3 wraps every registered Page with observer itself.
   const registration = new Renderer().clusterPages[0];
   assert.doesNotThrow(() => global.MobxReact.observer(registration.components.Page));
+  const source = readFileSync(join(directory, 'package', workerEntry), 'utf8');
+  const previousDirectory = process.cwd();
+  try {
+    process.chdir(directory);
+    workerCheck = await checkFindWorker(source, packed.version);
+    serviceCheck = await checkPackedFindService(join(directory, 'package', packed.main), join(directory, 'isolated-settings'));
+  } finally { process.chdir(previousDirectory); }
 } finally { rmSync(directory, { recursive: true, force: true }); }
-console.log(JSON.stringify({ tarball, sha256: createHash('sha256').update(readFileSync(tarball)).digest('hex'), contents, bundledInputs: inputs, entryPoints: 'CommonJS default exports load with host globals; no runtime dependencies bundled' }, null, 2));
+console.log(JSON.stringify({ tarball, sha256: createHash('sha256').update(readFileSync(tarball)).digest('hex'), contents, bundledInputs: inputs, workerCheck, serviceCheck, entryPoints: 'CommonJS default exports load with host globals; trusted packed worker executes outside checkout; no runtime package dependencies bundled' }, null, 2));

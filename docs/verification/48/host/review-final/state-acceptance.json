@@ -1,0 +1,232 @@
+{
+  "session": {
+    "pid": 1481183,
+    "privateInstance": "efb50993780079460b0cbed1363e2166a2de1d9f_1793086349_889201205",
+    "privateRuntime": "/tmp/fd-77qzpa46",
+    "owned": [
+      {
+        "address": "0x562bdbe07c10",
+        "mapped": true,
+        "hidden": false,
+        "visible": true,
+        "acceptsInput": true,
+        "at": [
+          21,
+          21
+        ],
+        "size": [
+          1238,
+          678
+        ],
+        "workspace": {
+          "id": 7,
+          "name": "7"
+        },
+        "floating": false,
+        "monitor": 0,
+        "class": "freelens",
+        "title": "Freelens",
+        "initialClass": "freelens",
+        "initialTitle": "Freelens",
+        "pid": 1481183,
+        "xwayland": false,
+        "pinned": false,
+        "pinFullscreened": false,
+        "fullscreen": 0,
+        "fullscreenClient": 0,
+        "fullscreenHandler": "default",
+        "allowedOverFullscreen": true,
+        "grouped": [],
+        "tags": [],
+        "swallowing": "0x0",
+        "focusHistoryID": 0,
+        "inhibitingIdle": false,
+        "xdgTag": "",
+        "xdgDescription": "",
+        "contentType": "none",
+        "tearingHint": false,
+        "stableId": "18000003"
+      }
+    ]
+  },
+  "inputLayer": "DOM events/Range only; native delivery unverified",
+  "state": {
+    "checks": [
+      "Fixture paused after complete actual snapshot",
+      "D03 initial query includes first retained hit",
+      "D10 stable initial Match case refines and retains candidate",
+      "D10 stable initial Whole words refines and retains candidate",
+      "D10 explicit Next after flags uses current matching list",
+      "D10 mode refinement preserves later matching candidate",
+      "D10 folded query ready",
+      "D10 Match case exact characters excludes uppercase query",
+      "D10 restoring mode restores candidate",
+      "D10 Whole words excludes partial word",
+      "D10 Whole words off searches partial literal",
+      "D03 deselection leaves ready data without anchor or active hit",
+      "D03 initial Previous starts at last match",
+      "D06 transaction fixture at later candidate",
+      "D06 partial paste refines to zero",
+      "D06 Undo refinement restores latest candidate",
+      "D06 Redo refinement returns to zero",
+      "D06 composing input disables navigation",
+      "D06 select-all DOM composition commits one new search",
+      "D06 cut to empty ends sequence",
+      "D06 undo crossing empty starts from beginning",
+      "D09 Clear has no scroll",
+      "D09 zero-hit search has no scroll",
+      "D16 completed zero-hit query committed on Close",
+      "D09 one-hit navigation feedback",
+      "D16 explicit navigation commits exact tuple",
+      "D10/D16 history recall restores text and flags as new search",
+      "D12 message Range seeds exact application content",
+      "D12 existing query survives different source selection",
+      "D12 generated control selection ignored",
+      "D12 multi-record selection ignored",
+      "D14 current completion after inspector dismissal cannot resurrect selection",
+      "D11 Clear during async dispatch rejects obsolete result"
+    ],
+    "count": "Enter text to find",
+    "paused": "Paused"
+  },
+  "pass": true,
+  "completedChecks": [
+    "Fixture paused after complete actual snapshot",
+    "D03 initial query includes first retained hit",
+    "D10 stable initial Match case refines and retains candidate",
+    "D10 stable initial Whole words refines and retains candidate",
+    "D10 explicit Next after flags uses current matching list",
+    "D10 mode refinement preserves later matching candidate",
+    "D10 folded query ready",
+    "D10 Match case exact characters excludes uppercase query",
+    "D10 restoring mode restores candidate",
+    "D10 Whole words excludes partial word",
+    "D10 Whole words off searches partial literal",
+    "D03 deselection leaves ready data without anchor or active hit",
+    "D03 initial Previous starts at last match",
+    "D06 transaction fixture at later candidate",
+    "D06 partial paste refines to zero",
+    "D06 Undo refinement restores latest candidate",
+    "D06 Redo refinement returns to zero",
+    "D06 composing input disables navigation",
+    "D06 select-all DOM composition commits one new search",
+    "D06 cut to empty ends sequence",
+    "D06 undo crossing empty starts from beginning",
+    "D09 Clear has no scroll",
+    "D09 zero-hit search has no scroll",
+    "D16 completed zero-hit query committed on Close",
+    "D09 one-hit navigation feedback",
+    "D16 explicit navigation commits exact tuple",
+    "D10/D16 history recall restores text and flags as new search",
+    "D12 message Range seeds exact application content",
+    "D12 existing query survives different source selection",
+    "D12 generated control selection ignored",
+    "D12 multi-record selection ignored",
+    "D14 current completion after inspector dismissal cannot resurrect selection",
+    "D11 Clear during async dispatch rejects obsolete result"
+  ],
+  "closed": {
+    "starts": 2,
+    "exits": 2,
+    "live": 0,
+    "peak": 1,
+    "resources": [
+      "TCPServerWrap",
+      "StatWatcher",
+      "StatWatcher",
+      "StatWatcher",
+      "StatWatcher",
+      "StatWatcher",
+      "StatWatcher",
+      "PipeWrap",
+      "PipeWrap",
+      "PipeWrap",
+      "ProcessWrap",
+      "TCPSocketWrap",
+      "TCPSocketWrap",
+      "TCPSocketWrap",
+      "TCPSocketWrap",
+      "TCPSocketWrap",
+      "TCPSocketWrap",
+      "TCPSocketWrap",
+      "TCPSocketWrap",
+      "TCPSocketWrap",
+      "TCPSocketWrap",
+      "TCPSocketWrap",
+      "Timeout",
+      "Timeout",
+      "Timeout",
+      "Timeout",
+      "Timeout",
+      "Timeout",
+      "Timeout",
+      "Timeout",
+      "Timeout",
+      "Timeout",
+      "Timeout",
+      "Timeout",
+      "Timeout",
+      "Timeout",
+      "Timeout",
+      "Timeout",
+      "Timeout",
+      "Timeout",
+      "Timeout",
+      "Timeout",
+      "Timeout",
+      "Timeout",
+      "Timeout",
+      "Timeout",
+      "Timeout",
+      "Timeout",
+      "Timeout",
+      "Timeout"
+    ],
+    "beforeQuit": 1,
+    "handlers": [
+      "extensions@d2f9eb0fce601c1b76810cbd384caaaf92b1055c515c97852143a7d39c396df4:find-open",
+      "extensions@d2f9eb0fce601c1b76810cbd384caaaf92b1055c515c97852143a7d39c396df4:find-request",
+      "extensions@d2f9eb0fce601c1b76810cbd384caaaf92b1055c515c97852143a7d39c396df4:find-control"
+    ],
+    "windows": [
+      {
+        "id": 2,
+        "pid": 1481610,
+        "frames": [
+          {
+            "processId": 5,
+            "routingId": 1,
+            "url": "https://renderer.freelens.app:45857/cluster/42d5e95ef74ed6bbff50e33c8e012c7c"
+          },
+          {
+            "processId": 5,
+            "routingId": 4,
+            "url": "https://42d5e95ef74ed6bbff50e33c8e012c7c.renderer.freelens.app:45857/overview"
+          }
+        ],
+        "listeners": [
+          [
+            "destroyed",
+            1
+          ],
+          [
+            "render-process-gone",
+            1
+          ],
+          [
+            "did-frame-navigate",
+            0
+          ]
+        ]
+      }
+    ],
+    "service": {
+      "owners": 0,
+      "retiring": 0,
+      "opening": 0,
+      "senders": 0,
+      "watch": false,
+      "executions": []
+    }
+  }
+}

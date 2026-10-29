@@ -1,0 +1,27 @@
+[
+  {
+    "issue": 36,
+    "bodyEqual": true,
+    "commentsEqual": true
+  },
+  {
+    "issue": 37,
+    "bodyEqual": true,
+    "commentsEqual": true
+  },
+  {
+    "issue": 38,
+    "bodyEqual": true,
+    "commentsEqual": true
+  },
+  {
+    "issue": 40,
+    "bodyEqual": true,
+    "commentsEqual": true
+  },
+  {
+    "issue": 48,
+    "bodyEqual": true,
+    "commentsEqual": true
+  }
+]

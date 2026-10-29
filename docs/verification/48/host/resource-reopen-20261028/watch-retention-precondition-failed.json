@@ -1,0 +1,62 @@
+{
+  "session": {
+    "pid": 2778399,
+    "privateInstance": "efb50993780079460b0cbed1363e2166a2de1d9f_1793227474_1212077980",
+    "privateRuntime": "/tmp/fd-2se05yps",
+    "owned": [
+      {
+        "address": "0x556339aaf930",
+        "mapped": true,
+        "hidden": false,
+        "visible": true,
+        "acceptsInput": true,
+        "at": [
+          21,
+          21
+        ],
+        "size": [
+          1238,
+          678
+        ],
+        "workspace": {
+          "id": 7,
+          "name": "7"
+        },
+        "floating": false,
+        "monitor": 0,
+        "class": "freelens",
+        "title": "Freelens",
+        "initialClass": "freelens",
+        "initialTitle": "Freelens",
+        "pid": 2778399,
+        "xwayland": false,
+        "pinned": false,
+        "pinFullscreened": false,
+        "fullscreen": 0,
+        "fullscreenClient": 0,
+        "fullscreenHandler": "default",
+        "allowedOverFullscreen": true,
+        "grouped": [],
+        "tags": [],
+        "swallowing": "0x0",
+        "focusHistoryID": 0,
+        "inhibitingIdle": false,
+        "xdgTag": "",
+        "xdgDescription": "",
+        "contentType": "none",
+        "tearingHint": false,
+        "stableId": "18000003"
+      }
+    ]
+  },
+  "scenarios": [
+    {
+      "cancelTimer": false,
+      "samples": []
+    }
+  ],
+  "scope": "Actual installed podsApi.watch against the owned namespace, default 600-second timeout; wait for its response timer before aborting. Instrumented attribution control, not Find acceptance.",
+  "error": "AssertionError [ERR_ASSERTION]: Actual watch response did not schedule exactly one 660-second timer\n    at file:///home/max/.codex/worktrees/6c50/freelens-json-logs/scripts/find-production-host/watch-retention.mjs:60:7",
+  "pass": false,
+  "cleanupError": "Error: TypeError: Illegal invocation\n    at <anonymous>:5:38\n    at <anonymous>:9:9\n    at Object.evaluate (file:///home/max/.codex/worktrees/6c50/freelens-json-logs/scripts/find-production-host/cdp.mjs:54:40)\n    at async file:///home/max/.codex/worktrees/6c50/freelens-json-logs/scripts/find-production-host/watch-retention.mjs:92:29"
+}

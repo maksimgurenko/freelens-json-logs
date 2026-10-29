@@ -1,0 +1,388 @@
+{
+  "session": {
+    "pid": 1768386,
+    "privateInstance": "efb50993780079460b0cbed1363e2166a2de1d9f_1793091462_1255892720",
+    "privateRuntime": "/tmp/fd-xjnrj3jz",
+    "owned": [
+      {
+        "address": "0x562e76451030",
+        "mapped": true,
+        "hidden": false,
+        "visible": true,
+        "acceptsInput": true,
+        "at": [
+          21,
+          21
+        ],
+        "size": [
+          1238,
+          678
+        ],
+        "workspace": {
+          "id": 7,
+          "name": "7"
+        },
+        "floating": false,
+        "monitor": 0,
+        "class": "freelens",
+        "title": "Freelens",
+        "initialClass": "freelens",
+        "initialTitle": "Freelens",
+        "pid": 1768386,
+        "xwayland": false,
+        "pinned": false,
+        "pinFullscreened": false,
+        "fullscreen": 0,
+        "fullscreenClient": 0,
+        "fullscreenHandler": "default",
+        "allowedOverFullscreen": true,
+        "grouped": [],
+        "tags": [],
+        "swallowing": "0x0",
+        "focusHistoryID": 0,
+        "inhibitingIdle": false,
+        "xdgTag": "",
+        "xdgDescription": "",
+        "contentType": "none",
+        "tearingHint": false,
+        "stableId": "18000003"
+      }
+    ]
+  },
+  "checks": [
+    "Every dense exact result belongs to measured seven-pixel groups",
+    "Repeated live mark controls advance and wrap through their current measured members",
+    "Mark focuses Find and exposes non-color current-group distinction",
+    "Mark keeps inspection/Pause independent and commits history",
+    "Dismissed stale mark cannot replay on click or reopening Find",
+    "Dense decoration cap reports incomplete without losing exact members"
+  ],
+  "scope": "Installed DOM, actual snapshots and worker exits; diagnostic private compositor. No physical/native input or clipboard.",
+  "scenario": "groups",
+  "grouped": {
+    "members": 18,
+    "population": 1000,
+    "marks": 58,
+    "visited": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      0
+    ],
+    "focus": true,
+    "current": "true",
+    "border": "1px",
+    "selected": false,
+    "paused": "Paused",
+    "highlights": 1024,
+    "feedback": "Highlighting incomplete: visible text exceeds the decoration limit. Exact matches remain available.",
+    "committed": true,
+    "oldTop": 8,
+    "dismissed": true,
+    "reopenTop": 8
+  },
+  "pass": true,
+  "groupTrace": [
+    {
+      "active": 0,
+      "count": "1 of 1000 matching records",
+      "client": 383
+    },
+    {
+      "active": 1,
+      "count": "2 of 1000 matching records",
+      "client": 383
+    },
+    {
+      "active": 2,
+      "count": "3 of 1000 matching records",
+      "client": 383
+    },
+    {
+      "active": 3,
+      "count": "4 of 1000 matching records",
+      "client": 383
+    },
+    {
+      "active": 4,
+      "count": "5 of 1000 matching records",
+      "client": 383
+    },
+    {
+      "active": 5,
+      "count": "6 of 1000 matching records",
+      "client": 383
+    },
+    {
+      "active": 6,
+      "count": "7 of 1000 matching records",
+      "client": 383
+    },
+    {
+      "active": 7,
+      "count": "8 of 1000 matching records",
+      "client": 383
+    },
+    {
+      "active": 8,
+      "count": "9 of 1000 matching records",
+      "client": 383
+    },
+    {
+      "active": 9,
+      "count": "10 of 1000 matching records",
+      "client": 383
+    },
+    {
+      "active": 10,
+      "count": "11 of 1000 matching records",
+      "client": 383
+    },
+    {
+      "active": 11,
+      "count": "12 of 1000 matching records",
+      "client": 383
+    },
+    {
+      "active": 12,
+      "count": "13 of 1000 matching records",
+      "client": 383
+    },
+    {
+      "active": 13,
+      "count": "14 of 1000 matching records",
+      "client": 383
+    },
+    {
+      "active": 14,
+      "count": "15 of 1000 matching records",
+      "client": 383
+    },
+    {
+      "active": 15,
+      "count": "16 of 1000 matching records",
+      "client": 412
+    },
+    {
+      "active": 16,
+      "count": "17 of 1000 matching records",
+      "client": 383
+    },
+    {
+      "active": 17,
+      "count": "18 of 1000 matching records",
+      "client": 383
+    },
+    {
+      "active": 0,
+      "count": "1 of 1000 matching records",
+      "client": 383
+    },
+    {
+      "active": 1,
+      "count": "2 of 1000 matching records",
+      "client": 383
+    },
+    {
+      "active": 2,
+      "count": "3 of 1000 matching records",
+      "client": 383
+    },
+    {
+      "active": 3,
+      "count": "4 of 1000 matching records",
+      "client": 383
+    },
+    {
+      "active": 4,
+      "count": "5 of 1000 matching records",
+      "client": 383
+    },
+    {
+      "active": 5,
+      "count": "6 of 1000 matching records",
+      "client": 383
+    },
+    {
+      "active": 6,
+      "count": "7 of 1000 matching records",
+      "client": 383
+    },
+    {
+      "active": 7,
+      "count": "8 of 1000 matching records",
+      "client": 383
+    },
+    {
+      "active": 8,
+      "count": "9 of 1000 matching records",
+      "client": 383
+    },
+    {
+      "active": 9,
+      "count": "10 of 1000 matching records",
+      "client": 383
+    },
+    {
+      "active": 10,
+      "count": "11 of 1000 matching records",
+      "client": 383
+    },
+    {
+      "active": 11,
+      "count": "12 of 1000 matching records",
+      "client": 383
+    },
+    {
+      "active": 12,
+      "count": "13 of 1000 matching records",
+      "client": 383
+    },
+    {
+      "active": 13,
+      "count": "14 of 1000 matching records",
+      "client": 383
+    },
+    {
+      "active": 14,
+      "count": "15 of 1000 matching records",
+      "client": 383
+    },
+    {
+      "active": 15,
+      "count": "16 of 1000 matching records",
+      "client": 383
+    },
+    {
+      "active": 16,
+      "count": "17 of 1000 matching records",
+      "client": 383
+    },
+    {
+      "active": 17,
+      "count": "18 of 1000 matching records",
+      "client": 383
+    },
+    {
+      "active": 0,
+      "count": "1 of 1000 matching records",
+      "client": 383
+    }
+  ],
+  "closed": {
+    "starts": 2,
+    "exits": 2,
+    "live": 0,
+    "peak": 1,
+    "resources": [
+      "TCPServerWrap",
+      "StatWatcher",
+      "StatWatcher",
+      "StatWatcher",
+      "StatWatcher",
+      "StatWatcher",
+      "StatWatcher",
+      "PipeWrap",
+      "PipeWrap",
+      "PipeWrap",
+      "ProcessWrap",
+      "TCPSocketWrap",
+      "TCPSocketWrap",
+      "TCPSocketWrap",
+      "TCPSocketWrap",
+      "TCPSocketWrap",
+      "TCPSocketWrap",
+      "TCPSocketWrap",
+      "TCPSocketWrap",
+      "TCPSocketWrap",
+      "TCPSocketWrap",
+      "TCPSocketWrap",
+      "TCPSocketWrap",
+      "TCPSocketWrap",
+      "TCPSocketWrap",
+      "TCPSocketWrap",
+      "Timeout",
+      "Timeout",
+      "Timeout"
+    ],
+    "beforeQuit": 1,
+    "handlers": [
+      "extensions@c27d41221907efa6ea37a465c5794d77daf51255df649e34d40c1f8a838098da:find-open",
+      "extensions@c27d41221907efa6ea37a465c5794d77daf51255df649e34d40c1f8a838098da:find-request",
+      "extensions@c27d41221907efa6ea37a465c5794d77daf51255df649e34d40c1f8a838098da:find-control"
+    ],
+    "windows": [
+      {
+        "id": 2,
+        "pid": 1768806,
+        "frames": [
+          {
+            "processId": 5,
+            "routingId": 1,
+            "url": "https://renderer.freelens.app:46361/cluster/41244bdeda4d4e5d0618f89f1821a925"
+          },
+          {
+            "processId": 5,
+            "routingId": 4,
+            "url": "https://41244bdeda4d4e5d0618f89f1821a925.renderer.freelens.app:46361/overview"
+          }
+        ],
+        "listeners": [
+          [
+            "destroyed",
+            1
+          ],
+          [
+            "render-process-gone",
+            1
+          ],
+          [
+            "did-frame-navigate",
+            0
+          ]
+        ]
+      }
+    ],
+    "service": {
+      "owners": 0,
+      "retiring": 0,
+      "opening": 0,
+      "senders": 0,
+      "watch": false,
+      "executions": []
+    }
+  }
+}

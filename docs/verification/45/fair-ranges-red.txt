@@ -1,0 +1,121 @@
+(node:951178) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///home/max/work/freelens-json-logs/tests/find-matcher.test.ts is not specified and it doesn't parse as CommonJS.
+Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+To eliminate this warning, add "type": "module" to /home/max/work/freelens-json-logs/package.json.
+(Use `node --trace-warnings ...` to show where the warning was created)
+✔ ranges retain original UTF-16 offsets and whole-source non-overlap across fragments (1.210294ms)
+✔ literal Find returns complete ordered records with independent source provenance (0.243871ms)
+✔ Kelvin/simple folding; case=false; words=false (0.164801ms)
+✔ Kelvin/simple folding; case=false; words=true (0.968703ms)
+✔ Kelvin/simple folding; case=true; words=false (0.08319ms)
+✔ Kelvin/simple folding; case=true; words=true (0.786683ms)
+✔ sigma/final sigma; case=false; words=false (0.070361ms)
+✔ sigma/final sigma; case=false; words=true (0.735942ms)
+✔ sigma/final sigma; case=true; words=false (0.06607ms)
+✔ sigma/final sigma; case=true; words=true (0.830333ms)
+✔ sharp-s is not SS; case=false; words=false (0.08923ms)
+✔ sharp-s is not SS; case=false; words=true (0.757852ms)
+✔ sharp-s is not SS; case=true; words=false (0.04468ms)
+✔ sharp-s is not SS; case=true; words=true (0.719573ms)
+✔ sharp-s simple folding; case=false; words=false (0.05126ms)
+✔ sharp-s simple folding; case=false; words=true (0.705592ms)
+✔ sharp-s simple folding; case=true; words=false (0.027571ms)
+✔ sharp-s simple folding; case=true; words=true (0.727482ms)
+✔ no accent normalization; case=false; words=false (0.06078ms)
+✔ no accent normalization; case=false; words=true (0.680883ms)
+✔ no accent normalization; case=true; words=false (0.02461ms)
+✔ no accent normalization; case=true; words=true (0.724142ms)
+✔ no locale tailoring; case=false; words=false (0.0589ms)
+✔ no locale tailoring; case=false; words=true (0.684163ms)
+✔ no locale tailoring; case=true; words=false (0.02452ms)
+✔ no locale tailoring; case=true; words=true (0.694362ms)
+✔ astral offsets and folding; case=false; words=false (0.072491ms)
+✔ astral offsets and folding; case=false; words=true (0.705782ms)
+✔ astral offsets and folding; case=true; words=false (0.02571ms)
+✔ astral offsets and folding; case=true; words=true (0.681682ms)
+✔ lone surrogates stay original; case=false; words=false (0.05082ms)
+✔ lone surrogates stay original; case=false; words=true (0.699183ms)
+✔ lone surrogates stay original; case=true; words=false (0.02821ms)
+✔ lone surrogates stay original; case=true; words=true (0.693582ms)
+✔ lone surrogate literal; case=false; words=false (0.052561ms)
+✔ lone surrogate literal; case=false; words=true (0.684552ms)
+✔ lone surrogate literal; case=true; words=false (0.05488ms)
+✔ lone surrogate literal; case=true; words=true (0.702142ms)
+✔ original U0345 neighbors; case=false; words=false (0.025771ms)
+✔ original U0345 neighbors; case=false; words=true (0.01858ms)
+✔ original U0345 neighbors; case=true; words=false (0.01438ms)
+✔ original U0345 neighbors; case=true; words=true (0.01473ms)
+✔ original U0345 after astral; case=false; words=false (0.03713ms)
+✔ original U0345 after astral; case=false; words=true (0.01969ms)
+✔ original U0345 after astral; case=true; words=false (0.01892ms)
+✔ original U0345 after astral; case=true; words=true (0.01322ms)
+✔ U0345 itself folds in query; case=false; words=false (0.04882ms)
+✔ U0345 itself folds in query; case=false; words=true (0.696013ms)
+✔ U0345 itself folds in query; case=true; words=false (0.01759ms)
+✔ U0345 itself folds in query; case=true; words=true (0.710022ms)
+✔ supplementary letter before; case=false; words=false (0.02416ms)
+✔ supplementary letter before; case=false; words=true (0.01454ms)
+✔ supplementary letter before; case=true; words=false (0.01481ms)
+✔ supplementary letter before; case=true; words=true (0.01293ms)
+✔ supplementary letter after; case=false; words=false (0.01369ms)
+✔ supplementary letter after; case=false; words=true (0.01279ms)
+✔ supplementary letter after; case=true; words=false (0.01328ms)
+✔ supplementary letter after; case=true; words=true (0.01272ms)
+✔ Unicode number before; case=false; words=false (0.01325ms)
+✔ Unicode number before; case=false; words=true (0.01223ms)
+✔ Unicode number before; case=true; words=false (0.01279ms)
+✔ Unicode number before; case=true; words=true (0.01218ms)
+✔ underscore after; case=false; words=false (0.02653ms)
+✔ underscore after; case=false; words=true (0.14579ms)
+✔ underscore after; case=true; words=false (0.02132ms)
+✔ underscore after; case=true; words=true (0.171191ms)
+✔ combining mark outside words; case=false; words=false (0.0213ms)
+✔ combining mark outside words; case=false; words=true (0.01696ms)
+✔ combining mark outside words; case=true; words=false (0.02097ms)
+✔ combining mark outside words; case=true; words=true (0.0194ms)
+✔ other connector outside words; case=false; words=false (0.015581ms)
+✔ other connector outside words; case=false; words=true (0.01574ms)
+✔ other connector outside words; case=true; words=false (0.0153ms)
+✔ other connector outside words; case=true; words=true (0.01713ms)
+✔ whitespace untrimmed; case=false; words=false (0.04064ms)
+✔ whitespace untrimmed; case=false; words=true (0.364971ms)
+✔ whitespace untrimmed; case=true; words=false (0.01911ms)
+✔ whitespace untrimmed; case=true; words=true (0.552942ms)
+✔ literal line break; case=false; words=false (0.03147ms)
+✔ literal line break; case=false; words=true (0.352572ms)
+✔ literal line break; case=true; words=false (0.01812ms)
+✔ literal line break; case=true; words=true (0.355341ms)
+✖ dense decoration caps never change exact counts, provenance or late visible access (4.655485ms)
+✔ maximum accepted literal compiles in all modes; oversized literal never executes (7.831726ms)
+✔ actual retained windows bound matching at 1000 records and 5 MiB without searching the transport timestamp (259.972852ms)
+ℹ tests 85
+ℹ suites 0
+ℹ pass 84
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 351.746
+
+✖ failing tests:
+
+test at tests/find-matcher.test.ts:77:1
+✖ dense decoration caps never change exact counts, provenance or late visible access (4.655485ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+
+  true !== false
+
+      at TestContext.<anonymous> (file:///home/max/work/freelens-json-logs/tests/find-matcher.test.ts:82:10)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1325:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:911:18)
+      at Test.postRun (node:internal/test_runner/test:1465:19)
+      at Test.run (node:internal/test_runner/test:1390:12)
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:911:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: true,
+    expected: false,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }

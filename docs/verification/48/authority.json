@@ -1,0 +1,30 @@
+{
+  "head": "3fb33db5f5ded3523bcf66c1145f0af967ec0bf3",
+  "liveChecks": [
+    {
+      "issue": 36,
+      "bodyMatchesCache": true,
+      "commentsMatchCache": true
+    },
+    {
+      "issue": 37,
+      "bodyMatchesCache": true,
+      "commentsMatchCache": true
+    },
+    {
+      "issue": 38,
+      "bodyMatchesCache": true,
+      "commentsMatchCache": true
+    },
+    {
+      "issue": 40,
+      "bodyMatchesCache": true,
+      "commentsMatchCache": true
+    },
+    {
+      "issue": 48,
+      "bodyMatchesCache": true,
+      "commentsMatchCache": true
+    }
+  ]
+}

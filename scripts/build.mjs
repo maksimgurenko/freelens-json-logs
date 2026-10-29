@@ -14,7 +14,7 @@ const manifest = JSON.parse(await readFile('package.json', 'utf8'));
 // paths let an update load its own code without patching the host or restarting.
 await rm('out', { recursive: true, force: true });
 const result = await build({
-  entryPoints: { main: 'src/main.ts', renderer: 'src/renderer/index.tsx' },
+  entryPoints: { main: 'src/main.ts', renderer: 'src/renderer/index.tsx', 'find-worker': 'src/worker/find.ts' },
   outdir: 'out', entryNames: `[name]-${manifest.version}`, bundle: true, platform: 'node',
   external: ['electron'], format: 'cjs', target: 'node24', metafile: true, loader: { '.css': 'text' },
   define: { READABLE_LOGS_VERSION: JSON.stringify(manifest.version) },

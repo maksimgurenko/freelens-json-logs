@@ -1,0 +1,12 @@
+{
+  "head": "f200114ffcd97f73bf4e22ded807eab4f47fc658",
+  "trackedDiff": "",
+  "sha256": {
+    "src/core/find-state.ts": "fe41d3933519432d3c1884dad77ee2d8e2906bcbdb39807bfc07d2e84fdfef87",
+    "src/main/find-service.ts": "84192384e70a33079312f54faceff82116b7cfe2ca82cf7917013b118cd4f4c6",
+    "src/renderer/viewer.tsx": "eec327e3169009cdedf243ec54d275dce268c20624e3065dacbd32321af2e982",
+    "out/main-0.1.34.js": "de73e78a1ab23b4f1c6ddeccb3601f6eeeab23a24f0e386bfaa1baae3b051b13",
+    "out/renderer-0.1.34.js": "d504d7b2a1d699e697c06421f9514530d3057a7234e84ced647eca9045328f9d",
+    "out/find-worker-0.1.34.js": "4d00cf5686789bd37b72b4cee6ca0c5fa461f98c86ee8cdfb024f01e6878c5b3"
+  }
+}

@@ -1,0 +1,10 @@
+{"scenario":"mount","cycle":0,"dom":{"documents":4,"nodes":2053,"jsEventListeners":848}}
+{"scenario":"mount","cycle":1,"dom":{"documents":4,"nodes":3491,"jsEventListeners":991}}
+{"scenario":"mount","cycle":2,"dom":{"documents":4,"nodes":4929,"jsEventListeners":1134}}
+{"scenario":"find","cycle":0,"dom":{"documents":4,"nodes":6369,"jsEventListeners":1277}}
+{"scenario":"find","cycle":1,"dom":{"documents":4,"nodes":7809,"jsEventListeners":1420}}
+{"scenario":"find","cycle":2,"dom":{"documents":4,"nodes":9249,"jsEventListeners":1563}}
+{"scenario":"inactive","cycle":0,"dom":{"documents":4,"nodes":10792,"jsEventListeners":1715}}
+{"scenario":"inactive","cycle":1,"dom":{"documents":4,"nodes":12335,"jsEventListeners":1867}}
+{"scenario":"inactive","cycle":2,"dom":{"documents":4,"nodes":13878,"jsEventListeners":2019}}
+{"pass":true}
