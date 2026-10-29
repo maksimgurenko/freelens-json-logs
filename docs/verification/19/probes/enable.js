@@ -1,1 +1,0 @@
-(()=>{const item=[...document.querySelectorAll('.MenuItem')].find(el=>el.querySelector('.title')?.textContent==='Enabled');if(!item)throw Error('Enable menu unavailable');item.click();return {clicks:1};})()

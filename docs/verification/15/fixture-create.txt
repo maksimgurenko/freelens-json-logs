@@ -1,3 +1,0 @@
-namespace/readable-logs-ticket-15 created
-pod/navigation created
-pod/navigation condition met

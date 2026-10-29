@@ -1,2 +1,0 @@
-namespace "readable-logs-ticket-17" deleted
-namespace "readable-logs-ticket-17-other" deleted

@@ -1,5 +1,0 @@
-{
-  "heapNativeEventListenerCount": 724,
-  "heapNativeV8EventListenerCount": 673,
-  "note": "Exploratory attached census pierced frames and double-counted cluster descendants. Discarded census; final helper disables piercing. Raw heap/native element dump removed."
-}

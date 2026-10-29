@@ -26,7 +26,7 @@ pod = {'apiVersion': 'v1', 'kind': 'Pod', 'metadata': {
 subprocess.run(base + ['create', '-f', '-'], input=json.dumps(pod), text=True, check=True)
 subprocess.run(base + ['-n', owner['namespace'], 'wait', 'pod/find-surfaces', '--for=condition=Ready', '--timeout=45s'], check=True)
 record = json.loads(subprocess.check_output(base + ['-n', owner['namespace'], 'get', 'pod', 'find-surfaces', '-o', 'json']))
-path = root / 'docs/verification/48/host' / run / 'surface-fixture.json'
+path = root / '.scratch/verification/48/host' / run / 'surface-fixture.json'
 path.write_text(json.dumps({'namespace': owner['namespace'], 'namespaceUid': owner['uid'],
     'pod': 'find-surfaces', 'podUid': record['metadata']['uid'], 'image': image, 'records': len(rows)}, indent=2) + '\n')
 print(path)

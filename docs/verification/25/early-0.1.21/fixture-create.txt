@@ -1,3 +1,0 @@
-namespace/readable-logs-ticket-25 created
-pod/compact-workspace-with-a-long-identified-pod-name-for-layout created
-pod/compact-workspace-with-a-long-identified-pod-name-for-layout condition met

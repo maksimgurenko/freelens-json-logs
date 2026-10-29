@@ -1,1 +1,0 @@
-(async()=>{const p=global.__rl13;for(let i=0;i<100&&(p.state().rows===0||p.state().rows===undefined);i++)await new Promise(r=>setTimeout(r,50));const state=p.state();if(state.version!=='0.1.7'||state.rows===0||state.buttons[0].text!=='Pause'||state.error)throw Error('Reopened view did not start fresh/automatic');return {state,requests:p.records.slice(p.departureStart)};})()

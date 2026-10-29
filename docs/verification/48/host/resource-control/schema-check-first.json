@@ -1,7 +1,0 @@
-{
-  "pass": false,
-  "scope": "Diagnostic identity assertion only; resource workload already passed",
-  "error": "AssertionError [ERR_ASSERTION]: undefined !== 3",
-  "observation": "Fresh settings file has only __internal__ SDK migration metadata; no application schema persisted yet",
-  "correction": "Use existing configurationData/configurationProblem for effective schema and report storedSchema separately; no settings write"
-}

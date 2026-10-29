@@ -1,5 +1,0 @@
-{
-  "package": "0.1.26",
-  "restored": true,
-  "failure": "Pointer driver targeted Move up above the scrolled viewport (y=-94.34375); settings were restored in finally."
-}

@@ -1,1 +1,0 @@
-{"pass":false,"checks":["Completed exact matching remains one record; maintenance is honestly pending","Terminal Q is visible in the real source"],"error":"AssertionError [ERR_ASSERTION]: Visible terminal Q has no settled Custom Highlight\n    at file:///home/max/work/freelens-json-logs/scripts/find-production-host/long-source.mjs:53:3"}

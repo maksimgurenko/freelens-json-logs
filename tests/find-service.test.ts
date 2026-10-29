@@ -81,6 +81,32 @@ test('same-frame replacement and close/reopen wait for actual old exit before ad
   }
 });
 
+test('shutdown rejects all queued replacements and waits for the retiring worker to exit', async () => {
+  const { service, sender, root, workers, stops } = setup();
+  try {
+    const token = await service.open(root, 'viewer');
+    const pending = service.submit(root, token, input);
+    const replacements = Array.from({ length: 3 }, () =>
+      assert.rejects(service.open(root, 'viewer'), /Disposed Find viewer/));
+    let closed = false;
+    const closing = service.dispose().then(() => { closed = true; });
+    await Promise.resolve(); await Promise.resolve();
+    assert(workers[0].stopping);
+    assert.equal(closed, false, 'Shutdown completed before the retiring worker exited');
+    assert.equal(await pending, undefined);
+    workers[0].emit('exit', 1);
+    await closing;
+    assert.equal(sender.eventNames().length, 0, 'Shutdown completed before queued registrations released their listeners');
+    await Promise.all(replacements);
+    assert.equal(workers.length, 1, 'A queued replacement started a worker during shutdown');
+    assert.equal(stops(), 1);
+  } finally {
+    const closing = service.dispose();
+    for (const worker of workers) worker.emit('exit', 1);
+    await closing;
+  }
+});
+
 test('inactivity cancels startup and idle owners without forgetting their temporary binding', async () => {
   const { service, root, workers } = setup();
   const token = await service.open(root, 'viewer');

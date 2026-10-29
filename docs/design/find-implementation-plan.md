@@ -1,16 +1,19 @@
 # Literal Find: implementation and acceptance plan
 
+For the current regression contract, use the [extension specification](../specification.md).
+The planning handoff below retains its historical implementation context.
+
 ## Current completion and accepted limits — 2026-10-28
 
 Literal Find implementation and Linux acceptance are complete; the
-[acceptance matrix](../verification/48/matrix.md) and
-[reviewed native completion](../verification/48/native-review-corrections.md)
+[acceptance matrix](https://github.com/maksimgurenko/freelens-json-logs/blob/98c215e62c5f821cb7a2b2bac194b21c9f5ef3f1/docs/verification/48/matrix.md) and
+[reviewed native completion](https://github.com/maksimgurenko/freelens-json-logs/blob/98c215e62c5f821cb7a2b2bac194b21c9f5ef3f1/docs/verification/48/native-review-corrections.md)
 record the evidence. Windows/macOS tests are planned soon but deferred to a
 future task; both platforms remain explicitly unverified and do not block closing
 this implementation increment. The planning handoff below retains its original
 scope; this completion note supersedes its then-pending acceptance status.
 
-[PR publication corrections](../verification/48/pr-49-ci.md) record the unchanged
+[PR publication corrections](https://github.com/maksimgurenko/freelens-json-logs/blob/98c215e62c5f821cb7a2b2bac194b21c9f5ef3f1/docs/verification/48/pr-49-ci.md) record the unchanged
 Pod-metadata regression/fix, final package identity and CI browser selection.
 
 ### Resource investigation TLDR
@@ -24,9 +27,9 @@ DOM-node, listener or document growth in every measured sample for both Readable
 logs and the default viewer.
 The resource follow-up is closed as an accepted host limitation, with no
 production host fix or complete attribution of the historical Find spikes;
-original failures and thresholds remain preserved in the
-[investigation evidence](../verification/48/resource-reopened-20261028.md) and
-[comparison report](../verification/48/resource-comparison-20261028.md).
+original failures and thresholds remain available in Git history in the
+[investigation evidence](https://github.com/maksimgurenko/freelens-json-logs/blob/98c215e62c5f821cb7a2b2bac194b21c9f5ef3f1/docs/verification/48/resource-reopened-20261028.md) and
+[comparison report](https://github.com/maksimgurenko/freelens-json-logs/blob/98c215e62c5f821cb7a2b2bac194b21c9f5ef3f1/docs/verification/48/resource-comparison-20261028.md).
 
 ## Original accepted planning handoff — 2026-10-26
 
@@ -243,7 +246,6 @@ Use the pinned `.nvmrc` Node 24.18.0 / npm 11.16.0 toolchain. Run:
 npm ci --ignore-scripts --no-audit --no-fund
 npm run typecheck
 npm test
-python3 -B -m unittest discover -s tests -p ui_desktop_test.py -v
 npm run package
 npm run check:package
 ```

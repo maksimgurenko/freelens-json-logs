@@ -1,4 +1,0 @@
-$ /home/max/work/freelens-json-logs/.scratch/readable-logs/toolchain/node_modules/node/bin/node /home/max/work/freelens-json-logs/.scratch/readable-logs/toolchain/node_modules/npm/bin/npm-cli.js run typecheck
-
-> freelens-readable-logs@0.1.18 typecheck
-> tsc --noEmit

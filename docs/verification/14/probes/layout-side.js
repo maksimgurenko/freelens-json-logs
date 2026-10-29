@@ -1,1 +1,0 @@
-(async()=>{await global.__rl14.change('Inspection','side');return {work:global.__rl14.root().querySelector('.rl-work').className,selected:global.__rl14.root().querySelector('.rl-selected')?.dataset.recordIndex};})()

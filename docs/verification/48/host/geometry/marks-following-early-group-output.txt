@@ -1,1 +1,0 @@
-{"error":"Error: Error: Grouped mark skipped member 1\n    at <anonymous>:7:175\n    at Object.evaluate (file:///home/max/work/freelens-json-logs/scripts/find-production-host/cdp.mjs:46:40)\n    at async file:///home/max/work/freelens-json-logs/scripts/find-production-host/marks-following.mjs:38:20","checks":0}

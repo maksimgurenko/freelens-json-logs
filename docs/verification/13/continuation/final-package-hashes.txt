@@ -1,7 +1,0 @@
-57aa302d8d2b920b1b410052fc9bfb319a044c558066179b0fb8c5f1043796bd  dist/freelens-readable-logs-0.1.7.tgz
-ae590a88143fd0b9034902b660c8d59b46c8554ba25ffb1c2609165671ce6361  out/main-0.1.7.js
-77093dca02bfa7bf4c16677ded887dd62c4b304689ec3ddb80ac41da6572e324  out/renderer-0.1.7.js
-ae590a88143fd0b9034902b660c8d59b46c8554ba25ffb1c2609165671ce6361  /home/max/.freelens/extensions/freelens-readable-logs/out/main-0.1.7.js
-77093dca02bfa7bf4c16677ded887dd62c4b304689ec3ddb80ac41da6572e324  /home/max/.freelens/extensions/freelens-readable-logs/out/renderer-0.1.7.js
-62f94f8c84a1c4d3888df0899279b58c930a28929c5cd15051b921c367ca5cbe  docs/local-development.md
-62f94f8c84a1c4d3888df0899279b58c930a28929c5cd15051b921c367ca5cbe  /home/max/.freelens/extensions/freelens-readable-logs/docs/local-development.md

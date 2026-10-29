@@ -5,7 +5,7 @@ root = Path(__file__).resolve().parents[2]
 assert os.environ.get('FIND_HOST_TICKET') == '48'
 run = os.environ['FIND_HOST_RUN']
 assert run and all(c in 'abcdefghijklmnopqrstuvwxyz0123456789-' for c in run)
-evidence = root / 'docs/verification/48/host' / run
+evidence = root / '.scratch/verification/48/host' / run
 evidence.mkdir(parents=True, exist_ok=True)
 state = root / '.scratch/find/48-host/comparison-fixture.json'
 base = ['kubectl', '--context', 'kind-freelens-json-logs-spike']

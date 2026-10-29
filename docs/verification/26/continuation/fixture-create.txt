@@ -1,3 +1,0 @@
-namespace/readable-logs-ticket-26 created
-pod/selection-copy created
-pod/selection-copy condition met

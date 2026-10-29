@@ -1,1 +1,0 @@
-(async()=>{global.__rl19.root().querySelector('.rl-row').click();await global.__rl19.tick();return {selected:!!global.__rl19.root().querySelector('.rl-selected'),bottom:!!global.__rl19.root().querySelector('.rl-layout-bottom .rl-inspector')};})()

@@ -1,2 +1,0 @@
-$ /home/max/work/freelens-json-logs/.scratch/readable-logs/toolchain/node_modules/node/bin/node --version
-v24.18.0

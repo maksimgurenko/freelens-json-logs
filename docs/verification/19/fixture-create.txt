@@ -1,2 +1,0 @@
-namespace/readable-logs-ticket-19 created
-pod/release created

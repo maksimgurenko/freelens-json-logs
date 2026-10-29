@@ -1,1 +1,0 @@
-(()=>{const e=document.querySelector('#rl-find');return {inputMatchesExpected:e.value==='fields',bytes:Buffer.byteLength(e.value),sha256:require('crypto').createHash('sha256').update(e.value).digest('hex'),active:document.activeElement.id,focus:document.hasFocus()};})()

@@ -1,1 +1,0 @@
-(()=>{const e=document.elementFromPoint(2227.18,62.12),n=e?.closest('.notification');return {point:{x:2227.18,y:62.12},hitTag:e?.tagName,hitClass:e?.className,parentNotification:!!n,ownedPackageNotification:!!n&&/freelens-readable-logs@0\.1\.(23|24)/.test(n.textContent)};})()

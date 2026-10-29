@@ -1,7 +1,0 @@
-{"at":1793091574994,"event":"worker-start","threadId":1}
-{"at":1793091642762,"event":"worker-exit","code":1,"live":0}
-{"at":1793091733528,"event":"worker-start","threadId":2}
-{"at":1793091802469,"event":"worker-exit","code":1,"live":0}
-{"at":1793091905929,"event":"worker-start","threadId":3}
-{"at":1793091905960,"event":"worker-exit","code":1,"live":0}
-{"at":1793091905973,"event":"process-exit","starts":3,"exits":3,"live":0,"peak":1,"resources":["FSReqCallback","TCPServerWrap","PipeWrap","PipeWrap","PipeWrap","ProcessWrap","Timeout","Timeout","Immediate","Immediate","Immediate","Immediate","Immediate"],"beforeQuit":0,"handlers":[],"windows":[]}

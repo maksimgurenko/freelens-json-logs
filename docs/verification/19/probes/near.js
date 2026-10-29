@@ -1,1 +1,0 @@
-(async()=>{const h=global.__rl19;h.expandedTail=false;await h.input('Container','utf8-near');for(let i=0;(!h.state().snapshot||h.state().refreshing)&&i<2000;i++)await h.tick(2);if(h.button('Pause'))await h.click('Pause');return {container:h.state().container,rows:h.state().snapshot.records.length,bytes:h.state().snapshot.retainedBytes};})()

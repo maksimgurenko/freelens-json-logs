@@ -1,3 +1,0 @@
-namespace/readable-logs-ticket-13 created
-pod/lifecycle created
-pod/lifecycle condition met

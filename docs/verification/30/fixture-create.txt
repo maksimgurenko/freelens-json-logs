@@ -1,3 +1,0 @@
-namespace/readable-logs-ticket-30 created
-pod/release created
-pod/selection-copy created

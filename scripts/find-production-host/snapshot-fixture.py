@@ -22,7 +22,7 @@ subprocess.run(base + ['-n', owner['namespace'], 'wait', 'pod/find-sequence', '-
 record = json.loads(subprocess.check_output(base + ['-n', owner['namespace'], 'get', 'pod', 'find-sequence', '-o', 'json']))
 run = os.environ['FIND_HOST_RUN']
 assert run and all(c in 'abcdefghijklmnopqrstuvwxyz0123456789-' for c in run)
-path = root / 'docs/verification/48/host' / run / 'sequence-fixture.json'
+path = root / '.scratch/verification/48/host' / run / 'sequence-fixture.json'
 path.write_text(json.dumps({'namespace': owner['namespace'], 'namespaceUid': owner['uid'],
     'pod': 'find-sequence', 'podUid': record['metadata']['uid'], 'image': pod['spec']['containers'][0]['image']}, indent=2) + '\n')
 print(path)

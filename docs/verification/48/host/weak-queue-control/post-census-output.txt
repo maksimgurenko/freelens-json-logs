@@ -1,1 +1,0 @@
-{"before":{"documents":4,"nodes":1157,"jsEventListeners":768},"after":{"documents":4,"nodes":1167,"jsEventListeners":769},"attached":{"label":"post-idle","total":665,"dom":{"documents":4,"nodes":1167,"jsEventListeners":769}}}

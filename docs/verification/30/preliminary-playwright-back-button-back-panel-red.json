@@ -1,4 +1,0 @@
-{
-  "provenance": "Playwright trusted Chromium Back input in installed host; supplemental to physical gate",
-  "failure": "Error: mouse.down: button: expected one of (left|right|middle)"
-}

@@ -1,2 +1,0 @@
-{"scenario":"host-idle","growth":{"nodes":14,"listeners":0,"heap":37804}}
-{"completed":true}

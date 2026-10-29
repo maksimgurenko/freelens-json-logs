@@ -1,2 +1,0 @@
-{"name":"Private protocol pointer click, wheel and source drag/copy","pass":false,"error":"Error: Pointer clear: {\"query\":\"upstream\",\"open\":true,\"focus\":true,\"active\":73,\"selection\":\"upstream\",\"inspected\":-1,\"scroll\":1745,\"events\":[]}"}
-{"name":"Genuine input-method-v2 preedit/commit if supported by this host","pass":false,"error":"AssertionError [ERR_ASSERTION]: The expression evaluated to a falsy value:"}

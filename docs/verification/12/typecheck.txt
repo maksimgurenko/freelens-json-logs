@@ -1,3 +1,0 @@
-
-> freelens-readable-logs@0.1.2 typecheck
-> tsc --noEmit

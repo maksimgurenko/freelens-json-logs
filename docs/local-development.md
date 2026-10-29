@@ -38,9 +38,7 @@ launched. Build metadata under `dist/build-meta.json` shows only project inputs
 and tiny host-global bindings. `check:package` inspects the actual tarball,
 asserts its allowlisted files and host-only dependencies, and loads its packed
 CommonJS default exports with stub host globals. This is a packaging test;
-real host verification is recorded separately under `docs/verification/11/` and
-`docs/verification/12/`. Ticket 13 records automated checks, earlier installation failures and the
-production lifecycle matrix separately under `docs/verification/13/`.
+installed-host coverage has separate [validation limits](specification.md#validation-limits).
 Running the same build twice yields the same tarball bytes with this toolchain.
 
 Run `npm run test:smoke` with Chromium/Chrome on PATH to check retained RAM and disk
@@ -305,8 +303,7 @@ and clears on Auto, container/target change, close or full restart. Selecting a
 profile does not pause updates. Global default is saved in **Profiles**. Deleting
 a manually selected profile returns that view to Auto; deleting the global
 default restores built-in Default. Rename retains ID, references and order.
-Uninstall retains profiles and Inspection. See `docs/verification/16/` for actual
-packaged editor, request-observation and full normal-quit/reopen evidence.
+Uninstall retains profiles and Inspection.
 Import/export, custom templates and executable user code are excluded.
 
 ## Automatic profile selection
@@ -334,8 +331,7 @@ observations are not instantaneous notifications. Target/container changes clear
 manual choice; container restarts preserve it. Schema 3 persists each profile's
 `matching.enabled` and `matching.conditions` (`namespace?`, `container?`, `labels`
 key/value list); profile array order is the saved matching order. Main remains
-the durable writer. See `docs/verification/17/` for packaged-host and normal
-full-quit/reopen evidence.
+the durable writer.
 
 ## Recovering unusable settings
 
@@ -390,8 +386,7 @@ The handler owns only an active, focused extension region and the pointer gestur
 begun there. In logs, and over host/dock areas, Back keeps host history ownership.
 Native keyboard/menu/top-bar Back and Forward remain host-owned. Local panels do
 not create history entries; host Forward never restores an unfinished local draft.
-Physical delivery/cancellation evidence is platform-specific under
-`docs/verification/28/`; Windows and macOS remain unverified. The shortcut reference and bindings below use the same local ownership rules.
+Windows and macOS remain unverified. The shortcut reference and bindings below use the same local ownership rules.
 
 
 ## Local keyboard shortcuts
@@ -408,19 +403,13 @@ follows the retained window without resuming paused requests.
 Display options → Shortcuts opens a temporary reference; Close or Escape dismisses
 it and restores Display options focus. Control tooltips show relevant bindings.
 Host Back/Forward, reload and command palette retain their host meanings. Platform
-verification and native input boundaries are recorded under `docs/verification/29/`.
+verification and native input boundaries are described in the [specification](specification.md#validation-limits).
 
 
-## Compact-view release verification
+## Validation scope
 
-The combined layout, selection, local return, mouse Back and shortcut workflow is
-verified against one exact installed package under `docs/verification/30/`. Read
-that report for the current completion state and package hash; earlier ticket
-reports describe their own package versions. Physical mouse evidence from an
-earlier package does not establish the final package gate.
-
-Linux checks use Freelens 1.10.3 on Hyprland/Wayland. Windows and macOS remain
-unverified. Linux OS IME/AltGraph coverage is also unverified; composition and
-modifier guard tests alone do not establish native input behavior. The local
-workflow adds no global shortcuts or settings and retains the existing bounded
+Linux checks use Freelens 1.10.3 on Hyprland/Wayland. The agreed Linux Find
+acceptance is complete, with the [route and resource limits](specification.md#validation-limits)
+kept separate from the behavioral contract. Windows and macOS remain unverified.
+The local workflow adds no global shortcuts or settings and retains the bounded
 single-Pod/container, schema 3 and explicit recovery contracts.

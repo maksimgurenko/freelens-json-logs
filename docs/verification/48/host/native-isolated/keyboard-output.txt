@@ -1,5 +1,0 @@
-{"name":"Native typing/progressive query and Ctrl+G/Shift+G/Enter/Shift+Enter","pass":true}
-{"name":"Native full replacement, partial edit and no-match correction","pass":true}
-{"name":"Native paste, Undo/Redo, cut and private clipboard","pass":true}
-{"name":"Exact modifiers and compositor-delivered AltGraph","pass":true}
-{"name":"Native history menu, one-layer Escape, opener return and Ctrl+F","pass":true}

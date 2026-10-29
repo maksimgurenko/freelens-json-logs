@@ -1,1 +1,0 @@
-{"error":"AssertionError [ERR_ASSERTION]: Dense decoration cap reports incomplete without losing exact members\n    at check (file:///home/max/work/freelens-json-logs/scripts/find-production-host/marks-following.mjs:16:32)\n    at file:///home/max/work/freelens-json-logs/scripts/find-production-host/marks-following.mjs:94:3","checks":5}

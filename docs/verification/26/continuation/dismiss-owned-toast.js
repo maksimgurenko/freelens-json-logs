@@ -1,1 +1,0 @@
-(()=>{const notifications=[...document.querySelectorAll('.notification')].filter(el=>/freelens-readable-logs@0\.1\.(23|24)/.test(el.textContent)&&/successfully (installed|uninstalled)/.test(el.textContent));for(const n of notifications)n.querySelector('.close-icon .Icon')?.click();return {dismissed:notifications.length,scope:'Only this ticket package maintenance notices'};})()

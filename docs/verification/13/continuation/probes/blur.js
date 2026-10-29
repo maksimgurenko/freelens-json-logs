@@ -1,1 +1,0 @@
-(async()=>{const p=global.__rl13; const start=p.records.length;const before=p.state();await new Promise(r=>setTimeout(r,6500));const after=p.state();const requests=p.records.slice(start);if(after.hidden||after.focused||requests.filter(r=>r.kind==='logs').length<2)throw Error('Displayed unfocused view did not poll');return {before,after,requests};})()

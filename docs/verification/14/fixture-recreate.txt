@@ -1,3 +1,0 @@
-namespace/readable-logs-ticket-14 created
-pod/inspection created
-pod/inspection condition met

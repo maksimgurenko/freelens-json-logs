@@ -1,4 +1,0 @@
-{"name":"Native hide/show preserves query, actually exits worker, reactivates","pass":true}
-{"name":"Native minimize/restore support and worker cleanup","pass":true}
-{"name":"Native auxiliary window owns OS focus and changes tiled geometry; return preserves state","pass":true}
-{"name":"Native close owning host window and actual execution cleanup","pass":true}

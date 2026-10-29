@@ -1,3 +1,0 @@
-{"name":"dense","cycles":6}
-{"name":"long","cycles":6}
-{"pass":true}

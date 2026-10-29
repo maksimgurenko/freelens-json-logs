@@ -1,1 +1,0 @@
-(async()=>{for(let i=0;i<100;i++){if(document.body.innerText.includes('freelens-readable-logs')&&document.body.innerText.includes('0.1.20')&&document.body.innerText.includes('Disabled'))return {body:document.body.innerText,frames:document.querySelectorAll('iframe').length};await new Promise(r=>setTimeout(r,100));}throw Error('No disabled package');})()

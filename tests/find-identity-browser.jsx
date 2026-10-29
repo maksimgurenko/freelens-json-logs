@@ -60,8 +60,9 @@ const ipc = {
   broadcast() {},
 };
 class Ipc { static createInstance() { return ipc; } }
+const configurationStores = [];
 class ExtensionStore {
-  static getInstanceOrCreate() { return new this(); }
+  static getInstanceOrCreate() { const store = new this(); configurationStores.push(store); return store; }
   cwd() { return '/isolated-identity-store'; }
   loadExtension() {}
 }
@@ -150,23 +151,41 @@ async function verifyInspectionFindState() {
 
   button('Clear'); closeInspector();
   await refresh(Array.from({ length: 100 }, (_, index) => [2, 73, 82].includes(index) ? `row ${index} upstream` : `row ${index}`).join('\n'));
-  for (const layout of ['inline', 'bottom', 'side']) {
-    if (input().value) button('Clear'); closeInspector(); rows()[64].querySelector('.rl-row').click();
-    const before = requestCount, source = rows().map(row => row.querySelector('.rl-message').textContent);
+  const store = configurationStores[0], originalConfiguration = JSON.parse(JSON.stringify(store.toJSON()));
+  const synchronizedProfile = 'synchronized-find-profile';
+  for (const change of ['inline', 'bottom', 'side', 'settings synchronization']) {
+    if (input().value) button('Clear'); closeInspector();
+    if (change === 'settings synchronization') {
+      store.saveProfile({ id: synchronizedProfile, name: 'Synchronized Find profile',
+        format: { messagePaths: ['/message'], timestampPaths: [], levelPaths: [], inlinePaths: [], hiddenPaths: [], numericTimestamp: 'unset', severityMappings: [] },
+        matching: { enabled: false, conditions: { labels: [] } } });
+      store.setGlobalDefault(synchronizedProfile); await turn();
+    }
+    rows()[64].querySelector('.rl-row').click();
+    const before = requestCount, beforeReads = reads, source = rows().map(row => row.querySelector('.rl-message').textContent);
     const gate = holdNext('upstream'); edit('upstream');
     await until(() => heldReply === undefined, 'Pending layout query did not dispatch');
     const control = root.querySelector('select[aria-label="Inspection"]');
     root.querySelector('.rl-display-options').open = true;
-    control.value = layout; control.dispatchEvent(new Event('change', { bubbles: true })); await turn();
+    if (change === 'settings synchronization') {
+      // The SDK recreates nested objects when settings arrive from main. Equal
+      // extracted text must keep the explicit query's selection permission.
+      const format = store.toJSON().profiles.find(profile => profile.id === synchronizedProfile).format;
+      store.fromStore(JSON.parse(JSON.stringify(store.toJSON())));
+      check(store.toJSON().profiles.find(profile => profile.id === synchronizedProfile).format !== format, 'Settings synchronization did not recreate the saved formatting rules');
+    } else { control.value = change; control.dispatchEvent(new Event('change', { bubbles: true })); }
+    await turn();
     gate.release(); await until(settled, 'Pending layout query did not settle'); await turn();
-    check(requestCount === before + 1, `${layout}: Inspection layout restarted exact matching`);
-    check(active() === 73, `${layout}: Inspection layout cancelled pending query selection`);
+    check(requestCount === before + 1, `${change}: Equal settings restarted exact matching`);
+    check(active() === 73, `${change}: Equal settings cancelled pending query selection`);
+    check(reads === beforeReads, `${change}: Presentation settings fetched logs`);
     check(rows().every((row, index) => row.querySelector('.rl-message').textContent === source[index]), 'Layout fixture changed source text');
-    check(root.querySelector('select[aria-label="Inspection"]').value === layout, 'Inspection layout did not update');
+    if (change !== 'settings synchronization') check(control.value === change, 'Inspection layout did not update');
     root.querySelector('.rl-display-options').open = false;
   }
-  results.push('Inline/Bottom/Side layout changes preserve a pending query, its exact request and row73 selection');
+  results.push('Inline/Bottom/Side layout changes and equal synchronized settings preserve a pending query, its exact request and row73 selection');
   button('Clear'); closeInspector(); root.querySelector('[aria-label="Close Find"]').click();
+  store.fromStore(originalConfiguration); await turn();
   await refresh('start\nx\nend');
 }
 // Production renderer/CSS seam: the canvas stays black even in a light host.

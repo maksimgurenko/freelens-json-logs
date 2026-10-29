@@ -1,1 +1,0 @@
-(()=>{const e=document.querySelector('.Dock .Tab.active'),b=e.getBoundingClientRect();return {tabRect:{x:b.x,y:b.y,width:b.width,height:b.height},preparedPointFormula:{x:b.x+b.width/2,y:b.y+Math.min(b.height,20)/2},viewport:{width:innerWidth,height:innerHeight}};})()

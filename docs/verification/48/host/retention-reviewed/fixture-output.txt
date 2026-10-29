@@ -1,4 +1,0 @@
-namespace/find-verification-48-2238819 created
-pod/find-fixtures created
-pod/find-fixtures condition met
-find-verification-48-2238819

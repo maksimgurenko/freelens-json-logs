@@ -1,1 +1,0 @@
-{"pass":false,"checks":[],"error":"AssertionError [ERR_ASSERTION]: The expression evaluated to a falsy value:\n\n  assert(result.observations.every(s => s.count === '1 of 1 matching records'))\n\n    at file:///home/max/work/freelens-json-logs/scripts/find-production-host/long-source.mjs:47:3"}

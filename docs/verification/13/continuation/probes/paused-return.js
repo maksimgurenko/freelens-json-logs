@@ -1,1 +1,0 @@
-(async()=>{const p=global.__rl13,start=p.records.length,before=p.state();await new Promise(r=>setTimeout(r,6500));const after=p.state(),requests=p.records.slice(start);if(after.buttons[0].text!=='Resume'||after.rows!==before.rows||requests.some(r=>r.kind==='logs'))throw Error('Paused return fetched/changed logs');return {before,after,requests,events:p.events};})()

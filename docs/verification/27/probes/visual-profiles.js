@@ -1,1 +1,0 @@
-(async()=>{const p=global.__cv27;for(let i=0;i<100&&!p.root()?.querySelector('.rl-row');i++)await p.tick(40);if(p.button('Pause'))await p.click('Pause');await p.close();await p.click('Edit profiles');await p.click('Duplicate');await p.input('Profile name','Unsaved example');return {draft:true,savedProfiles:p.config().profiles.length};})()

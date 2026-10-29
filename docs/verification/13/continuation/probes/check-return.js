@@ -1,1 +1,0 @@
-(async()=>{const p=global.__rl13;const start=p.records.length;for(let i=0;i<100;i++){const s=p.state();if(s.rows>0&&!s.buttons[1].disabled)break;await new Promise(r=>setTimeout(r,50));}await new Promise(r=>setTimeout(r,3250));return {state:p.state(),requests:p.records.slice(start),events:p.events};})()

@@ -1,6 +1,0 @@
-{
-  "scripts/find-production-host/mounted-soak.mjs": "9495639108fedfee8b6f302d6277ffbc0b4542b9b342d985a2ecdd6327c9f8b8",
-  "scripts/find-production-host/viewer-roots.mjs": "4e0bfc6790f533dfac76943218832dbf8d79bd7f13d7168e5308b99c5fd1c2a0",
-  "scripts/find-production-host/viewer-roots-check.mjs": "11b3d2f76ef71efedf9b6b3da82e51f9b60155515283a277c7a7389c49192e07",
-  "scripts/find-production-host/retained-idle.mjs": "e4afbf34775631cb3f25c1f67e7ffd380f911cf073a5d6020dd2a2277d29de15"
-}

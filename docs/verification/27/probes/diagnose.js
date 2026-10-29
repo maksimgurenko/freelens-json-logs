@@ -1,1 +1,0 @@
-(()=>({before:global.__cv27.before,summary:global.__cv27.summary(),findButton:[...document.querySelectorAll('button')].find(b=>b.textContent==='Find')?.outerHTML,rootHit:(()=>{const n=global.__cv27.button('Find'),r=n.getBoundingClientRect();return document.elementFromPoint(r.x+r.width/2,r.y+r.height/2)?.outerHTML})()}))()

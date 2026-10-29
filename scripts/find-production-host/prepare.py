@@ -17,7 +17,7 @@ if pid.exists() and Path('/proc/' + pid.read_text()).exists():
     raise SystemExit('Stop the previous owned host before preparing another profile')
 prefix = scratch / 'prefix'
 prefix.mkdir(exist_ok=True)
-records = json.loads((root / 'docs/verification/42/host/display-packages.json').read_text())
+records = json.loads((root / 'scripts/find-production-host/display-packages.json').read_text())
 for record in records:
     package = scratch / record['url'].rsplit('/', 1)[1]
     if not package.exists():

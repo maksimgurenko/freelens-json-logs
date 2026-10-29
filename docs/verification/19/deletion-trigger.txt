@@ -1,1 +1,0 @@
-pod "lifecycle" deleted from readable-logs-ticket-19 namespace

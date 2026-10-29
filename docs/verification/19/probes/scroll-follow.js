@@ -1,1 +1,0 @@
-(async()=>{const h=global.__rl19;await h.refresh();const el=h.root().querySelector('.rl-records'),distance=el.scrollHeight-el.clientHeight-el.scrollTop;h.assert(distance<=2&&h.state().snapshot.records.at(-1).parsed.message==='row 2300','Bottom following failed');return {distance,last:h.state().snapshot.records.at(-1).applicationText,paused:h.state().paused};})()

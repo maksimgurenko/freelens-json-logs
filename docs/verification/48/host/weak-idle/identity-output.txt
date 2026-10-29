@@ -1,1 +1,0 @@
-{"pass":true,"assets":3,"package":"freelens-readable-logs@0.1.34"}

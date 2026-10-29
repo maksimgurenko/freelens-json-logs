@@ -1,1 +1,0 @@
-(async()=>{const h=global.__cv26;await h.inspect(14);h.expiring=h.state().snapshot.records[14].transportLine;return {selected:h.selected(),transportSha256:require('crypto').createHash('sha256').update(h.expiring).digest('hex'),rows:h.state().snapshot.records.length};})()

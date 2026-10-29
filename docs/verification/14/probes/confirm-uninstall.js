@@ -1,1 +1,0 @@
-(() => { const yes=[...document.querySelectorAll('button')].find(e=>e.textContent==='Yes'); if(!yes || !document.body.innerText.includes('uninstall extension freelens-readable-logs@0.1.8'))throw Error('Expected uninstall confirmation missing'); yes.click(); return {confirmed:true}; })()

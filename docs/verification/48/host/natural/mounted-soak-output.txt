@@ -1,2 +1,0 @@
-{"name":"dense","cycles":6}
-{"error":"Error: Mounted soak did not settle\n    at until (file:///home/max/work/freelens-json-logs/scripts/find-production-host/mounted-soak.mjs:12:106)\n    at async file:///home/max/work/freelens-json-logs/scripts/find-production-host/mounted-soak.mjs:32:7"}

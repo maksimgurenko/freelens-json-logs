@@ -1,1 +1,0 @@
-(async()=>{const p=global.__cv27;await p.close();await p.click('Edit profiles');p.oldRoot=p.root();p.eventsAtTeardown=0;p.oldRoot.addEventListener('keydown',p.teardownObserver=()=>p.eventsAtTeardown++);return {url:location.href,profiles:!!document.querySelector('.rl-profile-editor')};})()

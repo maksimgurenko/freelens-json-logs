@@ -1,3 +1,0 @@
-namespace/readable-logs-ticket-16 created
-pod/profiles created
-pod/profiles condition met

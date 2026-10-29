@@ -1,2 +1,0 @@
-{"name":"Keyboard row activation; exact Application text and Transport line on private compositor clipboard","pass":true}
-{"name":"Real profile sample editor retains native Ctrl+F/G ownership and Escape returns to logs","pass":true}

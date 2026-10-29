@@ -1,1 +1,0 @@
-(()=>({innerWidth,innerHeight,outerWidth,outerHeight,devicePixelRatio,frames:[...document.querySelectorAll('iframe')].map(e=>({src:e.src,rect:e.getBoundingClientRect().toJSON(),computed:{transform:getComputedStyle(e).transform,zoom:getComputedStyle(e).zoom}}))}))()

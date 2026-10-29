@@ -1,8 +1,0 @@
-{
-  "markdownLinksResolve": true,
-  "pythonHelpersParse": true,
-  "javascriptProbesParse": true,
-  "originalAcceptanceCriteriaChecked": 10,
-  "originalCriteriaUnchangedFromLiveGitHub": true,
-  "githubOpenAndAssigned": true
-}

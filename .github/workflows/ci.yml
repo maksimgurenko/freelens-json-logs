@@ -64,8 +64,6 @@ jobs:
         run: npm run test:workers
       - name: Check RAM and disk retention in isolated processes and headless Chrome
         run: npm run test:smoke
-      - name: Check UI helpers without desktop access
-        run: python3 -B -m unittest discover -s tests -p ui_desktop_test.py -v
       - name: Build and inspect the installable package
         run: |
           npm run package

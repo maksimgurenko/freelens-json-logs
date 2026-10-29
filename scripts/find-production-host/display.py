@@ -13,7 +13,7 @@ scratch = root / f'.scratch/find/{ticket}-host'
 prefix = scratch / 'prefix'
 runtime = Path(tempfile.mkdtemp(prefix='fd-', dir='/tmp'))
 runtime.chmod(0o700)
-evidence = root / f'docs/verification/{ticket}/host' / run
+evidence = root / f'.scratch/verification/{ticket}/host' / run
 evidence.mkdir(parents=True, exist_ok=True)
 user_environment = subprocess.check_output(['systemctl', '--user', 'show-environment'], text=True)
 user_instance = next(line.split('=', 1)[1] for line in user_environment.splitlines() if line.startswith('HYPRLAND_INSTANCE_SIGNATURE='))

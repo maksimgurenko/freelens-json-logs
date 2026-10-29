@@ -1,8 +1,0 @@
-import {connect,save,assert,tick} from './host.mjs';
-const h=await connect(),out={package:'0.1.33',checks:[]};const check=async(name,expr)=>{const result=await h.run(expr);out.checks.push({name,result});assert(result,name);};
-try{
- await h.send('Page.bringToFront');await h.run(`(async()=>{const p=global.__cv30Graph;await p.close();p.root().querySelectorAll('.rl-row')[30].click();p.originalSelected=p.state().snapshot.records[30].transportLine;await p.click('Resume');await p.settled();p.autoBefore=p.requests.length;await p.click('Edit profiles');await p.click('Duplicate');await p.input('Profile name','CV30 auto draft');})()`);
- await tick(3400);await check('Profiles stays active and automatic real reads continue without implicit Pause',`(()=>{const p=global.__cv30Graph;return !!document.querySelector('.rl-profile-editor')&&!p.state().paused&&p.requests.length>p.autoBefore&&p.requests.at(-1).status===200;})()`);
- await h.key('Escape','Escape',27);await check('Return retains surviving original record and automatic mode',`(()=>{const p=global.__cv30Graph,s=p.root().querySelector('.rl-selected');return !document.querySelector('.rl-profile-editor')&&!p.state().paused&&!!s&&p.state().snapshot.records[Number(s.dataset.recordIndex)].transportLine===p.originalSelected;})()`);
- await h.run(`global.__cv30Graph.click('Pause')`);out.requests=await h.run(`global.__cv30Graph.requests.map(r=>({...r,body:undefined,bytes:r.body===undefined?undefined:Buffer.byteLength(r.body),sha256:r.body===undefined?undefined:require('crypto').createHash('sha256').update(r.body).digest('hex')}))`);out.passed=true;
-}catch(e){out.failure=String(e);throw e;}finally{await h.close();save('automatic',out);}

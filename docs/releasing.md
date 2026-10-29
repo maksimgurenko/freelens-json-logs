@@ -8,7 +8,7 @@ byte for byte. Every successful run retains the tarball and `SHA256SUMS` as a
 14-day Actions artifact.
 
 CI does not launch Freelens or Kubernetes. Installed-host acceptance is recorded
-separately in [the verification reports](verification/19/README.md).
+separately from CI. See the [behavior specification and validation limits](specification.md#validation-limits); release notes link to historical installed-host reports.
 
 ## Publish a version
 

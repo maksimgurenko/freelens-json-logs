@@ -1,2 +1,0 @@
-pod/release condition met
-pod/selection-copy condition met

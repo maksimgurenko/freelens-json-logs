@@ -1,1 +1,0 @@
-(()=>{const p=global.__cv27;return {text:p.root().querySelector('.rl-recovery').innerText,settingsUnchanged:require('fs').readFileSync(p.settingsFile).equals(p.resetOriginal),problem:p.preferences.read().problem,confirm:!!p.button('Cancel reset')};})()

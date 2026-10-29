@@ -1,8 +1,0 @@
-{
-  "manifestSha256": "34fc1905a369ec7af79cc5606911bf96759b75f2227ee88f4017ca52c0bc24f6",
-  "error": "exec /bin/sh: argument list too long",
-  "ownedNamespace": "readable-logs-ticket-26",
-  "oldPodUid": "72cc9e79-a352-48aa-817f-7b1fd6ac7960",
-  "result": "Not usable-log acceptance; owned fixture recreated with generated output, current native Pod cache reloaded; no host restart",
-  "recreateNote": "The List create returned AlreadyExists for the retained owned namespace while creating the new Pod; subsequent wait and actual log reads confirmed the new Pod."
-}

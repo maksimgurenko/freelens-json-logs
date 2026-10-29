@@ -1,9 +1,0 @@
-{
-  "input": "Playwright trusted pointer in packaged Freelens",
-  "host": "1.10.3",
-  "version": "0.1.32",
-  "selectionBeforeClick": "26-10-25T20:28:06.825249240Z   { \"message\" : \"row 0001 fields α🙂\\ntext\", \"level\":\"info\", \"fields\":\"fields\", \"extra\":1, \"nested\":{\"fields\":\"value fields\"}, \"unicode\":\"漢字\" }  \n2026-10-25T20:28:06.825262570Z {\"message\":\"row 0002 fields single badge\",\"level\":\"info\",\"fields\":\"fie",
-  "inspectedBeforeClick": null,
-  "inspectedAfterClick": "0",
-  "passed": true
-}

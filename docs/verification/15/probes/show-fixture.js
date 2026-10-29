@@ -1,1 +1,0 @@
-(async()=>{for(let i=0;i<100;i++){try{const pod=await global.LensExtensions.Renderer.K8sApi.podsApi.get({namespace:'readable-logs-ticket-15',name:'navigation'});global.LensExtensions.Renderer.Navigation.showDetails(pod.selfLink);return {uid:pod.metadata.uid,namespace:pod.getNs(),name:pod.getName()};}catch(error){if(i===99)throw error;await new Promise(r=>setTimeout(r,100));}}})()

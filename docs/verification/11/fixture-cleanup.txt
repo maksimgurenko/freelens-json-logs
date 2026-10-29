@@ -1,2 +1,0 @@
-pod "readable-logs-ticket-11-mixed" deleted from readable-logs-spike namespace
-pod "readable-logs-ticket-11-waiting" deleted from readable-logs-spike namespace
