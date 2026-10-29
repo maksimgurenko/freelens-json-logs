@@ -94,3 +94,10 @@ Freelens and the user's browsers are unchanged. The disk allowance remains
 and application storage must still be empty. No path is excluded from accounting,
 no failed sample is relabelled and no extra warmup or retry is added to the test.
 This is separate from the accepted/closed Freelens host-resource follow-up.
+
+A fresh runner also exceeded the mounted-browser harness's ten-second DevTools
+startup wait before loading any fixture. That launcher now uses the same
+model-download isolation and 30-second startup allowance as the resource launcher;
+its whole-suite watchdog is 120 seconds to include startup. Readiness still exits
+the polling loop immediately. These harness-only limits do not change Find's
+one-second deadline, benchmark budgets, workload, storage assertions or test oracles.

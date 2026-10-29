@@ -14,7 +14,7 @@ const directory = await mkdtemp(join(tmpdir(), 'find-identity-'));
 const sleep = ms => new Promise(resolve => setTimeout(resolve, ms));
 let browser, socket, server, bridge;
 const kill = () => { if (browser?.pid) { try { process.kill(-browser.pid, 'SIGKILL'); } catch { /* Already exited. */ } } };
-const deadline = setTimeout(kill, 90_000);
+const deadline = setTimeout(kill, 120_000);
 try {
   await import('./build.mjs');
   const manifest = JSON.parse(await readFile('package.json', 'utf8'));
@@ -34,13 +34,15 @@ try {
   server.listen(0, '127.0.0.1'); await once(server, 'listening');
   browser = spawn(await chromePath(), ['--headless=new', '--no-first-run', '--no-default-browser-check',
     '--disable-background-networking', '--disable-extensions', '--disable-sync', '--disable-gpu', '--disable-dev-shm-usage',
+    '--disable-optimization-guide-model-downloads-for-benchmarking',
     '--remote-debugging-port=0', `--user-data-dir=${directory}`, '--window-size=1440,900',
     ...(process.getuid?.() === 0 ? ['--no-sandbox'] : []), 'about:blank'], { detached: true, stdio: ['ignore', 'ignore', 'pipe'] });
   let stderr = '';
   browser.stderr.on('data', data => { stderr = (stderr + data).slice(-4000); });
   const launched = once(browser, 'spawn'); await launched;
   let port;
-  for (let attempt = 0; attempt < 200; attempt++) {
+  // Match the resource launcher's bounded 30-second cold-start wait on CI.
+  for (let attempt = 0; attempt < 600; attempt++) {
     assert.equal(browser.exitCode, null, stderr);
     try { port = (await readFile(join(directory, 'DevToolsActivePort'), 'utf8')).split('\n')[0]; break; }
     catch (error) { if (error.code !== 'ENOENT') throw error; }
