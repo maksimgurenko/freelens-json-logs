@@ -1,7 +1,13 @@
 # Find #48: Linux native groups completed
 
+[Three-angle PR review and independent fix verification](pr-49-review.md) confirm
+and fix three contract defects: inspector-close refinement origin, pending
+registration across document navigation, and layout-only matching invalidation.
+The corrected package is `464a74d2`; 254 tests and the complete browser suite pass.
+Earlier native evidence retains its reviewed `15f99148` artifact scope.
+
 [PR publication corrections](pr-49-ci.md) fix unchanged Pod observations restarting
-Find and select the working CI Chrome launcher. The corrected package is `59a0d558`,
+Find and select the working CI Chrome launcher. That prior package is `59a0d558`,
 with 251 tests and the complete mounted browser suite passing locally. The native
 evidence below retains its reviewed `15f99148` artifact scope.
 

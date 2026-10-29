@@ -40,18 +40,29 @@ export class FindService {
     catch { return false; }
   }
   async open(caller: FindCaller, viewer: string): Promise<string> {
-    const frame = caller.senderFrame;
+    // WebFrameMain is live: after navigation its getters can describe the new
+    // document, so admission must retain the caller's original numeric identity.
+    const receivedFrame = caller.senderFrame;
+    const frame = receivedFrame && { processId: receivedFrame.processId, routingId: receivedFrame.routingId };
     if (this.closed || typeof viewer !== 'string' || !viewer || viewer.length > 128 || !frame ||
       !Number.isSafeInteger(frame.processId) || !Number.isSafeInteger(frame.routingId) || !this.present(caller.sender, frame)) throw new Error('Invalid Find viewer');
     // Serialize replacements of the same viewer in this frame without retaining
     // query/window descriptors. A new binding cannot bypass actual worker exit.
     const key = JSON.stringify([viewer, frame.processId, frame.routingId]);
     const previous = this.opening.get(key);
+    let documentCurrent = true;
+    const lost = () => { documentCurrent = false; };
+    const navigated = (_event: unknown, _url: unknown, _status: unknown, _description: unknown, _main: unknown, processId: number, routingId: number) => {
+      if (sameFrame(frame, { processId, routingId })) lost();
+    };
+    // Retiring the last owner removes its sender observers. Pending registration
+    // still belongs to the old document until admission or rejection finishes.
+    caller.sender.on('destroyed', lost); caller.sender.on('render-process-gone', lost); caller.sender.on('did-frame-navigate', navigated);
     const opening = (async () => {
       if (previous) await previous.catch(() => {});
       const old = [...this.owners.values(), ...this.retiring.keys()].filter(owner => owner.sender === caller.sender && owner.viewer === viewer && sameFrame(owner, frame));
       await Promise.all(old.map(owner => this.retire(owner)));
-      if (this.closed || !this.present(caller.sender, frame)) throw new Error('Disposed Find viewer');
+      if (this.closed || !documentCurrent || !this.present(caller.sender, frame)) throw new Error('Disposed Find viewer');
       const token = randomUUID();
       this.owners.set(token, { token, viewer, sender: caller.sender, processId: frame.processId, routingId: frame.routingId,
         execution: new FindExecution(this.factory, this.version) });
@@ -61,7 +72,10 @@ export class FindService {
     })();
     this.opening.set(key, opening);
     try { return await opening; }
-    finally { if (this.opening.get(key) === opening) this.opening.delete(key); }
+    finally {
+      caller.sender.removeListener('destroyed', lost); caller.sender.removeListener('render-process-gone', lost); caller.sender.removeListener('did-frame-navigate', navigated);
+      if (this.opening.get(key) === opening) this.opening.delete(key);
+    }
   }
   private owned(caller: FindCaller, token: string): Owner {
     const owner = this.owners.get(token);

@@ -94,6 +94,44 @@ test('inactivity cancels startup and idle owners without forgetting their tempor
   const closing = service.dispose(); workers[1].emit('exit', 1); await closing; await next;
 });
 
+test('pending replacement rejects navigation even when frame getters retarget or IDs are reused', async () => {
+  for (const retargeted of [true, false]) {
+    const { service, sender, root, workers, stops } = setup();
+    try {
+      const token = await service.open(root, 'viewer');
+      const pending = service.submit(root, token, input);
+      const opening = service.open(root, 'viewer');
+      const rejected = assert.rejects(opening, /Disposed Find viewer/);
+      await Promise.resolve(); await Promise.resolve(); assert(workers[0].stopping);
+      // Electron's captured WebFrameMain getters can refer to the new document.
+      if (retargeted) sender.mainFrame.framesInSubtree[0].routingId = 8;
+      sender.emit('did-frame-navigate', {}, 'new-document', 200, 'OK', true, 4, retargeted ? 8 : 1);
+      workers[0].emit('exit', 1);
+      await rejected; assert.equal(await pending, undefined);
+      assert.equal(workers.length, 1); assert.equal(sender.eventNames().length, 0); assert.equal(stops(), 1);
+    } finally { await service.dispose(); }
+  }
+});
+
+test('pending registrations reject renderer loss but preserve sibling and same-document navigation', async () => {
+  for (const event of ['destroyed', 'render-process-gone', 'sibling', 'same-document']) {
+    const { service, sender, root, workers } = setup();
+    try {
+      const token = await service.open(root, 'viewer'), pending = service.submit(root, token, input);
+      const opening = service.open(root, 'viewer');
+      const lost = event === 'destroyed' || event === 'render-process-gone';
+      const rejected = lost ? assert.rejects(opening, /Disposed Find viewer/) : undefined;
+      if (event === 'sibling') sender.emit('did-frame-navigate', {}, 'sibling', 200, 'OK', false, 4, 2);
+      else if (event === 'same-document') sender.emit('did-navigate-in-page', {}, '#hash', true, 4, 1);
+      else sender.emit(event);
+      workers[0].emit('exit', 1); await pending;
+      if (rejected) await rejected;
+      else await service.setActive(root, await opening, false);
+    } finally { await service.dispose(); }
+    assert.equal(sender.eventNames().length, 0);
+  }
+});
+
 test('navigation, renderer loss, shutdown and late registration cannot retain an owner', async () => {
   for (const event of ['destroyed', 'render-process-gone', 'did-frame-navigate']) {
     const { service, sender, root, workers, stops } = setup();

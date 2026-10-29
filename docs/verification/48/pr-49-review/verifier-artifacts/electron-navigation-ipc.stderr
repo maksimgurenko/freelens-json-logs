@@ -1,0 +1,5 @@
+(node:3372653) electron: Frame property was accessed after it navigated or was destroyed. Avoid asynchronous tasks prior to indexing.
+(Use `freelens --trace-warnings ...` to show where the warning was created)
+(node:3372653) electron: Frame property was accessed after it navigated or was destroyed. Avoid asynchronous tasks prior to indexing.
+(node:3372653) electron: Frame property was accessed after it navigated or was destroyed. Avoid asynchronous tasks prior to indexing.
+(node:3372653) electron: Frame property was accessed after it navigated or was destroyed. Avoid asynchronous tasks prior to indexing.

@@ -41,6 +41,20 @@ test('deliberate reading rebases navigation inclusively; edge and one-hit feedba
   find.navigate(1); assert.equal(find.feedback, 'Only matching record');
 });
 
+test('closing inspection preserves a successful search origin through refinement and zero hits', () => {
+  for (const emptyIntermediate of [false, true]) {
+    const find = new FindPosition();
+    find.read(window.refs[64]);
+    find.prepare(window, key(1), 'new'); find.accept(key(1), [20, 64, 70].map(index => window.refs[index]));
+    if (emptyIntermediate) { find.prepare(window, key(2), 'refine'); find.accept(key(2), []); }
+    find.closeInspection(window.refs[64]);
+    assert.equal(find.reading, undefined);
+    assert.equal(find.position, window.refs[64]); assert.equal(find.candidate, window.refs[64]);
+    find.prepare(window, key(3), 'refine'); find.accept(key(3), [window.refs[20], window.refs[70]]);
+    assert.equal(find.active, window.refs[70], 'Refinement jumped before its independent successful origin');
+  }
+});
+
 test('scroll cancels only reveal, dismissal/inspection cancels selection; current counts remain useful', () => {
   const find = new FindPosition();
   find.read(window.refs[64]); find.prepare(window, key(1), 'new');

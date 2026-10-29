@@ -113,6 +113,42 @@ function selectText(node, start = 0, end = node.textContent.length) {
   const range = document.createRange(); range.setStart(...point(start)); range.setEnd(...point(end));
   document.getSelection().removeAllRanges(); document.getSelection().addRange(range);
 }
+
+async function verifyInspectionFindState() {
+  const closeInspector = () => root.querySelector('[aria-label="Close record inspector"]')?.click();
+  const active = () => Number(root.querySelector('.rl-find-current')?.dataset.recordIndex ?? -1);
+  button('Find');
+  await refresh(Array.from({ length: 100 }, (_, index) => index === 64 ? 'up' : [20, 70].includes(index) ? 'upstream' : `row ${index}`).join('\n'));
+  for (const close of [false, true]) {
+    if (input().value) button('Clear'); closeInspector(); rows()[64].querySelector('.rl-row').click();
+    await query('up'); check(active() === 64, 'Inspection refinement setup did not address the reading row');
+    if (close) closeInspector();
+    check(active() === 64, 'Closing inspection lost the independent Find result');
+    await query('ups'); check(active() === 70, 'Closing inspection made refinement jump backward');
+  }
+  results.push('inspector Close preserves the successful Find origin: row64 refines forward to70 rather than wrapping to20');
+
+  button('Clear'); closeInspector();
+  await refresh(Array.from({ length: 100 }, (_, index) => [2, 73, 82].includes(index) ? `row ${index} upstream` : `row ${index}`).join('\n'));
+  for (const layout of ['inline', 'bottom', 'side']) {
+    if (input().value) button('Clear'); closeInspector(); rows()[64].querySelector('.rl-row').click();
+    const before = requestCount, source = rows().map(row => row.querySelector('.rl-message').textContent);
+    const gate = holdNext('upstream'); edit('upstream');
+    await until(() => heldReply === undefined, 'Pending layout query did not dispatch');
+    const control = root.querySelector('select[aria-label="Inspection"]');
+    root.querySelector('.rl-display-options').open = true;
+    control.value = layout; control.dispatchEvent(new Event('change', { bubbles: true })); await turn();
+    gate.release(); await until(settled, 'Pending layout query did not settle'); await turn();
+    check(requestCount === before + 1, `${layout}: Inspection layout restarted exact matching`);
+    check(active() === 73, `${layout}: Inspection layout cancelled pending query selection`);
+    check(rows().every((row, index) => row.querySelector('.rl-message').textContent === source[index]), 'Layout fixture changed source text');
+    check(root.querySelector('select[aria-label="Inspection"]').value === layout, 'Inspection layout did not update');
+    root.querySelector('.rl-display-options').open = false;
+  }
+  results.push('Inline/Bottom/Side layout changes preserve a pending query, its exact request and row73 selection');
+  button('Clear'); closeInspector(); root.querySelector('[aria-label="Close Find"]').click();
+  await refresh('start\nx\nend');
+}
 // Production renderer/CSS seam: the canvas stays black even in a light host.
 async function verifyCanvasContrast() {
   const colors = ['--textColorAccent', '--textColorSecondary', '--tableBgcSelected', '--tableBgcStripe', '--mainBackground'];
@@ -560,6 +596,7 @@ globalThis.verifyIdentity = async () => {
     check(root.querySelector('.rl-find-current')?.dataset.recordIndex === '1', 'Unchanged Pod metadata lost the active result');
     button('Clear'); root.querySelector('[aria-label="Close Find"]').click();
     results.push('unchanged periodic Pod metadata preserves matching and the active result while paused');
+    await verifyInspectionFindState();
     await verifyCanvasContrast();
     await verifyPresentation();
     await verifyFindPresentation({ root, rows, button, query, refresh, until, check, turn, results, rangeRequests, failRanges: () => { failNextRange = true; } });

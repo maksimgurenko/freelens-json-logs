@@ -165,7 +165,15 @@ export function Viewer({ target, register, visibility, findRpc, preferences, sho
   }, [state?.manualProfile, preference.configuration, session]);
   useEffect(() => setEditingProfiles(false), [state?.container]);
   const formattedRecords = useMemo(() => records.map(recordFormatter(profile.format)), [records, profile.format]);
-  const messages = useMemo(() => formattedRecords.map(record => record.message), [formattedRecords]);
+  const previousMessages = useRef<readonly string[]>([]);
+  const messages = useMemo(() => {
+    const next = formattedRecords.map(record => record.message), previous = previousMessages.current;
+    // Layout and settings synchronization can recreate the formatting objects
+    // without changing any searchable text or an explicit query's intent.
+    if (next.length === previous.length && next.every((message, index) => message === previous[index])) return previous;
+    previousMessages.current = next;
+    return next;
+  }, [formattedRecords]);
   const windowRevision = useMemo(() => ++revisions.current.window, [window]);
   const messageRevision = useMemo(() => ++revisions.current.message, [messages]);
   const queryRevision = useMemo(() => ++revisions.current.query, [committedQuery, matchCase, wholeWords, compositionRevision]);

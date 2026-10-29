@@ -1,6 +1,11 @@
 # Integrated production Find acceptance matrix
 
-> [PR publication corrections](pr-49-ci.md): the current package is `59a0d558`
+> [Three-angle review / independent verification](pr-49-review.md): three
+> confirmed contract defects are fixed and independently revalidated. Current
+> package `464a74d2` passes 254 tests and the complete mounted browser suite.
+> Earlier full native evidence remains scoped to its reviewed `15f99148` artifact.
+
+> [Prior PR publication corrections](pr-49-ci.md): that package is `59a0d558`
 > after preserving profile inputs across unchanged Pod observations. The new
 > regression, 251 unit tests and full mounted browser suite pass locally. Native
 > evidence below remains scoped to its reviewed `15f99148` artifact.

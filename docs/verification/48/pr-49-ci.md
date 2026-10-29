@@ -1,5 +1,9 @@
 # PR #49: CI publication corrections
 
+[Subsequent three-angle review](pr-49-review.md) records three independently
+confirmed and corrected contract defects, the new package identity and current
+validation. The CI-publication evidence below retains its `59a0d558` scope.
+
 [PR #49](https://github.com/maksimgurenko/freelens-json-logs/pull/49) publishes
 the completed Find implementation. Its initial GitHub Actions runs exposed a
 browser-launcher problem and an unrelated production metadata invalidation bug.

@@ -33,7 +33,9 @@ export class FindPosition {
     this.cancelSelection();
     if (sameRef(this.reading, ref)) {
       this.reading = undefined;
-      if (typeof this.position !== 'string' && sameRef(this.position, ref)) this.position = undefined;
+      // A successful candidate establishes its own search position, even when
+      // it coincides with the reading row whose inspector is now closing.
+      if (typeof this.position !== 'string' && sameRef(this.position, ref) && !sameRef(this.candidate, ref)) this.position = undefined;
     }
   }
 
