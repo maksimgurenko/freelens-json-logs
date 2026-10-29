@@ -1,5 +1,10 @@
 # Integrated production Find acceptance matrix
 
+> [PR publication corrections](pr-49-ci.md): the current package is `59a0d558`
+> after preserving profile inputs across unchanged Pod observations. The new
+> regression, 251 unit tests and full mounted browser suite pass locally. Native
+> evidence below remains scoped to its reviewed `15f99148` artifact.
+
 > Current Linux completion (2026-10-28): [native scenario ledger plus review corrections](native-completion-ledger.md)
 > cover the four remaining groups; final package is `15f99148` after a CSS-only contrast fix. The [report](native-completion-20261028.md)
 > records private routes, preserved failures/oracle corrections, IME trust/late-event

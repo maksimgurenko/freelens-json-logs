@@ -28,11 +28,10 @@ globalThis.requestAnimationFrame = callback => {
 globalThis.cancelAnimationFrame = id => { geometryFrames.delete(id); cancelFrame(id); };
 window.addEventListener('error', event => errors.push(String(event.error || event.message)));
 window.addEventListener('unhandledrejection', event => errors.push(String(event.reason)));
-let text = 'start\nx\nend', reads = 0, pendingRead, copies = [];
+let text = 'start\nx\nend', reads = 0, podReads = 0, pendingRead, copies = [];
 let status = { name: 'app', restartCount: 0, containerID: 'run-0' };
 let uid = 'uid';
 let heldReply, failNext = false, requestCount = 0;
-const debugExact = [];
 let failNextRange = false;
 let rpcSequence = 0;
 const rangeRequests = [];
@@ -43,8 +42,6 @@ const ipc = {
     if (name === 'viewer-visibility-request') { callbacks.get(args[1])?.({}, args[0]); return; }
     const exact = name === 'find-request' && args[1].work === 'match';
     const gate = exact && (!heldReply?.text || heldReply.text === args[1].query.text) ? heldReply : undefined;
-    const trace = exact ? { text: args[1].query.text.slice(0, 32), key: args[1].key, gate: !!gate, start: performance.now() } : undefined;
-    if (trace) debugExact.push(trace);
     if (exact) { requestCount++; if (gate) heldReply = undefined; if (failNext) { failNext = false; throw new Error('Controlled SDK failure'); } }
     if (name === 'find-request' && !exact) {
       rangeRequests.push(args[1]);
@@ -52,7 +49,6 @@ const ipc = {
     }
     const result = await (await fetch('/find-rpc', { method: 'POST', body: JSON.stringify({ sequence: ++rpcSequence, channel: name, args }) })).json();
     if (gate) await gate.promise;
-    if (trace) Object.assign(trace, { end: performance.now(), result: result.value?.kind });
     if (result.error) throw new Error(result.error); return result.value;
   },
   broadcast() {},
@@ -68,7 +64,7 @@ Object.assign(globalThis, { global: globalThis, React, ReactDOM, Mobx, LensExten
     Component: { Icon: ({ material }) => <span className="Icon material-icons" aria-hidden="true">{material}</span> },
     Catalog: { getActiveCluster: () => ({ id: 'cluster', name: 'Identity test' }) },
     K8sApi: { podsApi: {
-      async get() { return { metadata: { uid, labels: {} }, spec: { containers: [{ name: 'app' }, { name: 'sidecar' }] },
+      async get() { podReads++; return { metadata: { uid, labels: {} }, spec: { containers: [{ name: 'app' }, { name: 'sidecar' }] },
         status: { containerStatuses: status ? [status] : [] } }; },
       async getLogs() { reads++; if (pendingRead) return pendingRead.promise; return text; },
     } },
@@ -405,7 +401,7 @@ async function verifyPosition() {
 
   // Deselecting the origin during current matching may update counts only.
   rows()[64].querySelector('.rl-row').click();
-  let gate = holdNext(); edit('upstream'); await until(() => heldReply === undefined);
+  let gate = holdNext(); edit('ups'); await until(() => heldReply === undefined, 'Pending deselection did not dispatch its edited query');
   rows()[64].querySelector('.rl-row').click();
   const deselectedTop = root.querySelector('.rl-records').scrollTop;
   gate.release(); await until(settled); await turn();
@@ -557,6 +553,13 @@ globalThis.verifyIdentity = async () => {
   ReactDOM.render(<Page params={params} />, root);
   try {
     await until(() => rows().length === 3, 'No initial rows'); button('Pause');
+    button('Find'); await query('x');
+    const beforeMetadata = { reads: podReads, requests: requestCount };
+    await until(() => podReads > beforeMetadata.reads, 'No periodic Pod observation'); await turn();
+    check(requestCount === beforeMetadata.requests, 'Unchanged Pod metadata restarted matching');
+    check(root.querySelector('.rl-find-current')?.dataset.recordIndex === '1', 'Unchanged Pod metadata lost the active result');
+    button('Clear'); root.querySelector('[aria-label="Close Find"]').click();
+    results.push('unchanged periodic Pod metadata preserves matching and the active result while paused');
     await verifyCanvasContrast();
     await verifyPresentation();
     await verifyFindPresentation({ root, rows, button, query, refresh, until, check, turn, results, rangeRequests, failRanges: () => { failNextRange = true; } });
@@ -672,8 +675,6 @@ globalThis.verifyIdentity = async () => {
     check(getComputedStyle(scroller).backgroundColor === 'rgb(0, 0, 0)', 'Black canvas changed');
     check(!root.querySelector('.rl-line-number'), 'Line counters introduced');
     check(localStorage.length === 0 && sessionStorage.length === 0 && !(await indexedDB.databases()).length, 'Find wrote browser storage');
-  } catch (error) {
-    throw new Error(`${error.message} [DEBUG-find-ci] ${JSON.stringify({ checks: results.slice(-3), input: input()?.value.slice(0, 32), count: root.querySelector('.rl-find-count')?.textContent, highlight: root.querySelector('.rl-highlight-status')?.textContent, current: root.querySelector('.rl-find-current')?.dataset.recordIndex, reading: root.querySelector('.rl-reading-row')?.dataset.recordIndex, exact: debugExact.slice(-12) })}`);
   } finally {
     ReactDOM.unmountComponentAtNode(root); await extension.onDeactivate(); await turn();
   }

@@ -158,7 +158,10 @@ export class SnapshotSession {
         lifecycleNotice: 'Container restart observed. Previous-instance logs were cleared.' });
       if (!this.state.paused) void this.refresh();
     }
-    this.update({ containers: containerChoices(pod), podLabels: { ...pod.labels } });
+    const labels = pod.labels ?? {}, previousLabels = this.state.podLabels;
+    const unchangedLabels = previousLabels && Object.keys(previousLabels).length === Object.keys(labels).length &&
+      Object.entries(previousLabels).every(([key, value]) => Object.hasOwn(labels, key) && labels[key] === value);
+    this.update({ containers: containerChoices(pod), podLabels: unchangedLabels ? previousLabels : { ...labels } });
   }
   pause() {
     if (this.state.phase === 'closed' || this.state.gone) return;

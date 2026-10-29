@@ -43,6 +43,18 @@ function setup() {
   } }, () => {}, pool, clock);
   return { clock, pool, session, reads };
 }
+test('equivalent Pod labels preserve profile inputs while changed labels remain observable', async t => {
+  const h = setup(); t.after(() => h.session.dispose());
+  void h.session.open(); await flush(); h.reads[0].response.resolve('x'); await flush(); h.session.pause();
+  h.session.observePod({ ...pod, labels: { app: 'api', tier: 'backend' } });
+  const labels = h.session.state.podLabels, snapshot = h.session.state.snapshot;
+  h.session.observePod({ ...pod, labels: { tier: 'backend', app: 'api' } });
+  assert.equal(h.session.state.podLabels, labels, 'Unchanged labels invalidated profile inputs');
+  h.session.observePod({ ...pod, labels: { app: 'other' } });
+  assert.notEqual(h.session.state.podLabels, labels);
+  assert.deepEqual(h.session.state.podLabels, { app: 'other' });
+  assert.equal(h.session.state.snapshot, snapshot); assert.equal(h.reads.length, 1);
+});
 test('instance epochs publish before replacement reads, survive Pause and reset once per observed boundary', async t => {
   const h = setup(); t.after(() => h.session.dispose());
   void h.session.open(); await flush(); h.reads[0].response.resolve('old'); await flush();

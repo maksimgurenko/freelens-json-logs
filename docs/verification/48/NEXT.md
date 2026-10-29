@@ -1,11 +1,16 @@
 # Find #48: Linux native groups completed
 
+[PR publication corrections](pr-49-ci.md) fix unchanged Pod observations restarting
+Find and select the working CI Chrome launcher. The corrected package is `59a0d558`,
+with 251 tests and the complete mounted browser suite passing locally. The native
+evidence below retains its reviewed `15f99148` artifact scope.
+
 Current checkpoint: [report](native-completion-20261028.md),
 [scenario ledger and review corrections](native-completion-ledger.md), [matrix](matrix.md) and
 [independent review](review-native-completion.md). Review baseline
 `e41520ea01e1badaa07c4adc731e080db9f8aca6`, branch `implementation/find`.
 
-The four requested remaining Linux native groups are covered on current package
+The four requested remaining Linux native groups are covered on reviewed package
 `15f99148d56a5b6100b929ff79c5d9b3680c9186a36dc5d5e08706bfed67749b`:
 selection/source/layout variants; pending scroll/dismissal and native resize;
 Menu/editor/auxiliary-focus/history/shortcut/edge behavior; actual native IME.

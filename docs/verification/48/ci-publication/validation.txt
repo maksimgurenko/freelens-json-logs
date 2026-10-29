@@ -1,0 +1,41 @@
+✔ bottom following and repeated-record anchors survive appended and bounded replacement windows (2.452527ms)
+ℹ tests 251
+ℹ suites 0
+ℹ pass 251
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 547.396946
+
+
+> freelens-readable-logs@0.1.34 typecheck
+> tsc --noEmit
+
+
+test_attended_mode_still_requires_freelens_already_focused (ui_desktop_test.DesktopTests.test_attended_mode_still_requires_freelens_already_focused) ... ok
+test_background_capture_and_probes_never_touch_desktop (ui_desktop_test.DesktopTests.test_background_capture_and_probes_never_touch_desktop) ... ok
+test_background_check_leaves_new_user_focus_alone (ui_desktop_test.DesktopTests.test_background_check_leaves_new_user_focus_alone) ... ok
+test_background_failure_does_not_restore_desktop_even_in_attended_mode (ui_desktop_test.DesktopTests.test_background_failure_does_not_restore_desktop_even_in_attended_mode) ... ok
+test_native_entrypoints_defer_before_subprocess_or_device_access (ui_desktop_test.DesktopTests.test_native_entrypoints_defer_before_subprocess_or_device_access) ... ok
+test_scripts_require_attended_mode_before_any_desktop_calls (ui_desktop_test.DesktopTests.test_scripts_require_attended_mode_before_any_desktop_calls) ... ok
+
+----------------------------------------------------------------------
+Ran 6 tests in 0.055s
+
+OK
+background: passed (background)
+background: passed (background)
+background: passed (background)
+background: passed (background)
+background: passed (background)
+background: passed (background)
+background: passed (background)
+background: passed (background)
+background: passed (background)
+background: passed (background)
+background: passed (background)
+background: passed (background)
+
+59a0d5581f038230a6eee780f03c471c00bf81a447a5ac3051cfffc7859ef6e8  dist/freelens-readable-logs-0.1.34.tgz
+Two consecutive package builds produced this identical checksum; strict package checks and actual-worker verification passed.

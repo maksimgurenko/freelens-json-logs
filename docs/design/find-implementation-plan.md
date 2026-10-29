@@ -10,6 +10,9 @@ future task; both platforms remain explicitly unverified and do not block closin
 this implementation increment. The planning handoff below retains its original
 scope; this completion note supersedes its then-pending acceptance status.
 
+[PR publication corrections](../verification/48/pr-49-ci.md) record the unchanged
+Pod-metadata regression/fix, final package identity and CI browser selection.
+
 ### Resource investigation TLDR
 
 Freelens 1.10.3 leaves a 660-second fallback timer running after a Kubernetes
