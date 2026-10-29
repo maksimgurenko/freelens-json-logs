@@ -73,3 +73,24 @@ Patch artifacts are archived as gzip files without changing their uncompressed
 bytes. Decompress them before replay; recorded patch hashes refer to those
 uncompressed bytes. Original-head probes assert the old behavior and are
 preserved as evidence; permanent regressions assert the corrected behavior.
+
+## CI browser-profile isolation follow-up
+
+The identical `087f78b` package passed PR CI while two push attempts failed the
+unchanged disk gate. The passing run already had approximately 51 MB in its warm
+baseline; failures reached that footprint afterward. Added top-eight-file
+accounting identified Chrome's own `optimization_guide_model_store` downloads,
+including a 36,778,224-byte model and an incomplete `.crdownload` during baseline.
+[Failed measurements and file names](pr-49-review/ci-disk-diagnostic.json) remain
+failed; DOM/listener/document counters stayed flat and viewer workers/owners were
+zero after teardown. Browser origin storage remained zero under the existing check.
+
+The exact runner Chrome156 source provides
+[`--disable-optimization-guide-model-downloads-for-benchmarking`](https://chromium.googlesource.com/chromium/src/+/156.0.8078.47/components/optimization_guide/core/delivery/prediction_model_download_manager.cc)
+for clean-profile benchmarking. Its `ShouldFetchModels()` guard returns false
+when that switch is present. The resource-test child now uses it; installed
+Freelens and the user's browsers are unchanged. The disk allowance remains
++8 MiB/+128 files, every-sample heap/DOM/listener/document limits remain unchanged,
+and application storage must still be empty. No path is excluded from accounting,
+no failed sample is relabelled and no extra warmup or retry is added to the test.
+This is separate from the accepted/closed Freelens host-resource follow-up.
