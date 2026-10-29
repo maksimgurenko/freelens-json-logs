@@ -73,6 +73,8 @@ try {
   const profile = join(directory, 'chromium');
   browser = spawn(chrome, ['--headless=new', '--no-first-run', '--no-default-browser-check', '--disable-background-networking',
     '--disable-component-update', '--disable-extensions', '--disable-sync', '--disable-gpu', '--disable-dev-shm-usage',
+    // Chrome's clean-profile model downloads otherwise dominate this benchmark's disk baseline.
+    '--disable-optimization-guide-model-downloads-for-benchmarking',
     '--remote-debugging-port=0', `--user-data-dir=${profile}`, ...(process.getuid?.() === 0 ? ['--no-sandbox'] : []), 'about:blank'],
   { detached: true, stdio: ['ignore', 'ignore', 'pipe'], env: { ...process.env, HOME: home, XDG_CONFIG_HOME: join(home, 'config'), XDG_CACHE_HOME: join(home, 'cache'), TMPDIR: temporary } });
   processes.add(browser);
