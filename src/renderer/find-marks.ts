@@ -17,6 +17,7 @@ export class FindMarks {
   private active?: RecordRef;
   private lastActivated?: RecordRef;
   private queryRevision?: number;
+  private enabled = true;
   private views: MarkView[] = [];
   private frame = 0;
   private closed = false;
@@ -34,10 +35,10 @@ export class FindMarks {
     void scroller.ownerDocument.fonts.ready.then(() => { if (!this.closed) this.schedule(); });
     rail.hidden = true;
   }
-  update(window: OccurrenceWindow, matches: readonly RecordRef[], active: RecordRef | undefined, queryRevision: number) {
+  update(window: OccurrenceWindow, matches: readonly RecordRef[], active: RecordRef | undefined, queryRevision: number, enabled = true) {
     if (this.closed) return;
-    // Pending maintenance hides the rail without ending this query's cycle.
-    // A new edit/context or an evicted occurrence cannot inherit that progress.
+    // Retained marks stay visible through maintenance without enabling stale
+    // navigation or resetting this query's cycle.
     if (this.window?.context !== window.context || this.queryRevision !== queryRevision) {
       this.lastActivated = undefined;
       for (const view of this.views) view.last = undefined;
@@ -45,6 +46,9 @@ export class FindMarks {
     if (this.lastActivated && recordIndex(window, this.lastActivated) < 0) this.lastActivated = undefined;
     this.queryRevision = queryRevision;
     this.window = window; this.matches = matches; this.active = active;
+    this.enabled = enabled;
+    this.rail.setAttribute('aria-busy', String(!enabled));
+    for (const view of this.views) this.setEnabled(view.button);
     this.resize.disconnect();
     if (!matches.length) { this.clear(); return; }
     this.resize.observe(this.scroller);
@@ -81,6 +85,7 @@ export class FindMarks {
         : `Find ${group.members.length} matching records, starting at ${ordinal} of ${this.matches.length}; activate to cycle`;
       view.button.setAttribute('aria-label', label);
       view.button.title = label;
+      this.setEnabled(view.button);
       if (active) view.button.setAttribute('aria-current', 'true'); else view.button.removeAttribute('aria-current');
       return view;
     });
@@ -94,7 +99,7 @@ export class FindMarks {
     const button = this.rail.ownerDocument.createElement('button');
     button.type = 'button'; button.className = 'rl-find-mark';
     const activate = () => {
-      if (!this.views.includes(view) || !this.window) return;
+      if (!this.enabled || !this.views.includes(view) || !this.window) return;
       // Capture the explicit target before a layout change can split/merge its
       // group. Remeasure that same occurrence; query/dismissal/eviction changes
       // invalidate the control or ref independently of its current screen slot.
@@ -111,6 +116,10 @@ export class FindMarks {
     const view: MarkView = { group, button, activate, last };
     button.addEventListener('click', activate);
     return view;
+  }
+  private setEnabled(button: HTMLButtonElement) {
+    button.setAttribute('aria-disabled', String(!this.enabled));
+    button.tabIndex = this.enabled ? 0 : -1;
   }
   private remove(view: MarkView) { view.button.removeEventListener('click', view.activate); view.button.remove(); }
   private clear() {

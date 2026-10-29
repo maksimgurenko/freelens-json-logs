@@ -124,6 +124,20 @@ async function verifyInspectionFindState() {
   const closeInspector = () => root.querySelector('[aria-label="Close record inspector"]')?.click();
   const active = () => Number(root.querySelector('.rl-find-current')?.dataset.recordIndex ?? -1);
   button('Find');
+  const layout = root.querySelector('select[aria-label="Inspection"]'), originalLayout = layout.value;
+  await refresh('{"message":"visible message","secret":"needle"}');
+  for (const value of ['inline', 'bottom', 'side']) {
+    layout.value = value; layout.dispatchEvent(new Event('change', { bubbles: true }));
+    await query('needle');
+    check(root.querySelector('.rl-find-ordinal').textContent.trim() === '1 / 1', 'Inspection click setup has no active result');
+    rows()[0].querySelector('.rl-row').click();
+    check(root.querySelector('.rl-detail') && active() === 0 && root.querySelector('.rl-find-ordinal').textContent.trim() === '1 / 1', `${value}: Inspecting the found row changed 1 / 1 to 0 / 1`);
+    rows()[0].querySelector('.rl-row').click();
+    check(!root.querySelector('.rl-detail') && active() === 0, `${value}: Deselecting inspection cleared the independent Find result`);
+    button('Clear');
+  }
+  layout.value = originalLayout; layout.dispatchEvent(new Event('change', { bubbles: true }));
+  results.push('inspecting and deselecting the active hidden-source result preserves 1 / 1 in Inline/Bottom/Side');
   await refresh(Array.from({ length: 100 }, (_, index) => index === 64 ? 'up' : [20, 70].includes(index) ? 'upstream' : `row ${index}`).join('\n'));
   for (const close of [false, true]) {
     if (input().value) button('Clear'); closeInspector(); rows()[64].querySelector('.rl-row').click();

@@ -40,7 +40,9 @@ export class FindPosition {
   }
 
   read(ref: RecordRef) {
-    this.reading = ref; this.active = this.candidate = undefined; this.position = ref;
+    this.reading = ref;
+    if (!sameRef(this.active, ref)) this.active = this.candidate = undefined;
+    this.position = ref;
     this.cancelSelection(); this.feedback = '';
   }
   prepare(window: OccurrenceWindow, key: FindKey, edit: FindEdit) {

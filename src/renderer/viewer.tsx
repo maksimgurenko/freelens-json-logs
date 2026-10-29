@@ -193,7 +193,11 @@ export function Viewer({ target, register, visibility, findRpc, preferences, sho
     positionChanged();
   }, [findInputs]);
   const matchesReady = matching.phase === 'ready' && !!matching.key && sameFindKey(matching.key, findInputs.key) && !composing.current;
-  const matches = useMemo(() => matchesReady ? matching.records.map(match => recordIndex(window, match.ref)).filter(index => index >= 0) : [], [matchesReady, matching.records, window]);
+  // Project confirmed retained matches before the maintenance effect runs too,
+  // so React never removes/recreates unchanged hints between snapshot commits.
+  const knownMatches = useMemo(() => !composing.current ? findMatching.knownMatches(findInputs) : undefined, [findInputs, matching, compositionRevision]);
+  const matchesByOccurrence = useMemo(() => new Map(knownMatches?.map(match => [match.ref.occurrence, match])), [knownMatches]);
+  const matches = useMemo(() => window.refs.flatMap((ref, index) => matchesByOccurrence.has(ref.occurrence) ? [index] : []), [matchesByOccurrence, window]);
   useLayoutEffect(() => {
     if (!matchesReady) return;
     findPosition.accept(findInputs.key, matching.records.map(match => match.ref));
@@ -208,7 +212,7 @@ export function Viewer({ target, register, visibility, findRpc, preferences, sho
   }, []);
   useLayoutEffect(() => {
     highlights.current?.update(['ready', 'pending'].includes(matching.phase) && !composing.current && !editingProfiles && viewActive.current ? findInputs : undefined,
-      matchesReady ? matching.records : [], findPosition.active, !matchesReady);
+      knownMatches ?? [], findPosition.active, !matchesReady);
   }, [findInputs, matchesReady, matching.phase, matching.records, editingProfiles, inspection, timestamps, wrap, preference.inspection, currentMatch, decorationActive]);
   useLayoutEffect(() => {
     const current = new LogViewport(scroller.current!, setScroll, () => findPosition.cancelReveal());
@@ -221,7 +225,7 @@ export function Viewer({ target, register, visibility, findRpc, preferences, sho
     return () => { current.dispose(); marks.current = undefined; };
   }, []);
   useLayoutEffect(() => {
-    marks.current?.update(window, matchesReady && findOpen && !editingProfiles && decorationActive ? matching.records.map(match => match.ref) : [], findPosition.active, queryRevision);
+    marks.current?.update(window, findOpen && !editingProfiles && decorationActive ? (knownMatches ?? []).map(match => match.ref) : [], findPosition.active, queryRevision, matchesReady);
   }, [window, matchesReady, matching.records, findOpen, editingProfiles, decorationActive, currentMatch, inspection, timestamps, wrap, preference.inspection, formattedRecords, queryRevision]);
   useLayoutEffect(() => {
     if (editingProfiles) return;
@@ -487,7 +491,7 @@ export function Viewer({ target, register, visibility, findRpc, preferences, sho
             commitEdit(transaction);
           }} onInput={handleFindInput} onChange={handleFindInput} />
         <span className="rl-find-ordinal" aria-hidden="true" title={findStatus}>
-          {query && matchesReady ? `${currentMatch < 0 ? 0 : matches.indexOf(currentMatch) + 1} / ${matches.length}` : matching.searching ? '…' : '– / –'}
+          {query && knownMatches !== undefined ? `${currentMatch < 0 ? 0 : matches.indexOf(currentMatch) + 1} / ${matches.length}` : matching.searching ? '…' : '– / –'}
         </span>
         <button type="button" className="rl-find-button rl-find-clear" aria-label="Clear Find" title="Clear search" disabled={!query} onClick={clearFind}>
           <Renderer.Component.Icon material="close" />
@@ -551,7 +555,7 @@ export function Viewer({ target, register, visibility, findRpc, preferences, sho
         const isSelected = recordIndex === index;
         const fields = Object.keys(formatted.additionalFields ?? {}).length;
         const ref = window.refs[recordIndex];
-        const match = matchesReady ? matching.records.find(match => match.ref.occurrence === ref.occurrence && match.ref.context === ref.context) : undefined;
+        const match = matchesByOccurrence.get(ref.occurrence);
         const hiddenSource = inspection.raw ? match?.message && !match.application ? 'message' : undefined
           : match?.application && !match.message ? 'application' : undefined;
         return <div className={`rl-record${isSelected ? ' rl-selected' : ''}${recordIndex === currentMatch ? ' rl-find-current' : ''}`} key={`${ref.context}:${ref.occurrence}`} data-record-index={recordIndex}>

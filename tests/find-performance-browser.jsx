@@ -6,6 +6,21 @@ export async function verifyFindPerformance({ root, rows, button, query, refresh
   const ranges = () => [...CSS.highlights].flatMap(([, highlight]) => [...highlight]);
   const frames = async (count = 2) => { for (let i = 0; i < count; i++) await new Promise(requestAnimationFrame); };
   button('Find');
+  const hiddenFixture = ['{"message":"visible message","secret":"needle"}', '{"message":"other row"}'];
+  await refresh(hiddenFixture.join('\n')); await query('needle');
+  await until(() => root.querySelector('.rl-find-mark') && root.querySelector('.rl-match-hint'), 'Hidden matching row did not settle');
+  const hint = root.querySelector('.rl-match-hint'), mark = root.querySelector('.rl-find-mark');
+  const ordinal = root.querySelector('.rl-find-ordinal').textContent.trim();
+  const pending = holdNext('needle');
+  const append = refresh([...hiddenFixture, '{"message":"new nonmatching row"}'].join('\n'));
+  try {
+    await until(() => root.querySelector('.rl-find-count').textContent === 'Matching pending', 'Hidden-row append did not enter matching');
+    await frames();
+    expect(root.querySelector('.rl-find-ordinal').textContent.trim() === ordinal, 'Counter flickered while an unchanged matching row was retained');
+    expect(hint.isConnected && root.querySelector('.rl-match-hint') === hint, 'Hidden-match link flickered on an unchanged row');
+    expect(mark.isConnected && !root.querySelector('.rl-find-marks').hidden, 'Scrollbar match mark flickered on an unchanged row');
+  } finally { pending.release(); await append; }
+  results.push('counter, hidden-match link and scrollbar marks survive a delayed append on unchanged source text');
   const fixture = Array.from({ length: 1000 }, (_, index) => `needle ${index} ${'ordinary text '.repeat(12)}`);
   await refresh(fixture.join('\n')); await query('needle');
   const scroller = root.querySelector('.rl-records');

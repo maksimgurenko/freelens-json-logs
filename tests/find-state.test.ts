@@ -10,6 +10,17 @@ const key = (revision: number): FindKey => ({ viewerEpoch: 1, targetEpoch: 1, in
   windowRevision: 1, messageRevision: 1, queryRevision: revision });
 const hits = [2, 73, 82, 90].map(i => window.refs[i]);
 
+test('inspecting the active Find result preserves its ordinal and refinement candidate', () => {
+  const find = new FindPosition(), result = window.refs[73];
+  find.prepare(window, key(1), 'new'); find.accept(key(1), [result]);
+  assert.equal(find.active, result);
+  find.read(result);
+  assert.equal(find.active, result, 'Clicking the found row changed the ordinal from 1 / 1 to 0 / 1');
+  assert.equal(find.candidate, result);
+  assert.equal(find.reading, result);
+  assert.equal(find.takeReveal(window, key(1)), undefined);
+});
+
 test('reading row 64: refinement stays 73, Next reaches 82, typo correction restores 82, replacement rebases', () => {
   const find = new FindPosition();
   find.read(window.refs[64]);

@@ -57,6 +57,9 @@ export interface FindMatchingState {
   searching: boolean;
   key?: FindKey;
   records: readonly MatchingRecord[];
+  /** Pending maintenance can retain confirmed membership on unchanged sources.
+   * It is incomplete until ready and never enables navigation. */
+  retained?: boolean;
 }
 interface Attempt { request: FindRequest; started: number; stopFeedback: () => void; stopDeadline: () => void }
 
@@ -76,9 +79,25 @@ export class FindMatching {
   constructor(client: FindClient, changed: (state: FindMatchingState) => void, clock: FindClock = {
     now: () => performance.now(), delay: (ms, run) => { const timer = setTimeout(run, ms); return () => clearTimeout(timer); },
   }) { this.client = client; this.changed = changed; this.clock = clock; }
+  knownMatches(inputs: FindInputs): readonly MatchingRecord[] | undefined {
+    const previous = this.inputs;
+    if (!previous || !(this.state.phase === 'ready' || this.state.phase === 'pending' && this.state.retained)) return;
+    if (sameFindKey(previous.key, inputs.key)) return this.state.records;
+    if (previous.key.viewerEpoch !== inputs.key.viewerEpoch || previous.key.targetEpoch !== inputs.key.targetEpoch ||
+      previous.key.instanceEpoch !== inputs.key.instanceEpoch || previous.key.queryRevision !== inputs.key.queryRevision ||
+      previous.query.text !== inputs.query.text || previous.query.matchCase !== inputs.query.matchCase ||
+      previous.query.wholeWords !== inputs.query.wholeWords) return;
+    const old = new Map(previous.records.map(record => [JSON.stringify(record.ref), record]));
+    const current = new Map(inputs.records.map(record => [JSON.stringify(record.ref), record]));
+    return this.state.records.filter(match => {
+      const key = JSON.stringify(match.ref), before = old.get(key), after = current.get(key);
+      return before && after && before.application === after.application && before.message === after.message;
+    });
+  }
   update(inputs: FindInputs, reason: 'edit' | 'maintenance' | 'retry') {
     if (this.closed) return;
     if (reason === 'maintenance' && this.inputs && sameFindKey(this.inputs.key, inputs.key)) return;
+    const retained = reason === 'maintenance' ? this.knownMatches(inputs) : undefined;
     this.inputs = inputs;
     this.stop();
     if (!inputs.query.text) { this.publish('empty'); return; }
@@ -86,11 +105,11 @@ export class FindMatching {
     if (reason === 'maintenance' && ['timeout', 'execution'].includes(this.state.phase)) {
       this.publish(this.state.phase); return;
     }
-    this.publish('pending');
+    this.publish('pending', retained ?? [], false, retained !== undefined);
     if (this.active && !this.composing) this.start();
   }
-  private publish(phase: FindMatchingState['phase'], records: readonly MatchingRecord[] = [], searching = false) {
-    this.state = { phase, records, searching, key: this.inputs?.key }; this.changed(this.state);
+  private publish(phase: FindMatchingState['phase'], records: readonly MatchingRecord[] = [], searching = false, retained = false) {
+    this.state = { phase, records, searching, retained, key: this.inputs?.key }; this.changed(this.state);
   }
   private start() {
     if (!this.inputs || this.closed || !this.active) return;
@@ -100,7 +119,7 @@ export class FindMatching {
     // Both timers precede registration/dispatch. Callback lateness does not let
     // a completion beyond the whole-attempt deadline through.
     attempt.stopFeedback = this.clock.delay(FIND_PENDING_MS, () => {
-      if (this.attempt === attempt) this.publish('pending', [], true);
+      if (this.attempt === attempt) this.publish('pending', this.state.records, true, this.state.retained);
     });
     attempt.stopDeadline = this.clock.delay(FIND_TIMEOUT_MS, () => { if (this.attempt === attempt) this.fail('timeout'); });
     void this.client.submit(request).then(value => {
@@ -129,7 +148,7 @@ export class FindMatching {
     this.active = active;
     this.client.setActive(active);
     if (!active) this.finish();
-    else if (this.state.phase === 'pending' && !this.composing) { this.publish('pending'); this.start(); }
+    else if (this.state.phase === 'pending' && !this.composing) { this.publish('pending', this.state.records, false, this.state.retained); this.start(); }
   }
   dispose(): Promise<void> { this.closed = true; this.finish(); this.inputs = undefined; return this.client.dispose(); }
 }

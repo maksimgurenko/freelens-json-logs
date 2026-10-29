@@ -33,6 +33,47 @@ async function dispose(matching: FindMatching, calls: ReturnType<typeof setup>['
   await closing;
 }
 
+test('maintenance retains unchanged matches through delayed feedback without completing the new window', async () => {
+  const { matching, calls, open, reply, advance } = setup();
+  const first = input(); matching.update(first, 'edit'); await open(); reply(0); await tick();
+  const known = matching.state.records;
+  const appended = { ...first, key: { ...first.key, windowRevision: 2 },
+    records: [...first.records, { ref: { context: 'one', occurrence: 1 }, application: 'another a' }] };
+  assert.deepEqual(matching.knownMatches(appended), known, 'The render before maintenance lost confirmed source membership');
+  matching.update(appended, 'maintenance'); await tick();
+  assert.equal(matching.state.phase, 'pending'); assert.equal(matching.state.retained, true);
+  assert.deepEqual(matching.state.records, known);
+  advance(100); assert.equal(matching.state.searching, true);
+  assert.deepEqual(matching.state.records, known, 'Searching feedback erased retained results');
+  reply(1, { records: appended.records.map(record => ({ ref: record.ref, application: true, message: false })) }); await tick();
+  assert.equal(matching.state.phase, 'ready'); assert.equal(matching.state.records.length, 2);
+  matching.update(input(2), 'edit'); await tick();
+  assert.deepEqual(matching.state.records, []); assert.equal(matching.state.retained, false);
+  await dispose(matching, calls);
+});
+
+test('retained matches cannot survive changed source text, eviction, query flags or context', async () => {
+  const changes = [
+    (value: ReturnType<typeof input>) => ({ ...value, records: [{ ...value.records[0], application: 'changed' }] }),
+    (value: ReturnType<typeof input>) => ({ ...value, records: [{ ...value.records[0], message: 'new decoded source' }] }),
+    (value: ReturnType<typeof input>) => ({ ...value, records: [] }),
+    ...(['viewerEpoch', 'targetEpoch', 'instanceEpoch', 'queryRevision'] as const).map(dimension =>
+      (value: ReturnType<typeof input>) => ({ ...value, key: { ...value.key, [dimension]: 2 } })),
+    (value: ReturnType<typeof input>) => ({ ...value, query: { ...value.query, matchCase: true } }),
+    (value: ReturnType<typeof input>) => ({ ...value, query: { ...value.query, wholeWords: true } }),
+    (value: ReturnType<typeof input>) => ({ ...value, query: { ...value.query, text: 'different' } }),
+  ];
+  for (const change of changes) {
+    const { matching, calls, open, reply } = setup();
+    const first = input(); matching.update(first, 'edit'); await open(); reply(0); await tick();
+    const next = change({ ...first, key: { ...first.key, windowRevision: 2, messageRevision: 2 } });
+    assert.equal(matching.knownMatches(next)?.length ?? 0, 0);
+    matching.update(next, 'maintenance'); await tick();
+    assert.deepEqual(matching.state.records, []);
+    await dispose(matching, calls);
+  }
+});
+
 test('pending and the whole-attempt deadline start before SDK registration resolves', async () => {
   const { matching, calls, advance, open, reply, timers } = setup();
   matching.update(input(), 'edit'); assert.equal(matching.state.phase, 'pending');
