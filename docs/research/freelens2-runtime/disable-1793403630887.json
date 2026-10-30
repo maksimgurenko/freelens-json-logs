@@ -1,0 +1,65 @@
+{
+  "action": "disable",
+  "started": "2026-10-30T23:40:30.812Z",
+  "observations": [
+    {
+      "settingsPath": "/tmp/freelens-production-find-57-fkw83m82/Freelens/extension-store/freelens-runtime-probe57/readable-logs.json",
+      "configuration": {
+        "schemaVersion": 3,
+        "viewer": {
+          "inspection": "bottom"
+        },
+        "profiles": [
+          {
+            "id": "probe57",
+            "name": "Runtime saved profile",
+            "format": {
+              "messagePaths": [
+                "/message",
+                "/msg"
+              ],
+              "timestampPaths": [
+                "/timestamp",
+                "/time",
+                "/@timestamp"
+              ],
+              "levelPaths": [
+                "/level",
+                "/severity",
+                "/log.level",
+                "/log/level"
+              ],
+              "inlinePaths": [],
+              "hiddenPaths": [],
+              "numericTimestamp": "unset",
+              "severityMappings": []
+            },
+            "matching": {
+              "enabled": false,
+              "conditions": {
+                "labels": []
+              }
+            }
+          }
+        ],
+        "globalDefault": "default"
+      },
+      "workers": {
+        "starts": 4,
+        "exits": 4,
+        "live": 0
+      },
+      "service": {
+        "owners": 0,
+        "retiring": 0,
+        "senders": 0,
+        "opening": 0,
+        "watch": false
+      },
+      "handlers": [],
+      "extensionListeners": [],
+      "stops": 0
+    }
+  ],
+  "pass": true
+}

@@ -1,0 +1,32 @@
+{
+  "action": "toggle",
+  "started": "2026-10-30T23:39:30.199Z",
+  "observations": [
+    {
+      "text": "home\narrow_back\narrow_forward\nExtensions\n\nAdd new features via Freelens Extensions.\n\nNAME, URL, OR PATH TO AN EXTENSION PACKAGE (TAR, TGZ) OR TO AN UNPACKED EXTENSION DIRECTORY\nfolder_open\nInstall\nPro-Tip: you can drag and drop a tarball file, or an unpacked extension directory, to this area\nInstalled extensions\nsearch\nName\narrow_drop_down\n\t\nVersion\narrow_drop_down\n\t\nStatus\narrow_drop_down\n\t\n\nfreelens-runtime-probe57\n\t\n0.0.58\nunverified\n\t\nEnabled\n\t\nmore_vert\nclose\nESC\nhome\nsettings\nview_list\nsettings\narrow_left\n1\narrow_right\ninfo_outline\n\nNothing vouches for the integrity of freelens-runtime-probe57@0.0.57: no checksum was available for this download. Installing it anyway.\n\nclose\ninfo_outline\n\nNothing vouches for the integrity of freelens-runtime-probe57@0.0.58: no checksum was available for this download. Installing it anyway.\n\nclose",
+      "buttons": [
+        {
+          "text": "Install",
+          "html": "<button type=\"button\" class=\"Button install-module__button--Aqa6Y primary\" data-waiting=\"false\">Install</button>"
+        },
+        {
+          "text": "Name\narrow_drop_down",
+          "html": "<button type=\"button\" class=\"sortable-table-module__sortButton--A0ggP\">Name<i class=\"Icon sortable-table-module__inactiveSortIcon--Mx-7N material focusable small\"><span class=\"icon\" data-icon-name=\"arrow_drop_down\">arrow_drop_down</span></i></button>"
+        },
+        {
+          "text": "Version\narrow_drop_down",
+          "html": "<button type=\"button\" class=\"sortable-table-module__sortButton--A0ggP\">Version<i class=\"Icon sortable-table-module__inactiveSortIcon--Mx-7N material focusable small\"><span class=\"icon\" data-icon-name=\"arrow_drop_down\">arrow_drop_down</span></i></button>"
+        },
+        {
+          "text": "Status\narrow_drop_down",
+          "html": "<button type=\"button\" class=\"sortable-table-module__sortButton--A0ggP\">Status<i class=\"Icon sortable-table-module__inactiveSortIcon--Mx-7N material focusable small\"><span class=\"icon\" data-icon-name=\"arrow_drop_down\">arrow_drop_down</span></i></button>"
+        }
+      ],
+      "inputs": [
+        "<input placeholder=\"Name, URL, or path to a package or directory\" class=\"input grow\" spellcheck=\"false\" value=\"\">",
+        "<input placeholder=\"Search...\" class=\"input grow\" spellcheck=\"false\" value=\"\">"
+      ]
+    }
+  ],
+  "pass": true
+}

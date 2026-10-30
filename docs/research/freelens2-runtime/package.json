@@ -1,0 +1,11 @@
+{
+  "step": "package",
+  "command": [
+    "pnpm",
+    "build:app:dir"
+  ],
+  "cwd": "/home/max/work/freelens2",
+  "exit": 0,
+  "seconds": 24.879129648208618,
+  "trackedStatus": ""
+}

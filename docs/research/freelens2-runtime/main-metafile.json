@@ -1,0 +1,271 @@
+{
+  "inputs": {
+    "host:@freelensapp/extensions": {
+      "bytes": 47,
+      "imports": [],
+      "format": "cjs"
+    },
+    "host:mobx": {
+      "bytes": 52,
+      "imports": [],
+      "format": "cjs"
+    },
+    "src/core/find-protocol.ts": {
+      "bytes": 9384,
+      "imports": [],
+      "format": "esm"
+    },
+    "src/main/find-execution.ts": {
+      "bytes": 8975,
+      "imports": [
+        {
+          "path": "src/core/find-protocol.ts",
+          "kind": "import-statement",
+          "original": "../core/find-protocol.ts"
+        }
+      ],
+      "format": "esm"
+    },
+    "src/main/find-service.ts": {
+      "bytes": 7625,
+      "imports": [
+        {
+          "path": "node:crypto",
+          "kind": "import-statement",
+          "external": true
+        },
+        {
+          "path": "src/main/find-execution.ts",
+          "kind": "import-statement",
+          "original": "./find-execution.ts"
+        }
+      ],
+      "format": "esm"
+    },
+    "src/adapter/window-visibility.ts": {
+      "bytes": 1645,
+      "imports": [],
+      "format": "esm"
+    },
+    "src/core/profiles.ts": {
+      "bytes": 9693,
+      "imports": [],
+      "format": "esm"
+    },
+    "src/core/configuration.ts": {
+      "bytes": 3064,
+      "imports": [
+        {
+          "path": "src/core/profiles.ts",
+          "kind": "import-statement",
+          "original": "./profiles.ts"
+        }
+      ],
+      "format": "esm"
+    },
+    "src/adapter/configuration-file.ts": {
+      "bytes": 3077,
+      "imports": [
+        {
+          "path": "node:fs",
+          "kind": "import-statement",
+          "external": true
+        },
+        {
+          "path": "node:path",
+          "kind": "import-statement",
+          "external": true
+        },
+        {
+          "path": "node:crypto",
+          "kind": "import-statement",
+          "external": true
+        },
+        {
+          "path": "src/core/configuration.ts",
+          "kind": "import-statement",
+          "original": "../core/configuration.ts"
+        }
+      ],
+      "format": "esm"
+    },
+    "scripts/freelens2-runtime/store.js": {
+      "bytes": 1348,
+      "imports": [
+        {
+          "path": "host:@freelensapp/extensions",
+          "kind": "import-statement",
+          "original": "@freelensapp/extensions"
+        },
+        {
+          "path": "host:mobx",
+          "kind": "import-statement",
+          "original": "mobx"
+        },
+        {
+          "path": "src/core/configuration.ts",
+          "kind": "import-statement",
+          "original": "../../src/core/configuration.ts"
+        },
+        {
+          "path": "src/core/profiles.ts",
+          "kind": "import-statement",
+          "original": "../../src/core/profiles.ts"
+        }
+      ],
+      "format": "esm"
+    },
+    "scripts/freelens2-runtime/main.js": {
+      "bytes": 5505,
+      "imports": [
+        {
+          "path": "host:@freelensapp/extensions",
+          "kind": "import-statement",
+          "original": "@freelensapp/extensions"
+        },
+        {
+          "path": "host:mobx",
+          "kind": "import-statement",
+          "original": "mobx"
+        },
+        {
+          "path": "electron",
+          "kind": "import-statement",
+          "external": true
+        },
+        {
+          "path": "node:worker_threads",
+          "kind": "import-statement",
+          "external": true
+        },
+        {
+          "path": "node:fs",
+          "kind": "import-statement",
+          "external": true
+        },
+        {
+          "path": "node:path",
+          "kind": "import-statement",
+          "external": true
+        },
+        {
+          "path": "node:url",
+          "kind": "import-statement",
+          "external": true
+        },
+        {
+          "path": "src/main/find-service.ts",
+          "kind": "import-statement",
+          "original": "../../src/main/find-service.ts"
+        },
+        {
+          "path": "src/adapter/window-visibility.ts",
+          "kind": "import-statement",
+          "original": "../../src/adapter/window-visibility.ts"
+        },
+        {
+          "path": "src/adapter/configuration-file.ts",
+          "kind": "import-statement",
+          "original": "../../src/adapter/configuration-file.ts"
+        },
+        {
+          "path": "scripts/freelens2-runtime/store.js",
+          "kind": "import-statement",
+          "original": "./store.js"
+        }
+      ],
+      "format": "esm"
+    }
+  },
+  "outputs": {
+    ".scratch/fixture57/main-0.0.58.js": {
+      "imports": [
+        {
+          "path": "electron",
+          "kind": "import-statement",
+          "external": true
+        },
+        {
+          "path": "node:worker_threads",
+          "kind": "import-statement",
+          "external": true
+        },
+        {
+          "path": "node:fs",
+          "kind": "import-statement",
+          "external": true
+        },
+        {
+          "path": "node:path",
+          "kind": "import-statement",
+          "external": true
+        },
+        {
+          "path": "node:url",
+          "kind": "import-statement",
+          "external": true
+        },
+        {
+          "path": "node:crypto",
+          "kind": "import-statement",
+          "external": true
+        },
+        {
+          "path": "node:fs",
+          "kind": "import-statement",
+          "external": true
+        },
+        {
+          "path": "node:path",
+          "kind": "import-statement",
+          "external": true
+        },
+        {
+          "path": "node:crypto",
+          "kind": "import-statement",
+          "external": true
+        }
+      ],
+      "exports": [
+        "default"
+      ],
+      "entryPoint": "scripts/freelens2-runtime/main.js",
+      "inputs": {
+        "host:@freelensapp/extensions": {
+          "bytesInOutput": 152
+        },
+        "host:mobx": {
+          "bytesInOutput": 132
+        },
+        "scripts/freelens2-runtime/main.js": {
+          "bytesInOutput": 5521
+        },
+        "src/main/find-service.ts": {
+          "bytesInOutput": 5558
+        },
+        "src/core/find-protocol.ts": {
+          "bytesInOutput": 6793
+        },
+        "src/main/find-execution.ts": {
+          "bytesInOutput": 7566
+        },
+        "src/adapter/window-visibility.ts": {
+          "bytesInOutput": 867
+        },
+        "src/adapter/configuration-file.ts": {
+          "bytesInOutput": 2265
+        },
+        "src/core/profiles.ts": {
+          "bytesInOutput": 6480
+        },
+        "src/core/configuration.ts": {
+          "bytesInOutput": 1550
+        },
+        "scripts/freelens2-runtime/store.js": {
+          "bytesInOutput": 1041
+        }
+      },
+      "bytes": 39781
+    }
+  }
+}

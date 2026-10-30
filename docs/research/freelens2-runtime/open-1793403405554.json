@@ -1,0 +1,12 @@
+{
+  "action": "open",
+  "started": "2026-10-30T23:36:19.618Z",
+  "observations": [
+    {
+      "uid": "0035d4f0-23c6-4e7d-93b2-c1d13a41cb92",
+      "name": "single-json"
+    }
+  ],
+  "pass": false,
+  "error": "Error: Readiness/state deadline\n    at wait (file:///tmp/freelens2-runtime-57/scripts/freelens2-runtime/probe.mjs:21:11)\n    at async file:///tmp/freelens2-runtime-57/scripts/freelens2-runtime/probe.mjs:46:5"
+}

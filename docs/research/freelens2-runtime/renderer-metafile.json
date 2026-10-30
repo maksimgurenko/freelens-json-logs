@@ -1,0 +1,120 @@
+{
+  "inputs": {
+    "host:react": {
+      "bytes": 53,
+      "imports": [],
+      "format": "cjs"
+    },
+    "host:mobx": {
+      "bytes": 52,
+      "imports": [],
+      "format": "cjs"
+    },
+    "host:@freelensapp/extensions": {
+      "bytes": 47,
+      "imports": [],
+      "format": "cjs"
+    },
+    "src/core/profiles.ts": {
+      "bytes": 9693,
+      "imports": [],
+      "format": "esm"
+    },
+    "src/core/configuration.ts": {
+      "bytes": 3064,
+      "imports": [
+        {
+          "path": "src/core/profiles.ts",
+          "kind": "import-statement",
+          "original": "./profiles.ts"
+        }
+      ],
+      "format": "esm"
+    },
+    "scripts/freelens2-runtime/store.js": {
+      "bytes": 1348,
+      "imports": [
+        {
+          "path": "host:@freelensapp/extensions",
+          "kind": "import-statement",
+          "original": "@freelensapp/extensions"
+        },
+        {
+          "path": "host:mobx",
+          "kind": "import-statement",
+          "original": "mobx"
+        },
+        {
+          "path": "src/core/configuration.ts",
+          "kind": "import-statement",
+          "original": "../../src/core/configuration.ts"
+        },
+        {
+          "path": "src/core/profiles.ts",
+          "kind": "import-statement",
+          "original": "../../src/core/profiles.ts"
+        }
+      ],
+      "format": "esm"
+    },
+    "scripts/freelens2-runtime/renderer.js": {
+      "bytes": 3497,
+      "imports": [
+        {
+          "path": "host:react",
+          "kind": "import-statement",
+          "original": "react"
+        },
+        {
+          "path": "host:mobx",
+          "kind": "import-statement",
+          "original": "mobx"
+        },
+        {
+          "path": "host:@freelensapp/extensions",
+          "kind": "import-statement",
+          "original": "@freelensapp/extensions"
+        },
+        {
+          "path": "scripts/freelens2-runtime/store.js",
+          "kind": "import-statement",
+          "original": "./store.js"
+        }
+      ],
+      "format": "esm"
+    }
+  },
+  "outputs": {
+    ".scratch/fixture57/renderer-0.0.58.js": {
+      "imports": [],
+      "exports": [
+        "default"
+      ],
+      "entryPoint": "scripts/freelens2-runtime/renderer.js",
+      "inputs": {
+        "host:react": {
+          "bytesInOutput": 135
+        },
+        "host:mobx": {
+          "bytesInOutput": 132
+        },
+        "host:@freelensapp/extensions": {
+          "bytesInOutput": 152
+        },
+        "scripts/freelens2-runtime/renderer.js": {
+          "bytesInOutput": 3971
+        },
+        "scripts/freelens2-runtime/store.js": {
+          "bytesInOutput": 1041
+        },
+        "src/core/profiles.ts": {
+          "bytesInOutput": 6480
+        },
+        "src/core/configuration.ts": {
+          "bytesInOutput": 1550
+        }
+      },
+      "bytes": 15151
+    }
+  }
+}

@@ -1,0 +1,45 @@
+{
+	"__internal__": {
+		"migrations": {
+			"version": "0.0.58"
+		}
+	},
+	"schemaVersion": 3,
+	"viewer": {
+		"inspection": "bottom"
+	},
+	"profiles": [
+		{
+			"id": "probe57",
+			"name": "Runtime saved profile",
+			"format": {
+				"messagePaths": [
+					"/message",
+					"/msg"
+				],
+				"timestampPaths": [
+					"/timestamp",
+					"/time",
+					"/@timestamp"
+				],
+				"levelPaths": [
+					"/level",
+					"/severity",
+					"/log.level",
+					"/log/level"
+				],
+				"inlinePaths": [],
+				"hiddenPaths": [],
+				"numericTimestamp": "unset",
+				"severityMappings": []
+			},
+			"matching": {
+				"enabled": false,
+				"conditions": {
+					"labels": []
+				}
+			}
+		}
+	],
+	"globalDefault": "default"
+}

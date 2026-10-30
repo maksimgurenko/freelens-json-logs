@@ -1,0 +1,4 @@
+{
+  "doubleObserver": "Error: [mobx-react-lite] You are trying to use `observer` on a function component wrapped in either another `observer` or `React.memo`. The observer already applies 'React.memo' for you.",
+  "stack": "Error: [mobx-react-lite] You are trying to use `observer` on a function component wrapped in either another `observer` or `React.memo`. The observer already applies 'React.memo' for you.\n    at observer$1 (https://e1778f05265c481d62aa247aaf4ecae8.renderer.freelens.app:33969/build/assets/index-B3PvsdZf.js:34132:78)\n    at Module.observer (https://e1778f05265c481d62aa247aaf4ecae8.renderer.freelens.app:33969/build/assets/index-B3PvsdZf.js:34369:14)\n    at <anonymous>:1:42\n    at <anonymous>:1:188"
+}

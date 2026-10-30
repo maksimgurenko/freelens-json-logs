@@ -1,0 +1,20 @@
+{
+  "action": "open",
+  "started": "2026-10-30T23:37:31.398Z",
+  "observations": [
+    {
+      "uid": "0035d4f0-23c6-4e7d-93b2-c1d13a41cb92",
+      "name": "single-json",
+      "selfLink": "/api/v1/namespaces/readable-logs-spike/pods/single-json"
+    },
+    {
+      "toolbar": [
+        {
+          "html": "<li tabindex=\"0\" data-probe57=\"toolbar\" class=\"MenuItem\"><i class=\"Icon material interactive focusable\" tabindex=\"0\" id=\"tooltip_target_110\"><span class=\"icon\" data-icon-name=\"data_object\">data_object</span><div></div></i><span class=\"title\">Runtime probe 57</span></li>"
+        }
+      ]
+    }
+  ],
+  "pass": false,
+  "error": "Error: Readiness/state deadline\n    at wait (file:///tmp/freelens2-runtime-57/scripts/freelens2-runtime/probe.mjs:21:11)\n    at async file:///tmp/freelens2-runtime-57/scripts/freelens2-runtime/probe.mjs:50:5"
+}

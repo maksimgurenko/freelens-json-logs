@@ -1,0 +1,47 @@
+{
+  "action": "open",
+  "started": "2026-10-30T23:44:06.165Z",
+  "observations": [
+    {
+      "uid": "0035d4f0-23c6-4e7d-93b2-c1d13a41cb92",
+      "name": "single-json",
+      "selfLink": "/api/v1/namespaces/readable-logs-spike/pods/single-json"
+    },
+    {
+      "toolbar": [
+        {
+          "html": "<li tabindex=\"0\" data-probe57=\"toolbar\" class=\"MenuItem\"><i class=\"Icon material interactive focusable\" tabindex=\"0\" id=\"tooltip_target_65\"><span class=\"icon\" data-icon-name=\"data_object\">data_object</span><div></div></i><span class=\"title\">Runtime probe 57</span></li>"
+        }
+      ]
+    },
+    {
+      "params": {
+        "namespace": "readable-logs-spike",
+        "pod": "single-json",
+        "podUid": "0035d4f0-23c6-4e7d-93b2-c1d13a41cb92",
+        "clusterId": "e1778f05265c481d62aa247aaf4ecae8"
+      },
+      "identity": {
+        "version": "2.0.1-0",
+        "react": "19.3.1",
+        "reactIdentity": true,
+        "mobxIdentity": true,
+        "mobxObservable": true,
+        "href": "https://e1778f05265c481d62aa247aaf4ecae8.renderer.freelens.app:36357/extension/freelens-runtime-probe57/probe57?clusterId=e1778f05265c481d62aa247aaf4ecae8&namespace=readable-logs-spike&pod=single-json&podUid=0035d4f0-23c6-4e7d-93b2-c1d13a41cb92",
+        "visibility": "visible",
+        "focused": false
+      },
+      "rpcIdentity": {
+        "senderId": 2,
+        "senderPid": 2933926,
+        "frame": {
+          "processId": 6,
+          "routingId": 4,
+          "url": "https://e1778f05265c481d62aa247aaf4ecae8.renderer.freelens.app:36357/extension/freelens-runtime-probe57/probe57?clusterId=e1778f05265c481d62aa247aaf4ecae8&namespace=readable-logs-spike&pod=single-json&podUid=0035d4f0-23c6-4e7d-93b2-c1d13a41cb92"
+        },
+        "windowId": 2
+      }
+    }
+  ],
+  "pass": true
+}

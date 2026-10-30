@@ -1,0 +1,220 @@
+{
+  "action": "runtime",
+  "started": "2026-10-30T23:39:22.330Z",
+  "observations": [
+    {
+      "id": {
+        "senderId": 2,
+        "senderPid": 2890504,
+        "frame": {
+          "processId": 6,
+          "routingId": 4,
+          "url": "https://e1778f05265c481d62aa247aaf4ecae8.renderer.freelens.app:33969/extension/freelens-runtime-probe57/probe57?clusterId=e1778f05265c481d62aa247aaf4ecae8&namespace=readable-logs-spike&pod=single-json&podUid=0035d4f0-23c6-4e7d-93b2-c1d13a41cb92"
+        },
+        "windowId": 2
+      },
+      "reply": {
+        "requestId": 1,
+        "key": {
+          "viewerEpoch": 1,
+          "targetEpoch": 1,
+          "instanceEpoch": 1,
+          "windowRevision": 1,
+          "messageRevision": 1,
+          "queryRevision": 1
+        },
+        "workerGeneration": 1,
+        "kind": "matches",
+        "records": [
+          {
+            "ref": {
+              "context": "probe57",
+              "occurrence": 0
+            },
+            "application": true,
+            "message": true
+          }
+        ]
+      },
+      "foreign": {
+        "error": "Error: Error invoking remote method 'extensions@4256633e3881320ad6438845a74a3b44316384481857494c5ea445bd03ef62e0:control': Error: Foreign or disposed Find viewer"
+      },
+      "cancellation": {
+        "reply": null,
+        "state": {
+          "settingsPath": "/tmp/freelens-production-find-57-fkw83m82/Freelens/extension-store/freelens-runtime-probe57/readable-logs.json",
+          "configuration": {
+            "schemaVersion": 3,
+            "viewer": {
+              "inspection": "bottom"
+            },
+            "profiles": [
+              {
+                "id": "probe57",
+                "name": "Runtime saved profile",
+                "format": {
+                  "messagePaths": [
+                    "/message",
+                    "/msg"
+                  ],
+                  "timestampPaths": [
+                    "/timestamp",
+                    "/time",
+                    "/@timestamp"
+                  ],
+                  "levelPaths": [
+                    "/level",
+                    "/severity",
+                    "/log.level",
+                    "/log/level"
+                  ],
+                  "inlinePaths": [],
+                  "hiddenPaths": [],
+                  "numericTimestamp": "unset",
+                  "severityMappings": []
+                },
+                "matching": {
+                  "enabled": false,
+                  "conditions": {
+                    "labels": []
+                  }
+                }
+              }
+            ],
+            "globalDefault": "default"
+          },
+          "workers": {
+            "starts": 2,
+            "exits": 1,
+            "live": 1
+          },
+          "service": {
+            "owners": 2,
+            "retiring": 0,
+            "senders": 1,
+            "opening": 0,
+            "watch": true
+          },
+          "handlers": [
+            "extensions@4256633e3881320ad6438845a74a3b44316384481857494c5ea445bd03ef62e0:identity",
+            "extensions@4256633e3881320ad6438845a74a3b44316384481857494c5ea445bd03ef62e0:state",
+            "extensions@4256633e3881320ad6438845a74a3b44316384481857494c5ea445bd03ef62e0:open",
+            "extensions@4256633e3881320ad6438845a74a3b44316384481857494c5ea445bd03ef62e0:submit",
+            "extensions@4256633e3881320ad6438845a74a3b44316384481857494c5ea445bd03ef62e0:control",
+            "extensions@4256633e3881320ad6438845a74a3b44316384481857494c5ea445bd03ef62e0:reset",
+            "extensions@4256633e3881320ad6438845a74a3b44316384481857494c5ea445bd03ef62e0:visibility"
+          ],
+          "extensionListeners": [
+            [
+              "extensions@4256633e3881320ad6438845a74a3b44316384481857494c5ea445bd03ef62e0:ping",
+              1
+            ]
+          ],
+          "stops": 3
+        }
+      },
+      "active": {
+        "identity": {
+          "senderId": 2,
+          "senderPid": 2890504,
+          "frame": {
+            "processId": 6,
+            "routingId": 4,
+            "url": "https://e1778f05265c481d62aa247aaf4ecae8.renderer.freelens.app:33969/extension/freelens-runtime-probe57/probe57?clusterId=e1778f05265c481d62aa247aaf4ecae8&namespace=readable-logs-spike&pod=single-json&podUid=0035d4f0-23c6-4e7d-93b2-c1d13a41cb92"
+          },
+          "windowId": 2
+        },
+        "selected": "e1778f05265c481d62aa247aaf4ecae8",
+        "focused": false,
+        "visible": true
+      },
+      "hidden": {
+        "identity": {
+          "senderId": 2,
+          "senderPid": 2890504,
+          "frame": {
+            "processId": 6,
+            "routingId": 4,
+            "url": "https://e1778f05265c481d62aa247aaf4ecae8.renderer.freelens.app:33969/extension/freelens-runtime-probe57/probe57?clusterId=e1778f05265c481d62aa247aaf4ecae8&namespace=readable-logs-spike&pod=single-json&podUid=0035d4f0-23c6-4e7d-93b2-c1d13a41cb92"
+          },
+          "windowId": 2
+        },
+        "selected": null,
+        "focused": false,
+        "visible": true
+      },
+      "state": {
+        "settingsPath": "/tmp/freelens-production-find-57-fkw83m82/Freelens/extension-store/freelens-runtime-probe57/readable-logs.json",
+        "configuration": {
+          "schemaVersion": 3,
+          "viewer": {
+            "inspection": "bottom"
+          },
+          "profiles": [
+            {
+              "id": "probe57",
+              "name": "Runtime saved profile",
+              "format": {
+                "messagePaths": [
+                  "/message",
+                  "/msg"
+                ],
+                "timestampPaths": [
+                  "/timestamp",
+                  "/time",
+                  "/@timestamp"
+                ],
+                "levelPaths": [
+                  "/level",
+                  "/severity",
+                  "/log.level",
+                  "/log/level"
+                ],
+                "inlinePaths": [],
+                "hiddenPaths": [],
+                "numericTimestamp": "unset",
+                "severityMappings": []
+              },
+              "matching": {
+                "enabled": false,
+                "conditions": {
+                  "labels": []
+                }
+              }
+            }
+          ],
+          "globalDefault": "default"
+        },
+        "workers": {
+          "starts": 2,
+          "exits": 2,
+          "live": 0
+        },
+        "service": {
+          "owners": 1,
+          "retiring": 0,
+          "senders": 1,
+          "opening": 0,
+          "watch": true
+        },
+        "handlers": [
+          "extensions@4256633e3881320ad6438845a74a3b44316384481857494c5ea445bd03ef62e0:identity",
+          "extensions@4256633e3881320ad6438845a74a3b44316384481857494c5ea445bd03ef62e0:state",
+          "extensions@4256633e3881320ad6438845a74a3b44316384481857494c5ea445bd03ef62e0:open",
+          "extensions@4256633e3881320ad6438845a74a3b44316384481857494c5ea445bd03ef62e0:submit",
+          "extensions@4256633e3881320ad6438845a74a3b44316384481857494c5ea445bd03ef62e0:control",
+          "extensions@4256633e3881320ad6438845a74a3b44316384481857494c5ea445bd03ef62e0:reset",
+          "extensions@4256633e3881320ad6438845a74a3b44316384481857494c5ea445bd03ef62e0:visibility"
+        ],
+        "extensionListeners": [
+          [
+            "extensions@4256633e3881320ad6438845a74a3b44316384481857494c5ea445bd03ef62e0:ping",
+            1
+          ]
+        ],
+        "stops": 3
+      }
+    }
+  ],
+  "pass": true
+}

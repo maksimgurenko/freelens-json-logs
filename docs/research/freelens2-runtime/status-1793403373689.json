@@ -1,0 +1,27 @@
+{
+  "action": "status",
+  "started": "2026-10-30T23:36:13.619Z",
+  "observations": [
+    {
+      "contexts": [
+        {
+          "id": 1,
+          "origin": "https://renderer.freelens.app:33969",
+          "name": "",
+          "uniqueId": "-4654980367667554825.3995619559704821665",
+          "auxData": {
+            "isDefault": true,
+            "type": "default",
+            "frameId": "395215A1F6523169CDF68482EC7DCDCE"
+          }
+        }
+      ],
+      "root": {
+        "url": "https://renderer.freelens.app:33969/welcome",
+        "text": "home\narrow_back\narrow_forward\nWelcome to Freelens!\n\nTo get you started we have auto-detected your clusters in your kubeconfig file and added them to the catalog, your centralized view for managing all your cloud-native resources.\n\nIf you have any questions or feedback, please join us on our Github repository.\n\nview_list\nBrowse Clusters in Catalog\nnavigate_next\nterminal\nOpen a Terminal\nnavigate_next\nhome\nsettings\nview_list\nsettings\narrow_left\n1\narrow_right",
+        "api": true
+      }
+    }
+  ],
+  "pass": true
+}

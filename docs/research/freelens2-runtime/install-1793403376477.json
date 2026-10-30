@@ -1,0 +1,58 @@
+{
+  "action": "install",
+  "started": "2026-10-30T23:36:15.899Z",
+  "observations": [
+    {
+      "loaded": {
+        "settingsPath": "/tmp/freelens-production-find-57-fkw83m82/Freelens/extension-store/freelens-runtime-probe57/readable-logs.json",
+        "configuration": {
+          "schemaVersion": 3,
+          "viewer": {
+            "inspection": "side"
+          },
+          "profiles": [],
+          "globalDefault": "default"
+        },
+        "workers": {
+          "starts": 0,
+          "exits": 0,
+          "live": 0
+        },
+        "service": {
+          "owners": 0,
+          "retiring": 0,
+          "senders": 0,
+          "opening": 0,
+          "watch": false
+        },
+        "handlers": [
+          "extensions@4256633e3881320ad6438845a74a3b44316384481857494c5ea445bd03ef62e0:identity",
+          "extensions@4256633e3881320ad6438845a74a3b44316384481857494c5ea445bd03ef62e0:state",
+          "extensions@4256633e3881320ad6438845a74a3b44316384481857494c5ea445bd03ef62e0:open",
+          "extensions@4256633e3881320ad6438845a74a3b44316384481857494c5ea445bd03ef62e0:submit",
+          "extensions@4256633e3881320ad6438845a74a3b44316384481857494c5ea445bd03ef62e0:control",
+          "extensions@4256633e3881320ad6438845a74a3b44316384481857494c5ea445bd03ef62e0:reset",
+          "extensions@4256633e3881320ad6438845a74a3b44316384481857494c5ea445bd03ef62e0:visibility"
+        ],
+        "extensionListeners": [
+          [
+            "extensions@4256633e3881320ad6438845a74a3b44316384481857494c5ea445bd03ef62e0:ping",
+            1
+          ]
+        ],
+        "stops": 3
+      },
+      "renderer": {
+        "version": "2.0.1-0",
+        "react": "19.3.1",
+        "reactIdentity": true,
+        "mobxIdentity": true,
+        "mobxObservable": true,
+        "href": "https://renderer.freelens.app:33969/extensions",
+        "visibility": "visible",
+        "focused": false
+      }
+    }
+  ],
+  "pass": true
+}

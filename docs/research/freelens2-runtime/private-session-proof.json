@@ -1,0 +1,20 @@
+{
+  "hostPid": 2933740,
+  "privateCompositorPid": 2889938,
+  "runtime": "/tmp/fd-3xjgffp4",
+  "privateInstance": "0aa6745f705f2c4b0a5004eb019ef76e5bbdb426_1793403369_1713939431",
+  "library": "/tmp/freelens2-runtime-tools-57/aquamarine/build/libaquamarine.so.0.15.1",
+  "ownedWindows": [
+    {
+      "pid": 2933740,
+      "class": "freelens",
+      "workspace": {
+        "address": "7",
+        "id": 7,
+        "type": "normal",
+        "name": "7"
+      },
+      "address": "0x5581b1c2ee00"
+    }
+  ]
+}

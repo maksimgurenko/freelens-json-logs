@@ -1,0 +1,31 @@
+{
+  "source": "c02289f23422d9512544de3c506605296433e999",
+  "trackedStatus": "",
+  "artifacts": [
+    {
+      "path": "/home/max/work/freelens2/freelens/dist/linux-unpacked/freelens",
+      "bytes": 228912456,
+      "sha256": "fe48bf9d2cb07a14e63e9adf0afa8a669872a70e6cffe130f12b560b6fbe756a"
+    },
+    {
+      "path": "/home/max/work/freelens2/freelens/dist/linux-unpacked/resources/app.asar",
+      "bytes": 159849588,
+      "sha256": "f4fef770efa7d9518a875421d48c7c350c8bf104636395ca220f3000d75d8f3d"
+    },
+    {
+      "path": "/home/max/work/freelens2/packages/extensions/dist/extension-api.js",
+      "bytes": 734,
+      "sha256": "b563120499bbcc198754b85171a207cad3356876eb187db9d75ccf716732d400"
+    },
+    {
+      "path": "/home/max/work/freelens2/packages/extensions/dist/extension-api.d.ts",
+      "bytes": 486820,
+      "sha256": "fb605d806a069a8b33ca3ade6a5b09c2bed6bf1e5812ac208ed02a7b3281dcd1"
+    },
+    {
+      "path": "/tmp/freelens2-runtime-57/.scratch/fixture57.tgz",
+      "bytes": 16047,
+      "sha256": "9e58ee07c2e9bc092a55c5867e5740cdfd54e3986c8c7ee852552e0cee8c07f0"
+    }
+  ]
+}

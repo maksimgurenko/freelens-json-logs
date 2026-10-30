@@ -1,0 +1,7 @@
+{
+  "action": "settings",
+  "started": "2026-10-30T23:37:10.126Z",
+  "observations": [],
+  "pass": false,
+  "error": "Error: Readiness/state deadline\n    at wait (file:///tmp/freelens2-runtime-57/scripts/freelens2-runtime/probe.mjs:21:11)\n    at async file:///tmp/freelens2-runtime-57/scripts/freelens2-runtime/probe.mjs:58:22"
+}

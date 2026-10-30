@@ -1,0 +1,50 @@
+{
+  "fixtureVersion": "0.0.58",
+  "tarballSHA256": "2adcb7596d248f48c76aac4046865e90987e3239d62ff2851dc3c4d250d833cf",
+  "installed": [
+    {
+      "name": "main-0.0.58.js",
+      "installedPath": "/tmp/freelens-production-find-57-fkw83m82/Freelens/extensions/freelens-runtime-probe57/0.0.58-2adcb759/main-0.0.58.js",
+      "sha256": "9f81d8123aff4e1b22e1671773d69e1f2a14e8f61072a721789d59ac983150f2",
+      "equalsLocal": true
+    },
+    {
+      "name": "renderer-0.0.58.js",
+      "installedPath": "/tmp/freelens-production-find-57-fkw83m82/Freelens/extensions/freelens-runtime-probe57/0.0.58-2adcb759/renderer-0.0.58.js",
+      "sha256": "b42ee14fe8b047fcbeea78731753d0f1b64f6e99b4fe76a9eedda81ca3af4743",
+      "equalsLocal": true
+    },
+    {
+      "name": "worker-0.0.58.cjs",
+      "installedPath": "/tmp/freelens-production-find-57-fkw83m82/Freelens/extensions/freelens-runtime-probe57/0.0.58-2adcb759/worker-0.0.58.cjs",
+      "sha256": "95c3e55a80882bdf0599f6ad06f30f7820f435917efabec86beb1c1ce7ea4cb2",
+      "equalsLocal": true
+    }
+  ],
+  "display": {
+    "session": {
+      "unsetEnvironment": [
+        "GBM_BACKEND",
+        "__GLX_VENDOR_LIBRARY_NAME",
+        "LIBVA_DRIVER_NAME"
+      ],
+      "outerPid": 2889867,
+      "hyprlandPid": 2889938,
+      "instance": "0aa6745f705f2c4b0a5004eb019ef76e5bbdb426_1793403369_1713939431",
+      "runtime": "/tmp/fd-3xjgffp4",
+      "environment": {
+        "XDG_RUNTIME_DIR": "/tmp/fd-3xjgffp4",
+        "HYPRLAND_INSTANCE_SIGNATURE": "0aa6745f705f2c4b0a5004eb019ef76e5bbdb426_1793403369_1713939431",
+        "WAYLAND_DISPLAY": "/tmp/fd-3xjgffp4/wayland-1",
+        "HYPRLAND_NO_SD_VARS": "1",
+        "HYPRLAND_NO_SD_NOTIFY": "1",
+        "AQ_DRM_DEVICES": "/dev/null",
+        "LIBSEAT_BACKEND": "seatd",
+        "SEATD_SOCK": "/tmp/freelens2-runtime-57/.scratch/find/57-host/no-seatd.sock",
+        "__EGL_VENDOR_LIBRARY_FILENAMES": "/usr/share/glvnd/egl_vendor.d/50_mesa.json"
+      }
+    },
+    "diagnosticSource": "f31c47a1b9d300847d8fc3108ad959448103dfc1",
+    "librarySHA256": "90ec9f0aedfa664d55e71b69b08384b5223fec9cc66961d37d68f9c9bffde1b5"
+  }
+}

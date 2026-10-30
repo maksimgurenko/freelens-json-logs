@@ -1,0 +1,12 @@
+{
+  "step": "install",
+  "command": [
+    "pnpm",
+    "install",
+    "--frozen-lockfile"
+  ],
+  "cwd": "/home/max/work/freelens2",
+  "exit": 0,
+  "seconds": 4.588052034378052,
+  "trackedStatus": ""
+}

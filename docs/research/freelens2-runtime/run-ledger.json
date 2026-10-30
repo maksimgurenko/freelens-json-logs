@@ -1,0 +1,209 @@
+{
+  "probes": [
+    {
+      "file": "disable-1793403626455.json",
+      "action": "disable",
+      "pass": false,
+      "error": "Error: Readiness/state deadline\n    at wait (file:///tmp/freelens2-runtime-57/scripts/freelens2-runtime/probe.mjs:21:11)\n    at async file:///tmp/freelens2-runtime-57/scripts/freelens2-runtime/probe.mjs:116:5"
+    },
+    {
+      "file": "disable-1793403630887.json",
+      "action": "disable",
+      "pass": true,
+      "error": null
+    },
+    {
+      "file": "enable-1793403656237.json",
+      "action": "enable",
+      "pass": false,
+      "error": "Error: Readiness/state deadline\n    at wait (file:///tmp/freelens2-runtime-57/scripts/freelens2-runtime/probe.mjs:21:11)\n    at async file:///tmp/freelens2-runtime-57/scripts/freelens2-runtime/probe.mjs:116:5"
+    },
+    {
+      "file": "enable-1793403671684.json",
+      "action": "enable",
+      "pass": true,
+      "error": null
+    },
+    {
+      "file": "frame-navigation-1793403694975.json",
+      "action": "frame-navigation",
+      "pass": true,
+      "error": null
+    },
+    {
+      "file": "identity-1793403694710.json",
+      "action": "identity",
+      "pass": true,
+      "error": null
+    },
+    {
+      "file": "install-1793403376477.json",
+      "action": "install",
+      "pass": true,
+      "error": null
+    },
+    {
+      "file": "install-1793403543862.json",
+      "action": "install",
+      "pass": false,
+      "error": "Error: Readiness/state deadline\n    at wait (file:///tmp/freelens2-runtime-57/scripts/freelens2-runtime/probe.mjs:21:11)\n    at async file:///tmp/freelens2-runtime-57/scripts/freelens2-runtime/probe.mjs:35:20"
+    },
+    {
+      "file": "navigate-away-1793403568114.json",
+      "action": "navigate-away",
+      "pass": true,
+      "error": null
+    },
+    {
+      "file": "open-1793403405554.json",
+      "action": "open",
+      "pass": false,
+      "error": "Error: Readiness/state deadline\n    at wait (file:///tmp/freelens2-runtime-57/scripts/freelens2-runtime/probe.mjs:21:11)\n    at async file:///tmp/freelens2-runtime-57/scripts/freelens2-runtime/probe.mjs:46:5"
+    },
+    {
+      "file": "open-1793403442909.json",
+      "action": "open",
+      "pass": false,
+      "error": "Error: Readiness/state deadline\n    at wait (file:///tmp/freelens2-runtime-57/scripts/freelens2-runtime/probe.mjs:21:11)\n    at async file:///tmp/freelens2-runtime-57/scripts/freelens2-runtime/probe.mjs:46:5"
+    },
+    {
+      "file": "open-1793403476743.json",
+      "action": "open",
+      "pass": false,
+      "error": "Error: Readiness/state deadline\n    at wait (file:///tmp/freelens2-runtime-57/scripts/freelens2-runtime/probe.mjs:21:11)\n    at async file:///tmp/freelens2-runtime-57/scripts/freelens2-runtime/probe.mjs:50:5"
+    },
+    {
+      "file": "open-1793403555571.json",
+      "action": "open",
+      "pass": true,
+      "error": null
+    },
+    {
+      "file": "open-1793403846921.json",
+      "action": "open",
+      "pass": true,
+      "error": null
+    },
+    {
+      "file": "quit-1793403731794.json",
+      "action": "quit",
+      "pass": true,
+      "error": null
+    },
+    {
+      "file": "quit-1793403747553.json",
+      "action": "quit",
+      "pass": true,
+      "error": null
+    },
+    {
+      "file": "quit-1793403788150.json",
+      "action": "quit",
+      "pass": true,
+      "error": null
+    },
+    {
+      "file": "quit-1793403864767.json",
+      "action": "quit",
+      "pass": true,
+      "error": null
+    },
+    {
+      "file": "recover-1793403822311.json",
+      "action": "recover",
+      "pass": true,
+      "error": null
+    },
+    {
+      "file": "restore-1793403747458.json",
+      "action": "restore",
+      "pass": true,
+      "error": null
+    },
+    {
+      "file": "restore-1793403788054.json",
+      "action": "restore",
+      "pass": true,
+      "error": null
+    },
+    {
+      "file": "runtime-1793403562602.json",
+      "action": "runtime",
+      "pass": true,
+      "error": null
+    },
+    {
+      "file": "seed-1793403601121.json",
+      "action": "seed",
+      "pass": true,
+      "error": null
+    },
+    {
+      "file": "seed-1793403694824.json",
+      "action": "seed",
+      "pass": true,
+      "error": null
+    },
+    {
+      "file": "seed-1793403731692.json",
+      "action": "seed",
+      "pass": true,
+      "error": null
+    },
+    {
+      "file": "seed-1793403864668.json",
+      "action": "seed",
+      "pass": true,
+      "error": null
+    },
+    {
+      "file": "settings-1793403455427.json",
+      "action": "settings",
+      "pass": false,
+      "error": "Error: Readiness/state deadline\n    at wait (file:///tmp/freelens2-runtime-57/scripts/freelens2-runtime/probe.mjs:21:11)\n    at async file:///tmp/freelens2-runtime-57/scripts/freelens2-runtime/probe.mjs:58:22"
+    },
+    {
+      "file": "settings-1793403558108.json",
+      "action": "settings",
+      "pass": true,
+      "error": null
+    },
+    {
+      "file": "settings-1793403847024.json",
+      "action": "settings",
+      "pass": true,
+      "error": null
+    },
+    {
+      "file": "status-1793403373689.json",
+      "action": "status",
+      "pass": true,
+      "error": null
+    },
+    {
+      "file": "status-1793403402363.json",
+      "action": "status",
+      "pass": true,
+      "error": null
+    },
+    {
+      "file": "toggle-1793403570573.json",
+      "action": "toggle",
+      "pass": true,
+      "error": null
+    }
+  ],
+  "workers": {
+    "starts": 7,
+    "exits": 7
+  },
+  "normalExitPids": [
+    2890316,
+    2927220,
+    2930680,
+    2933740
+  ],
+  "quitEvents": 4,
+  "processExitEvents": 5,
+  "note": "The first process loaded two fixture versions and therefore wrote two exit-observer records; four actual host launches exited normally."
+}

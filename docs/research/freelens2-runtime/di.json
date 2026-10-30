@@ -1,0 +1,11 @@
+{
+  "step": "di",
+  "command": [
+    "pnpm",
+    "build:di"
+  ],
+  "cwd": "/home/max/work/freelens2",
+  "exit": 0,
+  "seconds": 0.5834488868713379,
+  "trackedStatus": ""
+}

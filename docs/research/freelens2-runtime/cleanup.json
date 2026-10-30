@@ -1,0 +1,17 @@
+{
+  "allHostPidsGone": true,
+  "privateCompositorsExitedZero": true,
+  "profileRemoved": "/tmp/freelens-production-find-57-fkw83m82",
+  "runtimeDirectoriesRemoved": [
+    "/tmp/fd-ux2efuns",
+    "/tmp/fd-v68z2dy2",
+    "/tmp/fd-3xjgffp4"
+  ],
+  "coreFilesRemoved": {
+    "core.2868505": "hyprland-update-screen --new-version 0.57.0",
+    "core.2874903": "hyprland-donate-screen"
+  },
+  "ownedTestWindowsOnUserDesktop": 0,
+  "sourceTrackedStatus": "",
+  "originalExtensionStatus": " M docs/README.md\n?? docs/known-issues.md\n?? docs/research/hyprland-wayland-session-audit-2026-10-28.md\n?? scripts/__pycache__/\n?? tests/__pycache__/\n"
+}

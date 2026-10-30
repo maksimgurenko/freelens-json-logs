@@ -1,0 +1,21 @@
+{
+  "pnpmIntegrityMatchesSourcePin": true,
+  "failedPrerequisites": [
+    {
+      "observation": "Initial bootstrap expected pnpm.cjs; pnpm 12 supplies bin/pnpm.mjs and a native-binary wrapper.",
+      "correction": "Use the pinned package entry and its own verified native bootstrap."
+    },
+    {
+      "observation": "Stock Aquamarine 0.15.1 left nested Hyprland 0.57 IPC in unsafe state; no Freelens launched during either failed display attempt.",
+      "correction": "Rebuilt the existing one-line output-startup diagnostic from the historical evidence at exact v0.15.1 source."
+    },
+    {
+      "observation": "cmake was absent; locally extracted cached cmake also needed librhash and libcppdap.",
+      "correction": "Extracted the owned prefix from cmake 4.4.5-1, rhash 1.4.6-1 and cppdap 1.58.0-3 without global installation."
+    },
+    {
+      "observation": "Two private compositor welcome/update helper processes generated core files.",
+      "correction": "Recorded their identities and removed the owned dumps; both compositor processes subsequently exited zero."
+    }
+  ]
+}
