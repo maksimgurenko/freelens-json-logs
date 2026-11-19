@@ -1,11 +1,11 @@
 {
   "name": "freelens-readable-logs-v2",
-  "version": "0.1.36",
+  "version": "0.1.37",
   "private": true,
   "description": "Readable bounded container log snapshots for Freelens 2",
   "license": "UNLICENSED",
-  "main": "out/main-0.1.36.js",
-  "renderer": "out/renderer-0.1.36.mjs",
+  "main": "out/main-0.1.37.js",
+  "renderer": "out/renderer-0.1.37.mjs",
   "storeName": "freelens-readable-logs-v2",
   "files": [
     "out/",

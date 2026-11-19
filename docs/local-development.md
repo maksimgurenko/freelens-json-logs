@@ -60,7 +60,9 @@ React and MobX singletons. Electron is supplied by the host to main.
 
 ## Supported local maintenance
 
-The [installation steps](../README.md#install) use the archive path in
+For a release install, download the v2 tarball and its `SHA256SUMS` from
+the same [GitHub release](https://github.com/maksimgurenko/freelens-json-logs/releases).
+The [installation steps](../README.md#install) use the verified archive path in
 **Extensions** and a fresh app session. For a v2 update, uninstall the existing
 v2 entry, wait for its removal, and install the new archive once. Check its
 version and **Enabled** status before opening a cluster. Uninstall preserves

@@ -128,6 +128,25 @@ Raw records and the tested patch are under
 `.scratch/verification/77/review/` in the review worktree. Windows and macOS
 remain unverified.
 
+## Release v0.1.37
+
+The release archive `freelens-readable-logs-v2-0.1.37.tgz` installed as
+**Enabled** in official Freelens 2.0.0 Linux amd64. Its SHA-256 was
+`0903d78dbc66bf0880d8bc0235271d3a52a6ae2ef7ce79f19bb043ecc7aeff4e`.
+Package inspection verified the versioned entries, SDK license and runtime
+files. The four installed runtime assets matched the archive.
+
+The private workspace 7 run repeated the installed checks above. It verified
+Pod-header navigation, log eligibility, refresh and Pause, regular, init
+and ephemeral containers, clipboard and Find shortcuts, settings persistence,
+and exact recovery backup. Seven Find workers started and exited, including
+the workers active during disable and normal quit. All six host processes
+exited normally and the owned profile and runtime were removed.
+
+Native input used only the private display. The real desktop observer recorded
+no focus or workspace transitions. Pointer endpoints differed, and the observer
+did not measure pointer motion. Windows and macOS remain unverified.
+
 [pr-ci]: https://github.com/maksimgurenko/freelens-json-logs/actions/runs/44630704528
 
 [issue]: https://github.com/maksimgurenko/freelens-json-logs/issues/76

@@ -21,9 +21,9 @@ archive or try a development install in a private profile.
 
 ## Install
 
-1. Obtain the checked `freelens-readable-logs-v2-<version>.tgz` and
-   `SHA256SUMS` from the build or CI artifact. Run `sha256sum --check SHA256SUMS`
-   in their directory.
+1. Download `freelens-readable-logs-v2-<version>.tgz` and `SHA256SUMS` from
+   the same [GitHub release](https://github.com/maksimgurenko/freelens-json-logs/releases).
+   Run `sha256sum --check SHA256SUMS` in their directory.
 2. Open a fresh Freelens 2 session and go to **Extensions** before opening a cluster.
 3. If the legacy `freelens-readable-logs` entry is visible, open its menu,
    choose **Uninstall** and wait for it to disappear. Keep its settings file at
