@@ -4,6 +4,7 @@ import React from 'react';
 import { createRoot } from 'react-dom/client';
 import { flushSync } from 'react-dom';
 import * as Mobx from 'mobx';
+import { RendererExtensionStub } from './freelens-renderer-stub.mjs';
 import { verifyFindPresentation } from './find-presentation-browser.jsx';
 import { verifyFindMarks } from './find-marks-browser.jsx';
 import { verifyFindIntegration } from './find-integration-browser.jsx';
@@ -80,13 +81,16 @@ const ipc = {
 class Ipc { static createInstance() { return ipc; } }
 const configurationStores = [];
 class ExtensionStore {
-  static getInstanceOrCreate() { const store = new this(); configurationStores.push(store); return store; }
+  static getInstanceOrCreate() {
+    if (!configurationStores.length) configurationStores.push(new this());
+    return configurationStores[0];
+  }
   cwd() { return '/isolated-identity-store'; }
   loadExtension() { if (failSettingsBinding) throw new Error('Controlled renderer store failure'); }
 }
 globalThis.FreelensExtensionApi = { React, Mobx,
-  Common: { Store: { ExtensionStore } }, Renderer: { Ipc, LensExtension: class {},
-    Component: { Icon: ({ material }) => <span className="Icon material-icons" aria-hidden="true">{material}</span> },
+  Common: { Store: { ExtensionStore } }, Renderer: { Ipc, LensExtension: RendererExtensionStub,
+    Component: { MenuItem: ({ children }) => children, Icon: ({ material }) => <span className="Icon material-icons" aria-hidden="true">{material}</span> },
     Catalog: { getActiveCluster: () => ({ id: 'cluster', name: 'Identity test' }) },
     K8sApi: { podsApi: {
       async get() { podReads++; return { metadata: { uid, labels: {} }, spec: { containers: [{ name: 'app' }, { name: 'sidecar' }] },
@@ -98,7 +102,6 @@ globalThis.FreelensExtensionApi = { React, Mobx,
 Object.defineProperty(navigator, 'clipboard', { value: { writeText: value => clipboardWrite(value) } });
 const { default: Renderer } = await import('/renderer.mjs');
 const extension = new Renderer();
-const Page = extension.clusterPages[0].components.Page;
 const root = document.querySelector('#root');
 const reactRoot = createRoot(root);
 const rows = () => [...root.querySelectorAll('.rl-record')];
@@ -742,6 +745,7 @@ globalThis.verifyIdentity = async () => {
   await document.fonts.ready;
   await extension.onActivate();
   const params = Object.fromEntries(Object.entries({ namespace: 'ns', pod: 'pod', podUid: 'uid', clusterId: 'cluster' }).map(([key, value]) => [key, { get: () => value }]));
+  const Page = extension.clusterPages[0].components.Page;
   reactRoot.render(<Page params={params} />);
   try {
     await until(() => rows().length === 3, 'No initial rows'); button('Pause');

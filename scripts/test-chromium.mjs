@@ -13,3 +13,8 @@ export async function chromePath() {
   }
   throw new Error('Chromium/Chrome is required; set CHROME_BIN to its executable. No checks are skipped.');
 }
+
+// The production viewer registers only in a cluster iframe. Keep that frame
+// same-origin in the isolated server so assertions can run from the CDP page.
+export const clusterFixturePage = '<!doctype html><style>html,body,iframe{display:block;width:100%;height:100%;margin:0;border:0}</style><iframe src="/cluster-fixture" title="Cluster fixture"></iframe>';
+export const inClusterFixture = expression => `document.querySelector('iframe')?.contentWindow.eval(${JSON.stringify(expression)})`;

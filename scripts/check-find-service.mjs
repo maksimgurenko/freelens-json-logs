@@ -7,7 +7,7 @@ export async function checkPackedFindService(entry, settingsDirectory) {
   const bridge = packedFindBridge(entry, settingsDirectory);
   const request = id => ({ requestId: id, key: { viewerEpoch: 1, targetEpoch: 1, instanceEpoch: 1, windowRevision: 1, messageRevision: 1, queryRevision: id },
     query: { text: 'K', matchCase: false, wholeWords: true }, records: [{ ref: { context: 'one', occurrence: 0 }, application: 'K K', message: 'K' }], work: 'match' });
-  let stopToExitMs, pending;
+  let stopToExitMs, pending, rejectedLateStatus = false;
   try {
     const root = await bridge.invoke('find-open', ['viewer'], 0);
     const child = await bridge.invoke('find-open', ['viewer'], 1);
@@ -44,8 +44,22 @@ export async function checkPackedFindService(entry, settingsDirectory) {
     pending = bridge.invoke('find-request', [viewerToken, request(1)], 0);
     assert.equal(bridge.status().live, 1, 'Expected a live worker at deactivation');
     assert.equal(bridge.status().appListeners, 0, 'Activation registered an application quit hook');
-  } finally { await bridge.dispose(); }
+  } finally {
+    const before = bridge.status();
+    const disposing = bridge.dispose();
+    try {
+      if (pending) {
+        assert.equal(bridge.status().live, 1, 'Worker exited before the deactivation race was exercised');
+        assert.throws(() => bridge.invoke('readable-logs-settings-status', [], 0), /deactivating/i);
+        const during = bridge.status();
+        assert.equal(during.storeBindings, before.storeBindings, 'Late status rebound the settings store');
+        assert.equal(during.registrations, before.registrations, 'Late status registered duplicate handlers');
+        assert.equal(during.starts, before.starts, 'Late status started another Find worker');
+        rejectedLateStatus = true;
+      }
+    } finally { await disposing; }
+  }
   assert.equal(await pending, undefined, 'Deactivation delivered an obsolete result');
   const lifecycle = bridge.status(); assert.equal(lifecycle.starts, lifecycle.exits); assert.equal(lifecycle.peak, 1);
-  return { scope: 'actual packed main + trusted worker; SDK/Electron/frame-tree stand-ins', ...lifecycle, idleStopToActualExitMs: stopToExitMs };
+  return { scope: 'actual packed main + trusted worker; SDK/Electron/frame-tree stand-ins', ...lifecycle, idleStopToActualExitMs: stopToExitMs, rejectedLateStatus };
 }

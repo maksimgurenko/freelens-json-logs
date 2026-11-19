@@ -66,7 +66,7 @@ jobs:
         run: npm run test:workers
       - name: Check RAM and disk retention in isolated processes and headless Chrome
         run: npm run test:smoke
-      - name: Build and inspect the installable package
+      - name: Build and check the Freelens 2 archive
         run: |
           npm run package
           npm run check:package
@@ -74,10 +74,12 @@ jobs:
         env:
           PACKAGE_FILE: ${{ steps.package.outputs.file }}
         run: |
+          cp "dist/$PACKAGE_FILE" "$RUNNER_TEMP/$PACKAGE_FILE"
           (cd dist && sha256sum "$PACKAGE_FILE" > SHA256SUMS)
           npm run package
+          cmp "$RUNNER_TEMP/$PACKAGE_FILE" "dist/$PACKAGE_FILE"
           (cd dist && sha256sum --check SHA256SUMS)
-      - name: Save verified release assets
+      - name: Retain the checked archive and SHA-256
         uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
         with:
           name: release-assets

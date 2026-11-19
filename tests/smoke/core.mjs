@@ -58,7 +58,7 @@ const window = Object.assign(new EventEmitter(), {
   webContents: Object.assign(new EventEmitter(), { getURL: () => 'https://renderer.freelens.app/cluster/cluster' }),
 });
 class Ipc { static createInstance() { return ipc; } }
-globalThis.FreelensExtensionApi = { Mobx: await import('mobx'), Common: { Store: { ExtensionStore } }, Main: { LensExtension: class {}, Ipc } };
+globalThis.FreelensExtensionApi = { Mobx: await import('mobx'), Common: { Store: { ExtensionStore }, Util: { getAppVersion: () => '2.0.0' } }, Main: { LensExtension: class {}, Ipc } };
 const require = createRequire(import.meta.url);
 // The bundle's only native dependency is Electron, supplied by the host at runtime.
 const originalLoad = Module._load;
@@ -137,6 +137,7 @@ async function cycle(index) {
   }
 
   extension.onActivate();
+  handlers.get('readable-logs-settings-status')();
   const caller = { sender: window.webContents, senderFrame: { processId: 1, routingId: 7, isDestroyed: () => false } };
   for (let n = 0; n < 8; n++) {
     const reply = `viewer-visibility-${index}-${n}`;
@@ -165,6 +166,7 @@ async function measure() {
 }
 try {
   extension.onActivate();
+  handlers.get('readable-logs-settings-status')();
   const detachedFrame = { detached: false, isDestroyed: () => false, processId: 1, routingId: 7 };
   handlers.get('viewer-visibility-request')({ sender: window.webContents, senderFrame: detachedFrame }, 'cluster', 'viewer-visibility-detached');
   assert.equal(window.listenerCount('show'), 1);

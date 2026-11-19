@@ -1,8 +1,8 @@
 # Using Readable logs
 
-For downloads and installation, start with the [README](../README.md#install).
-The supported host is Freelens 1.10.3; the verified Linux launch settings are in
-the [maintenance guide](local-development.md#supported-local-maintenance).
+Use Freelens 2 and the [installation guide](../README.md#install). The
+[maintenance guide](local-development.md#supported-local-maintenance) covers
+updates and the Linux verification scope.
 
 ## Open logs and control updates
 

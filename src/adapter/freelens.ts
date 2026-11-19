@@ -5,9 +5,7 @@ import type { LogTarget } from '../core/target.ts';
 import { observe } from '../core/observe.ts';
 import { bindVisibility, VISIBILITY_REQUEST, VISIBILITY_STOP, type VisibilityChannel } from './visibility.ts';
 
-class VisibilityIpc extends Renderer.Ipc {}
-function visibilityChannel(extension: Renderer.LensExtension): VisibilityChannel {
-  const ipc = VisibilityIpc.createInstance(extension);
+function visibilityChannel(ipc: Renderer.Ipc): VisibilityChannel {
   return {
     listen: (channel, received) => ipc.listen(channel, (_event, selected: string | null) => received(selected)),
     request: (clusterId, reply) => {
@@ -17,8 +15,8 @@ function visibilityChannel(extension: Renderer.LensExtension): VisibilityChannel
   };
 }
 
-export function viewerVisibility(extension: Renderer.LensExtension) {
-  const channel = visibilityChannel(extension);
+export function viewerVisibility(ipc: Renderer.Ipc) {
+  const channel = visibilityChannel(ipc);
   return (element: HTMLElement, clusterId: string, active: (value: boolean) => void) =>
     bindVisibility(element, clusterId, channel, active);
 }

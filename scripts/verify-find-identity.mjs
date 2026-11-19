@@ -7,7 +7,7 @@ import { createServer } from 'node:http';
 import { tmpdir } from 'node:os';
 import { join, resolve } from 'node:path';
 import { packedFindBridge } from './find-test-bridge.mjs';
-import { chromePath } from './test-chromium.mjs';
+import { chromePath, clusterFixturePage, inClusterFixture } from './test-chromium.mjs';
 import { build } from 'esbuild';
 
 const directory = await mkdtemp(join(tmpdir(), 'find-identity-'));
@@ -33,6 +33,7 @@ try {
     if (request.url === '/find-rpc') { void bridge.http(request, response); return; }
     if (fonts.has(request.url)) { response.setHeader('Content-Type', 'font/woff2'); response.end(fonts.get(request.url)); return; }
     response.setHeader('Cache-Control', 'no-store');
+    if (request.url === '/') { response.setHeader('Content-Type', 'text/html'); response.end(clusterFixturePage); return; }
     response.setHeader('Content-Type', request.url === '/fixture.js' ? 'text/javascript' : 'text/html');
     response.end(request.url === '/fixture.js' ? fixture.outputFiles[0].text
       : '<!doctype html><meta charset="utf-8"><link rel="stylesheet" href="/renderer.css"><style>@font-face{font-family:Roboto;src:url(/roboto.woff2)}@font-face{font-family:MaterialIcons;src:url(/material-icons.woff2)}html,body,#root{height:100%;margin:0}body{font:14px Roboto,sans-serif;background:#1e2124}.Icon.material-icons{font-family:MaterialIcons;font-weight:normal;font-style:normal;line-height:1;white-space:nowrap;font-feature-settings:"liga"}</style><div id="root"></div><script type="module" src="/fixture.js"></script>');
@@ -68,7 +69,7 @@ try {
     const id = ++serial; pending.set(id, { resolve, reject }); socket.send(JSON.stringify({ id, method, params }));
   });
   const evaluate = async expression => {
-    const result = await send('Runtime.evaluate', { expression, awaitPromise: true, returnByValue: true });
+    const result = await send('Runtime.evaluate', { expression: inClusterFixture(expression), awaitPromise: true, returnByValue: true });
     assert(!result.exceptionDetails, JSON.stringify(result.exceptionDetails)); return result.result.value;
   };
   await send('Page.navigate', { url: `http://127.0.0.1:${server.address().port}` });

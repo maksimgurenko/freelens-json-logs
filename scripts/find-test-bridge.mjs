@@ -40,17 +40,18 @@ export class OrderedFindTransport {
 export function packedFindBridge(entry, settingsDirectory) {
   const handlers = new Map(), live = new Set(), owners = new Map();
   const transport = new OrderedFindTransport();
+  let storeBindings = 0, registrations = 0;
   let starts = 0, exits = 0, peak = 0, inflight = 0, peakInflight = 0, workerListenersAfterExit = 0, maxStopToExitMs = 0;
   const app = Object.assign(new EventEmitter(), { quit() {} });
   const frames = [{ processId: 1, routingId: 1 }, { processId: 1, routingId: 2 }];
   const sender = Object.assign(new EventEmitter(), { isDestroyed: () => false, mainFrame: { framesInSubtree: [...frames] } });
   class Ipc { static createInstance() { return {
-    handle(channel, handler) { handlers.set(channel, handler); }, listen: () => () => {}, broadcast() {},
+    handle(channel, handler) { registrations++; handlers.set(channel, handler); }, listen: () => () => {}, broadcast() {},
   }; } }
   class ExtensionStore {
     static getInstanceOrCreate() { return new this(); }
     cwd() { return settingsDirectory; }
-    loadExtension() {}
+    loadExtension() { storeBindings++; }
   }
   class ObservedWorker extends Worker {
     stoppedAt;
@@ -68,19 +69,21 @@ export function packedFindBridge(entry, settingsDirectory) {
   const originalLoad = Module._load, originalHost = globalThis.FreelensExtensionApi;
   let extension;
   try {
-    globalThis.FreelensExtensionApi = { Mobx, Main: { Ipc, LensExtension: class {} }, Common: { Store: { ExtensionStore } } };
+    globalThis.FreelensExtensionApi = { Mobx, Main: { Ipc, LensExtension: class {} }, Common: { Store: { ExtensionStore }, Util: { getAppVersion: () => '2.0.0' } } };
     Module._load = function(name, ...args) {
-      if (name === 'electron') return { app, BrowserWindow: {} };
+      if (name === 'electron') return { app, BrowserWindow: { fromWebContents() {} } };
       if (name === 'node:worker_threads') return { Worker: ObservedWorker };
       return originalLoad.call(this, name, ...args);
     };
     const require = createRequire(import.meta.url);
     delete require.cache[require.resolve(entry)];
-    extension = new (require(entry).default)(); extension.onActivate();
+    extension = new (require(entry).default)();
+    extension.onActivate();
+    handlers.get('readable-logs-settings-status')();
   } finally { Module._load = originalLoad; globalThis.FreelensExtensionApi = originalHost; }
   return {
     removeFrame: index => { sender.mainFrame.framesInSubtree = sender.mainFrame.framesInSubtree.filter(frame => frame !== frames[index]); },
-    status: () => ({ starts, exits, live: live.size, peak, owners: owners.size, inflight, peakInflight,
+    status: () => ({ starts, exits, live: live.size, peak, owners: owners.size, inflight, peakInflight, storeBindings, registrations,
       workerListenersAfterExit, maxStopToExitMs, queuedTransport: transport.pending,
       senderListeners: sender.eventNames().length, appListeners: app.eventNames().length }),
     invoke: (channel, args, frame = 1) => {

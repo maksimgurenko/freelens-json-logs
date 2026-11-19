@@ -1,3 +1,4 @@
+import './adapter/main-compatibility.ts';
 import { Main } from '@freelensapp/extensions';
 import { BrowserWindow } from 'electron';
 import { readFileSync } from 'node:fs';
@@ -9,7 +10,8 @@ import { FIND_CONTROL, FIND_OPEN, FIND_REQUEST } from './adapter/find-ipc.ts';
 
 import { VISIBILITY_REQUEST, VISIBILITY_STOP } from './adapter/visibility.ts';
 import { watchWindowVisibility } from './adapter/window-visibility.ts';
-import { configurationStore } from './adapter/configuration-store.ts';
+import { getConfigurationStore, type ConfigurationStore } from './adapter/configuration-store.ts';
+import { requireHostFunctions } from './adapter/host-compatibility.ts';
 import { inspectConfiguration, resetConfiguration } from './adapter/configuration-file.ts';
 import { SETTINGS_CHANGED, SETTINGS_RESET, SETTINGS_SAVE_PROFILE, SETTINGS_STATUS, type ResetReply } from './adapter/configuration-ipc.ts';
 import { CONFIG_NAME } from './core/configuration.ts';
@@ -26,15 +28,32 @@ export default class ReadableLogsMain extends Main.LensExtension {
   private subscriptions = new Map<string, VisibilitySubscription>();
   private find?: FindService;
   private stopping?: Promise<void>;
-  private loadSettings() {
+  private settings?: ConfigurationStore;
+  private loadSettings(configurationStore: ConfigurationStore) {
     const path = join(configurationStore.resolveSettingsDirectory(this), `${CONFIG_NAME}.json`);
     configurationStore.attach(this, { path, problem: inspectConfiguration(path).problem });
   }
   onActivate() {
     this.stopping = undefined;
-    try { this.loadSettings(); }
-    catch (error) { configurationStore.failed(error); }
     const ipc = VisibilityIpc.createInstance(this);
+    requireHostFunctions({
+      'Main.Ipc.handle': ipc?.handle,
+      'Main.Ipc.broadcast': ipc?.broadcast,
+      'Electron.BrowserWindow.fromWebContents': BrowserWindow?.fromWebContents,
+    });
+    // A renderer requests status only after checking its side of the SDK.
+    ipc.handle(SETTINGS_STATUS, () => {
+      // The SDK leaves handlers callable until the awaited deactivation finishes.
+      if (this.stopping) throw new Error('Readable logs is deactivating.');
+      const settings = this.settings ?? this.initialize(ipc);
+      return { path: settings.settingsPath, problem: settings.problem };
+    });
+  }
+  private initialize(ipc: Main.Ipc) {
+    const configurationStore = getConfigurationStore();
+    try { this.loadSettings(configurationStore); }
+    catch (error) { configurationStore.failed(error); }
+    this.settings = configurationStore;
     const find = new FindService(() => new Worker(readFileSync(join(__dirname,
       `find-worker-${READABLE_LOGS_VERSION}.js`), 'utf8'), { eval: true }), READABLE_LOGS_VERSION);
     this.find = find;
@@ -47,7 +66,6 @@ export default class ReadableLogsMain extends Main.LensExtension {
       throw new TypeError('Invalid Find control');
     });
     const settingsStatus = () => ({ path: configurationStore.settingsPath, problem: configurationStore.problem });
-    ipc.handle(SETTINGS_STATUS, settingsStatus);
     ipc.handle(SETTINGS_SAVE_PROFILE, (_event, profile: Profile) => {
       const path = configurationStore.settingsPath;
       const current = inspectConfiguration(path);
@@ -68,7 +86,7 @@ export default class ReadableLogsMain extends Main.LensExtension {
     ipc.handle(SETTINGS_RESET, (_event, confirmed: boolean): ResetReply => {
       if (!configurationStore.problem) return { error: 'Settings are usable; no recovery reset is needed.' };
       const result = resetConfiguration(configurationStore.settingsPath, confirmed, () => {
-        this.loadSettings();
+        this.loadSettings(configurationStore);
         if (configurationStore.problem) throw new Error(configurationStore.problem);
       });
       if (!result.error && result.backup) {
@@ -116,14 +134,16 @@ export default class ReadableLogsMain extends Main.LensExtension {
       if (subscription?.sender === event.sender && frame &&
         subscription.processId === frame.processId && subscription.routingId === frame.routingId) subscription.stop();
     });
+    return configurationStore;
   }
   async onDeactivate() {
     if (this.stopping) return this.stopping;
-    configurationStore.detach();
-    for (const { stop } of this.subscriptions.values()) stop();
-    const find = this.find; this.find = undefined;
     // Freelens 2 awaits deactivation before removing SDK handlers on disable and quit.
-    this.stopping = find?.dispose() ?? Promise.resolve();
+    this.stopping = this.find?.dispose() ?? Promise.resolve();
+    this.find = undefined;
+    this.settings?.detach();
+    this.settings = undefined;
+    for (const { stop } of this.subscriptions.values()) stop();
     await this.stopping;
   }
 }

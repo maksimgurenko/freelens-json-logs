@@ -94,4 +94,6 @@ export class ConfigurationStore extends Common.Store.ExtensionStore<Record<strin
     this.data = { ...this.data, ...moveProfile(this.read().configuration, id, direction) };
   }
 }
-export const configurationStore = ConfigurationStore.getInstanceOrCreate<ConfigurationStore>();
+export function getConfigurationStore() {
+  return ConfigurationStore.getInstanceOrCreate<ConfigurationStore>();
+}

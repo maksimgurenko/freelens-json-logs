@@ -3,6 +3,7 @@
 import React from 'react';
 import { createRoot } from 'react-dom/client';
 import * as Mobx from 'mobx';
+import { RendererExtensionStub } from '../freelens-renderer-stub.mjs';
 import { commitDiscreteEvents } from '../browser-discrete-events.js';
 
 commitDiscreteEvents();
@@ -64,14 +65,14 @@ const ipc = {
 class Ipc { static createInstance() { return ipc; } }
 class ExtensionStore {
   static getInstanceOrCreate() { return configurationStore ??= new this(); }
-  cwd() { return '/extension-store/freelens-readable-logs'; }
+  cwd() { return '/extension-store/freelens-readable-logs-v2'; }
   loadExtension() {}
 }
 globalThis.FreelensExtensionApi = { React, Mobx,
     Common: { Store: { ExtensionStore } },
     Renderer: {
-      Component: { Icon: ({ material }) => <span className="Icon" aria-hidden="true">{material}</span> },
-      Ipc, LensExtension: class {}, Catalog: { getActiveCluster: () => ({ id: 'cluster', name: 'Smoke' }) },
+      Component: { MenuItem: ({ children }) => children, Icon: ({ material }) => <span className="Icon" aria-hidden="true">{material}</span> },
+      Ipc, LensExtension: RendererExtensionStub, Catalog: { getActiveCluster: () => ({ id: 'cluster', name: 'Smoke' }) },
       K8sApi: { podsApi: {
         async get() { return { metadata: { uid: 'uid', labels: {} }, spec: { containers: [{ name: 'app' }, { name: 'sidecar' }] }, status: {} }; },
         async getLogs() {
@@ -86,7 +87,6 @@ globalThis.FreelensExtensionApi = { React, Mobx,
 };
 const { default: Renderer } = await import('/renderer.mjs');
 const extension = new Renderer();
-const Page = extension.clusterPages[0].components.Page;
 const root = document.querySelector('#root');
 const button = label => {
   const found = [...root.querySelectorAll('button')].find(node => node.textContent.trim() === label || node.getAttribute('aria-label') === label);
@@ -106,6 +106,7 @@ async function cycle() {
   const params = Object.fromEntries(Object.entries({ namespace: 'smoke', pod: `pod-${serial++}`, podUid: 'uid', clusterId: 'cluster' })
     .map(([key, value]) => [key, { get: () => value }]));
   const reactRoot = createRoot(root);
+  const Page = extension.clusterPages[0].components.Page;
   reactRoot.render(<Page params={params} />);
   await until(() => root.querySelectorAll('.rl-row').length === 256, 'Viewer failed to render logs');
   button('Pause'); await turn();
