@@ -1,6 +1,6 @@
 import { sameRecordRef, FIND_PENDING_MS, FIND_SCOPE_LIMIT, type FindScope, type FindSource, type MatchingRecord } from '../core/find-protocol.ts';
 import type { RecordRef } from '../core/occurrences.ts';
-import { FindClient, type FindInputs } from './find-client.ts';
+import type { FindClient, FindInputs } from './find-client.ts';
 import { FindRanges, type RangeState } from './find-ranges.ts';
 
 interface Fragment { node: Text; start: number; bounds?: Clip; geometry?: number }

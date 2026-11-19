@@ -77,6 +77,8 @@
 .readable-logs .rl-row:hover { background: var(--tableBgcStripe, #2a2d33); }
 .readable-logs time { color: var(--textColorSecondary, #a6adb5); flex: none; white-space: pre; font-variant-numeric: tabular-nums; }
 .readable-logs .rl-level { flex: none; min-width: 5ch; white-space: pre; }
+.readable-logs .rl-severity-trace { color: #c3acf5; }
+.readable-logs .rl-severity-debug { color: #9bbaff; }
 .readable-logs .rl-severity-warn { color: #ffc064; }
 .readable-logs .rl-severity-error, .readable-logs .rl-severity-fatal { color: #ff8d88; }
 .readable-logs .rl-severity-info { color: #6bdbd4; }

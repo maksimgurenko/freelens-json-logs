@@ -1,413 +1,115 @@
-# Build and install Readable logs
+# Develop Readable logs for Freelens 2
 
-This production implementation includes bounded snapshots, automatic refresh,
-Pause/Resume, explicit recovery and Pod/container lifecycle handling (GitHub #11–13).
-Ticket #14 adds complete-record inspection in Inline, Side and Bottom layouts,
-Raw presentation, exact original clipboard actions and a saved global Inspection
-preference. Ticket #15 adds bottom following, anchored scroll position and literal Find navigation.
-Ticket #16 adds staged formatting profiles, sample previews, manual selection and a saved global default. Ticket #17 adds exact target matching and saved precedence. Ticket #18 adds preserved fallback and confirmed backed-up settings recovery.
-The accepted GitHub #8 contract and its linked resolutions govern implementation.
-
-Supported host: **Freelens 1.10.3 only**, currently tested on Arch Linux/Wayland.
-Build toolchain: **Node 24.18.0, npm 11.16.0, TypeScript 5.9.3, esbuild 0.28.2**.
-The SDK and its core dependency are pinned to 1.10.3; `package-lock.json` pins the
-complete build tree. Use Node 24 as required by the SDK, rather than the machine's
-Node 26. `.nvmrc` records the build version; no global agent configuration changes
-are required.
-
-From a clean checkout with that toolchain on PATH:
+Build with Node **24.18.0** and npm **11.16.0**. The lockfile pins the
+released Freelens SDK **2.0.0** and the complete build tree.
 
 ```sh
 node --version
 npm --version
 npm ci --ignore-scripts --no-audit --no-fund
 npm run typecheck
+npm run build
+```
+
+On this development machine the pinned toolchain is cached locally. To select it
+for the commands in this guide:
+
+```sh
+freelens_toolchain="${XDG_CACHE_HOME:-$HOME/.cache}/freelens-json-logs/toolchain/node-24.18.0-npm-11.16.0"
+export PATH="$freelens_toolchain/node_modules/node/bin:$freelens_toolchain/node_modules/.bin:$PATH"
+```
+
+In a private Freelens 2 profile, open **Extensions**, enter the absolute path
+to this checkout, and confirm the development install. Open a fixture cluster
+and choose **Readable logs** in a Pod's details header. Follow the
+[Linux UI playbook](agents/ui-verification.md) for host work. The
+[private-host helpers](../scripts/find-production-host/README.md) document
+reusable display and CDP guards alongside the historical Freelens 1 recipe.
+Use v2-specific installation and renderer probes with those guards.
+
+## Test and package
+
+```sh
+npm run typecheck
 npm test
+python3 -B -m unittest discover -s tests -p hyprland_observer_test.py -v
 npm run test:browser
 npm run test:workers
 npm run test:smoke
 npm run package
 npm run check:package
-tar -tzf dist/freelens-readable-logs-0.1.36.tgz
-sha256sum dist/freelens-readable-logs-0.1.36.tgz
+archive="freelens-readable-logs-v2-$(node -p "require('./package.json').version").tgz"
+(cd dist && sha256sum "$archive" > SHA256SUMS)
+npm run package
+(cd dist && sha256sum --check SHA256SUMS)
 ```
 
-The locked esbuild platform package supplies its binary without install scripts.
-The test command executes TypeScript using Node's type stripping; no host is
-launched. Build metadata under `dist/build-meta.json` shows only project inputs
-and tiny host-global bindings. `check:package` inspects the actual tarball,
-asserts its allowlisted files and host-only dependencies, and loads its packed
-CommonJS default exports with stub host globals. This is a packaging test;
-installed-host coverage has separate [validation limits](specification.md#validation-limits).
-Running the same build twice yields the same tarball bytes with this toolchain.
+Use Chromium or Chrome for the mounted browser and resource tests. Set
+`CHROME_BIN` if the browser is outside the standard executable locations.
+Those tests use an isolated headless browser, real worker code and v2 SDK
+stand-ins. The [resource smoke guide](resource-smoke.md) explains its workloads
+and thresholds. The full regression contract is in the
+[behavior specification](specification.md).
 
-Run `npm run test:smoke` with Chromium/Chrome on PATH to check retained RAM and disk
-growth across repeated refresh, close and renderer unmount cycles. It uses isolated
-processes and a headless browser, leaving the installed Freelens session alone.
-See [the resource smoke test](resource-smoke.md) for workloads, thresholds and scope.
-`test:browser` mounts the actual production Find renderer in headless Chromium
-with the real main-owned worker and explicit SDK/OS stand-ins. `test:workers`
-separately checks actual built-worker cancellation, reuse and exit. These checks
-do not operate the installed Freelens or establish physical/native acceptance.
-
-On this development machine the supported Node/npm installation is cached
-outside disposable run data. To select it for the commands above:
-
-```sh
-freelens_toolchain="${XDG_CACHE_HOME:-$HOME/.cache}/freelens-json-logs/toolchain/node-24.18.0-npm-11.16.0"
-export PATH="$freelens_toolchain/node_modules/node/bin:$freelens_toolchain/node_modules/.bin:$PATH"
-node --version
-npm --version
-```
-
-The npm `.bin` directory alone does not select Node 24. On another machine,
-provide the pinned versions on PATH through the local Node installation instead.
-
-Stable package identifier: **freelens-readable-logs**. Stable `storeName`:
-**freelens-readable-logs**. Page ID: **readable-logs**. These identifiers remain
-stable across updates. Versioned CommonJS entry paths prevent host module-cache
-reuse when updating a different package version.
-
-## Configuration and temporary state
-
-The matching main/renderer `Common.Store.ExtensionStore` uses config name
-**readable-logs**, under the stable package/store name above. On this host its file
-is `~/.config/Freelens/extension-store/freelens-readable-logs/readable-logs.json`.
-Main owns durable writes; renderer changes synchronize through the host store.
-Schema **3** stores `schemaVersion: 3`, `viewer.inspection` (initially `"side"`),
-`profiles` (independent named rules with stable IDs), and `globalDefault` (initially
-`"default"`). Valid schema 1 Inspection settings migrate explicitly to schema 3
-with no saved profiles and built-in Default selected. Valid schema 2 profiles
-migrate explicitly with matching disabled and no conditions, preserving IDs,
-order, rules and default. Unsupported versions or
-invalid data inhibit editing; the viewer reports the problem and uses built-in
-Default and Side. Before constructing either SDK store, the extension reads and validates saved
-configuration. Corrupt JSON, unreadable files, invalid configuration and unsupported
-schemas keep built-in Default and Side available, with a visible explanation. Neither
-SDK synchronization nor ordinary preference/profile editing starts in fallback; the
-original is preserved, including host-owned migration metadata. Main owns durable writes through the matching renderer store.
-
-Raw mode, selected record, content tab, timestamps and word wrap are temporary.
-New views start Readable, without selection, with timestamps on and wrap off.
-Bottom Inspection opens when a record is selected and occupies no space when
-selection is cleared or leaves the recent window; the saved Bottom preference
-remains selected. Side and Inline also reserve no inspector space without a selection.
-Click the selected row again to close its inspector. Selecting a row never pauses automatic updates. If the selected exact record
-leaves the recent window, selection clears; Pause keeps the current window for
-inspection. All fields includes extracted/hidden fields. Copy application text
-and Copy transport line use retained originals, including their original spacing,
-JSON escapes and timestamp precision; the pretty All fields view is not an exact
-JSON serialization of the received text.
-
-A normal full quit/reopen restores Inspection. Uninstall retains this extension's
-settings. To remove only its settings explicitly, quit Freelens and remove only
-`~/.config/Freelens/extension-store/freelens-readable-logs/`. Backups are retained with the extension settings; the explicit directory removal
-also removes those backups. To keep them, move only this extension's `backups/` folder
-to your chosen location before removal. Do not remove the shared `extension-store` directory.
+The installable file is `dist/freelens-readable-logs-v2-<version>.tgz`.
+Keep the checked file and its `SHA256SUMS` together for installed verification.
+The package checker inspects the actual archive and uses the build metadata to
+verify the boundaries between CommonJS main, browser ESM renderer with its
+stylesheet, and the separate Node Find worker. The build uses Freelens'
+React and MobX singletons. Electron is supplied by the host to main.
 
 ## Supported local maintenance
 
-The validation launch uses a process-local temporary directory on the same
-filesystem as `~/.freelens/extensions`:
+For a release install, download the v2 tarball and its `SHA256SUMS` from
+the same [GitHub release](https://github.com/maksimgurenko/freelens-json-logs/releases).
+The [installation steps](../README.md#install) use the verified archive path in
+**Extensions** and a fresh app session. For a v2 update, uninstall the existing
+v2 entry, wait for its removal, and install the new archive once. Check its
+version and **Enabled** status before opening a cluster. Uninstall preserves
+the v2 settings and backups. Follow the Linux UI playbook for automation and
+diagnostics.
 
-```sh
-mkdir -p "$HOME/.cache/freelens-readable-logs/tmp"
-CHOKIDAR_USEPOLLING=1 CHOKIDAR_INTERVAL=100 \
-  TMPDIR="$HOME/.cache/freelens-readable-logs/tmp" /usr/bin/freelens
-```
+The manifest declares Freelens compatibility as `^2.0.0`, with Freelens
+2.0.0 on Linux as the acceptance target. Other compatible 2.x builds log a
+warning in main and can run if they provide the required SDK interfaces. When a
+required interface is missing, the extension logs its name and stops before
+opening the viewer or starting settings synchronization or the Find worker.
+Windows and macOS remain unverified.
 
-These variables apply only to this host process. Filesystem polling is required
-by the observed validation launch: two event-watcher installs failed discovery,
-then the polling launch discovered and installed the package. The underlying
-event-watcher failure remains unestablished. It does
-not change Freelens code or global configuration. Earlier install attempts on
-this machine timed out after extraction without discovery; filesystem probes
-alone did not establish their cause. Keep a failed install distinct from a
-successful install and record the exact environment. The debug port used by
-verification tooling is optional and is not an extension runtime requirement.
+## Configuration and temporary state
 
-Follow [the accepted procedure](https://github.com/maksimgurenko/freelens-json-logs/issues/10#issuecomment-6351871618):
+Package and store name are both `freelens-readable-logs-v2`. The config name is
+`readable-logs`. Its file is
+`<userData>/extension-store/freelens-readable-logs-v2/readable-logs.json`
+(`~/.config/Freelens/extension-store/freelens-readable-logs-v2/readable-logs.json`
+on a default Linux profile). Main owns durable writes. Schema 3 stores
+`viewer.inspection`, named formatting profiles in matching order and the global
+default profile ID. Temporary log records, queries, drafts and manual profile
+choices reset with the viewer.
 
-1. Use a fresh main window and open **Extensions before any cluster**. If a
-   cluster has been opened in the session, fully quit/reopen Freelens first.
-   This requires at most one pre-maintenance restart.
-2. For an update, **Uninstall** the old package and wait for removal to finish,
-   retaining its saved extension settings. Install the new tarball via the form
-   **once** and wait. Do not use the overwrite/reinstallation prompt.
-3. Check version **0.1.36** and Enabled, then open the cluster. Open a Pod's details
-   header and click the **Readable logs** icon beside the native actions. Verify
-   cluster, namespace, Pod UID, container, the expected active profile and usable logs.
-   Do not restart after installation as a substitute for passing this check.
-4. Enable/disable/uninstall maintenance also uses the fresh-main-window state.
-   A failed or cycling install is a failure: stop and retain diagnostic evidence.
-
-The installed viewer requests current-instance logs with `container`,
-`tailLines: 1000`, `timestamps: true`, `follow: false`, `previous: false`; no
-cursor, streaming, previous-instance or multi-Pod logs are requested. The default
-annotation applies only to regular containers. With none, select explicitly.
-
-The viewer retains the latest complete-line suffix within **5 MiB UTF-8 original
-transport text**, counting each original LF terminator, including a final LF if
-present. LF separators are not part of the per-record transport line; CR and all
-other source characters stay intact. A final LF does not add a record; additional
-blank lines do. More-than-tail responses are also bounded to the newest 1,000
-records. Omissions and an oversized newest record are distinct from empty logs.
-The budget bounds retained original text, not download size, transient response
-memory, parsed-object overhead or total process memory. The public convenience
-API completes the full response and offers no per-request cancellation handle.
-
-Default numeric timestamp units are unset and severity mappings are empty:
-numbers remain visible as levels and do not imply a severity; numeric timestamps
-do not imply seconds or milliseconds. Application timestamp candidates require
-RFC 3339 with an explicit zone; display uses the computer's local timezone.
-Original precision, JSON whitespace and all parsed fields remain in core state.
-Raw inspection and clipboard controls are subsequent ticket work.
-
-Routine loading/waiting feedback uses the fixed update-status area in
-the compact footer, without inserting a banner above the log window on every read.
-The records region exposes its busy state to accessibility tools; slow requests
-and failures retain their explicit notices.
-
-An active selected target fetches immediately, then three seconds after each
-successful request settles. Snapshots replace the window, preserving repeated
-lines. Pause freezes the window and rejects pending results immediately. Refresh
-fetches once while paused; Resume fetches fresh data and restores automatic mode.
-A slow notice appears after 15 seconds without timing out or cancelling the read.
-Only one read per target may be outstanding, including invalidated reads from a
-departed view: a fresh same-target request waits for settlement. Different targets
-can proceed independently. Repeated Refresh actions coalesce rather than queue.
-
-A genuine empty success clears the window and continues automatic updates.
-Failures retain the last successful window, mark it outdated, explain the host
-error and stop automatic updates. Retry is explicit; successful Retry restores
-automatic mode unless paused. Failed Retry never starts a retry loop.
-
-Metadata UID is checked before the first read. While displayed, supported
-`podsApi.get` observations run without overlap, three seconds after each metadata
-request settles, including while logs are paused. They update the regular/init/
-ephemeral choices and compare the selected container's restart count and known
-container ID. An observed restart clears old records, invalidates pending log
-results and preserves the refresh mode and temporary profile selection. Automatic
-mode requests the current instance; Pause waits for Refresh/Resume. A same-target
-outstanding log read must still settle first.
-
-An observed Pod 404 or different UID permanently stops that view. Retained records
-are marked outdated under the original UID; Retry and target controls cannot
-silently follow the replacement. Reopen from the current Pod to start a new view.
-A metadata denial or network error is an error, never evidence of deletion.
-These observations are not an atomic UID-bound log read or guaranteed restart
-notification. Changes can occur between observations and a name-addressed read.
-No previous-instance records are requested or merged.
-
-Document visibility handles native minimize. The main process observes the owning window's
-URL and native hide/minimize/restore events through Electron's public API, then
-relays visibility through extension-scoped IPC, since
-CSS-hidden cached cluster frames retain document visibility and intersection. Losing keyboard focus alone does not suspend polling.
-Hidden views invalidate pending log/metadata observations and stop their timers;
-returning automatic views fetch fresh data, while Pause remains paused. A container
-change clears the old window, returns temporary selection to Auto and starts an
-automatic view when active. Close/leave/disable discards view state; reopening
-starts fresh. The current viewer uses the saved matching and default rules in
-Auto. Lifecycle tests cover the temporary manual-selection state boundary;
-saved-profile and matching evidence is recorded in tickets 16 and 17.
-
-Lifecycle checks and their observation limits are recorded against the installed
-production bundle hashes in the ticket 13 verification report.
-
-The entry filenames include the package version. Freelens 1.10.3 retains Node
-module cache during uninstall/install; unique version paths load the updated main
-and renderer code without clearing host caches or requiring a post-install restart.
-Electron is supplied by the host and stays external to both bundles.
-
-## Compact workspace
-
-The single toolbar keeps target context, container/profile selection, **Edit profiles**,
-Pause/Resume, Refresh and Find available. Open **Log target details** for full
-names and technical identifiers. **Display options** contains Readable/Raw,
-timestamps, wrap and the saved global Inspection layout. Related groups wrap
-in narrower windows. Readable and Raw use a black canvas, including empty space.
-
-Find opens a temporary row. **Close Find** hides the row while retaining its
-query and current match for this view; reopening does not filter the window or
-make a request. A new view starts with Find closed and its query empty.
-
-## Selecting and copying log text
-
-Drag through Readable or Raw rows to select text without opening or changing
-inspection. The additional-field count badge is interface metadata and is excluded
-from row selection/copy; application data named `fields` stays intact. A normal
-click inspects immediately, including within previously selected text, as do Enter
-and Space on a focused row. The first
-click of a double/triple-click may inspect before word/line selection exists.
-The inspector's Copy application text and Copy transport line actions retain the
-exact originals. Selecting text or inspecting a record does not pause updates;
-use Pause when you want to keep the current recent log window.
-
-## Scroll position and Find
-
-New views follow output at the bottom. Scrolling away preserves the first visible
-record and its pixel offset across the observed ordered overlap between snapshots,
-including repeated exact transport lines. A visible notice reports when that
-anchor leaves the recent window; **To bottom** resumes following. No history is
-merged. Equal repeated whole windows cannot reveal unseen additions of identical
-lines without a server cursor; the longest observed suffix/prefix overlap is used.
-
-Find searches literal text in the original application text or the active
-extracted message. It ignores case by default; **Match case** and **Whole words**
-can narrow the search. The Kubernetes timestamp prefix is excluded, including in
-Raw mode. Results count matching records once, preserve every row and wrap with
-**Next** / **Previous** or Enter / Shift+Enter. Refining a query retains its current
-candidate when possible; navigation follows the current reading/search position.
-
-Highlights preserve the source text. Scrollbar marks locate results, and hidden
-matches provide links to the corresponding inspector source. Selecting eligible
-single-line log text before opening an empty Find seeds the query. **Recent
-searches** keeps up to seven searches with their two mode settings for this view.
-**Clear** empties the query; **Close** retains it. Search and highlight failures
-have separate recovery controls; pending navigation is cancelled by scrolling
-or dismissal so a late result cannot jump the viewport.
-
-Find, timestamps and word wrap stay local to the view and reset on reopening.
-They do not fetch logs or change Pause. Refresh while paused updates once and
-recomputes both matches and scroll position. Formatting changes use the same
-formatted record array as Find, without changing retained originals.
-
-
-## Formatting profiles
-
-Use **Profiles**, select a saved profile and choose **Edit**, or **Duplicate** any
-profile (including read-only **Default**) to make independent rules. Rename in
-the staged name field. Enter one exact slash path per line, in priority order.
-Dots are literal; `~1` escapes a slash, `~0` a tilde; `/items/0/code` selects the
-first array element. There is no recursive or wildcard search. Configured lists
-replace defaults. Empty message/time/level lists mean exact application text,
-Kubernetes time and no extracted level respectively. Missing paths are valid.
-
-Inline fields display in configured order; hidden fields win, including hidden
-children of inline objects. Extracted leaves are omitted from additional data;
-All fields and both exact originals remain complete. Numeric timestamps need an
-explicit seconds/milliseconds choice; numeric strings remain invalid timestamps.
-Severity mappings distinguish numbers from text, compare text ignoring case,
-and precede built-in normalization. No numeric meaning is inferred.
-
-Paste sample logs for a preview of up to 20 lines. **Save profile** applies a valid
-draft; **Cancel draft** or **Back to logs** discards unfinished edits. Specific errors
-block Save. Preview samples and drafts never persist. Editing or reformatting
-retained logs makes no log request and Find recomputes using the active message.
-
-The viewer's **Profile** selector offers **Auto** and explicit manual choices.
-Auto uses the first enabled matching profile in saved order, then the global default. Manual choice belongs to the current cluster/Pod UID/container view
-and clears on Auto, container/target change, close or full restart. Selecting a
-profile does not pause updates. Global default is saved in **Profiles**. Deleting
-a manually selected profile returns that view to Auto; deleting the global
-default restores built-in Default. Rename retains ID, references and order.
-Uninstall retains profiles and Inspection.
-Import/export, custom templates and executable user code are excluded.
-
-## Automatic profile selection
-
-In **Profiles**, Edit a saved profile to configure **Enabled for matching**,
-**Match namespace**, **Match container name** and ordinary **Add label condition**
-key/value inputs. Save applies the draft; Cancel discards it. Empty namespace or
-container omits that restriction. Label values may be empty; required keys must
-exist. Every configured condition compares exactly and case-sensitively. There
-is no regex, wildcard, Pod-name or cluster matching. A conditionless profile
-never auto-matches. Disabling matching leaves manual/global-default use available.
-
-**Matching order** lists saved profiles in precedence order. **Move up/down**
-saves immediately; the first enabled profile with all conditions matching wins
-in Auto, otherwise the global default applies. Manual choice always wins. The
-selector's Auto label and Active profile show the result. Global-default status
-does not rearrange order; stable IDs preserve rename references. Deleting a
-manual profile returns to Auto; deleting the global default restores built-in
-Default, with matching still taking precedence.
-
-Current Pod labels come from the existing UID-checked metadata observations,
-including while paused. Observed label changes, saved rules, order, enabled state
-and Auto/manual changes reformat retained records without a log read. Metadata
-observations are not instantaneous notifications. Target/container changes clear
-manual choice; container restarts preserve it. Schema 3 persists each profile's
-`matching.enabled` and `matching.conditions` (`namespace?`, `container?`, `labels`
-key/value list); profile array order is the saved matching order. Main remains
-the durable writer.
+The first v2 launch uses built-in Default and Side inspection. Keep the legacy
+settings file at
+`<userData>/extension-store/freelens-readable-logs/readable-logs.json`.
+You can uninstall the legacy entry through **Extensions** if it is visible.
+A legacy file is independent of the v2 settings and is retained on uninstall.
 
 ## Recovering unusable settings
 
-When saved settings cannot be used, the viewer shows **Settings recovery** with
-its error and exact settings path. Logs remain usable with built-in Default and
-Side inspection; saved profile and preference edits are unavailable. The stable
-settings identity is unchanged: package/store `freelens-readable-logs`, config
-`readable-logs`, schema 3. Host-owned `__internal__` migration metadata is allowed
-but never makes an unknown application schema migratable.
+When a v2 settings file is malformed, unreadable or uses an unsupported schema,
+the viewer shows the exact path and runs with built-in Default and Side
+inspection. Saving is disabled. In **Settings recovery**, choose **Reset
+settings…**, then **Back up and reset** to confirm. Main verifies an exact backup
+in the v2 store's `backups/` directory before replacing the file. Saving resumes
+after a successful reset. A canceled reset or failed backup preserves the
+original file.
 
-1. Choose **Reset settings…** in the recovery notice. Review which settings will
-   be replaced. **Cancel reset** changes nothing and creates no backup.
-2. Choose **Back up and reset** to confirm. Main creates an exclusive backup in
-   `~/.config/Freelens/extension-store/freelens-readable-logs/backups/`, named
-   `readable-logs-<UTC timestamp>-<UUID>.json`. It verifies the original bytes
-   before replacing the configuration. Backup files are never automatically pruned.
-3. If backup creation/read/verification fails (including unreadable source data),
-   the original remains unchanged, saving stays inhibited, and the viewer reports
-   the failure. Correct the file/directory access or backup obstruction and retry
-   explicitly. The extension does not repair permissions or discard a failed backup.
-4. On success the notice shows the exact backup path. All saved profiles, order,
-   matching/default references and Inspection return to built-in defaults. Normal
-   saving resumes immediately, without a host restart. Existing log originals and
-   Pause are unaffected. Use Profiles or Inspection to save new settings normally.
-
-To restore a backup manually, fully quit Freelens, preserve the current file if
-needed, then copy the desired backup to this extension's `readable-logs.json` and
-reopen. An unusable backup will correctly return to fallback. For complete explicit
-settings removal, fully quit Freelens and remove only
-`~/.config/Freelens/extension-store/freelens-readable-logs/`, including its backups;
-keep every other extension's directory. Uninstall alone retains this directory.
-No crash durability or transactional disk guarantees are promised.
-
-
-## Local return and dismissal
-
-**Back to logs** leaves Profiles and discards its unfinished draft. **Cancel draft**
-stays in Profiles; **Save profile** applies valid changes explicitly. Saved profile,
-global-default and matching-order changes survive returning to logs.
-
-Escape dismisses one layer: an open menu/disclosure, then a delete/reset
-confirmation, then Profiles. In logs it hides Find (retaining the query), then
-closes inspection on the next press. Bare logs have no local Escape navigation.
-Native selects, menus and composition keep their input ownership; holding Escape
-does not dismiss additional layers. Reset already in progress continues and cannot
-be canceled by dismissal. Closing controls follow the same focus transitions:
-Find and Profiles restore their opener, inspection restores its retained row or a
-surviving log control. Local panels add no host page-history entries and do not
-pause automatic updates. Mouse Back in Profiles uses the same local dismissal actions. A nested confirmation
-or open disclosure takes priority; returning discards only the unfinished draft.
-The handler owns only an active, focused extension region and the pointer gesture
-begun there. In logs, and over host/dock areas, Back keeps host history ownership.
-Native keyboard/menu/top-bar Back and Forward remain host-owned. Local panels do
-not create history entries; host Forward never restores an unfinished local draft.
-Windows and macOS remain unverified. The shortcut reference and bindings below use the same local ownership rules.
-
+To restore a backup, fully quit Freelens, preserve the current file if needed
+and copy the desired backup to the v2 `readable-logs.json` path before reopening.
+For explicit removal, quit and remove only the v2 store directory, including
+its backups. Keep the shared `extension-store` directory and the legacy store.
 
 ## Local keyboard shortcuts
 
-Use Ctrl on Linux/Windows and Cmd on macOS. In the active logs toolbar,
-viewport or inspector, primary+F reveals Find and selects its retained query.
-Enter/Shift+Enter move next/previous only in Find; primary+G/primary+Shift+G
-repeat the same navigation, revealing Find if needed. Other editing controls
-keep their input ownership. Primary+S saves an active Profiles draft through the
-same validation as Save profile. Invalid or failed saves retain the draft.
-Ctrl+End (Linux/Windows) or Cmd+Down (macOS), with a log row or viewport focused,
-follows the retained window without resuming paused requests.
-
-Display options → Shortcuts opens a temporary reference; Close or Escape dismisses
-it and restores Display options focus. Control tooltips show relevant bindings.
-Host Back/Forward, reload and command palette retain their host meanings. Platform
-verification and native input boundaries are described in the [specification](specification.md#validation-limits).
-
-
-## Validation scope
-
-Linux checks use Freelens 1.10.3 on Hyprland/Wayland. The agreed Linux Find
-acceptance is complete, with the [route and resource limits](specification.md#validation-limits)
-kept separate from the behavioral contract. Windows and macOS remain unverified.
-The local workflow adds no global shortcuts or settings and retains the bounded
-single-Pod/container, schema 3 and explicit recovery contracts.
+Open **Display options → Shortcuts** in the viewer for the current bindings.
+See the [Find walkthrough](usage.md#find-records-and-follow-output) and the
+[shortcut contract](specification.md#local-input-and-temporary-history).

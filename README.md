@@ -4,8 +4,9 @@ Read JSON container logs as compact **time · level · message** rows. Select a
 record to inspect every field or copy its exact original text, and save formatting
 profiles for applications that use different log formats.
 
-Requires **Freelens 1.10.3**. Verified on Arch Linux/Wayland. Uses your existing
-Freelens cluster connection.
+This package targets **Freelens 2**. The Linux acceptance baseline is Freelens
+2.0.0. Use the [build instructions](docs/local-development.md) to create the
+archive or try a development install in a private profile.
 
 ## What you can do
 
@@ -20,17 +21,20 @@ Freelens cluster connection.
 
 ## Install
 
-1. Open the [latest release](https://github.com/maksimgurenko/freelens-json-logs/releases/latest)
-   and download `freelens-readable-logs-<version>.tgz` from **Assets**.
-2. Fully quit and reopen Freelens. Open **Extensions before opening a cluster**.
-3. For an update, uninstall the old extension and wait for removal. Your saved
-   profiles and inspection preference are retained.
-4. Install the downloaded `.tgz` once and wait for its version and **Enabled** status.
-5. Open your cluster, open a Pod's details and click **Readable logs** beside the
+1. Download `freelens-readable-logs-v2-<version>.tgz` and `SHA256SUMS` from
+   the same [GitHub release](https://github.com/maksimgurenko/freelens-json-logs/releases).
+   Run `sha256sum --check SHA256SUMS` in their directory.
+2. Open a fresh Freelens 2 session and go to **Extensions** before opening a cluster.
+3. If the legacy `freelens-readable-logs` entry is visible, open its menu,
+   choose **Uninstall** and wait for it to disappear. Keep its settings file at
+   `<userData>/extension-store/freelens-readable-logs/readable-logs.json`.
+4. In **Extensions**, select the v2 `.tgz` or enter its absolute path. Click
+   **Install** and wait for `freelens-readable-logs-v2` and **Enabled**.
+5. Open a cluster, open a Pod's details and click **Readable logs** beside the
    native Logs action. Choose a container if needed.
 
-On the verified Linux setup, extension discovery requires filesystem polling.
-Use the launch settings in the [installation and maintenance guide](docs/local-development.md#supported-local-maintenance).
+Your first v2 launch uses built-in Default and Side inspection. Profiles and
+preferences you save in v2 go to a [separate settings file](docs/local-development.md#configuration-and-temporary-state).
 
 ## Start reading
 

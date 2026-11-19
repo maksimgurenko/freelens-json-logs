@@ -2,33 +2,44 @@ import { Renderer } from '@freelensapp/extensions';
 import { TAIL_LINES } from '../core/snapshot.ts';
 import type { SnapshotPort } from '../core/session.ts';
 import type { LogTarget } from '../core/target.ts';
-import { LogRequests } from '../core/requests.ts';
 import { observe } from '../core/observe.ts';
-import { VISIBILITY_REQUEST, type VisibilityChannel } from './visibility.ts';
+import { bindVisibility, VISIBILITY_CHANGED, VISIBILITY_REQUEST, VISIBILITY_STOP, type VisibilityChannel } from './visibility.ts';
 
-class VisibilityIpc extends Renderer.Ipc {}
-export function visibilityChannel(extension: Renderer.LensExtension): VisibilityChannel {
-  const ipc = VisibilityIpc.createInstance(extension);
+export function viewerVisibility(ipc: Renderer.Ipc) {
+  // The SDK retains the listener disposer until disable. Keep viewer callbacks
+  // in a local map so their elements are released as soon as the viewer closes.
+  const receivers = new Map<string, (selected: string | null) => void>();
+  const stop = ipc.listen(VISIBILITY_CHANGED, (_event, reply: string, selected: string | null) => receivers.get(reply)?.(selected));
+  const channel: VisibilityChannel = {
+    listen: (reply, received) => {
+      receivers.set(reply, received);
+      return () => { receivers.delete(reply); };
+    },
+    request: (clusterId, reply) => {
+      void ipc.invoke(VISIBILITY_REQUEST, clusterId, reply).catch(error => console.error('Unable to observe Readable logs window visibility', error));
+    },
+    stop: reply => { void ipc.invoke(VISIBILITY_STOP, reply).catch(() => { /* Main may already be deactivating. */ }); },
+  };
   return {
-    listen: (channel, received) => ipc.listen(channel, (_event, selected: string | null) => received(selected)),
-    broadcast: (channel, ...args) => {
-      if (channel === VISIBILITY_REQUEST) {
-        void ipc.invoke(channel, ...args).catch(error => console.error('Unable to observe Readable logs window visibility', error));
-      } else ipc.broadcast(channel, ...args);
+    bind: (element: HTMLElement, clusterId: string, active: (value: boolean) => void) =>
+      bindVisibility(element, clusterId, channel, active),
+    dispose() {
+      receivers.clear();
+      stop();
     },
   };
 }
-export const PAGE_ID = 'readable-logs';
-declare const READABLE_LOGS_VERSION: string;
-export const PACKAGE_VERSION = READABLE_LOGS_VERSION;
-// Retain outstanding same-target guards across page unmount/reopen and disable.
-export const freelensRequests = new LogRequests();
-export type PageParams = { namespace: Renderer.Navigation.PageParam<string>; pod: Renderer.Navigation.PageParam<string>; podUid: Renderer.Navigation.PageParam<string>; clusterId: Renderer.Navigation.PageParam<string> };
 
-export function pageTarget(params: PageParams): LogTarget {
-  const cluster = Renderer.Catalog.getActiveCluster();
-  return { clusterId: params.clusterId.get(), clusterName: cluster?.name ?? '',
-    namespace: params.namespace.get(), podName: params.pod.get(), podUid: params.podUid.get() };
+export const PAGE_ID = 'readable-logs';
+export function pageTarget(params: Record<string, Renderer.Navigation.PageParam<unknown>>): LogTarget {
+  const param = (name: string) => {
+    const value = params[name]?.get();
+    return typeof value === 'string' ? value : '';
+  };
+  const clusterId = param('clusterId');
+  const activeCluster = Renderer.Catalog.getActiveCluster();
+  return { clusterId, clusterName: activeCluster?.id === clusterId ? activeCluster.name : '',
+    namespace: param('namespace'), podName: param('pod'), podUid: param('podUid') };
 }
 function assertCluster(target: LogTarget) {
   if (!target.clusterId || target.clusterId !== Renderer.Catalog.getActiveCluster()?.id) {

@@ -1,13 +1,10 @@
 import React, { useEffect, useLayoutEffect, useMemo, useRef, useState } from 'react';
-import { Renderer } from '@freelensapp/extensions';
-import { bindVisibility, type VisibilityChannel } from '../adapter/visibility.ts';
-import { freelensPort, freelensRequests, PACKAGE_VERSION } from '../adapter/freelens.ts';
-import { SnapshotSession, type SnapshotState } from '../core/session.ts';
+import { SnapshotSession, type SnapshotPort, type SnapshotState } from '../core/session.ts';
+import type { LogRequests } from '../core/requests.ts';
 import { displayTimestamp, recordFormatter, type LogRecord } from '../core/records.ts';
 import { initialInspection, originalText, type RecordContent } from '../core/inspection.ts';
 import { emptyWindow, recordRef, recordIndex, type RecordRef } from '../core/occurrences.ts';
 import type { ViewerPreferences } from '../core/configuration.ts';
-import { copyOriginal } from '../adapter/clipboard.ts';
 import type { LogTarget } from '../core/target.ts';
 import { FindPosition, type FindEdit } from '../core/find-state.ts';
 import { FindEditing, type FindEditTransaction } from '../core/find-editing.ts';
@@ -18,10 +15,8 @@ import { FindSourceText } from './find-source.tsx';
 import { FindHighlights, HIGHLIGHT_LIMIT_MESSAGE, type HighlightStatus } from './find-highlights.ts';
 import { FindMarks } from './find-marks.ts';
 import { FindClient, FindMatching, type FindMatchingState } from './find-client.ts';
-import type { FindRpc } from '../adapter/find-ipc.ts';
-import { sameFindKey } from '../core/find-protocol.ts';
+import { sameFindKey, type FindTransport } from '../core/find-protocol.ts';
 import { LogViewport, type ViewportStatus } from './log-viewport.ts';
-import styles from './viewer.css';
 import { activeProfile, BUILTIN_PROFILE_ID, builtinProfile } from '../core/profiles.ts';
 import { ProfileEditor } from './profile-editor.tsx';
 import { SettingsRecovery } from './settings-recovery.tsx';
@@ -29,7 +24,20 @@ import { bindLocalEscape, focusLocal, LocalDismissal } from './local-dismissal.t
 import { bindLocalBack } from './local-back.ts';
 import { bindLocalShortcuts, editable, isMac, LocalShortcuts, shortcutHint, type ShortcutCapture } from './local-shortcuts.ts';
 
-interface ViewerProps { target: LogTarget; register: (dispose: () => void | Promise<void>) => () => void; visibility: VisibilityChannel; findRpc: FindRpc; preferences: ViewerPreferences; shortcutCapture: ShortcutCapture }
+// The composition supplies stable services and mounts a new viewer for a changed Pod target.
+interface ViewerProps {
+  target: LogTarget;
+  logs: SnapshotPort;
+  requests: LogRequests;
+  preferences: ViewerPreferences;
+  find: FindTransport;
+  writeClipboard: (text: string) => Promise<void>;
+  bindVisibility: (element: HTMLElement, clusterId: string, active: (value: boolean) => void) => () => void;
+  register: (dispose: () => void | Promise<void>) => () => void;
+  shortcutCapture: ShortcutCapture;
+  Icon: React.ComponentType<{ material: string }>;
+  version: string;
+}
 const EMPTY_WINDOW = emptyWindow('unopened');
 let viewerSequence = 0;
 
@@ -53,39 +61,39 @@ function selectedTextTouches(row: HTMLElement, before?: SelectionPosition): bool
 }
 
 // Accepted B layout keeps frequent actions in one toolbar and presentation controls on demand.
-export function Viewer({ target, register, visibility, findRpc, preferences, shortcutCapture }: ViewerProps) {
+export function Viewer({ target, logs, requests, preferences, find, writeClipboard, bindVisibility, register, shortcutCapture, Icon, version }: ViewerProps) {
   const root = useRef<HTMLElement>(null);
   const scroller = useRef<HTMLDivElement>(null);
-  const viewport = useRef<LogViewport>();
+  const viewport = useRef<LogViewport>(undefined);
   const markRail = useRef<HTMLDivElement>(null);
-  const marks = useRef<FindMarks>();
-  const markAction = useRef<(ref: RecordRef) => void>();
-  const rowGesture = useRef<{ x: number; y: number; dragged: boolean; selection?: SelectionPosition }>();
+  const marks = useRef<FindMarks>(undefined);
+  const markAction = useRef<(ref: RecordRef) => void>(undefined);
+  const rowGesture = useRef<{ x: number; y: number; dragged: boolean; selection?: SelectionPosition }>(undefined);
   const [findPosition] = useState(() => new FindPosition());
   const [findEditing] = useState(() => new FindEditing());
   const [history] = useState(() => new FindHistory());
-  const openingSelection = useRef<{ text?: string }>();
+  const openingSelection = useRef<{ text?: string }>(undefined);
   const [, renderPosition] = useState(0);
   const positionChanged = () => renderPosition(value => value + 1);
   const rowFocusIntent = useRef(false);
   const viewActive = useRef(false);
   const [decorationActive, setDecorationActive] = useState(false);
-  const findOpener = useRef<HTMLElement>();
+  const findOpener = useRef<HTMLElement>(undefined);
   const [scroll, setScroll] = useState<ViewportStatus>({ following: true, lost: false });
   const [query, setQuery] = useState('');
   const [committedQuery, setCommittedQuery] = useState('');
   const [matchCase, setMatchCase] = useState(false);
   const [wholeWords, setWholeWords] = useState(false);
   const [matching, setMatching] = useState<FindMatchingState>({ phase: 'empty', searching: false, records: [] });
-  const [findClient] = useState(() => new FindClient(findRpc, crypto.randomUUID()));
+  const [findClient] = useState(() => new FindClient(find, crypto.randomUUID()));
   const [findMatching] = useState(() => new FindMatching(findClient, setMatching));
   const [viewerEpoch] = useState(() => ++viewerSequence);
-  const highlights = useRef<FindHighlights>();
+  const highlights = useRef<FindHighlights>(undefined);
   const [highlightStatus, setHighlightStatus] = useState<HighlightStatus>({ message: '', retryable: false, busy: false });
   const revisions = useRef({ window: 0, message: 0, query: 0 });
   const composing = useRef(false);
   const [compositionRevision, setCompositionRevision] = useState(0);
-  const explicitEdit = useRef<FindEdit>();
+  const explicitEdit = useRef<FindEdit>(undefined);
   const cancelFindIntents = () => findPosition.cancelSelection();
 
   const [findOpen, setFindOpen] = useState(false);
@@ -112,6 +120,7 @@ export function Viewer({ target, register, visibility, findRpc, preferences, sho
   }
   if (state?.gone || state?.phase === 'closed') cancelFindIntents();
   const [preference, setPreference] = useState(() => preferences.read());
+  const [inspectionError, setInspectionError] = useState('');
   const [editingProfiles, setEditingProfiles] = useState(false);
   const profilesActive = useRef(false);
   profilesActive.current = editingProfiles;
@@ -129,13 +138,13 @@ export function Viewer({ target, register, visibility, findRpc, preferences, sho
     return stop;
   }, [preferences]);
   useEffect(() => {
-    const current = new SnapshotSession(target, freelensPort, setState, freelensRequests);
+    const current = new SnapshotSession(target, logs, setState, requests);
     setSession(current);
     setTimestamps(true);
     setWrap(false);
     setInspection(initialInspection());
     let visible = false;
-    const stopVisibility = bindVisibility(root.current!, target.clusterId, visibility, active => { visible = active; viewActive.current = active; setDecorationActive(active); if (!active) { cancelFindIntents(); highlights.current?.suspend(); } findMatching.setActive(active); current.setActive(active); });
+    const stopVisibility = bindVisibility(root.current!, target.clusterId, active => { visible = active; viewActive.current = active; setDecorationActive(active); if (!active) { cancelFindIntents(); highlights.current?.suspend(); } findMatching.setActive(active); current.setActive(active); });
     const stopEscape = bindLocalEscape(root.current!, () => visible && current.state.phase !== 'closed', dismissal);
     const stopBack = bindLocalBack(root.current!, () => visible && current.state.phase !== 'closed',
       () => profilesActive.current, dismissal);
@@ -149,7 +158,7 @@ export function Viewer({ target, register, visibility, findRpc, preferences, sho
     const unregister = register(dispose);
     void current.open();
     return () => { unregister(); dispose(); };
-  }, [target.clusterId, target.namespace, target.podName, target.podUid, register, visibility]);
+  }, [target.clusterId, target.namespace, target.podName, target.podUid, register, logs, requests, bindVisibility]);
   const snapshot = state?.snapshot;
   const updateStatus = !state || state.phase === 'loading-pod' ? 'Loading Pod…'
     : state.waiting ? 'Waiting for earlier request…'
@@ -369,8 +378,8 @@ export function Viewer({ target, register, visibility, findRpc, preferences, sho
   const backToLogs = () => { setEditingProfiles(false); focusLocal(root.current!, profilesButton.current); };
   useLayoutEffect(() => dismissal.add(0, () => editingProfiles ? backToLogs : findOpen ? closeFind : selected ? close : undefined));
   const inspector = selected && <RecordInspector record={selected} recordReference={window.refs[index]} message={messages[index]} content={inspection.content}
-    onContent={content => setInspection(previous => ({ ...previous, content }))} onClose={close} />;
-  return <section ref={root} className="readable-logs" aria-label="Readable logs" data-version={PACKAGE_VERSION}
+    writeClipboard={writeClipboard} onContent={content => setInspection(previous => ({ ...previous, content }))} onClose={close} />;
+  return <section ref={root} className="readable-logs" aria-label="Readable logs" data-version={version}
     onPointerDownCapture={() => { rowFocusIntent.current = false; }}
     onFocusCapture={event => {
       inspectorFocused.current = !!(event.target as Element).closest('.rl-detail');
@@ -381,7 +390,6 @@ export function Viewer({ target, register, visibility, findRpc, preferences, sho
       }
       rowFocusIntent.current = false;
     }}>
-    <style>{styles}</style>
     <header className="rl-toolbar" aria-label="Log controls">
       <details className="rl-target-context">
         <summary title={`${target.clusterName} / ${target.namespace} / ${target.podName}`} aria-label="Log target details">
@@ -402,19 +410,19 @@ export function Viewer({ target, register, visibility, findRpc, preferences, sho
           {(['regular', 'init', 'ephemeral'] as const).map(kind => <optgroup key={kind} label={kind === 'regular' ? 'Containers' : `${kind} containers`}>
             {state?.containers.filter(container => container.kind === kind).map(container => <option key={container.name} value={container.name}>{container.name}</option>)}
           </optgroup>)}
-        </select><Renderer.Component.Icon material="keyboard_arrow_down" /></span></label>
+        </select><Icon material="keyboard_arrow_down" /></span></label>
       </div>
       <div className="rl-profile-group">
         <label>Profile <span className="rl-toolbar-select"><select aria-label="Profile" title={`${state?.manualProfile ? 'Manual' : 'Auto'} · ${profile.name}`} value={state?.manualProfile ?? ''}
           disabled={!session || state?.phase === 'closed'} onChange={event => session?.selectProfile(event.target.value || undefined)}>
           <option value="">Auto · {activeProfile(preference.configuration, undefined, profileContext).name}</option>
           {[builtinProfile(), ...preference.configuration.profiles].map(profile => <option key={profile.id} value={profile.id}>{profile.name}</option>)}
-        </select><Renderer.Component.Icon material="keyboard_arrow_down" /></span></label>
+        </select><Icon material="keyboard_arrow_down" /></span></label>
         <button ref={profilesButton} type="button" className="rl-icon-button" aria-label="Edit profiles" title="Edit profiles" onClick={() => {
           if (editingProfiles) backToLogs();
           else { cancelFindIntents(); root.current?.querySelectorAll('details[open]').forEach(node => { (node as HTMLDetailsElement).open = false; }); setEditingProfiles(true); }
         }} aria-expanded={editingProfiles}>
-          <Renderer.Component.Icon material="edit" />
+          <Icon material="edit" />
         </button>
       </div>
       <div className="rl-controls" role="group" aria-label="Log updates">
@@ -422,22 +430,22 @@ export function Viewer({ target, register, visibility, findRpc, preferences, sho
           title={state?.paused ? 'Resume automatic updates' : 'Pause automatic updates'}
           disabled={!state?.container || state.gone || state.phase === 'closed'}
           onClick={() => { if (state?.paused) void session?.resume(); else session?.pause(); }}>
-          <Renderer.Component.Icon material={state?.paused ? 'play_arrow' : 'pause'} />
+          <Icon material={state?.paused ? 'play_arrow' : 'pause'} />
         </button>
         <button type="button" className="rl-icon-button" aria-label="Refresh" title="Refresh logs"
           disabled={!state?.container || state.gone || state.phase === 'closed' || state.refreshing || state.waiting}
-          onClick={() => { void session?.refresh(); }}><Renderer.Component.Icon material="refresh" /></button>
+          onClick={() => { void session?.refresh(); }}><Icon material="refresh" /></button>
       </div>
       <div className="rl-presentation" hidden={editingProfiles}>
         <button ref={findButton} type="button" className="rl-icon-button" aria-label="Find" aria-expanded={findOpen} aria-controls="rl-findbar"
           onPointerDown={event => { if (event.button === 0) openingSelection.current = { text: selectedFindSeed(root.current!) }; }}
           onPointerCancel={() => { openingSelection.current = undefined; }}
           title={`Find (${shortcutHint('F')})`} aria-keyshortcuts={isMac() ? 'Meta+f' : 'Control+f'} onClick={event => openFind(event.detail > 0)}>
-          <Renderer.Component.Icon material="search" />
+          <Icon material="search" />
         </button>
         <details className="rl-display-options">
           <summary ref={displaySummary} className="rl-icon-button" aria-label="Display options" title="Display options">
-            <Renderer.Component.Icon material="settings" />
+            <Icon material="settings" />
           </summary>
           <div className="rl-display-panel">
             <div role="group" aria-label="Log presentation" className="rl-modes">
@@ -448,7 +456,11 @@ export function Viewer({ target, register, visibility, findRpc, preferences, sho
             <label><input type="checkbox" checked={wrap} onChange={event => setWrap(event.target.checked)} />Word wrap</label>
             <label>Inspection <select aria-label="Inspection" title="Saved globally, separately from formatting profiles"
               value={preference.inspection} disabled={!!preference.problem}
-              onChange={event => preferences.setInspection(event.target.value as 'inline' | 'side' | 'bottom')}>
+              onChange={async event => {
+                setInspectionError('');
+                try { await preferences.setInspection(event.target.value as 'inline' | 'side' | 'bottom'); }
+                catch (error) { setInspectionError(`Unable to save Inspection: ${String(error)}`); }
+              }}>
               <option value="inline">Inline expansion</option><option value="side">Side inspector</option><option value="bottom">Bottom inspector</option>
             </select></label>
             <button type="button" onClick={() => {
@@ -495,21 +507,21 @@ export function Viewer({ target, register, visibility, findRpc, preferences, sho
           {query && knownMatches !== undefined ? `${currentMatch < 0 ? 0 : matches.indexOf(currentMatch) + 1} / ${matches.length}` : matching.searching ? '…' : '– / –'}
         </span>
         <button type="button" className="rl-find-button rl-find-clear" aria-label="Clear Find" title="Clear search" disabled={!query} onClick={clearFind}>
-          <Renderer.Component.Icon material="close" />
+          <Icon material="close" />
         </button>
       </div>
       <div className="rl-find-actions">
         {([-1, 1] as const).map(direction => <button key={direction} type="button" className="rl-find-button rl-find-direction"
           aria-label={direction === 1 ? 'Next match' : 'Previous match'} title={direction === 1 ? 'Next match (Enter)' : 'Previous match (Shift+Enter)'}
           disabled={!matchesReady || !matches.length} onClick={() => navigateMatch(direction)}>
-          <Renderer.Component.Icon material={direction === 1 ? 'keyboard_arrow_down' : 'keyboard_arrow_up'} />
+          <Icon material={direction === 1 ? 'keyboard_arrow_down' : 'keyboard_arrow_up'} />
         </button>)}
         <button type="button" className="rl-find-button" aria-label="Match case" title="Match case" aria-pressed={matchCase} onClick={() => changeMode('case')}>Aa</button>
         <button type="button" aria-label="Whole words" title="Whole words" className="rl-find-button rl-find-words" aria-pressed={wholeWords} onClick={() => changeMode('words')}>ab</button>
-        <FindHistoryPopover history={history} visible={findOpen && !editingProfiles && viewActive.current}
+        <FindHistoryPopover Icon={Icon} history={history} visible={findOpen && !editingProfiles && viewActive.current}
           context={context} dismissal={dismissal} onRecall={recallHistory} />
         <button type="button" className="rl-find-button" aria-label="Close Find" title="Close Find (Escape)" onClick={closeFind}>
-          <Renderer.Component.Icon material="close" />
+          <Icon material="close" />
         </button>
       </div>
       <span id="rl-find-status" className="rl-find-count rl-sr-only">{findStatus}</span>
@@ -525,6 +537,7 @@ export function Viewer({ target, register, visibility, findRpc, preferences, sho
       <span className="rl-sr-only" role="status" aria-live="polite" aria-atomic="true">{announcement}</span>
     </div>
     <SettingsRecovery preferences={preferences} saved={preference} dismissal={dismissal} />
+    {inspectionError && !preference.problem && <p className="rl-notice rl-error" role="alert">{inspectionError}</p>}
     {state?.lifecycleNotice && <p className="rl-notice" role="status">{state.lifecycleNotice}{state.paused ? ' Paused; select Refresh or Resume to read the current instance.' : ''}</p>}
     {state?.slow && <p className="rl-notice" role="status">The log request is taking longer than 15 seconds. You can pause or leave this view. Another request for this target must wait for it to finish.</p>}
     {state?.phase === 'choose-container' && <p className="rl-notice" role="status">This Pod has no regular container. Select an init or ephemeral container to read its logs.</p>}
@@ -606,19 +619,32 @@ export function Viewer({ target, register, visibility, findRpc, preferences, sho
       <button type="button" title={`To bottom (${shortcutHint(isMac() ? 'Down' : 'End')} from a log row or viewport)`} onClick={() => viewport.current?.toBottom()}>To bottom</button>
       <span className="rl-follow-status" role="status">{scroll.following ? 'Following output' : 'Scrolled away'}</span>
       <span className="rl-update-status" role="status" title={updateStatus}>{updateStatus}</span>
-      <span className="rl-version">v{PACKAGE_VERSION}</span>
+      <span className="rl-version">v{version}</span>
     </footer>
   </section>;
 }
 
-function RecordInspector({ record, recordReference, message, content, onContent, onClose }: {
+function RecordInspector({ record, recordReference, message, content, writeClipboard, onContent, onClose }: {
   record: LogRecord; recordReference: RecordRef; message: string; content: RecordContent; onContent: (value: RecordContent) => void; onClose: () => void;
+  writeClipboard: ViewerProps['writeClipboard'];
 }) {
   const [copyStatus, setCopyStatus] = useState('');
-  useEffect(() => setCopyStatus(''), [record, content]);
-  const copy = (kind: 'application' | 'transport') => {
-    try { copyOriginal(record, kind); setCopyStatus(`Copied ${kind === 'application' ? 'application text' : 'transport line'}.`); }
-    catch (error) { setCopyStatus(`Unable to copy: ${String(error)}`); }
+  const copyAttempt = useRef(0);
+  useLayoutEffect(() => {
+    setCopyStatus('');
+    return () => { copyAttempt.current++; };
+  }, [recordReference.context, recordReference.occurrence, content]);
+  const copy = async (kind: 'application' | 'transport') => {
+    const attempt = ++copyAttempt.current;
+    setCopyStatus('');
+    let status: string;
+    try {
+      await writeClipboard(originalText(record, kind));
+      status = `Copied ${kind === 'application' ? 'application text' : 'transport line'}.`;
+    } catch (error) {
+      status = `Unable to copy: ${String(error)}`;
+    }
+    if (attempt === copyAttempt.current) setCopyStatus(status);
   };
   return <section className="rl-detail" aria-label="Selected record" tabIndex={-1}>
     <header className="rl-detail-head"><strong>Record</strong><button type="button" aria-label="Close record inspector" onClick={onClose}>Close</button></header>

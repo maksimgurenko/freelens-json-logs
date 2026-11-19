@@ -1,8 +1,10 @@
 import assert from 'node:assert/strict';
+import { execFileSync } from 'node:child_process';
 import { test } from 'node:test';
-import { chmodSync, mkdtempSync, mkdirSync, readFileSync, readdirSync, rmSync, writeFileSync } from 'node:fs';
+import { chmodSync, mkdtempSync, mkdirSync, readFileSync, readdirSync, rmSync, statSync, writeFileSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
+import { reaction } from 'mobx';
 import { registerHooks } from 'node:module';
 import { inspectConfiguration, resetConfiguration } from '../src/adapter/configuration-file.ts';
 import { configurationData, configurationProblem, defaultConfiguration } from '../src/core/configuration.ts';
@@ -22,6 +24,10 @@ test('preflight preserves corrupt, non-object, invalid and future bytes, includi
       assert(inspectConfiguration(path).problem);
       assert.equal(readFileSync(path, 'utf8'), original);
     }
+    const invalidUtf8 = Buffer.concat([Buffer.from('{"schemaVersion":3,"viewer":{"inspection":"side"},"profiles":[],"globalDefault":"default","extra":"'), Buffer.from([0xff]), Buffer.from('"}')]);
+    writeFileSync(path, invalidUtf8);
+    assert.match(inspectConfiguration(path).problem!, /invalid UTF-8/);
+    assert.deepEqual(readFileSync(path), invalidUtf8);
     writeFileSync(path, JSON.stringify({ ...defaultConfiguration(), __internal__: { migrations: { version: '0.1.99' } } }));
     assert.deepEqual(inspectConfiguration(path), { data: defaultConfiguration(), problem: undefined });
   });
@@ -35,6 +41,17 @@ test('missing settings use defaults; unreadable settings remain intact and reset
       assert.match(resetConfiguration(path, true).error!, /not replaced.*EACCES/);
     } finally { chmodSync(path, 0o600); }
     assert.equal(readFileSync(path, 'utf8'), future);
+  });
+});
+test('preflight refuses a named pipe without waiting for a writer', { skip: process.platform !== 'linux' }, () => {
+  fixture(path => {
+    execFileSync('mkfifo', [path]);
+    const fileAdapter = new URL('../src/adapter/configuration-file.ts', import.meta.url).href;
+    const result = execFileSync(process.execPath, ['--experimental-strip-types', '--input-type=module', '-e',
+      `import { inspectConfiguration } from ${JSON.stringify(fileAdapter)}; console.log(inspectConfiguration(process.argv[1]).problem);`, path],
+    { encoding: 'utf8', timeout: 2000 });
+    assert.match(result, /not a regular file/);
+    assert(statSync(path).isFIFO());
   });
 });
 test('canceled reset does no I/O; failed backup leaves exact original bytes and no temporary replacement', () => {
@@ -65,6 +82,23 @@ test('confirmed reset verifies an exclusive exact backup before clearing all sav
     assert.equal(inspectConfiguration(path).problem, undefined);
   });
 });
+test('failed main-store rebind restores the original settings and keeps the verified backup', () => {
+  fixture((path, directory) => {
+    const original = Buffer.from(future);
+    writeFileSync(path, original, { mode: 0o640 });
+    const result = resetConfiguration(path, true, () => {
+      assert.deepEqual(JSON.parse(readFileSync(path, 'utf8')), defaultConfiguration());
+      const backups = join(directory, 'backups');
+      assert.deepEqual(readFileSync(join(backups, readdirSync(backups)[0])), original);
+      throw new Error('SDK could not load settings');
+    });
+    assert.match(result.error!, /SDK could not load settings/);
+    assert.deepEqual(readFileSync(path), original);
+    assert.equal(statSync(path).mode & 0o777, 0o640);
+    assert.deepEqual(readFileSync(result.backup!), original);
+    assert.deepEqual(readdirSync(directory).sort(), ['backups', 'readable-logs.json']);
+  });
+});
 test('explicit schema 1 and 2 migrations preserve preferences, full rules, IDs, order and default; future is never migrated', () => {
   const first = duplicateProfile(builtinProfile(), 'one', 'One');
   first.format.messagePaths = ['/event/text']; first.format.severityMappings = [{ source: 30, target: 'INFO' }];
@@ -81,14 +115,24 @@ test('explicit schema 1 and 2 migrations preserve preferences, full rules, IDs, 
 
 // Exercise the production store with real MobX reactions and a bounded public-SDK
 // stand-in. Real SDK/Conf startup preservation is separately verified in Freelens.
-let sdkStarts = 0, storePath = '';
+let sdkStarts = 0, sdkActive = 0, sdkSends = 0, storePath = '';
 class ExtensionStore {
   protected extension?: unknown;
+  protected persistentStorage?: { stopSyncing: () => void };
   static getInstanceOrCreate() { return new (this as typeof ExtensionStore)(); }
   protected cwd() { return storePath; }
   loadExtension(_extension: unknown) {
+    this.persistentStorage?.stopSyncing();
     sdkStarts++;
-    (this as unknown as { fromStore(data: object): void }).fromStore(JSON.parse(readFileSync(join(storePath, 'readable-logs.json'), 'utf8')));
+    // The released SDK publishes the handle before initial fromStore, but
+    // stopSyncing has no effect until the reaction is created after fromStore.
+    let stop: (() => void) | undefined;
+    this.persistentStorage = { stopSyncing: () => { stop?.(); stop = undefined; } };
+    const store = this as unknown as { fromStore(data: object): void; toJSON(): object };
+    store.fromStore(JSON.parse(readFileSync(join(storePath, 'readable-logs.json'), 'utf8')));
+    sdkActive++;
+    const unwatch = reaction(() => store.toJSON(), () => { sdkSends++; });
+    stop = () => { unwatch(); sdkActive--; };
   }
 }
 (globalThis as unknown as { __recoverySdk: unknown }).__recoverySdk = { Store: { ExtensionStore } };
@@ -108,7 +152,7 @@ test('fallback never starts SDK synchronization, rejects incoming data and inhib
       writeFileSync(path, original);
       const store = new ConfigurationStore();
       const before = store.toJSON(); const starts = sdkStarts;
-      store.loadExtension({} as never);
+      store.attach({} as never, { path, problem: inspectConfiguration(path).problem });
       assert.equal(sdkStarts, starts);
       assert(store.read().problem); assert.deepEqual(store.read().configuration, defaultConfiguration());
       store.fromStore({ ...defaultConfiguration(), viewer: { inspection: 'bottom' } });
@@ -120,14 +164,58 @@ test('fallback never starts SDK synchronization, rejects incoming data and inhib
       await store.resetSettings(false); assert.equal(resetCalls, 0);
       const result = await store.resetSettings(true);
       assert.equal(result.error, undefined); assert.equal(readFileSync(result.backup!, 'utf8'), original);
-      store.loadExtension({} as never);
+      store.attach({} as never, { path, problem: inspectConfiguration(path).problem });
       assert.equal(sdkStarts, starts + 1); assert.equal(store.read().problem, undefined);
       store.saveProfile(duplicateProfile(builtinProfile(), 'fresh', 'Fresh'));
       store.setGlobalDefault('fresh'); store.setInspection('bottom');
       assert.equal(store.read().configuration.profiles.length, 1);
       assert.equal(store.read().configuration.globalDefault, 'fresh'); assert.equal(store.read().inspection, 'bottom');
+      store.detach();
     }
   } finally { rmSync(directory, { recursive: true, force: true }); }
+});
+test('fallback disconnects a previously healthy store from SDK synchronization', () => {
+  fixture((path, directory) => {
+    storePath = directory;
+    const store = new ConfigurationStore();
+    writeFileSync(path, JSON.stringify({ ...defaultConfiguration(), viewer: { inspection: 'bottom' } }));
+    store.attach({} as never, { path });
+    assert.equal(store.read().inspection, 'bottom');
+    assert.equal(sdkActive, 1);
+    writeFileSync(path, future);
+    store.attach({} as never, { path, problem: inspectConfiguration(path).problem });
+    assert.equal(sdkActive, 0);
+    assert.equal(store.read().inspection, 'side');
+    assert.equal(readFileSync(path, 'utf8'), future);
+  });
+});
+test('an invalid initial SDK read detaches its late-installed reaction on startup and rebind', () => {
+  fixture((path, directory) => {
+    storePath = directory;
+    const store = new ConfigurationStore();
+    for (let attempt = 0; attempt < 2; attempt++) {
+      const good = JSON.stringify(defaultConfiguration());
+      writeFileSync(path, good);
+      const status = { path, problem: inspectConfiguration(path).problem };
+      assert.equal(status.problem, undefined);
+      writeFileSync(path, future);
+      store.attach({} as never, status);
+      assert.match(store.read().problem!, /Unsupported configuration schema 999/);
+      assert.equal(store.read().inspection, 'side');
+      assert.equal(sdkActive, 0, 'Initial rejection retained SDK synchronization');
+      assert.equal(readFileSync(path, 'utf8'), future);
+
+      writeFileSync(path, good);
+      store.attach({} as never, status);
+      assert.equal(store.read().problem, undefined);
+      assert.equal(sdkActive, 1, 'Recovery installed duplicate SDK synchronization');
+      const sends = sdkSends;
+      store.setInspection('bottom');
+      assert.equal(sdkSends, sends + 1, 'One change should trigger one SDK send');
+    }
+    store.detach();
+    assert.equal(sdkActive, 0);
+  });
 });
 test('invalid synchronization cannot change the serialized model or restore writes by sending defaults', () => {
   const store = new ConfigurationStore();

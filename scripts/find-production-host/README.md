@@ -5,13 +5,12 @@ helpers use a private profile and headless labwc → nested Hyprland session, wi
 Freelens on private workspace 7. They verify the private process, runtime and
 debug endpoints before interacting with the host. Keep `FREELENS_UI_MODE` unset.
 
-These are retained integration drivers, separate from `npm run test:browser`,
-`test:workers` and `test:smoke`. Several scenario drivers still target the original
-0.1.34 artifact or specific native run names. Before a new run, select the intended
-package and check the versioned entry paths in `driver.mjs`, `observer.cjs` and
-the chosen scenario. Adapt historical scenario prerequisites explicitly while
-preserving isolation guards. Do not treat an old scenario's success as validation
-of a different package.
+The command sequence below records the historical Freelens 1 integration.
+Reuse the private profile, display and CDP guards for v2. Adapt the host
+executable, archive identity and scenario probes before connecting to
+Freelens 2. The v2 [development install](../../docs/local-development.md)
+uses the host's **Extensions** form in the private profile. The headless
+browser, worker and resource suites run separately through npm.
 
 `prepare.py` requires the existing `kind-freelens-json-logs-spike` kubeconfig
 context. It copies that context into a private profile without changing cluster

@@ -3,7 +3,7 @@ import { scratch, evidence, ticket } from './config.mjs';
 import { readFileSync } from 'node:fs';
 import assert from 'node:assert/strict';
 import { requireAttended } from '../ui-test-policy.mjs';
-import WebSocket from 'ws'; // Already locked in the SDK development tree.
+import WebSocket from 'ws';
 
 export async function connect(port) {
   assert([9241, 9242].includes(port));

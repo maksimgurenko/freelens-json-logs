@@ -40,7 +40,7 @@ try {
       : contexts.find(value => value.auxData?.isDefault && value.origin.includes(selector));
     if (!context) throw new Error(`Missing context ${selector}`);
     for (let attempt = 0; attempt < 100; attempt++) {
-      const ready = await send('Runtime.evaluate', { expression: '!!global.LensExtensions', contextId: context.id, returnByValue: true });
+      const ready = await send('Runtime.evaluate', { expression: '!!globalThis.FreelensExtensionApi?.Renderer', contextId: context.id, returnByValue: true });
       if (ready.result.value) break;
       if (attempt === 99) throw new Error('Host SDK did not become ready');
       await new Promise(resolve => setTimeout(resolve, 100));

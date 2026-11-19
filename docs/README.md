@@ -2,11 +2,12 @@
 
 ## Use the extension
 
-- [Download and install](../README.md#install)
+- [Install the Freelens 2 archive](../README.md#install)
 - [User guide: reading logs, inspection, Find and formatting profiles](usage.md)
-- [Tested launch, updates and maintenance](local-development.md#supported-local-maintenance)
+- [Freelens 2 updates and maintenance](local-development.md#supported-local-maintenance)
 - [Settings recovery and backup restoration](local-development.md#recovering-unusable-settings)
-- [Release notes](releases/v0.1.36.md)
+- [Freelens 2 release notes](releases/v0.1.37.md)
+- [Historical Freelens 1 release notes](releases/v0.1.36.md) and [development guide](https://github.com/maksimgurenko/freelens-json-logs/blob/v0.1.36/docs/local-development.md)
 
 ## Develop and verify
 

@@ -1,17 +1,26 @@
-// Mount the real versioned production CommonJS renderer with SDK/OS stand-ins.
+// Mount the real versioned production ESM renderer with SDK/OS stand-ins.
 // DOM focus/selection observations here are not physical input/clipboard proof.
 import React from 'react';
-import ReactDOM from 'react-dom';
+import { createRoot } from 'react-dom/client';
+import { flushSync } from 'react-dom';
 import * as Mobx from 'mobx';
+import { RendererExtensionStub } from './freelens-renderer-stub.mjs';
 import { verifyFindPresentation } from './find-presentation-browser.jsx';
 import { verifyFindMarks } from './find-marks-browser.jsx';
 import { verifyFindIntegration } from './find-integration-browser.jsx';
 import { verifyFindPerformance } from './find-performance-browser.jsx';
+import { commitDiscreteEvents } from './browser-discrete-events.js';
+import { SettingsRecovery } from '../src/renderer/settings-recovery.tsx';
+import { LocalDismissal } from '../src/renderer/local-dismissal.ts';
+
+commitDiscreteEvents();
 
 const check = (condition, message) => { if (!condition) throw new Error(message); };
 const sleep = ms => new Promise(resolve => setTimeout(resolve, ms));
 const turn = () => sleep(0);
 const results = [], errors = [], callbacks = new Map();
+const sdkDisposers = [];
+const visibilityReplies = new Set();
 // Observe browser resource ownership at the DOM boundary, across every mounted
 // renderer owner. A disconnected observer/frame must not outlive unmount.
 const geometryObservers = new Set(), geometryFrames = new Set();
@@ -30,19 +39,50 @@ globalThis.cancelAnimationFrame = id => { geometryFrames.delete(id); cancelFrame
 window.addEventListener('error', event => errors.push(String(event.error || event.message)));
 window.addEventListener('unhandledrejection', event => errors.push(String(event.reason)));
 let text = 'start\nx\nend', reads = 0, podReads = 0, pendingRead, copies = [];
+let logRequest;
+let clipboardWrite = value => { copies.push(value); };
 let status = { name: 'app', restartCount: 0, containerID: 'run-0' };
 let uid = 'uid';
 let heldReply, failNext = false, requestCount = 0;
 let heldRangeReply;
 let failNextRange = false;
 let rpcSequence = 0;
+const settingsPath = '/isolated-identity-store/readable-logs.json';
+let settingsStatus = () => ({ path: settingsPath });
+let resetSettingsReply;
+let failSettingsBinding = false;
+let pauseVisibilityReplies = false;
+function applyMockSetting(configuration, mutation) {
+  if (mutation.type === 'inspection') return { ...configuration, viewer: { ...configuration.viewer, inspection: mutation.layout } };
+  check(mutation.type === 'save-profile', `Unexpected settings command: ${mutation.type}`);
+  return { ...configuration, profiles: [...configuration.profiles, mutation.profile] };
+}
+const syncMockSetting = async mutation => {
+  const store = configurationStores[0], configuration = store.toJSON();
+  store.fromStore(applyMockSetting(configuration, mutation));
+};
+let mutateSettings = syncMockSetting;
 const rangeRequests = [];
 const holdNext = text => { let release; const promise = new Promise(resolve => { release = resolve; }); heldReply = { promise, release, text }; return heldReply; };
 const holdNextRange = () => { let release; const promise = new Promise(resolve => { release = resolve; }); heldRangeReply = { promise, release, dispatched: false }; return heldRangeReply; };
 const ipc = {
-  listen(name, callback) { callbacks.set(name, callback); return () => callbacks.delete(name); },
+  listen(name, callback) {
+    callbacks.set(name, callback);
+    const dispose = () => { if (callbacks.get(name) === callback) callbacks.delete(name); };
+    // Released SDK keeps this closure (and its original listener) until disable.
+    sdkDisposers.push(dispose);
+    return dispose;
+  },
   async invoke(name, ...args) {
-    if (name === 'viewer-visibility-request') { callbacks.get(args[1])?.({}, args[0]); return; }
+    if (name === 'readable-logs-settings-status') return settingsStatus();
+    if (name === 'readable-logs-settings-mutate') return mutateSettings(args[0]);
+    if (name === 'readable-logs-settings-reset') return resetSettingsReply;
+    if (name === 'viewer-visibility-stop') { visibilityReplies.delete(args[0]); return; }
+    if (name === 'viewer-visibility-request') {
+      visibilityReplies.add(args[1]);
+      if (!pauseVisibilityReplies) callbacks.get('viewer-visibility-changed')?.({}, args[1], args[0]);
+      return;
+    }
     const exact = name === 'find-request' && args[1].work === 'match';
     const gate = exact && (!heldReply?.text || heldReply.text === args[1].query.text) ? heldReply : undefined;
     const rangeGate = name === 'find-request' && !exact ? heldRangeReply : undefined;
@@ -62,33 +102,29 @@ const ipc = {
 class Ipc { static createInstance() { return ipc; } }
 const configurationStores = [];
 class ExtensionStore {
-  static getInstanceOrCreate() { const store = new this(); configurationStores.push(store); return store; }
+  static getInstanceOrCreate() {
+    if (!configurationStores.length) configurationStores.push(new this());
+    return configurationStores[0];
+  }
   cwd() { return '/isolated-identity-store'; }
-  loadExtension() {}
+  loadExtension() { if (failSettingsBinding) throw new Error('Controlled renderer store failure'); }
 }
-Object.assign(globalThis, { global: globalThis, React, ReactDOM, Mobx, LensExtensions: {
-  Common: { Store: { ExtensionStore } }, Renderer: { Ipc, LensExtension: class {},
-    Component: { Icon: ({ material }) => <span className="Icon material-icons" aria-hidden="true">{material}</span> },
+globalThis.FreelensExtensionApi = { React, Mobx,
+  Common: { Store: { ExtensionStore } }, Renderer: { Ipc, LensExtension: RendererExtensionStub,
+    Component: { MenuItem: ({ children }) => children, Icon: ({ material }) => <span className="Icon material-icons" aria-hidden="true">{material}</span> },
     Catalog: { getActiveCluster: () => ({ id: 'cluster', name: 'Identity test' }) },
     K8sApi: { podsApi: {
       async get() { podReads++; return { metadata: { uid, labels: {} }, spec: { containers: [{ name: 'app' }, { name: 'sidecar' }] },
         status: { containerStatuses: status ? [status] : [] } }; },
-      async getLogs() { reads++; if (pendingRead) return pendingRead.promise; return text; },
+      async getLogs(target, options) { reads++; logRequest = { target, options }; if (pendingRead) return pendingRead.promise; return text; },
     } },
   },
-} });
-const module = { exports: {} };
-const require = name => {
-  if (name === 'node:fs') return { readFileSync() { throw Object.assign(new Error('Absent'), { code: 'ENOENT' }); } };
-  if (name === 'node:path') return { join: (...parts) => parts.join('/') };
-  if (name === 'node:crypto') return { randomUUID: () => crypto.randomUUID() };
-  if (name === 'electron') return { clipboard: { writeText(value) { copies.push(value); } } };
-  throw new Error(`Unexpected native module ${name}`);
 };
-new Function('module', 'exports', 'require', PACKED_RENDERER)(module, module.exports, require);
-const extension = new module.exports.default();
-const Page = extension.clusterPages[0].components.Page;
+Object.defineProperty(navigator, 'clipboard', { value: { writeText: value => clipboardWrite(value) } });
+const { default: Renderer } = await import('/renderer.mjs');
+const extension = new Renderer();
 const root = document.querySelector('#root');
+const reactRoot = createRoot(root);
 const rows = () => [...root.querySelectorAll('.rl-record')];
 const button = label => {
   const node = [...root.querySelectorAll('button')].find(node => node.textContent.trim() === label || node.getAttribute('aria-label') === (label === 'Clear' ? 'Clear Find' : label));
@@ -106,6 +142,165 @@ async function refresh(value) {
 function edit(value) {
   Object.getOwnPropertyDescriptor(HTMLInputElement.prototype, 'value').set.call(input(), value);
   input().dispatchEvent(new Event('input', { bubbles: true }));
+}
+async function verifySettingsActivation() {
+  let resolveStatus;
+  settingsStatus = () => new Promise(resolve => { resolveStatus = resolve; });
+  const staleStatus = { path: settingsPath, problem: 'Saved settings are unusable' };
+  const backup = '/isolated-identity-store/backups/readable-logs.json';
+  const activating = extension.onActivate();
+  callbacks.get('readable-logs-settings-changed')({}, { path: settingsPath, backup });
+  resolveStatus(staleStatus);
+  await activating;
+  const saved = configurationStores[0].read();
+  check(!saved.problem && saved.backup === backup, 'A stale activation reply undid settings recovery');
+  callbacks.get('readable-logs-settings-changed')({}, staleStatus);
+  check(configurationStores[0].read().problem === staleStatus.problem && configurationStores[0].read().inspection === 'side',
+    'A settings failure was not applied to an already open renderer');
+  await extension.onDeactivate();
+
+  settingsStatus = () => ({ path: settingsPath });
+  await extension.onActivate();
+  await extension.onDeactivate();
+  settingsStatus = () => new Promise(resolve => { resolveStatus = resolve; });
+  const deactivated = extension.onActivate();
+  await extension.onDeactivate();
+  resolveStatus(staleStatus);
+  await deactivated;
+  check(!configurationStores[0].read().problem, 'A deactivated renderer applied its pending settings status');
+  results.push('settings recovery takes precedence over pending activation, and disable discards stale status');
+
+  settingsStatus = () => staleStatus;
+  await extension.onActivate();
+  const attemptedBackup = '/isolated-identity-store/backups/readable-logs-rebind.json';
+  resetSettingsReply = { backup: attemptedBackup, status: { path: settingsPath, backup: attemptedBackup } };
+  failSettingsBinding = true;
+  const preferences = configurationStores[0];
+  const dismissal = new LocalDismissal();
+  const container = document.createElement('main');
+  container.className = 'readable-logs'; document.body.append(container);
+  const recoveryRoot = createRoot(container);
+  const render = () => flushSync(() => recoveryRoot.render(<SettingsRecovery {...{ preferences, saved: preferences.read(), dismissal }} />));
+  const nextLayer = () => {};
+  const stopNext = dismissal.add(0, () => nextLayer);
+  try {
+    render();
+    const resetButton = () => [...container.querySelectorAll('button')].find(button => button.textContent === 'Reset settings…');
+    resetButton().click();
+    check(container.querySelector('[aria-label="Confirm settings reset"]') &&
+      typeof dismissal.resolve() === 'function' && dismissal.resolve() !== nextLayer,
+      'Visible recovery confirmation did not own local dismissal');
+    // Another view completed the reset. This view has an open confirmation
+    // and its SDK reload fails when it receives the broadcast.
+    callbacks.get('readable-logs-settings-changed')({}, resetSettingsReply.status);
+    const fallback = preferences.read();
+    check(fallback.backup === attemptedBackup && fallback.problem, 'Failed renderer rebind lost fallback or backup path');
+    render();
+    check(container.textContent.includes(attemptedBackup) && !container.querySelector('[aria-label="Confirm settings reset"]'),
+      'Reload failure did not replace the confirmation with the backup notice');
+    check(dismissal.resolve() === nextLayer, 'Unmounted recovery confirmation intercepted local Escape');
+
+    callbacks.get('readable-logs-settings-changed')({}, staleStatus); render();
+    check(resetButton() && !container.querySelector('[aria-label="Confirm settings reset"]'), 'Confirmation state survived a different recovery problem');
+    const committed = await preferences.resetSettings(true);
+    check(committed.backup === attemptedBackup && preferences.read().backup === attemptedBackup && preferences.read().problem,
+      'The reset reply did not report renderer rebind failure with the verified backup path');
+  } finally {
+    stopNext(); recoveryRoot.unmount(); container.remove();
+    failSettingsBinding = false;
+    await extension.onDeactivate();
+  }
+  results.push('renderer rebind failure displays the verified backup path and releases the removed recovery confirmation’s Escape layer');
+}
+async function verifyProfileSave() {
+  const store = configurationStores[0], original = store.toJSON();
+  const profileName = 'Draft awaiting disk';
+  button('Edit profiles'); await turn();
+  button('Duplicate'); await turn();
+  const name = root.querySelector('[aria-label="Profile name"]');
+  Object.getOwnPropertyDescriptor(HTMLInputElement.prototype, 'value').set.call(name, profileName);
+  name.dispatchEvent(new Event('input', { bubbles: true })); await turn();
+  mutateSettings = async () => { throw new Error('Controlled settings write failure'); };
+  button('Save profile');
+  await until(() => root.textContent.includes('Controlled settings write failure'), 'Profile editor did not report the disk write failure');
+  check(name.value === profileName && !name.disabled, 'Failed save discarded the profile draft');
+  check(store.read().configuration.profiles.length === original.profiles.length, 'Failed save applied the draft');
+  mutateSettings = async command => {
+    check(command.type === 'save-profile' && command.profile.name === profileName, 'Retry changed the draft');
+    await syncMockSetting(command);
+  };
+  button('Save profile');
+  await until(() => root.textContent.includes('Profile saved.'), 'Successful retry did not report the saved profile');
+  check(name.disabled, 'Successful retry retained the staged draft');
+  store.fromStore(original);
+  const rendererModelBeforeCommands = store.toJSON();
+  button('Back to logs');
+  results.push('profile Save retains the draft when main rejects persistence and applies it after a successful retry');
+
+  let authoritative = original;
+  const waiting = [];
+  mutateSettings = command => new Promise(resolve => { waiting.push({ command, resolve }); });
+  button('Edit profiles'); button('Duplicate'); button('Save profile');
+  check(waiting[0]?.command.type === 'save-profile', 'Save did not send a profile command');
+  button('Back to logs');
+  const control = root.querySelector('select[aria-label="Inspection"]');
+  root.querySelector('.rl-display-options').open = true;
+  control.value = 'bottom'; control.dispatchEvent(new Event('change', { bubbles: true }));
+  check(waiting.length === 2 && waiting[1].command.type === 'inspection' && waiting[1].command.layout === 'bottom',
+    'Back to logs then Inspection did not dispatch a separate command while Save was pending');
+  check(store.toJSON() === rendererModelBeforeCommands, 'Renderer published a local settings snapshot before main responded');
+  for (const { command, resolve } of waiting) {
+    authoritative = applyMockSetting(authoritative, command);
+    resolve();
+  }
+  store.fromStore(authoritative);
+  await until(() => control.value === 'bottom', 'Inspection command did not update the control');
+  check(store.read().configuration.profiles.some(profile => profile.id === waiting[0].command.profile.id),
+    'Inspection discarded the preceding profile Save');
+
+  mutateSettings = async () => { throw new Error('Controlled Inspection write failure'); };
+  control.value = 'inline'; control.dispatchEvent(new Event('change', { bubbles: true }));
+  await until(() => root.textContent.includes('Controlled Inspection write failure'), 'Inspection rejection was not reported');
+  check(control.value === 'bottom', 'Rejected Inspection changed the saved layout');
+  mutateSettings = syncMockSetting;
+  results.push('Save then Back to logs and Inspection preserves both commands with delayed synchronization and handles a rejected Inspection write');
+}
+
+async function verifyVisibilityListenerLifetime() {
+  settingsStatus = () => ({ path: settingsPath });
+  const before = sdkDisposers.length;
+  await extension.onActivate();
+  const activationRegistrations = sdkDisposers.length;
+  check(activationRegistrations === before + 2, 'Activation should register settings and one shared visibility listener');
+  const { Page } = extension.clusterPages[0].components;
+  const routeRoot = createRoot(root);
+  const receive = callbacks.get('viewer-visibility-changed');
+  const staleReplies = [];
+  pauseVisibilityReplies = true;
+  try {
+    for (let i = 0; i < 6; i++) {
+      const params = Object.fromEntries(Object.entries({ namespace: 'ns', pod: `route-${i}`, podUid: uid, clusterId: 'cluster' })
+        .map(([key, value]) => [key, { get: () => value }]));
+      const beforeReads = reads;
+      flushSync(() => routeRoot.render(<Page params={params} />));
+      const [reply] = visibilityReplies;
+      check(visibilityReplies.size === 1 && reply, 'Mounted viewer did not request visibility');
+      for (const stale of staleReplies) receive({}, stale, 'cluster');
+      await turn();
+      check(reads === beforeReads, 'An old viewer subscription made a different viewer eligible');
+      receive({}, reply, 'cluster');
+      await until(() => rows().length > 0 && reads > beforeReads, 'Current visibility reply did not make the viewer eligible');
+      flushSync(() => routeRoot.render(null));
+      staleReplies.push(reply);
+      check(!visibilityReplies.size, 'Route departure did not send visibility stop');
+      check(sdkDisposers.length === activationRegistrations, 'Route churn added SDK-retained visibility disposers');
+    }
+  } finally {
+    routeRoot.unmount();
+    pauseVisibilityReplies = false;
+    await extension.onDeactivate();
+  }
+  results.push('six route departures use one visibility SDK listener, stop each subscription, and ignore stale viewer replies');
 }
 const settled = () => !['Matching pending', 'Searching…'].includes(root.querySelector('.rl-find-count').textContent);
 async function query(value) { edit(value); await until(settled, 'Find did not settle'); await turn(); }
@@ -195,10 +390,11 @@ async function verifyInspectionFindState() {
   for (const change of ['inline', 'bottom', 'side', 'settings synchronization']) {
     if (input().value) button('Clear'); closeInspector();
     if (change === 'settings synchronization') {
-      store.saveProfile({ id: synchronizedProfile, name: 'Synchronized Find profile',
+      const profile = { id: synchronizedProfile, name: 'Synchronized Find profile',
         format: { messagePaths: ['/message'], timestampPaths: [], levelPaths: [], inlinePaths: [], hiddenPaths: [], numericTimestamp: 'unset', severityMappings: [] },
-        matching: { enabled: false, conditions: { labels: [] } } });
-      store.setGlobalDefault(synchronizedProfile); await turn();
+        matching: { enabled: false, conditions: { labels: [] } } };
+      store.fromStore({ ...originalConfiguration, profiles: [...originalConfiguration.profiles, profile], globalDefault: synchronizedProfile });
+      await turn();
     }
     rows()[64].querySelector('.rl-row').click();
     const before = requestCount, beforeReads = reads, source = rows().map(row => row.querySelector('.rl-message').textContent);
@@ -258,6 +454,26 @@ async function verifyCanvasContrast() {
     }
     results.push('D07: ordinary/inspected/native-selection text retains contrast on black canvas under light and dark host colors');
   } finally { for (const [name, value] of previous) { if (value) root.style.setProperty(name, value); else root.style.removeProperty(name); } }
+}
+async function verifyMixedSeverityColors() {
+  const levels = ['DEBUG', 'TRACE', 'INFO', 'WARN', 'ERROR', 'FATAL'];
+  const json = levels.map(level => JSON.stringify({ severity: level.toLowerCase(), message: level }));
+  const renderedLevels = () => rows().map(row => {
+    const level = row.querySelector('.rl-level');
+    return { label: level.textContent, color: getComputedStyle(level).color, neutral: getComputedStyle(row.querySelector('.rl-row')).color };
+  });
+  await refresh(json.join('\n'));
+  const jsonOnly = renderedLevels();
+  await refresh([...json.slice(0, 1), 'worker heartbeat: queue=demo ready', ...json.slice(1)].join('\n'));
+  const [debug, plain, ...rest] = renderedLevels();
+  check(plain.label === '' && plain.color === plain.neutral, 'Plain-text log acquired a severity');
+  for (const [index, row] of [debug, ...rest].entries()) {
+    check(row.label === levels[index], `Mixed snapshot lost ${levels[index]} severity`);
+    check(row.color === jsonOnly[index].color, `Plain text changed the color of ${row.label}`);
+  }
+  const uncolored = [debug, ...rest].filter(row => row.color === row.neutral).map(row => row.label);
+  check(uncolored.length === 0, `Recognized severities with no color: ${uncolored.join(', ')}`);
+  results.push('plain text stays neutral and every recognized severity retains its color across mixed snapshots');
 }
 async function verifyPresentation() {
   await refresh('first needle\n{"message":"visible","hidden":"needle"}\n{"message":"\\u03a3"}');
@@ -413,8 +629,10 @@ async function verifySelectionHistory() {
   button('Edit profiles'); button('Back to logs'); clock().click();
   check(historyTexts()[0] === 'retained history', 'Profiles lost history');
   byName('Close search history').click();
-  const visibilityReply = [...callbacks.entries()].find(([name]) => name.startsWith('viewer-visibility-'));
-  visibilityReply[1]({}, null); await turn(); visibilityReply[1]({}, 'cluster'); await until(settled);
+  const [visibilityReply] = visibilityReplies;
+  const receiveVisibility = callbacks.get('viewer-visibility-changed');
+  flushSync(() => receiveVisibility({}, visibilityReply, null));
+  flushSync(() => receiveVisibility({}, visibilityReply, 'cluster')); await until(settled);
   clock().click(); check(historyTexts()[0] === 'retained history', 'Temporary inactivity lost history');
   // Outside click and Escape return focus to the clock. Escape is dispatched
   // only with the document's real focus; guards are never patched.
@@ -561,6 +779,7 @@ async function verifyPosition() {
   const paths = root.querySelector('textarea[aria-label="Message paths"]');
   Object.getOwnPropertyDescriptor(HTMLTextAreaElement.prototype, 'value').set.call(paths, '');
   paths.dispatchEvent(new Event('input', { bubbles: true })); button('Save profile');
+  await until(() => root.textContent.includes('Profile saved.'), 'New formatting profile did not finish saving');
   const profileId = root.querySelector('select[aria-label="Saved profile"]').value;
   button('Back to logs');
   const profile = root.querySelector('select[aria-label="Profile"]');
@@ -662,15 +881,33 @@ async function verifyAsync() {
 }
 globalThis.verifyIdentity = async () => {
   await document.fonts.ready;
-  extension.onActivate();
+  await extension.onActivate();
   const params = Object.fromEntries(Object.entries({ namespace: 'ns', pod: 'pod', podUid: 'uid', clusterId: 'cluster' }).map(([key, value]) => [key, { get: () => value }]));
-  ReactDOM.render(<Page params={params} />, root);
+  const Page = extension.clusterPages[0].components.Page;
+  reactRoot.render(<Page params={params} />);
   try {
     await until(() => rows().length === 3, 'No initial rows'); button('Pause');
+    const { target, options } = logRequest;
+    check(target.namespace === 'ns' && target.name === 'pod' && options.container === 'app', 'Initial snapshot addressed a different log target');
+    check(options.tailLines === 1000 && options.timestamps === true && options.follow === false && options.previous === false,
+      'Initial snapshot did not request the bounded current-instance window');
+    results.push('production Page requests the selected Pod and its initial container with bounded snapshot options');
     if (FIND_PERFORMANCE_ONLY) {
       await verifyFindPerformance({ root, rows, button, query, refresh, until, check, results, holdNext, holdNextRange, rangeRequests });
       return results;
     }
+    await verifyMixedSeverityColors();
+    await refresh('start\nx\nend');
+    rows()[1].querySelector('.rl-row').click();
+    let finishCopy;
+    clipboardWrite = value => new Promise(resolve => { copies.push(value); finishCopy = resolve; });
+    button('Copy transport line');
+    rows()[0].querySelector('.rl-row').click();
+    check(rows()[0].classList.contains('rl-selected'), 'Pending-copy setup did not select a different record');
+    finishCopy(); await turn();
+    check(root.querySelector('.rl-copy [role=status]').textContent === '', 'Late clipboard feedback appeared on another record');
+    button('Close record inspector');
+    clipboardWrite = value => { copies.push(value); return Promise.resolve(); };
     await verifyFindClosing();
     await verifyFindPerformance({ root, rows, button, query, refresh, until, check, results, holdNext, holdNextRange, rangeRequests });
     button('Clear'); root.querySelector('[aria-label="Close Find"]').click(); await refresh('start\nx\nend');
@@ -707,8 +944,29 @@ globalThis.verifyIdentity = async () => {
     check(rows()[0] === oldX && document.activeElement === focusedRow && document.getSelection().toString() === 'x', 'Identical snapshot lost observed identity/focus/selection');
     results.push('identical complete window retains actual DOM focus and selection');
     const beforeCopies = copies.length;
-    button('Copy application text'); button('Copy transport line');
+    const copyStatus = () => root.querySelector('.rl-copy [role=status]').textContent;
+    let resolveCopy;
+    clipboardWrite = value => new Promise(resolve => { copies.push(value); resolveCopy = resolve; });
+    button('Copy application text'); await turn();
+    check(copyStatus() === '', 'Copy reported success before the write finished');
+    resolveCopy();
+    await until(() => copyStatus() === 'Copied application text.', 'Completed copy did not report success');
+    clipboardWrite = value => { copies.push(value); return Promise.resolve(); };
+    button('Copy transport line');
     check(copies.length === beforeCopies + 2 && copies.slice(beforeCopies).every(value => value === 'x'), 'Original copy payload changed');
+    await until(() => copyStatus() === 'Copied transport line.', 'Completed transport copy did not report success');
+    clipboardWrite = () => Promise.reject(new Error('Clipboard denied'));
+    button('Copy application text');
+    await until(() => copyStatus().includes('Clipboard denied'), 'Rejected copy did not report failure');
+    const writes = [];
+    clipboardWrite = value => new Promise(resolve => { copies.push(value); writes.push(resolve); });
+    button('Copy transport line'); button('Copy application text');
+    writes[1]();
+    await until(() => copyStatus() === 'Copied application text.', 'Newest completed copy did not report success');
+    writes[0](); await turn();
+    check(copyStatus() === 'Copied application text.', 'An older copy overwrote newer feedback');
+    results.push('clipboard feedback awaits settlement and belongs to the latest action and inspected record');
+    clipboardWrite = value => { copies.push(value); return Promise.resolve(); };
     await refresh('different\nx');
     check(!root.querySelector('.rl-selected') && !root.querySelector('.rl-detail'), 'Zero overlap did not expire inspection');
     check(!root.querySelector('.rl-find-current') && input().value === 'x', 'Eviction substituted another Find result or cleared the query');
@@ -785,6 +1043,7 @@ globalThis.verifyIdentity = async () => {
     results.push('mounted session rejects old-instance log successes and failures');
     const container = root.querySelector('select[aria-label="Container"]');
     container.value = 'sidecar'; container.dispatchEvent(new Event('change', { bubbles: true })); await turn();
+    await until(() => logRequest.options.container === 'sidecar', 'Changing containers did not update the log target');
     check(input().value === '', 'Container change retained query'); assertEmptyHistory();
     check(root.querySelector('.rl-update-status').textContent !== 'Paused', 'Container change did not preserve existing automatic-mode contract');
     button('Pause'); await query('x');
@@ -797,9 +1056,12 @@ globalThis.verifyIdentity = async () => {
     check(getComputedStyle(scroller).backgroundColor === 'rgb(0, 0, 0)', 'Black canvas changed');
     check(!root.querySelector('.rl-line-number'), 'Line counters introduced');
     check(localStorage.length === 0 && sessionStorage.length === 0 && !(await indexedDB.databases()).length, 'Find wrote browser storage');
+    await verifyProfileSave();
   } finally {
-    ReactDOM.unmountComponentAtNode(root); await extension.onDeactivate(); await turn();
+    reactRoot.unmount(); await extension.onDeactivate(); await turn();
   }
+  await verifySettingsActivation();
+  await verifyVisibilityListenerLifetime();
   check(callbacks.size === 0, 'IPC listener leak'); check(errors.length === 0, errors.join('; '));
   check(CSS.highlights.size === 0, 'Viewer teardown retained Custom Highlight registrations');
   check(geometryObservers.size === 0 && geometryFrames.size === 0, 'Viewer teardown retained geometry observers/animation frames');

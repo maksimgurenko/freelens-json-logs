@@ -1,4 +1,4 @@
-import { FIND_TIMEOUT_MS, findRequestProblem, hasFindReplyIdentity, isFindReply, sameFindKey, sameRecordRef, type FindKey, type FindReply, type FindRequest } from '../core/find-protocol.ts';
+import { FIND_TIMEOUT_MS, findRequestProblem, hasFindReplyIdentity, isFindReply, sameFindKey, sameRecordRef, type FindClock, type FindKey, type FindReply, type FindRequest } from '../core/find-protocol.ts';
 
 export interface FindWorker {
   on(event: 'message', listener: (value: unknown) => void): this;
@@ -8,7 +8,6 @@ export interface FindWorker {
   postMessage(value: unknown): void;
   terminate(): Promise<number>;
 }
-export interface FindClock { now(): number; delay(ms: number, run: () => void): () => void }
 interface Operation { request: FindRequest; started: number; stopTimer: () => void; resolve: (reply: FindReply | undefined) => void }
 interface Pending { key: FindKey; match?: Operation; ranges?: Operation }
 interface Slot { worker: FindWorker; generation: number; ready: boolean; stopping: boolean; exit: Promise<void> }

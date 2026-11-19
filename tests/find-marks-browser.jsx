@@ -102,7 +102,7 @@ export async function verifyFindMarks({ root, rows, button, query, refresh, unti
   display('Raw'); await frames(); await geometry(); display('Readable'); await frames(); await geometry();
   results.push('long/wrapped/expanded/hidden-source rows and representation/resize use real current geometry; mark action preserves reading, inspection and explicit Pause');
 
-  const face = new FontFace('FindMarkProbe', 'url(/Roboto-Regular.ttf)');
+  const face = new FontFace('FindMarkProbe', 'url(/roboto.woff2)');
   document.fonts.add(face); scroller.style.fontFamily = 'FindMarkProbe, monospace';
   await face.load(); await document.fonts.ready; await frames(); await geometry();
   document.fonts.delete(face); scroller.style.fontFamily = ''; await frames(); await geometry();

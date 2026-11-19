@@ -4,6 +4,7 @@ import { randomBytes, createHash } from 'node:crypto';
 import { EventEmitter } from 'node:events';
 import { mkdirSync, readdirSync, readFileSync, statSync, writeFileSync } from 'node:fs';
 import { join } from 'node:path';
+import { setTimeout as wait } from 'node:timers/promises';
 import Module, { createRequire } from 'node:module';
 import { reaction } from 'mobx';
 import { SnapshotSession } from '../../src/core/session.ts';
@@ -17,7 +18,7 @@ const MiB = 1024 * 1024;
 const limits = { heapUsed: 12 * MiB, external: 8 * MiB, rss: 96 * MiB };
 const settle = () => new Promise(resolve => setImmediate(resolve));
 const root = process.cwd();
-const settings = join(root, 'extension-store', 'freelens-readable-logs');
+const settings = join(root, 'extension-store', 'freelens-readable-logs-v2');
 mkdirSync(settings, { recursive: true });
 const settingsPath = join(settings, 'readable-logs.json');
 writeFileSync(settingsPath, JSON.stringify(defaultConfiguration()));
@@ -57,8 +58,7 @@ const window = Object.assign(new EventEmitter(), {
   webContents: Object.assign(new EventEmitter(), { getURL: () => 'https://renderer.freelens.app/cluster/cluster' }),
 });
 class Ipc { static createInstance() { return ipc; } }
-global.LensExtensions = { Common: { Store: { ExtensionStore } }, Main: { LensExtension: class {}, Ipc } };
-global.Mobx = await import('mobx');
+globalThis.FreelensExtensionApi = { Mobx: await import('mobx'), Common: { Store: { ExtensionStore }, Util: { getAppVersion: () => '2.0.0' } }, Main: { LensExtension: class {}, Ipc } };
 const require = createRequire(import.meta.url);
 // The bundle's only native dependency is Electron, supplied by the host at runtime.
 const originalLoad = Module._load;
@@ -137,10 +137,21 @@ async function cycle(index) {
   }
 
   extension.onActivate();
+  handlers.get('readable-logs-settings-status')();
+  const caller = { sender: window.webContents, senderFrame: { processId: 1, routingId: 7, isDestroyed: () => false } };
   for (let n = 0; n < 8; n++) {
     const reply = `viewer-visibility-${index}-${n}`;
-    handlers.get('viewer-visibility-request')({ sender: {} }, 'cluster', reply);
-    if (n % 2) for (const callback of listeners.get('viewer-visibility-stop')) callback({}, reply);
+    handlers.get('viewer-visibility-request')(caller, 'cluster', reply);
+    const count = window.listenerCount('show');
+    handlers.get('viewer-visibility-stop')({ ...caller, senderFrame: { processId: 1, routingId: 8 } }, reply);
+    assert.equal(window.listenerCount('show'), count, 'A foreign frame removed the viewer subscription');
+    if (n % 3 === 0) {
+      handlers.get('viewer-visibility-stop')(caller, reply);
+      assert.equal(window.listenerCount('show'), count - 1, 'The owner could not remove its subscription');
+    } else if (n % 3 === 1) {
+      window.webContents.emit('did-frame-navigate', {}, 'about:blank', -1, '', false, 1, 7);
+      assert.equal(window.listenerCount('show'), 0, 'Replaced frame retained a visibility subscription');
+    }
   }
   await extension.onDeactivate();
   assert.equal(listeners.size, 0, 'Main retained IPC listeners');
@@ -154,6 +165,15 @@ async function measure() {
   return { heapUsed, external, rss };
 }
 try {
+  extension.onActivate();
+  handlers.get('readable-logs-settings-status')();
+  const detachedFrame = { detached: false, isDestroyed: () => false, processId: 1, routingId: 7 };
+  handlers.get('viewer-visibility-request')({ sender: window.webContents, senderFrame: detachedFrame }, 'cluster', 'viewer-visibility-detached');
+  assert.equal(window.listenerCount('show'), 1);
+  detachedFrame.detached = true;
+  for (let attempt = 0; attempt < 30 && window.listenerCount('show'); attempt++) await wait(50);
+  assert.equal(window.listenerCount('show'), 0, 'Detached frame retained a visibility subscription');
+  await extension.onDeactivate();
   // Warm parsers, code paths and the allocator before comparing retained memory.
   for (let index = 0; index < 4; index++) await cycle(index);
   const baselineDisk = footprint();
@@ -172,7 +192,7 @@ try {
   for (let index = 0; index < 100; index++) store.setInspection(index % 2 ? 'side' : 'bottom');
   const disk = footprint();
   assert.equal(disk.length, 1, `Unexpected retained files: ${JSON.stringify(disk)}`);
-  assert.equal(disk[0].path, join('extension-store', 'freelens-readable-logs', 'readable-logs.json'));
+  assert.equal(disk[0].path, join('extension-store', 'freelens-readable-logs-v2', 'readable-logs.json'));
   assert(disk[0].bytes < 4096, 'Saved settings grew unexpectedly');
   assert.deepEqual(JSON.parse(readFileSync(settingsPath, 'utf8')), defaultConfiguration());
   console.log(JSON.stringify({ check: 'core/main RAM and disk', cycles: 40, samples, limits, disk }, null, 2));

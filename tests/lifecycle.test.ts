@@ -195,10 +195,8 @@ test('native window and route relay stop CSS-hidden cluster polling; focus/blur 
   let reply = '';
   const channel: VisibilityChannel = {
     listen(name, received) { listeners.set(name, received); return () => { listeners.delete(name); }; },
-    broadcast(name, ...args) {
-      if (name === 'viewer-visibility-request') reply = args[1]!;
-      else listeners.get(name)?.(args[0]!);
-    },
+    request(_clusterId, channel) { reply = channel; },
+    stop() {},
   };
   const states: boolean[] = [];
   const stop = bindVisibility({ ownerDocument: child } as HTMLElement, 'cluster', channel, value => states.push(value));
@@ -208,7 +206,7 @@ test('native window and route relay stop CSS-hidden cluster polling; focus/blur 
     isDestroyed: () => destroyed, isVisible: () => !hidden, isMinimized: () => minimized,
     webContents: Object.assign(new EventEmitter(), { getURL: () => `https://renderer.freelens.app${path}` }),
   });
-  const stopWindow = watchWindowVisibility(window, 'cluster', selected => channel.broadcast(reply, selected));
+  const stopWindow = watchWindowVisibility(window, 'cluster', selected => listeners.get(reply)?.(selected));
   assert.deepEqual(states, [false, true]);
   window.emit('blur'); child.dispatchEvent(new Event('blur')); assert.deepEqual(states, [false, true]);
   // Freelens hides the iframe with visibility:hidden; child visibility is unchanged.
@@ -226,7 +224,7 @@ test('native window and route relay stop CSS-hidden cluster polling; focus/blur 
   assert.equal(states.at(-1), true);
   destroyed = true; window.emit('closed'); assert.equal(states.at(-1), false);
   stop(); stopWindow(); const count = states.length;
-  channel.broadcast(reply, 'cluster'); window.emit('show'); child.dispatchEvent(new Event('visibilitychange'));
+  listeners.get(reply)?.('cluster'); window.emit('show'); child.dispatchEvent(new Event('visibilitychange'));
   assert.equal(states.length, count); assert.equal(window.eventNames().length, 0);
   assert.equal(window.webContents.eventNames().length, 0);
 });

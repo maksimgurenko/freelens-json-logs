@@ -1,5 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
+import { findTransport } from '../src/adapter/find-ipc.ts';
 import { FindClient, FindMatching } from '../src/renderer/find-client.ts';
 import type { FindRequest, FindReply } from '../src/core/find-protocol.ts';
 const input = (id = 1) => ({ key: { viewerEpoch: 1, targetEpoch: 1, instanceEpoch: 1, windowRevision: 1, messageRevision: 1, queryRevision: id },
@@ -12,7 +13,7 @@ const setup = () => {
     const timer = { at: now + ms, run }; timers.add(timer); return () => { timers.delete(timer); };
   } };
   const calls: { channel: string; args: unknown[]; resolve: (reply: unknown) => void; reject: (error: Error) => void }[] = [];
-  const client = new FindClient({ invoke: (channel, ...args) => new Promise((resolve, reject) => calls.push({ channel, args, resolve, reject })) }, 'viewer');
+  const client = new FindClient(findTransport({ invoke: (channel, ...args) => new Promise((resolve, reject) => calls.push({ channel, args, resolve, reject })) }), 'viewer');
   const matching = new FindMatching(client, () => {}, clock);
   const advance = (ms: number) => {
     now += ms;

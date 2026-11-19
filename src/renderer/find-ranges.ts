@@ -1,6 +1,5 @@
-import { FIND_TIMEOUT_MS, hasFindReplyIdentity, isFindReply, sameFindKey, sameRecordRef, type FindScope, type FindReply } from '../core/find-protocol.ts';
-import { FindClient, type FindInputs } from './find-client.ts';
-import type { FindClock } from '../main/find-execution.ts';
+import { FIND_TIMEOUT_MS, hasFindReplyIdentity, isFindReply, sameFindKey, sameRecordRef, type FindClock, type FindScope, type FindReply } from '../core/find-protocol.ts';
+import type { FindClient, FindInputs } from './find-client.ts';
 
 export interface RangeState {
   phase: 'empty' | 'pending' | 'ready' | 'failed';
