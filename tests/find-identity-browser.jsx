@@ -338,6 +338,26 @@ async function verifyCanvasContrast() {
     results.push('D07: ordinary/inspected/native-selection text retains contrast on black canvas under light and dark host colors');
   } finally { for (const [name, value] of previous) { if (value) root.style.setProperty(name, value); else root.style.removeProperty(name); } }
 }
+async function verifyMixedSeverityColors() {
+  const levels = ['DEBUG', 'TRACE', 'INFO', 'WARN', 'ERROR', 'FATAL'];
+  const json = levels.map(level => JSON.stringify({ severity: level.toLowerCase(), message: level }));
+  const renderedLevels = () => rows().map(row => {
+    const level = row.querySelector('.rl-level');
+    return { label: level.textContent, color: getComputedStyle(level).color, neutral: getComputedStyle(row.querySelector('.rl-row')).color };
+  });
+  await refresh(json.join('\n'));
+  const jsonOnly = renderedLevels();
+  await refresh([...json.slice(0, 1), 'worker heartbeat: queue=demo ready', ...json.slice(1)].join('\n'));
+  const [debug, plain, ...rest] = renderedLevels();
+  check(plain.label === '' && plain.color === plain.neutral, 'Plain-text log acquired a severity');
+  for (const [index, row] of [debug, ...rest].entries()) {
+    check(row.label === levels[index], `Mixed snapshot lost ${levels[index]} severity`);
+    check(row.color === jsonOnly[index].color, `Plain text changed the color of ${row.label}`);
+  }
+  const uncolored = [debug, ...rest].filter(row => row.color === row.neutral).map(row => row.label);
+  check(uncolored.length === 0, `Recognized severities with no color: ${uncolored.join(', ')}`);
+  results.push('plain text stays neutral and every recognized severity retains its color across mixed snapshots');
+}
 async function verifyPresentation() {
   await refresh('first needle\n{"message":"visible","hidden":"needle"}\n{"message":"\\u03a3"}');
   rows()[0].querySelector('.rl-row').click(); button('Find'); await query('needle');
@@ -758,6 +778,8 @@ globalThis.verifyIdentity = async () => {
       await verifyFindPerformance({ root, rows, button, query, refresh, until, check, results, holdNext, holdNextRange, rangeRequests });
       return results;
     }
+    await verifyMixedSeverityColors();
+    await refresh('start\nx\nend');
     rows()[1].querySelector('.rl-row').click();
     let finishCopy;
     clipboardWrite = value => new Promise(resolve => { copies.push(value); finishCopy = resolve; });
