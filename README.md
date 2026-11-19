@@ -4,8 +4,9 @@ Read JSON container logs as compact **time · level · message** rows. Select a
 record to inspect every field or copy its exact original text, and save formatting
 profiles for applications that use different log formats.
 
-Requires **Freelens 1.10.3**. Verified on Arch Linux/Wayland. Uses your existing
-Freelens cluster connection.
+This transition branch builds **freelens-readable-logs-v2** for Freelens 2.
+Use the [development install instructions](docs/local-development.md) to try
+the Pod-header viewer in a private Linux profile.
 
 ## What you can do
 
@@ -18,7 +19,7 @@ Freelens cluster connection.
   opens when a record is selected and collapses when selection clears.
 - Pause updates, refresh once, search records and return to the latest output.
 
-## Install
+## Install the published Freelens 1.10.3 extension
 
 1. Open the [latest release](https://github.com/maksimgurenko/freelens-json-logs/releases/latest)
    and download `freelens-readable-logs-<version>.tgz` from **Assets**.

@@ -17,7 +17,6 @@ import { FindMarks } from './find-marks.ts';
 import { FindClient, FindMatching, type FindMatchingState } from './find-client.ts';
 import { sameFindKey, type FindTransport } from '../core/find-protocol.ts';
 import { LogViewport, type ViewportStatus } from './log-viewport.ts';
-import styles from './viewer.css';
 import { activeProfile, BUILTIN_PROFILE_ID, builtinProfile } from '../core/profiles.ts';
 import { ProfileEditor } from './profile-editor.tsx';
 import { SettingsRecovery } from './settings-recovery.tsx';
@@ -32,7 +31,7 @@ interface ViewerProps {
   requests: LogRequests;
   preferences: ViewerPreferences;
   find: FindTransport;
-  writeClipboard: (text: string) => void;
+  writeClipboard: (text: string) => Promise<void>;
   bindVisibility: (element: HTMLElement, clusterId: string, active: (value: boolean) => void) => () => void;
   register: (dispose: () => void | Promise<void>) => () => void;
   shortcutCapture: ShortcutCapture;
@@ -65,21 +64,21 @@ function selectedTextTouches(row: HTMLElement, before?: SelectionPosition): bool
 export function Viewer({ target, logs, requests, preferences, find, writeClipboard, bindVisibility, register, shortcutCapture, Icon, version }: ViewerProps) {
   const root = useRef<HTMLElement>(null);
   const scroller = useRef<HTMLDivElement>(null);
-  const viewport = useRef<LogViewport>();
+  const viewport = useRef<LogViewport>(undefined);
   const markRail = useRef<HTMLDivElement>(null);
-  const marks = useRef<FindMarks>();
-  const markAction = useRef<(ref: RecordRef) => void>();
-  const rowGesture = useRef<{ x: number; y: number; dragged: boolean; selection?: SelectionPosition }>();
+  const marks = useRef<FindMarks>(undefined);
+  const markAction = useRef<(ref: RecordRef) => void>(undefined);
+  const rowGesture = useRef<{ x: number; y: number; dragged: boolean; selection?: SelectionPosition }>(undefined);
   const [findPosition] = useState(() => new FindPosition());
   const [findEditing] = useState(() => new FindEditing());
   const [history] = useState(() => new FindHistory());
-  const openingSelection = useRef<{ text?: string }>();
+  const openingSelection = useRef<{ text?: string }>(undefined);
   const [, renderPosition] = useState(0);
   const positionChanged = () => renderPosition(value => value + 1);
   const rowFocusIntent = useRef(false);
   const viewActive = useRef(false);
   const [decorationActive, setDecorationActive] = useState(false);
-  const findOpener = useRef<HTMLElement>();
+  const findOpener = useRef<HTMLElement>(undefined);
   const [scroll, setScroll] = useState<ViewportStatus>({ following: true, lost: false });
   const [query, setQuery] = useState('');
   const [committedQuery, setCommittedQuery] = useState('');
@@ -89,12 +88,12 @@ export function Viewer({ target, logs, requests, preferences, find, writeClipboa
   const [findClient] = useState(() => new FindClient(find, crypto.randomUUID()));
   const [findMatching] = useState(() => new FindMatching(findClient, setMatching));
   const [viewerEpoch] = useState(() => ++viewerSequence);
-  const highlights = useRef<FindHighlights>();
+  const highlights = useRef<FindHighlights>(undefined);
   const [highlightStatus, setHighlightStatus] = useState<HighlightStatus>({ message: '', retryable: false, busy: false });
   const revisions = useRef({ window: 0, message: 0, query: 0 });
   const composing = useRef(false);
   const [compositionRevision, setCompositionRevision] = useState(0);
-  const explicitEdit = useRef<FindEdit>();
+  const explicitEdit = useRef<FindEdit>(undefined);
   const cancelFindIntents = () => findPosition.cancelSelection();
 
   const [findOpen, setFindOpen] = useState(false);
@@ -390,7 +389,6 @@ export function Viewer({ target, logs, requests, preferences, find, writeClipboa
       }
       rowFocusIntent.current = false;
     }}>
-    <style>{styles}</style>
     <header className="rl-toolbar" aria-label="Log controls">
       <details className="rl-target-context">
         <summary title={`${target.clusterName} / ${target.namespace} / ${target.podName}`} aria-label="Log target details">
@@ -625,10 +623,22 @@ function RecordInspector({ record, recordReference, message, content, writeClipb
   writeClipboard: ViewerProps['writeClipboard'];
 }) {
   const [copyStatus, setCopyStatus] = useState('');
-  useEffect(() => setCopyStatus(''), [record, content]);
-  const copy = (kind: 'application' | 'transport') => {
-    try { writeClipboard(originalText(record, kind)); setCopyStatus(`Copied ${kind === 'application' ? 'application text' : 'transport line'}.`); }
-    catch (error) { setCopyStatus(`Unable to copy: ${String(error)}`); }
+  const copyAttempt = useRef(0);
+  useLayoutEffect(() => {
+    setCopyStatus('');
+    return () => { copyAttempt.current++; };
+  }, [recordReference.context, recordReference.occurrence, content]);
+  const copy = async (kind: 'application' | 'transport') => {
+    const attempt = ++copyAttempt.current;
+    setCopyStatus('');
+    let status: string;
+    try {
+      await writeClipboard(originalText(record, kind));
+      status = `Copied ${kind === 'application' ? 'application text' : 'transport line'}.`;
+    } catch (error) {
+      status = `Unable to copy: ${String(error)}`;
+    }
+    if (attempt === copyAttempt.current) setCopyStatus(status);
   };
   return <section className="rl-detail" aria-label="Selected record" tabIndex={-1}>
     <header className="rl-detail-head"><strong>Record</strong><button type="button" aria-label="Close record inspector" onClick={onClose}>Close</button></header>

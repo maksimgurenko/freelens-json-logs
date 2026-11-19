@@ -1,12 +1,16 @@
-// Mount the real versioned production CommonJS renderer with SDK/OS stand-ins.
+// Mount the real versioned production ESM renderer with SDK/OS stand-ins.
 // DOM focus/selection observations here are not physical input/clipboard proof.
 import React from 'react';
-import ReactDOM from 'react-dom';
+import { createRoot } from 'react-dom/client';
+import { flushSync } from 'react-dom';
 import * as Mobx from 'mobx';
 import { verifyFindPresentation } from './find-presentation-browser.jsx';
 import { verifyFindMarks } from './find-marks-browser.jsx';
 import { verifyFindIntegration } from './find-integration-browser.jsx';
 import { verifyFindPerformance } from './find-performance-browser.jsx';
+import { commitDiscreteEvents } from './browser-discrete-events.js';
+
+commitDiscreteEvents();
 
 const check = (condition, message) => { if (!condition) throw new Error(message); };
 const sleep = ms => new Promise(resolve => setTimeout(resolve, ms));
@@ -31,6 +35,7 @@ window.addEventListener('error', event => errors.push(String(event.error || even
 window.addEventListener('unhandledrejection', event => errors.push(String(event.reason)));
 let text = 'start\nx\nend', reads = 0, podReads = 0, pendingRead, copies = [];
 let logRequest;
+let clipboardWrite = value => { copies.push(value); };
 let status = { name: 'app', restartCount: 0, containerID: 'run-0' };
 let uid = 'uid';
 let heldReply, failNext = false, requestCount = 0;
@@ -43,6 +48,8 @@ const holdNextRange = () => { let release; const promise = new Promise(resolve =
 const ipc = {
   listen(name, callback) { callbacks.set(name, callback); return () => callbacks.delete(name); },
   async invoke(name, ...args) {
+    if (name === 'readable-logs-settings-status') return { path: '/isolated-identity-store/readable-logs.json' };
+    if (name === 'viewer-visibility-stop') return;
     if (name === 'viewer-visibility-request') { callbacks.get(args[1])?.({}, args[0]); return; }
     const exact = name === 'find-request' && args[1].work === 'match';
     const gate = exact && (!heldReply?.text || heldReply.text === args[1].query.text) ? heldReply : undefined;
@@ -67,7 +74,7 @@ class ExtensionStore {
   cwd() { return '/isolated-identity-store'; }
   loadExtension() {}
 }
-Object.assign(globalThis, { global: globalThis, React, ReactDOM, Mobx, LensExtensions: {
+globalThis.FreelensExtensionApi = { React, Mobx,
   Common: { Store: { ExtensionStore } }, Renderer: { Ipc, LensExtension: class {},
     Component: { Icon: ({ material }) => <span className="Icon material-icons" aria-hidden="true">{material}</span> },
     Catalog: { getActiveCluster: () => ({ id: 'cluster', name: 'Identity test' }) },
@@ -77,19 +84,13 @@ Object.assign(globalThis, { global: globalThis, React, ReactDOM, Mobx, LensExten
       async getLogs(target, options) { reads++; logRequest = { target, options }; if (pendingRead) return pendingRead.promise; return text; },
     } },
   },
-} });
-const module = { exports: {} };
-const require = name => {
-  if (name === 'node:fs') return { readFileSync() { throw Object.assign(new Error('Absent'), { code: 'ENOENT' }); } };
-  if (name === 'node:path') return { join: (...parts) => parts.join('/') };
-  if (name === 'node:crypto') return { randomUUID: () => crypto.randomUUID() };
-  if (name === 'electron') return { clipboard: { writeText(value) { copies.push(value); } } };
-  throw new Error(`Unexpected native module ${name}`);
 };
-new Function('module', 'exports', 'require', PACKED_RENDERER)(module, module.exports, require);
-const extension = new module.exports.default();
+Object.defineProperty(navigator, 'clipboard', { value: { writeText: value => clipboardWrite(value) } });
+const { default: Renderer } = await import('/renderer.mjs');
+const extension = new Renderer();
 const Page = extension.clusterPages[0].components.Page;
 const root = document.querySelector('#root');
+const reactRoot = createRoot(root);
 const rows = () => [...root.querySelectorAll('.rl-record')];
 const button = label => {
   const node = [...root.querySelectorAll('button')].find(node => node.textContent.trim() === label || node.getAttribute('aria-label') === (label === 'Clear' ? 'Clear Find' : label));
@@ -415,7 +416,8 @@ async function verifySelectionHistory() {
   check(historyTexts()[0] === 'retained history', 'Profiles lost history');
   byName('Close search history').click();
   const visibilityReply = [...callbacks.entries()].find(([name]) => name.startsWith('viewer-visibility-'));
-  visibilityReply[1]({}, null); await turn(); visibilityReply[1]({}, 'cluster'); await until(settled);
+  flushSync(() => visibilityReply[1]({}, null));
+  flushSync(() => visibilityReply[1]({}, 'cluster')); await until(settled);
   clock().click(); check(historyTexts()[0] === 'retained history', 'Temporary inactivity lost history');
   // Outside click and Escape return focus to the clock. Escape is dispatched
   // only with the document's real focus; guards are never patched.
@@ -663,9 +665,9 @@ async function verifyAsync() {
 }
 globalThis.verifyIdentity = async () => {
   await document.fonts.ready;
-  extension.onActivate();
+  await extension.onActivate();
   const params = Object.fromEntries(Object.entries({ namespace: 'ns', pod: 'pod', podUid: 'uid', clusterId: 'cluster' }).map(([key, value]) => [key, { get: () => value }]));
-  ReactDOM.render(<Page params={params} />, root);
+  reactRoot.render(<Page params={params} />);
   try {
     await until(() => rows().length === 3, 'No initial rows'); button('Pause');
     const { target, options } = logRequest;
@@ -677,6 +679,16 @@ globalThis.verifyIdentity = async () => {
       await verifyFindPerformance({ root, rows, button, query, refresh, until, check, results, holdNext, holdNextRange, rangeRequests });
       return results;
     }
+    rows()[1].querySelector('.rl-row').click();
+    let finishCopy;
+    clipboardWrite = value => new Promise(resolve => { copies.push(value); finishCopy = resolve; });
+    button('Copy transport line');
+    rows()[0].querySelector('.rl-row').click();
+    check(rows()[0].classList.contains('rl-selected'), 'Pending-copy setup did not select a different record');
+    finishCopy(); await turn();
+    check(root.querySelector('.rl-copy [role=status]').textContent === '', 'Late clipboard feedback appeared on another record');
+    button('Close record inspector');
+    clipboardWrite = value => { copies.push(value); return Promise.resolve(); };
     await verifyFindClosing();
     await verifyFindPerformance({ root, rows, button, query, refresh, until, check, results, holdNext, holdNextRange, rangeRequests });
     button('Clear'); root.querySelector('[aria-label="Close Find"]').click(); await refresh('start\nx\nend');
@@ -713,8 +725,29 @@ globalThis.verifyIdentity = async () => {
     check(rows()[0] === oldX && document.activeElement === focusedRow && document.getSelection().toString() === 'x', 'Identical snapshot lost observed identity/focus/selection');
     results.push('identical complete window retains actual DOM focus and selection');
     const beforeCopies = copies.length;
-    button('Copy application text'); button('Copy transport line');
+    const copyStatus = () => root.querySelector('.rl-copy [role=status]').textContent;
+    let resolveCopy;
+    clipboardWrite = value => new Promise(resolve => { copies.push(value); resolveCopy = resolve; });
+    button('Copy application text'); await turn();
+    check(copyStatus() === '', 'Copy reported success before the write finished');
+    resolveCopy();
+    await until(() => copyStatus() === 'Copied application text.', 'Completed copy did not report success');
+    clipboardWrite = value => { copies.push(value); return Promise.resolve(); };
+    button('Copy transport line');
     check(copies.length === beforeCopies + 2 && copies.slice(beforeCopies).every(value => value === 'x'), 'Original copy payload changed');
+    await until(() => copyStatus() === 'Copied transport line.', 'Completed transport copy did not report success');
+    clipboardWrite = () => Promise.reject(new Error('Clipboard denied'));
+    button('Copy application text');
+    await until(() => copyStatus().includes('Clipboard denied'), 'Rejected copy did not report failure');
+    const writes = [];
+    clipboardWrite = value => new Promise(resolve => { copies.push(value); writes.push(resolve); });
+    button('Copy transport line'); button('Copy application text');
+    writes[1]();
+    await until(() => copyStatus() === 'Copied application text.', 'Newest completed copy did not report success');
+    writes[0](); await turn();
+    check(copyStatus() === 'Copied application text.', 'An older copy overwrote newer feedback');
+    results.push('clipboard feedback awaits settlement and belongs to the latest action and inspected record');
+    clipboardWrite = value => { copies.push(value); return Promise.resolve(); };
     await refresh('different\nx');
     check(!root.querySelector('.rl-selected') && !root.querySelector('.rl-detail'), 'Zero overlap did not expire inspection');
     check(!root.querySelector('.rl-find-current') && input().value === 'x', 'Eviction substituted another Find result or cleared the query');
@@ -805,7 +838,7 @@ globalThis.verifyIdentity = async () => {
     check(!root.querySelector('.rl-line-number'), 'Line counters introduced');
     check(localStorage.length === 0 && sessionStorage.length === 0 && !(await indexedDB.databases()).length, 'Find wrote browser storage');
   } finally {
-    ReactDOM.unmountComponentAtNode(root); await extension.onDeactivate(); await turn();
+    reactRoot.unmount(); await extension.onDeactivate(); await turn();
   }
   check(callbacks.size === 0, 'IPC listener leak'); check(errors.length === 0, errors.join('; '));
   check(CSS.highlights.size === 0, 'Viewer teardown retained Custom Highlight registrations');

@@ -1,19 +1,19 @@
 {
-  "name": "freelens-readable-logs",
+  "name": "freelens-readable-logs-v2",
   "version": "0.1.36",
   "private": true,
-  "description": "Readable bounded container log snapshots for Freelens 1.10.3",
+  "description": "Readable bounded container log snapshots for Freelens 2",
   "license": "UNLICENSED",
   "main": "out/main-0.1.36.js",
-  "renderer": "out/renderer-0.1.36.js",
-  "storeName": "freelens-readable-logs",
+  "renderer": "out/renderer-0.1.36.mjs",
+  "storeName": "freelens-readable-logs-v2",
   "files": [
     "out/",
     "docs/local-development.md"
   ],
   "engines": {
     "node": ">=24.18.0 <25",
-    "freelens": "1.10.3"
+    "freelens": "^2.0.0"
   },
   "packageManager": "npm@11.16.0",
   "scripts": {
@@ -27,17 +27,19 @@
     "check:package": "node scripts/check-package.mjs"
   },
   "devDependencies": {
-    "@freelensapp/extensions": "1.10.3",
+    "@fontsource/material-icons": "5.3.0",
+    "@fontsource/roboto": "5.3.0",
+    "@freelensapp/extensions": "2.0.0",
     "@types/node": "24.12.4",
-    "@types/react": "17.0.93",
+    "@types/react": "19.3.0",
+    "@types/react-dom": "19.3.0",
+    "electron": "44.10.0",
     "esbuild": "0.28.2",
-    "react": "17.0.2",
-    "react-dom": "17.0.2",
+    "react": "19.3.1",
+    "react-dom": "19.3.1",
     "typescript": "5.9.3",
-    "mobx": "6.13.7",
-    "mobx-react": "7.6.0"
-  },
-  "overrides": {
-    "@freelensapp/core": "1.10.3"
+    "mobx": "7.0.6",
+    "mobx-react": "10.0.2",
+    "ws": "8.22.0"
   }
 }

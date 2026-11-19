@@ -1,5 +1,3 @@
-import { clipboard } from 'electron';
-
-export function writeClipboard(text: string) {
-  clipboard.writeText(text);
+export async function writeClipboard(text: string) {
+  await navigator.clipboard.writeText(text);
 }

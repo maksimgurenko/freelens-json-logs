@@ -19,18 +19,23 @@ try {
   await import('./build.mjs');
   const manifest = JSON.parse(await readFile('package.json', 'utf8'));
   bridge = packedFindBridge(resolve(manifest.main), join(directory, 'settings'));
-  const fixture = await build({ entryPoints: ['tests/find-identity-browser.jsx'], bundle: true, write: false, format: 'iife',
-    define: { 'process.env.NODE_ENV': '"production"', FIND_PERFORMANCE_ONLY: JSON.stringify(!!process.env.FIND_PERFORMANCE_ONLY),
-      PACKED_RENDERER: JSON.stringify(await readFile(manifest.renderer, 'utf8')) } });
-  const fonts = new Map(await Promise.all(['MaterialIcons-Regular.ttf', 'Roboto-Regular.ttf'].map(async name =>
-    [`/${name}`, await readFile(`node_modules/@freelensapp/core/static/build/library/fonts/${name}`)])));
+  const fixture = await build({ entryPoints: ['tests/find-identity-browser.jsx'], bundle: true, write: false, format: 'esm', external: ['/renderer.mjs'],
+    define: { 'process.env.NODE_ENV': '"production"', FIND_PERFORMANCE_ONLY: JSON.stringify(!!process.env.FIND_PERFORMANCE_ONLY) } });
+  const fonts = new Map(await Promise.all(Object.entries({
+    '/material-icons.woff2': '@fontsource/material-icons/files/material-icons-latin-400-normal.woff2',
+    '/roboto.woff2': '@fontsource/roboto/files/roboto-latin-400-normal.woff2',
+  }).map(async ([url, file]) => [url, await readFile(`node_modules/${file}`)])));
+  const renderer = await readFile(manifest.renderer);
+  const stylesheet = await readFile(manifest.renderer.replace(/\.mjs$/, '.css'));
   server = createServer((request, response) => {
+    if (request.url === '/renderer.mjs') { response.setHeader('Content-Type', 'text/javascript'); response.end(renderer); return; }
+    if (request.url === '/renderer.css') { response.setHeader('Content-Type', 'text/css'); response.end(stylesheet); return; }
     if (request.url === '/find-rpc') { void bridge.http(request, response); return; }
-    if (fonts.has(request.url)) { response.setHeader('Content-Type', 'font/ttf'); response.end(fonts.get(request.url)); return; }
+    if (fonts.has(request.url)) { response.setHeader('Content-Type', 'font/woff2'); response.end(fonts.get(request.url)); return; }
     response.setHeader('Cache-Control', 'no-store');
     response.setHeader('Content-Type', request.url === '/fixture.js' ? 'text/javascript' : 'text/html');
     response.end(request.url === '/fixture.js' ? fixture.outputFiles[0].text
-      : '<!doctype html><meta charset="utf-8"><style>@font-face{font-family:Roboto;src:url(/Roboto-Regular.ttf)}@font-face{font-family:MaterialIcons;src:url(/MaterialIcons-Regular.ttf)}html,body,#root{height:100%;margin:0}body{font:14px Roboto,sans-serif;background:#1e2124}.Icon.material-icons{font-family:MaterialIcons;font-weight:normal;font-style:normal;line-height:1;white-space:nowrap;font-feature-settings:"liga"}</style><div id="root"></div><script src="/fixture.js"></script>');
+      : '<!doctype html><meta charset="utf-8"><link rel="stylesheet" href="/renderer.css"><style>@font-face{font-family:Roboto;src:url(/roboto.woff2)}@font-face{font-family:MaterialIcons;src:url(/material-icons.woff2)}html,body,#root{height:100%;margin:0}body{font:14px Roboto,sans-serif;background:#1e2124}.Icon.material-icons{font-family:MaterialIcons;font-weight:normal;font-style:normal;line-height:1;white-space:nowrap;font-feature-settings:"liga"}</style><div id="root"></div><script type="module" src="/fixture.js"></script>');
   });
   server.listen(0, '127.0.0.1'); await once(server, 'listening');
   browser = spawn(await chromePath(), ['--headless=new', '--no-first-run', '--no-default-browser-check',

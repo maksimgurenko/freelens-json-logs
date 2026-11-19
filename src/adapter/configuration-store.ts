@@ -1,10 +1,11 @@
 import { Common } from '@freelensapp/extensions';
-import { action, makeObservable, observable, reaction } from 'mobx';
+import { action, makeObservable, observable, observableRef, reaction } from 'mobx';
 import { CONFIG_NAME, configurationData, configurationProblem, defaultConfiguration, isInspectionLayout,
   type Configuration, type InspectionLayout, type ViewerPreferences } from '../core/configuration.ts';
 import { builtinProfile, deleteProfile, moveProfile, saveProfile, type Profile } from '../core/profiles.ts';
-import { join } from 'node:path';
-import { inspectConfiguration, type ResetResult } from './configuration-file.ts';
+import type { ResetResult, SettingsStatus } from './configuration-ipc.ts';
+
+type HostExtension = Parameters<Common.Store.ExtensionStore['loadExtension']>[0];
 
 /** Identical schema/store name in both processes; only main persists SDK updates. */
 export class ConfigurationStore extends Common.Store.ExtensionStore<Record<string, unknown>> implements ViewerPreferences {
@@ -12,26 +13,25 @@ export class ConfigurationStore extends Common.Store.ExtensionStore<Record<strin
   problem: string | undefined;
   lastBackup: string | undefined;
   settingsPath = '';
-  private syncing = false;
   private resetAction?: (confirmed: boolean) => Promise<ResetResult>;
   constructor() {
     super({ configName: CONFIG_NAME, clearInvalidConfig: false, syncOptions: { fireImmediately: false } });
-    makeObservable(this, { data: observable.ref, problem: observable, lastBackup: observable, fromStore: action, setInspection: action, failed: action,
-      loaded: action, backedUp: action,
+    makeObservable(this, { data: observableRef, problem: observable, lastBackup: observable, settingsPath: observable,
+      fromStore: action, setInspection: action, failed: action, attach: action, backedUp: action,
       saveProfile: action, deleteProfile: action, setGlobalDefault: action, moveProfile: action });
   }
-  loadExtension(extension: Parameters<Common.Store.ExtensionStore['loadExtension']>[0]) {
+  resolveSettingsDirectory(extension: HostExtension) {
+    // The SDK derives its store directory from the extension manifest.
     this.extension = extension;
-    this.settingsPath = join(this.cwd(), `${CONFIG_NAME}.json`);
-    const inspected = inspectConfiguration(this.settingsPath);
-    this.loaded(inspected.problem);
-    // No Conf construction, migration, disk writer or synchronization in fallback.
-    if (inspected.problem) return;
-    if (this.syncing) { this.fromStore(inspected.data!); return; }
-    try { super.loadExtension(extension); this.syncing = true; }
+    return this.cwd();
+  }
+  attach(extension: HostExtension, status: SettingsStatus) {
+    this.settingsPath = status.path;
+    this.problem = status.problem;
+    if (this.problem) return;
+    try { this.loadExtension(extension); }
     catch (error) { this.failed(error); }
   }
-  loaded(problem?: string) { this.problem = problem; }
   backedUp(path: string) { this.lastBackup = path; }
   bindReset(reset: (confirmed: boolean) => Promise<ResetResult>) { this.resetAction = reset; }
   resetSettings(confirmed: boolean): Promise<ResetResult> {
@@ -52,7 +52,7 @@ export class ConfigurationStore extends Common.Store.ExtensionStore<Record<strin
     const configuration = this.problem ? defaultConfiguration() : this.data as unknown as Configuration;
     return { inspection: configuration.viewer.inspection, configuration, problem: this.problem, settingsPath: this.settingsPath, backup: this.lastBackup };
   }
-  subscribe(changed: () => void) { return reaction(() => [this.data, this.problem, this.lastBackup], changed); }
+  subscribe(changed: () => void) { return reaction(() => [this.data, this.problem, this.settingsPath, this.lastBackup], changed); }
   setInspection(inspection: InspectionLayout) {
     if (this.problem || !isInspectionLayout(inspection)) return;
     this.data = { ...this.data, viewer: { ...(this.data as unknown as Configuration).viewer, inspection } };

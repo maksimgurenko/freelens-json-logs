@@ -1,4 +1,26 @@
-# Build and install Readable logs
+# Build Readable logs for Freelens 2
+
+This branch uses the released `@freelensapp/extensions@2.0.0` SDK for
+`freelens-readable-logs-v2`. Build with Node 24.18.0 and npm 11.16.0.
+
+```sh
+npm ci --ignore-scripts --no-audit --no-fund
+npm run typecheck
+npm run build
+```
+
+In a private Freelens 2 development profile, open **Extensions** and install
+the absolute path to this checkout's directory. Confirm the development install,
+open the fixture cluster, and choose **Readable logs** in a Pod's details header.
+The renderer and stylesheet load from the build directory. Settings use
+`extension-store/freelens-readable-logs-v2/readable-logs.json` under the profile.
+Follow the [Linux UI playbook](agents/ui-verification.md) for unattended checks.
+
+## Freelens 1.10.3 reference
+
+The remainder documents the published Freelens 1 extension and its historical
+validation. The version, package name, settings location and installation
+procedure below apply to that release.
 
 This production implementation includes bounded snapshots, automatic refresh,
 Pause/Resume, explicit recovery and Pod/container lifecycle handling (GitHub #11–13).

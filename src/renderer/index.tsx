@@ -1,9 +1,10 @@
 import React from 'react';
 import { Renderer } from '@freelensapp/extensions';
-import { freelensPort, PAGE_ID, pageTarget, viewerVisibility, type PageParams } from '../adapter/freelens.ts';
+import './viewer.css';
+import { freelensPort, PAGE_ID, pageTarget, viewerVisibility } from '../adapter/freelens.ts';
 import { Viewer } from './viewer.tsx';
 import { configurationStore } from '../adapter/configuration-store.ts';
-import { SETTINGS_RESET, SETTINGS_RESET_COMPLETE } from '../adapter/configuration-ipc.ts';
+import { SETTINGS_RESET, SETTINGS_RESET_COMPLETE, SETTINGS_STATUS, type SettingsStatus } from '../adapter/configuration-ipc.ts';
 import { findTransport } from '../adapter/find-ipc.ts';
 import { writeClipboard } from '../adapter/clipboard.ts';
 import { LogRequests } from '../core/requests.ts';
@@ -28,9 +29,9 @@ export default class ReadableLogsRenderer extends Renderer.LensExtension {
     this.viewers.add(dispose);
     return () => { this.viewers.delete(dispose); };
   };
-  clusterPages = [{
+  clusterPages: Renderer.LensExtension['clusterPages'] = [{
     id: PAGE_ID, params: { namespace: '', pod: '', podUid: '', clusterId: '' },
-    components: { Page: ({ params }: { params: PageParams }) => {
+    components: { Page: ({ params }) => {
       const target = pageTarget(params);
       return <Viewer key={JSON.stringify([target.clusterId, target.namespace, target.podName, target.podUid])}
         target={target} logs={freelensPort} requests={requests} preferences={configurationStore} find={this.find}
@@ -38,15 +39,15 @@ export default class ReadableLogsRenderer extends Renderer.LensExtension {
         shortcutCapture={this.shortcuts} Icon={ViewerIcon} version={READABLE_LOGS_VERSION} />;
     } },
   }];
-  onActivate() {
+  async onActivate() {
     this.stopShortcuts = this.shortcuts.bind(window);
     const ipc = ConfigurationIpc.createInstance(this);
-    this.stopRecovery = ipc.listen(SETTINGS_RESET_COMPLETE, (_event, backup: string) => {
-      configurationStore.loadExtension(this);
+    this.stopRecovery = ipc.listen(SETTINGS_RESET_COMPLETE, (_event, backup: string, status: SettingsStatus) => {
+      configurationStore.attach(this, status);
       configurationStore.backedUp(backup);
     });
     configurationStore.bindReset(confirmed => ipc.invoke(SETTINGS_RESET, confirmed));
-    try { configurationStore.loadExtension(this); }
+    try { configurationStore.attach(this, await ipc.invoke(SETTINGS_STATUS)); }
     catch (error) { configurationStore.failed(error); }
   }
   kubeObjectMenuItems = [{

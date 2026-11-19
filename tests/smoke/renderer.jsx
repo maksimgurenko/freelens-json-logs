@@ -1,8 +1,11 @@
 // Loaded only in a disposable headless browser. Exercise the production bundle,
-// React 17 DOM and MobX; replace only Freelens/Node APIs unavailable in Chromium.
+// React DOM and MobX; replace the Freelens APIs unavailable in Chromium.
 import React from 'react';
-import ReactDOM from 'react-dom';
+import { createRoot } from 'react-dom/client';
 import * as Mobx from 'mobx';
+import { commitDiscreteEvents } from '../browser-discrete-events.js';
+
+commitDiscreteEvents();
 
 const check = (condition, message) => { if (!condition) throw new Error(message); };
 const turn = () => new Promise(resolve => setTimeout(resolve, 0));
@@ -33,13 +36,15 @@ globalThis.setTimeout = (callback, ms, ...args) => {
 };
 globalThis.setInterval = (callback, ms, ...args) => { const id = interval(callback, ms, ...args); timers.add(id); return id; };
 globalThis.clearTimeout = globalThis.clearInterval = id => { timers.delete(id); clear(id); };
-let writes = 0, reads = 0, serial = 0;
+let reads = 0, serial = 0;
 const ipc = {
   listen(name, callback) {
     const entries = callbacks.get(name) ?? new Set(); callbacks.set(name, entries); entries.add(callback);
     return () => { entries.delete(callback); if (!entries.size) callbacks.delete(name); };
   },
   async invoke(name, cluster, reply, ...rest) {
+    if (name === 'readable-logs-settings-status') return { path: '/extension-store/freelens-readable-logs-v2/readable-logs.json' };
+    if (name === 'viewer-visibility-stop') { subscriptions.delete(cluster); return; }
     if (name.startsWith('find-')) {
       const result = await (await fetch('/find-rpc', { method: 'POST', body: JSON.stringify({ sequence: ++rpcSequence, channel: name, args: [cluster, reply, ...rest] }) })).json();
       if (result.error) { rpcErrors.push(`${name}: ${result.error}`); throw new Error(result.error); } return result.value;
@@ -48,7 +53,7 @@ const ipc = {
     subscriptions.add(reply);
     for (const callback of callbacks.get(reply) ?? []) callback({}, cluster);
   },
-  broadcast(name, reply) { check(name === 'viewer-visibility-stop', `Unexpected IPC broadcast: ${name}`); subscriptions.delete(reply); },
+
 };
 class Ipc { static createInstance() { return ipc; } }
 class ExtensionStore {
@@ -56,16 +61,7 @@ class ExtensionStore {
   cwd() { return '/extension-store/freelens-readable-logs'; }
   loadExtension() {}
 }
-// Fail and count any attempted filesystem mutation, including swallowed errors.
-const fs = new Proxy({ constants: {} }, { get(target, name) {
-  if (name in target) return target[name];
-  return () => {
-    if (!['readFileSync', 'lstatSync'].includes(name)) writes++;
-    throw Object.assign(new Error(`No browser filesystem: ${String(name)}`), { code: 'ENOENT' });
-  };
-} });
-Object.assign(globalThis, { global: globalThis, React, ReactDOM, Mobx,
-  LensExtensions: {
+globalThis.FreelensExtensionApi = { React, Mobx,
     Common: { Store: { ExtensionStore } },
     Renderer: {
       Component: { Icon: ({ material }) => <span className="Icon" aria-hidden="true">{material}</span> },
@@ -81,20 +77,9 @@ Object.assign(globalThis, { global: globalThis, React, ReactDOM, Mobx,
         },
       } },
     },
-  },
-});
-
-// Supplied verbatim from out/renderer-<version>.js by the runner.
-const module = { exports: {} };
-const require = name => {
-  if (name === 'node:fs') return fs;
-  if (name === 'node:path') return { join: (...parts) => parts.join('/') };
-  if (name === 'node:crypto') return { randomUUID: () => crypto.randomUUID() };
-  if (name === 'electron') return { clipboard: { writeText() { throw new Error('Clipboard is outside this smoke test'); } } };
-  throw new Error(`Unexpected native module: ${name}`);
 };
-new Function('module', 'exports', 'require', PACKED_RENDERER)(module, module.exports, require);
-const extension = new module.exports.default();
+const { default: Renderer } = await import('/renderer.mjs');
+const extension = new Renderer();
 const Page = extension.clusterPages[0].components.Page;
 const root = document.querySelector('#root');
 const button = label => {
@@ -111,10 +96,11 @@ async function refresh() {
   await turn();
 }
 async function cycle() {
-  extension.onActivate();
+  await extension.onActivate();
   const params = Object.fromEntries(Object.entries({ namespace: 'smoke', pod: `pod-${serial++}`, podUid: 'uid', clusterId: 'cluster' })
     .map(([key, value]) => [key, { get: () => value }]));
-  ReactDOM.render(<Page params={params} />, root);
+  const reactRoot = createRoot(root);
+  reactRoot.render(<Page params={params} />);
   await until(() => root.querySelectorAll('.rl-row').length === 256, 'Viewer failed to render logs');
   button('Pause'); await turn();
   for (let index = 0; index < 4; index++) {
@@ -171,19 +157,18 @@ async function cycle() {
   if (serial % 2) root.querySelector('[aria-label="Close search history"]').click();
   // Alternate normal route departure and extension disable while still mounted.
   if (serial % 2) extension.onDeactivate();
-  ReactDOM.unmountComponentAtNode(root); await turn(); await turn();
+  reactRoot.unmount(); await turn(); await turn();
   if (!(serial % 2)) extension.onDeactivate();
   check(!root.children.length, 'Unmount left viewer DOM');
   check(callbacks.size === 0 && subscriptions.size === 0, 'Unmount/disable retained IPC subscriptions');
   check(observers.size === 0 && frames.size === 0 && timers.size === 0, `Unmount retained observers/frames/timers: ${observers.size}/${frames.size}/${timers.size}`);
   check(CSS.highlights.size === 0, 'Unmount retained highlight ranges/registrations');
-  check(writes === 0, 'Renderer attempted filesystem writes');
   check(errors.length === 0, `Renderer errors: ${errors.join('; ')}`);
   check(localStorage.length === 0 && sessionStorage.length === 0, 'Viewer persisted browser storage');
   check((await indexedDB.databases()).length === 0, 'Viewer retained an IndexedDB database');
   check((await caches.keys()).length === 0, 'Viewer retained a CacheStorage cache');
 }
 globalThis.resourceSmoke = {
-  async batch(count) { for (let index = 0; index < count; index++) await cycle(); return { cycles: serial, reads, writes,
+  async batch(count) { for (let index = 0; index < count; index++) await cycle(); return { cycles: serial, reads,
     observers: observers.size, frames: frames.size, timers: timers.size, highlights: CSS.highlights.size }; },
 };

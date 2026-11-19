@@ -108,7 +108,7 @@ test('fallback never starts SDK synchronization, rejects incoming data and inhib
       writeFileSync(path, original);
       const store = new ConfigurationStore();
       const before = store.toJSON(); const starts = sdkStarts;
-      store.loadExtension({} as never);
+      store.attach({} as never, { path, problem: inspectConfiguration(path).problem });
       assert.equal(sdkStarts, starts);
       assert(store.read().problem); assert.deepEqual(store.read().configuration, defaultConfiguration());
       store.fromStore({ ...defaultConfiguration(), viewer: { inspection: 'bottom' } });
@@ -120,7 +120,7 @@ test('fallback never starts SDK synchronization, rejects incoming data and inhib
       await store.resetSettings(false); assert.equal(resetCalls, 0);
       const result = await store.resetSettings(true);
       assert.equal(result.error, undefined); assert.equal(readFileSync(result.backup!, 'utf8'), original);
-      store.loadExtension({} as never);
+      store.attach({} as never, { path, problem: inspectConfiguration(path).problem });
       assert.equal(sdkStarts, starts + 1); assert.equal(store.read().problem, undefined);
       store.saveProfile(duplicateProfile(builtinProfile(), 'fresh', 'Fresh'));
       store.setGlobalDefault('fresh'); store.setInspection('bottom');

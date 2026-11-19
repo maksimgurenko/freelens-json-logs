@@ -3,18 +3,17 @@ import { TAIL_LINES } from '../core/snapshot.ts';
 import type { SnapshotPort } from '../core/session.ts';
 import type { LogTarget } from '../core/target.ts';
 import { observe } from '../core/observe.ts';
-import { bindVisibility, VISIBILITY_REQUEST, type VisibilityChannel } from './visibility.ts';
+import { bindVisibility, VISIBILITY_REQUEST, VISIBILITY_STOP, type VisibilityChannel } from './visibility.ts';
 
 class VisibilityIpc extends Renderer.Ipc {}
 function visibilityChannel(extension: Renderer.LensExtension): VisibilityChannel {
   const ipc = VisibilityIpc.createInstance(extension);
   return {
     listen: (channel, received) => ipc.listen(channel, (_event, selected: string | null) => received(selected)),
-    broadcast: (channel, ...args) => {
-      if (channel === VISIBILITY_REQUEST) {
-        void ipc.invoke(channel, ...args).catch(error => console.error('Unable to observe Readable logs window visibility', error));
-      } else ipc.broadcast(channel, ...args);
+    request: (clusterId, reply) => {
+      void ipc.invoke(VISIBILITY_REQUEST, clusterId, reply).catch(error => console.error('Unable to observe Readable logs window visibility', error));
     },
+    stop: reply => { void ipc.invoke(VISIBILITY_STOP, reply).catch(() => { /* Main may already be deactivating. */ }); },
   };
 }
 
@@ -25,12 +24,15 @@ export function viewerVisibility(extension: Renderer.LensExtension) {
 }
 
 export const PAGE_ID = 'readable-logs';
-export type PageParams = { namespace: Renderer.Navigation.PageParam<string>; pod: Renderer.Navigation.PageParam<string>; podUid: Renderer.Navigation.PageParam<string>; clusterId: Renderer.Navigation.PageParam<string> };
-
-export function pageTarget(params: PageParams): LogTarget {
-  const cluster = Renderer.Catalog.getActiveCluster();
-  return { clusterId: params.clusterId.get(), clusterName: cluster?.name ?? '',
-    namespace: params.namespace.get(), podName: params.pod.get(), podUid: params.podUid.get() };
+export function pageTarget(params: Record<string, Renderer.Navigation.PageParam<unknown>>): LogTarget {
+  const param = (name: string) => {
+    const value = params[name]?.get();
+    return typeof value === 'string' ? value : '';
+  };
+  const clusterId = param('clusterId');
+  const activeCluster = Renderer.Catalog.getActiveCluster();
+  return { clusterId, clusterName: activeCluster?.id === clusterId ? activeCluster.name : '',
+    namespace: param('namespace'), podName: param('pod'), podUid: param('podUid') };
 }
 function assertCluster(target: LogTarget) {
   if (!target.clusterId || target.clusterId !== Renderer.Catalog.getActiveCluster()?.id) {

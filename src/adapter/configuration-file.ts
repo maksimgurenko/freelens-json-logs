@@ -2,8 +2,7 @@ import { constants, copyFileSync, lstatSync, mkdirSync, readFileSync, renameSync
 import { dirname, join } from 'node:path';
 import { randomUUID } from 'node:crypto';
 import { configurationData, configurationProblem, defaultConfiguration } from '../core/configuration.ts';
-
-export interface ResetResult { backup?: string; error?: string }
+import type { ResetResult } from './configuration-ipc.ts';
 
 /** Inspect before constructing the SDK store: Conf can write migration metadata
  * during construction, even when its observable sync is not fireImmediately. */

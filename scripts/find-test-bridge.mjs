@@ -65,11 +65,10 @@ export function packedFindBridge(entry, settingsDirectory) {
     }
     terminate() { this.stoppedAt ??= performance.now(); return super.terminate(); }
   }
-  const originalLoad = Module._load, originalHost = global.LensExtensions, originalMobx = global.Mobx;
+  const originalLoad = Module._load, originalHost = globalThis.FreelensExtensionApi;
   let extension;
   try {
-    global.LensExtensions = { Main: { Ipc, LensExtension: class {} }, Common: { Store: { ExtensionStore } } };
-    global.Mobx = Mobx;
+    globalThis.FreelensExtensionApi = { Mobx, Main: { Ipc, LensExtension: class {} }, Common: { Store: { ExtensionStore } } };
     Module._load = function(name, ...args) {
       if (name === 'electron') return { app, BrowserWindow: {} };
       if (name === 'node:worker_threads') return { Worker: ObservedWorker };
@@ -78,7 +77,7 @@ export function packedFindBridge(entry, settingsDirectory) {
     const require = createRequire(import.meta.url);
     delete require.cache[require.resolve(entry)];
     extension = new (require(entry).default)(); extension.onActivate();
-  } finally { Module._load = originalLoad; global.LensExtensions = originalHost; global.Mobx = originalMobx; }
+  } finally { Module._load = originalLoad; globalThis.FreelensExtensionApi = originalHost; }
   return {
     removeFrame: index => { sender.mainFrame.framesInSubtree = sender.mainFrame.framesInSubtree.filter(frame => frame !== frames[index]); },
     status: () => ({ starts, exits, live: live.size, peak, owners: owners.size, inflight, peakInflight,

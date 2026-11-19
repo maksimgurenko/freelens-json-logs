@@ -59,14 +59,18 @@ try {
     assert.equal(code, 0, `${workload} resource check failed (${signal || code})`);
   }
 
-  const fixture = await build({ entryPoints: ['tests/smoke/renderer.jsx'], bundle: true, write: false, format: 'iife', platform: 'browser',
-    define: { 'process.env.NODE_ENV': '"production"', PACKED_RENDERER: JSON.stringify(await readFile(manifest.renderer, 'utf8')) } });
+  const fixture = await build({ entryPoints: ['tests/smoke/renderer.jsx'], bundle: true, write: false, format: 'esm', external: ['/renderer.mjs'], platform: 'browser',
+    define: { 'process.env.NODE_ENV': '"production"' } });
   bridge = packedFindBridge(resolve(manifest.main), join(directory, 'find-settings'));
+  const renderer = await readFile(manifest.renderer);
+  const stylesheet = await readFile(manifest.renderer.replace(/\.mjs$/, '.css'));
   server = createServer((request, response) => {
+    if (request.url === '/renderer.mjs') { response.setHeader('Content-Type', 'text/javascript'); response.end(renderer); return; }
+    if (request.url === '/renderer.css') { response.setHeader('Content-Type', 'text/css'); response.end(stylesheet); return; }
     if (request.url === '/find-rpc') { void bridge.http(request, response); return; }
     response.setHeader('Cache-Control', 'no-store');
     if (request.url === '/fixture.js') { response.setHeader('Content-Type', 'text/javascript'); response.end(fixture.outputFiles[0].text); }
-    else { response.setHeader('Content-Type', 'text/html'); response.end('<!doctype html><meta charset="utf-8"><title>Resource smoke</title><div id="root"></div><script src="/fixture.js"></script>'); }
+    else { response.setHeader('Content-Type', 'text/html'); response.end('<!doctype html><meta charset="utf-8"><link rel="stylesheet" href="/renderer.css"><title>Resource smoke</title><div id="root"></div><script type="module" src="/fixture.js"></script>'); }
   });
   server.listen(0, '127.0.0.1'); await once(server, 'listening');
   const origin = `http://127.0.0.1:${server.address().port}`;

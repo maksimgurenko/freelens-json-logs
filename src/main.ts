@@ -9,22 +9,29 @@ import { FIND_CONTROL, FIND_OPEN, FIND_REQUEST } from './adapter/find-ipc.ts';
 import { VISIBILITY_REQUEST, VISIBILITY_STOP } from './adapter/visibility.ts';
 import { watchWindowVisibility } from './adapter/window-visibility.ts';
 import { configurationStore } from './adapter/configuration-store.ts';
-import { resetConfiguration } from './adapter/configuration-file.ts';
-import { SETTINGS_RESET, SETTINGS_RESET_COMPLETE } from './adapter/configuration-ipc.ts';
+import { inspectConfiguration, resetConfiguration } from './adapter/configuration-file.ts';
+import { SETTINGS_RESET, SETTINGS_RESET_COMPLETE, SETTINGS_STATUS } from './adapter/configuration-ipc.ts';
+import { CONFIG_NAME } from './core/configuration.ts';
 
 declare const READABLE_LOGS_VERSION: string;
 
 class VisibilityIpc extends Main.Ipc {}
 
+type VisibilitySubscription = { sender: Electron.WebContents; processId: number; routingId: number; stop: () => void };
+
 // Main owns durable settings and observes native windows, including CSS-hidden frames.
 export default class ReadableLogsMain extends Main.LensExtension {
-  private subscriptions = new Map<string, () => void>();
+  private subscriptions = new Map<string, VisibilitySubscription>();
   private listeners: (() => void)[] = [];
   private find?: FindService;
   private stopping?: Promise<void>;
+  private loadSettings() {
+    const path = join(configurationStore.resolveSettingsDirectory(this), `${CONFIG_NAME}.json`);
+    configurationStore.attach(this, { path, problem: inspectConfiguration(path).problem });
+  }
   onActivate() {
     this.stopping = undefined;
-    try { configurationStore.loadExtension(this); }
+    try { this.loadSettings(); }
     catch (error) { configurationStore.failed(error); }
     const ipc = VisibilityIpc.createInstance(this);
     const find = new FindService(() => new Worker(readFileSync(join(__dirname,
@@ -47,33 +54,61 @@ export default class ReadableLogsMain extends Main.LensExtension {
     };
     app.on('before-quit', beforeQuit);
     this.listeners.push(() => app.removeListener('before-quit', beforeQuit));
+    const settingsStatus = () => ({ path: configurationStore.settingsPath, problem: configurationStore.problem });
+    ipc.handle(SETTINGS_STATUS, settingsStatus);
     ipc.handle(SETTINGS_RESET, (_event, confirmed: boolean) => {
       if (!configurationStore.problem) return { error: 'Settings are usable; no recovery reset is needed.' };
       const result = resetConfiguration(configurationStore.settingsPath, confirmed);
       if (!result.error && result.backup) {
-        configurationStore.loadExtension(this);
+        this.loadSettings();
         configurationStore.backedUp(result.backup);
-        ipc.broadcast(SETTINGS_RESET_COMPLETE, result.backup);
+        ipc.broadcast(SETTINGS_RESET_COMPLETE, result.backup, settingsStatus());
         if (configurationStore.problem) return { ...result, error: configurationStore.problem };
       }
       return result;
     });
-    // Broadcast callbacks in 1.10.3 have no sender. RPC preserves the requesting
-    // webContents, so each viewer observes its own window rather than focused state.
+    // RPC supplies the frame and its WebContents independently of focus.
     ipc.handle(VISIBILITY_REQUEST, (event, clusterId: string, reply: string) => {
       if (typeof clusterId !== 'string' || typeof reply !== 'string' || !reply.startsWith('viewer-visibility-')) return;
-      this.subscriptions.get(reply)?.();
-      const window = BrowserWindow.fromWebContents(event.sender);
+      const frame = event.senderFrame;
+      if (!frame || frame.isDestroyed() || frame.detached || this.subscriptions.has(reply)) return;
+      const sender = event.sender;
+      const window = BrowserWindow.fromWebContents(sender);
       if (!window) { ipc.broadcast(reply, null); return; }
-      this.subscriptions.set(reply, watchWindowVisibility(window, clusterId, selected => ipc.broadcast(reply, selected)));
+      const { processId, routingId } = frame;
+      const ownsDocument = () => {
+        try { return !frame.isDestroyed() && !frame.detached && frame.processId === processId && frame.routingId === routingId; }
+        catch { return false; }
+      };
+      const unwatch = watchWindowVisibility(window, clusterId, selected => ipc.broadcast(reply, selected));
+      const stop = () => {
+        clearInterval(checkFrame);
+        unwatch();
+        window.removeListener('closed', stop);
+        sender.removeListener('render-process-gone', stop);
+        sender.removeListener('did-frame-navigate', navigated);
+        this.subscriptions.delete(reply);
+      };
+      const navigated = (_event: Electron.Event, _url: string, _code: number, _status: string, main: boolean, pid: number, id: number) => {
+        if (main || (pid === processId && id === routingId) || !ownsDocument()) stop();
+      };
+      // Removing a cached cluster iframe may send neither a stop RPC nor a navigation event.
+      const checkFrame = setInterval(() => { if (!ownsDocument()) stop(); }, 1000).unref();
+      window.once('closed', stop);
+      sender.on('render-process-gone', stop);
+      sender.on('did-frame-navigate', navigated);
+      this.subscriptions.set(reply, { sender, processId, routingId, stop });
     });
-    this.listeners.push(ipc.listen(VISIBILITY_STOP, (_event, reply: string) => {
-      this.subscriptions.get(reply)?.(); this.subscriptions.delete(reply);
-    }));
+    ipc.handle(VISIBILITY_STOP, (event, reply: string) => {
+      const subscription = this.subscriptions.get(reply);
+      const frame = event.senderFrame;
+      if (subscription?.sender === event.sender && frame &&
+        subscription.processId === frame.processId && subscription.routingId === frame.routingId) subscription.stop();
+    });
   }
   async onDeactivate() {
     if (this.stopping) return this.stopping;
-    for (const stop of this.subscriptions.values()) stop();
+    for (const { stop } of this.subscriptions.values()) stop();
     for (const stop of this.listeners) stop();
     this.subscriptions.clear(); this.listeners = [];
     const find = this.find; this.find = undefined;

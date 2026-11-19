@@ -1,32 +1,42 @@
 import { build } from 'esbuild';
 import { mkdir, readFile, rm, writeFile } from 'node:fs/promises';
 
-// These modules are supplied by Freelens. Never ship independent React/MobX copies.
+const manifest = JSON.parse(await readFile('package.json', 'utf8'));
 const hostGlobals = {
-  '@freelensapp/extensions': 'LensExtensions',
   react: 'React', 'react/jsx-runtime': 'ReactJsxRuntime',
-  'react-dom': 'ReactDOM', mobx: 'Mobx', 'mobx-react': 'MobxReact',
-  'react-router-dom': 'ReactRouterDom',
+  mobx: 'Mobx',
+};
+const hostSingletons = {
+  name: 'freelens-host-singletons',
+  setup(build) {
+    build.onResolve({ filter: /^(?:react(?:\/jsx-runtime)?|mobx)$/ },
+      ({ path }) => ({ path, namespace: 'host-global' }));
+    build.onLoad({ filter: /.*/, namespace: 'host-global' }, ({ path }) => ({
+      contents: `module.exports = globalThis.FreelensExtensionApi.${hostGlobals[path]};`, loader: 'js',
+    }));
+  },
+};
+const options = {
+  outdir: 'out', entryNames: `[name]-${manifest.version}`, bundle: true, metafile: true,
+  define: { READABLE_LOGS_VERSION: JSON.stringify(manifest.version) },
 };
 await mkdir('dist', { recursive: true });
-const manifest = JSON.parse(await readFile('package.json', 'utf8'));
-// Freelens retains require() cache across uninstall/install. Versioned module
-// paths let an update load its own code without patching the host or restarting.
 await rm('out', { recursive: true, force: true });
-const result = await build({
-  entryPoints: { main: 'src/main.ts', renderer: 'src/renderer/index.tsx', 'find-worker': 'src/worker/find.ts' },
-  outdir: 'out', entryNames: `[name]-${manifest.version}`, bundle: true, platform: 'node',
-  external: ['electron'], format: 'cjs', target: 'node24', metafile: true, loader: { '.css': 'text' },
-  define: { READABLE_LOGS_VERSION: JSON.stringify(manifest.version) },
-  plugins: [{
-    name: 'freelens-host-globals',
-    setup(build) {
-      build.onResolve({ filter: /^(?:@freelensapp\/extensions|react(?:\/jsx-runtime)?|react-dom|mobx|mobx-react|react-router-dom)$/ },
-        ({ path }) => ({ path, namespace: 'host-global' }));
-      build.onLoad({ filter: /.*/, namespace: 'host-global' }, ({ path }) => ({
-        contents: `module.exports = global.${hostGlobals[path]};`, loader: 'js',
-      }));
-    },
-  }],
-});
-await writeFile('dist/build-meta.json', JSON.stringify(result.metafile, null, 2) + '\n');
+const [main, renderer] = await Promise.all([
+  build({
+    ...options,
+    entryPoints: { main: 'src/main.ts', 'find-worker': 'src/worker/find.ts' },
+    platform: 'node', format: 'cjs', target: 'node24',
+    external: ['electron'], plugins: [hostSingletons],
+  }),
+  build({
+    ...options,
+    entryPoints: { renderer: 'src/renderer/index.tsx' },
+    platform: 'browser', format: 'esm', outExtension: { '.js': '.mjs' },
+    plugins: [hostSingletons],
+  }),
+]);
+await writeFile('dist/build-meta.json', JSON.stringify({
+  inputs: { ...main.metafile.inputs, ...renderer.metafile.inputs },
+  outputs: { ...main.metafile.outputs, ...renderer.metafile.outputs },
+}, null, 2) + '\n');

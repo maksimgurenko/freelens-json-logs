@@ -1,12 +1,13 @@
 export interface VisibilityChannel {
   listen(channel: string, received: (clusterId: string | null) => void): () => void;
-  broadcast(channel: string, ...args: (string | null)[]): void;
+  request(clusterId: string, reply: string): void;
+  stop(reply: string): void;
 }
 export const VISIBILITY_REQUEST = 'viewer-visibility-request';
 export const VISIBILITY_STOP = 'viewer-visibility-stop';
 
 /** Wait for the owning native window's answer before fetching. A CSS-hidden
- * cross-origin cluster frame retains its own document visibility in 1.10.3. */
+ * cluster frame can retain its own document visibility. */
 export function bindVisibility(element: HTMLElement, clusterId: string,
   channel: VisibilityChannel, active: (value: boolean) => void) {
   const reply = `viewer-visibility-${crypto.randomUUID()}`;
@@ -15,9 +16,9 @@ export function bindVisibility(element: HTMLElement, clusterId: string,
   const stop = channel.listen(reply, selected => { parentVisible = selected === clusterId; update(); });
   element.ownerDocument.addEventListener('visibilitychange', update);
   update();
-  channel.broadcast(VISIBILITY_REQUEST, clusterId, reply);
+  channel.request(clusterId, reply);
   return () => {
-    stop(); channel.broadcast(VISIBILITY_STOP, reply);
+    stop(); channel.stop(reply);
     element.ownerDocument.removeEventListener('visibilitychange', update);
   };
 }
