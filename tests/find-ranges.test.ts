@@ -1,18 +1,19 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
+import { findTransport } from '../src/adapter/find-ipc.ts';
 import { FindClient } from '../src/renderer/find-client.ts';
 import { FindRanges } from '../src/renderer/find-ranges.ts';
 import type { FindRequest } from '../src/core/find-protocol.ts';
 
 test('complete visible coverage survives appends and layout changes but changed text is recomputed', async () => {
   const calls: FindRequest[] = [];
-  const client = new FindClient({ async invoke(channel, ...args) {
+  const client = new FindClient(findTransport({ async invoke(channel, ...args) {
     if (channel === 'find-open') return 'owner';
     if (channel !== 'find-request') return;
     const request = args[1] as FindRequest; calls.push(request);
     return { requestId: request.requestId, key: request.key, workerGeneration: 1, kind: 'ranges', interestId: request.rangeInterest!.id,
       ranges: request.rangeInterest!.scopes, coverage: request.rangeInterest!.scopes.map(scope => ({ scope, complete: true })) };
-  } }, 'viewer');
+  } }), 'viewer');
   const ranges = new FindRanges(client, () => {}), ref = { context: 'one', occurrence: 0 };
   const inputs = { key: { viewerEpoch: 1, targetEpoch: 1, instanceEpoch: 1, windowRevision: 1, messageRevision: 1, queryRevision: 1 },
     query: { text: 'a', matchCase: false, wholeWords: false }, records: [{ ref, application: 'a a a' }] };
@@ -36,10 +37,10 @@ test('complete visible coverage survives appends and layout changes but changed 
 
 test('a clipping resize inside pending coverage completes without restarting decoration', async () => {
   const calls: { request: FindRequest; resolve: (value: unknown) => void }[] = [];
-  const client = new FindClient({ async invoke(channel, ...args) {
+  const client = new FindClient(findTransport({ async invoke(channel, ...args) {
     if (channel === 'find-open') return 'owner';
     if (channel === 'find-request') return new Promise(resolve => calls.push({ request: args[1] as FindRequest, resolve }));
-  } }, 'viewer');
+  } }), 'viewer');
   const ranges = new FindRanges(client, () => {}), ref = { context: 'one', occurrence: 0 };
   const inputs = { key: { viewerEpoch: 1, targetEpoch: 1, instanceEpoch: 1, windowRevision: 1, messageRevision: 1, queryRevision: 1 },
     query: { text: 'a', matchCase: false, wholeWords: false }, records: [{ ref, application: 'a a a' }] };
@@ -61,14 +62,14 @@ test('a clipping resize inside pending coverage completes without restarting dec
 
 test('incomplete coverage still requests a narrower late-source interest', async () => {
   const calls: FindRequest[] = [];
-  const client = new FindClient({ async invoke(channel, ...args) {
+  const client = new FindClient(findTransport({ async invoke(channel, ...args) {
     if (channel === 'find-open') return 'owner';
     if (channel !== 'find-request') return;
     const request = args[1] as FindRequest; calls.push(request);
     return { requestId: request.requestId, key: request.key, workerGeneration: 1, kind: 'ranges', interestId: request.rangeInterest!.id,
       ranges: [{ ...request.rangeInterest!.scopes[0], end: request.rangeInterest!.scopes[0].start + 1 }],
       coverage: request.rangeInterest!.scopes.map(scope => ({ scope, complete: calls.length > 1 })) };
-  } }, 'viewer');
+  } }), 'viewer');
   const ranges = new FindRanges(client, () => {}), ref = { context: 'one', occurrence: 0 };
   const inputs = { key: { viewerEpoch: 1, targetEpoch: 1, instanceEpoch: 1, windowRevision: 1, messageRevision: 1, queryRevision: 1 },
     query: { text: 'a', matchCase: false, wholeWords: false }, records: [{ ref, application: 'a a a' }] };
@@ -84,10 +85,10 @@ test('incomplete coverage still requests a narrower late-source interest', async
 
 test('a newer covered interest is evaluated after a pending broad reply proves incomplete', async () => {
   const calls: { request: FindRequest; resolve: (value: unknown) => void }[] = [];
-  const client = new FindClient({ async invoke(channel, ...args) {
+  const client = new FindClient(findTransport({ async invoke(channel, ...args) {
     if (channel === 'find-open') return 'owner';
     if (channel === 'find-request') return new Promise(resolve => calls.push({ request: args[1] as FindRequest, resolve }));
-  } }, 'viewer');
+  } }), 'viewer');
   const ranges = new FindRanges(client, () => {}), ref = { context: 'one', occurrence: 0 };
   const inputs = { key: { viewerEpoch: 1, targetEpoch: 1, instanceEpoch: 1, windowRevision: 1, messageRevision: 1, queryRevision: 1 },
     query: { text: 'a', matchCase: false, wholeWords: false }, records: [{ ref, application: 'a a a' }] };
@@ -114,14 +115,14 @@ test('a newer covered interest is evaluated after a pending broad reply proves i
 test('decoration failure latches independently of exact matching and explicit retry uses current interest', async () => {
   const requests: FindRequest[] = [];
   let fail = true;
-  const client = new FindClient({ async invoke(channel, ...args) {
+  const client = new FindClient(findTransport({ async invoke(channel, ...args) {
     if (channel === 'find-open') return 'owner';
     if (channel !== 'find-request') return;
     const request = args[1] as FindRequest; requests.push(request);
     if (fail) throw new Error('Controlled range failure');
     return { requestId: request.requestId, key: request.key, workerGeneration: 1, kind: 'ranges', interestId: request.rangeInterest!.id,
       ranges: [], coverage: request.rangeInterest!.scopes.map(scope => ({ scope, complete: true })) };
-  } }, 'viewer');
+  } }), 'viewer');
   const ranges = new FindRanges(client, () => {});
   const record = { ref: { context: 'one', occurrence: 0 }, application: 'a' };
   const inputs = { key: { viewerEpoch: 1, targetEpoch: 1, instanceEpoch: 1, windowRevision: 1, messageRevision: 1, queryRevision: 1 },
@@ -143,11 +144,11 @@ test('new visible interest rejects old success/failure and its deadline covers r
   let now = 0;
   const timers = new Set<() => void>();
   const calls: { request: FindRequest; resolve: (value: unknown) => void }[] = [];
-  const client = new FindClient({ async invoke(channel, ...args) {
+  const client = new FindClient(findTransport({ async invoke(channel, ...args) {
     if (channel === 'find-open') return 'owner';
     if (channel !== 'find-request') return;
     return new Promise(resolve => calls.push({ request: args[1] as FindRequest, resolve }));
-  } }, 'viewer');
+  } }), 'viewer');
   const ranges = new FindRanges(client, () => {}, { now: () => now, delay: (_ms, run) => { timers.add(run); return () => { timers.delete(run); }; } });
   const ref = { context: 'one', occurrence: 0 };
   const inputs = { key: { viewerEpoch: 1, targetEpoch: 1, instanceEpoch: 1, windowRevision: 1, messageRevision: 1, queryRevision: 1 },

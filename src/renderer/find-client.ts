@@ -1,13 +1,11 @@
-import { FIND_CONTROL, FIND_OPEN, FIND_REQUEST, type FindRpc } from '../adapter/find-ipc.ts';
 import { FIND_PENDING_MS, FIND_QUERY_LIMIT, FIND_TIMEOUT_MS, hasFindReplyIdentity, isFindReply, sameFindKey,
-  type FindKey, type FindQuery, type FindRecord, type FindReply, type FindRequest, type MatchingRecord } from '../core/find-protocol.ts';
-import type { FindClock } from '../main/find-execution.ts';
+  type FindClock, type FindControl, type FindKey, type FindQuery, type FindRecord, type FindReply, type FindRequest, type FindTransport, type MatchingRecord } from '../core/find-protocol.ts';
 
-/** One SDK owner for this mounted viewer. Cancellation also invalidates calls
+/** One Find owner for this mounted viewer. Cancellation also invalidates calls
  * still waiting for registration; they cannot dispatch later on return.
  */
 export class FindClient {
-  private rpc: FindRpc;
+  private transport: FindTransport;
   private viewer: string;
   private owner?: Promise<string>;
   private revision = 0;
@@ -16,10 +14,10 @@ export class FindClient {
   private closing?: Promise<void>;
   private requestId = 0;
   private work?: FindRequest['work'];
-  constructor(rpc: FindRpc, viewer: string) { this.rpc = rpc; this.viewer = viewer; }
+  constructor(transport: FindTransport, viewer: string) { this.transport = transport; this.viewer = viewer; }
   nextRequestId() { return ++this.requestId; }
   private token(): Promise<string> {
-    this.owner ??= this.rpc.invoke(FIND_OPEN, this.viewer).then(value => {
+    this.owner ??= this.transport.open(this.viewer).then(value => {
       if (typeof value !== 'string' || !value || value.length > 128) throw new Error('Invalid Find registration');
       return value;
     }).catch(error => { this.owner = undefined; throw error; });
@@ -30,11 +28,11 @@ export class FindClient {
     this.work = request.work;
     const revision = this.revision, token = await this.token();
     if (this.closed || !this.active || revision !== this.revision) return;
-    const value = await this.rpc.invoke(FIND_REQUEST, token, request);
+    const value = await this.transport.submit(token, request);
     return !this.closed && this.active && revision === this.revision ? value : undefined;
   }
-  private control(action: string, active?: boolean): Promise<void> {
-    return this.owner ? this.owner.then(async token => { await this.rpc.invoke(FIND_CONTROL, token, action, active); }).catch(() => {}) : Promise.resolve();
+  private control(...command: FindControl): Promise<void> {
+    return this.owner ? this.owner.then(async token => { await this.transport.control(token, ...command); }).catch(() => {}) : Promise.resolve();
   }
   cancel() { this.revision++; this.work = undefined; void this.control('cancel'); }
   cancelRanges() { if (this.work === 'ranges') this.cancel(); }

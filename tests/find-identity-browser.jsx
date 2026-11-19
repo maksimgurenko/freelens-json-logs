@@ -30,6 +30,7 @@ globalThis.cancelAnimationFrame = id => { geometryFrames.delete(id); cancelFrame
 window.addEventListener('error', event => errors.push(String(event.error || event.message)));
 window.addEventListener('unhandledrejection', event => errors.push(String(event.reason)));
 let text = 'start\nx\nend', reads = 0, podReads = 0, pendingRead, copies = [];
+let logRequest;
 let status = { name: 'app', restartCount: 0, containerID: 'run-0' };
 let uid = 'uid';
 let heldReply, failNext = false, requestCount = 0;
@@ -73,7 +74,7 @@ Object.assign(globalThis, { global: globalThis, React, ReactDOM, Mobx, LensExten
     K8sApi: { podsApi: {
       async get() { podReads++; return { metadata: { uid, labels: {} }, spec: { containers: [{ name: 'app' }, { name: 'sidecar' }] },
         status: { containerStatuses: status ? [status] : [] } }; },
-      async getLogs() { reads++; if (pendingRead) return pendingRead.promise; return text; },
+      async getLogs(target, options) { reads++; logRequest = { target, options }; if (pendingRead) return pendingRead.promise; return text; },
     } },
   },
 } });
@@ -667,6 +668,11 @@ globalThis.verifyIdentity = async () => {
   ReactDOM.render(<Page params={params} />, root);
   try {
     await until(() => rows().length === 3, 'No initial rows'); button('Pause');
+    const { target, options } = logRequest;
+    check(target.namespace === 'ns' && target.name === 'pod' && options.container === 'app', 'Initial snapshot addressed a different log target');
+    check(options.tailLines === 1000 && options.timestamps === true && options.follow === false && options.previous === false,
+      'Initial snapshot did not request the bounded current-instance window');
+    results.push('production Page requests the selected Pod and its initial container with bounded snapshot options');
     if (FIND_PERFORMANCE_ONLY) {
       await verifyFindPerformance({ root, rows, button, query, refresh, until, check, results, holdNext, holdNextRange, rangeRequests });
       return results;
@@ -785,6 +791,7 @@ globalThis.verifyIdentity = async () => {
     results.push('mounted session rejects old-instance log successes and failures');
     const container = root.querySelector('select[aria-label="Container"]');
     container.value = 'sidecar'; container.dispatchEvent(new Event('change', { bubbles: true })); await turn();
+    await until(() => logRequest.options.container === 'sidecar', 'Changing containers did not update the log target');
     check(input().value === '', 'Container change retained query'); assertEmptyHistory();
     check(root.querySelector('.rl-update-status').textContent !== 'Paused', 'Container change did not preserve existing automatic-mode contract');
     button('Pause'); await query('x');

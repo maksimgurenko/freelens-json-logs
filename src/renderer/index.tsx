@@ -1,16 +1,25 @@
 import React from 'react';
 import { Renderer } from '@freelensapp/extensions';
-import { PAGE_ID, pageTarget, visibilityChannel, type PageParams } from '../adapter/freelens.ts';
+import { freelensPort, PAGE_ID, pageTarget, viewerVisibility, type PageParams } from '../adapter/freelens.ts';
 import { Viewer } from './viewer.tsx';
 import { configurationStore } from '../adapter/configuration-store.ts';
 import { SETTINGS_RESET, SETTINGS_RESET_COMPLETE } from '../adapter/configuration-ipc.ts';
+import { findTransport } from '../adapter/find-ipc.ts';
+import { writeClipboard } from '../adapter/clipboard.ts';
+import { LogRequests } from '../core/requests.ts';
 import { ShortcutCapture } from './local-shortcuts.ts';
+
+declare const READABLE_LOGS_VERSION: string;
+// An invalidated read still owns its target across viewer unmounts and disable.
+const requests = new LogRequests();
+const ViewerIcon = ({ material }: { material: string }) => <Renderer.Component.Icon material={material} />;
 
 class ConfigurationIpc extends Renderer.Ipc {}
 
 export default class ReadableLogsRenderer extends Renderer.LensExtension {
-  private visibility = visibilityChannel(this);
+  private bindVisibility = viewerVisibility(this);
   private findRpc = ConfigurationIpc.createInstance(this);
+  private find = findTransport(this.findRpc);
   private viewers = new Set<() => void | Promise<void>>();
   private stopRecovery?: () => void;
   private shortcuts = new ShortcutCapture();
@@ -24,7 +33,9 @@ export default class ReadableLogsRenderer extends Renderer.LensExtension {
     components: { Page: ({ params }: { params: PageParams }) => {
       const target = pageTarget(params);
       return <Viewer key={JSON.stringify([target.clusterId, target.namespace, target.podName, target.podUid])}
-        target={target} register={this.register} visibility={this.visibility} findRpc={this.findRpc} preferences={configurationStore} shortcutCapture={this.shortcuts} />;
+        target={target} logs={freelensPort} requests={requests} preferences={configurationStore} find={this.find}
+        writeClipboard={writeClipboard} bindVisibility={this.bindVisibility} register={this.register}
+        shortcutCapture={this.shortcuts} Icon={ViewerIcon} version={READABLE_LOGS_VERSION} />;
     } },
   }];
   onActivate() {

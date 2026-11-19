@@ -1,10 +1,10 @@
 import React, { useLayoutEffect, useRef, useState } from 'react';
-import { Renderer } from '@freelensapp/extensions';
 import type { FindHistory } from '../core/find-history.ts';
 import type { FindQuery } from '../core/find-protocol.ts';
 import { focusLocal, type LocalDismissal } from './local-dismissal.ts';
 
-export function FindHistoryPopover({ history, visible, context, dismissal, onRecall }: {
+export function FindHistoryPopover({ Icon, history, visible, context, dismissal, onRecall }: {
+  Icon: React.ComponentType<{ material: string }>;
   history: FindHistory; visible: boolean; context: string; dismissal: LocalDismissal; onRecall: (query: FindQuery) => void;
 }) {
   const [open, setOpen] = useState(false);
@@ -34,7 +34,7 @@ export function FindHistoryPopover({ history, visible, context, dismissal, onRec
   return <div ref={root} className="rl-find-history">
     <button ref={clock} type="button" className="rl-find-button rl-find-clock" aria-label="Search history" title="Search history"
       aria-expanded={open} aria-haspopup="dialog" onClick={() => { if (visible) open ? close() : setOpen(true); }}>
-      <Renderer.Component.Icon material="history" />
+      <Icon material="history" />
     </button>
     {open && <section className="rl-history-popover" role="dialog" aria-label="Search history">
       <h3 ref={heading} tabIndex={-1}>Recent searches</h3>

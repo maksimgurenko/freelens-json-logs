@@ -18,6 +18,18 @@ assert.deepEqual(contents, ['package/README.md', 'package/docs/local-development
 const metadata = JSON.parse(readFileSync('dist/build-meta.json'));
 const inputs = Object.keys(metadata.inputs);
 assert(inputs.every(path => path.startsWith('src/') || path.startsWith('host-global:')), `Unexpected bundled dependency: ${inputs}`);
+// Walk the production viewer and core import graphs independently of the host entry point.
+const viewerInputs = new Set();
+function checkViewerInput(path, importedBy) {
+  if (viewerInputs.has(path)) return;
+  assert(path.startsWith('src/core/') || path.startsWith('src/renderer/') && path !== 'src/renderer/index.tsx'
+    || path === 'host-global:react' || path === 'host-global:react/jsx-runtime',
+  `Host dependency in viewer/core: ${importedBy} imports ${path}`);
+  viewerInputs.add(path);
+  for (const dependency of metadata.inputs[path].imports) checkViewerInput(dependency.path, path);
+}
+checkViewerInput('src/renderer/viewer.tsx');
+for (const path of inputs.filter(path => path.startsWith('src/core/'))) checkViewerInput(path);
 const workerMetadata = metadata.outputs[workerEntry];
 assert.deepEqual(workerMetadata.imports.map(entry => entry.path), ['node:worker_threads']);
 assert.deepEqual(Object.keys(workerMetadata.inputs).sort(), ['src/core/find-matcher.ts', 'src/core/find-protocol.ts', 'src/worker/find.ts']);

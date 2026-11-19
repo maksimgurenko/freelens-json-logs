@@ -2,12 +2,11 @@ import { Renderer } from '@freelensapp/extensions';
 import { TAIL_LINES } from '../core/snapshot.ts';
 import type { SnapshotPort } from '../core/session.ts';
 import type { LogTarget } from '../core/target.ts';
-import { LogRequests } from '../core/requests.ts';
 import { observe } from '../core/observe.ts';
-import { VISIBILITY_REQUEST, type VisibilityChannel } from './visibility.ts';
+import { bindVisibility, VISIBILITY_REQUEST, type VisibilityChannel } from './visibility.ts';
 
 class VisibilityIpc extends Renderer.Ipc {}
-export function visibilityChannel(extension: Renderer.LensExtension): VisibilityChannel {
+function visibilityChannel(extension: Renderer.LensExtension): VisibilityChannel {
   const ipc = VisibilityIpc.createInstance(extension);
   return {
     listen: (channel, received) => ipc.listen(channel, (_event, selected: string | null) => received(selected)),
@@ -18,11 +17,14 @@ export function visibilityChannel(extension: Renderer.LensExtension): Visibility
     },
   };
 }
+
+export function viewerVisibility(extension: Renderer.LensExtension) {
+  const channel = visibilityChannel(extension);
+  return (element: HTMLElement, clusterId: string, active: (value: boolean) => void) =>
+    bindVisibility(element, clusterId, channel, active);
+}
+
 export const PAGE_ID = 'readable-logs';
-declare const READABLE_LOGS_VERSION: string;
-export const PACKAGE_VERSION = READABLE_LOGS_VERSION;
-// Retain outstanding same-target guards across page unmount/reopen and disable.
-export const freelensRequests = new LogRequests();
 export type PageParams = { namespace: Renderer.Navigation.PageParam<string>; pod: Renderer.Navigation.PageParam<string>; podUid: Renderer.Navigation.PageParam<string>; clusterId: Renderer.Navigation.PageParam<string> };
 
 export function pageTarget(params: PageParams): LogTarget {

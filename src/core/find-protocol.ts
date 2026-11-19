@@ -6,6 +6,7 @@ export const FIND_SCOPE_LIMIT = FIND_RANGE_LIMIT;
 export const FIND_SOURCE_LIMIT = 5 * 1024 * 1024;
 export const FIND_PENDING_MS = 100;
 export const FIND_TIMEOUT_MS = 1_000;
+export interface FindClock { now(): number; delay(ms: number, run: () => void): () => void }
 
 export interface FindKey {
   viewerEpoch: number;
@@ -28,6 +29,12 @@ export interface FindRequest {
   records: readonly FindRecord[];
   work: 'match' | 'ranges';
   rangeInterest?: { id: number; scopes: readonly FindScope[] };
+}
+export type FindControl = [action: 'active', active: boolean] | [action: 'cancel' | 'close'];
+export interface FindTransport {
+  open(viewer: string): Promise<unknown>;
+  submit(token: string, request: FindRequest): Promise<unknown>;
+  control(token: string, ...command: FindControl): Promise<unknown>;
 }
 export type FindReply = { requestId: number; key: FindKey; workerGeneration: number } & (
   | { kind: 'matches'; records: readonly MatchingRecord[] }
