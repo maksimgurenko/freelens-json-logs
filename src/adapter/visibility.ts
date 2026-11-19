@@ -5,6 +5,7 @@ export interface VisibilityChannel {
 }
 export const VISIBILITY_REQUEST = 'viewer-visibility-request';
 export const VISIBILITY_STOP = 'viewer-visibility-stop';
+export const VISIBILITY_CHANGED = 'viewer-visibility-changed';
 
 /** Wait for the owning native window's answer before fetching. A CSS-hidden
  * cluster frame can retain its own document visibility. */

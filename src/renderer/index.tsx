@@ -6,7 +6,7 @@ import { freelensPort, PAGE_ID, pageTarget, viewerVisibility } from '../adapter/
 import { Viewer } from './viewer.tsx';
 import { getConfigurationStore, type ConfigurationStore } from '../adapter/configuration-store.ts';
 import { requireHostFunctions } from '../adapter/host-compatibility.ts';
-import { SETTINGS_CHANGED, SETTINGS_RESET, SETTINGS_SAVE_PROFILE, SETTINGS_STATUS,
+import { SETTINGS_CHANGED, SETTINGS_MUTATE, SETTINGS_RESET, SETTINGS_STATUS,
   type ResetReply, type SettingsStatus } from '../adapter/configuration-ipc.ts';
 import { findTransport } from '../adapter/find-ipc.ts';
 import { writeClipboard } from '../adapter/clipboard.ts';
@@ -37,6 +37,7 @@ export default class ReadableLogsRenderer extends Renderer.LensExtension {
   private settings?: ConfigurationStore;
   private viewers = new Set<() => void | Promise<void>>();
   private stopRecovery?: () => void;
+  private stopVisibility?: () => void;
   private shortcuts = new ShortcutCapture();
   private stopShortcuts?: () => void;
   private register = (dispose: () => void | Promise<void>) => {
@@ -73,7 +74,7 @@ export default class ReadableLogsRenderer extends Renderer.LensExtension {
     }
     if (!active() || !initialStatus) return;
     const settings = this.settings = getConfigurationStore();
-    settings.bindProfileSave(profile => ipc.invoke(SETTINGS_SAVE_PROFILE, profile));
+    settings.bindMutation(mutation => ipc.invoke(SETTINGS_MUTATE, mutation));
     settings.bindReset(async confirmed => {
       const result: ResetReply = await ipc.invoke(SETTINGS_RESET, confirmed);
       if (active() && result.status) applyStatus(result.status);
@@ -83,7 +84,8 @@ export default class ReadableLogsRenderer extends Renderer.LensExtension {
     this.registerViewer(ipc, settings);
   }
   private registerViewer(ipc: Renderer.Ipc, settings: ConfigurationStore) {
-    const bindVisibility = viewerVisibility(ipc);
+    const { bind: bindVisibility, dispose } = viewerVisibility(ipc);
+    this.stopVisibility = dispose;
     const find = findTransport(ipc);
     this.clusterPages = [{
       id: PAGE_ID, params: { namespace: '', pod: '', podUid: '', clusterId: '' },
@@ -115,9 +117,11 @@ export default class ReadableLogsRenderer extends Renderer.LensExtension {
   async onDeactivate() {
     this.stopShortcuts?.();
     this.stopRecovery?.();
+    this.stopVisibility?.();
     this.stopRecovery = undefined;
+    this.stopVisibility = undefined;
     this.stopShortcuts = undefined;
-    this.settings?.bindProfileSave();
+    this.settings?.bindMutation();
     this.settings?.bindReset();
     this.settings?.detach();
     this.settings = undefined;

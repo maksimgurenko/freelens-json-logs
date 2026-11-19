@@ -15,7 +15,9 @@ assert.equal(manifest.main, `out/main-${manifest.version}.js`);
 assert.equal(manifest.renderer, `out/renderer-${manifest.version}.mjs`);
 const stylesheet = manifest.renderer.replace(/\.mjs$/, '.css');
 const workerEntry = `out/find-worker-${manifest.version}.js`;
-assert.deepEqual(contents, ['package/README.md', 'package/docs/local-development.md', `package/${manifest.main}`, `package/${manifest.renderer}`, `package/${stylesheet}`, `package/${workerEntry}`, 'package/package.json'].sort());
+const sdkNotice = 'out/freelens-sdk-LICENSE';
+assert.deepEqual(contents, ['README.md', 'docs/local-development.md', manifest.main, manifest.renderer, stylesheet,
+  workerEntry, sdkNotice, 'package.json'].map(path => `package/${path}`).sort());
 const sdk = '@freelensapp/extensions';
 const lock = JSON.parse(readFileSync('package-lock.json'));
 const installedSdk = JSON.parse(readFileSync(`node_modules/${sdk}/package.json`));
@@ -59,6 +61,8 @@ const directory = mkdtempSync(join(tmpdir(), 'readable-logs-package-'));
 let workerCheck, serviceCheck, compatibility;
 try {
   execFileSync('tar', ['-xzf', join(process.cwd(), tarball), '-C', directory]);
+  assert.deepEqual(readFileSync(join(directory, 'package', sdkNotice)), readFileSync(`node_modules/${sdk}/LICENSE`),
+    'Packed SDK license notice differs from the pinned SDK');
   const packed = JSON.parse(readFileSync(join(directory, 'package/package.json')));
   assert.equal(packed.engines.freelens, '^2.0.0');
   assert.equal(packed.devDependencies[sdk], '2.0.0');

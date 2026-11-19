@@ -8,14 +8,13 @@ import { isDeepStrictEqual } from 'node:util';
 import { FindService } from './main/find-service.ts';
 import { FIND_CONTROL, FIND_OPEN, FIND_REQUEST } from './adapter/find-ipc.ts';
 
-import { VISIBILITY_REQUEST, VISIBILITY_STOP } from './adapter/visibility.ts';
+import { VISIBILITY_CHANGED, VISIBILITY_REQUEST, VISIBILITY_STOP } from './adapter/visibility.ts';
 import { watchWindowVisibility } from './adapter/window-visibility.ts';
 import { getConfigurationStore, type ConfigurationStore } from './adapter/configuration-store.ts';
 import { requireHostFunctions } from './adapter/host-compatibility.ts';
 import { inspectConfiguration, resetConfiguration } from './adapter/configuration-file.ts';
-import { SETTINGS_CHANGED, SETTINGS_RESET, SETTINGS_SAVE_PROFILE, SETTINGS_STATUS, type ResetReply } from './adapter/configuration-ipc.ts';
-import { CONFIG_NAME } from './core/configuration.ts';
-import type { Profile } from './core/profiles.ts';
+import { SETTINGS_CHANGED, SETTINGS_MUTATE, SETTINGS_RESET, SETTINGS_STATUS, type ResetReply, type SettingsMutation } from './adapter/configuration-ipc.ts';
+import { CONFIG_NAME, isInspectionLayout } from './core/configuration.ts';
 
 declare const READABLE_LOGS_VERSION: string;
 
@@ -23,12 +22,39 @@ class VisibilityIpc extends Main.Ipc {}
 
 type VisibilitySubscription = { sender: Electron.WebContents; processId: number; routingId: number; stop: () => void };
 
+function applySettingsMutation(store: ConfigurationStore, mutation: SettingsMutation) {
+  switch (mutation?.type) {
+    case 'inspection':
+      if (isInspectionLayout(mutation.layout)) return store.setInspection(mutation.layout);
+      break;
+    case 'save-profile':
+      if (mutation.profile && typeof mutation.profile === 'object') return store.saveProfile(mutation.profile);
+      break;
+    case 'delete-profile':
+      if (typeof mutation.id === 'string') return store.deleteProfile(mutation.id);
+      break;
+    case 'global-default':
+      if (typeof mutation.id === 'string') return store.setGlobalDefault(mutation.id);
+      break;
+    case 'move-profile':
+      if (typeof mutation.id === 'string' && (mutation.direction === 1 || mutation.direction === -1)) {
+        return store.moveProfile(mutation.id, mutation.direction);
+      }
+      break;
+  }
+  throw new TypeError('Invalid Readable logs settings mutation.');
+}
+
 // Main owns durable settings and observes native windows, including CSS-hidden frames.
 export default class ReadableLogsMain extends Main.LensExtension {
   private subscriptions = new Map<string, VisibilitySubscription>();
   private find?: FindService;
   private stopping?: Promise<void>;
   private settings?: ConfigurationStore;
+  private assertActive() {
+    // The SDK leaves handlers callable until the awaited deactivation finishes.
+    if (this.stopping) throw new Error('Readable logs is deactivating.');
+  }
   private loadSettings(configurationStore: ConfigurationStore) {
     const path = join(configurationStore.resolveSettingsDirectory(this), `${CONFIG_NAME}.json`);
     configurationStore.attach(this, { path, problem: inspectConfiguration(path).problem });
@@ -43,8 +69,7 @@ export default class ReadableLogsMain extends Main.LensExtension {
     });
     // A renderer requests status only after checking its side of the SDK.
     ipc.handle(SETTINGS_STATUS, () => {
-      // The SDK leaves handlers callable until the awaited deactivation finishes.
-      if (this.stopping) throw new Error('Readable logs is deactivating.');
+      this.assertActive();
       const settings = this.settings ?? this.initialize(ipc);
       return { path: settings.settingsPath, problem: settings.problem };
     });
@@ -66,7 +91,8 @@ export default class ReadableLogsMain extends Main.LensExtension {
       throw new TypeError('Invalid Find control');
     });
     const settingsStatus = () => ({ path: configurationStore.settingsPath, problem: configurationStore.problem });
-    ipc.handle(SETTINGS_SAVE_PROFILE, (_event, profile: Profile) => {
+    ipc.handle(SETTINGS_MUTATE, (_event, mutation: SettingsMutation) => {
+      this.assertActive();
       const path = configurationStore.settingsPath;
       const current = inspectConfiguration(path);
       if (current.problem) {
@@ -74,16 +100,19 @@ export default class ReadableLogsMain extends Main.LensExtension {
         ipc.broadcast(SETTINGS_CHANGED, settingsStatus());
         throw new Error(current.problem);
       }
-      configurationStore.saveProfile(profile);
+      if (configurationStore.problem) throw new Error(configurationStore.problem);
+      // This runs synchronously, so the next command sees the committed model.
+      applySettingsMutation(configurationStore, mutation);
       // The SDK writes synchronously in main, but its MobX reaction does not
       // propagate a disk error to the action that changed the model.
       const persisted = inspectConfiguration(path);
       if (!persisted.problem && isDeepStrictEqual(persisted.data, JSON.parse(JSON.stringify(configurationStore.toJSON())))) return;
       configurationStore.attach(this, { path, problem: persisted.problem });
-      if (configurationStore.problem) ipc.broadcast(SETTINGS_CHANGED, settingsStatus());
-      throw new Error(persisted.problem ?? 'Unable to write the formatting profile to saved settings.');
+      ipc.broadcast(SETTINGS_CHANGED, settingsStatus());
+      throw new Error(persisted.problem ?? 'Unable to write Readable logs settings.');
     });
     ipc.handle(SETTINGS_RESET, (_event, confirmed: boolean): ResetReply => {
+      this.assertActive();
       if (!configurationStore.problem) return { error: 'Settings are usable; no recovery reset is needed.' };
       const result = resetConfiguration(configurationStore.settingsPath, confirmed, () => {
         this.loadSettings(configurationStore);
@@ -98,18 +127,19 @@ export default class ReadableLogsMain extends Main.LensExtension {
     });
     // RPC supplies the frame and its WebContents independently of focus.
     ipc.handle(VISIBILITY_REQUEST, (event, clusterId: string, reply: string) => {
+      this.assertActive();
       if (typeof clusterId !== 'string' || typeof reply !== 'string' || !reply.startsWith('viewer-visibility-')) return;
       const frame = event.senderFrame;
       if (!frame || frame.isDestroyed() || frame.detached || this.subscriptions.has(reply)) return;
       const sender = event.sender;
       const window = BrowserWindow.fromWebContents(sender);
-      if (!window) { ipc.broadcast(reply, null); return; }
+      if (!window) { ipc.broadcast(VISIBILITY_CHANGED, reply, null); return; }
       const { processId, routingId } = frame;
       const ownsDocument = () => {
         try { return !frame.isDestroyed() && !frame.detached && frame.processId === processId && frame.routingId === routingId; }
         catch { return false; }
       };
-      const unwatch = watchWindowVisibility(window, clusterId, selected => ipc.broadcast(reply, selected));
+      const unwatch = watchWindowVisibility(window, clusterId, selected => ipc.broadcast(VISIBILITY_CHANGED, reply, selected));
       const stop = () => {
         clearInterval(checkFrame);
         unwatch();

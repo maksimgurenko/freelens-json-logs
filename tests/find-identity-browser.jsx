@@ -10,6 +10,8 @@ import { verifyFindMarks } from './find-marks-browser.jsx';
 import { verifyFindIntegration } from './find-integration-browser.jsx';
 import { verifyFindPerformance } from './find-performance-browser.jsx';
 import { commitDiscreteEvents } from './browser-discrete-events.js';
+import { SettingsRecovery } from '../src/renderer/settings-recovery.tsx';
+import { LocalDismissal } from '../src/renderer/local-dismissal.ts';
 
 commitDiscreteEvents();
 
@@ -17,6 +19,8 @@ const check = (condition, message) => { if (!condition) throw new Error(message)
 const sleep = ms => new Promise(resolve => setTimeout(resolve, ms));
 const turn = () => sleep(0);
 const results = [], errors = [], callbacks = new Map();
+const sdkDisposers = [];
+const visibilityReplies = new Set();
 // Observe browser resource ownership at the DOM boundary, across every mounted
 // renderer owner. A disconnected observer/frame must not outlive unmount.
 const geometryObservers = new Set(), geometryFrames = new Set();
@@ -47,21 +51,38 @@ const settingsPath = '/isolated-identity-store/readable-logs.json';
 let settingsStatus = () => ({ path: settingsPath });
 let resetSettingsReply;
 let failSettingsBinding = false;
-let saveSettingsProfile = async profile => {
+let pauseVisibilityReplies = false;
+function applyMockSetting(configuration, mutation) {
+  if (mutation.type === 'inspection') return { ...configuration, viewer: { ...configuration.viewer, inspection: mutation.layout } };
+  check(mutation.type === 'save-profile', `Unexpected settings command: ${mutation.type}`);
+  return { ...configuration, profiles: [...configuration.profiles, mutation.profile] };
+}
+const syncMockSetting = async mutation => {
   const store = configurationStores[0], configuration = store.toJSON();
-  store.fromStore({ ...configuration, profiles: [...configuration.profiles, profile] });
+  store.fromStore(applyMockSetting(configuration, mutation));
 };
+let mutateSettings = syncMockSetting;
 const rangeRequests = [];
 const holdNext = text => { let release; const promise = new Promise(resolve => { release = resolve; }); heldReply = { promise, release, text }; return heldReply; };
 const holdNextRange = () => { let release; const promise = new Promise(resolve => { release = resolve; }); heldRangeReply = { promise, release, dispatched: false }; return heldRangeReply; };
 const ipc = {
-  listen(name, callback) { callbacks.set(name, callback); return () => callbacks.delete(name); },
+  listen(name, callback) {
+    callbacks.set(name, callback);
+    const dispose = () => { if (callbacks.get(name) === callback) callbacks.delete(name); };
+    // Released SDK keeps this closure (and its original listener) until disable.
+    sdkDisposers.push(dispose);
+    return dispose;
+  },
   async invoke(name, ...args) {
     if (name === 'readable-logs-settings-status') return settingsStatus();
-    if (name === 'readable-logs-settings-save-profile') return saveSettingsProfile(args[0]);
+    if (name === 'readable-logs-settings-mutate') return mutateSettings(args[0]);
     if (name === 'readable-logs-settings-reset') return resetSettingsReply;
-    if (name === 'viewer-visibility-stop') return;
-    if (name === 'viewer-visibility-request') { callbacks.get(args[1])?.({}, args[0]); return; }
+    if (name === 'viewer-visibility-stop') { visibilityReplies.delete(args[0]); return; }
+    if (name === 'viewer-visibility-request') {
+      visibilityReplies.add(args[1]);
+      if (!pauseVisibilityReplies) callbacks.get('viewer-visibility-changed')?.({}, args[1], args[0]);
+      return;
+    }
     const exact = name === 'find-request' && args[1].work === 'match';
     const gate = exact && (!heldReply?.text || heldReply.text === args[1].query.text) ? heldReply : undefined;
     const rangeGate = name === 'find-request' && !exact ? heldRangeReply : undefined;
@@ -154,12 +175,42 @@ async function verifySettingsActivation() {
   const attemptedBackup = '/isolated-identity-store/backups/readable-logs-rebind.json';
   resetSettingsReply = { backup: attemptedBackup, status: { path: settingsPath, backup: attemptedBackup } };
   failSettingsBinding = true;
-  const committed = await configurationStores[0].resetSettings(true);
-  const fallback = configurationStores[0].read();
-  check(committed.backup === attemptedBackup && fallback.backup === attemptedBackup && fallback.problem,
-    'A renderer that could not reload committed settings lost its fallback or backup path');
-  await extension.onDeactivate();
-  results.push('reset reports renderer rebind failure with the verified backup path');
+  const preferences = configurationStores[0];
+  const dismissal = new LocalDismissal();
+  const container = document.createElement('main');
+  container.className = 'readable-logs'; document.body.append(container);
+  const recoveryRoot = createRoot(container);
+  const render = () => flushSync(() => recoveryRoot.render(<SettingsRecovery {...{ preferences, saved: preferences.read(), dismissal }} />));
+  const nextLayer = () => {};
+  const stopNext = dismissal.add(0, () => nextLayer);
+  try {
+    render();
+    const resetButton = () => [...container.querySelectorAll('button')].find(button => button.textContent === 'Reset settings…');
+    resetButton().click();
+    check(container.querySelector('[aria-label="Confirm settings reset"]') &&
+      typeof dismissal.resolve() === 'function' && dismissal.resolve() !== nextLayer,
+      'Visible recovery confirmation did not own local dismissal');
+    // Another view completed the reset. This view has an open confirmation
+    // and its SDK reload fails when it receives the broadcast.
+    callbacks.get('readable-logs-settings-changed')({}, resetSettingsReply.status);
+    const fallback = preferences.read();
+    check(fallback.backup === attemptedBackup && fallback.problem, 'Failed renderer rebind lost fallback or backup path');
+    render();
+    check(container.textContent.includes(attemptedBackup) && !container.querySelector('[aria-label="Confirm settings reset"]'),
+      'Reload failure did not replace the confirmation with the backup notice');
+    check(dismissal.resolve() === nextLayer, 'Unmounted recovery confirmation intercepted local Escape');
+
+    callbacks.get('readable-logs-settings-changed')({}, staleStatus); render();
+    check(resetButton() && !container.querySelector('[aria-label="Confirm settings reset"]'), 'Confirmation state survived a different recovery problem');
+    const committed = await preferences.resetSettings(true);
+    check(committed.backup === attemptedBackup && preferences.read().backup === attemptedBackup && preferences.read().problem,
+      'The reset reply did not report renderer rebind failure with the verified backup path');
+  } finally {
+    stopNext(); recoveryRoot.unmount(); container.remove();
+    failSettingsBinding = false;
+    await extension.onDeactivate();
+  }
+  results.push('renderer rebind failure displays the verified backup path and releases the removed recovery confirmation’s Escape layer');
 }
 async function verifyProfileSave() {
   const store = configurationStores[0], original = store.toJSON();
@@ -169,21 +220,87 @@ async function verifyProfileSave() {
   const name = root.querySelector('[aria-label="Profile name"]');
   Object.getOwnPropertyDescriptor(HTMLInputElement.prototype, 'value').set.call(name, profileName);
   name.dispatchEvent(new Event('input', { bubbles: true })); await turn();
-  saveSettingsProfile = async () => { throw new Error('Controlled settings write failure'); };
+  mutateSettings = async () => { throw new Error('Controlled settings write failure'); };
   button('Save profile');
   await until(() => root.textContent.includes('Controlled settings write failure'), 'Profile editor did not report the disk write failure');
   check(name.value === profileName && !name.disabled, 'Failed save discarded the profile draft');
   check(store.read().configuration.profiles.length === original.profiles.length, 'Failed save applied the draft');
-  saveSettingsProfile = async profile => {
-    check(profile.name === profileName, 'Retry changed the draft');
-    store.fromStore({ ...original, profiles: [...original.profiles, profile] });
+  mutateSettings = async command => {
+    check(command.type === 'save-profile' && command.profile.name === profileName, 'Retry changed the draft');
+    await syncMockSetting(command);
   };
   button('Save profile');
   await until(() => root.textContent.includes('Profile saved.'), 'Successful retry did not report the saved profile');
   check(name.disabled, 'Successful retry retained the staged draft');
   store.fromStore(original);
+  const rendererModelBeforeCommands = store.toJSON();
   button('Back to logs');
   results.push('profile Save retains the draft when main rejects persistence and applies it after a successful retry');
+
+  let authoritative = original;
+  const waiting = [];
+  mutateSettings = command => new Promise(resolve => { waiting.push({ command, resolve }); });
+  button('Edit profiles'); button('Duplicate'); button('Save profile');
+  check(waiting[0]?.command.type === 'save-profile', 'Save did not send a profile command');
+  button('Back to logs');
+  const control = root.querySelector('select[aria-label="Inspection"]');
+  root.querySelector('.rl-display-options').open = true;
+  control.value = 'bottom'; control.dispatchEvent(new Event('change', { bubbles: true }));
+  check(waiting.length === 2 && waiting[1].command.type === 'inspection' && waiting[1].command.layout === 'bottom',
+    'Back to logs then Inspection did not dispatch a separate command while Save was pending');
+  check(store.toJSON() === rendererModelBeforeCommands, 'Renderer published a local settings snapshot before main responded');
+  for (const { command, resolve } of waiting) {
+    authoritative = applyMockSetting(authoritative, command);
+    resolve();
+  }
+  store.fromStore(authoritative);
+  await until(() => control.value === 'bottom', 'Inspection command did not update the control');
+  check(store.read().configuration.profiles.some(profile => profile.id === waiting[0].command.profile.id),
+    'Inspection discarded the preceding profile Save');
+
+  mutateSettings = async () => { throw new Error('Controlled Inspection write failure'); };
+  control.value = 'inline'; control.dispatchEvent(new Event('change', { bubbles: true }));
+  await until(() => root.textContent.includes('Controlled Inspection write failure'), 'Inspection rejection was not reported');
+  check(control.value === 'bottom', 'Rejected Inspection changed the saved layout');
+  mutateSettings = syncMockSetting;
+  results.push('Save then Back to logs and Inspection preserves both commands with delayed synchronization and handles a rejected Inspection write');
+}
+
+async function verifyVisibilityListenerLifetime() {
+  settingsStatus = () => ({ path: settingsPath });
+  const before = sdkDisposers.length;
+  await extension.onActivate();
+  const activationRegistrations = sdkDisposers.length;
+  check(activationRegistrations === before + 2, 'Activation should register settings and one shared visibility listener');
+  const { Page } = extension.clusterPages[0].components;
+  const routeRoot = createRoot(root);
+  const receive = callbacks.get('viewer-visibility-changed');
+  const staleReplies = [];
+  pauseVisibilityReplies = true;
+  try {
+    for (let i = 0; i < 6; i++) {
+      const params = Object.fromEntries(Object.entries({ namespace: 'ns', pod: `route-${i}`, podUid: uid, clusterId: 'cluster' })
+        .map(([key, value]) => [key, { get: () => value }]));
+      const beforeReads = reads;
+      flushSync(() => routeRoot.render(<Page params={params} />));
+      const [reply] = visibilityReplies;
+      check(visibilityReplies.size === 1 && reply, 'Mounted viewer did not request visibility');
+      for (const stale of staleReplies) receive({}, stale, 'cluster');
+      await turn();
+      check(reads === beforeReads, 'An old viewer subscription made a different viewer eligible');
+      receive({}, reply, 'cluster');
+      await until(() => rows().length > 0 && reads > beforeReads, 'Current visibility reply did not make the viewer eligible');
+      flushSync(() => routeRoot.render(null));
+      staleReplies.push(reply);
+      check(!visibilityReplies.size, 'Route departure did not send visibility stop');
+      check(sdkDisposers.length === activationRegistrations, 'Route churn added SDK-retained visibility disposers');
+    }
+  } finally {
+    routeRoot.unmount();
+    pauseVisibilityReplies = false;
+    await extension.onDeactivate();
+  }
+  results.push('six route departures use one visibility SDK listener, stop each subscription, and ignore stale viewer replies');
 }
 const settled = () => !['Matching pending', 'Searching…'].includes(root.querySelector('.rl-find-count').textContent);
 async function query(value) { edit(value); await until(settled, 'Find did not settle'); await turn(); }
@@ -512,9 +629,10 @@ async function verifySelectionHistory() {
   button('Edit profiles'); button('Back to logs'); clock().click();
   check(historyTexts()[0] === 'retained history', 'Profiles lost history');
   byName('Close search history').click();
-  const visibilityReply = [...callbacks.entries()].find(([name]) => name.startsWith('viewer-visibility-'));
-  flushSync(() => visibilityReply[1]({}, null));
-  flushSync(() => visibilityReply[1]({}, 'cluster')); await until(settled);
+  const [visibilityReply] = visibilityReplies;
+  const receiveVisibility = callbacks.get('viewer-visibility-changed');
+  flushSync(() => receiveVisibility({}, visibilityReply, null));
+  flushSync(() => receiveVisibility({}, visibilityReply, 'cluster')); await until(settled);
   clock().click(); check(historyTexts()[0] === 'retained history', 'Temporary inactivity lost history');
   // Outside click and Escape return focus to the clock. Escape is dispatched
   // only with the document's real focus; guards are never patched.
@@ -943,6 +1061,7 @@ globalThis.verifyIdentity = async () => {
     reactRoot.unmount(); await extension.onDeactivate(); await turn();
   }
   await verifySettingsActivation();
+  await verifyVisibilityListenerLifetime();
   check(callbacks.size === 0, 'IPC listener leak'); check(errors.length === 0, errors.join('; '));
   check(CSS.highlights.size === 0, 'Viewer teardown retained Custom Highlight registrations');
   check(geometryObservers.size === 0 && geometryFrames.size === 0, 'Viewer teardown retained geometry observers/animation frames');

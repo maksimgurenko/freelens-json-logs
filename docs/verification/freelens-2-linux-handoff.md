@@ -83,6 +83,53 @@ Windows and macOS remain unverified. Coverage is limited to the private
 diagnostic display and virtual input routes. Release publication, the user's
 installation and physical-device tests were outside this acceptance run.
 
+
+## PR #77 review rerun
+
+The original PR head `a4f0c365bb67dedeed447ccc30f9ba989a90054d` passed the
+installed checks again. Its archive SHA-256 was
+`99def45ca8deb481c32d41451eefb67e8fc144a216ad168db30f9f83ee8b08a5`. The local
+build and the [PR CI artifact][pr-ci] matched byte for byte.
+
+The review fixes were then built from that head plus the captured working-tree
+patch with SHA-256
+`43d77ce05acf2b812bf0e0a8f0596260b0a5db759eeaa9d08cf90a8c7bfa6548`.
+The exact archive installed for the second run was
+`freelens-readable-logs-v2-0.1.36.tgz`, SHA-256
+`10138e01a9618fcc6c74267caea811aa2544c8d522bb2658b4eb8d777c141c95`.
+Both runs used Node 24.18.0 and npm 11.16.0 with the locked SDK, and the
+checksum-verified official Freelens 2.0.0 Linux amd64 host identified above.
+
+- The fixed revision passed typechecking, 263 Node tests, nine Python observer
+  tests, mounted Chromium, the 441-request built-worker suite, resource smoke,
+  and package inspection. Repeat builds produced identical archive bytes. One
+  resource smoke attempt exceeded the core RSS budget. The unchanged retry and
+  the original-head control passed within that budget.
+- The fixed archive installed as **Enabled**. Main, renderer, stylesheet, and
+  Find worker matched the archive bytes. The Pod header opened the correct
+  target. Refresh, Pause, Resume, container switching, and eligibility passed.
+  The viewer also rendered a completed init container and a running ephemeral
+  container.
+- Fresh v2 settings used defaults and legacy settings retained their exact
+  bytes. Profile edits, matching order, global default, and Inspection
+  survived restart and extension re-enable. Invalid settings entered read-only
+  fallback. Cancel and failed reset preserved the file. Confirmed reset kept an
+  exact backup and new settings persisted after restart.
+- Trusted private Wayland input verified both clipboard actions and Find
+  shortcuts. Native window hide/show stopped and restored Find. Page departure,
+  frame loss, disable, and normal quit released Find workers. All seven workers
+  exited and all six app processes reported exit code 0.
+- The run used private workspace 7 and sent input only to its private display.
+  The read-only desktop observer recorded a focus event and a workspace change.
+  No test process appeared in the real desktop client lists at either endpoint.
+  The owned test profile, display, and runtime were removed.
+
+Raw records and the tested patch are under
+`.scratch/verification/77/review/` in the review worktree. Windows and macOS
+remain unverified.
+
+[pr-ci]: https://github.com/maksimgurenko/freelens-json-logs/actions/runs/44630704528
+
 [issue]: https://github.com/maksimgurenko/freelens-json-logs/issues/76
 [decision]: https://github.com/maksimgurenko/freelens-json-logs/issues/70#issuecomment-7020197253
 [release]: https://github.com/freelensapp/freelens/releases/tag/v2.0.0

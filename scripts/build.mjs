@@ -1,5 +1,5 @@
 import { build } from 'esbuild';
-import { mkdir, readFile, rm, writeFile } from 'node:fs/promises';
+import { copyFile, mkdir, readFile, rm, writeFile } from 'node:fs/promises';
 
 const manifest = JSON.parse(await readFile('package.json', 'utf8'));
 const hostGlobals = {
@@ -36,6 +36,7 @@ const [main, renderer] = await Promise.all([
     plugins: [hostSingletons],
   }),
 ]);
+await copyFile('node_modules/@freelensapp/extensions/LICENSE', 'out/freelens-sdk-LICENSE');
 await writeFile('dist/build-meta.json', JSON.stringify({
   inputs: { ...main.metafile.inputs, ...renderer.metafile.inputs },
   outputs: { ...main.metafile.outputs, ...renderer.metafile.outputs },

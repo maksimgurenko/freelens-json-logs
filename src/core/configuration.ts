@@ -44,9 +44,9 @@ export interface ViewerPreferences {
   read(): { inspection: InspectionLayout; configuration: Configuration; problem?: string; settingsPath?: string; backup?: string };
   resetSettings(confirmed: boolean): Promise<{ backup?: string; error?: string }>;
   subscribe(changed: () => void): () => void;
-  setInspection(layout: InspectionLayout): void;
+  setInspection(layout: InspectionLayout): void | Promise<void>;
   saveProfile(profile: Profile): void | Promise<void>;
-  deleteProfile(id: string): void;
-  setGlobalDefault(id: string): void;
-  moveProfile(id: string, direction: 1 | -1): void;
+  deleteProfile(id: string): void | Promise<void>;
+  setGlobalDefault(id: string): void | Promise<void>;
+  moveProfile(id: string, direction: 1 | -1): void | Promise<void>;
 }

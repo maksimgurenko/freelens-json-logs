@@ -4,6 +4,7 @@ import { test } from 'node:test';
 import { chmodSync, mkdtempSync, mkdirSync, readFileSync, readdirSync, rmSync, statSync, writeFileSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
+import { reaction } from 'mobx';
 import { registerHooks } from 'node:module';
 import { inspectConfiguration, resetConfiguration } from '../src/adapter/configuration-file.ts';
 import { configurationData, configurationProblem, defaultConfiguration } from '../src/core/configuration.ts';
@@ -114,7 +115,7 @@ test('explicit schema 1 and 2 migrations preserve preferences, full rules, IDs, 
 
 // Exercise the production store with real MobX reactions and a bounded public-SDK
 // stand-in. Real SDK/Conf startup preservation is separately verified in Freelens.
-let sdkStarts = 0, sdkActive = 0, storePath = '';
+let sdkStarts = 0, sdkActive = 0, sdkSends = 0, storePath = '';
 class ExtensionStore {
   protected extension?: unknown;
   protected persistentStorage?: { stopSyncing: () => void };
@@ -123,9 +124,15 @@ class ExtensionStore {
   loadExtension(_extension: unknown) {
     this.persistentStorage?.stopSyncing();
     sdkStarts++;
+    // The released SDK publishes the handle before initial fromStore, but
+    // stopSyncing has no effect until the reaction is created after fromStore.
+    let stop: (() => void) | undefined;
+    this.persistentStorage = { stopSyncing: () => { stop?.(); stop = undefined; } };
+    const store = this as unknown as { fromStore(data: object): void; toJSON(): object };
+    store.fromStore(JSON.parse(readFileSync(join(storePath, 'readable-logs.json'), 'utf8')));
     sdkActive++;
-    this.persistentStorage = { stopSyncing: () => { sdkActive--; } };
-    (this as unknown as { fromStore(data: object): void }).fromStore(JSON.parse(readFileSync(join(storePath, 'readable-logs.json'), 'utf8')));
+    const unwatch = reaction(() => store.toJSON(), () => { sdkSends++; });
+    stop = () => { unwatch(); sdkActive--; };
   }
 }
 (globalThis as unknown as { __recoverySdk: unknown }).__recoverySdk = { Store: { ExtensionStore } };
@@ -180,6 +187,34 @@ test('fallback disconnects a previously healthy store from SDK synchronization',
     assert.equal(sdkActive, 0);
     assert.equal(store.read().inspection, 'side');
     assert.equal(readFileSync(path, 'utf8'), future);
+  });
+});
+test('an invalid initial SDK read detaches its late-installed reaction on startup and rebind', () => {
+  fixture((path, directory) => {
+    storePath = directory;
+    const store = new ConfigurationStore();
+    for (let attempt = 0; attempt < 2; attempt++) {
+      const good = JSON.stringify(defaultConfiguration());
+      writeFileSync(path, good);
+      const status = { path, problem: inspectConfiguration(path).problem };
+      assert.equal(status.problem, undefined);
+      writeFileSync(path, future);
+      store.attach({} as never, status);
+      assert.match(store.read().problem!, /Unsupported configuration schema 999/);
+      assert.equal(store.read().inspection, 'side');
+      assert.equal(sdkActive, 0, 'Initial rejection retained SDK synchronization');
+      assert.equal(readFileSync(path, 'utf8'), future);
+
+      writeFileSync(path, good);
+      store.attach({} as never, status);
+      assert.equal(store.read().problem, undefined);
+      assert.equal(sdkActive, 1, 'Recovery installed duplicate SDK synchronization');
+      const sends = sdkSends;
+      store.setInspection('bottom');
+      assert.equal(sdkSends, sends + 1, 'One change should trigger one SDK send');
+    }
+    store.detach();
+    assert.equal(sdkActive, 0);
   });
 });
 test('invalid synchronization cannot change the serialized model or restore writes by sending defaults', () => {

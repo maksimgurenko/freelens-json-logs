@@ -2,8 +2,10 @@
 // and package-relative trusted worker, without any installed host or settings.
 import assert from 'node:assert/strict';
 import { EventEmitter } from 'node:events';
+import { mkdirSync, readFileSync, writeFileSync } from 'node:fs';
 import { createRequire } from 'node:module';
 import Module from 'node:module';
+import { join } from 'node:path';
 import { Worker } from 'node:worker_threads';
 import * as Mobx from 'mobx';
 
@@ -41,17 +43,36 @@ export function packedFindBridge(entry, settingsDirectory) {
   const handlers = new Map(), live = new Set(), owners = new Map();
   const transport = new OrderedFindTransport();
   let storeBindings = 0, registrations = 0;
+  let rejectSettingsWrite = false;
+  const broadcasts = [];
+  const settingsPath = join(settingsDirectory, 'readable-logs.json');
   let starts = 0, exits = 0, peak = 0, inflight = 0, peakInflight = 0, workerListenersAfterExit = 0, maxStopToExitMs = 0;
   const app = Object.assign(new EventEmitter(), { quit() {} });
-  const frames = [{ processId: 1, routingId: 1 }, { processId: 1, routingId: 2 }];
-  const sender = Object.assign(new EventEmitter(), { isDestroyed: () => false, mainFrame: { framesInSubtree: [...frames] } });
+  const frames = [1, 2].map(routingId => ({ processId: 1, routingId, isDestroyed: () => false }));
+  const sender = Object.assign(new EventEmitter(), { isDestroyed: () => false, mainFrame: { framesInSubtree: [...frames] },
+    getURL: () => 'https://renderer.freelens.app/cluster/cluster' });
+  const window = Object.assign(new EventEmitter(), {
+    isDestroyed: () => false, isVisible: () => true, isMinimized: () => false, webContents: sender,
+  });
   class Ipc { static createInstance() { return {
-    handle(channel, handler) { registrations++; handlers.set(channel, handler); }, listen: () => () => {}, broadcast() {},
+    handle(channel, handler) { registrations++; handlers.set(channel, handler); }, listen: () => () => {},
+    broadcast(...args) { broadcasts.push(args); },
   }; } }
   class ExtensionStore {
     static getInstanceOrCreate() { return new this(); }
     cwd() { return settingsDirectory; }
-    loadExtension() { storeBindings++; }
+    loadExtension() {
+      storeBindings++;
+      let data = {};
+      try { data = JSON.parse(readFileSync(settingsPath, 'utf8')); }
+      catch (error) { if (error.code !== 'ENOENT') throw error; }
+      this.fromStore(data);
+      this.persistentStorage = { stopSyncing: Mobx.reaction(() => this.toJSON(), model => {
+        if (rejectSettingsWrite) { rejectSettingsWrite = false; return; }
+        mkdirSync(settingsDirectory, { recursive: true });
+        writeFileSync(settingsPath, JSON.stringify(model));
+      }) };
+    }
   }
   class ObservedWorker extends Worker {
     stoppedAt;
@@ -71,7 +92,7 @@ export function packedFindBridge(entry, settingsDirectory) {
   try {
     globalThis.FreelensExtensionApi = { Mobx, Main: { Ipc, LensExtension: class {} }, Common: { Store: { ExtensionStore }, Util: { getAppVersion: () => '2.0.0' } } };
     Module._load = function(name, ...args) {
-      if (name === 'electron') return { app, BrowserWindow: { fromWebContents() {} } };
+      if (name === 'electron') return { app, BrowserWindow: { fromWebContents: () => window } };
       if (name === 'node:worker_threads') return { Worker: ObservedWorker };
       return originalLoad.call(this, name, ...args);
     };
@@ -82,10 +103,12 @@ export function packedFindBridge(entry, settingsDirectory) {
     handlers.get('readable-logs-settings-status')();
   } finally { Module._load = originalLoad; globalThis.FreelensExtensionApi = originalHost; }
   return {
+    broadcasts, settingsPath,
+    rejectNextSettingsWrite: () => { rejectSettingsWrite = true; },
     removeFrame: index => { sender.mainFrame.framesInSubtree = sender.mainFrame.framesInSubtree.filter(frame => frame !== frames[index]); },
     status: () => ({ starts, exits, live: live.size, peak, owners: owners.size, inflight, peakInflight, storeBindings, registrations,
       workerListenersAfterExit, maxStopToExitMs, queuedTransport: transport.pending,
-      senderListeners: sender.eventNames().length, appListeners: app.eventNames().length }),
+      senderListeners: sender.eventNames().length, windowListeners: window.eventNames().length, appListeners: app.eventNames().length }),
     invoke: (channel, args, frame = 1) => {
       assert(handlers.has(channel), `Unknown SDK RPC ${channel}`);
       const result = handlers.get(channel)({ sender, senderFrame: frames[frame] }, ...args);
@@ -101,7 +124,8 @@ export function packedFindBridge(entry, settingsDirectory) {
     },
     async dispose() {
       transport.dispose();
-      await extension.onDeactivate(); assert.equal(live.size, 0); assert.equal(sender.eventNames().length, 0); assert.equal(app.eventNames().length, 0);
+      await extension.onDeactivate(); assert.equal(live.size, 0); assert.equal(sender.eventNames().length, 0);
+      assert.equal(window.eventNames().length, 0); assert.equal(app.eventNames().length, 0);
       handlers.clear(); owners.clear(); // Actual SDK handler lifecycle still needs actual-host proof.
     },
     async http(request, response) {

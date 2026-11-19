@@ -3,22 +3,31 @@ import { TAIL_LINES } from '../core/snapshot.ts';
 import type { SnapshotPort } from '../core/session.ts';
 import type { LogTarget } from '../core/target.ts';
 import { observe } from '../core/observe.ts';
-import { bindVisibility, VISIBILITY_REQUEST, VISIBILITY_STOP, type VisibilityChannel } from './visibility.ts';
+import { bindVisibility, VISIBILITY_CHANGED, VISIBILITY_REQUEST, VISIBILITY_STOP, type VisibilityChannel } from './visibility.ts';
 
-function visibilityChannel(ipc: Renderer.Ipc): VisibilityChannel {
-  return {
-    listen: (channel, received) => ipc.listen(channel, (_event, selected: string | null) => received(selected)),
+export function viewerVisibility(ipc: Renderer.Ipc) {
+  // The SDK retains the listener disposer until disable. Keep viewer callbacks
+  // in a local map so their elements are released as soon as the viewer closes.
+  const receivers = new Map<string, (selected: string | null) => void>();
+  const stop = ipc.listen(VISIBILITY_CHANGED, (_event, reply: string, selected: string | null) => receivers.get(reply)?.(selected));
+  const channel: VisibilityChannel = {
+    listen: (reply, received) => {
+      receivers.set(reply, received);
+      return () => { receivers.delete(reply); };
+    },
     request: (clusterId, reply) => {
       void ipc.invoke(VISIBILITY_REQUEST, clusterId, reply).catch(error => console.error('Unable to observe Readable logs window visibility', error));
     },
     stop: reply => { void ipc.invoke(VISIBILITY_STOP, reply).catch(() => { /* Main may already be deactivating. */ }); },
   };
-}
-
-export function viewerVisibility(ipc: Renderer.Ipc) {
-  const channel = visibilityChannel(ipc);
-  return (element: HTMLElement, clusterId: string, active: (value: boolean) => void) =>
-    bindVisibility(element, clusterId, channel, active);
+  return {
+    bind: (element: HTMLElement, clusterId: string, active: (value: boolean) => void) =>
+      bindVisibility(element, clusterId, channel, active),
+    dispose() {
+      receivers.clear();
+      stop();
+    },
+  };
 }
 
 export const PAGE_ID = 'readable-logs';

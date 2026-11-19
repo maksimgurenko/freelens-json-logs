@@ -3,18 +3,19 @@ import { action, makeObservable, observable, observableRef, reaction } from 'mob
 import { CONFIG_NAME, configurationData, configurationProblem, defaultConfiguration, isInspectionLayout,
   type Configuration, type InspectionLayout, type ViewerPreferences } from '../core/configuration.ts';
 import { builtinProfile, deleteProfile, moveProfile, saveProfile, type Profile } from '../core/profiles.ts';
-import type { ResetResult, SettingsStatus } from './configuration-ipc.ts';
+import type { ResetResult, SettingsMutation, SettingsStatus } from './configuration-ipc.ts';
 
 type HostExtension = Parameters<Common.Store.ExtensionStore['loadExtension']>[0];
 
-/** Identical schema/store name in both processes; only main persists SDK updates. */
+/** Renderers receive SDK updates and send mutations to the authoritative main store. */
 export class ConfigurationStore extends Common.Store.ExtensionStore<Record<string, unknown>> implements ViewerPreferences {
   data: Record<string, unknown> = defaultConfiguration() as unknown as Record<string, unknown>;
   problem: string | undefined;
   lastBackup: string | undefined;
   settingsPath = '';
+  private loading = false;
   private resetAction?: (confirmed: boolean) => Promise<ResetResult>;
-  private persistProfile?: (profile: Profile) => Promise<void>;
+  private mutateAction?: (mutation: SettingsMutation) => Promise<void>;
   constructor() {
     super({ configName: CONFIG_NAME, clearInvalidConfig: false, syncOptions: { fireImmediately: false } });
     makeObservable(this, { data: observableRef, problem: observable, lastBackup: observable, settingsPath: observable,
@@ -32,19 +33,22 @@ export class ConfigurationStore extends Common.Store.ExtensionStore<Record<strin
     this.problem = status.problem;
     this.lastBackup = undefined;
     if (this.problem) return;
+    this.loading = true;
     try {
       this.loadExtension(extension);
+    } catch (error) { this.failed(error); }
+    finally {
+      this.loading = false;
       // The SDK finishes installing its listeners after its initial fromStore call.
       if (this.problem) this.detach();
     }
-    catch (error) { this.failed(error); }
     this.lastBackup = status.backup;
   }
   detach() {
     this.persistentStorage?.stopSyncing();
     this.persistentStorage = undefined;
   }
-  bindProfileSave(save?: (profile: Profile) => Promise<void>) { this.persistProfile = save; }
+  bindMutation(mutate?: (mutation: SettingsMutation) => Promise<void>) { this.mutateAction = mutate; }
   bindReset(reset?: (confirmed: boolean) => Promise<ResetResult>) { this.resetAction = reset; }
   resetSettings(confirmed: boolean): Promise<ResetResult> {
     if (confirmed !== true) return Promise.resolve({ error: 'Reset canceled. Saved settings were not changed.' });
@@ -63,7 +67,7 @@ export class ConfigurationStore extends Common.Store.ExtensionStore<Record<strin
     this.enterFallback(`Unable to load Readable logs settings: ${String(error)}`);
   }
   private enterFallback(problem: string) {
-    this.detach();
+    if (!this.loading) this.detach();
     this.problem = problem;
     this.lastBackup = undefined;
   }
@@ -74,23 +78,28 @@ export class ConfigurationStore extends Common.Store.ExtensionStore<Record<strin
   subscribe(changed: () => void) { return reaction(() => [this.data, this.problem, this.settingsPath, this.lastBackup], changed); }
   setInspection(inspection: InspectionLayout) {
     if (this.problem || !isInspectionLayout(inspection)) return;
+    if (this.mutateAction) return this.mutateAction({ type: 'inspection', layout: inspection });
     this.data = { ...this.data, viewer: { ...(this.data as unknown as Configuration).viewer, inspection } };
   }
   saveProfile(profile: Profile) {
     if (this.problem) throw new Error(this.problem);
-    if (this.persistProfile) return this.persistProfile(profile);
+    if (this.mutateAction) return this.mutateAction({ type: 'save-profile', profile });
     this.data = { ...this.data, ...saveProfile(this.read().configuration, profile) };
   }
   deleteProfile(id: string) {
     if (this.problem) return;
+    if (this.mutateAction) return this.mutateAction({ type: 'delete-profile', id });
     this.data = { ...this.data, ...deleteProfile(this.read().configuration, id) };
   }
   setGlobalDefault(id: string) {
-    if (this.problem || ![builtinProfile(), ...this.read().configuration.profiles].some(profile => profile.id === id)) return;
+    if (this.problem) return;
+    if (this.mutateAction) return this.mutateAction({ type: 'global-default', id });
+    if (![builtinProfile(), ...this.read().configuration.profiles].some(profile => profile.id === id)) return;
     this.data = { ...this.data, globalDefault: id };
   }
   moveProfile(id: string, direction: 1 | -1) {
     if (this.problem) return;
+    if (this.mutateAction) return this.mutateAction({ type: 'move-profile', id, direction });
     this.data = { ...this.data, ...moveProfile(this.read().configuration, id, direction) };
   }
 }

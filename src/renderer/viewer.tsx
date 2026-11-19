@@ -120,6 +120,7 @@ export function Viewer({ target, logs, requests, preferences, find, writeClipboa
   }
   if (state?.gone || state?.phase === 'closed') cancelFindIntents();
   const [preference, setPreference] = useState(() => preferences.read());
+  const [inspectionError, setInspectionError] = useState('');
   const [editingProfiles, setEditingProfiles] = useState(false);
   const profilesActive = useRef(false);
   profilesActive.current = editingProfiles;
@@ -455,7 +456,11 @@ export function Viewer({ target, logs, requests, preferences, find, writeClipboa
             <label><input type="checkbox" checked={wrap} onChange={event => setWrap(event.target.checked)} />Word wrap</label>
             <label>Inspection <select aria-label="Inspection" title="Saved globally, separately from formatting profiles"
               value={preference.inspection} disabled={!!preference.problem}
-              onChange={event => preferences.setInspection(event.target.value as 'inline' | 'side' | 'bottom')}>
+              onChange={async event => {
+                setInspectionError('');
+                try { await preferences.setInspection(event.target.value as 'inline' | 'side' | 'bottom'); }
+                catch (error) { setInspectionError(`Unable to save Inspection: ${String(error)}`); }
+              }}>
               <option value="inline">Inline expansion</option><option value="side">Side inspector</option><option value="bottom">Bottom inspector</option>
             </select></label>
             <button type="button" onClick={() => {
@@ -532,6 +537,7 @@ export function Viewer({ target, logs, requests, preferences, find, writeClipboa
       <span className="rl-sr-only" role="status" aria-live="polite" aria-atomic="true">{announcement}</span>
     </div>
     <SettingsRecovery preferences={preferences} saved={preference} dismissal={dismissal} />
+    {inspectionError && !preference.problem && <p className="rl-notice rl-error" role="alert">{inspectionError}</p>}
     {state?.lifecycleNotice && <p className="rl-notice" role="status">{state.lifecycleNotice}{state.paused ? ' Paused; select Refresh or Resume to read the current instance.' : ''}</p>}
     {state?.slow && <p className="rl-notice" role="status">The log request is taking longer than 15 seconds. You can pause or leave this view. Another request for this target must wait for it to finish.</p>}
     {state?.phase === 'choose-container' && <p className="rl-notice" role="status">This Pod has no regular container. Select an init or ephemeral container to read its logs.</p>}

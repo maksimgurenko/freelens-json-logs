@@ -59,6 +59,12 @@ export function ProfileEditor({ preferences, onClose, dismissal, commands }: { p
     } catch (error) { setNotice(`Unable to save: ${String(error)}`); }
     finally { savePending.current = false; setSaving(false); }
   };
+  const changeProfile = async (change: () => void | Promise<void>, applied?: () => void) => {
+    try {
+      await change();
+      applied?.();
+    } catch (error) { setNotice(`Unable to update profiles: ${String(error)}`); }
+  };
   useLayoutEffect(() => commands.add('save', target => draft && !saved.problem && root.current?.contains(target) &&
     (!editable(target) || target.matches('input, textarea') && !target.closest('[contenteditable], [role="textbox"], .monaco-editor, .CodeMirror')) ? save : undefined));
   return <section ref={root} className="rl-profile-editor" aria-label="Formatting profiles">
@@ -77,12 +83,19 @@ export function ProfileEditor({ preferences, onClose, dismissal, commands }: { p
       <button ref={deleteButton} type="button" disabled={!!draft || !!saved.problem || profile.id === BUILTIN_PROFILE_ID}
         onClick={() => setConfirmDelete(true)}>Delete</button>
       <label>Global default <select aria-label="Global default" value={saved.configuration.globalDefault} disabled={!!draft || !!saved.problem}
-        onChange={event => preferences.setGlobalDefault(event.target.value)}>
+        onChange={event => { void changeProfile(() => preferences.setGlobalDefault(event.target.value)); }}>
         {profiles.map(profile => <option key={profile.id} value={profile.id}>{profile.name}</option>)}
       </select></label>
     </div>
     {confirmDelete && <div className="rl-notice" role="alert" data-local-confirmation>Delete {profile.name}? Affected manual selections return to Auto; a deleted global default returns to Default.
-      <div className="rl-editor-actions"><button type="button" onClick={() => { preferences.deleteProfile(profile.id); setSelected(BUILTIN_PROFILE_ID); setConfirmDelete(false); setNotice('Profile deleted.'); heading.current?.focus({ preventScroll: true }); }}>Confirm delete</button>
+      <div className="rl-editor-actions"><button type="button" onClick={() => {
+        setConfirmDelete(false);
+        heading.current?.focus({ preventScroll: true });
+        void changeProfile(() => preferences.deleteProfile(profile.id), () => {
+          setSelected(current => current === profile.id ? BUILTIN_PROFILE_ID : current);
+          setNotice('Profile deleted.');
+        });
+      }}>Confirm delete</button>
         <button ref={keepButton} type="button" onClick={cancelDelete}>Keep profile</button></div></div>}
     <section className="rl-matching-order" aria-label="Matching order">
       <h3>Matching order</h3>
@@ -92,9 +105,9 @@ export function ProfileEditor({ preferences, onClose, dismissal, commands }: { p
           <span className="rl-order-name">{item.name}</span>
           <span className="rl-editor-help">{!item.matching.enabled ? 'Matching disabled' : !item.matching.conditions.namespace && !item.matching.conditions.container && !item.matching.conditions.labels.length ? 'No conditions · never matches' : 'Matching enabled'}</span>
           <button type="button" aria-label={`Move ${item.name} up`} disabled={!!draft || !!saved.problem || index === 0}
-            onClick={() => preferences.moveProfile(item.id, -1)}>Move up</button>
+            onClick={() => { void changeProfile(() => preferences.moveProfile(item.id, -1)); }}>Move up</button>
           <button type="button" aria-label={`Move ${item.name} down`} disabled={!!draft || !!saved.problem || index === saved.configuration.profiles.length - 1}
-            onClick={() => preferences.moveProfile(item.id, 1)}>Move down</button>
+            onClick={() => { void changeProfile(() => preferences.moveProfile(item.id, 1)); }}>Move down</button>
         </li>)}</ol>}
     </section>
     <div className="rl-editor-columns">

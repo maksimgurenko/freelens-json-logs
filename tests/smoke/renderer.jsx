@@ -46,9 +46,12 @@ const ipc = {
   },
   async invoke(name, cluster, reply, ...rest) {
     if (name === 'readable-logs-settings-status') return { path: '/extension-store/freelens-readable-logs-v2/readable-logs.json' };
-    if (name === 'readable-logs-settings-save-profile') {
+    if (name === 'readable-logs-settings-mutate') {
       const configuration = configurationStore.toJSON();
-      configurationStore.fromStore({ ...configuration, profiles: [...configuration.profiles, cluster] });
+      const profiles = cluster.type === 'save-profile' ? [...configuration.profiles, cluster.profile]
+        : configuration.profiles.filter(profile => profile.id !== cluster.id);
+      check(cluster.type === 'save-profile' || cluster.type === 'delete-profile', `Unexpected settings command: ${cluster.type}`);
+      configurationStore.fromStore({ ...configuration, profiles });
       return;
     }
     if (name === 'viewer-visibility-stop') { subscriptions.delete(cluster); return; }
@@ -58,7 +61,7 @@ const ipc = {
     }
     check(name === 'viewer-visibility-request', `Unexpected IPC invocation: ${name}`);
     subscriptions.add(reply);
-    for (const callback of callbacks.get(reply) ?? []) callback({}, cluster);
+    for (const callback of callbacks.get('viewer-visibility-changed') ?? []) callback({}, reply, cluster);
   },
 
 };
