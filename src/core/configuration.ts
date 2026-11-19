@@ -45,7 +45,7 @@ export interface ViewerPreferences {
   resetSettings(confirmed: boolean): Promise<{ backup?: string; error?: string }>;
   subscribe(changed: () => void): () => void;
   setInspection(layout: InspectionLayout): void;
-  saveProfile(profile: Profile): void;
+  saveProfile(profile: Profile): void | Promise<void>;
   deleteProfile(id: string): void;
   setGlobalDefault(id: string): void;
   moveProfile(id: string, direction: 1 | -1): void;

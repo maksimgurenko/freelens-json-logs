@@ -37,6 +37,7 @@ globalThis.setTimeout = (callback, ms, ...args) => {
 globalThis.setInterval = (callback, ms, ...args) => { const id = interval(callback, ms, ...args); timers.add(id); return id; };
 globalThis.clearTimeout = globalThis.clearInterval = id => { timers.delete(id); clear(id); };
 let reads = 0, serial = 0;
+let configurationStore;
 const ipc = {
   listen(name, callback) {
     const entries = callbacks.get(name) ?? new Set(); callbacks.set(name, entries); entries.add(callback);
@@ -44,6 +45,11 @@ const ipc = {
   },
   async invoke(name, cluster, reply, ...rest) {
     if (name === 'readable-logs-settings-status') return { path: '/extension-store/freelens-readable-logs-v2/readable-logs.json' };
+    if (name === 'readable-logs-settings-save-profile') {
+      const configuration = configurationStore.toJSON();
+      configurationStore.fromStore({ ...configuration, profiles: [...configuration.profiles, cluster] });
+      return;
+    }
     if (name === 'viewer-visibility-stop') { subscriptions.delete(cluster); return; }
     if (name.startsWith('find-')) {
       const result = await (await fetch('/find-rpc', { method: 'POST', body: JSON.stringify({ sequence: ++rpcSequence, channel: name, args: [cluster, reply, ...rest] }) })).json();
@@ -57,7 +63,7 @@ const ipc = {
 };
 class Ipc { static createInstance() { return ipc; } }
 class ExtensionStore {
-  static getInstanceOrCreate() { return new this(); }
+  static getInstanceOrCreate() { return configurationStore ??= new this(); }
   cwd() { return '/extension-store/freelens-readable-logs'; }
   loadExtension() {}
 }
@@ -123,6 +129,7 @@ async function cycle() {
   const paths = root.querySelector('textarea[aria-label="Message paths"]');
   Object.getOwnPropertyDescriptor(HTMLTextAreaElement.prototype, 'value').set.call(paths, '');
   paths.dispatchEvent(new Event('input', { bubbles: true })); button('Save profile');
+  await until(() => root.textContent.includes('Profile saved.'), 'New formatting profile did not finish saving');
   const profileId = root.querySelector('select[aria-label="Saved profile"]').value;
   button('Back to logs');
   const profile = root.querySelector('select[aria-label="Profile"]');

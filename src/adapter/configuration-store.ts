@@ -14,10 +14,11 @@ export class ConfigurationStore extends Common.Store.ExtensionStore<Record<strin
   lastBackup: string | undefined;
   settingsPath = '';
   private resetAction?: (confirmed: boolean) => Promise<ResetResult>;
+  private persistProfile?: (profile: Profile) => Promise<void>;
   constructor() {
     super({ configName: CONFIG_NAME, clearInvalidConfig: false, syncOptions: { fireImmediately: false } });
     makeObservable(this, { data: observableRef, problem: observable, lastBackup: observable, settingsPath: observable,
-      fromStore: action, setInspection: action, failed: action, attach: action, backedUp: action,
+      fromStore: action, setInspection: action, failed: action, attach: action,
       saveProfile: action, deleteProfile: action, setGlobalDefault: action, moveProfile: action });
   }
   resolveSettingsDirectory(extension: HostExtension) {
@@ -26,14 +27,25 @@ export class ConfigurationStore extends Common.Store.ExtensionStore<Record<strin
     return this.cwd();
   }
   attach(extension: HostExtension, status: SettingsStatus) {
+    this.detach();
     this.settingsPath = status.path;
     this.problem = status.problem;
+    this.lastBackup = undefined;
     if (this.problem) return;
-    try { this.loadExtension(extension); }
+    try {
+      this.loadExtension(extension);
+      // The SDK finishes installing its listeners after its initial fromStore call.
+      if (this.problem) this.detach();
+    }
     catch (error) { this.failed(error); }
+    this.lastBackup = status.backup;
   }
-  backedUp(path: string) { this.lastBackup = path; }
-  bindReset(reset: (confirmed: boolean) => Promise<ResetResult>) { this.resetAction = reset; }
+  detach() {
+    this.persistentStorage?.stopSyncing();
+    this.persistentStorage = undefined;
+  }
+  bindProfileSave(save?: (profile: Profile) => Promise<void>) { this.persistProfile = save; }
+  bindReset(reset?: (confirmed: boolean) => Promise<ResetResult>) { this.resetAction = reset; }
   resetSettings(confirmed: boolean): Promise<ResetResult> {
     if (confirmed !== true) return Promise.resolve({ error: 'Reset canceled. Saved settings were not changed.' });
     return this.resetAction?.(confirmed) ?? Promise.resolve({ error: 'Settings recovery is unavailable. Reopen Freelens and try again.' });
@@ -43,11 +55,18 @@ export class ConfigurationStore extends Common.Store.ExtensionStore<Record<strin
     const next = data && typeof data === 'object' && !Array.isArray(data) ? configurationData(data) : data;
     const problem = configurationProblem(next);
     // Keep toJSON stable on rejected synchronization; never echo defaults over it.
-    if (problem) { this.problem = problem; return; }
+    if (problem) { this.enterFallback(problem); return; }
     this.data = next;
   }
   toJSON() { return this.data; }
-  failed(error: unknown) { this.problem = `Unable to load Readable logs settings: ${String(error)}`; }
+  failed(error: unknown) {
+    this.enterFallback(`Unable to load Readable logs settings: ${String(error)}`);
+  }
+  private enterFallback(problem: string) {
+    this.detach();
+    this.problem = problem;
+    this.lastBackup = undefined;
+  }
   read() {
     const configuration = this.problem ? defaultConfiguration() : this.data as unknown as Configuration;
     return { inspection: configuration.viewer.inspection, configuration, problem: this.problem, settingsPath: this.settingsPath, backup: this.lastBackup };
@@ -59,6 +78,7 @@ export class ConfigurationStore extends Common.Store.ExtensionStore<Record<strin
   }
   saveProfile(profile: Profile) {
     if (this.problem) throw new Error(this.problem);
+    if (this.persistProfile) return this.persistProfile(profile);
     this.data = { ...this.data, ...saveProfile(this.read().configuration, profile) };
   }
   deleteProfile(id: string) {

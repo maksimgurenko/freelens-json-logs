@@ -4,7 +4,8 @@ import './viewer.css';
 import { freelensPort, PAGE_ID, pageTarget, viewerVisibility } from '../adapter/freelens.ts';
 import { Viewer } from './viewer.tsx';
 import { configurationStore } from '../adapter/configuration-store.ts';
-import { SETTINGS_RESET, SETTINGS_RESET_COMPLETE, SETTINGS_STATUS, type SettingsStatus } from '../adapter/configuration-ipc.ts';
+import { SETTINGS_CHANGED, SETTINGS_RESET, SETTINGS_SAVE_PROFILE, SETTINGS_STATUS,
+  type ResetReply, type SettingsStatus } from '../adapter/configuration-ipc.ts';
 import { findTransport } from '../adapter/find-ipc.ts';
 import { writeClipboard } from '../adapter/clipboard.ts';
 import { LogRequests } from '../core/requests.ts';
@@ -42,13 +43,28 @@ export default class ReadableLogsRenderer extends Renderer.LensExtension {
   async onActivate() {
     this.stopShortcuts = this.shortcuts.bind(window);
     const ipc = ConfigurationIpc.createInstance(this);
-    this.stopRecovery = ipc.listen(SETTINGS_RESET_COMPLETE, (_event, backup: string, status: SettingsStatus) => {
+    let receivedUpdate = false;
+    const applyStatus = (status: SettingsStatus) => {
+      receivedUpdate = true;
+      if (status.backup && configurationStore.lastBackup === status.backup) return;
       configurationStore.attach(this, status);
-      configurationStore.backedUp(backup);
+    };
+    const stopRecovery = ipc.listen(SETTINGS_CHANGED, (_event, status: SettingsStatus) => applyStatus(status));
+    this.stopRecovery = stopRecovery;
+    const active = () => this.stopRecovery === stopRecovery;
+    const shouldApplyInitialStatus = () => active() && !receivedUpdate;
+    configurationStore.bindProfileSave(profile => ipc.invoke(SETTINGS_SAVE_PROFILE, profile));
+    configurationStore.bindReset(async confirmed => {
+      const result: ResetReply = await ipc.invoke(SETTINGS_RESET, confirmed);
+      if (active() && result.status) applyStatus(result.status);
+      return result;
     });
-    configurationStore.bindReset(confirmed => ipc.invoke(SETTINGS_RESET, confirmed));
-    try { configurationStore.attach(this, await ipc.invoke(SETTINGS_STATUS)); }
-    catch (error) { configurationStore.failed(error); }
+    try {
+      const status = await ipc.invoke(SETTINGS_STATUS);
+      if (shouldApplyInitialStatus()) configurationStore.attach(this, status);
+    } catch (error) {
+      if (shouldApplyInitialStatus()) configurationStore.failed(error);
+    }
   }
   kubeObjectMenuItems = [{
     kind: 'Pod', apiVersions: ['v1'], components: {
@@ -68,6 +84,10 @@ export default class ReadableLogsRenderer extends Renderer.LensExtension {
   async onDeactivate() {
     this.stopShortcuts?.();
     this.stopRecovery?.();
+    this.stopRecovery = undefined;
+    configurationStore.bindProfileSave();
+    configurationStore.bindReset();
+    configurationStore.detach();
     const closing = [...this.viewers].map(dispose => dispose());
     this.viewers.clear();
     await Promise.all(closing);

@@ -37,6 +37,11 @@ export function SettingsRecovery({ preferences, saved, dismissal }: { preference
     }
   };
   if (!saved.problem) return saved.backup ? <p className="rl-notice" role="status">Settings reset. Normal saving is available. Original settings backup: {saved.backup}</p> : null;
+  if (saved.backup) return <section className="rl-notice rl-error rl-recovery" aria-label="Settings recovery">
+    <p role="alert">Settings were reset on disk. Reopen Freelens to load the new settings. This viewer is using built-in Default and Side inspection.</p>
+    <p>{saved.problem}</p>
+    <p>Original settings backup: {saved.backup}</p>
+  </section>;
   return <section ref={recovery} className="rl-notice rl-error rl-recovery" aria-label="Settings recovery">
     <p role="alert">{saved.problem} Using built-in Default and Side inspection. Saved settings are preserved; saving is unavailable.</p>
     <p>Settings: {saved.settingsPath}</p>

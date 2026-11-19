@@ -13,7 +13,9 @@ export function ProfileEditor({ preferences, onClose, dismissal, commands }: { p
   const [draft, setDraft] = useState<Profile>();
   const [sample, setSample] = useState('');
   const [notice, setNotice] = useState('');
+  const [saving, setSaving] = useState(false);
   const [confirmDelete, setConfirmDelete] = useState(false);
+  const savePending = useRef(false);
   const root = useRef<HTMLElement>(null);
   const heading = useRef<HTMLHeadingElement>(null);
   const deleteButton = useRef<HTMLButtonElement>(null);
@@ -43,11 +45,19 @@ export function ProfileEditor({ preferences, onClose, dismissal, commands }: { p
     setDraft(duplicateProfile(profile, globalThis.crypto.randomUUID(), name));
     setNotice(''); setConfirmDelete(false);
   };
-  const save = () => {
-    if (!draft || errors.length) return;
+  const save = async () => {
+    if (!draft || errors.length || savePending.current) return;
+    savePending.current = true;
+    setSaving(true);
+    setNotice('');
     try {
-      preferences.saveProfile(draft); setSelected(draft.id); setDraft(undefined); setNotice('Profile saved. Retained logs use the saved rules.'); heading.current?.focus({ preventScroll: true });
+      await preferences.saveProfile(draft);
+      setSelected(draft.id);
+      setDraft(current => current === draft ? undefined : current);
+      setNotice('Profile saved. Retained logs use the saved rules.');
+      heading.current?.focus({ preventScroll: true });
     } catch (error) { setNotice(`Unable to save: ${String(error)}`); }
+    finally { savePending.current = false; setSaving(false); }
   };
   useLayoutEffect(() => commands.add('save', target => draft && !saved.problem && root.current?.contains(target) &&
     (!editable(target) || target.matches('input, textarea') && !target.closest('[contenteditable], [role="textbox"], .monaco-editor, .CodeMirror')) ? save : undefined));
@@ -89,35 +99,35 @@ export function ProfileEditor({ preferences, onClose, dismissal, commands }: { p
     </section>
     <div className="rl-editor-columns">
       <div className="rl-editor-fields">
-        <label>Profile name <input aria-label="Profile name" value={current.name} disabled={!draft}
+        <label>Profile name <input aria-label="Profile name" value={current.name} disabled={saving || !draft}
           onChange={event => setDraft(previous => previous && ({ ...previous, name: event.target.value }))} /></label>
         {!draft && <p className="rl-editor-help">{profile.id === BUILTIN_PROFILE_ID ? 'Default is read-only. Duplicate it to create independent rules.' : 'Choose Edit to change or rename this profile.'}</p>}
         <fieldset className="rl-matching"><legend>Automatic matching</legend>
           <p className="rl-editor-help">Every condition must match exactly, including case. Empty namespace or container means no restriction. No conditions means no automatic match. Disabling matching keeps manual and global-default choices available.</p>
-          <label><input type="checkbox" aria-label="Enabled for matching" checked={current.matching.enabled} disabled={!draft}
+          <label><input type="checkbox" aria-label="Enabled for matching" checked={current.matching.enabled} disabled={saving || !draft}
             onChange={event => { const enabled = event.target.checked; setDraft(previous => previous && ({ ...previous, matching: { ...previous.matching, enabled } })); }} />Enabled for matching</label>
           {([['namespace', 'Match namespace'], ['container', 'Match container name']] as const).map(([key, label]) =>
-            <label key={key}>{label}<input aria-label={label} value={current.matching.conditions[key] ?? ''} disabled={!draft}
+            <label key={key}>{label}<input aria-label={label} value={current.matching.conditions[key] ?? ''} disabled={saving || !draft}
               onChange={event => { const value = event.target.value; setDraft(previous => previous && ({ ...previous,
                 matching: { ...previous.matching, conditions: { ...previous.matching.conditions, [key]: value || undefined } } })); }} /></label>)}
           <p className="rl-editor-help">Pod labels: all key/value pairs are required. An empty value matches only an explicitly empty label.</p>
           {current.matching.conditions.labels.map((condition, index) => <div className="rl-label-condition" key={index}>
-            {(['key', 'value'] as const).map(key => <label key={key}>Label {key}<input aria-label={`Match label ${index + 1} ${key}`} value={condition[key]} disabled={!draft}
+            {(['key', 'value'] as const).map(key => <label key={key}>Label {key}<input aria-label={`Match label ${index + 1} ${key}`} value={condition[key]} disabled={saving || !draft}
               onChange={event => { const value = event.target.value; setDraft(previous => previous && ({ ...previous, matching: { ...previous.matching,
                 conditions: { ...previous.matching.conditions, labels: previous.matching.conditions.labels.map((item, i) => i === index ? { ...item, [key]: value } : item) } } })); }} /></label>)}
-            <button type="button" aria-label={`Remove label condition ${index + 1}`} disabled={!draft} onClick={() => setDraft(previous => previous && ({ ...previous,
+            <button type="button" aria-label={`Remove label condition ${index + 1}`} disabled={saving || !draft} onClick={() => setDraft(previous => previous && ({ ...previous,
               matching: { ...previous.matching, conditions: { ...previous.matching.conditions, labels: previous.matching.conditions.labels.filter((_, i) => i !== index) } } }))}>Remove</button>
           </div>)}
-          <button type="button" disabled={!draft} onClick={() => setDraft(previous => previous && ({ ...previous,
+          <button type="button" disabled={saving || !draft} onClick={() => setDraft(previous => previous && ({ ...previous,
             matching: { ...previous.matching, conditions: { ...previous.matching.conditions, labels: [...previous.matching.conditions.labels, { key: '', value: '' }] } } }))}>Add label condition</button>
         </fieldset>
         <p className="rl-editor-help">One exact slash path per line, in priority order. Use /log.level for a literal dot, /items/0/code for an array, ~1 for a slash and ~0 for a tilde in a key. Missing paths fall through; defaults are not appended.</p>
         {([['messagePaths', 'Message paths', 'Empty uses unchanged application text.'], ['timestampPaths', 'Application timestamp paths', 'Empty uses the Kubernetes timestamp.'],
           ['levelPaths', 'Level paths', 'Empty extracts no level.'], ['inlinePaths', 'Inline fields', 'Additional fields in display order. Extracted leaves are omitted.'],
           ['hiddenPaths', 'Hidden fields', 'Takes precedence over inline fields, including nested children. Originals and extracted roles stay available.']] as const).map(([key, label, hint]) =>
-          <label className="rl-path-field" key={key}>{label}<textarea aria-label={label} rows={2} disabled={!draft} value={current.format[key].join('\n')}
+          <label className="rl-path-field" key={key}>{label}<textarea aria-label={label} rows={2} disabled={saving || !draft} value={current.format[key].join('\n')}
             onChange={event => update({ [key]: event.target.value === '' ? [] : event.target.value.split('\n') })} /><span>{hint}</span></label>)}
-        <label>Numeric timestamps <select aria-label="Numeric timestamps" value={current.format.numericTimestamp} disabled={!draft}
+        <label>Numeric timestamps <select aria-label="Numeric timestamps" value={current.format.numericTimestamp} disabled={saving || !draft}
           onChange={event => update({ numericTimestamp: event.target.value as Formatting['numericTimestamp'] })}>
           <option value="unset">Unset (use Kubernetes time)</option><option value="seconds">Seconds</option><option value="milliseconds">Milliseconds</option>
         </select></label>
@@ -126,23 +136,23 @@ export function ProfileEditor({ preferences, onClose, dismissal, commands }: { p
           {current.format.severityMappings.map((mapping, index) => {
             const change = (value: SeverityMapping) => update({ severityMappings: current.format.severityMappings.map((item, i) => i === index ? value : item) });
             return <div className="rl-mapping-row" key={index}>
-              <select aria-label={`Mapping ${index + 1} source type`} disabled={!draft} value={typeof mapping.source}
+              <select aria-label={`Mapping ${index + 1} source type`} disabled={saving || !draft} value={typeof mapping.source}
                 onChange={event => change({ ...mapping, source: event.target.value === 'number' ? Number(mapping.source) : String(mapping.source) })}>
                 <option value="string">Text</option><option value="number">Number</option></select>
-              <input aria-label={`Mapping ${index + 1} source`} type={typeof mapping.source === 'number' ? 'number' : 'text'} step="any" disabled={!draft}
+              <input aria-label={`Mapping ${index + 1} source`} type={typeof mapping.source === 'number' ? 'number' : 'text'} step="any" disabled={saving || !draft}
                 value={typeof mapping.source === 'number' && !Number.isFinite(mapping.source) ? '' : mapping.source}
                 onChange={event => change({ ...mapping, source: typeof mapping.source === 'number' ? event.target.value === '' ? NaN : Number(event.target.value) : event.target.value })} />
-              <select aria-label={`Mapping ${index + 1} target`} disabled={!draft} value={mapping.target}
+              <select aria-label={`Mapping ${index + 1} target`} disabled={saving || !draft} value={mapping.target}
                 onChange={event => change({ ...mapping, target: event.target.value as SeverityMapping['target'] })}>
                 {LEVELS.map(level => <option key={level}>{level}</option>)}</select>
-              <button type="button" disabled={!draft} aria-label={`Remove mapping ${index + 1}`} onClick={() => update({ severityMappings: current.format.severityMappings.filter((_, i) => i !== index) })}>Remove</button>
+              <button type="button" disabled={saving || !draft} aria-label={`Remove mapping ${index + 1}`} onClick={() => update({ severityMappings: current.format.severityMappings.filter((_, i) => i !== index) })}>Remove</button>
             </div>;
           })}
-          <button type="button" disabled={!draft} onClick={() => update({ severityMappings: [...current.format.severityMappings, { source: '', target: 'INFO' }] })}>Add mapping</button>
+          <button type="button" disabled={saving || !draft} onClick={() => update({ severityMappings: [...current.format.severityMappings, { source: '', target: 'INFO' }] })}>Add mapping</button>
         </fieldset>
       </div>
       <div className="rl-editor-preview">
-        <label className="rl-path-field">Sample logs <textarea aria-label="Sample logs" rows={7} value={sample}
+        <label className="rl-path-field">Sample logs <textarea aria-label="Sample logs" disabled={saving} rows={7} value={sample}
           placeholder={'Paste application text or timestamped lines here'} onChange={event => setSample(event.target.value)} /></label>
         <h3>Preview</h3>
         {errors.length ? <p className="rl-editor-help">Fix the draft errors to preview these rules.</p> : !sample ? <p className="rl-editor-help">Paste sample logs to preview extraction and inline fields. Up to 20 lines are shown.</p> :
@@ -152,11 +162,11 @@ export function ProfileEditor({ preferences, onClose, dismissal, commands }: { p
           </div>)}</div>}
       </div>
     </div>
-    <footer className="rl-editor-save">
+    <footer className="rl-editor-save" aria-busy={saving}>
       {!!errors.length && <ul role="alert">{errors.map((error, i) => <li key={i}>{error}</li>)}</ul>}
       {notice && <p role="status">{notice}</p>}
-      {draft && <div className="rl-editor-actions"><button type="button" title={`Save profile (${shortcutHint('S')})`} aria-keyshortcuts={isMac() ? 'Meta+s' : 'Control+s'} disabled={!!errors.length || !!saved.problem} onClick={save}>Save profile</button>
-        <button type="button" onClick={() => { setDraft(undefined); setNotice('Draft discarded. Saved rules are unchanged.'); heading.current?.focus({ preventScroll: true }); }}>Cancel draft</button></div>}
+      {draft && <div className="rl-editor-actions"><button type="button" title={`Save profile (${shortcutHint('S')})`} aria-keyshortcuts={isMac() ? 'Meta+s' : 'Control+s'} disabled={saving || !!errors.length || !!saved.problem} onClick={save}>Save profile</button>
+        <button type="button" disabled={saving} onClick={() => { setDraft(undefined); setNotice('Draft discarded. Saved rules are unchanged.'); heading.current?.focus({ preventScroll: true }); }}>Cancel draft</button></div>}
     </footer>
   </section>;
 }

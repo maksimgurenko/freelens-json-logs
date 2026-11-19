@@ -3,6 +3,7 @@ import { app, BrowserWindow } from 'electron';
 import { readFileSync } from 'node:fs';
 import { join } from 'node:path';
 import { Worker } from 'node:worker_threads';
+import { isDeepStrictEqual } from 'node:util';
 import { FindService } from './main/find-service.ts';
 import { FIND_CONTROL, FIND_OPEN, FIND_REQUEST } from './adapter/find-ipc.ts';
 
@@ -10,8 +11,9 @@ import { VISIBILITY_REQUEST, VISIBILITY_STOP } from './adapter/visibility.ts';
 import { watchWindowVisibility } from './adapter/window-visibility.ts';
 import { configurationStore } from './adapter/configuration-store.ts';
 import { inspectConfiguration, resetConfiguration } from './adapter/configuration-file.ts';
-import { SETTINGS_RESET, SETTINGS_RESET_COMPLETE, SETTINGS_STATUS } from './adapter/configuration-ipc.ts';
+import { SETTINGS_CHANGED, SETTINGS_RESET, SETTINGS_SAVE_PROFILE, SETTINGS_STATUS, type ResetReply } from './adapter/configuration-ipc.ts';
 import { CONFIG_NAME } from './core/configuration.ts';
+import type { Profile } from './core/profiles.ts';
 
 declare const READABLE_LOGS_VERSION: string;
 
@@ -56,14 +58,33 @@ export default class ReadableLogsMain extends Main.LensExtension {
     this.listeners.push(() => app.removeListener('before-quit', beforeQuit));
     const settingsStatus = () => ({ path: configurationStore.settingsPath, problem: configurationStore.problem });
     ipc.handle(SETTINGS_STATUS, settingsStatus);
-    ipc.handle(SETTINGS_RESET, (_event, confirmed: boolean) => {
+    ipc.handle(SETTINGS_SAVE_PROFILE, (_event, profile: Profile) => {
+      const path = configurationStore.settingsPath;
+      const current = inspectConfiguration(path);
+      if (current.problem) {
+        configurationStore.attach(this, { path, problem: current.problem });
+        ipc.broadcast(SETTINGS_CHANGED, settingsStatus());
+        throw new Error(current.problem);
+      }
+      configurationStore.saveProfile(profile);
+      // The SDK writes synchronously in main, but its MobX reaction does not
+      // propagate a disk error to the action that changed the model.
+      const persisted = inspectConfiguration(path);
+      if (!persisted.problem && isDeepStrictEqual(persisted.data, JSON.parse(JSON.stringify(configurationStore.toJSON())))) return;
+      configurationStore.attach(this, { path, problem: persisted.problem });
+      if (configurationStore.problem) ipc.broadcast(SETTINGS_CHANGED, settingsStatus());
+      throw new Error(persisted.problem ?? 'Unable to write the formatting profile to saved settings.');
+    });
+    ipc.handle(SETTINGS_RESET, (_event, confirmed: boolean): ResetReply => {
       if (!configurationStore.problem) return { error: 'Settings are usable; no recovery reset is needed.' };
-      const result = resetConfiguration(configurationStore.settingsPath, confirmed);
-      if (!result.error && result.backup) {
+      const result = resetConfiguration(configurationStore.settingsPath, confirmed, () => {
         this.loadSettings();
-        configurationStore.backedUp(result.backup);
-        ipc.broadcast(SETTINGS_RESET_COMPLETE, result.backup, settingsStatus());
-        if (configurationStore.problem) return { ...result, error: configurationStore.problem };
+        if (configurationStore.problem) throw new Error(configurationStore.problem);
+      });
+      if (!result.error && result.backup) {
+        const status = { ...settingsStatus(), backup: result.backup };
+        ipc.broadcast(SETTINGS_CHANGED, status);
+        return { ...result, status };
       }
       return result;
     });
@@ -108,6 +129,7 @@ export default class ReadableLogsMain extends Main.LensExtension {
   }
   async onDeactivate() {
     if (this.stopping) return this.stopping;
+    configurationStore.detach();
     for (const { stop } of this.subscriptions.values()) stop();
     for (const stop of this.listeners) stop();
     this.subscriptions.clear(); this.listeners = [];

@@ -42,13 +42,23 @@ let heldReply, failNext = false, requestCount = 0;
 let heldRangeReply;
 let failNextRange = false;
 let rpcSequence = 0;
+const settingsPath = '/isolated-identity-store/readable-logs.json';
+let settingsStatus = () => ({ path: settingsPath });
+let resetSettingsReply;
+let failSettingsBinding = false;
+let saveSettingsProfile = async profile => {
+  const store = configurationStores[0], configuration = store.toJSON();
+  store.fromStore({ ...configuration, profiles: [...configuration.profiles, profile] });
+};
 const rangeRequests = [];
 const holdNext = text => { let release; const promise = new Promise(resolve => { release = resolve; }); heldReply = { promise, release, text }; return heldReply; };
 const holdNextRange = () => { let release; const promise = new Promise(resolve => { release = resolve; }); heldRangeReply = { promise, release, dispatched: false }; return heldRangeReply; };
 const ipc = {
   listen(name, callback) { callbacks.set(name, callback); return () => callbacks.delete(name); },
   async invoke(name, ...args) {
-    if (name === 'readable-logs-settings-status') return { path: '/isolated-identity-store/readable-logs.json' };
+    if (name === 'readable-logs-settings-status') return settingsStatus();
+    if (name === 'readable-logs-settings-save-profile') return saveSettingsProfile(args[0]);
+    if (name === 'readable-logs-settings-reset') return resetSettingsReply;
     if (name === 'viewer-visibility-stop') return;
     if (name === 'viewer-visibility-request') { callbacks.get(args[1])?.({}, args[0]); return; }
     const exact = name === 'find-request' && args[1].work === 'match';
@@ -72,7 +82,7 @@ const configurationStores = [];
 class ExtensionStore {
   static getInstanceOrCreate() { const store = new this(); configurationStores.push(store); return store; }
   cwd() { return '/isolated-identity-store'; }
-  loadExtension() {}
+  loadExtension() { if (failSettingsBinding) throw new Error('Controlled renderer store failure'); }
 }
 globalThis.FreelensExtensionApi = { React, Mobx,
   Common: { Store: { ExtensionStore } }, Renderer: { Ipc, LensExtension: class {},
@@ -108,6 +118,69 @@ async function refresh(value) {
 function edit(value) {
   Object.getOwnPropertyDescriptor(HTMLInputElement.prototype, 'value').set.call(input(), value);
   input().dispatchEvent(new Event('input', { bubbles: true }));
+}
+async function verifySettingsActivation() {
+  let resolveStatus;
+  settingsStatus = () => new Promise(resolve => { resolveStatus = resolve; });
+  const staleStatus = { path: settingsPath, problem: 'Saved settings are unusable' };
+  const backup = '/isolated-identity-store/backups/readable-logs.json';
+  const activating = extension.onActivate();
+  callbacks.get('readable-logs-settings-changed')({}, { path: settingsPath, backup });
+  resolveStatus(staleStatus);
+  await activating;
+  const saved = configurationStores[0].read();
+  check(!saved.problem && saved.backup === backup, 'A stale activation reply undid settings recovery');
+  callbacks.get('readable-logs-settings-changed')({}, staleStatus);
+  check(configurationStores[0].read().problem === staleStatus.problem && configurationStores[0].read().inspection === 'side',
+    'A settings failure was not applied to an already open renderer');
+  await extension.onDeactivate();
+
+  settingsStatus = () => ({ path: settingsPath });
+  await extension.onActivate();
+  await extension.onDeactivate();
+  settingsStatus = () => new Promise(resolve => { resolveStatus = resolve; });
+  const deactivated = extension.onActivate();
+  await extension.onDeactivate();
+  resolveStatus(staleStatus);
+  await deactivated;
+  check(!configurationStores[0].read().problem, 'A deactivated renderer applied its pending settings status');
+  results.push('settings recovery takes precedence over pending activation, and disable discards stale status');
+
+  settingsStatus = () => staleStatus;
+  await extension.onActivate();
+  const attemptedBackup = '/isolated-identity-store/backups/readable-logs-rebind.json';
+  resetSettingsReply = { backup: attemptedBackup, status: { path: settingsPath, backup: attemptedBackup } };
+  failSettingsBinding = true;
+  const committed = await configurationStores[0].resetSettings(true);
+  const fallback = configurationStores[0].read();
+  check(committed.backup === attemptedBackup && fallback.backup === attemptedBackup && fallback.problem,
+    'A renderer that could not reload committed settings lost its fallback or backup path');
+  await extension.onDeactivate();
+  results.push('reset reports renderer rebind failure with the verified backup path');
+}
+async function verifyProfileSave() {
+  const store = configurationStores[0], original = store.toJSON();
+  const profileName = 'Draft awaiting disk';
+  button('Edit profiles'); await turn();
+  button('Duplicate'); await turn();
+  const name = root.querySelector('[aria-label="Profile name"]');
+  Object.getOwnPropertyDescriptor(HTMLInputElement.prototype, 'value').set.call(name, profileName);
+  name.dispatchEvent(new Event('input', { bubbles: true })); await turn();
+  saveSettingsProfile = async () => { throw new Error('Controlled settings write failure'); };
+  button('Save profile');
+  await until(() => root.textContent.includes('Controlled settings write failure'), 'Profile editor did not report the disk write failure');
+  check(name.value === profileName && !name.disabled, 'Failed save discarded the profile draft');
+  check(store.read().configuration.profiles.length === original.profiles.length, 'Failed save applied the draft');
+  saveSettingsProfile = async profile => {
+    check(profile.name === profileName, 'Retry changed the draft');
+    store.fromStore({ ...original, profiles: [...original.profiles, profile] });
+  };
+  button('Save profile');
+  await until(() => root.textContent.includes('Profile saved.'), 'Successful retry did not report the saved profile');
+  check(name.disabled, 'Successful retry retained the staged draft');
+  store.fromStore(original);
+  button('Back to logs');
+  results.push('profile Save retains the draft when main rejects persistence and applies it after a successful retry');
 }
 const settled = () => !['Matching pending', 'Searching…'].includes(root.querySelector('.rl-find-count').textContent);
 async function query(value) { edit(value); await until(settled, 'Find did not settle'); await turn(); }
@@ -197,10 +270,11 @@ async function verifyInspectionFindState() {
   for (const change of ['inline', 'bottom', 'side', 'settings synchronization']) {
     if (input().value) button('Clear'); closeInspector();
     if (change === 'settings synchronization') {
-      store.saveProfile({ id: synchronizedProfile, name: 'Synchronized Find profile',
+      const profile = { id: synchronizedProfile, name: 'Synchronized Find profile',
         format: { messagePaths: ['/message'], timestampPaths: [], levelPaths: [], inlinePaths: [], hiddenPaths: [], numericTimestamp: 'unset', severityMappings: [] },
-        matching: { enabled: false, conditions: { labels: [] } } });
-      store.setGlobalDefault(synchronizedProfile); await turn();
+        matching: { enabled: false, conditions: { labels: [] } } };
+      store.fromStore({ ...originalConfiguration, profiles: [...originalConfiguration.profiles, profile], globalDefault: synchronizedProfile });
+      await turn();
     }
     rows()[64].querySelector('.rl-row').click();
     const before = requestCount, beforeReads = reads, source = rows().map(row => row.querySelector('.rl-message').textContent);
@@ -564,6 +638,7 @@ async function verifyPosition() {
   const paths = root.querySelector('textarea[aria-label="Message paths"]');
   Object.getOwnPropertyDescriptor(HTMLTextAreaElement.prototype, 'value').set.call(paths, '');
   paths.dispatchEvent(new Event('input', { bubbles: true })); button('Save profile');
+  await until(() => root.textContent.includes('Profile saved.'), 'New formatting profile did not finish saving');
   const profileId = root.querySelector('select[aria-label="Saved profile"]').value;
   button('Back to logs');
   const profile = root.querySelector('select[aria-label="Profile"]');
@@ -837,9 +912,11 @@ globalThis.verifyIdentity = async () => {
     check(getComputedStyle(scroller).backgroundColor === 'rgb(0, 0, 0)', 'Black canvas changed');
     check(!root.querySelector('.rl-line-number'), 'Line counters introduced');
     check(localStorage.length === 0 && sessionStorage.length === 0 && !(await indexedDB.databases()).length, 'Find wrote browser storage');
+    await verifyProfileSave();
   } finally {
     reactRoot.unmount(); await extension.onDeactivate(); await turn();
   }
+  await verifySettingsActivation();
   check(callbacks.size === 0, 'IPC listener leak'); check(errors.length === 0, errors.join('; '));
   check(CSS.highlights.size === 0, 'Viewer teardown retained Custom Highlight registrations');
   check(geometryObservers.size === 0 && geometryFrames.size === 0, 'Viewer teardown retained geometry observers/animation frames');
