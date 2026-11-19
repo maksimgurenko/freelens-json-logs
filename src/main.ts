@@ -1,5 +1,5 @@
 import { Main } from '@freelensapp/extensions';
-import { app, BrowserWindow } from 'electron';
+import { BrowserWindow } from 'electron';
 import { readFileSync } from 'node:fs';
 import { join } from 'node:path';
 import { Worker } from 'node:worker_threads';
@@ -24,7 +24,6 @@ type VisibilitySubscription = { sender: Electron.WebContents; processId: number;
 // Main owns durable settings and observes native windows, including CSS-hidden frames.
 export default class ReadableLogsMain extends Main.LensExtension {
   private subscriptions = new Map<string, VisibilitySubscription>();
-  private listeners: (() => void)[] = [];
   private find?: FindService;
   private stopping?: Promise<void>;
   private loadSettings() {
@@ -47,15 +46,6 @@ export default class ReadableLogsMain extends Main.LensExtension {
       if (action === 'close') return find.close(event, token);
       throw new TypeError('Invalid Find control');
     });
-    // Shutdown must wait for the real worker exit, including startup/idle work.
-    let quitting = false;
-    const beforeQuit = (event: Electron.Event) => {
-      if (quitting) return;
-      event.preventDefault(); quitting = true;
-      void this.onDeactivate().then(() => app.quit());
-    };
-    app.on('before-quit', beforeQuit);
-    this.listeners.push(() => app.removeListener('before-quit', beforeQuit));
     const settingsStatus = () => ({ path: configurationStore.settingsPath, problem: configurationStore.problem });
     ipc.handle(SETTINGS_STATUS, settingsStatus);
     ipc.handle(SETTINGS_SAVE_PROFILE, (_event, profile: Profile) => {
@@ -131,9 +121,8 @@ export default class ReadableLogsMain extends Main.LensExtension {
     if (this.stopping) return this.stopping;
     configurationStore.detach();
     for (const { stop } of this.subscriptions.values()) stop();
-    for (const stop of this.listeners) stop();
-    this.subscriptions.clear(); this.listeners = [];
     const find = this.find; this.find = undefined;
+    // Freelens 2 awaits deactivation before removing SDK handlers on disable and quit.
     this.stopping = find?.dispose() ?? Promise.resolve();
     await this.stopping;
   }
