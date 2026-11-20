@@ -22,8 +22,8 @@ export PATH="$freelens_toolchain/node_modules/node/bin:$freelens_toolchain/node_
 In a private Freelens 2 profile, open **Extensions**, enter the absolute path
 to this checkout, and confirm the development install. Open a fixture cluster
 and choose **Readable logs** in a Pod's details header. Follow the
-[Linux UI playbook](agents/ui-verification.md) for host work. The
-[private-host helpers](../scripts/find-production-host/README.md) document
+[Linux UI playbook](https://github.com/maksimgurenko/freelens-json-logs/blob/main/docs/agents/ui-verification.md) for host work. The
+[private-host helpers](https://github.com/maksimgurenko/freelens-json-logs/blob/main/scripts/find-production-host/README.md) document
 reusable display and CDP guards alongside the historical Freelens 1 recipe.
 Use v2-specific installation and renderer probes with those guards.
 
@@ -47,9 +47,9 @@ npm run package
 Use Chromium or Chrome for the mounted browser and resource tests. Set
 `CHROME_BIN` if the browser is outside the standard executable locations.
 Those tests use an isolated headless browser, real worker code and v2 SDK
-stand-ins. The [resource smoke guide](resource-smoke.md) explains its workloads
+stand-ins. The [resource smoke guide](https://github.com/maksimgurenko/freelens-json-logs/blob/main/docs/resource-smoke.md) explains its workloads
 and thresholds. The full regression contract is in the
-[behavior specification](specification.md).
+[behavior specification](https://github.com/maksimgurenko/freelens-json-logs/blob/main/docs/specification.md).
 
 The installable file is `dist/freelens-readable-logs-v2-<version>.tgz`.
 Keep the checked file and its `SHA256SUMS` together for installed verification.
@@ -111,5 +111,5 @@ its backups. Keep the shared `extension-store` directory and the legacy store.
 ## Local keyboard shortcuts
 
 Open **Display options → Shortcuts** in the viewer for the current bindings.
-See the [Find walkthrough](usage.md#find-records-and-follow-output) and the
-[shortcut contract](specification.md#local-input-and-temporary-history).
+See the [Find walkthrough](https://github.com/maksimgurenko/freelens-json-logs/blob/main/docs/usage.md#find-records-and-follow-output) and the
+[shortcut contract](https://github.com/maksimgurenko/freelens-json-logs/blob/main/docs/specification.md#local-input-and-temporary-history).

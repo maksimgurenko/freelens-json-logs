@@ -10,22 +10,33 @@ git clone https://github.com/maksimgurenko/tmux-ralph-loop.git "${XDG_DATA_HOME:
 ./ralph --help
 ```
 
-This repository uses GitHub Issues as its issue tracker. The loop only reads
-local Markdown tickets; it does not fetch or synchronize GitHub issues.
-Prepare a local ticket directory before starting it, following the
-[upstream ticket format](https://github.com/maksimgurenko/tmux-ralph-loop#ticket-format).
+Update an existing tool checkout with `git pull --ff-only` from that directory.
 
-Pass the same ticket directory to every command, replacing the example path:
+This repository uses [GitHub Issues](agents/issue-tracker.md). With an authenticated
+`gh` CLI, inspect the queue of open `ready-for-agent` issues:
 
 ```sh
-./ralph status --tickets /path/to/tickets
-./ralph start --tickets /path/to/tickets
-./ralph stop --tickets /path/to/tickets
+./ralph status --tracker github
 ```
 
-Codex is the default agent. `start` launches an interactive agent in tmux and
-instructs it to commit completed ticket work on the current branch. Use `status`
-to get the attach command and inspect `.ralph/loop.log` for progress.
+Use `./ralph start --tracker github` to start a watcher for that queue. The
+runner closes completed issues and labels blocked attempts `ralph:blocked`.
+Once a run starts, `./ralph status` and `./ralph stop` use the saved source.
+
+For local Markdown tickets, follow the
+[upstream ticket format](https://github.com/maksimgurenko/tmux-ralph-loop#ticket-format)
+and replace the example directory below. Use a separate state directory to keep
+this queue independent of the GitHub run:
+
+```sh
+./ralph status --state .ralph/local --tickets /path/to/tickets
+./ralph start --state .ralph/local --tickets /path/to/tickets
+./ralph stop --state .ralph/local
+```
+
+Codex is the default agent. `start` launches an interactive agent in tmux. For
+local tickets, the agent receives instructions to commit completed ticket work
+on the current branch. Use `status` to get the attach command and find the logs.
 
 See the [upstream documentation](https://github.com/maksimgurenko/tmux-ralph-loop)
 for other agents, prompts, and recovery commands.

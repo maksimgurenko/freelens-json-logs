@@ -6,7 +6,7 @@
 - [User guide: reading logs, inspection, Find and formatting profiles](usage.md)
 - [Freelens 2 updates and maintenance](local-development.md#supported-local-maintenance)
 - [Settings recovery and backup restoration](local-development.md#recovering-unusable-settings)
-- [Freelens 2 release notes](releases/v0.1.37.md)
+- [Freelens 2 release notes](releases/v0.1.38.md) and [initial v2 release](releases/v0.1.37.md)
 - [Historical Freelens 1 release notes](releases/v0.1.36.md) and [development guide](https://github.com/maksimgurenko/freelens-json-logs/blob/v0.1.36/docs/local-development.md)
 
 ## Develop and verify

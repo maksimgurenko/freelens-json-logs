@@ -4,8 +4,9 @@
 version-tag pushes and manual dispatch. It uses Node from `.nvmrc` and npm
 11.16.0, installs the lockfile without lifecycle scripts, checks TypeScript,
 runs the tests, builds and inspects the actual `.tgz`, and compares two builds
-byte for byte. Every successful run retains the tarball and `SHA256SUMS` as a
-14-day Actions artifact.
+byte for byte. The package check verifies that relative inline links in the
+packaged guides resolve inside the tarball. Every successful run retains the
+tarball and `SHA256SUMS` as a 14-day Actions artifact.
 
 CI does not launch Freelens or Kubernetes. Installed-host acceptance is recorded
 separately from CI. See the [behavior specification and validation limits](specification.md#validation-limits); release notes link to historical installed-host reports.

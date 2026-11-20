@@ -12,7 +12,7 @@ shown at the top, then use **Container** to select the output you want. Regular,
 init and ephemeral containers are listed separately.
 
 The toolbar uses compact icon buttons. Hover over a button to see its action
-and any available shortcut. The pencil edits profiles; the gear opens Display options.
+and any available shortcut. The pencil opens **Edit profiles** and the gear opens **Display options**.
 
 New views update automatically. **Pause** keeps the current log window;
 **Refresh** fetches once while remaining paused. **Resume** reads fresh logs and
@@ -59,12 +59,12 @@ including fields hidden from compact rows. It ignores case by default; enable
 **Match case** or **Whole words** to narrow the search. Every row stays visible,
 and the timestamp added by Kubernetes is excluded.
 
-Use **Next** / **Previous**, or **Enter** / **Shift+Enter**, to move between matching
-records. Navigation wraps from the last match to the first. Highlights and
+Use **Next match** / **Previous match**, or **Enter** / **Shift+Enter**, to move
+between matching records. Navigation wraps from the last match to the first. Highlights and
 scrollbar marks show matches; links beside a row reveal matches in hidden fields.
 Select a single line of log text before opening an empty Find to use it as the
-query. **Recent searches** recalls up to seven searches and their mode settings
-for this view. **Clear** empties the query; **Close** keeps it for reopening.
+query. **Search history** recalls up to seven searches and their mode settings
+for this view. **Clear Find** empties the query. **Close Find** keeps it for reopening.
 
 Inspecting the active Find result keeps its ordinal and search position. During
 refresh, unchanged matching rows keep their counter, scrollbar marks and hidden-match
@@ -73,7 +73,7 @@ hovering over the counter reports when matching is pending.
 
 New views follow the bottom of the output. Scrolling away keeps your reading
 position when the same records survive a refresh. If that position leaves the
-recent window, a notice explains it. **To bottom** resumes following.
+recent window, a notice explains it. **To bottom** resumes following without resuming paused updates.
 
 ## Create a formatting profile
 
@@ -93,13 +93,14 @@ For example, an application might write:
 
 To label its numeric severity and show the order ID inline:
 
-1. Open **Profiles**, select **Default** under **Saved profile**, then **Duplicate**.
+1. Open **Edit profiles**, select **Default** under **Saved profile**, then choose
+   **Duplicate**.
 2. Name the copy `Payments`. Keep the default message, timestamp and level paths.
 3. Add `/orderId` to **Inline fields**.
 4. Under **Severity mappings**, choose **Add mapping**, select **Number**, enter
    `50` and choose **ERROR** as the target.
 5. Paste the example into **Sample logs** and check the **Preview**.
-6. Choose **Save profile**, then **Close profiles**. Select `Payments` in the
+6. Choose **Save profile**, then **Back to logs**. Select `Payments` in the
    viewer's **Profile** selector to use it for the current view.
 
 Numeric levels keep their original value until you give them an explicit mapping.
@@ -114,8 +115,9 @@ key as `~1` and a tilde as `~0`. Lists replace the defaults, with the first usab
 value winning. **Hidden fields** removes extra data from compact rows while
 keeping it available in the inspector and originals.
 
-Choose **Edit** to change a saved profile. **Cancel** or **Close profiles**
-discards unfinished edits; **Save profile** applies valid rules. Samples and
+Choose **Edit** to change a saved profile. **Cancel draft** discards unfinished
+edits and keeps the editor open. **Back to logs** discards unfinished edits
+and returns to the viewer. **Save profile** applies valid rules. Samples and
 drafts are temporary, and changing formatting uses the records already loaded.
 
 ## Apply profiles automatically

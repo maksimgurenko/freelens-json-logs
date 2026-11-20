@@ -1,7 +1,7 @@
 import assert from 'node:assert/strict';
 import { readFileSync, mkdtempSync, rmSync } from 'node:fs';
 import { tmpdir } from 'node:os';
-import { join } from 'node:path';
+import { join, posix } from 'node:path';
 import { execFileSync } from 'node:child_process';
 import { createHash } from 'node:crypto';
 import { checkFindWorker } from './check-find-worker.mjs';
@@ -61,6 +61,18 @@ const directory = mkdtempSync(join(tmpdir(), 'readable-logs-package-'));
 let workerCheck, serviceCheck, compatibility;
 try {
   execFileSync('tar', ['-xzf', join(process.cwd(), tarball), '-C', directory]);
+  for (const doc of contents.filter(path => path.endsWith('.md'))) {
+    const markdown = readFileSync(join(directory, doc), 'utf8');
+    for (const [, enclosed, bare] of markdown.matchAll(/\[[^\]\n]*\]\(\s*(?:<([^>\n]+)>|([^\s)]+))/g)) {
+      const destination = enclosed ?? bare;
+      if (/^(?:[a-z][a-z\d+.-]*:|\/\/)/i.test(destination)) continue;
+      const path = decodeURIComponent(destination.split(/[?#]/, 1)[0]);
+      if (!path) continue;
+      const target = posix.join(posix.dirname(doc), path);
+      assert(!path.startsWith('/') && contents.includes(target),
+        `${doc}: link ${destination} must resolve to a file in the tarball`);
+    }
+  }
   assert.deepEqual(readFileSync(join(directory, 'package', sdkNotice)), readFileSync(`node_modules/${sdk}/LICENSE`),
     'Packed SDK license notice differs from the pinned SDK');
   const packed = JSON.parse(readFileSync(join(directory, 'package/package.json')));

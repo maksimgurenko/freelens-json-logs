@@ -39,26 +39,27 @@ preferences you save in v2 go to a [separate settings file](docs/local-developme
 ## Start reading
 
 The built-in **Default** profile recognizes common message, timestamp and level
-fields. Choose **Profiles → Duplicate** to adapt it to your application's logs,
-preview a sample and save your rules.
+fields. Open **Edit profiles**, select **Default** under **Saved profile**, and
+choose **Duplicate** to adapt it to your application's logs. Preview a sample
+and choose **Save profile**.
 
 Select a record to inspect it. **Pause** keeps the current records available while
 you read; **Refresh** updates once while paused, and **Resume** restores automatic
 updates. **Find** searches application text and extracted messages. **To bottom**
-resumes following the latest output after you scroll away.
+returns to following the log window and preserves the current Pause setting.
 
 The viewer reads one Pod/container at a time and retains up to **1,000 records**
 within **5 MiB of original text**. Automatic updates fetch recent snapshots about
 three seconds after each completed request. Older records can leave that window.
 
-See the [user guide](docs/usage.md) for profile examples, inspection, searching and
+See the [user guide](https://github.com/maksimgurenko/freelens-json-logs/blob/main/docs/usage.md) for profile examples, inspection, searching and
 settings recovery.
 
 ## Documentation
 
 - [Build from source and technical reference](docs/local-development.md)
-- [CI and release workflow](docs/releasing.md)
-- [All documentation, compatibility research and verification](docs/README.md)
+- [CI and release workflow](https://github.com/maksimgurenko/freelens-json-logs/blob/main/docs/releasing.md)
+- [All documentation, compatibility research and verification](https://github.com/maksimgurenko/freelens-json-logs/blob/main/docs/README.md)
 
 Report problems in [GitHub Issues](https://github.com/maksimgurenko/freelens-json-logs/issues),
 including your Freelens and extension versions and the steps to reproduce them.
